@@ -1,1 +1,1 @@
-rofi.theme: /usr/share/rofi/themes/base16-tomorrow-night-mod.rasi
+rofi.theme: ~/.config/rofi/themes/base16-tomorrow-night-mod.rasi
