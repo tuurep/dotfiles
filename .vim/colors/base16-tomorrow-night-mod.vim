@@ -10,7 +10,7 @@ endif
 set background=dark
 let g:colors_name="base16-tomorrow-night-mod"
 
-" Terminal color definitions: Colors are correct only on a 256-color terminal (I use Xfce4-terminal)
+" Terminal color definitions: Colors are correct only on a 256-color terminal
 let s:b00 = "00"
 let s:b01 = "18"
 let s:b02 = "19"
