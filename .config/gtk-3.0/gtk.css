@@ -1,0 +1,9 @@
+@import 'colors.css';
+
+/*
+This is for setting padding for termite:
+8px top and bottom, 10px left and right 
+*/
+VteTerminal, vte-terminal {
+    padding: 8px 10px;
+}
