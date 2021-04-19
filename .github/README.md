@@ -6,11 +6,11 @@ I follow the **bare git repository** method to manage config files. This way no 
 
 ### References for bare git repository method
 
-**Original tutorial:**
+Original tutorial:
 * [Atlassian: The best way to store your dotfiles](https://www.atlassian.com/git/tutorials/dotfiles)
 
-**More clearly explained:**
+More clearly explained:
 * [ackama explanation post](https://www.ackama.com/blog/posts/the-best-way-to-store-your-dotfiles-a-bare-git-repository-explained)
 
-**Video walkthrough:**
+Video walkthrough:
 * [DistroTube video](https://www.youtube.com/watch?v=tBoLDpTWVOM)
