@@ -84,8 +84,6 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
 alias vn="viewnior"
-# Managing github dotfiles repo: https://www.atlassian.com/git/tutorials/dotfiles
-# More explanation: https://www.ackama.com/blog/posts/the-best-way-to-store-your-dotfiles-a-bare-git-repository-explained
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias sauce="source"
 # https://github.com/tuurep/quote-of-the-day.sh
