@@ -83,7 +83,6 @@ shopt -s histappend
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
-alias vn="viewnior"
 alias zat="zathura"
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias sauce="source"
