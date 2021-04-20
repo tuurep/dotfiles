@@ -1,3 +1,7 @@
+# Fix not being able to follow URLs
+# https://git.pwmt.org/pwmt/zathura/-/issues/151
+set sandbox none
+
 set selection-clipboard clipboard
 
 set window-title-basename "true"
