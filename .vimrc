@@ -27,6 +27,7 @@ set cursorline " For LineNumber highlighting only, with my colorscheme setting (
 set hlsearch
 set incsearch
 set mouse=a " Purpose: be able to scroll with mouse
+set nrformats-=octal " For Ctrl+a and Ctrl+x increment/decrement, octal format can lead to some confusion
 
 " Indentation settings for using 4 spaces instead of tabs.  
 " Do not change 'tabstop' from its default value of 8 with this setup.  
@@ -47,7 +48,7 @@ let g:netrw_list_hide=ghregex " Purpose: by default hide dotfiles, gh to toggle
 
 "--- KEYMAPS ---
 " Unify with behavior of C and D, this is even recommended in the :h manual
-:map Y y$
+map Y y$
 " Map leader to space
 nnoremap <SPACE> <Nop>
 let mapleader=" "
