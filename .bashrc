@@ -88,6 +88,10 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias sauce="source"
 # https://github.com/tuurep/quote-of-the-day.sh
 alias quote="~/projects/quote-of-the-day/quote-of-the-day.sh"
+alias tn="tmux new -s"
+alias ta="tmux attach -t"
+alias tls="tmux ls"
+alias tkill="tmux kill-session -t"
 
 # Changes fzf colors, see https://github.com/junegunn/fzf/wiki/Color-schemes
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
