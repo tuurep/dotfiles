@@ -2,8 +2,8 @@
 
 /*
 This is for setting padding for termite:
-8px top and bottom, 10px left and right 
+order: top right bottom left
 */
 VteTerminal, vte-terminal {
-    padding: 8px 10px;
+    padding: 0px 10px 0px 10px;
 }
