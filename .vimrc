@@ -90,4 +90,8 @@ Plug 'junegunn/fzf.vim'
 " Saner search highlight: clear highlight on movement
 Plug 'haya14busa/is.vim'
 
+" Send lines from buffer to REPL with the use of tmux/screen
+let g:slime_target = "tmux"
+Plug 'jpalardy/vim-slime'
+
 call plug#end()
