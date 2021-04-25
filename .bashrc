@@ -84,14 +84,22 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
 alias zat="zathura"
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias sauce="source"
+alias sauce="source ~/.bashrc"
 # https://github.com/tuurep/quote-of-the-day.sh
 alias quote="~/projects/quote-of-the-day/quote-of-the-day.sh"
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
 alias tls="tmux ls"
 alias tkill="tmux kill-session -t"
+alias gits="git status"
+alias gita="git add" 
+alias gitc="git commit"
+alias gitp="git push"
+alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias confs="config status"
+alias confa="config add"
+alias confc="config commit"
+alias confp="config push"
 
 # Changes fzf colors, see https://github.com/junegunn/fzf/wiki/Color-schemes
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
