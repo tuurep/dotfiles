@@ -87,6 +87,7 @@ alias zat="zathura"
 alias sauce="source ~/.bashrc"
 # https://github.com/tuurep/quote-of-the-day.sh
 alias quote="~/projects/quote-of-the-day/quote-of-the-day.sh"
+alias q="exit"
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
 alias tls="tmux ls"
@@ -100,6 +101,12 @@ alias confs="config status"
 alias confa="config add"
 alias confc="config commit"
 alias confp="config push"
+
+# Update tmux statusbar whenever cd is ran
+cd() {
+    builtin cd "$1"
+    tmux refresh-client -S
+}
 
 # Changes fzf colors, see https://github.com/junegunn/fzf/wiki/Color-schemes
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
