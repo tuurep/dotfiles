@@ -84,7 +84,7 @@ alias rm="rm -i"
 alias zat="zathura"
 alias sauce="source ~/.bashrc"
 # https://github.com/tuurep/quote-of-the-day.sh
-alias quote="~/projects/quote-of-the-day/quote-of-the-day.sh"
+alias quote="~/scripts/quote-of-the-day/quote-of-the-day.sh"
 alias q="exit"
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
