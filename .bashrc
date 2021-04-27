@@ -4,16 +4,6 @@ export VISUAL=vim
 # If the running shell is not an interactive shell, return without doing anything
 [[ $- != *i* ]] && return
 
-# Change the window title of X terminals
-case ${TERM} in
-	xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
-		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
-		;;
-	screen*)
-		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"'
-		;;
-esac
-
 use_color=true
 
 # Set colorful PS1 only on colorful terminals.
@@ -79,6 +69,14 @@ shopt -s checkwinsize
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
 
+prompt_comm() {
+        tmux refresh-client -S # Redraw tmux status bar
+        echo -ne "\033]0;${USER}@${HOSTNAME%%.*}\007" # Set window title, TODO: doesn't work in tmux session (if it was dynamic)
+}
+
+# Right before drawing prompt, this function is executed:
+PROMPT_COMMAND=prompt_comm
+
 # Aliases:
 alias cp="cp -i"
 alias mv="mv -i"
@@ -101,12 +99,6 @@ alias confs="config status"
 alias confa="config add"
 alias confc="config commit"
 alias confp="config push"
-
-# Update tmux statusbar whenever cd is ran
-cd() {
-    builtin cd "$1"
-    tmux refresh-client -S
-}
 
 # Changes fzf colors, see https://github.com/junegunn/fzf/wiki/Color-schemes
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
