@@ -17,6 +17,7 @@ set shortmess+=I " Don't display intro message (:h :intro) when opening empty bu
 set hidden
 set confirm
 set noswapfile
+set autoread " Be in sync if file is open in multiple buffers (no prompting, just update)
 set showcmd
 set number
 set noruler
