@@ -32,6 +32,7 @@ set ignorecase
 set smartcase " No ignorecase if Uppercase char present in search
 set mouse=a " Purpose: be able to scroll with mouse
 set nrformats-=octal " For Ctrl+a and Ctrl+x increment/decrement, octal format can lead to some confusion
+set noerrorbells
 
 " Indentation settings for using 4 spaces instead of tabs.  
 " Do not change 'tabstop' from its default value of 8 with this setup.  
