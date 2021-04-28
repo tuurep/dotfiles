@@ -17,6 +17,7 @@ set shortmess+=I " Don't display intro message (:h :intro) when opening empty bu
 set hidden
 set confirm
 set noswapfile
+set nobackup
 set autoread " Be in sync if file is open in multiple buffers (no prompting, just update)
 set showcmd
 set number
@@ -27,6 +28,8 @@ set wildmenu " Tab completion menu
 set cursorline " For LineNumber highlighting only, with my colorscheme setting (no bg highlight for line)
 set hlsearch
 set incsearch
+set ignorecase
+set smartcase " No ignorecase if Uppercase char present in search
 set mouse=a " Purpose: be able to scroll with mouse
 set nrformats-=octal " For Ctrl+a and Ctrl+x increment/decrement, octal format can lead to some confusion
 
@@ -91,7 +94,7 @@ Plug 'junegunn/fzf.vim'
 " Saner search highlight: clear highlight on movement
 Plug 'haya14busa/is.vim'
 
-" Send lines from buffer to REPL with the use of tmux/screen
+" Send lines from buffer to REPL with the use of tmux
 let g:slime_target = "tmux"
 Plug 'jpalardy/vim-slime'
 
