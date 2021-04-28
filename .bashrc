@@ -81,6 +81,8 @@ PROMPT_COMMAND=prompt_comm
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
+alias l="ls"
+alias ll="ls -ohtr" # in order: long format with no group info - human readable size - sort by time - reverse sort order (newest last)
 alias zat="zathura"
 alias sauce="source ~/.bashrc"
 # https://github.com/tuurep/quote-of-the-day.sh
