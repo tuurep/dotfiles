@@ -16,8 +16,8 @@
     normal-background:           @background;
     normal-foreground:           @foreground;
 
-    selected-normal-background:  @background-light;
-    selected-normal-foreground:  @blue;
+    selected-normal-background:  @foreground;
+    selected-normal-foreground:  @background;
 
     alternate-normal-background: @background;
     alternate-normal-foreground: @foreground;
@@ -26,8 +26,8 @@
     active-background:           @background;
     active-foreground:           @green;
 
-    selected-active-background:  @background-light;
-    selected-active-foreground:  @green;
+    selected-active-background:  @green;
+    selected-active-foreground:  @background;
 
     alternate-active-background: @background;
     alternate-active-foreground: @green;
@@ -36,8 +36,8 @@
     urgent-background:           @background;
     urgent-foreground:           @red;
 
-    selected-urgent-background:  @background-light;
-    selected-urgent-foreground:  @red;
+    selected-urgent-background:  @red;
+    selected-urgent-foreground:  @background;
 
     alternate-urgent-background: @background;
     alternate-urgent-foreground: @red;
