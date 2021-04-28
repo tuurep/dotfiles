@@ -70,7 +70,9 @@ shopt -s checkwinsize
 shopt -s histappend
 
 prompt_comm() {
-        tmux refresh-client -S # Redraw tmux status bar
+        if [[ "$TERM" = "tmux".* ]]; then
+                tmux refresh-client -S # Redraw tmux status bar
+        fi
         echo -ne "\033]0;${USER}@${HOSTNAME%%.*}\007" # Set window title, TODO: doesn't work in tmux session (if it was dynamic)
 }
 
