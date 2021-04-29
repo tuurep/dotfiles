@@ -94,15 +94,7 @@ alias tn="tmux new -s"
 alias ta="tmux attach -t"
 alias tls="tmux ls"
 alias tkill="tmux kill-session -t"
-alias gits="git status"
-alias gita="git add" 
-alias gitc="git commit"
-alias gitp="git push"
-alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-alias confs="config status"
-alias confa="config add"
-alias confc="config commit"
-alias confp="config push"
+alias cfg="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 # Changes fzf colors, see https://github.com/junegunn/fzf/wiki/Color-schemes
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
