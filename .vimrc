@@ -14,6 +14,7 @@ colorscheme base16-tomorrow-night-mod
 
 " Preferences
 set shortmess+=I " Don't display intro message (:h :intro) when opening empty buffer
+set shortmess-=S " Show count of search results while searching (remove S from default, see :h shortmess)
 set hidden
 set confirm
 set noswapfile
@@ -44,13 +45,6 @@ set expandtab
 set undodir=~/.vim/undofiles
 set undofile
 
-" Use netrw as a filetree viewer on the left side (Using :Lex)
-let g:netrw_banner=0
-let g:netrw_winsize=18 " Percentage
-let g:netrw_liststyle=3 " Tree-view option
-let ghregex='\(^\|\s\s\)\zs\.\S\+' " netrw gh works by appending and removing this regex to list_hide
-let g:netrw_list_hide=ghregex " Purpose: by default hide dotfiles, gh to toggle
-
 "--- KEYMAPS ---
 " Unify with behavior of C and D, this is even recommended in the :h manual
 map Y y$
@@ -74,12 +68,11 @@ nnoremap <leader>cd :cd %:h<cr>
 " Fzf maps
 nnoremap <leader>f :FZF<cr>
 nnoremap <leader>F :FZF ~<cr>
-" Netrw maps
-" TOGGLE :Lex
-nnoremap <leader><TAB> :Lex<cr>
+" Fern maps
+nnoremap <leader><tab> :Fern -drawer .<cr>
 " --- END OF KEYMAPS ---
 
-" Plugins using vim-plug
+" Plugins using 'junegunn/vim-plug'
 call plug#begin('~/.vim/plugged')
 
 " .tex-files - Compile: \ll View pdf: \lv Toggle error box: \le
@@ -91,6 +84,11 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+" netrw replacement: project drawer/file explorer
+" hijack makes fern the 'default' like when running vim dot
+Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern-hijack.vim'
 
 " Saner search highlight: clear highlight on movement
 Plug 'haya14busa/is.vim'
