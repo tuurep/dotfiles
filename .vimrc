@@ -68,8 +68,10 @@ nnoremap <leader>cd :cd %:h<cr>
 " Fzf maps
 nnoremap <leader>f :FZF<cr>
 nnoremap <leader>F :FZF ~<cr>
-" Fern maps
-nnoremap <leader><tab> :Fern -drawer .<cr>
+" Fern maps: e for vinegar-style, -/_ nerdtree style - pwd or current buffer parent
+nnoremap <leader>e :Fern %:h -reveal=%<cr>
+nnoremap <leader>- :Fern %:h -drawer -reveal=%<cr>
+nnoremap <leader>_ :Fern . -drawer -reveal=%<cr>
 " --- END OF KEYMAPS ---
 
 " Plugins using 'junegunn/vim-plug'
