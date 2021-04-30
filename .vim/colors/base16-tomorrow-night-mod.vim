@@ -71,7 +71,7 @@ call H("Conceal",      s:b0D, s:b00, "")
 call H("Cursor",       s:b00, s:b05, "")
 call H("NonText",      s:b03, "", "")
 call H("LineNr",       s:b03, "", "")
-call H("SignColum",    s:b03, s:b01, "")
+call H("SignColum",    s:b03, s:b00, "")
 call H("StatusLine",   s:b04, s:b01, "none")
 call H("StatusLineNC", s:b03, s:b01, "none")
 call H("VertSplit",    s:b01, s:b01, "none")
@@ -208,6 +208,9 @@ call H("markdownCode",              s:b0B, "", "")
 call H("markdownError",             s:b05, s:b00, "")
 call H("markdownCodeBlock",         s:b0B, "", "")
 call H("markdownHeadingDelimiter",  s:b0D, "", "")
+
+" Fern highlighting
+call H("FernSpinner",    "", s:b00, "")
 
 " NERDTree highlighting
 call H("NERDTreeDirSlash",  s:b0D, "", "")
