@@ -12,6 +12,13 @@ set backspace=indent,eol,start
 
 colorscheme base16-tomorrow-night-mod
 
+" Most important: scrolling and resizing splits by mouse
+set mouse=a
+" Fix mouse inside tmux session:
+if &term =~ "tmux*"
+    set ttymouse=xterm2
+endif
+
 " Preferences
 set shortmess+=I " Don't display intro message (:h :intro) when opening empty buffer
 set shortmess-=S " Show count of search results while searching (remove S from default, see :h shortmess)
@@ -31,7 +38,6 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase " No ignorecase if Uppercase char present in search
-set mouse=a " Purpose: be able to scroll with mouse
 set nrformats-=octal " For Ctrl+a and Ctrl+x increment/decrement, octal format can lead to some confusion
 set noerrorbells
 
