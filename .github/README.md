@@ -14,3 +14,7 @@ More clearly explained:
 
 Video walkthrough:
 * [DistroTube video](https://www.youtube.com/watch?v=tBoLDpTWVOM)
+
+### Color scheme
+
+* See [color table](https://htmlpreview.github.io/?https://github.com/tuurep/dotfiles/blob/master/.github/colortable.html)
