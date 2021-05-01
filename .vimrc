@@ -54,6 +54,8 @@ set undofile
 "--- KEYMAPS ---
 " Unify with behavior of C and D, this is even recommended in the :h manual
 map Y y$
+" No help message when pressing ctrl+C
+nnoremap <C-c> <silent><C-c>
 " Map leader to space
 nnoremap <SPACE> <Nop>
 let mapleader=" "
