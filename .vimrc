@@ -80,6 +80,13 @@ nnoremap <leader>F :FZF ~<cr>
 nnoremap <leader>e :Fern %:h -reveal=%<cr>
 nnoremap <leader>- :Fern %:h -drawer -reveal=%<cr>
 nnoremap <leader>_ :Fern . -drawer -reveal=%<cr>
+" Slime vim-style maps - SlimeLineSend can take {count}, SlimeMotionSend takes {motion}
+let g:slime_no_mappings = 1
+nmap <C-s> <Plug>SlimeConfig
+xmap <leader>s <Plug>SlimeRegionSend
+nmap <leader>s <Plug>SlimeMotionSend
+nmap <leader>S <leader>s$
+nmap <leader>ss <Plug>SlimeLineSend
 " --- END OF KEYMAPS ---
 
 " Plugins using 'junegunn/vim-plug'
