@@ -76,11 +76,11 @@ nnoremap <leader>cd :cd %:h<cr>
 " Fzf maps
 nnoremap <leader>f :FZF<cr>
 nnoremap <leader>F :FZF ~<cr>
-" Fern maps: e for vinegar-style, -/_ nerdtree style - pwd or current buffer parent
+" Fern maps: e for :Explore style, -/_ :Lex style from current parent or cwd
 nnoremap <leader>e :Fern %:h -reveal=%<cr>
 nnoremap <leader>- :Fern %:h -drawer -reveal=%<cr>
 nnoremap <leader>_ :Fern . -drawer -reveal=%<cr>
-" Slime vim-style maps - SlimeLineSend can take {count}, SlimeMotionSend takes {motion}
+" Vim-style maps (non-default) - {count}<leader>ss, <leader>s{motion}
 let g:slime_no_mappings = 1
 nmap <C-s> <Plug>SlimeConfig
 xmap <leader>s <Plug>SlimeRegionSend
@@ -91,6 +91,16 @@ nmap <leader>ss <Plug>SlimeLineSend
 
 " Plugins using 'junegunn/vim-plug'
 call plug#begin('~/.vim/plugged')
+
+" Vim-like binds to comment lines with {count}gcc, gc{motion}
+Plug 'tpope/vim-commentary'
+
+" Get commands to surround text with {new}
+" Replace: cs{old}{new} - Delete: cs{old} - Add: y{motion}{new}
+Plug 'tpope/vim-surround'
+
+" Without this, vimmers cannot dot-repeat keymaps that come from plugins
+Plug 'tpope/vim-repeat'
 
 " .tex-files - Compile: \ll View pdf: \lv Toggle error box: \le
 Plug 'lervag/vimtex'
@@ -108,9 +118,9 @@ Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/fern-hijack.vim'
 
 " Saner search highlight: clear highlight on movement
-Plug 'haya14busa/is.vim'
+Plug 'romainl/vim-cool'
 
-" Send lines from buffer to REPL with the use of tmux
+" Send lines to target window/pane to execute (like IPython shell)
 let g:slime_target = "tmux"
 Plug 'jpalardy/vim-slime'
 
