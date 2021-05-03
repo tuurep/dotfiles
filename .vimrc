@@ -1,10 +1,14 @@
-" 'Features in Vim that no user should have to live without'
-set nocompatible
+set nocompatible " No backward compatibility with Vi
 filetype indent plugin on " To allow filetype-specific indenting / plugins
 syntax on
 
 " Extended built-in support for %
-runtime macros/matchit.vim
+packadd! matchit
+
+" Don't autowrap on textwidth. See this if there's issues: https://vi.stackexchange.com/questions/9366/set-formatoptions-in-vimrc-is-being-ignored
+" (Some builtin ftplugins will go on to set formatoptions again, one is dot vim)
+" (see :set fo?)
+set formatoptions-=tc
 
 " The typical indenting settings and 'normal' backspace behavior (insert mode)
 set autoindent
@@ -52,27 +56,29 @@ set undodir=~/.vim/undofiles
 set undofile
 
 "--- KEYMAPS ---
-" Unify with behavior of C and D, this is even recommended in the :h manual
+" Unify with behavior of C and D, the reason this is not default is said to be a bug in Vi editor
 map Y y$
-" No help message when pressing ctrl+C
-nnoremap <C-c> <silent><C-c>
+" Disable keys that can interfere with other settings
+nnoremap <C-c> <Nop>
+nnoremap <Space> <Nop>
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+xnoremap s <Nop>
+xnoremap S <Nop>
 " Map leader to space
-nnoremap <SPACE> <Nop>
 let mapleader=" "
+" Comfortable half-page movement
+nnoremap <C-j> <C-d>
+nnoremap <C-k> <C-u>
 " Window resizing using arrow keys in normal mode
 " Windows can grow from either side depending on their position
 " <Right> extends window to the right (or left), <Left> extends window to down (or up)
 " ...with Shift to shrink
+" TODO: these are a mess, be on the lookout for better, directional window resizing maps
 nnoremap <Right> <C-W>>
 nnoremap <Left> <C-W>+
 nnoremap <S-Right> <C-W><
 nnoremap <S-Left> <C-W>-
-" Disable other arrowkeys in normal mode
-nnoremap <Up> <Nop>
-nnoremap <Down> <Nop>
-" Setting working directory mappings
-" Set cwd to dir of current file
-nnoremap <leader>cd :cd %:h<cr>
 " Fzf maps
 nnoremap <leader>f :FZF<cr>
 nnoremap <leader>F :FZF ~<cr>
@@ -80,6 +86,15 @@ nnoremap <leader>F :FZF ~<cr>
 nnoremap <leader>e :Fern %:h -reveal=%<cr>
 nnoremap <leader>- :Fern %:h -drawer -reveal=%<cr>
 nnoremap <leader>_ :Fern . -drawer -reveal=%<cr>
+" Open and hop into undotree
+nnoremap <leader>u :UndotreeToggle<cr>
+let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_HighlightChangedWithSign = 0
+" Replace regular s with this more useful 'replace with default register content' -operation
+" s can be overriden because s = cl and S = cc
+nmap s <Plug>(SubversiveSubstitute)
+nmap ss <Plug>(SubversiveSubstituteLine)
+nmap S <Plug>(SubversiveSubstituteToEndOfLine)
 " Vim-style maps (non-default) - {count}<leader>ss, <leader>s{motion}
 let g:slime_no_mappings = 1
 nmap <C-s> <Plug>SlimeConfig
@@ -99,7 +114,10 @@ Plug 'tpope/vim-commentary'
 " Replace: cs{old}{new} - Delete: cs{old} - Add: y{motion}{new}
 Plug 'tpope/vim-surround'
 
-" Without this, vimmers cannot dot-repeat keymaps that come from plugins
+" Remove text and put default register content in its place
+Plug 'svermeulen/vim-subversive'
+
+" Without this, vimmers can't dot-repeat keymaps that come from plugins
 Plug 'tpope/vim-repeat'
 
 " .tex-files - Compile: \ll View pdf: \lv Toggle error box: \le
@@ -119,6 +137,9 @@ Plug 'lambdalisue/fern-hijack.vim'
 
 " Saner search highlight: clear highlight on movement
 Plug 'romainl/vim-cool'
+
+" Nonlinear undo history access
+Plug 'mbbill/undotree'
 
 " Send lines to target window/pane to execute (like IPython shell)
 let g:slime_target = "tmux"
