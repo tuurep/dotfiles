@@ -59,18 +59,25 @@ set undodir=~/.vim/undofiles
 set undofile
 
 "--- KEYMAPS ---
-" Disable keys that can interfere with other settings
+" Disable keys that can interfere with other settings OR that I later want to repurpose
 nnoremap <C-c> <Nop>
 nnoremap <Space> <Nop>
 nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
-xnoremap s <Nop>
-xnoremap S <Nop>
-nnoremap K <Nop>
+noremap + <Nop>
+noremap - <Nop>
+noremap <Enter> <Nop>
 " Map leader to space
 let mapleader=" "
 " Unify with behavior of C and D, the reason this is not default is said to be a bug in Vi editor
-map Y y$
+noremap Y y$
+" Map Backspace to J (join line) to free the key
+noremap <BS> J
+" Less awkward:
+noremap H ^
+noremap L $
+noremap J }
+noremap K {
 " Comfortable insert mode navigation
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
@@ -103,6 +110,7 @@ let g:undotree_HighlightChangedWithSign = 0
 nmap s <Plug>(SubversiveSubstitute)
 nmap ss <Plug>(SubversiveSubstituteLine)
 nmap S <Plug>(SubversiveSubstituteToEndOfLine)
+xmap s <Plug>(SubversiveSubstitute)
 " (Scandinavian layout) Vim-style maps (non-default) - {count}åå, å{motion}
 let g:slime_no_mappings = 1
 nmap <C-å> <Plug>SlimeConfig
@@ -114,6 +122,9 @@ nmap åå <Plug>SlimeLineSend
 
 " Plugins using 'junegunn/vim-plug'
 call plug#begin('~/.vim/plugged')
+
+" fFtT,; across lines
+Plug 'dahu/vim-fanfingtastic'
 
 " Vim-like binds to comment lines with {count}gcc, gc{motion}
 Plug 'tpope/vim-commentary'
