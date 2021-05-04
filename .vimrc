@@ -59,8 +59,6 @@ set undodir=~/.vim/undofiles
 set undofile
 
 "--- KEYMAPS ---
-" Unify with behavior of C and D, the reason this is not default is said to be a bug in Vi editor
-map Y y$
 " Disable keys that can interfere with other settings
 nnoremap <C-c> <Nop>
 nnoremap <Space> <Nop>
@@ -71,6 +69,13 @@ xnoremap S <Nop>
 nnoremap K <Nop>
 " Map leader to space
 let mapleader=" "
+" Unify with behavior of C and D, the reason this is not default is said to be a bug in Vi editor
+map Y y$
+" Comfortable insert mode navigation
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
 " Comfortable half-page movement
 nnoremap <C-j> <C-d>
 nnoremap <C-k> <C-u>
