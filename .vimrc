@@ -5,6 +5,9 @@ syntax on
 " Extended built-in support for %
 packadd! matchit
 
+" Don't highlight matchpairs
+let loaded_matchparen = 1
+
 " Don't autowrap on textwidth. See this if there's issues: https://vi.stackexchange.com/questions/9366/set-formatoptions-in-vimrc-is-being-ignored
 " (Some builtin ftplugins will go on to set formatoptions again, one is dot vim)
 " (see :set fo?)
@@ -65,6 +68,7 @@ nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
 xnoremap s <Nop>
 xnoremap S <Nop>
+nnoremap K <Nop>
 " Map leader to space
 let mapleader=" "
 " Comfortable half-page movement
@@ -82,10 +86,9 @@ nnoremap <S-Left> <C-W>-
 " Fzf maps
 nnoremap <leader>f :FZF<cr>
 nnoremap <leader>F :FZF ~<cr>
-" Fern maps: e for :Explore style, -/_ :Lex style from current parent or cwd
-nnoremap <leader>e :Fern %:h -reveal=%<cr>
+" Fern maps: _ for :Explore style
 nnoremap <leader>- :Fern %:h -drawer -reveal=%<cr>
-nnoremap <leader>_ :Fern . -drawer -reveal=%<cr>
+nnoremap <leader>_ :Fern %:h -reveal=%<cr>
 " Open and hop into undotree
 nnoremap <leader>u :UndotreeToggle<cr>
 let g:undotree_SetFocusWhenToggle = 1
@@ -95,13 +98,13 @@ let g:undotree_HighlightChangedWithSign = 0
 nmap s <Plug>(SubversiveSubstitute)
 nmap ss <Plug>(SubversiveSubstituteLine)
 nmap S <Plug>(SubversiveSubstituteToEndOfLine)
-" Vim-style maps (non-default) - {count}<leader>ss, <leader>s{motion}
+" (Scandinavian layout) Vim-style maps (non-default) - {count}åå, å{motion}
 let g:slime_no_mappings = 1
-nmap <C-s> <Plug>SlimeConfig
-xmap <leader>s <Plug>SlimeRegionSend
-nmap <leader>s <Plug>SlimeMotionSend
-nmap <leader>S <leader>s$
-nmap <leader>ss <Plug>SlimeLineSend
+nmap <C-å> <Plug>SlimeConfig
+xmap å <Plug>SlimeRegionSend
+nmap å <Plug>SlimeMotionSend
+nmap Å å$
+nmap åå <Plug>SlimeLineSend
 " --- END OF KEYMAPS ---
 
 " Plugins using 'junegunn/vim-plug'
