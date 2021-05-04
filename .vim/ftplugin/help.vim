@@ -1,2 +1,2 @@
 " Exit :h pages by pressing q
-nnoremap q :bw<cr>
+nnoremap <buffer> q :bw<cr>

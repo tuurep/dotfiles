@@ -2,4 +2,4 @@
 setlocal wrap linebreak
 
 " Open/close live preview in browser
-nnoremap <leader>p :MarkdownPreviewToggle<cr>
+nnoremap <buffer> <leader>p :MarkdownPreviewToggle<cr>
