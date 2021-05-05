@@ -2,6 +2,10 @@ set nocompatible " No backward compatibility with Vi
 filetype indent plugin on " To allow filetype-specific indenting / plugins
 syntax on
 
+" Autoreload if buffer has been altered elsewhere when you enter it
+set autoread
+au FocusGained,BufEnter * :silent! !
+
 " Extended built-in support for %
 packadd! matchit
 
@@ -35,7 +39,6 @@ set hidden
 set confirm
 set noswapfile
 set nobackup
-set autoread " Be in sync if file is open in multiple buffers (no prompting, just update)
 set showcmd
 set number
 set noruler
@@ -70,44 +73,28 @@ nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
 noremap + <Nop>
 noremap - <Nop>
+noremap <BS> <Nop>
 " Unify with behavior of C and D, the reason this is not default is said to be a bug in Vi editor
 map Y y$
 " Quicksource vimrc
 nnoremap <leader>R :source ~/.vimrc<cr>
 " Experimental:
-noremap <BS> J
-noremap g<BS> gJ
-nnoremap <Enter> 0D
+noremap  ¤ J
+noremap  g¤ gJ
+nnoremap <C-d> 0D
 nnoremap å o<Esc>
 nnoremap Å O<Esc>
-" Less awkward:
+" Comfortable movement keys:
+noremap <C-j> <C-d>
+noremap <C-k> <C-u>
 noremap H ^
-noremap L $
 noremap J }
 noremap K {
-" Comfortable insert mode navigation
+noremap L $
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
-" Comfortable half-page movement
-nnoremap <C-j> <C-d>
-nnoremap <C-k> <C-u>
-" Window resizing using arrow keys in normal mode
-" Windows can grow from either side depending on their position
-" <Right> extends window to the right (or left), <Left> extends window to down (or up)
-" ...with Shift to shrink
-" TODO: these are a mess, be on the lookout for better, directional window resizing maps
-nnoremap <Right> <C-W>>
-nnoremap <Left> <C-W>+
-nnoremap <S-Right> <C-W><
-nnoremap <S-Left> <C-W>-
-" Fzf maps
-nnoremap <leader>f :FZF<cr>
-nnoremap <leader>F :FZF ~<cr>
-" Fern maps: _ for :Explore style
-nnoremap <leader>- :Fern %:h -drawer -reveal=%<cr>
-nnoremap <leader>_ :Fern %:h -reveal=%<cr>
 " Open and hop into undotree
 nnoremap <leader>u :UndotreeToggle<cr>
 let g:undotree_SetFocusWhenToggle = 1
@@ -128,6 +115,21 @@ xmap <leader>p "+p
 nmap <leader>s "+s
 nmap <leader>S "+S
 xmap <leader>s "+s
+" Window resizing using arrow keys in normal mode
+" Windows can grow from either side depending on their position
+" <Right> extends window to the right (or left), <Left> extends window to down (or up)
+" ...with Shift to shrink
+" TODO: these are a mess, be on the lookout for better, directional window resizing maps
+nnoremap <Right> <C-W>>
+nnoremap <Left> <C-W>+
+nnoremap <S-Right> <C-W><
+nnoremap <S-Left> <C-W>-
+" Fzf maps
+nnoremap <leader>gf :FZF<cr>
+nnoremap <leader>gF :FZF ~<cr>
+" Fern maps: _ for :Explore style
+nnoremap <leader>- :Fern %:h -drawer -reveal=%<cr>
+nnoremap <leader>_ :Fern %:h -reveal=%<cr>
 " (Key below esc) Vim-style maps (non-default) - {count}§§, §{motion}
 let g:slime_no_mappings = 1
 nmap <C-§> <Plug>SlimeConfig
