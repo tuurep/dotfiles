@@ -72,17 +72,14 @@ noremap + <Nop>
 noremap - <Nop>
 " Unify with behavior of C and D, the reason this is not default is said to be a bug in Vi editor
 map Y y$
+" Quicksource vimrc
+nnoremap <leader>R :source ~/.vimrc<cr>
 " Experimental:
 noremap <BS> J
 noremap g<BS> gJ
 nnoremap <Enter> 0D
 nnoremap å o<Esc>
 nnoremap Å O<Esc>
-" System clipboard easy:
-noremap <leader>y "+y
-noremap <leader>Y "+Y
-noremap <leader>p "+p
-noremap <leader>P "+P
 " Less awkward:
 noremap H ^
 noremap L $
@@ -121,6 +118,16 @@ nmap s <Plug>(SubversiveSubstitute)
 nmap ss <Plug>(SubversiveSubstituteLine)
 nmap S <Plug>(SubversiveSubstituteToEndOfLine)
 xmap s <Plug>(SubversiveSubstitute)
+" System clipboard easy:
+nmap <leader>y "+y
+nmap <leader>Y "+Y
+xmap <leader>y "+y
+nmap <leader>p "+p
+nmap <leader>P "+P
+xmap <leader>p "+p
+nmap <leader>s "+s
+nmap <leader>S "+S
+xmap <leader>s "+s
 " (Key below esc) Vim-style maps (non-default) - {count}§§, §{motion}
 let g:slime_no_mappings = 1
 nmap <C-§> <Plug>SlimeConfig
