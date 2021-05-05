@@ -6,7 +6,9 @@ syntax on
 packadd! matchit
 
 " Don't highlight matchpairs
-let loaded_matchparen = 1
+let g:loaded_matchparen = 1
+" Don't let vimtex do that either
+let g:vimtex_matchparen_enabled = 0
 
 " Don't autowrap on textwidth. See this if there's issues: https://vi.stackexchange.com/questions/9366/set-formatoptions-in-vimrc-is-being-ignored
 " (Some builtin ftplugins will go on to set formatoptions again, one is dot vim)
@@ -58,21 +60,29 @@ set expandtab
 set undodir=~/.vim/undofiles
 set undofile
 
-"--- KEYMAPS ---
+" ======================== KEYMAPS ========================
+" Map leader to space
+nnoremap <Space> <Nop>
+let mapleader=" "
 " Disable keys that can interfere with other settings OR that I later want to repurpose
 nnoremap <C-c> <Nop>
-nnoremap <Space> <Nop>
 nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
 noremap + <Nop>
 noremap - <Nop>
-noremap <Enter> <Nop>
-" Map leader to space
-let mapleader=" "
 " Unify with behavior of C and D, the reason this is not default is said to be a bug in Vi editor
-noremap Y y$
-" Map Backspace to J (join line) to free the key
+map Y y$
+" Experimental:
 noremap <BS> J
+noremap g<BS> gJ
+nnoremap <Enter> 0D
+nnoremap å o<Esc>
+nnoremap Å O<Esc>
+" System clipboard easy:
+noremap <leader>y "+y
+noremap <leader>Y "+Y
+noremap <leader>p "+p
+noremap <leader>P "+P
 " Less awkward:
 noremap H ^
 noremap L $
@@ -111,26 +121,23 @@ nmap s <Plug>(SubversiveSubstitute)
 nmap ss <Plug>(SubversiveSubstituteLine)
 nmap S <Plug>(SubversiveSubstituteToEndOfLine)
 xmap s <Plug>(SubversiveSubstitute)
-" (Scandinavian layout) Vim-style maps (non-default) - {count}åå, å{motion}
+" (Key below esc) Vim-style maps (non-default) - {count}§§, §{motion}
 let g:slime_no_mappings = 1
-nmap <C-å> <Plug>SlimeConfig
-xmap å <Plug>SlimeRegionSend
-nmap å <Plug>SlimeMotionSend
-nmap Å å$
-nmap åå <Plug>SlimeLineSend
-" --- END OF KEYMAPS ---
+nmap <C-§> <Plug>SlimeConfig
+xmap § <Plug>SlimeRegionSend
+nmap § <Plug>SlimeMotionSend
+nmap ½ §$
+nmap §§ <Plug>SlimeLineSend
+" ==================== END OF KEYMAPS =====================
 
-" Plugins using 'junegunn/vim-plug'
+" ============== PLUGINS: junegunn/vim-plug ===============
 call plug#begin('~/.vim/plugged')
-
-" fFtT,; across lines
-Plug 'dahu/vim-fanfingtastic'
 
 " Vim-like binds to comment lines with {count}gcc, gc{motion}
 Plug 'tpope/vim-commentary'
 
 " Get commands to surround text with {new}
-" Replace: cs{old}{new} - Delete: cs{old} - Add: y{motion}{new}
+" replace: cs{old}{new} - delete: cs{old} - add: y{motion}{new}
 Plug 'tpope/vim-surround'
 
 " Remove text and put default register content in its place
