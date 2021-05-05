@@ -1,4 +1,4 @@
 " Mainly to be used inside .vimrc:
-nnoremap <buffer> <leader>pi :PlugInstall<cr>
-nnoremap <buffer> <leader>pu :PlugUpdate<cr>
-nnoremap <buffer> <leader>pc :PlugClean<cr>
+nnoremap <buffer> <leader>gi :PlugInstall<cr>
+nnoremap <buffer> <leader>gu :PlugUpdate<cr>
+nnoremap <buffer> <leader>gc :PlugClean<cr>
