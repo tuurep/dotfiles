@@ -7,7 +7,7 @@ cursor_blink = off
 # colors from color0 to color254 can be set
 # base16-tomorrow-night-mod
 
-color0 = #1d1f21
+color0 = #17191b
 color1 = #cc6666
 color2 = #b5bd68
 color3 = #f0c674
@@ -15,7 +15,7 @@ color4 = #81a2be
 color5 = #b294bb
 color6 = #8abeb7
 color7 = #c5c8c6
-color8 = #474847
+color8 = #545459
 color9 = #cc6666
 color10 = #b5bd68
 color11 = #f0c674
@@ -25,7 +25,7 @@ color14 = #8abeb7
 color15 = #ffffff
 color16 = #de935f
 color17 = #a3685a
-color18 = #282a2e
-color19 = #373b41
+color18 = #1d1f21
+color19 = #313438
 color20 = #b4b7b4
 color21 = #e0e0e0

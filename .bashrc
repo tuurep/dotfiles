@@ -99,10 +99,10 @@ alias ipy="ipython"
 
 # Changes fzf colors, see https://github.com/junegunn/fzf/wiki/Color-schemes
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-    --color=fg:#c5c8c6,bg:#1d1f21,hl:#474847
-    --color=fg+:#c5c8c6,bg+:#1d1f21,hl+:#cc6666
+    --color=fg:#c5c8c6,bg:#17191b,hl:#545459
+    --color=fg+:#c5c8c6,bg+:#17191b,hl+:#cc6666
     --color=info:#f0c674,prompt:#b294bb,pointer:#cc6666
-    --color=marker:#b294bb,spinner:#f0c674,header:#474847
+    --color=marker:#b294bb,spinner:#f0c674,header:#545459
 '
 
 # https://github.com/junegunn/fzf

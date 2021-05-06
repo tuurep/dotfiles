@@ -25,8 +25,8 @@ IPython.terminal.interactiveshell.style_from_pygments_dict = my_style_from_pygme
 green = '#b5bd68'
 red = '#cc6666'
 term_fg = '#c5c8c6'
-term_bg = '#1d1f21'
-light_bg = '#373b41'
+term_bg = '#17191b'
+light_bg = '#313438'
 
 c.TerminalInteractiveShell.highlighting_style_overrides = {
     Token.Prompt: green,

@@ -2,9 +2,9 @@
 * {
     /* General */
     foreground:                  #c5c8c6;
-    background:                  #1d1f21;
-    background-light:            #282a2e;
-    bordercolor:                 #373b41;
+    background:                  #17191b;
+    background-light:            #1d1f21;
+    bordercolor:                 #313438;
     red:                         #cc6666;
     blue:                        #81a2be;
     green:                       #b5bd68;
