@@ -14,7 +14,7 @@ set font "roboto mono 10"
 # Hide statusbar (bottom row) by default: toggle with <C-n>
 set guioptions ""
 
-# Base16-tomorrow-night-mod -conforming colors:
+# goodnight colors:
 
 set default-bg                  "#17191b"
 set default-fg                  "#c5c8c6"

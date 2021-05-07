@@ -5,8 +5,7 @@ cursor_blink = off
 
 [colors]
 # colors from color0 to color254 can be set
-# base16-tomorrow-night-mod
-
+# goodnight-colorscheme:
 color0 = #17191b
 color1 = #cc6666
 color2 = #b5bd68
@@ -29,3 +28,4 @@ color18 = #1d1f21
 color19 = #313438
 color20 = #b4b7b4
 color21 = #e0e0e0
+color22 = #3b3c3b

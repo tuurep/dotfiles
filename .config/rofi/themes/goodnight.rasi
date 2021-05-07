@@ -1,50 +1,49 @@
-/* Colorscheme: a modified version of Base16 Tomorrow Night */
+/* goodnight colorscheme */
 * {
     /* General */
     foreground:                  #c5c8c6;
-    background:                  #17191b;
     background-light:            #1d1f21;
     bordercolor:                 #313438;
     red:                         #cc6666;
     blue:                        #81a2be;
     green:                       #b5bd68;
 
-    background-color:            @background;
+    background-color:            @background-light;
     border-color:                @bordercolor;
 
     /* Normal */
-    normal-background:           @background;
+    normal-background:           @background-light;
     normal-foreground:           @foreground;
 
     selected-normal-background:  @foreground;
-    selected-normal-foreground:  @background;
+    selected-normal-foreground:  @background-light;
 
-    alternate-normal-background: @background;
+    alternate-normal-background: @background-light;
     alternate-normal-foreground: @foreground;
 
     /* Active */
-    active-background:           @background;
+    active-background:           @background-light;
     active-foreground:           @green;
 
     selected-active-background:  @green;
-    selected-active-foreground:  @background;
+    selected-active-foreground:  @backgroundlight;
 
-    alternate-active-background: @background;
+    alternate-active-background: @background-light;
     alternate-active-foreground: @green;
 
     /* Urgent */
-    urgent-background:           @background;
+    urgent-background:           @background-light;
     urgent-foreground:           @red;
 
     selected-urgent-background:  @red;
-    selected-urgent-foreground:  @background;
+    selected-urgent-foreground:  @background-light;
 
-    alternate-urgent-background: @background;
+    alternate-urgent-background: @background-light;
     alternate-urgent-foreground: @red;
 }
 
 #window {
-    background-color: @background;
+    background-color: @background-light;
     border:           1;
     padding:          5;
 }
@@ -123,7 +122,7 @@
 
 #scrollbar {
     border:       0;
-    handle-color: @background-light;
+    handle-color: @bordercolor;
     handle-width: 4px;
     padding:      0;
     width:        4px;

@@ -23,7 +23,7 @@ set formatoptions-=tc
 set autoindent
 set backspace=indent,eol,start
 
-colorscheme base16-tomorrow-night-mod
+colorscheme goodnight
 
 " Most important: scrolling and resizing splits by mouse
 set mouse=a
@@ -74,6 +74,7 @@ nnoremap <Down> <Nop>
 noremap + <Nop>
 noremap - <Nop>
 noremap <BS> <Nop>
+noremap <Enter> <Nop>
 " Unify with behavior of C and D, the reason this is not default is said to be a bug in Vi editor
 map Y y$
 " Quicksource vimrc
