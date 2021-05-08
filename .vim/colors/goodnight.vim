@@ -181,8 +181,8 @@ call H("GitGutterChangeDelete",   s:magenta, s:light_bg, "")
 call H("UndoTreeNodeCurrent",   s:fg, "", "")
 call H("UndoTreeCurrent",       s:fg, "", "")
 call H("UndoTreeHead",          s:green, "", "")
-call H("UndotreeSavedSmall",    s:fg, "", "")
-call H("UndoTreeSavedBig",      s:green, "", "")
+call H("UndotreeSavedSmall",    s:green, "", "")
+call H("UndoTreeSavedBig",      s:bg, s:green, "")
 
 " HTML highlighting
 call H("htmlBold",    s:yellow, "", "")
