@@ -49,6 +49,11 @@ function! H(group, ctermfg, ctermbg, cterm)
     endif
 endfunction
 
+" No cursorline background, but still need current line number highlighted
+hi clear CursorLine
+call H("CursorLineNr", s:fg, s:bg, "none")
+call H("LineNr",       s:line_number, "", "")
+
 " Vim editor colors
 call H("Normal",       s:fg, s:bg, "")
 call H("Bold",         "", "", "bold")
@@ -78,7 +83,6 @@ call H("Title",        s:blue, "", "none")
 call H("Conceal",      s:blue, s:bg, "")
 call H("Cursor",       s:bg, s:fg, "")
 call H("NonText",      s:comment, "", "")
-call H("LineNr",       s:line_number, "", "")
 call H("EndOfBuffer",  s:selection_bg, "", "")
 call H("SignColum",    s:comment, s:bg, "")
 call H("StatusLine",   s:fg, s:light_bg, "none")
@@ -86,8 +90,6 @@ call H("StatusLineNC", s:dark_fg, s:light_bg, "none")
 call H("VertSplit",    s:light_bg, s:light_bg, "none")
 call H("ColorColumn",  "", s:light_bg, "none")
 call H("CursorColumn", "", s:light_bg, "none")
-call H("CursorLine",   "", s:bg, "none")
-call H("CursorLineNr", s:fg, s:bg, "none")
 call H("QuickFixLine", "", s:light_bg, "none")
 call H("PMenu",        s:fg, s:light_bg, "none")
 call H("PMenuSel",     s:light_bg, s:fg, "") 
