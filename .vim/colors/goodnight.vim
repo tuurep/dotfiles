@@ -175,6 +175,13 @@ call H("GitGutterChange",         s:blue, s:light_bg, "")
 call H("GitGutterDelete",         s:red, s:light_bg, "")
 call H("GitGutterChangeDelete",   s:magenta, s:light_bg, "")
 
+" Undotree highlighting
+call H("UndoTreeNodeCurrent",   s:fg, "", "")
+call H("UndoTreeCurrent",       s:fg, "", "")
+call H("UndoTreeHead",          s:green, "", "")
+call H("UndotreeSavedSmall",    s:fg, "", "")
+call H("UndoTreeSavedBig",      s:green, "", "")
+
 " HTML highlighting
 call H("htmlBold",    s:yellow, "", "")
 call H("htmlItalic",  s:magenta, "", "")
@@ -185,6 +192,7 @@ call H("htmlTag",     s:fg, "", "")
 call H("javaScript",        s:fg, "", "")
 call H("javaScriptBraces",  s:fg, "", "")
 call H("javaScriptNumber",  s:orange, "", "")
+
 " pangloss/vim-javascript highlighting
 call H("jsOperator",          s:blue, "", "")
 call H("jsStatement",         s:magenta, "", "")
