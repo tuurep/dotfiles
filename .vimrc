@@ -2,10 +2,6 @@ set nocompatible " No backward compatibility with Vi
 filetype indent plugin on " To allow filetype-specific indenting / plugins
 syntax on
 
-" Autoreload if buffer has been altered elsewhere when you enter it
-set autoread
-au FocusGained,BufEnter * :silent! !
-
 " Extended built-in support for %
 packadd! matchit
 
