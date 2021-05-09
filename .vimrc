@@ -68,9 +68,10 @@ set undofile
 nnoremap <Space> <Nop>
 let mapleader=" "
 " Disable keys that can interfere with other settings OR that I later want to repurpose
-nnoremap <C-c> <Nop>
 nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
+nnoremap <C-h> <Nop>
+nnoremap <C-l> <Nop>
 noremap + <Nop>
 noremap - <Nop>
 noremap <BS> <Nop>
@@ -83,6 +84,7 @@ nnoremap <leader>R :source ~/.vimrc<cr>
 noremap  ¤ J
 noremap  g¤ gJ
 nnoremap <C-d> 0D
+nnoremap <C-c> 0C
 nnoremap å o<Esc>
 nnoremap Å O<Esc>
 " Comfortable movement keys:
@@ -96,16 +98,33 @@ inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
+cnoremap <C-j> <Down>
+cnoremap <C-k> <Up>
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
 " Open and hop into undotree
 nnoremap <leader>u :UndotreeToggle<cr>
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_HighlightChangedWithSign = 0
-" Replace regular s with this more useful 'replace with default register content' -operation
-" s can be overriden because s = cl and S = cc
-nmap s <Plug>(SubversiveSubstitute)
-nmap ss <Plug>(SubversiveSubstituteLine)
-nmap S <Plug>(SubversiveSubstituteToEndOfLine)
-xmap s <Plug>(SubversiveSubstitute)
+
+" Replace regular s with more useful 'replace selection with default register contents'
+nnoremap <silent> s :set opfunc=SwapRegisterSubstitute<CR>g@
+vnoremap <silent> s p
+nmap ss s_
+nmap S s$
+
+function! SwapRegisterSubstitute(type, ...)
+    if a:0
+        silent exe "normal! `<" . a:type . "`>p"
+    elseif a:type == 'line'
+        silent exe "normal! '[V']p"
+    elseif a:type == 'block'
+        silent exe "normal! `[\<C-V>`]p"
+    else
+        silent exe "normal! `[v`]p"
+    endif
+endfunction
+
 " System clipboard easy:
 nmap <leader>y "+y
 nmap <leader>Y "+Y
@@ -113,6 +132,7 @@ xmap <leader>y "+y
 nmap <leader>p "+p
 nmap <leader>P "+P
 xmap <leader>p "+p
+" TODO: these mappings are now broken, investigate..
 nmap <leader>s "+s
 nmap <leader>S "+S
 xmap <leader>s "+s
@@ -143,6 +163,12 @@ nmap §§ <Plug>SlimeLineSend
 " ============== PLUGINS: junegunn/vim-plug ===============
 call plug#begin('~/.vim/plugged')
 
+" Saner search highlight: clear highlight on movement
+Plug 'romainl/vim-cool'
+
+" Without this, vimmers can't dot-repeat keymaps that come from plugins
+Plug 'tpope/vim-repeat'
+
 " Vim-like binds to comment lines with {count}gcc, gc{motion}
 Plug 'tpope/vim-commentary'
 
@@ -150,17 +176,8 @@ Plug 'tpope/vim-commentary'
 " replace: cs{old}{new} - delete: cs{old} - add: y{motion}{new}
 Plug 'tpope/vim-surround'
 
-" Remove text and put default register content in its place
-Plug 'svermeulen/vim-subversive'
-
-" Without this, vimmers can't dot-repeat keymaps that come from plugins
-Plug 'tpope/vim-repeat'
-
-" .tex-files - Compile: \ll View pdf: \lv Toggle error box: \le
-Plug 'lervag/vimtex'
-
-" Toggle live preview in browser with <leader>p in markdown files (keymap at ftplugin/markdown.vim)
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+" Nonlinear undo history access
+Plug 'mbbill/undotree'
 
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -171,11 +188,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/fern-hijack.vim'
 
-" Saner search highlight: clear highlight on movement
-Plug 'romainl/vim-cool'
+" .tex-files - Compile: \ll View pdf: \lv Toggle error box: \le
+Plug 'lervag/vimtex'
 
-" Nonlinear undo history access
-Plug 'mbbill/undotree'
+" Toggle live preview in browser with <leader>p in markdown files (keymap at ftplugin/markdown.vim)
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " Send lines to target window/pane to execute (like IPython shell)
 let g:slime_target = "tmux"
