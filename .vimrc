@@ -23,6 +23,10 @@ colorscheme goodnight
 
 " Most important: scrolling and resizing splits by mouse
 set mouse=a
+
+" Mouse support setup:
+" Fix mouse for Alacritty:
+set ttymouse=sgr
 " Fix mouse inside tmux session:
 if &term =~ "tmux*"
     set ttymouse=xterm2
