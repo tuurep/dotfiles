@@ -106,25 +106,6 @@ cnoremap <C-l> <Right>
 nnoremap <leader>u :UndotreeToggle<cr>
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_HighlightChangedWithSign = 0
-
-" Replace regular s with more useful 'replace selection with default register contents'
-nnoremap <silent> s :set opfunc=SwapRegisterSubstitute<CR>g@
-vnoremap <silent> s p
-nmap ss s_
-nmap S s$
-
-function! SwapRegisterSubstitute(type, ...)
-    if a:0
-        silent exe "normal! `<" . a:type . "`>p"
-    elseif a:type == 'line'
-        silent exe "normal! '[V']p"
-    elseif a:type == 'block'
-        silent exe "normal! `[\<C-V>`]p"
-    else
-        silent exe "normal! `[v`]p"
-    endif
-endfunction
-
 " System clipboard easy:
 nmap <leader>y "+y
 nmap <leader>Y "+Y
@@ -132,10 +113,6 @@ xmap <leader>y "+y
 nmap <leader>p "+p
 nmap <leader>P "+P
 xmap <leader>p "+p
-" TODO: these mappings are now broken, investigate..
-nmap <leader>s "+s
-nmap <leader>S "+S
-xmap <leader>s "+s
 " Window resizing using arrow keys in normal mode
 " Windows can grow from either side depending on their position
 " <Right> extends window to the right (or left), <Left> extends window to down (or up)
