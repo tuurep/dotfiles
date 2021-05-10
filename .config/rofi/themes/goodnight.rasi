@@ -1,8 +1,12 @@
+configuration {
+    font: "Roboto Mono 12";
+}
+
 /* goodnight colorscheme */
 * {
     /* General */
-    foreground:                  #c5c8c6;
-    background-light:            #1d1f21;
+    foreground:                  #d3d3d3;
+    background-light:            #222525;
     bordercolor:                 #313438;
     red:                         #cc6666;
     blue:                        #81a2be;

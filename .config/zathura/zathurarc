@@ -16,34 +16,34 @@ set guioptions ""
 
 # goodnight colors:
 
-set default-bg                  "#17191b"
-set default-fg                  "#c5c8c6"
+set default-bg                  "#171919"
+set default-fg                  "#d3d3d3"
 
-set statusbar-bg                "#17191b"
-set statusbar-fg                "#c5c8c6"
+set statusbar-bg                "#171919"
+set statusbar-fg                "#d3d3d3"
 
-set inputbar-bg                 "#17191b"
-set inputbar-fg                 "#c5c8c6"
+set inputbar-bg                 "#171919"
+set inputbar-fg                 "#d3d3d3"
 
-set notification-bg             "#17191b"
-set notification-fg             "#c5c8c6"
+set notification-bg             "#171919"
+set notification-fg             "#d3d3d3"
 
-set notification-error-bg       "#17191b"
+set notification-error-bg       "#171919"
 set notification-error-fg       "#cc6666"
 
-set notification-warning-bg     "#17191b"
+set notification-warning-bg     "#171919"
 set notification-warning-fg     "#cc6666"
 
 set highlight-color             "#f0c674"
 set highlight-active-color      "#81a2be"
 
-set completion-bg               "#1d1f21"
+set completion-bg               "#222525"
 set completion-fg               "#81a2be"
 
-set completion-highlight-fg     "#1d1f21"
+set completion-highlight-fg     "#222525"
 set completion-highlight-bg     "#81a2be"
 
-set index-fg                    "#c5c8c6"
-set index-bg                    "#17191b"
-set index-active-fg             "#17191b"
+set index-fg                    "#d3d3d3"
+set index-bg                    "#171919"
+set index-active-fg             "#171919"
 set index-active-bg             "#b5bd68"

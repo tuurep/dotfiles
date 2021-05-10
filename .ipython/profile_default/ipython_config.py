@@ -24,19 +24,19 @@ IPython.terminal.interactiveshell.style_from_pygments_dict = my_style_from_pygme
 
 green = '#b5bd68'
 red = '#cc6666'
-term_fg = '#c5c8c6'
-term_bg = '#17191b'
-light_bg = '#313438'
+term_fg = '#d3d3d3'
+term_bg = '#171919'
+selection_bg = '#313438'
 
 c.TerminalInteractiveShell.highlighting_style_overrides = {
     Token.Prompt: green,
     Token.PromptNum: green,
     Token.OutPrompt: red,
     Token.OutPromptNum: red,
-    'completion-menu': f'bg:{light_bg} {term_fg}',
+    'completion-menu': f'bg:{selection_bg} {term_fg}',
     'completion-menu.completion.current': f'bg:{term_fg} {term_bg}',
-    'completion-menu.completion': f'bg:{light_bg} {term_fg}',
+    'completion-menu.completion': f'bg:{selection_bg} {term_fg}',
     'completion-menu.meta.completion.current': f'bg:{term_fg} {term_bg}',
-    'completion-menu.meta.completion': f'bg:{light_bg} {term_fg}',
-    'completion-menu.multi-column-meta': f'bg:{light_bg} {term_fg}'
+    'completion-menu.meta.completion': f'bg:{selection_bg} {term_fg}',
+    'completion-menu.multi-column-meta': f'bg:{selection_bg} {term_fg}'
 }

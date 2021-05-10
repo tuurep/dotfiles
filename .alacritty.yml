@@ -1,4 +1,5 @@
 env:
+  # Fix not being able to change font size
   WINIT_X11_SCALE_FACTOR: "1"
 
 font:
@@ -19,18 +20,18 @@ window:
 
 colors:
   primary:
-    background: "#17191b"
-    foreground: "#c5c8c6"
-    
+    background: "#171919"
+    foreground: "#d3d3d3"
+ 
   normal:
-    black: "#17191b"
+    black: "#171919"
     red: "#cc6666"
     green: "#b5bd68"
     yellow: "#f0c674"
     blue: "#81a2be"
     magenta: "#b294bb"
     cyan: "#8abeb7"
-    white: "#c5c8c6"
+    white: "#d3d3d3"
 
   bright:
     black: "#5f6160"
@@ -42,13 +43,14 @@ colors:
     cyan: "#8abeb7"
     white: "#ffffff"
 
+  # Colors 16-255 can be set
   indexed_colors: [
     { index: 16, color: "#de935f" },
     { index: 17, color: "#a3685a" },
-    { index: 18, color: "#1d1f21" },
+    { index: 18, color: "#222525" },
     { index: 19, color: "#313438" },
-    { index: 20, color: "#494e53" },
-    { index: 21, color: "#e0e0e0" },
+    { index: 20, color: "#656e6e" },
+    { index: 21, color: "#eaeaea" },
     { index: 22, color: "#383838" },
-    { index: 23, color: "#202225" }
+    { index: 23, color: "#2a2c2d" }
   ]

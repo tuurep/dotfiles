@@ -1,4 +1,4 @@
 ! sxiv image viewer
-Sxiv.background: #17191b
-Sxiv.foreground: #c5c8c6
+Sxiv.background: #171919
+Sxiv.foreground: #d3d3d3
 Sxiv.font: Roboto Mono:size=10
