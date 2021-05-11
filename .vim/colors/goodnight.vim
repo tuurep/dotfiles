@@ -1,16 +1,41 @@
 " goodnight.vim colorscheme by tuurep (github.com/tuurep)
 " This colorscheme is based on Base16-Tomorrow-Night by Chris Kempson (github.com/chriskempson)
-" Only works on terminal Vim to keep this file small and easily adjustable
 
 highlight clear
-if exists("syntax_on")
-    syntax reset
-endif
+syntax reset
 
 set background=dark
 let g:colors_name="goodnight"
 
-" Terminal color definitions: Colors are correct only on a 256-color terminal
+" ====== Terminal Colors ======
+"
+" Expects colors to be set in the terminal emulator
+" Terminal needs to be able to set colors 0-22 as:
+"
+" Color00: #171919
+" Color01: #cc6666
+" Color02: #b5bd68
+" Color03: #f0c674
+" Color04: #81a2be
+" Color05: #b294bb
+" Color06: #8abeb7
+" Color07: #d3d3d3
+" Color08: #5f6160
+" Color09: (unused)
+" Color10: (unused)
+" Color11: (unused)
+" Color12: (unused)
+" Color13: (unused)
+" Color14: (unused)
+" Color15: #ffffff
+" Color16: #de935f
+" Color17: #a3685a
+" Color18: #222525
+" Color19: #313438
+" Color20: #656e6e
+" Color21: #eaeaea
+" Color22: #404040
+
 " Default background and foreround:
 let s:bg = "00"
 let s:fg = "07"
@@ -35,6 +60,7 @@ let s:light_bg = "18"
 let s:dark_fg = "20"
 let s:light_fg = "21"
 let s:line_number = "22"
+
 
 " Highlighting function
 function! H(group, ctermfg, ctermbg, cterm)
