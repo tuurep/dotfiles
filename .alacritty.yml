@@ -1,21 +1,22 @@
 env:
-  # Fix not being able to change font size
+  # Fix not being able to set font size (huge initial font)
   WINIT_X11_SCALE_FACTOR: "1"
 
 font:
   normal:
-    family: Roboto Mono
+    family: Hack
     style: Regular
   
   # Disable bold font:
   bold:
-    family: Roboto Mono
+    family: Hack
     style: Regular
 
-  size: 12.0
+  size: 12.5
 
 window:
   padding:
+    # Both left and right (unfortunately)
     x: 7
 
 colors:

@@ -9,7 +9,7 @@ set window-title-page "true"
 
 set statusbar-home-tilde "true"
 
-set font "roboto mono 10"
+set font "Hack 12"
 
 # Hide statusbar (bottom row) by default: toggle with <C-n>
 set guioptions ""
