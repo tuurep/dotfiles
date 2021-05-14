@@ -53,10 +53,10 @@ set smartcase " No ignorecase if Uppercase char present in search
 set nrformats-=octal " For Ctrl+a and Ctrl+x increment/decrement, octal format can lead to some confusion
 set noerrorbells
 
-" Indentation settings for using 4 spaces instead of tabs.  
-" Do not change 'tabstop' from its default value of 8 with this setup.  
-set shiftwidth=4 
-set softtabstop=4 
+" Indentation settings for using 4 spaces instead of tabs.
+" Do not change 'tabstop' from its default value of 8 with this setup.
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 
 " Undo persistence: buffer can be closed and previous undotree can be used on reopen
@@ -165,7 +165,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/fern-hijack.vim'
 
-" .tex-files - Compile: \ll View pdf: \lv Toggle error box: \le
+" .tex-files - Compile: <leader>gc View pdf: <leader>gv Toggle error box: <leader>ge
 Plug 'lervag/vimtex'
 
 " Toggle live preview in browser with <leader>p in markdown files (keymap at ftplugin/markdown.vim)
