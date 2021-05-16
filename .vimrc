@@ -75,11 +75,12 @@ nnoremap <C-l> <Nop>
 noremap + <Nop>
 noremap - <Nop>
 noremap <BS> <Nop>
-noremap <Enter> <Nop>
 " Unify with behavior of C and D, the reason this is not default is said to be a bug in Vi editor
 map Y y$
 " Quicksource vimrc
 nnoremap <leader>R :source ~/.vimrc<cr>
+" Clear lingering command msg
+nnoremap <Enter> :echo ''<cr>
 " Experimental:
 noremap  ¤ J
 noremap  g¤ gJ
