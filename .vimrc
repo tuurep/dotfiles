@@ -32,6 +32,10 @@ if &term =~ "tmux*"
     set ttymouse=xterm2
 endif
 
+" TODO: Issues with auto reload (on BufEnter,FocusGained)
+" To update manually when file was modified elsewhere, do :checkt[ime]
+set autoread
+
 " Preferences
 set shortmess+=I " Don't display intro message (:h :intro) when opening empty buffer
 set shortmess-=S " Show count of search results while searching (remove S from default, see :h shortmess)
