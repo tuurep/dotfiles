@@ -135,11 +135,11 @@ nnoremap <leader>- :Fern %:h -drawer -reveal=%<cr>
 nnoremap <leader>_ :Fern %:h -reveal=%<cr>
 " (Key below esc) Vim-style maps (non-default) - {count}§§, §{motion}
 let g:slime_no_mappings = 1
-nmap <C-§> <Plug>SlimeConfig
 xmap § <Plug>SlimeRegionSend
 nmap § <Plug>SlimeMotionSend
 nmap ½ §$
 nmap §§ <Plug>SlimeLineSend
+nmap <leader>§ <Plug>SlimeConfig
 " ==================== END OF KEYMAPS =====================
 
 " ============== PLUGINS: junegunn/vim-plug ===============
