@@ -184,17 +184,17 @@
         <command>openbox --restart</command>
       </action>
     </keybind>
-    <!-- Keybindins for volume control -->
-    <keybind key="XF86AudioRaiseVolume">
-      <action name="Execute">
-        <command>pactl set-sink-volume 0 +5%</command>
-      </action>
-    </keybind>
-    <keybind key="XF86AudioLowerVolume">
-      <action name="Execute">
-        <command>pactl set-sink-volume 0 -5%</command>
-      </action>
-    </keybind>
+    <!-- <keybind key="XF86AudioRaiseVolume"> -->
+    <!--   <action name="Execute"> -->
+    <!--     <command></command> -->
+    <!--   </action> -->
+    <!-- </keybind> -->
+    <!-- <keybind key="XF86AudioLowerVolume"> -->
+    <!--   <action name="Execute"> -->
+    <!--     <command></command> -->
+    <!--   </action> -->
+    <!-- </keybind> -->
+    
     <!-- Brightness controls -->
     <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
