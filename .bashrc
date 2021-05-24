@@ -107,8 +107,20 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
     --color=marker:#b294bb,spinner:#f0c674,header:#5f6160
 '
 
+# === Add stuff to PATH ===
+
 # https://github.com/junegunn/fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# For installing Nodejs
+# Nodejs
 source /usr/share/nvm/init-nvm.sh
+
+# Python3 wants this
+export PATH="$PATH:$HOME/.local/bin"
+
+# Originally for vimgolf
+export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+export PATH="$PATH:$GEM_HOME/bin"
+
+# cargo install destination
+export PATH="$PATH:$HOME/.cargo/bin"
