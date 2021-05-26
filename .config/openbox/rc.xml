@@ -184,16 +184,16 @@
         <command>openbox --restart</command>
       </action>
     </keybind>
-    <!-- <keybind key="XF86AudioRaiseVolume"> -->
-    <!--   <action name="Execute"> -->
-    <!--     <command></command> -->
-    <!--   </action> -->
-    <!-- </keybind> -->
-    <!-- <keybind key="XF86AudioLowerVolume"> -->
-    <!--   <action name="Execute"> -->
-    <!--     <command></command> -->
-    <!--   </action> -->
-    <!-- </keybind> -->
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute">
+        <command>amixer set Master 1%+</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioLowerVolume">
+      <action name="Execute">
+        <command>amixer set Master 1%-</command>
+      </action>
+    </keybind>
     
     <!-- Brightness controls -->
     <keybind key="XF86MonBrightnessUp">
