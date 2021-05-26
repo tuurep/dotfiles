@@ -4,70 +4,14 @@ export VISUAL=vim
 # If the running shell is not an interactive shell, return without doing anything
 [[ $- != *i* ]] && return
 
-use_color=true
-
-# Set colorful PS1 only on colorful terminals.
-# dircolors --print-database uses its own built-in database
-# instead of using /etc/DIR_COLORS.  Try to use the external file
-# first to take advantage of user additions.  Use internal bash
-# globbing instead of external grep binary.
-safe_term=${TERM//[^[:alnum:]]/?}   # sanitize TERM
-match_lhs=""
-[[ -f ~/.dir_colors   ]] && match_lhs="${match_lhs}$(<~/.dir_colors)"
-[[ -f /etc/DIR_COLORS ]] && match_lhs="${match_lhs}$(</etc/DIR_COLORS)"
-[[ -z ${match_lhs}    ]] \
-	&& type -P dircolors >/dev/null \
-	&& match_lhs=$(dircolors --print-database)
-[[ $'\n'${match_lhs} == *$'\n'"TERM "${safe_term}* ]] && use_color=true
-
-if ${use_color} ; then
-	# Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
-        if type -P dircolors >/dev/null ; then
-		if [[ -f ~/.dir_colors ]] ; then
-			eval $(dircolors -b ~/.dir_colors)
-		elif [[ -f /etc/DIR_COLORS ]] ; then
-			eval $(dircolors -b /etc/DIR_COLORS)
-		fi
-	fi
-        
-        alias ls="ls --color=auto"
-        alias grep="grep --colour=auto"
-        alias egrep="egrep --colour=auto"
-        alias fgrep="fgrep --colour=auto"
-
-        # Root check
-        if [[ ${EUID} == 0 ]] ; then
-                PS1="\[\e[0;31m\]# \[\e[0m\]"
-                PS2="\[\e[0;31m\]- \[\e[0m\]"
-        else
-                PS1="\[\e[0;32m\]> \[\e[0m\]"
-                PS2="\[\e[0;32m\]- \[\e[0m\]"
-        fi
+# Root check
+if [[ ${EUID} == 0 ]] ; then
+        PS1="\[\e[0;31m\]# \[\e[0m\]"
+        PS2="\[\e[0;31m\]- \[\e[0m\]"
 else
-	if [[ ${EUID} == 0 ]] ; then
-		PS1="# "
-	else
-		PS1="> "
-	fi
-        PS2="- "
+        PS1="\[\e[0;32m\]> \[\e[0m\]"
+        PS2="\[\e[0;32m\]- \[\e[0m\]"
 fi
-
-unset use_color safe_term match_lhs sh
-
-# I don't know what these do (Manjaro defaults)
-[ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
-xhost +local:root > /dev/null 2>&1
-complete -cf sudo
-shopt -s expand_aliases
-
-# Bash won't get SIGWINCH if another process is in the foreground.
-# Enable checkwinsize so that bash will check the terminal size when
-# it regains control.  #65623
-# http://cnswww.cns.cwru.edu/~chet/bash/FAQ (E11)
-shopt -s checkwinsize
-
-# Enable history appending instead of overwriting.  #139609
-shopt -s histappend
 
 prompt_comm() {
         if [[ "$TERM" =~ "tmux*" ]]; then
@@ -79,7 +23,14 @@ prompt_comm() {
 # Right before drawing prompt, this function is executed:
 PROMPT_COMMAND=prompt_comm
 
+# Enable history appending instead of overwriting.  #139609
+shopt -s histappend
+
 # Aliases:
+alias ls="ls --color=auto"
+alias grep="grep --colour=auto"
+alias egrep="egrep --colour=auto"
+alias fgrep="fgrep --colour=auto"
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
@@ -111,9 +62,6 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 
 # https://github.com/junegunn/fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# Nodejs
-source /usr/share/nvm/init-nvm.sh
 
 # Python3 wants this
 export PATH="$PATH:$HOME/.local/bin"
