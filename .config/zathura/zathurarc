@@ -9,7 +9,7 @@ set window-title-page "true"
 
 set statusbar-home-tilde "true"
 
-set font "Hack 12"
+set font "Alt Hack Nerd Font 12"
 
 # Hide statusbar (bottom row) by default: toggle with <C-n>
 set guioptions ""

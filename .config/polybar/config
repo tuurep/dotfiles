@@ -44,21 +44,19 @@ line-color = #f00
 ; border-size = 4
 ; border-color = ${colors.background}
 
-padding-left = 2
-padding-right = 2
+padding-left = 1
+padding-right = 1
 
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+font-0 = Alt Hack Nerd Font:pixelsize=10;1
 
-modules-left = powermenu
+modules-left =
 modules-center = xwindow
-modules-right = xbacklight alsa pulseaudio wlan eth battery date
+modules-right = alsa pulseaudio xbacklight battery wlan eth date powermenu
 
-tray-position = right
+tray-position = left
 tray-padding = 2
 
 cursor-click = pointer
@@ -120,7 +118,6 @@ interface = wlp63s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
 label-connected = %essid%
 
 format-disconnected =
@@ -141,7 +138,6 @@ type = internal/network
 interface = net0
 interval = 3.0
 
-format-connected-underline = #55aa55
 format-connected-prefix = "> "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
@@ -162,9 +158,8 @@ date-alt = "%d.%m."
 time = %H:%M
 time-alt = %H:%M
 
-format-prefix =
+; format-prefix =
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
 
 label = %date% %time%
 
@@ -225,39 +220,26 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
+
+; This is useful in case the battery never reports 100% charge
+full-at = 99
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
 battery = BAT1
 adapter = ACAD
-full-at = 98
 
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+; If an inotify event haven't been reported in this many
+; seconds, manually poll for new values.
+;
+; Needed as a fallback for systems that don't report events
+; on sysfs/procfs.
+;
+; Disable polling by setting the interval to 0.
+;
+; Default: 5
+poll-interval = 5
 
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-; format-full-prefix = " "
-; format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-
-; ramp-capacity-0 = 
-; ramp-capacity-1 = 
-; ramp-capacity-2 = 
-; ramp-capacity-foreground = ${colors.foreground-alt}
-
-; animation-charging-0 = 
-; animation-charging-1 = 
-; animation-charging-2 = 
-; animation-charging-foreground = ${colors.foreground-alt}
-; animation-charging-framerate = 750
-
-; animation-discharging-0 = 
-; animation-discharging-1 = 
-; animation-discharging-2 = 
-; animation-discharging-foreground = ${colors.foreground-alt}
-; animation-discharging-framerate = 750
-
-; ramp-2 = 
-; ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
 type = custom/menu
