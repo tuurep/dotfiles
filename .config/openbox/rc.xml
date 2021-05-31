@@ -149,12 +149,12 @@
     <!-- Brightness controls -->
     <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
-        <command>xbacklight +10</command>
+        <command>xbacklight +5</command>
       </action>
     </keybind>
     <keybind key="XF86MonBrightnessDown">
       <action name="Execute">
-        <command>xbacklight -10</command>
+        <command>xbacklight -5</command>
       </action>
     </keybind>
     <!-- Window snapping keybindings -->
@@ -178,6 +178,11 @@
     </keybind>
     <keybind key="W-Up">
       <action name="ToggleMaximize"/>
+    </keybind>
+    <keybind key="W-Down">
+        <action name="ToggleMaximize">
+            <direction>vertical</direction>
+        </action>
     </keybind>
     <!-- Keybindings for windows -->
     <keybind key="W-q">
@@ -273,12 +278,12 @@
       <mousebind button="A-Left" action="Drag">
         <action name="Move"/>
       </mousebind>
-      <mousebind button="A-Right" action="Press">
+      <mousebind button="W-Left" action="Press">
         <action name="Focus"/>
         <action name="Raise"/>
         <action name="Unshade"/>
       </mousebind>
-      <mousebind button="A-Right" action="Drag">
+      <mousebind button="W-Left" action="Drag">
         <action name="Resize"/>
       </mousebind>
       <mousebind button="A-Middle" action="Press">
