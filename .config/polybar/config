@@ -56,7 +56,7 @@ cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:50:...%
+label = %title:0:80:...%
 
 ; [module/polywins]
 ; type = custom/script
@@ -176,7 +176,20 @@ ramp-capacity-9 = 
 
 [module/powermenu]
 type = custom/menu
+expand-right = false
+
+format-spacing = 2
+
 label-open = 
+label-close = 
+
+menu-0-0 = 襤
+menu-0-0-exec = systemctl poweroff
+menu-0-1 = 勒
+menu-0-1-exec = systemctl reboot
+menu-0-2 = 
+menu-0-2-exec = openbox --exit
+
 
 [global/wm]
 margin-top = 0
