@@ -1,5 +1,5 @@
-# Background color
-xsetroot -solid "#000000" &
+# Feh sets wallpaper
+~/.fehbg &
 
 # Map capslock to esc
 setxkbmap -option caps:escape &
