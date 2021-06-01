@@ -14,10 +14,11 @@ else
 fi
 
 prompt_comm() {
-        if [[ "$TERM" =~ "tmux*" ]]; then
+        if [[ "$TERM" =~ "tmux*" ]]; then      
                 tmux refresh-client -S # Redraw tmux status bar
         fi
-        echo -ne "\033]0;${USER}@${HOSTNAME%%.*}\007" # Set window title, TODO: doesn't work in tmux session (if it was dynamic)
+        local short_pwd=$(basename $(pwd | sed 's|^$HOME|~|'))
+        echo -ne "\033]0;${short_pwd}\007" # Set window title; in tmux title is set in .tmux.conf
 }
 
 # Right before drawing prompt, this function is executed:
@@ -41,8 +42,7 @@ alias p="pwd"
 alias zat="zathura"
 alias viv="vivaldi-stable"
 alias sauce="source ~/.bashrc"
-# https://github.com/tuurep/quote-of-the-day.sh
-alias quote="~/scripts/quote-of-the-day/quote-of-the-day.sh"
+alias quote="~/scripts/quote-of-the-day/quote-of-the-day.sh" # https://github.com/tuurep/quote-of-the-day.sh
 alias q="exit"
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
