@@ -1,0 +1,4 @@
+configuration {
+    theme: "~/.config/rofi/themes/goodnight.rasi";
+    window-format: "{c}    {t}";
+}
