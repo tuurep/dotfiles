@@ -39,6 +39,7 @@ alias ll="ls -ohtr" # in order: long format with no group info - human readable 
 alias pwd="pwd | sed 's|^$HOME|~|'"
 alias p="pwd"
 alias zat="zathura"
+alias viv="vivaldi-stable"
 alias sauce="source ~/.bashrc"
 # https://github.com/tuurep/quote-of-the-day.sh
 alias quote="~/scripts/quote-of-the-day/quote-of-the-day.sh"
