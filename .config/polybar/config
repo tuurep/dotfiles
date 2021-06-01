@@ -17,13 +17,14 @@
 ;==========================================================
 
 [colors]
-background = #222
-background-alt = #444
+background = #222525
 foreground = #dfdfdf
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+foreground-alt = #6d6d6d
+red = #cc6666
+green = #b5bd68
+yellow = #f0c674
+magenta = #b294bb
+cyan = #8abeb7
 
 [bar/bar1]
 bottom = true
@@ -57,6 +58,7 @@ cursor-scroll = ns-resize
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:80:...%
+label-foreground = ${colors.foreground-alt}
 
 ; [module/polywins]
 ; type = custom/script
@@ -74,13 +76,9 @@ label = 盛 %percentage%
 
 bar-width = 10
 bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
 bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
+bar-fill-foreground = ${colors.cyan}
 bar-empty = ─
-bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
 
 [module/wlan]
@@ -125,20 +123,17 @@ format-muted-foreground = ${colors.foreground-alt}
 label-muted = 婢 sound muted
 
 bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
+bar-volume-foreground-0 = ${colors.green}
+bar-volume-foreground-1 = ${colors.green}
+bar-volume-foreground-2 = ${colors.green}
+bar-volume-foreground-3 = ${colors.green}
+bar-volume-foreground-4 = ${colors.green}
+bar-volume-foreground-5 = ${colors.yellow}
+bar-volume-foreground-6 = ${colors.red}
 bar-volume-gradient = false
 bar-volume-indicator = |
-bar-volume-indicator-font = 2
 bar-volume-fill = ─
-bar-volume-fill-font = 2
 bar-volume-empty = ─
-bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
@@ -160,13 +155,13 @@ label-charging =  %percentage%
 label-full =  %percentage%
 
 ramp-capacity-0 = 
-ramp-capacity-0-foreground = ${colors.alert}
+ramp-capacity-0-foreground = ${colors.red}
 ramp-capacity-1 = 
-ramp-capacity-1-foreground = ${colors.alert}
+ramp-capacity-1-foreground = ${colors.red}
 ramp-capacity-2 = 
-; ramp-capacity-2-foreground = ${colors.warning}
+ramp-capacity-2-foreground = ${colors.yellow}
 ramp-capacity-3 = 
-; ramp-capacity-3-foreground = ${colors.warning}
+ramp-capacity-3-foreground = ${colors.yellow}
 ramp-capacity-4 = 
 ramp-capacity-5 = 
 ramp-capacity-6 = 
@@ -182,6 +177,7 @@ format-spacing = 2
 
 label-open = 
 label-close = 
+label-close-foreground = ${colors.red}
 
 menu-0-0 = 襤
 menu-0-0-exec = systemctl poweroff
