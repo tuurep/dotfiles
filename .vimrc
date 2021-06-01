@@ -2,6 +2,9 @@ set nocompatible " No backward compatibility with Vi
 filetype indent plugin on " To allow filetype-specific indenting / plugins
 syntax on
 
+set title
+set titlestring=vim\ %t\ %m
+
 " Extended built-in support for %
 packadd! matchit
 
