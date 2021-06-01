@@ -185,7 +185,7 @@ label-close = 
 
 menu-0-0 = 襤
 menu-0-0-exec = systemctl poweroff
-menu-0-1 = 勒
+menu-0-1 = 累
 menu-0-1-exec = systemctl reboot
 menu-0-2 = 
 menu-0-2-exec = openbox --exit
