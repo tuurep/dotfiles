@@ -184,14 +184,78 @@
             <direction>vertical</direction>
         </action>
     </keybind>
+    <keybind key="W-l">
+        <action name="ToggleMaximize">
+            <direction>vertical</direction>
+        </action>
+    </keybind>
+    <!-- *ToEdge actions -->
+    <keybind key="W-h">
+        <action name="MoveToEdge">
+            <direction>west</direction>
+        </action>
+    </keybind>
+    <keybind key="W-j">
+        <action name="MoveToEdge">
+            <direction>south</direction>
+        </action>
+    </keybind>
+    <keybind key="W-k">
+        <action name="MoveToEdge">
+            <direction>north</direction>
+        </action>
+    </keybind>
+    <keybind key="W-l">
+        <action name="MoveToEdge">
+            <direction>east</direction>
+        </action>
+    </keybind>
+    <keybind key="W-S-h">
+        <action name="GrowToEdge">
+            <direction>west</direction>
+        </action>
+    </keybind>
+    <keybind key="W-S-j">
+        <action name="GrowToEdge">
+            <direction>south</direction>
+        </action>
+    </keybind>
+    <keybind key="W-S-k">
+        <action name="GrowToEdge">
+            <direction>north</direction>
+        </action>
+    </keybind>
+    <keybind key="W-S-l">
+        <action name="GrowToEdge">
+            <direction>east</direction>
+        </action>
+    </keybind>
+    <keybind key="W-C-h">
+        <action name="ShrinkToEdge">
+            <direction>west</direction>
+        </action>
+    </keybind>
+    <keybind key="W-C-j">
+        <action name="ShrinkToEdge">
+            <direction>south</direction>
+        </action>
+    </keybind>
+    <keybind key="W-C-k">
+        <action name="ShrinkToEdge">
+            <direction>north</direction>
+        </action>
+    </keybind>
+    <keybind key="W-C-l">
+        <action name="ShrinkToEdge">
+            <direction>east</direction>
+        </action>
+    </keybind>
     <!-- Keybindings for windows -->
     <keybind key="W-q">
       <action name="Close"/>
     </keybind>
-    <keybind key="A-Escape">
-      <action name="Lower"/>
-      <action name="FocusToBottom"/>
-      <action name="Unfocus"/>
+    <keybind key="W-t">
+      <action name="ToggleAlwaysOnTop"/>
     </keybind>
     <keybind key="A-space">
       <action name="ShowMenu">
