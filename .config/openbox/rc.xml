@@ -254,6 +254,9 @@
     <keybind key="W-q">
       <action name="Close"/>
     </keybind>
+    <keybind key="W-w">
+        <action name="Iconify"/> <!-- as in "minimize" -->
+    </keybind>
     <keybind key="W-t">
       <action name="ToggleAlwaysOnTop"/>
     </keybind>
