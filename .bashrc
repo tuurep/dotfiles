@@ -7,10 +7,10 @@ export VISUAL=vim
 # Root check
 if [[ ${EUID} == 0 ]] ; then
         PS1="\[\e[0;31m\]# \[\e[0m\]"
-        PS2="\[\e[0;31m\]- \[\e[0m\]"
+        PS2="\[\e[0;31m\]﬌ \[\e[0m\]"
 else
-        PS1="\[\e[0;32m\]> \[\e[0m\]"
-        PS2="\[\e[0;32m\]- \[\e[0m\]"
+        PS1="\[\e[0;32m\] \[\e[0m\]"
+        PS2="\[\e[0;32m\]﬌ \[\e[0m\]"
 fi
 
 prompt_comm() {
