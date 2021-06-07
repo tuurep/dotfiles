@@ -49,7 +49,7 @@ module-margin-right = 3
 font-0 = Alt Hack Nerd Font:pixelsize=10;1
 
 modules-left = powermenu
-modules-center = xwindow
+modules-center = polywins
 modules-right = alsa xbacklight battery wlan date
 
 cursor-click = pointer
@@ -60,13 +60,13 @@ type = internal/xwindow
 label = %title:0:80:...%
 label-foreground = ${colors.foreground-alt}
 
-; [module/polywins]
-; type = custom/script
-; exec = ~/.config/polybar/scripts/polywins.sh 2>/dev/null
-; format = <label>
-; label = %output%
-; label-padding = 1
-; tail = true
+[module/polywins]
+type = custom/script
+exec = ~/.config/polybar/scripts/polywins.sh 2>/dev/null
+format = <label>
+label = %output%
+label-padding = 1
+tail = true
 
 [module/xbacklight]
 type = internal/xbacklight
