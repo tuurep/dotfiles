@@ -13,7 +13,7 @@ menu.overlap: 0
 
 !! Active Windows
 window.active.title.bg: flat
-window.active.title.bg.color: #303132
+window.active.title.bg.color: #282828
 
 window.active.label.bg: parentrelative
 window.active.label.text.color: #f9f2ee
@@ -34,7 +34,7 @@ window.active.button.disabled.image.color: #725e51
 
 !! Inactive Windows
 window.inactive.title.bg: flat
-window.inactive.title.bg.color: #303132
+window.inactive.title.bg.color: #282828
 
 window.inactive.label.bg: parentrelative
 window.inactive.label.text.color: #f9f2ee
