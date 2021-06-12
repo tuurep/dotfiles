@@ -9,7 +9,7 @@ set window-title-page "true"
 
 set statusbar-home-tilde "true"
 
-set font "Alt Hack Nerd Font 12"
+set font "Alt Hack Nerd Font 11"
 
 # Hide statusbar (bottom row) by default: toggle with <C-n>
 set guioptions ""
@@ -34,9 +34,6 @@ set notification-error-fg       "#cc6666"
 set notification-warning-bg     "#171919"
 set notification-warning-fg     "#cc6666"
 
-set highlight-color             "#f0c674"
-set highlight-active-color      "#81a2be"
-
 set completion-bg               "#222525"
 set completion-fg               "#81a2be"
 
@@ -47,3 +44,8 @@ set index-fg                    "#d3d3d3"
 set index-bg                    "#171919"
 set index-active-fg             "#171919"
 set index-active-bg             "#b5bd68"
+
+# Search highlight colors same as in Vivaldi:
+
+set highlight-color             "#ffff00"
+set highlight-active-color      "#ff9632"
