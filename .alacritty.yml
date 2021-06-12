@@ -53,5 +53,6 @@ colors:
     { index: 20, color: "#656e6e" },
     { index: 21, color: "#eaeaea" },
     { index: 22, color: "#404040" },
-    { index: 23, color: "#2a2c2d" }
+    { index: 23, color: "#2a2c2d" },
+    { index: 24, color: "#797b7a" }
   ]
