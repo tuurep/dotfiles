@@ -41,6 +41,7 @@ alias ll="ls -ohtr" # in order: long format with no group info - human readable 
 alias pwd="pwd | sed 's|^$HOME|~|'"
 alias clip="xclip -selection clip" # Pipe anything to clipboard
 alias p="pwd"
+alias zathura="GTK_THEME=Adwaita zathura"
 alias zat="zathura"
 alias viv="vivaldi-stable"
 alias sauce="source ~/.bashrc"
