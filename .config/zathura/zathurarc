@@ -29,16 +29,16 @@ set notification-bg             "#171919"
 set notification-fg             "#d3d3d3"
 
 set notification-error-bg       "#171919"
-set notification-error-fg       "#cc6666"
+set notification-error-fg       "#cd6a6a"
 
 set notification-warning-bg     "#171919"
-set notification-warning-fg     "#cc6666"
+set notification-warning-fg     "#cd6a6a"
 
 set completion-bg               "#171919"
-set completion-fg               "#81a2be"
+set completion-fg               "#86a9c1"
 
 set completion-highlight-fg     "#171919"
-set completion-highlight-bg     "#81a2be"
+set completion-highlight-bg     "#86a9c1"
 
 set index-fg                    "#d3d3d3"
 set index-bg                    "#171919"

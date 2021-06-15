@@ -26,28 +26,28 @@ colors:
  
   normal:
     black: "#171919"
-    red: "#cc6666"
+    red: "#cd6a6a"
     green: "#b5bd68"
     yellow: "#f0c674"
-    blue: "#81a2be"
-    magenta: "#b294bb"
+    blue: "#86a9c1"
+    magenta: "#b29bbf"
     cyan: "#8abeb7"
     white: "#d3d3d3"
 
   bright:
     black: "#5f6160"
-    red: "#cc6666"
+    red: "#cd6a6a"
     green: "#b5bd68"
     yellow: "#f0c674"
-    blue: "#81a2be"
-    magenta: "#b294bb"
+    blue: "#86a9c1"
+    magenta: "#b29bbf"
     cyan: "#8abeb7"
     white: "#ffffff"
 
   # Colors 16-255 can be set
   indexed_colors: [
     { index: 16, color: "#de935f" },
-    { index: 17, color: "#a3685a" },
+    { index: 17, color: "#ac7468" },
     { index: 18, color: "#222525" },
     { index: 19, color: "#313438" },
     { index: 20, color: "#656e6e" },

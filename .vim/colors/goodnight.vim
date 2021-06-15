@@ -13,11 +13,11 @@ let g:colors_name="goodnight"
 " Terminal needs to be able to set colors 0-22 as:
 "
 " Color00: #171919
-" Color01: #cc6666
+" Color01: #cd6a6a
 " Color02: #b5bd68
 " Color03: #f0c674
-" Color04: #81a2be
-" Color05: #b294bb
+" Color04: #86a9c1
+" Color05: #b29bbf
 " Color06: #8abeb7
 " Color07: #d3d3d3
 " Color08: #5f6160
@@ -29,7 +29,7 @@ let g:colors_name="goodnight"
 " Color14: (unused)
 " Color15: #ffffff
 " Color16: #de935f
-" Color17: #a3685a
+" Color17: #ac7468
 " Color18: #222525
 " Color19: #313438
 " Color20: #656e6e
