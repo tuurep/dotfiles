@@ -116,6 +116,8 @@ label = %date% %time%
 [module/alsa]
 type = internal/alsa
 
+interval = 2
+
 format-volume = <label-volume> <bar-volume>
 label-volume = 墳 %percentage%
 label-volume-foreground = ${root.foreground}
