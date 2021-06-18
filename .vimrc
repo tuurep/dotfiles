@@ -181,6 +181,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 
 " Send lines to target window/pane to execute (like IPython shell)
 let g:slime_target = "tmux"
+let g:slime_python_ipython = 1
 Plug 'jpalardy/vim-slime'
 
 call plug#end()
