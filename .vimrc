@@ -173,6 +173,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/fern-hijack.vim'
 
+" 'frecency'-directory switching with :Z <substring-of-path>
+Plug 'nanotee/zoxide.vim'
+
 " .tex-files - Compile: <leader>gc View pdf: <leader>gv Toggle error box: <leader>ge
 Plug 'lervag/vimtex'
 
