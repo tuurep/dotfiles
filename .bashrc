@@ -6,6 +6,7 @@ export VISUAL=vim
 
 # Root check
 if [[ ${EUID} == 0 ]] ; then
+        # (This is never entered coz root doesn't use this .bashrc)
         PS1="\[\e[0;31m\]# \[\e[0m\]"
         PS2="\[\e[0;31m\]﬌ \[\e[0m\]"
 else
@@ -54,13 +55,6 @@ alias tkill="tmux kill-session -t"
 alias cfg="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias ipy="ipython"
 
-# Changes fzf colors, see https://github.com/junegunn/fzf/wiki/Color-schemes
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-    --color=fg:#5f6160,bg:#171919,hl:#d3d3d3
-    --color=fg+:#d3d3d3,bg+:#171919,hl+:#cd6a6a
-    --color=info:#f0c674,prompt:#b29bbf,pointer:#cd6a6a
-    --color=marker:#b29bbf,spinner:#f0c674,header:#5f6160
-'
 
 # === Add stuff to PATH ===
 
@@ -77,6 +71,17 @@ export PATH="$PATH:$GEM_HOME/bin"
 # cargo install destination
 export PATH="$PATH:$HOME/.cargo/bin"
 
+
+# === Settings for tools ===
+
 # zoxide: go quickly to frequently visited dir with z <substring-of-path>
 # https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init bash)"
+
+# Changes fzf colors, see https://github.com/junegunn/fzf/wiki/Color-schemes
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+        --color=fg:#5f6160,bg:#171919,hl:#d3d3d3
+        --color=fg+:#d3d3d3,bg+:#171919,hl+:#cd6a6a
+        --color=info:#f0c674,prompt:#b29bbf,pointer:#cd6a6a
+        --color=marker:#b29bbf,spinner:#f0c674,header:#5f6160
+'
