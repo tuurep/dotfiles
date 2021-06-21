@@ -76,3 +76,7 @@ export PATH="$PATH:$GEM_HOME/bin"
 
 # cargo install destination
 export PATH="$PATH:$HOME/.cargo/bin"
+
+# zoxide: go quickly to frequently visited dir with z <substring-of-path>
+# https://github.com/ajeetdsouza/zoxide
+eval "$(zoxide init bash)"
