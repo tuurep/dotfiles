@@ -136,25 +136,30 @@
         <command>openbox --restart</command>
       </action>
     </keybind>
-    <keybind key="XF86AudioRaiseVolume">
-      <action name="Execute">
-        <command>amixer set Master 1%+</command>
-      </action>
-    </keybind>
-    <keybind key="XF86AudioLowerVolume">
+    <!-- Volume/brightness control and screenlocking through their dedicated keys -->
+    <keybind key="F2">
       <action name="Execute">
         <command>amixer set Master 1%-</command>
       </action>
     </keybind>
-    <!-- Brightness controls -->
-    <keybind key="XF86MonBrightnessUp">
+    <keybind key="F3">
+      <action name="Execute">
+        <command>amixer set Master 1%+</command>
+      </action>
+    </keybind>
+    <keybind key="F11">
+      <action name="Execute">
+        <command>xbacklight -5</command>
+      </action>
+    </keybind>
+    <keybind key="F12">
       <action name="Execute">
         <command>xbacklight +5</command>
       </action>
     </keybind>
-    <keybind key="XF86MonBrightnessDown">
+    <keybind key="F9">
       <action name="Execute">
-        <command>xbacklight -5</command>
+          <command>dm-tool lock</command>
       </action>
     </keybind>
     <!-- Window snapping keybindings -->
@@ -180,11 +185,6 @@
       <action name="ToggleMaximize"/>
     </keybind>
     <keybind key="W-Down">
-        <action name="ToggleMaximize">
-            <direction>vertical</direction>
-        </action>
-    </keybind>
-    <keybind key="W-l">
         <action name="ToggleMaximize">
             <direction>vertical</direction>
         </action>
