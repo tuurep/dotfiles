@@ -91,7 +91,7 @@ format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 
 label-connected = 直 %essid%
-label-disconnected = 睊 %ifname%
+label-disconnected = 睊 no connection
 label-disconnected-foreground = ${colors.foreground-alt}
 
 ; ramp-signal-0 = 0
@@ -182,11 +182,11 @@ label-open = 
 label-close = 
 label-close-foreground = ${colors.red}
 
-menu-0-0 = 襤
+menu-0-0 = shutdown
 menu-0-0-exec = systemctl poweroff
-menu-0-1 = 累
+menu-0-1 = restart
 menu-0-1-exec = systemctl reboot
-menu-0-2 = 
+menu-0-2 = logout
 menu-0-2-exec = openbox --exit
 
 
