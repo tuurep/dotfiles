@@ -162,7 +162,7 @@
           <command>dm-tool lock</command>
       </action>
     </keybind>
-    <!-- Window snapping keybindings -->
+    <!-- Window size and position controls -->
     <keybind key="W-Left">
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
@@ -185,68 +185,70 @@
       <action name="ToggleMaximize"/>
     </keybind>
     <keybind key="W-Down">
-        <action name="ToggleMaximize">
-            <direction>vertical</direction>
+        <action name="MoveResizeTo">
+            <height>100%</height>
         </action>
     </keybind>
-    <!-- *ToEdge actions -->
-    <keybind key="W-h">
-        <action name="MoveToEdge">
+    <keybind key="W-S-Left">
+        <action name="GrowToEdge">
             <direction>west</direction>
         </action>
     </keybind>
-    <keybind key="W-j">
-        <action name="MoveToEdge">
+    <keybind key="W-S-Down">
+        <action name="GrowToEdge">
             <direction>south</direction>
         </action>
     </keybind>
-    <keybind key="W-k">
-        <action name="MoveToEdge">
+    <keybind key="W-S-Up">
+        <action name="GrowToEdge">
             <direction>north</direction>
         </action>
     </keybind>
-    <keybind key="W-l">
-        <action name="MoveToEdge">
+    <keybind key="W-S-Right">
+        <action name="GrowToEdge">
             <direction>east</direction>
         </action>
     </keybind>
+    <keybind key="W-space">
+        <action name="GrowToFill"></action>
+    </keybind>
+    <keybind key="W-h">
+        <action name="MoveResizeTo">
+            <x>0</x>
+        </action>
+    </keybind>
+    <keybind key="W-j">
+        <action name="MoveResizeTo">
+            <y>-0</y>
+        </action>
+    </keybind>
+    <keybind key="W-k">
+        <action name="MoveResizeTo">
+            <y>0</y>
+        </action>
+    </keybind>
+    <keybind key="W-l">
+        <action name="MoveResizeTo">
+            <x>-0</x>
+        </action>
+    </keybind>
     <keybind key="W-S-h">
-        <action name="GrowToEdge">
+        <action name="MoveToEdge">
             <direction>west</direction>
         </action>
     </keybind>
     <keybind key="W-S-j">
-        <action name="GrowToEdge">
+        <action name="MoveToEdge">
             <direction>south</direction>
         </action>
     </keybind>
     <keybind key="W-S-k">
-        <action name="GrowToEdge">
+        <action name="MoveToEdge">
             <direction>north</direction>
         </action>
     </keybind>
     <keybind key="W-S-l">
-        <action name="GrowToEdge">
-            <direction>east</direction>
-        </action>
-    </keybind>
-    <keybind key="W-C-h">
-        <action name="ShrinkToEdge">
-            <direction>west</direction>
-        </action>
-    </keybind>
-    <keybind key="W-C-j">
-        <action name="ShrinkToEdge">
-            <direction>south</direction>
-        </action>
-    </keybind>
-    <keybind key="W-C-k">
-        <action name="ShrinkToEdge">
-            <direction>north</direction>
-        </action>
-    </keybind>
-    <keybind key="W-C-l">
-        <action name="ShrinkToEdge">
+        <action name="MoveToEdge">
             <direction>east</direction>
         </action>
     </keybind>
