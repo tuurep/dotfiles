@@ -94,16 +94,16 @@
       <!-- these are used if popupPosition is set to 'Fixed' -->
       <x>10</x>
       <!-- positive number for distance from left edge, negative number for
-         distance from right edge, or 'Center' -->
+      distance from right edge, or 'Center' -->
       <y>10</y>
       <!-- positive number for distance from top edge, negative number for
-         distance from bottom edge, or 'Center' -->
+      distance from bottom edge, or 'Center' -->
     </popupFixedPosition>
   </resize>
   <!-- You can reserve a portion of your screen where windows will not cover when
-     they are maximized, or when they are initially placed.
-     Many programs reserve space automatically, but you can use this in other
-     cases. -->
+    they are maximized, or when they are initially placed.
+    Many programs reserve space automatically, but you can use this in other
+  cases. -->
   <margins>
     <top>0</top>
     <bottom>0</bottom>
@@ -159,7 +159,7 @@
     </keybind>
     <keybind key="F9">
       <action name="Execute">
-          <command>dm-tool lock</command>
+        <command>dm-tool lock</command>
       </action>
     </keybind>
     <!-- Window size and position controls -->
@@ -167,7 +167,6 @@
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>0</x>
-        <y>0</y>
         <width>50%</width>
         <height>100%</height>
       </action>
@@ -176,7 +175,6 @@
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>-0</x>
-        <y>0</y>
         <width>50%</width>
         <height>100%</height>
       </action>
@@ -185,113 +183,165 @@
       <action name="ToggleMaximize"/>
     </keybind>
     <keybind key="W-Down">
-        <action name="MoveResizeTo">
-            <height>100%</height>
-        </action>
+      <action name="MoveResizeTo">
+        <height>100%</height>
+      </action>
+    </keybind>
+    <keybind key="W-1">
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <width>1/3</width>
+      </action>
+    </keybind>
+    <keybind key="W-2">
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <x>center</x>
+        <width>1/3</width>
+      </action>
+    </keybind>
+    <keybind key="W-3">
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <x>-0</x>
+        <width>1/3</width>
+      </action>
+    </keybind>
+    <keybind key="W-F1">
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+    </keybind>
+    <keybind key="W-period">
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <y>0</y>
+        <height>50%</height>
+      </action>
+    </keybind>
+    <keybind key="W-comma">
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <y>-0</y>
+        <height>50%</height>
+      </action>
     </keybind>
     <keybind key="W-minus">
-        <action name="MoveResizeTo">
-            <x>center</x>
-            <y>center</y>
-        </action>
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <x>center</x>
+      </action>
+    </keybind>
+    <keybind key="W-A-minus">
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <x>center</x>
+        <y>center</y>
+      </action>
     </keybind>
     <keybind key="W-S-minus">
-        <action name="MoveResizeTo">
-            <x>center</x>
-            <y>center</y>
-            <height>70%</height>
-            <width>45%</width>
-        </action>
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <x>center</x>
+        <y>center</y>
+        <height>70%</height>
+        <width>45%</width>
+      </action>
     </keybind>
     <keybind key="W-S-Left">
-        <action name="GrowToEdge">
-            <direction>west</direction>
-        </action>
+      <action name="GrowToEdge">
+        <direction>west</direction>
+      </action>
     </keybind>
     <keybind key="W-S-Down">
-        <action name="GrowToEdge">
-            <direction>south</direction>
-        </action>
+      <action name="GrowToEdge">
+        <direction>south</direction>
+      </action>
     </keybind>
     <keybind key="W-S-Up">
-        <action name="GrowToEdge">
-            <direction>north</direction>
-        </action>
+      <action name="GrowToEdge">
+        <direction>north</direction>
+      </action>
     </keybind>
     <keybind key="W-S-Right">
-        <action name="GrowToEdge">
-            <direction>east</direction>
-        </action>
+      <action name="GrowToEdge">
+        <direction>east</direction>
+      </action>
     </keybind>
     <keybind key="W-C-Left">
-        <action name="ShrinkToEdge">
-            <direction>west</direction>
-        </action>
+      <action name="ShrinkToEdge">
+        <direction>west</direction>
+      </action>
     </keybind>
     <keybind key="W-C-Down">
-        <action name="ShrinkToEdge">
-            <direction>south</direction>
-        </action>
+      <action name="ShrinkToEdge">
+        <direction>south</direction>
+      </action>
     </keybind>
     <keybind key="W-C-Up">
-        <action name="ShrinkToEdge">
-            <direction>north</direction>
-        </action>
+      <action name="ShrinkToEdge">
+        <direction>north</direction>
+      </action>
     </keybind>
     <keybind key="W-C-Right">
-        <action name="ShrinkToEdge">
-            <direction>east</direction>
-        </action>
+      <action name="ShrinkToEdge">
+        <direction>east</direction>
+      </action>
     </keybind>
     <keybind key="W-space">
-        <action name="GrowToFill"></action>
+      <action name="GrowToFill"></action>
     </keybind>
     <keybind key="W-h">
-        <action name="MoveResizeTo">
-            <x>0</x>
-        </action>
+      <action name="MoveResizeTo">
+        <x>0</x>
+      </action>
     </keybind>
     <keybind key="W-j">
-        <action name="MoveResizeTo">
-            <y>-0</y>
-        </action>
+      <action name="MoveResizeTo">
+        <y>-0</y>
+      </action>
     </keybind>
     <keybind key="W-k">
-        <action name="MoveResizeTo">
-            <y>0</y>
-        </action>
+      <action name="MoveResizeTo">
+        <y>0</y>
+      </action>
     </keybind>
     <keybind key="W-l">
-        <action name="MoveResizeTo">
-            <x>-0</x>
-        </action>
+      <action name="MoveResizeTo">
+        <x>-0</x>
+      </action>
     </keybind>
     <keybind key="W-S-h">
-        <action name="MoveToEdge">
-            <direction>west</direction>
-        </action>
+      <action name="MoveToEdge">
+        <direction>west</direction>
+      </action>
     </keybind>
     <keybind key="W-S-j">
-        <action name="MoveToEdge">
-            <direction>south</direction>
-        </action>
+      <action name="MoveToEdge">
+        <direction>south</direction>
+      </action>
     </keybind>
     <keybind key="W-S-k">
-        <action name="MoveToEdge">
-            <direction>north</direction>
-        </action>
+      <action name="MoveToEdge">
+        <direction>north</direction>
+      </action>
     </keybind>
     <keybind key="W-S-l">
-        <action name="MoveToEdge">
-            <direction>east</direction>
-        </action>
+      <action name="MoveToEdge">
+        <direction>east</direction>
+      </action>
     </keybind>
     <!-- Keybindings for windows -->
     <keybind key="W-q">
       <action name="Close"/>
     </keybind>
     <keybind key="W-w">
-        <action name="Iconify"/> <!-- as in "minimize" -->
+      <action name="Iconify"/> <!-- as in "minimize" -->
     </keybind>
     <keybind key="W-t">
       <action name="ToggleAlwaysOnTop"/>
@@ -365,11 +415,11 @@
     <!-- in milliseconds (1000 = 1 second) -->
     <screenEdgeWarpTime>0</screenEdgeWarpTime>
     <!-- Time before changing desktops when the pointer touches the edge of the
-       screen while moving a window, in milliseconds (1000 = 1 second).
-       Set this to 0 to disable warping -->
+      screen while moving a window, in milliseconds (1000 = 1 second).
+    Set this to 0 to disable warping -->
     <screenEdgeWarpMouse>false</screenEdgeWarpMouse>
     <!-- Set this to TRUE to move the mouse pointer across the desktop when
-       switching due to hitting the edge of the screen -->
+    switching due to hitting the edge of the screen -->
     <context name="Frame">
       <mousebind button="A-Left" action="Press">
         <action name="Focus"/>
@@ -694,24 +744,24 @@
   </mouse>
   <menu>
     <!-- You can specify more than one menu file in here and they are all loaded,
-       just don't make menu ids clash or, well, it'll be kind of pointless -->
+    just don't make menu ids clash or, well, it'll be kind of pointless -->
     <!-- default menu file (or custom one in $HOME/.config/openbox/) -->
     <file>menu.xml</file>
     <hideDelay>200</hideDelay>
     <!-- if a press-release lasts longer than this setting (in milliseconds), the
-       menu is hidden again -->
+    menu is hidden again -->
     <middle>no</middle>
     <!-- center submenus vertically about the parent entry -->
     <submenuShowDelay>100</submenuShowDelay>
     <!-- time to delay before showing a submenu after hovering over the parent
-       entry.
-       if this is a negative value, then the delay is infinite and the
-       submenu will not be shown until it is clicked on -->
+      entry.
+      if this is a negative value, then the delay is infinite and the
+    submenu will not be shown until it is clicked on -->
     <submenuHideDelay>400</submenuHideDelay>
     <!-- time to delay before hiding a submenu when selecting another
-       entry in parent menu
-       if this is a negative value, then the delay is infinite and the
-       submenu will not be hidden until a different submenu is opened -->
+      entry in parent menu
+      if this is a negative value, then the delay is infinite and the
+    submenu will not be hidden until a different submenu is opened -->
     <showIcons>yes</showIcons>
     <!-- controls if icons appear in the client-list-(combined-)menu -->
     <manageDesktops>yes</manageDesktops>
