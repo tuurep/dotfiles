@@ -6,20 +6,20 @@ export VISUAL=vim
 
 # Root check
 if [[ ${EUID} == 0 ]] ; then
-        # (This is never entered coz root doesn't use this .bashrc)
-        PS1="\[\e[0;31m\]# \[\e[0m\]"
-        PS2="\[\e[0;31m\]﬌ \[\e[0m\]"
+    # (This is never entered coz root doesn't use this .bashrc)
+    PS1="\[\e[0;31m\]# \[\e[0m\]"
+    PS2="\[\e[0;31m\]﬌ \[\e[0m\]"
 else
-        PS1="\[\e[0;32m\] \[\e[0m\]"
-        PS2="\[\e[0;32m\]﬌ \[\e[0m\]"
+    PS1="\[\e[0;32m\] \[\e[0m\]"
+    PS2="\[\e[0;32m\]﬌ \[\e[0m\]"
 fi
 
 prompt_comm() {
-        if [[ "$TERM" =~ "tmux*" ]]; then      
-                tmux refresh-client -S # Redraw tmux status bar
-        fi
-        local short_pwd=$(basename $(pwd | sed 's|^$HOME|~|'))
-        echo -ne "\033]0;${short_pwd}\007" # Set window title; in tmux title is set in .tmux.conf
+    if [[ "$TERM" =~ "tmux*" ]]; then      
+        tmux refresh-client -S # Redraw tmux status bar
+    fi
+    local short_pwd=$(basename $(pwd | sed 's|^$HOME|~|'))
+    echo -ne "\033]0;${short_pwd}\007" # Set window title; in tmux title is set in .tmux.conf
 }
 
 # Right before drawing prompt, this function is executed:
@@ -80,8 +80,8 @@ eval "$(zoxide init bash)"
 
 # Changes fzf colors, see https://github.com/junegunn/fzf/wiki/Color-schemes
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-        --color=fg:#5f6160,bg:#171919,hl:#d3d3d3
-        --color=fg+:#d3d3d3,bg+:#171919,hl+:#cd6a6a
-        --color=info:#f0c674,prompt:#b29bbf,pointer:#cd6a6a
-        --color=marker:#b29bbf,spinner:#f0c674,header:#5f6160
+    --color=fg:#5f6160,bg:#171919,hl:#d3d3d3
+    --color=fg+:#d3d3d3,bg+:#171919,hl+:#cd6a6a
+    --color=info:#f0c674,prompt:#b29bbf,pointer:#cd6a6a
+    --color=marker:#b29bbf,spinner:#f0c674,header:#5f6160
 '
