@@ -296,6 +296,13 @@
     <keybind key="W-space">
       <action name="GrowToFill"></action>
     </keybind>
+    <keybind key="W-S-space">
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <height>100%</height>
+        <width>100%</width>
+      </action>
+    </keybind>
     <keybind key="W-h">
       <action name="MoveResizeTo">
         <x>0</x>
