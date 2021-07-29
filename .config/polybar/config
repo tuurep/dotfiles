@@ -51,7 +51,7 @@ font-0 = Alt Hack Nerd Font:pixelsize=10;1
 
 modules-left = powermenu
 modules-center = polywins
-modules-right = alsa xbacklight battery wlan date
+modules-right = pulseaudio xbacklight battery wlan date
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -113,10 +113,10 @@ time-alt =  %H:%M
 
 label = %date% %time%
 
-[module/alsa]
-type = internal/alsa
+[module/pulseaudio]
+type = internal/pulseaudio
 
-interval = 2
+interval = 1
 
 format-volume = <label-volume> <bar-volume>
 label-volume = 墳 %percentage%
@@ -138,6 +138,9 @@ bar-volume-indicator = |
 bar-volume-fill = ─
 bar-volume-empty = ─
 bar-volume-empty-foreground = ${colors.foreground-alt}
+
+; Open GUI sound mixer
+click-right = pavucontrol
 
 [module/battery]
 type = internal/battery
