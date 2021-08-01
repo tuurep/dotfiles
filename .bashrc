@@ -28,12 +28,15 @@ PROMPT_COMMAND=prompt_comm
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
 
-# Aliases:
+# Aliases for colored output:
 alias ls="ls --color=auto"
 alias grep="grep --colour=auto"
 alias egrep="egrep --colour=auto"
 alias fgrep="fgrep --colour=auto"
+alias diff="diff --color=auto"
 alias fd="fd --color=never"
+
+# Aliases:
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
@@ -73,6 +76,10 @@ export PATH="$PATH:$HOME/.cargo/bin"
 
 
 # === Settings for tools ===
+
+# Colored output for less (but doesn't color stdout piped to less)
+# Colors manpages for example. bold=green, underlined=blue
+export LESS='-R --use-color -Dd+g$Du+b'
 
 # zoxide: go quickly to frequently visited dir with z <substring-of-path>
 # https://github.com/ajeetdsouza/zoxide
