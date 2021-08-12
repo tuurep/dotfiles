@@ -41,10 +41,9 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
 alias l="ls"
-alias ll="ls -ohtr" # in order: long format with no group info - human readable size - sort by time - reverse sort order (newest last)
-alias pwd="pwd | sed 's|^$HOME|~|'"
+alias ll="ls -oh" # long format with no group info - human readable size
+alias p="pwd | sed 's|^$HOME|~|'"
 alias clip="xclip -selection clip" # Pipe anything to clipboard
-alias p="pwd"
 alias zathura="GTK_THEME=Adwaita zathura"
 alias zat="zathura"
 alias viv="vivaldi-stable"
