@@ -18,7 +18,7 @@ prompt_comm() {
     if [[ "$TERM" =~ "tmux*" ]]; then      
         tmux refresh-client -S # Redraw tmux status bar
     fi
-    local short_pwd=$(basename $(pwd | sed 's|^$HOME|~|'))
+    local short_pwd=$(basename $(p)) # See alias for 'p'
     echo -ne "\033]0;${short_pwd}\007" # Set window title; in tmux title is set in .tmux.conf
 }
 
