@@ -48,7 +48,6 @@ alias zathura="GTK_THEME=Adwaita zathura"
 alias zat="zathura"
 alias viv="vivaldi-stable"
 alias sauce="source ~/.bashrc"
-alias quote="~/scripts/quote-of-the-day/quote-of-the-day.sh" # https://github.com/tuurep/quote-of-the-day.sh
 alias q="exit"
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
