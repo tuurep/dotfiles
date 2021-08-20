@@ -1,4 +1,13 @@
 configuration {
     theme: "~/.config/rofi/themes/goodnight.rasi";
+    terminal: "alacritty";
+
     window-format: "{c}    {t}";
+
+    /* Uncomment on rofi release 1.7
+    window {
+        close-on-delete: false;
+    }
+    */
+
 }
