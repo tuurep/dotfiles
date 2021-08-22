@@ -4,15 +4,8 @@ export VISUAL=vim
 # If the running shell is not an interactive shell, return without doing anything
 [[ $- != *i* ]] && return
 
-# Root check
-if [[ ${EUID} == 0 ]] ; then
-    # (This is never entered coz root doesn't use this .bashrc)
-    PS1="\[\e[0;31m\]# \[\e[0m\]"
-    PS2="\[\e[0;31m\]﬌ \[\e[0m\]"
-else
-    PS1="\[\e[0;32m\] \[\e[0m\]"
-    PS2="\[\e[0;32m\]﬌ \[\e[0m\]"
-fi
+PS1="\[\e[0;32m\] \[\e[0m\]"
+PS2="\[\e[0;32m\]﬌ \[\e[0m\]"
 
 prompt_comm() {
     if [[ "$TERM" =~ "tmux*" ]]; then      
