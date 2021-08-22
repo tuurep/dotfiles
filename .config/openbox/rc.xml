@@ -396,7 +396,7 @@
     </keybind>
     <keybind key="W-p">
       <action name="Execute">
-        <command>rofi -show run</command>
+        <command>rofi -show drun</command>
       </action>
     </keybind>
     <keybind key="W-Tab">
