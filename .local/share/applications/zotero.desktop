@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Zotero
+GenericName=Citation Manager
+Icon=zotero
+Exec=/usr/bin/zotero -url %U
+Categories=Office
+Terminal=false
+MimeType=x-scheme-handler/zotero
