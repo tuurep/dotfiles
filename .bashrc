@@ -69,9 +69,14 @@ export PATH="$PATH:$HOME/.cargo/bin"
 
 # === Settings for tools ===
 
-# Colored output for less (but doesn't color stdout piped to less)
-# Colors manpages for example. bold=green, underlined=blue
-export LESS='-R --use-color -Dd+g$Du+b'
+# Flags for less: case insensitive search and colors
+export LESS='-iR'
+export LESS_TERMCAP_md=$'\e[32m'        # Bold: green
+export LESS_TERMCAP_us=$'\e[34m'        # Underlined: blue
+export LESS_TERMCAP_so=$'\e[30;47m'     # Standout: fg on bg
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
 
 # zoxide: go quickly to frequently visited dir with z <substring-of-path>
 # https://github.com/ajeetdsouza/zoxide
