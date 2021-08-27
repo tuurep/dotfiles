@@ -20,11 +20,11 @@
 background = #222525
 foreground = #dfdfdf
 foreground-alt = #6d6d6d
-red = #cd6a6a
+red = #cc6666
 green = #b5bd68
 yellow = #f0c674
-blue = #81a9c1
-magenta = #b29bbf
+blue = #81a2be
+magenta = #b294bb
 cyan = #8abeb7
 
 [bar/bar1]

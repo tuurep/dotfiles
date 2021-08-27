@@ -8,8 +8,8 @@ configuration {
     foreground:                  #d3d3d3;
     background-light:            #222525;
     bordercolor:                 #313438;
-    red:                         #cd6a6a;
-    blue:                        #86a9c1;
+    red:                         #cc6666;
+    blue:                        #81a2be;
     green:                       #b5bd68;
 
     background-color:            @background-light;
