@@ -14,7 +14,7 @@ let g:colors_name="goodnight"
 "
 " Color00: #171919
 " Color01: #cc6666
-" Color02: #b5bd68
+" Color02: #a7bd68
 " Color03: #f0c674
 " Color04: #81a2be
 " Color05: #b294bb

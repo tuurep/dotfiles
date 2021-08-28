@@ -10,7 +10,7 @@ configuration {
     bordercolor:                 #313438;
     red:                         #cc6666;
     blue:                        #81a2be;
-    green:                       #b5bd68;
+    green:                       #a7bd68;
 
     background-color:            @background-light;
     border-color:                @bordercolor;

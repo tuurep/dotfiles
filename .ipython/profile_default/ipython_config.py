@@ -22,7 +22,7 @@ def my_style_from_pygments_dict(pygments_dict):
 prompt_toolkit.styles.pygments.style_from_pygments_dict = my_style_from_pygments_dict
 IPython.terminal.interactiveshell.style_from_pygments_dict = my_style_from_pygments_dict
 
-green = '#b5bd68'
+green = '#a7bd68'
 red = '#cc6666'
 term_fg = '#d3d3d3'
 term_bg = '#171919'
