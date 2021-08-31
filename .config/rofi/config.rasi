@@ -6,17 +6,11 @@ configuration {
 
     window-format: "{c}    {t}";
 
-    /* Uncomment on rofi release 1.7
-    window {
-        close-on-delete: false;
-    }
-    */
-    
-    /* Set these keybinds to free Ctrl+j and Ctrl+k from defaults */
+    // Set these keybinds to free Ctrl+j and Ctrl+k from defaults
     kb-remove-to-eol: "Control+p";
     kb-accept-entry: "Return";
 
-    /* Custom keybindings */
+    // Custom keybindings
     kb-delete-entry: "Shift+Delete,Control+q";
     kb-row-down: "Down,Control+j";
     kb-row-up: "Up,Control+k";

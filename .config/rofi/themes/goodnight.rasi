@@ -2,9 +2,8 @@ configuration {
     font: "Alt Hack Nerd Font 12.5";
 }
 
-/* goodnight colorscheme */
 * {
-    /* General */
+    // Goodnight colors
     foreground:                  #d3d3d3;
     background-light:            #222525;
     bordercolor:                 #313438;
@@ -15,7 +14,7 @@ configuration {
     background-color:            @background-light;
     border-color:                @bordercolor;
 
-    /* Normal */
+    // Normal
     normal-background:           @background-light;
     normal-foreground:           @foreground;
 
@@ -25,7 +24,7 @@ configuration {
     alternate-normal-background: @background-light;
     alternate-normal-foreground: @foreground;
 
-    /* Active */
+    // Active
     active-background:           @background-light;
     active-foreground:           @green;
 
@@ -35,7 +34,7 @@ configuration {
     alternate-active-background: @background-light;
     alternate-active-foreground: @green;
 
-    /* Urgent */
+    // Urgent
     urgent-background:           @background-light;
     urgent-foreground:           @red;
 
@@ -44,6 +43,11 @@ configuration {
 
     alternate-urgent-background: @background-light;
     alternate-urgent-foreground: @red;
+}
+
+#element-text {
+    background-color:   inherit;
+    text-color:         inherit;
 }
 
 #window {
