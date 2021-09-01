@@ -39,7 +39,7 @@ alias p="pwd | sed 's|^$HOME|~|'"
 alias clip="xclip -selection clip" # Pipe anything to clipboard
 alias zathura="GTK_THEME=Adwaita zathura"
 alias zat="zathura"
-alias vivaldi-stable="vivaldi-stable --class=\"Vivaldi\""
+alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
 alias viv="vivaldi-stable"
 alias sauce="source ~/.bashrc"
 alias q="exit"

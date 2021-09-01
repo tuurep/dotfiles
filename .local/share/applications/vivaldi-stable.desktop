@@ -2,7 +2,7 @@
 Name=Vivaldi
 GenericName=Web Browser
 Comment=Access the Internet
-Exec=/usr/bin/vivaldi-stable --class="Vivaldi" %U
+Exec=/usr/bin/vivaldi-stable --class=Vivaldi %U
 StartupNotify=true
 Terminal=false
 Icon=vivaldi
