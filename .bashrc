@@ -30,12 +30,14 @@ alias diff="diff --color=auto"
 alias fd="fd --color=never"
 
 # Aliases:
+alias sudo="sudo "
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
 alias l="ls"
 alias ll="ls -oh" # long format with no group info - human readable size
 alias p="pwd | sed 's|^$HOME|~|'"
+alias pac="pacman"
 alias clip="xclip -selection clip" # Pipe anything to clipboard
 alias zathura="GTK_THEME=Adwaita zathura"
 alias zat="zathura"
