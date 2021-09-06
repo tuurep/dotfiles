@@ -10,6 +10,9 @@ configuration {
         close-on-delete: false;
     }
 
+    drun-match-fields: "name";
+    window-match-fields: "class,title";
+
     // Set these keybinds to free Ctrl+j and Ctrl+k from defaults
     kb-remove-to-eol: "Control+p";
     kb-accept-entry: "Return";
