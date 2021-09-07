@@ -55,26 +55,25 @@ alias ipy="ipython"
 
 # === Add stuff to PATH ===
 
-# https://github.com/junegunn/fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# Python3 wants this
+# User scripts and python (pip) stuff
 export PATH="$PATH:$HOME/.local/bin"
+
+# cargo install destination
+export PATH="$PATH:$HOME/.cargo/bin"
 
 # Originally for vimgolf
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export PATH="$PATH:$GEM_HOME/bin"
-
-# cargo install destination
-export PATH="$PATH:$HOME/.cargo/bin"
 
 
 # === Settings for tools ===
 
 # Flags for less: case insensitive search and colors
 export LESS='-iR'
+
+# Colorize manpages
 export LESS_TERMCAP_md=$'\e[32m'        # Bold: green
-export LESS_TERMCAP_us=$'\e[34m'        # Underlined: blue
+export LESS_TERMCAP_us=$'\e[34m'        # Underlined: blue (and no underline)
 export LESS_TERMCAP_so=$'\e[30;47m'     # Standout: fg on bg
 export LESS_TERMCAP_me=$'\e[0m'
 export LESS_TERMCAP_ue=$'\e[0m'
@@ -83,6 +82,9 @@ export LESS_TERMCAP_se=$'\e[0m'
 # zoxide: go quickly to frequently visited dir with z <substring-of-path>
 # https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init bash)"
+
+# https://github.com/junegunn/fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Changes fzf colors, see https://github.com/junegunn/fzf/wiki/Color-schemes
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
