@@ -162,6 +162,12 @@
         <command>dm-tool lock</command>
       </action>
     </keybind>
+    <!-- Window focus -->
+    <keybind key="A-Tab">
+      <action name="NextWindow">
+        <interactive>no</interactive>
+      </action>
+    </keybind>
     <!-- Window size and position controls -->
     <keybind key="W-Left">
       <action name="Unmaximize"/>
@@ -178,6 +184,9 @@
         <width>50%</width>
         <height>100%</height>
       </action>
+    </keybind>
+    <keybind key="W-f">
+      <action name="ToggleFullscreen"/>
     </keybind>
     <keybind key="W-Up">
       <action name="ToggleMaximize"/>
