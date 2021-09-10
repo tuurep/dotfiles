@@ -378,6 +378,11 @@
         <command>rofi -show window</command>
       </action>
     </keybind>
+    <keybind key="W-c">
+      <action name="Execute">
+        <command>rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'</command>
+      </action>
+    </keybind>
     <keybind key="Print">
       <action name="Execute">
         <command>flameshot gui</command>

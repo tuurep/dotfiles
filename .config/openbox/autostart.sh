@@ -10,3 +10,5 @@ xset r rate 400 25 &
 sh ~/.config/polybar/launch.sh &
 
 picom -b &
+
+greenclip daemon &
