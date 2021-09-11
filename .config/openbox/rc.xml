@@ -139,12 +139,12 @@
     <!-- Volume/brightness control and screenlocking through their dedicated keys -->
     <keybind key="F2">
       <action name="Execute">
-        <command>amixer set Master 1%-</command>
+        <command>pactl -- set-sink-volume 0 -1%</command>
       </action>
     </keybind>
     <keybind key="F3">
       <action name="Execute">
-        <command>amixer set Master 1%+</command>
+        <command>~/.local/bin/increase-volume-with-upper-limit</command>
       </action>
     </keybind>
     <keybind key="F11">
