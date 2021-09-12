@@ -144,7 +144,12 @@
     </keybind>
     <keybind key="F3">
       <action name="Execute">
-        <command>~/.local/bin/increase-volume-with-upper-limit</command>
+        <command>~/scripts/ob/increase-volume-with-upper-limit.sh 1</command>
+      </action>
+    </keybind>
+    <keybind key="W-F2">
+      <action name="Execute">
+        <command>pactl -- set-sink-volume 0 0%</command>
       </action>
     </keybind>
     <keybind key="F11">
