@@ -269,12 +269,6 @@
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>center</x>
-      </action>
-    </keybind>
-    <keybind key="W-A-minus">
-      <action name="Unmaximize"/>
-      <action name="MoveResizeTo">
-        <x>center</x>
         <y>center</y>
       </action>
     </keybind>
