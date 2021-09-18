@@ -1,0 +1,4 @@
+colors.override.terminal=false
+colors.scheme=goodnight
+
+visualizer.spectrum.bar.width=1
