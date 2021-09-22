@@ -1,7 +1,7 @@
 configuration {
     modi: "window,drun,ssh";
 
-    theme: "~/.config/rofi/themes/goodnight.rasi";
+    font: "Alt Hack Nerd Font 12.5";
     terminal: "alacritty";
 
     window-format: "{c}    {t}";
@@ -22,3 +22,5 @@ configuration {
     kb-row-down: "Down,Control+j";
     kb-row-up: "Up,Control+k";
 }
+
+@theme "goodnight"

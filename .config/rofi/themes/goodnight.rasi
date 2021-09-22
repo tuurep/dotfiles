@@ -1,7 +1,3 @@
-configuration {
-    font: "Alt Hack Nerd Font 12.5";
-}
-
 * {
     // Goodnight colors
     foreground:                  #d3d3d3;
