@@ -377,7 +377,7 @@
         <command>flameshot gui</command>
       </action>
     </keybind>
-    <keybind key="S-Print">
+    <keybind key="C-S-Print">
       <action name="Execute">
         <command>flameshot full -p ~/screenshots</command>
       </action>
@@ -392,7 +392,6 @@
       <mousebind button="A-Left" action="Press">
         <action name="Focus"/>
         <action name="Raise"/>
-        <action name="Unshade"/>
       </mousebind>
       <mousebind button="A-Left" action="Drag">
         <action name="Move"/>
@@ -400,13 +399,20 @@
       <mousebind button="W-Left" action="Press">
         <action name="Focus"/>
         <action name="Raise"/>
-        <action name="Unshade"/>
       </mousebind>
       <mousebind button="W-Left" action="Drag">
         <action name="Resize"/>
       </mousebind>
     </context>
     <context name="Titlebar">
+      <mousebind button="Left" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind button="Right" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
       <mousebind button="Left" action="Drag">
         <action name="Move"/>
       </mousebind>
@@ -453,7 +459,6 @@
       <mousebind button="Left" action="Press">
         <action name="Focus"/>
         <action name="Raise"/>
-        <action name="Unshade"/>
       </mousebind>
       <mousebind button="Left" action="Drag">
         <action name="Resize"/>
@@ -482,7 +487,6 @@
       <mousebind button="Left" action="Press">
         <action name="Focus"/>
         <action name="Raise"/>
-        <action name="Unshade"/>
       </mousebind>
       <mousebind button="Left" action="Click">
         <action name="ToggleMaximize"/>
@@ -492,7 +496,6 @@
       <mousebind button="Left" action="Press">
         <action name="Focus"/>
         <action name="Raise"/>
-        <action name="Unshade"/>
       </mousebind>
       <mousebind button="Left" action="Click">
         <action name="Close"/>
