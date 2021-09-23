@@ -512,12 +512,5 @@
     just don't make menu ids clash or, well, it'll be kind of pointless -->
     <!-- default menu file (or custom one in $HOME/.config/openbox/) -->
     <file>menu.xml</file>
-    <hideDelay>200</hideDelay>
-    <!-- if a press-release lasts longer than this setting (in milliseconds), the
-    menu is hidden again -->
-    <middle>no</middle>
-    <!-- center submenus vertically about the parent entry -->
-    <submenuShowDelay>100</submenuShowDelay>
-    <submenuHideDelay>400</submenuHideDelay>
   </menu>
 </openbox_config>
