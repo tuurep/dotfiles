@@ -88,8 +88,8 @@ map Y y$
 nnoremap <leader>R :source ~/.vimrc<cr>
 " Clear lingering command msg
 nnoremap <Enter> :echo ''<cr>
-" Show full path of current file
-nnoremap <leader><Enter> :echo expand('%:~')<cr>
+" Show full path of current file (home as tilde)
+nnoremap <leader><Enter> :echo substitute(expand('%:p'), $HOME, '~', '')<cr>
 " Experimental:
 noremap  ¤ J
 noremap  g¤ gJ
