@@ -88,6 +88,8 @@ map Y y$
 nnoremap <leader>R :source ~/.vimrc<cr>
 " Clear lingering command msg
 nnoremap <Enter> :echo ''<cr>
+" Show full path of current file
+nnoremap <leader><Enter> :echo expand('%:~')<cr>
 " Experimental:
 noremap  ¤ J
 noremap  g¤ gJ
