@@ -154,7 +154,7 @@
     </keybind>
     <keybind key="F9">
       <action name="Execute">
-        <command>dm-tool lock</command>
+        <command>slock</command>
       </action>
     </keybind>
     <!-- Window focus -->
