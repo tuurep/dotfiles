@@ -10,7 +10,7 @@ current_volume=$(pactl get-sink-volume $sink | grep -Po '\d+(?=%)' | head -1)
 
 if [ $(($current_volume + $interval)) -le $upper_limit ]
 then
-    pactl -- set-sink-volume $sink +$interval%
+        pactl -- set-sink-volume $sink +$interval%
 else
-    pactl -- set-sink-volume $sink $upper_limit%
+        pactl -- set-sink-volume $sink $upper_limit%
 fi
