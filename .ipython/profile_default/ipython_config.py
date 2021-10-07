@@ -4,6 +4,7 @@ from IPython.terminal.prompts import Token
 from prompt_toolkit.styles.style import Style
 from prompt_toolkit.styles.pygments import pygments_token_to_classname
 
+c.TerminalInteractiveShell.true_color = True
 c.TerminalInteractiveShell.highlighting_style = 'goodnight'
 c.TerminalInteractiveShell.highlight_matching_brackets = False
 
