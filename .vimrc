@@ -123,6 +123,12 @@ xmap <leader>y "+y
 nmap <leader>p "+p
 nmap <leader>P "+P
 xmap <leader>p "+p
+nmap <leader>d "+d
+nmap <leader>D "+D
+xmap <leader>d "+d
+nmap <leader>c "+c
+nmap <leader>C "+C
+xmap <leader>c "+c
 " Window resizing using arrow keys in normal mode
 " Windows can grow from either side depending on their position
 " <Right> extends window to the right (or left), <Left> extends window to down (or up)
