@@ -4,7 +4,7 @@ Type=Application
 Name=Zathura
 GenericName=PDF Reader
 Comment=A minimalistic document viewer
-Exec=env GTK_THEME=Adwaita zathura %U
+Exec=zathura %U
 Terminal=false
 NoDisplay=true
 Categories=Office;Viewer;
