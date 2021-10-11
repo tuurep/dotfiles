@@ -187,8 +187,9 @@ Plug 'nanotee/zoxide.vim'
 " .tex-files - Compile: <leader>gc View pdf: <leader>gv Toggle error box: <leader>ge
 Plug 'lervag/vimtex'
 
-" Toggle live preview in browser with <leader>p in markdown files (keymap at ftplugin/markdown.vim)
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+" Toggle live preview in browser with <leader>gp in markdown files (keymap at ftplugin/markdown.vim)
+" Forked from iamcco/markdown-preview.nvim to make some small changes
+Plug 'tuurep/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " Send lines to target window/pane to execute (like IPython shell)
 let g:slime_target = "tmux"
