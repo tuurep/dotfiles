@@ -32,9 +32,10 @@ let g:colors_name="goodnight"
 " Color17: #a3685a
 " Color18: #222525
 " Color19: #313438
-" Color20: #656e6e
+" Color20: #989898
 " Color21: #eaeaea
-" Color22: #404040
+" Color22: #656e6e
+" Color23: #404040
 
 " Default background and foreround:
 let s:bg = "00"
@@ -59,7 +60,8 @@ let s:selection_bg = "19"
 let s:light_bg = "18"
 let s:dark_fg = "20"
 let s:light_fg = "21"
-let s:line_number = "22"
+let s:statusln_fg = "22"
+let s:line_number = "23"
 
 
 " Highlighting function
@@ -112,7 +114,7 @@ call H("NonText",      s:comment, "", "")
 call H("EndOfBuffer",  s:line_number, "", "")
 call H("SignColum",    s:comment, s:bg, "")
 call H("StatusLine",   s:fg, s:light_bg, "none")
-call H("StatusLineNC", s:dark_fg, s:light_bg, "none")
+call H("StatusLineNC", s:statusln_fg, s:light_bg, "none")
 call H("VertSplit",    s:light_bg, s:light_bg, "none")
 call H("ColorColumn",  "", s:light_bg, "none")
 call H("CursorColumn", "", s:light_bg, "none")
@@ -315,4 +317,4 @@ call H("StartifySpecial",  s:comment, "", "")
 call H("javaOperator",     s:blue, "", "")
 
 " Remove color variables
-unlet s:bg s:fg s:red s:green s:yellow s:blue s:magenta s:cyan s:bright_white s:orange s:brown s:light_bg s:selection_bg s:comment s:dark_fg s:light_fg s:line_number
+unlet s:bg s:fg s:red s:green s:yellow s:blue s:magenta s:cyan s:bright_white s:orange s:brown s:light_bg s:selection_bg s:comment s:dark_fg s:light_fg s:statusln_fg s:line_number
