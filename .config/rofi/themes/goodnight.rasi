@@ -3,9 +3,8 @@
     foreground:                  #d3d3d3;
     background-light:            #222525;
     bordercolor:                 #313438;
-    red:                         #cc6666;
-    blue:                        #81a2be;
     green:                       #a7bd68;
+    yellow:                      #f0c674;
 
     background-color:            @background-light;
     border-color:                @bordercolor;
@@ -32,13 +31,13 @@
 
     // Urgent
     urgent-background:           @background-light;
-    urgent-foreground:           @red;
+    urgent-foreground:           @yellow;
 
-    selected-urgent-background:  @red;
+    selected-urgent-background:  @yellow;
     selected-urgent-foreground:  @background-light;
 
     alternate-urgent-background: @background-light;
-    alternate-urgent-foreground: @red;
+    alternate-urgent-foreground: @yellow;
 }
 
 #element-text {
