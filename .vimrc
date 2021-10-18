@@ -116,6 +116,11 @@ cnoremap <C-l> <Right>
 nnoremap <leader>u :UndotreeToggle<cr>
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_HighlightChangedWithSign = 0
+" Overwrite default s:
+nmap s <Plug>ReplaceWithRegisterOperator
+nmap ss <Plug>ReplaceWithRegisterLine
+xmap s <Plug>ReplaceWithRegisterVisual
+nmap S s$
 " System clipboard easy:
 nmap <leader>y "+y
 nmap <leader>Y "+Y
@@ -123,6 +128,9 @@ xmap <leader>y "+y
 nmap <leader>p "+p
 nmap <leader>P "+P
 xmap <leader>p "+p
+nmap <leader>s "+s
+nmap <leader>S "+S
+xmap <leader>s "+s
 nmap <leader>d "+d
 nmap <leader>D "+D
 xmap <leader>d "+d
@@ -155,6 +163,8 @@ nmap <leader>§ <Plug>SlimeConfig
 
 " ============== PLUGINS: junegunn/vim-plug ===============
 call plug#begin('~/.vim/plugged')
+
+Plug 'inkarkat/vim-ReplaceWithRegister'
 
 " Saner search highlight: clear highlight on movement
 Plug 'romainl/vim-cool'
