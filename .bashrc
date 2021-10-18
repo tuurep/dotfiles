@@ -50,6 +50,7 @@ alias tls="tmux ls"
 alias tkill="tmux kill-session -t"
 alias cfg="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias ipy="ipython"
+alias whereami="echo $HOSTNAME"
 
 
 # === Add stuff to PATH ===
