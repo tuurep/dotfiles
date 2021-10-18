@@ -10,7 +10,7 @@ let g:colors_name="goodnight"
 " ====== Terminal Colors ======
 "
 " Expects colors to be set in the terminal emulator
-" Terminal needs to be able to set colors 0-22 as:
+" Terminal needs to be able to set colors 0-23 as:
 "
 " Color00: #171919
 " Color01: #cc6666
@@ -106,7 +106,7 @@ call H("Underlined",   s:red, "", "")
 call H("Visual",       s:bg, s:fg, "")
 call H("VisualNOS",    s:red, "", "")
 call H("WarningMsg",   s:red, "", "")
-call H("WildMenu",     s:red, "", "")
+call H("WildMenu",     s:light_bg, "", "")
 call H("Title",        s:blue, "", "none")
 call H("Conceal",      s:blue, s:bg, "")
 call H("Cursor",       s:bg, s:fg, "")
