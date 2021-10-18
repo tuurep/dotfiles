@@ -18,33 +18,33 @@ set guioptions ""
 
 # goodnight colors:
 
-set default-bg                  "#171919"
-set default-fg                  "#d3d3d3"
+set default-bg                  "#171818"
+set default-fg                  "#d0d0d0"
 
-set statusbar-bg                "#171919"
-set statusbar-fg                "#d3d3d3"
+set statusbar-bg                "#171818"
+set statusbar-fg                "#d0d0d0"
 
-set inputbar-bg                 "#171919"
-set inputbar-fg                 "#d3d3d3"
+set inputbar-bg                 "#171818"
+set inputbar-fg                 "#d0d0d0"
 
-set notification-bg             "#171919"
-set notification-fg             "#d3d3d3"
+set notification-bg             "#171818"
+set notification-fg             "#d0d0d0"
 
-set notification-error-bg       "#171919"
+set notification-error-bg       "#171818"
 set notification-error-fg       "#cc6666"
 
-set notification-warning-bg     "#171919"
+set notification-warning-bg     "#171818"
 set notification-warning-fg     "#cc6666"
 
-set completion-bg               "#171919"
+set completion-bg               "#171818"
 set completion-fg               "#81a2be"
 
-set completion-highlight-fg     "#171919"
+set completion-highlight-fg     "#171818"
 set completion-highlight-bg     "#81a2be"
 
-set index-fg                    "#d3d3d3"
-set index-bg                    "#171919"
-set index-active-fg             "#171919"
+set index-fg                    "#d0d0d0"
+set index-bg                    "#171818"
+set index-active-fg             "#171818"
 set index-active-bg             "#a7bd68"
 
 # Search highlight colors same as in Vivaldi:

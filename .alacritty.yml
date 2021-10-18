@@ -21,18 +21,18 @@ window:
 
 colors:
   primary:
-    background: "#171919"
-    foreground: "#d3d3d3"
+    background: "#171818"
+    foreground: "#d0d0d0"
  
   normal:
-    black: "#171919"
+    black: "#171818"
     red: "#cc6666"
     green: "#a7bd68"
     yellow: "#f0c674"
     blue: "#81a2be"
     magenta: "#b294bb"
     cyan: "#8abeb7"
-    white: "#d3d3d3"
+    white: "#d0d0d0"
 
   bright:
     black: "#5f6160"
@@ -50,7 +50,7 @@ colors:
     { index: 17, color: "#a3685a" },
     { index: 18, color: "#222525" },
     { index: 19, color: "#313438" },
-    { index: 20, color: "#989898" },
+    { index: 20, color: "#909090" },
     { index: 21, color: "#eaeaea" },
     { index: 22, color: "#656e6e" },
     { index: 23, color: "#404040" },

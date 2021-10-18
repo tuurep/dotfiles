@@ -1,6 +1,6 @@
 * {
     // Goodnight colors
-    foreground:                  #d3d3d3;
+    foreground:                  #d0d0d0;
     background-light:            #222525;
     bordercolor:                 #313438;
     green:                       #a7bd68;
