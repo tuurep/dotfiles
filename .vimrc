@@ -176,7 +176,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 
 " Get commands to surround text with {new}
-" replace: cs{old}{new} - delete: cs{old} - add: y{motion}{new}
+" replace: cs{old}{new} - delete: cs{old} - add: ys{motion}{new}
 Plug 'tpope/vim-surround'
 
 " Nonlinear undo history access
