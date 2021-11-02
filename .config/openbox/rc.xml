@@ -242,10 +242,10 @@
     <keybind key="W-S-minus">
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
+        <width>800</width>
+        <height>630</height>
         <x>center</x>
         <y>center</y>
-        <height>70%</height>
-        <width>45%</width>
       </action>
     </keybind>
     <keybind key="W-S-Left">
