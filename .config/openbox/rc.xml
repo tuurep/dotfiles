@@ -365,6 +365,9 @@
     <keybind key="W-t">
       <action name="ToggleAlwaysOnTop"/>
     </keybind>
+    <keybind key="W-b">
+      <action name="ToggleAlwaysOnBottom"/>
+    </keybind>
     <!-- Keybindings for running applications -->
     <keybind key="W-Return">
       <action name="Execute">
