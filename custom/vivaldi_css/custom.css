@@ -1,2 +1,3 @@
 .sync-and-trash-container {display: none;}
 .button-toolbar.ContentBlocker-Control {display: none;}
+.toolbar.toolbar-small.toolbar-insideinput button[title="Reader View"] {display: none;}
