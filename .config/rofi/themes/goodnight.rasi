@@ -142,7 +142,7 @@
 
 #inputbar {
     padding:    2px;
-    spacing:    0;
+    spacing:    2;
     text-color: @normal-foreground;
 }
 
