@@ -1,0 +1,35 @@
+[global]
+    format = "<b>%s</b>\n%b"
+    font = Noto Sans 10.5
+
+    show_indicators = false
+    icon_position = off
+
+    origin = bottom-right
+    offset = 12x44
+    horizontal_padding = 11
+    frame_width = 1
+    separator_height = 1
+
+    sort = no
+    show_age_threshold = -1
+
+    mouse_left_click = do_action, close_current
+
+[urgency_low]
+    background = "#222525"
+    foreground = "#eaeaea"
+    frame_color = "#909090"
+    timeout = 10
+
+[urgency_normal]
+    background = "#222525"
+    foreground = "#eaeaea"
+    frame_color = "#909090"
+    timeout = 10
+
+[urgency_critical]
+    background = "#222525"
+    foreground = "#f0c674"
+    frame_color = "#909090"
+    timeout = 0

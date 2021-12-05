@@ -11,4 +11,6 @@ sh ~/.config/polybar/launch.sh &
 
 picom -b &
 
+dunst &
+
 greenclip daemon &

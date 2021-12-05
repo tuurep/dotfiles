@@ -351,7 +351,7 @@
     <keybind key="W-t">
       <action name="ToggleAlwaysOnTop"/>
     </keybind>
-    <keybind key="W-b">
+    <keybind key="W-S-t">
       <action name="ToggleAlwaysOnBottom"/>
     </keybind>
     <!-- Keybindings for running applications -->
@@ -383,6 +383,27 @@
     <keybind key="C-S-Print">
       <action name="Execute">
         <command>flameshot full -p ~/screenshots</command>
+      </action>
+    </keybind>
+    <!-- Dunst keybinds (control popup notifications) -->
+    <keybind key="W-n">
+      <action name="Execute">
+        <command>dunstctl history-pop</command>
+      </action>
+    </keybind>
+    <keybind key="W-b">
+      <action name="Execute">
+        <command>dunstctl close</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-b">
+      <action name="Execute">
+        <command>dunstctl close-all</command>
+      </action>
+    </keybind>
+    <keybind key="W-m">
+      <action name="Execute">
+        <command>dunstctl action</command>
       </action>
     </keybind>
   </keyboard>

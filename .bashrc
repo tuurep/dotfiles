@@ -51,6 +51,7 @@ alias tkill="tmux kill-session -t"
 alias cfg="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias ipy="ipython"
 alias whereami="echo $HOSTNAME"
+alias reset-dunst="killall dunst; notify-send monkey monkey"
 
 
 # === Add stuff to PATH ===
