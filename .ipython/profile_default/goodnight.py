@@ -1,3 +1,6 @@
+# Pygment style backup from /usr/lib/python<version>/site-packages/pygments/styles/
+# Used for IPython shell syntax highlighting colorscheme
+
 from pygments.style import Style
 from pygments.token import (
     Comment, Error, Keyword, Literal, Name, Number, Operator, String, Text
