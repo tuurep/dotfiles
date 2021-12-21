@@ -44,6 +44,7 @@ alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
 alias viv="vivaldi-stable"
 alias sauce="source ~/.bashrc"
 alias q="exit"
+alias gr='cd $(git rev-parse --show-toplevel)' # Go to root of current git repo, if any. Else goes to ~.
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
 alias tls="tmux ls"
