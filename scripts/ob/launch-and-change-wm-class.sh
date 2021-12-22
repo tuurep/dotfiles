@@ -10,5 +10,5 @@ then
 fi
 
 $1 &
-xdotool search --sync --class $2 \
-        set_window --class $3 %@
+xdotool search --sync --class "$2" \
+        set_window --class "$3" %@
