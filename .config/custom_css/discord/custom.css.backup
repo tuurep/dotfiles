@@ -1,0 +1,13 @@
+/* Using this to modify Discord client is against Discord's ToS  */
+
+button[aria-label="Send a gift"] {
+    display: none;
+}
+
+button[aria-label="Open GIF picker"] {
+    display: none;
+}
+
+button[aria-label="Open sticker picker"] {
+    display: none;
+}
