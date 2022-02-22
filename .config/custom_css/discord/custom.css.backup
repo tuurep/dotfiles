@@ -1,5 +1,8 @@
 /* Using this to modify Discord client is against Discord's ToS  */
 
+
+/* Hide chat textfield buttons other than emoji */
+
 button[aria-label="Send a gift"] {
     display: none;
 }
@@ -9,5 +12,12 @@ button[aria-label="Open GIF picker"] {
 }
 
 button[aria-label="Open sticker picker"] {
+    display: none;
+}
+
+
+/* Hide "Nitro" channel */
+
+.link-39sEB3[data-list-item-id$="___nitro"] {
     display: none;
 }
