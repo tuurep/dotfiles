@@ -53,6 +53,7 @@ alias cfg="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias ipy="ipython"
 alias whereami="echo $HOSTNAME"
 alias reset-dunst="killall dunst; notify-send monkey monkey"
+alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT1"
 
 
 # === Add stuff to PATH ===
