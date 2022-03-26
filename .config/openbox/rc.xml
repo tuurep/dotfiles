@@ -129,22 +129,32 @@
     </keybind>
     <keybind key="F11">
       <action name="Execute">
-        <command>xbacklight -5</command>
+        <command>~/scripts/ob/set-brightness.sh -1</command>
       </action>
     </keybind>
     <keybind key="F12">
       <action name="Execute">
-        <command>xbacklight +5</command>
+        <command>~/scripts/ob/set-brightness.sh 1</command>
       </action>
     </keybind>
     <keybind key="W-F11">
       <action name="Execute">
-        <command>xbacklight =5</command>
+        <command>~/scripts/ob/set-brightness.sh -5</command>
       </action>
     </keybind>
     <keybind key="W-F12">
       <action name="Execute">
-        <command>xbacklight =100</command>
+        <command>~/scripts/ob/set-brightness.sh 5</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-F11">
+      <action name="Execute">
+        <command>brightnessctl s 1%</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-F12">
+      <action name="Execute">
+        <command>brightnessctl s 100%</command>
       </action>
     </keybind>
     <keybind key="F9">
