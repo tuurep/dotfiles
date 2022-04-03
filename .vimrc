@@ -201,9 +201,8 @@ Plug 'lervag/vimtex'
 " Forked from iamcco/markdown-preview.nvim to make some small changes
 Plug 'tuurep/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
-" Send lines to target window/pane to execute (like IPython shell)
+" Send lines to target window/pane to execute (like python shell)
 let g:slime_target = "tmux"
-let g:slime_python_ipython = 1
 Plug 'jpalardy/vim-slime'
 
 call plug#end()
