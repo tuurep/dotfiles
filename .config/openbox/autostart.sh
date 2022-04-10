@@ -1,5 +1,7 @@
-# Feh sets wallpaper
-~/.fehbg &
+# Set desktop 'wallpaper' as solid black color
+# Note: xsetroot -solid is incompatible with picom
+# which is why hsetroot is used instead
+hsetroot -solid '#000000'
 
 # Map capslock to esc
 setxkbmap -option caps:escape &
