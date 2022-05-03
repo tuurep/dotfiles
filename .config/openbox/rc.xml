@@ -372,7 +372,7 @@
     </keybind>
     <keybind key="W-p">
       <action name="Execute">
-        <command>rofi -show drun -display-drun "" -theme-str 'window {width: 25%;}'</command>
+        <command>rofi -show drun -display-drun "" -theme-str 'window {width: 22%;}'</command>
       </action>
     </keybind>
     <keybind key="W-Tab">
