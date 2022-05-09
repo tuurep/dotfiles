@@ -61,6 +61,16 @@ alias whereami="echo $HOSTNAME"
 alias reset-dunst="killall dunst; notify-send monkey monkey"
 alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT1"
 
+# Simple commands that can't be aliases because they need arguments:
+# cd to where a symlinked file points to
+cdl() {
+        cd "$(dirname "$(readlink -f "$1")")"
+}
+
+# cd to a global executable you want to locate
+cdw() {
+        cd "$(dirname "$(which "$1")")"
+}
 
 # === Add stuff to PATH ===
 
