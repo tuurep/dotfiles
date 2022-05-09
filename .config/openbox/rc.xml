@@ -416,6 +416,11 @@
         <command>dunstctl action</command>
       </action>
     </keybind>
+    <keybind key="W-v">
+      <action name="Execute">
+        <command>~/scripts/ob/notify-current-date.sh</command>
+      </action>
+    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>2</dragThreshold>

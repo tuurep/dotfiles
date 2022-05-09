@@ -18,6 +18,7 @@
 
     sort = no
     show_age_threshold = -1
+    stack_duplicates = false
 
     mouse_left_click = do_action, close_current
 
@@ -30,3 +31,9 @@
 [urgency_critical]
     foreground = "#f0c674"
     timeout = 0
+
+[history_ignore]
+    # Send a notification that doesn't get saved to history:
+    # notify-send -c history_ignore <summary> <body>
+    category = "history_ignore"
+    history_ignore = true
