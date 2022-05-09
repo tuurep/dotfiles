@@ -1,6 +1,6 @@
 ### This repo
 
-My dotfiles and other configuration files for backup and quick reference.
+My dotfiles (any configuration files) for backup and quick reference.
 
 I follow the **bare git repository** method to manage config files. This way no files need to be moved or copied and no symlinks need to be created.
 
