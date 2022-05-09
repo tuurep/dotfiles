@@ -2,6 +2,11 @@
     format = "<b>%s</b>\n%b"
     font = Noto Sans 10.5
 
+    background = "#222525"
+    foreground = "#eaeaea"
+    frame_color = "#909090"
+    timeout = 10
+
     show_indicators = false
     icon_position = off
 
@@ -17,19 +22,11 @@
     mouse_left_click = do_action, close_current
 
 [urgency_low]
-    background = "#222525"
-    foreground = "#eaeaea"
-    frame_color = "#909090"
-    timeout = 10
+    # Default
 
 [urgency_normal]
-    background = "#222525"
-    foreground = "#eaeaea"
-    frame_color = "#909090"
-    timeout = 10
+    # Default
 
 [urgency_critical]
-    background = "#222525"
     foreground = "#f0c674"
-    frame_color = "#909090"
     timeout = 0
