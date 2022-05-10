@@ -37,6 +37,7 @@ alias fd="fd --color=never"
 
 # Aliases:
 alias sudo="sudo "
+alias sudoreset="faillock --reset --user $USER"
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
