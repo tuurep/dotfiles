@@ -202,7 +202,7 @@ Plug 'lervag/vimtex'
 
 " Toggle live preview in browser with <leader>gp in markdown files (keymap at ftplugin/markdown.vim)
 " Forked from iamcco/markdown-preview.nvim to make some small changes
-Plug 'tuurep/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'tuurep/markdown-preview.nvim', { 'do': './build-hook.sh' }
 
 " Send lines to target window/pane to execute (like python shell)
 let g:slime_target = "tmux"
