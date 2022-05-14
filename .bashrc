@@ -46,6 +46,7 @@ alias ll="ls -oh" # long format with no group info - human readable size
 alias p="pwd | sed 's|^$HOME|~|'"
 alias pac="pacman"
 alias clip="xclip -selection clip" # Pipe anything to clipboard
+alias pngc="xclip -selection clip -t image/png"
 alias zat="zathura"
 alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
 alias viv="vivaldi-stable"
