@@ -89,6 +89,8 @@ export PATH="$PATH:$GEM_HOME/bin"
 
 # === Settings for tools ===
 
+export PYTHONSTARTUP=~/.pyrc # Config (startup script) for py interactive shell
+
 # Flags for less: case insensitive search and colors
 export LESS='-iR'
 

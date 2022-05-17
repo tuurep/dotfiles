@@ -1,0 +1,4 @@
+import sys
+
+sys.ps1 = '\x01\x1b[0;32m\x02>>>\x01\x1b[0m\x02 '
+sys.ps2 = '\x01\x1b[0;32m\x02...\x01\x1b[0m\x02 '
