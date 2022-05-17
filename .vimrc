@@ -94,7 +94,6 @@ nnoremap <leader><Enter> :echo substitute(expand('%:p'), $HOME, '~', '')<cr>
 noremap  ¤ J
 noremap  g¤ gJ
 nnoremap <C-d> 0D
-nnoremap <C-c> 0C
 nnoremap å o<Esc>
 nnoremap Å O<Esc>
 " Comfortable movement keys:
