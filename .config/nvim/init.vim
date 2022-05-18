@@ -1,12 +1,7 @@
-set nocompatible " No backward compatibility with Vi
-filetype indent plugin on " To allow filetype-specific indenting / plugins
-syntax on
+colorscheme goodnight
 
 set title
-set titlestring=vim\ %t\ %m
-
-" Extended built-in support for %
-packadd! matchit
+set titlestring=nvim\ %t\ %m
 
 " Don't highlight matchpairs
 let g:loaded_matchparen = 1
@@ -18,46 +13,22 @@ let g:vimtex_matchparen_enabled = 0
 " (see :set fo?)
 set formatoptions-=tc
 
-" The typical indenting settings and 'normal' backspace behavior (insert mode)
-set autoindent
-set backspace=indent,eol,start
-
-colorscheme goodnight
-
 " Most important: scrolling and resizing splits by mouse
 set mouse=a
 
-" Mouse support setup:
-" Fix mouse for Alacritty:
-set ttymouse=sgr
-" Fix mouse inside tmux session:
-if &term =~ "tmux*"
-    set ttymouse=xterm2
-endif
-
-" TODO: Issues with auto reload (on BufEnter,FocusGained)
-" To update manually when file was modified elsewhere, do :checkt[ime]
-set autoread
-
 " Preferences
+set guicursor=a:block
+set laststatus=1 " Don't show statusline unless there are 2 or more windows
 set shortmess+=I " Don't display intro message (:h :intro) when opening empty buffer
-set shortmess-=S " Show count of search results while searching (remove S from default, see :h shortmess)
-set hidden
 set confirm
 set noswapfile
 set nobackup
-set showcmd
 set number
 set noruler
 set nowrap
-set sidescroll=1
-set wildmenu " Tab completion menu
 set cursorline " For LineNumber highlighting only, with my colorscheme setting (no bg highlight for line)
-set hlsearch
-set incsearch
 set ignorecase
 set smartcase " No ignorecase if Uppercase char present in search
-set nrformats-=octal " For Ctrl+a and Ctrl+x increment/decrement, octal format can lead to some confusion
 set noerrorbells
 
 " Indentation settings for using 4 spaces instead of tabs.
@@ -65,10 +36,6 @@ set noerrorbells
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-
-" Undo persistence: buffer can be closed and previous undotree can be used on reopen
-set undodir=~/.vim/undofiles
-set undofile
 
 " ======================== KEYMAPS ========================
 " Map leader to space
@@ -82,10 +49,6 @@ nnoremap <C-l> <Nop>
 noremap + <Nop>
 noremap - <Nop>
 noremap <BS> <Nop>
-" Unify with behavior of C and D, the reason this is not default is said to be a bug in Vi editor
-map Y y$
-" Quicksource vimrc
-nnoremap <leader>R :source ~/.vimrc<cr>
 " Clear lingering command msg
 nnoremap <Enter> :echo ''<cr>
 " Show full path of current file (home as tilde)
@@ -164,7 +127,7 @@ nmap <leader>§ <Plug>SlimeConfig
 " ==================== END OF KEYMAPS =====================
 
 " ============== PLUGINS: junegunn/vim-plug ===============
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'inkarkat/vim-ReplaceWithRegister'
 

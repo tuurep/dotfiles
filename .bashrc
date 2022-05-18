@@ -1,5 +1,5 @@
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 
 # If the running shell is not an interactive shell, return without doing anything
 [[ $- != *i* ]] && return
@@ -47,6 +47,7 @@ alias p="pwd | sed 's|^$HOME|~|'"
 alias pac="pacman"
 alias clip="xclip -selection clip" # Pipe anything to clipboard
 alias pngc="xclip -selection clip -t image/png"
+alias nv="nvim"
 alias zat="zathura"
 alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
 alias viv="vivaldi-stable"
