@@ -119,8 +119,10 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'inkarkat/vim-ReplaceWithRegister'
 
-" Saner search highlight: clear highlight on movement
-Plug 'romainl/vim-cool'
+" Highlight current search item differently
+" Note that this remaps all the normal search commands,
+" see searchhi-options.vim under plugin/
+Plug 'qxxxb/vim-searchhi'
 
 " Without this, vimmers can't dot-repeat keymaps that come from plugins
 Plug 'tpope/vim-repeat'
