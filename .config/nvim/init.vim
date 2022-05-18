@@ -8,15 +8,12 @@ let g:loaded_matchparen = 1
 " Don't let vimtex do that either
 let g:vimtex_matchparen_enabled = 0
 
-" Don't autowrap on textwidth. See this if there's issues: https://vi.stackexchange.com/questions/9366/set-formatoptions-in-vimrc-is-being-ignored
-" (Some builtin ftplugins will go on to set formatoptions again, one is dot vim)
-" (see :set fo?)
-set formatoptions-=tc
-
-" Most important: scrolling and resizing splits by mouse
-set mouse=a
+" Disable autowraps and comment continuations, 
+" and prevent /usr/share/nvim/runtime/ftplugins overriding them
+au FileType * set fo-=t fo-=c fo-=r fo-=o
 
 " Preferences
+set mouse=a
 set guicursor=a:block
 set laststatus=1 " Don't show statusline unless there are 2 or more windows
 set shortmess+=I " Don't display intro message (:h :intro) when opening empty buffer
@@ -102,15 +99,6 @@ xmap <leader>d "+d
 nmap <leader>c "+c
 nmap <leader>C "+C
 xmap <leader>c "+c
-" Window resizing using arrow keys in normal mode
-" Windows can grow from either side depending on their position
-" <Right> extends window to the right (or left), <Left> extends window to down (or up)
-" ...with Shift to shrink
-" TODO: these are a mess, be on the lookout for better, directional window resizing maps
-nnoremap <Right> <C-W>>
-nnoremap <Left> <C-W>+
-nnoremap <S-Right> <C-W><
-nnoremap <S-Left> <C-W>-
 " Fzf maps
 nnoremap <leader>gf :FZF<cr>
 nnoremap <leader>gF :FZF ~<cr>
