@@ -10,7 +10,9 @@ let g:vimtex_matchparen_enabled = 0
 
 " Disable autowraps and comment continuations, 
 " and prevent /usr/share/nvim/runtime/ftplugins overriding them
-au FileType * set fo-=t fo-=c fo-=r fo-=o
+autocmd FileType * if &filetype != "gitcommit"
+    \ | set fo-=t fo-=c fo-=r fo-=o
+    \ | endif
 
 " Preferences
 set mouse=a
