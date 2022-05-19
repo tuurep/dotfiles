@@ -41,6 +41,7 @@ alias sudoreset="faillock --reset --user $USER"
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
+alias c="cd"
 alias l="ls"
 alias ll="ls -oh" # long format with no group info - human readable size
 alias p="pwd | sed 's|^$HOME|~|'"
