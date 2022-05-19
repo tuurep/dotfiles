@@ -1,3 +1,5 @@
+#!/bin/bash
+
 export EDITOR=nvim
 export VISUAL=nvim
 
@@ -13,18 +15,18 @@ else
         PS2="\[\e[0;32m\]﬌ \[\e[0m\]"
 fi
 
-prompt_comm() {
-        if [[ "$TERM" =~ "tmux*" ]]; then      
+prompt_cmd() {
+        if [[ "$TERM" =~ tmux* ]]; then      
                 tmux refresh-client -S # Redraw tmux status bar
         fi
-        local short_pwd=$(basename $(p)) # See alias for 'p'
+        short_pwd=$(basename "$(p)") # See alias for 'p'
         echo -ne "\033]0;${short_pwd}\007" # Set window title; in tmux title is set in .tmux.conf
 }
 
 # Right before drawing prompt, this function is executed:
-PROMPT_COMMAND=prompt_comm
+PROMPT_COMMAND=prompt_cmd
 
-# Enable history appending instead of overwriting.  #139609
+# Enable history appending instead of overwriting
 shopt -s histappend
 
 # Aliases for colored output:
@@ -37,14 +39,14 @@ alias fd="fd --color=never"
 
 # Aliases:
 alias sudo="sudo "
-alias sudoreset="faillock --reset --user $USER"
+alias sudoreset='faillock --reset --user $USER'
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
 alias c="cd"
 alias l="ls"
 alias ll="ls -oh" # long format with no group info - human readable size
-alias p="pwd | sed 's|^$HOME|~|'"
+alias p='pwd | sed "s|^$HOME|~|"'
 alias pac="pacman"
 alias clip="xclip -selection clip" # Pipe anything to clipboard
 alias pngc="xclip -selection clip -t image/png"
@@ -59,21 +61,21 @@ alias tn="tmux new -s"
 alias ta="tmux attach -t"
 alias tls="tmux ls"
 alias tkill="tmux kill-session -t"
-alias cfg="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias py="python"
-alias whereami="echo $HOSTNAME"
+alias whereami='echo $HOSTNAME'
 alias reset-dunst="killall dunst; notify-send monkey monkey"
 alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT1"
 
 # Simple commands that can't be aliases because they need arguments:
 # cd to where a symlinked file points to
 cdl() {
-        cd "$(dirname "$(readlink -f "$1")")"
+        cd "$(dirname "$(readlink -f "$1")")" || exit
 }
 
 # cd to a global executable you want to locate
 cdw() {
-        cd "$(dirname "$(which "$1")")"
+        cd "$(dirname "$(which "$1")")" || exit
 }
 
 # === Add stuff to PATH ===
@@ -85,13 +87,13 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 
 # Originally for vimgolf
-export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export PATH="$PATH:$GEM_HOME/bin"
 
 
 # === Settings for tools ===
 
-export PYTHONSTARTUP=~/.pyrc # Config (startup script) for py interactive shell
+export PYTHONSTARTUP="$HOME/.pyrc" # Config (startup script) for py interactive shell
 
 # Flags for less: case insensitive search and colors
 export LESS='-iR'

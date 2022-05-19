@@ -1,0 +1,6 @@
+#!/bin/bash
+# shellcheck disable=SC2034 # Make .shellcheckrc pass shellcheck haha
+
+# Can’t follow non-constant source. Use a directive to specify location.
+# https://www.shellcheck.net/wiki/SC1090
+disable=SC1090
