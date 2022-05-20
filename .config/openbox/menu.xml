@@ -8,8 +8,8 @@
     <item label="alacritty"> <action name="Execute">
       <execute>alacritty</execute>
     </action> </item>
-    <item label="xterm"> <action name="Execute">
-      <execute>xterm</execute>
+    <item label="zutty"> <action name="Execute">
+      <execute>zutty</execute>
     </action> </item>
     <separator/>
     <item label="Exit"> <action name="Exit"/> </item>
