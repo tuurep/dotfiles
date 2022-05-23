@@ -47,6 +47,7 @@ alias c="cd"
 alias l="ls"
 alias ll="ls -oh" # long format with no group info - human readable size
 alias p='pwd | sed "s|^$HOME|~|"'
+alias pl='echo "$OLDPWD" | sed "s|^$HOME|~|"'
 alias pac="pacman"
 alias clip="xclip -selection clip" # Pipe anything to clipboard
 alias pngc="xclip -selection clip -t image/png"
@@ -64,8 +65,10 @@ alias tkill="tmux kill-session -t"
 alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias py="python"
 alias whereami='echo $HOSTNAME'
+alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias reset-dunst="killall dunst; notify-send monkey monkey"
 alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT1"
+alias gnu="neofetch -L --ascii_distro GNU"
 
 # Simple commands that can't be aliases because they need arguments:
 # cd to where a symlinked file points to
