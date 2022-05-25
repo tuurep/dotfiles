@@ -77,6 +77,10 @@ function! H(group, ctermfg, ctermbg, cterm)
     endif
 endfunction
 
+" Disable weird stuff in comments:
+hi! link Todo Comment
+hi link vimCommentTitle Comment
+
 " No cursorline background, but still need current line number highlighted
 hi clear CursorLine
 call H("CursorLineNr", s:fg, s:bg, "none")
@@ -130,7 +134,6 @@ call H("TabLineSel",   s:green, s:light_bg, "none")
 " Standard syntax highlighting
 call H("Character",    s:red, "", "")
 call H("Comment",      s:comment, "", "italic")
-call H("Todo",         s:yellow, s:bg, "italic")
 call H("Conditional",  s:magenta, "", "")
 call H("Constant",     s:orange, "", "")
 call H("Define",       s:magenta, "", "none")
