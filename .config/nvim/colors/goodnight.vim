@@ -81,6 +81,9 @@ endfunction
 hi! link Todo Comment
 hi link vimCommentTitle Comment
 
+" Disable weird unwanted error highlighting while typing:
+hi Error none
+
 " No cursorline background, but still need current line number highlighted
 hi clear CursorLine
 call H("CursorLineNr", s:fg, s:bg, "none")
@@ -91,7 +94,6 @@ call H("Normal",       s:fg, s:bg, "")
 call H("Bold",         "", "", "bold")
 call H("Debug",        s:red, "", "")
 call H("Directory",    s:blue, "", "")
-call H("Error",        s:bg, s:red, "")
 call H("ErrorMsg",     s:red, s:bg, "")
 call H("Exception",    s:red, "", "")
 call H("FoldColumn",   s:cyan, s:light_bg, "")
