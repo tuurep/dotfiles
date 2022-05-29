@@ -19,6 +19,7 @@ set mouse=a
 set guicursor=a:block
 set laststatus=1 " Don't show statusline unless there are 2 or more windows
 set shortmess+=I " Don't display intro message (:h :intro) when opening empty buffer
+set undofile
 set confirm
 set noswapfile
 set nobackup
