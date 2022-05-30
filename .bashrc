@@ -38,7 +38,7 @@ alias diff="diff --color=auto"
 alias fd="fd --color=never"
 
 # Aliases:
-alias sudo="sudo "
+alias sudo="sudo -v; sudo "
 alias sudoreset='faillock --reset --user $USER'
 alias cp="cp -i"
 alias mv="mv -i"
