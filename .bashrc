@@ -29,7 +29,18 @@ PROMPT_COMMAND=prompt_cmd
 # Enable history appending instead of overwriting
 shopt -s histappend
 
-# Aliases for colored output:
+# Aliases:
+
+alias c="cd"
+alias l="ls"
+alias p='pwd | sed "s|^$HOME|~|"'
+alias e="nvim"
+alias v="sxiv"
+alias q="exit"
+
+alias ll="ls -oh" # long format with no group info - human readable size
+alias pl='echo "$OLDPWD" | sed "s|^$HOME|~|"'
+
 alias ls="ls --color=auto"
 alias grep="grep --colour=auto"
 alias egrep="egrep --colour=auto"
@@ -37,36 +48,35 @@ alias fgrep="fgrep --colour=auto"
 alias diff="diff --color=auto"
 alias fd="fd --color=never"
 
-# Aliases:
-alias sudo="sudo -v; sudo "
-alias sudoreset='faillock --reset --user $USER'
-alias cp="cp -i"
-alias mv="mv -i"
-alias rm="rm -i"
-alias c="cd"
-alias l="ls"
-alias ll="ls -oh" # long format with no group info - human readable size
-alias p='pwd | sed "s|^$HOME|~|"'
-alias pl='echo "$OLDPWD" | sed "s|^$HOME|~|"'
-alias pac="pacman"
-alias clip="xclip -selection clip" # Pipe anything to clipboard
-alias pngc="xclip -selection clip -t image/png"
-alias e="nvim"
-alias v="sxiv"
-alias zat="zathura"
-alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
-alias viv="vivaldi-stable"
-alias sauce="source ~/.bashrc"
-alias q="exit"
-alias gr='cd $(git rev-parse --show-toplevel)' # Go to root of current git repo, if any. Else goes to ~.
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
 alias tls="tmux ls"
 alias tkill="tmux kill-session -t"
+
 alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias py="python"
-alias whereami='echo $HOSTNAME'
+alias gr='cd $(git rev-parse --show-toplevel)' # Go to root of current git repo, if any. Else goes to ~.
+
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
+
+alias sudo="sudo -v; sudo "
+alias sudoreset='faillock --reset --user $USER'
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
+alias pac="pacman"
+alias sauce="source ~/.bashrc"
+
+alias clip="xclip -selection clip" # Pipe anything to clipboard
+alias pngc="xclip -selection clip -t image/png"
+
+alias py="python"
+alias jl="julia"
+
+alias zat="zathura"
+alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
+alias viv="vivaldi-stable"
+
+alias whereami='echo $HOSTNAME'
 alias reset-dunst="killall dunst; notify-send monkey monkey"
 alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT1"
 alias gnu="neofetch -L --ascii_distro GNU"
