@@ -51,7 +51,8 @@ alias pl='echo "$OLDPWD" | sed "s|^$HOME|~|"'
 alias pac="pacman"
 alias clip="xclip -selection clip" # Pipe anything to clipboard
 alias pngc="xclip -selection clip -t image/png"
-alias v="nvim"
+alias e="nvim"
+alias v="sxiv"
 alias zat="zathura"
 alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
 alias viv="vivaldi-stable"
