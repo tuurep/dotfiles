@@ -2,3 +2,8 @@
 .button-toolbar.ContentBlocker-Control {display: none;}
 .toolbar.toolbar-small.toolbar-insideinput button[title="Reader View"] {display: none;}
 .SpeedDialView-Settings-Button {display: none;}
+
+/* Revert to old extensions dropdown menu icon (small triangle) */
+.toolbar-extensions .extensionPopupIcons svg path {
+    d: path("M 12.5 16 L 8.86568 12.3657 C 8.36171 11.8617 8.71865 11 9.43137 11 L 15.5686 11 C 16.2814 11 16.6383 11.8617 16.1343 12.3657 L 12.5 16 Z");
+}
