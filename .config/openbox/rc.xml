@@ -4,97 +4,39 @@
     <strength>20</strength>
     <screen_edge_strength>40</screen_edge_strength>
   </resistance>
-  <focus>
-    <focusNew>yes</focusNew>
-  </focus>
   <placement>
-    <policy>Smart</policy>
     <center>yes</center>
-    <monitor>Primary</monitor>
-    <primaryMonitor>1</primaryMonitor>
   </placement>
   <theme>
     <name>Borderless-Dark</name>
     <titleLayout>LIMC</titleLayout>
-    <keepBorder>no</keepBorder>
-    <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
       <name>Noto Sans</name>
       <size>11</size>
-      <!-- font size in points -->
-      <weight>Normal</weight>
-      <!-- 'bold' or 'normal' -->
-      <slant>Normal</slant>
-      <!-- 'italic' or 'normal' -->
+      <weight>normal</weight>
     </font>
     <font place="InactiveWindow">
       <name>Noto Sans</name>
       <size>11</size>
-      <!-- font size in points -->
-      <weight>Normal</weight>
-      <!-- 'bold' or 'normal' -->
-      <slant>Normal</slant>
-      <!-- 'italic' or 'normal' -->
+      <weight>normal</weight>
     </font>
     <font place="MenuHeader">
       <name>Noto Sans</name>
       <size>9</size>
-      <!-- font size in points -->
-      <weight>Normal</weight>
-      <!-- 'bold' or 'normal' -->
-      <slant>Normal</slant>
-      <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuItem">
       <name>Noto Sans</name>
       <size>9</size>
-      <!-- font size in points -->
-      <weight>Normal</weight>
-      <!-- 'bold' or 'normal' -->
-      <slant>Normal</slant>
-      <!-- 'italic' or 'normal' -->
-    </font>
-    <font place="ActiveOnScreenDisplay">
-      <name>Noto Sans</name>
-      <size>9</size>
-      <!-- font size in points -->
-      <weight>Normal</weight>
-      <!-- 'bold' or 'normal' -->
-      <slant>Normal</slant>
-      <!-- 'italic' or 'normal' -->
-    </font>
-    <font place="InactiveOnScreenDisplay">
-      <name>Noto Sans</name>
-      <size>9</size>
-      <!-- font size in points -->
-      <weight>Normal</weight>
-      <!-- 'bold' or 'normal' -->
-      <slant>Normal</slant>
-      <!-- 'italic' or 'normal' -->
     </font>
   </theme>
   <desktops>
     <number>1</number>
-    <firstdesk>1</firstdesk>
   </desktops>
   <resize>
     <drawContents>yes</drawContents>
-    <popupShow>Nonpixel</popupShow>
-    <!-- 'Always', 'Never', or 'Nonpixel' (xterms and such) -->
-    <popupPosition>Center</popupPosition>
-    <!-- 'Center', 'Top', or 'Fixed' -->
-    <popupFixedPosition>
-      <!-- these are used if popupPosition is set to 'Fixed' -->
-      <x>10</x>
-      <!-- positive number for distance from left edge, negative number for
-      distance from right edge, or 'Center' -->
-      <y>10</y>
-      <!-- positive number for distance from top edge, negative number for
-      distance from bottom edge, or 'Center' -->
-    </popupFixedPosition>
+    <popupShow>Never</popupShow>
   </resize>
   <keyboard>
-    <chainQuitKey>C-g</chainQuitKey>
     <!-- Reload config -->
     <keybind key="W-r">
       <action name="Execute">
@@ -427,9 +369,8 @@
   </keyboard>
   <mouse>
     <dragThreshold>2</dragThreshold>
-    <!-- number of pixels the mouse must move before a drag begins -->
     <doubleClickTime>500</doubleClickTime>
-    <!-- in milliseconds (1000 = 1 second) -->
+    <!-- Whole window including decorations -->
     <context name="Frame">
       <mousebind button="A-Left" action="Press">
         <action name="Focus"/>
@@ -446,12 +387,15 @@
         <action name="Resize"/>
       </mousebind>
     </context>
-    <context name="Titlebar">
-      <mousebind button="Left" action="Press">
+    <!-- Area inside window decorations -->
+    <context name="Client">
+      <mousebind button="Left Right" action="Press">
         <action name="Focus"/>
         <action name="Raise"/>
       </mousebind>
-      <mousebind button="Right" action="Press">
+    </context>
+    <context name="Titlebar">
+      <mousebind button="Left Right" action="Press">
         <action name="Focus"/>
         <action name="Raise"/>
       </mousebind>
@@ -459,92 +403,45 @@
         <action name="Move"/>
       </mousebind>
     </context>
-    <!-- To have none of the windows focused, click on desktop -->
-    <context name="Desktop">
-      <mousebind button="Left" action="Click">
-        <action name="Focus"/>
-        <action name="raise"/>
-      </mousebind>
-    </context>
-    <!-- Most of these don't work because I don't have window borders -->
-    <!-- The 'top'-ones do because of titlebar -->
-    <!-- I wish they all worked but you gotta do what you gotta do. -->
-    <context name="Top">
-      <mousebind button="Left" action="Drag">
-        <action name="Resize">
-          <edge>top</edge>
-        </action>
-      </mousebind>
-    </context>
-    <context name="Left">
-      <mousebind button="Left" action="Drag">
-        <action name="Resize">
-          <edge>left</edge>
-        </action>
-      </mousebind>
-    </context>
-    <context name="Right">
-      <mousebind button="Left" action="Drag">
-        <action name="Resize">
-          <edge>right</edge>
-        </action>
-      </mousebind>
-    </context>
-    <context name="Bottom">
-      <mousebind button="Left" action="Drag">
-        <action name="Resize">
-          <edge>bottom</edge>
-        </action>
-      </mousebind>
-    </context>
-    <context name="TRCorner BRCorner TLCorner BLCorner">
-      <mousebind button="Left" action="Press">
-        <action name="Focus"/>
-        <action name="Raise"/>
-      </mousebind>
-      <mousebind button="Left" action="Drag">
-        <action name="Resize"/>
-      </mousebind>
-    </context>
-    <context name="Client">
-      <mousebind button="Left" action="Press">
-        <action name="Focus"/>
-        <action name="Raise"/>
-      </mousebind>
-      <mousebind button="Right" action="Press">
-        <action name="Focus"/>
-        <action name="Raise"/>
-      </mousebind>
-    </context>
     <context name="Iconify">
-      <mousebind button="Left" action="Press">
+      <mousebind button="Left Right" action="Press">
         <action name="Focus"/>
         <action name="Raise"/>
-      </mousebind>
-      <mousebind button="Left" action="Click">
         <action name="Iconify"/>
       </mousebind>
     </context>
     <context name="Maximize">
-      <mousebind button="Left" action="Press">
+      <mousebind button="Left Right" action="Press">
         <action name="Focus"/>
         <action name="Raise"/>
-      </mousebind>
-      <mousebind button="Left" action="Click">
         <action name="ToggleMaximize"/>
       </mousebind>
     </context>
     <context name="Close">
-      <mousebind button="Left" action="Press">
+      <mousebind button="Left Right" action="Press">
         <action name="Focus"/>
         <action name="Raise"/>
-      </mousebind>
-      <mousebind button="Left" action="Click">
         <action name="Close"/>
       </mousebind>
     </context>
-    <!-- Root pretty much means clicking on desktop -->
-    <context name="Root">
+    <!-- Areas outside of titlebar can't be clicked or dragged in a borderless theme -->
+    <!-- Sad but true -->
+    <!-- Applications like Steam or Vivaldi allow resizing from anywhere regardless of these settings -->
+    <context name="TLCorner Top TRCorner">
+      <mousebind button="Left Right" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind button="Left" action="Drag">
+        <action name="Resize"/> 
+      </mousebind>
+    </context>
+    <context name="Desktop">
+      <!-- To have none of the windows focused, click on desktop -->
+      <mousebind button="Left" action="Click">
+        <action name="Focus"/>
+        <action name="raise"/>
+      </mousebind>
       <mousebind button="Right" action="Press">
         <action name="ShowMenu">
           <menu>root-menu</menu>
@@ -553,9 +450,6 @@
     </context>
   </mouse>
   <menu>
-    <!-- You can specify more than one menu file in here and they are all loaded,
-    just don't make menu ids clash or, well, it'll be kind of pointless -->
-    <!-- default menu file (or custom one in $HOME/.config/openbox/) -->
     <file>menu.xml</file>
   </menu>
 </openbox_config>
