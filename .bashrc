@@ -75,6 +75,7 @@ alias jl="julia"
 alias zat="zathura"
 alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
 alias viv="vivaldi-stable"
+alias grip="grip -b"
 
 alias whereami='echo $HOSTNAME'
 alias reset-dunst="killall dunst; notify-send monkey monkey"
