@@ -5,7 +5,7 @@
     background = "#222525"
     foreground = "#eaeaea"
     frame_color = "#909090"
-    timeout = 10
+    timeout = 20
 
     show_indicators = false
     icon_position = off
