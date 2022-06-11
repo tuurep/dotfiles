@@ -1,0 +1,15 @@
+[user]
+	email = tuure.piitulainen@gmail.com
+	name = Tuure
+
+[alias]
+        s = status
+	a = add
+	c = commit
+        p = push
+        d = diff
+        b = branch
+        co = checkout
+
+[pull]
+	ff = only
