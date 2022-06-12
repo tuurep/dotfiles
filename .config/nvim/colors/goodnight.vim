@@ -77,11 +77,14 @@ function! H(group, ctermfg, ctermbg, cterm)
     endif
 endfunction
 
-" Disable weird stuff in comments:
+" Disable highlighting stuff like 'TODO', 'Note:', '<any-string>:'
 hi! link Todo Comment
 hi link vimCommentTitle Comment
+hi link gitcommitTrailerToken gitcommitTrailers
 
-" Disable weird unwanted error highlighting while typing:
+" Disable weird unwanted error highlighting while typing
+" Todo: still see red/white fg syntax highlighting in e.g. HTML and XML
+" Difficult to remove across all filetypes
 hi Error none
 
 " No cursorline background, but still need current line number highlighted
