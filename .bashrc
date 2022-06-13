@@ -79,6 +79,7 @@ alias grip="grip -b"
 
 alias whereami='echo $HOSTNAME'
 alias reset-dunst="killall dunst; notify-send monkey monkey"
+alias reset-polybar="killall -q polybar; polybar bar1 2>&1 & disown"
 alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT1"
 alias gnu="neofetch -L --ascii_distro GNU"
 
