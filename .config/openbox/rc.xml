@@ -293,6 +293,46 @@
         <direction>east</direction>
       </action>
     </keybind>
+    <keybind key="W-A-h">
+      <action name="MoveRelative">
+        <x>-20</x>
+      </action>
+    </keybind>
+    <keybind key="W-A-j">
+      <action name="MoveRelative">
+        <y>20</y>
+      </action>
+    </keybind>
+    <keybind key="W-A-k">
+      <action name="MoveRelative">
+        <y>-20</y>
+      </action>
+    </keybind>
+    <keybind key="W-A-l">
+      <action name="MoveRelative">
+        <x>20</x>
+      </action>
+    </keybind>
+    <keybind key="W-A-Left">
+      <action name="ResizeRelative">
+        <right>-20</right>
+      </action>
+    </keybind>
+    <keybind key="W-A-Down">
+      <action name="ResizeRelative">
+        <up>-20</up>
+      </action>
+    </keybind>
+    <keybind key="W-A-Up">
+      <action name="ResizeRelative">
+        <down>-20</down>
+      </action>
+    </keybind>
+    <keybind key="W-A-Right">
+      <action name="ResizeRelative">
+        <left>-20</left>
+      </action>
+    </keybind>
     <!-- Keybindings for windows -->
     <keybind key="W-q">
       <action name="Close"/>
@@ -369,7 +409,6 @@
   </keyboard>
   <mouse>
     <dragThreshold>2</dragThreshold>
-    <doubleClickTime>500</doubleClickTime>
     <!-- Whole window including decorations -->
     <context name="Frame">
       <mousebind button="A-Left" action="Press">
