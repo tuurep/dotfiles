@@ -102,9 +102,6 @@ xmap <leader>d "+d
 nmap <leader>c "+c
 nmap <leader>C "+C
 xmap <leader>c "+c
-" Fzf maps
-nnoremap <leader>gf :FZF<cr>
-nnoremap <leader>gF :FZF ~<cr>
 " Fern maps: _ for :Explore style
 nnoremap <leader>- :Fern %:h -drawer -reveal=%<cr>
 nnoremap <leader>_ :Fern %:h -reveal=%<cr>
@@ -133,24 +130,13 @@ Plug 'tpope/vim-repeat'
 " Vim-like binds to comment lines with {count}gcc, gc{motion}
 Plug 'tpope/vim-commentary'
 
-" Get commands to surround text with {new}
-" replace: cs{old}{new} - delete: cs{old} - add: ys{motion}{new}
-Plug 'tpope/vim-surround'
-
 " Nonlinear undo history access
 Plug 'mbbill/undotree'
-
-" Fuzzy finder
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 
 " netrw replacement: project drawer/file explorer
 " hijack makes fern the 'default' like when running vim dot
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/fern-hijack.vim'
-
-" 'frecency'-directory switching with :Z <substring-of-path>
-Plug 'nanotee/zoxide.vim'
 
 " .tex-files - Compile: <leader>gc View pdf: <leader>gv Toggle error box: <leader>ge
 Plug 'lervag/vimtex'
