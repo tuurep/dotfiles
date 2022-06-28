@@ -8,7 +8,7 @@ from pygments.token import (
 
 
 class GoodnightStyle(Style):
-    background = '#171818'
+    background = '#151515'
     foreground = '#d0d0d0'
 
     red = '#cc6666'

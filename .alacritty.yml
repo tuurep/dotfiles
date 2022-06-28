@@ -21,11 +21,11 @@ window:
 
 colors:
   primary:
-    background: "#171818"
+    background: "#151515"
     foreground: "#d0d0d0"
  
   normal:
-    black: "#171818"
+    black: "#151515"
     red: "#cc6666"
     green: "#a7bd68"
     yellow: "#f0c674"
