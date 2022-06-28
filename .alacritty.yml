@@ -34,9 +34,12 @@ colors:
     cyan: "#8abeb7"
     white: "#d0d0d0"
 
+  # Red to Cyan are not different from normal
+  # 'black' is for code comments
+  # bright white is very rarely used
   bright:
     black: "#5f6160"
-    red: "#cd6a6a"
+    red: "#cc6666"
     green: "#a7bd68"
     yellow: "#f0c674"
     blue: "#81a2be"
