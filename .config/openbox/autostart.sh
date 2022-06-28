@@ -10,9 +10,13 @@ setxkbmap -option caps:escape
 xset r rate 305 25
 
 sh ~/.config/polybar/launch.sh &
+dunst &
 
 picom -b &
 
-dunst &
-
+# Clipboard management:
+# parcellite for preserving clipboard contents on
+# application close, greenclip for history access
+# through rofi
+parcellite &
 greenclip daemon &
