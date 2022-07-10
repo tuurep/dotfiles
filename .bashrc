@@ -74,6 +74,7 @@ alias jl="julia"
 
 alias zat="zathura"
 alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
+alias vivaldi="vivaldi-stable"
 alias viv="vivaldi-stable"
 alias grip="grip -b"
 
