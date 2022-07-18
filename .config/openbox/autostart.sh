@@ -7,7 +7,7 @@ hsetroot -solid '#000000'
 setxkbmap -option caps:escape
 
 # Key repeat: ms, interval
-xset r rate 305 25
+xset r rate 320 25
 
 sh ~/.config/polybar/launch.sh &
 dunst &
