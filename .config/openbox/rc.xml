@@ -69,37 +69,37 @@
         <command>~/scripts/ob/increase-volume-with-upper-limit.sh 1</command>
       </action>
     </keybind>
-    <keybind key="F11">
+    <keybind key="F5">
       <action name="Execute">
         <command>~/scripts/ob/set-brightness.sh -5</command>
       </action>
     </keybind>
-    <keybind key="F12">
+    <keybind key="F6">
       <action name="Execute">
         <command>~/scripts/ob/set-brightness.sh 5</command>
       </action>
     </keybind>
-    <keybind key="W-F11">
+    <keybind key="W-F5">
       <action name="Execute">
         <command>~/scripts/ob/set-brightness.sh -1</command>
       </action>
     </keybind>
-    <keybind key="W-F12">
+    <keybind key="W-F6">
       <action name="Execute">
         <command>~/scripts/ob/set-brightness.sh 1</command>
       </action>
     </keybind>
-    <keybind key="W-S-F11">
+    <keybind key="W-S-F5">
       <action name="Execute">
         <command>brightnessctl s 1%</command>
       </action>
     </keybind>
-    <keybind key="W-S-F12">
+    <keybind key="W-S-F6">
       <action name="Execute">
         <command>brightnessctl s 100%</command>
       </action>
     </keybind>
-    <keybind key="F9">
+    <keybind key="W-Delete">
       <action name="Execute">
         <command>slock</command>
       </action>
