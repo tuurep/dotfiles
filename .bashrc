@@ -128,7 +128,15 @@ export LESS_TERMCAP_se=$'\e[0m'
 eval "$(zoxide init bash)"
 
 # https://github.com/junegunn/fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# Enable fzf keybindings:
+#       Ctrl-R  command history fzf overwrite
+#       Ctrl-T  add fzf search result to command
+#       Alt-C   cd to fzf search result (folder)
+source /usr/share/fzf/key-bindings.bash
+
+# https://github.com/junegunn/fzf#fuzzy-completion-for-bash-and-zsh
+# fzf tab completion on **
+source /usr/share/fzf/completion.bash
 
 # Changes fzf colors, see https://github.com/junegunn/fzf/wiki/Color-schemes
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
