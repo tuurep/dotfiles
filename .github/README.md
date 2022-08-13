@@ -10,7 +10,7 @@ Original tutorial:
 * [Atlassian: The best way to store your dotfiles](https://www.atlassian.com/git/tutorials/dotfiles)
 
 More clearly explained:
-* [ackama explanation post](https://www.ackama.com/blog/posts/the-best-way-to-store-your-dotfiles-a-bare-git-repository-explained)
+* [ackama explanation post](https://www.ackama.com/what-we-think/the-best-way-to-store-your-dotfiles-a-bare-git-repository-explained/)
 
 Video walkthrough:
 * [DistroTube video](https://www.youtube.com/watch?v=tBoLDpTWVOM)
