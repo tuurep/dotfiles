@@ -91,7 +91,7 @@
     </keybind>
     <keybind key="W-S-F5">
       <action name="Execute">
-        <command>brightnessctl s 1%</command>
+        <command>brightnessctl s 0%</command>
       </action>
     </keybind>
     <keybind key="W-S-F6">
