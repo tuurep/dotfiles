@@ -12,4 +12,4 @@ value=$1
 # Get current brightness as percentage with -P flag
 current_brightness=$(brightnessctl -P g)
 
-brightnessctl s $(($current_brightness + $value))%
+brightnessctl s $((current_brightness + value))%
