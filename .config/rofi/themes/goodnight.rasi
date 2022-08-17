@@ -24,7 +24,7 @@
     active-foreground:           @green;
 
     selected-active-background:  @green;
-    selected-active-foreground:  @backgroundlight;
+    selected-active-foreground:  @background-light;
 
     alternate-active-background: @background-light;
     alternate-active-foreground: @green;
