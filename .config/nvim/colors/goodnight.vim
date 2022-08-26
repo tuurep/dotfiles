@@ -12,7 +12,7 @@ let g:colors_name="goodnight"
 " Expects colors to be set in the terminal emulator
 " Terminal needs to be able to set colors 0-23 as:
 "
-" Color00: #151515
+" Color00: #121212
 " Color01: #cc6666
 " Color02: #a7bd68
 " Color03: #f0c674

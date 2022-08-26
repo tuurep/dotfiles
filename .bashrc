@@ -140,8 +140,8 @@ source /usr/share/fzf/completion.bash
 
 # Changes fzf colors, see https://github.com/junegunn/fzf/wiki/Color-schemes
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-        --color=fg:#5f6160,bg:#151515,hl:#d0d0d0
-        --color=fg+:#d0d0d0,bg+:#151515,hl+:#cc6666
+        --color=fg:#5f6160,bg:#121212,hl:#d0d0d0
+        --color=fg+:#d0d0d0,bg+:#121212,hl+:#cc6666
         --color=info:#f0c674,prompt:#b294bb,pointer:#cc6666
         --color=marker:#b294bb,spinner:#f0c674,header:#5f6160
 '
