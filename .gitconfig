@@ -6,8 +6,10 @@
         s = status
 	a = add
 	c = commit
+        ca = commit --amend
         p = push
         d = diff
+        ds = diff --staged
         b = branch
         co = checkout
 
