@@ -1,0 +1,17 @@
+# /etc/X11/xorg.conf.d/70-synaptics.conf
+
+Section "InputClass"
+        Identifier "SynPS/2 Synaptics TouchPad"
+        Driver "synaptics"
+        MatchIsTouchpad "on"
+            Option "TapButton1" "1"
+            Option "HorizTwoFingerScroll" "on"
+            Option "TapAndDragGesture" "off"
+            Option "ClickTime" "5"
+            Option "SingleTapTimeout" "0"
+            # Option "MaxTapTime" "180"
+            Option "MaxDoubleTapTime" "100"
+            Option "MaxTapMove" "50"
+            Option "FingerHigh" "20"
+            Option "FingerLow" "1"
+EndSection
