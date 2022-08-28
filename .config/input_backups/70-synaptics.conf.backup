@@ -12,6 +12,6 @@ Section "InputClass"
             # Option "MaxTapTime" "180"
             Option "MaxDoubleTapTime" "100"
             Option "MaxTapMove" "50"
-            Option "FingerHigh" "20"
+            Option "FingerHigh" "10"
             Option "FingerLow" "1"
 EndSection
