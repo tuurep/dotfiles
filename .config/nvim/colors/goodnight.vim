@@ -183,14 +183,12 @@ call H("cssColor",       s:cyan, "", "")
 
 " Diff highlighting
 call H("DiffAdd",      s:bg, s:green, "")
-call H("DiffChange",   s:bg, s:magenta, "")
+call H("DiffChange",   s:bg, s:dark_fg, "")
 call H("DiffDelete",   s:bg, s:red, "")
-call H("DiffText",     s:blue, s:bg, "")
+call H("DiffText",     s:bg, s:green, "")
 call H("DiffAdded",    s:green, s:bg, "")
-call H("DiffFile",     s:red, s:bg, "")
-call H("DiffNewFile",  s:green, s:bg, "")
-call H("DiffLine",     s:blue, s:bg, "")
 call H("DiffRemoved",  s:red, s:bg, "")
+call H("DiffLine",     s:blue, s:bg, "")
 
 " Git highlighting
 call H("gitcommitOverflow",       s:red, "", "")
