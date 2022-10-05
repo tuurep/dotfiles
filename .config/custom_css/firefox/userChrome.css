@@ -1,0 +1,18 @@
+/* Tab bar */
+
+/* Hide tab bar spacer on the left corner */
+/* (but not the one after open tabs) */
+.titlebar-spacer[type="pre-tabs"] {
+    display: none !important;
+}
+
+/* Hide "All Tabs" dropdown list button */
+#alltabs-button {
+    display: none !important;
+}
+
+/* Address bar */
+
+#reader-mode-button {
+    display: none !important;
+}
