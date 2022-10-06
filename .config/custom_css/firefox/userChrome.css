@@ -1,9 +1,14 @@
 /* Tab bar */
 
 /* Hide tab bar spacer on the left corner */
-/* (but not the one after open tabs) */
 .titlebar-spacer[type="pre-tabs"] {
     display: none !important;
+}
+
+/* Spacer between new tab button and window controls */
+/* Reduce width from 40px to 15px */
+.titlebar-spacer[type="post-tabs"] {
+    width: 15px !important;
 }
 
 /* Hide "All Tabs" dropdown list button */
