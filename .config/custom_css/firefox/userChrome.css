@@ -1,4 +1,4 @@
-/* Tab bar */
+/* TAB BAR */
 
 /* Hide tab bar spacer on the left corner */
 .titlebar-spacer[type="pre-tabs"] {
@@ -16,8 +16,39 @@
     display: none !important;
 }
 
-/* Address bar */
+/* Hide favicon from New Tab */
+.tabbrowser-tab[label="New Tab"] .tab-icon-image {
+    display: none !important;
+}
+
+/* ADDRESS BAR */
+
+/* Hide "Search with Google or enter address" */
+#urlbar-input::placeholder {
+    opacity: 0 !important;
+}
 
 #reader-mode-button {
     display: none !important;
+}
+
+/* MEGABAR */
+
+/* Hide first row which is useless: */
+/* just repeats what's on the address field */
+.urlbarView-row:first-of-type {
+    display: none !important;
+}
+
+/* Reduce enormous search suggestions row padding from 6px to 2px */
+.urlbarView-row-inner {
+    padding-block: 2px !important;
+}
+
+/* NEW TAB */
+
+/* Fixes New Tab background flashing white before setting custom bg color */
+/* (may have side effects? keep an eye) */
+#tabbrowser-tabpanels{
+    background-color: #343737 !important;
 }
