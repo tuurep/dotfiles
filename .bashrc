@@ -73,6 +73,7 @@ alias py="python"
 alias jl="julia"
 
 alias zat="zathura"
+alias ff="firefox"
 alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
 alias vivaldi="vivaldi-stable"
 alias viv="vivaldi-stable"
