@@ -488,6 +488,11 @@
       </mousebind>
     </context>
   </mouse>
+  <applications>
+    <application class="firefox" title="Picture-in-Picture">
+      <desktop>all</desktop>
+    </application>
+  </applications>
   <menu>
     <file>menu.xml</file>
   </menu>
