@@ -12,6 +12,13 @@
       <execute>zutty</execute>
     </action> </item>
     <separator/>
-    <item label="Exit"> <action name="Exit"/> </item>
+    <item label="shutdown"> <action name="Execute">
+      <execute>poweroff</execute>
+    </action> </item>
+    <item label="restart"> <action name="Execute">
+      <execute>reboot</execute>
+    </action> </item>
+    <separator/>
+    <item label="exit"> <action name="Exit"/> </item>
     </menu>
 </openbox_menu>
