@@ -21,6 +21,13 @@
     display: none !important;
 }
 
+/* Fix min and max buttons invisible on hover */
+/* Also makes close button look the same on hover, rather than red bg color */
+.titlebar-button:hover {
+    background-color: #484746 !important;
+    color: #f9f2ee !important;
+}
+
 /* ADDRESS BAR */
 
 /* Hide "Search with Google or enter address" */
