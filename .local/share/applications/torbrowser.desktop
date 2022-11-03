@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Tor Browser
+Comment=Launch Tor Browser
+Exec=torbrowser-launcher %u
+Terminal=false
+Type=Application
+Icon=torbrowser
+Categories=Network;WebBrowser;
+StartupWMClass=Tor Browser
