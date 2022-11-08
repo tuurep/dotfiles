@@ -52,14 +52,6 @@
     padding-block: 2px !important;
 }
 
-/* NEW TAB */
-
-/* Fixes New Tab background flashing white before setting custom bg color */
-/* (may have side effects? keep an eye) */
-#tabbrowser-tabpanels{
-    background-color: #343737 !important;
-}
-
 /* FINDBAR */
 
 /* Hide checkboxes */
