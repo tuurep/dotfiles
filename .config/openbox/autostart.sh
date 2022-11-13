@@ -12,7 +12,7 @@ xset r rate 315 25
 sh ~/.config/polybar/launch.sh &
 dunst &
 
-picom -b &
+picom -b
 
 # Clipboard management:
 # parcellite for preserving clipboard contents on
