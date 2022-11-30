@@ -337,8 +337,18 @@
     <keybind key="W-q">
       <action name="Close"/>
     </keybind>
+    <keybind key="W-S-q">
+      <action name="Execute">
+        <command>~/scripts/ob/close-all-except-active.sh</command>
+      </action>
+    </keybind>
     <keybind key="W-w">
       <action name="Iconify"/> <!-- as in "minimize" -->
+    </keybind>
+    <keybind key="W-S-w">
+      <action name="Execute">
+        <command>~/scripts/ob/minimize-all-except-active.sh</command>
+      </action>
     </keybind>
     <keybind key="W-f">
       <action name="ToggleFullscreen"/>
