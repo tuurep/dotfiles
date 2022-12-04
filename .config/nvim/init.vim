@@ -76,7 +76,9 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 " One-handed save and quit 
 nnoremap <C-s> :w<cr>
+inoremap <C-s> <C-o>:w<cr>
 nnoremap <C-q> :q<cr>
+inoremap <C-q> <C-o>:q<cr>
 " Open and hop into undotree
 nnoremap <leader>u :UndotreeToggle<cr>
 let g:undotree_SetFocusWhenToggle = 1
