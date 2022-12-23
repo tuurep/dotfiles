@@ -67,7 +67,7 @@ alias pac="pacman"
 alias sauce="source ~/.bashrc"
 
 alias clip="xclip -selection clip" # Pipe anything to clipboard
-alias pngc="xclip -selection clip -t image/png"
+alias cpng="xclip -selection clip -t image/png"
 
 alias py="python"
 alias jl="julia"
