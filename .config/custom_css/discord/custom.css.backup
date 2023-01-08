@@ -21,3 +21,9 @@ button[aria-label="Open sticker picker"] {
 .link-39sEB3[data-list-item-id$="___nitro"] {
     display: none;
 }
+
+/* Hide blue notice at top about BetterDiscord updates */
+
+.bd-notice-info {
+    display: none;
+}
