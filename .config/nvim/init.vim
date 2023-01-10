@@ -83,6 +83,8 @@ inoremap <C-q> <C-o>:q<cr>
 nnoremap <leader>u :UndotreeToggle<cr>
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_HighlightChangedWithSign = 0
+" See highlight group/"capture" under cursor (requires treesitter playground plugin)
+nmap <leader>e :TSHighlightCapturesUnderCursor<cr>
 " Overwrite default s:
 nmap s <Plug>ReplaceWithRegisterOperator
 nmap ss <Plug>ReplaceWithRegisterLine
@@ -120,6 +122,9 @@ nmap <leader>§ <Plug>SlimeConfig
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'inkarkat/vim-ReplaceWithRegister'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 
 " Highlight current search item differently
 " Note that this remaps all the normal search commands,
