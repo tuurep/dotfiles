@@ -77,16 +77,6 @@ function! H(group, ctermfg, ctermbg, cterm)
     endif
 endfunction
 
-" Disable highlighting stuff like 'TODO', 'Note:', '<any-string>:'
-hi! link Todo Comment
-hi link vimCommentTitle Comment
-hi link gitcommitTrailerToken gitcommitTrailers
-
-" Disable weird unwanted error highlighting while typing
-" Todo: still see red/white fg syntax highlighting in e.g. HTML and XML
-" Difficult to remove across all filetypes
-hi Error none
-
 " No cursorline background, but still need current line number highlighted
 hi clear CursorLine
 call H("CursorLineNr", s:fg, s:bg, "none")
@@ -98,11 +88,11 @@ call H("Bold",         "", "", "bold")
 call H("Debug",        s:red, "", "")
 call H("Directory",    s:blue, "", "")
 call H("ErrorMsg",     s:red, s:bg, "")
+call H("Error",        s:bg, s:red, "")
 call H("Exception",    s:red, "", "")
 call H("FoldColumn",   s:cyan, s:light_bg, "")
 call H("Folded",       s:comment, s:light_bg, "")
 call H("Italic",       "", "", "none")
-call H("Macro",        s:red, "", "")
 call H("MatchParen",   "", s:comment, "")
 call H("MoreMsg",      s:fg, "", "")
 call H("Question",     s:fg, "", "")
@@ -119,7 +109,6 @@ call H("VisualNOS",    s:red, "", "")
 call H("WarningMsg",   s:red, "", "")
 call H("WildMenu",     s:light_bg, "", "")
 call H("Title",        s:blue, "", "none")
-call H("Conceal",      s:blue, s:bg, "")
 call H("Cursor",       s:bg, s:fg, "")
 call H("NonText",      s:comment, "", "")
 call H("EndOfBuffer",  s:line_number, "", "")
@@ -136,51 +125,6 @@ call H("TabLine",      s:comment, s:light_bg, "none")
 call H("TabLineFill",  s:comment, s:light_bg, "none")
 call H("TabLineSel",   s:green, s:light_bg, "none")
 
-" Standard syntax highlighting
-call H("Character",    s:red, "", "")
-call H("Comment",      s:comment, "", "italic")
-call H("Conditional",  s:magenta, "", "")
-call H("Constant",     s:orange, "", "")
-call H("Define",       s:magenta, "", "none")
-call H("Delimiter",    s:brown, "", "")
-call H("Float",        s:orange, "", "")
-call H("Function",     s:blue, "", "")
-call H("Identifier",   s:red, "", "none")
-call H("Include",      s:blue, "", "")
-call H("Keyword",      s:magenta, "", "")
-call H("Label",        s:yellow, "", "")
-call H("Number",       s:orange, "", "")
-call H("Operator",     s:fg, "", "none")
-call H("PreProc",      s:yellow, "", "")
-call H("Repeat",       s:yellow, "", "")
-call H("Special",      s:cyan, "", "")
-call H("SpecialChar",  s:brown, "", "")
-call H("Statement",    s:red, "", "")
-call H("StorageClass", s:yellow, "", "")
-call H("String",       s:green, "", "")
-call H("Structure",    s:magenta, "", "")
-call H("Tag",          s:yellow, "", "")
-call H("Type",         s:yellow, "", "none")
-call H("Typedef",      s:yellow, "", "")
-
-" C highlighting
-call H("cOperator",   s:cyan, "", "")
-call H("cPreCondit",  s:magenta, "", "")
-
-" C# highlighting
-call H("csClass",                 s:yellow, "", "")
-call H("csAttribute",             s:yellow, "", "")
-call H("csModifier",              s:magenta, "", "")
-call H("csType",                  s:red, "", "")
-call H("csUnspecifiedStatement",  s:blue, "", "")
-call H("csContextualStatement",   s:magenta, "", "")
-call H("csNewDecleration",        s:red, "", "")
-
-" CSS highlighting
-call H("cssBraces",      s:fg, "", "")
-call H("cssClassName",   s:magenta, "", "")
-call H("cssColor",       s:cyan, "", "")
-
 " Diff highlighting
 call H("DiffAdd",      s:bg, s:green, "")
 call H("DiffChange",   s:bg, s:dark_fg, "")
@@ -190,139 +134,124 @@ call H("DiffAdded",    s:green, s:bg, "")
 call H("DiffRemoved",  s:red, s:bg, "")
 call H("DiffLine",     s:blue, s:bg, "")
 
-" Git highlighting
-call H("gitcommitOverflow",       s:red, "", "")
-call H("gitcommitSummary",        s:green, "", "")
-call H("gitcommitComment",        s:comment, "", "")
-call H("gitcommitUntracked",      s:comment, "", "")
-call H("gitcommitDiscarded",      s:comment, "", "")
-call H("gitcommitSelected",       s:comment, "", "")
-call H("gitcommitHeader",         s:magenta, "", "")
-call H("gitcommitSelectedType",   s:blue, "", "")
-call H("gitcommitUnmergedType",   s:blue, "", "")
-call H("gitcommitDiscardedType",  s:blue, "", "")
-call H("gitcommitBranch",         s:orange, "", "bold")
-call H("gitcommitUntrackedFile",  s:yellow, "", "")
-call H("gitcommitUnmergedFile",   s:red, "", "bold")
-call H("gitcommitDiscardedFile",  s:red, "", "bold")
-call H("gitcommitSelectedFile",   s:green, "", "bold")
-
-" GitGutter highlighting
-call H("GitGutterAdd",            s:green, s:light_bg, "")
-call H("GitGutterChange",         s:blue, s:light_bg, "")
-call H("GitGutterDelete",         s:red, s:light_bg, "")
-call H("GitGutterChangeDelete",   s:magenta, s:light_bg, "")
-
 " Undotree highlighting
 call H("UndoTreeNodeCurrent",   s:fg, "", "")
 call H("UndoTreeCurrent",       s:fg, "", "")
 call H("UndoTreeHead",          s:green, "", "")
 call H("UndotreeSavedSmall",    s:green, "", "")
 call H("UndoTreeSavedBig",      s:bg, s:green, "")
-
-" HTML highlighting
-call H("htmlBold",    s:yellow, "", "")
-call H("htmlItalic",  s:magenta, "", "")
-call H("htmlEndTag",  s:fg, "", "")
-call H("htmlTag",     s:fg, "", "")
-
-" JavaScript highlighting
-call H("javaScript",        s:fg, "", "")
-call H("javaScriptBraces",  s:fg, "", "")
-call H("javaScriptNumber",  s:orange, "", "")
-
-" pangloss/vim-javascript highlighting
-call H("jsOperator",          s:blue, "", "")
-call H("jsStatement",         s:magenta, "", "")
-call H("jsReturn",            s:magenta, "", "")
-call H("jsThis",              s:red, "", "")
-call H("jsClassDefinition",   s:yellow, "", "")
-call H("jsFunction",          s:magenta, "", "")
-call H("jsFuncName",          s:blue, "", "")
-call H("jsFuncCall",          s:blue, "", "")
-call H("jsClassFuncName",     s:blue, "", "")
-call H("jsClassMethodType",   s:magenta, "", "")
-call H("jsRegexpString",      s:cyan, "", "")
-call H("jsGlobalObjects",     s:yellow, "", "")
-call H("jsGlobalNodeObjects", s:yellow, "", "")
-call H("jsExceptions",        s:yellow, "", "")
-call H("jsBuiltins",          s:yellow, "", "")
-
-" Mail highlighting
-call H("mailQuoted1",  s:yellow, "", "")
-call H("mailQuoted2",  s:green, "", "")
-call H("mailQuoted3",  s:magenta, "", "")
-call H("mailQuoted4",  s:cyan, "", "")
-call H("mailQuoted5",  s:blue, "", "")
-call H("mailQuoted6",  s:yellow, "", "")
-call H("mailURL",      s:blue, "", "")
-call H("mailEmail",    s:blue, "", "")
-
-" Markdown highlighting
-call H("markdownCode",              s:green, "", "")
-call H("markdownError",             s:fg, s:bg, "")
-call H("markdownCodeBlock",         s:green, "", "")
-call H("markdownHeadingDelimiter",  s:blue, "", "")
+call H("UndotreeTimeStamp",     s:comment, "", "")
 
 " Fern highlighting
 call H("FernSpinner",    "", s:bg, "")
 
-" NERDTree highlighting
-call H("NERDTreeDirSlash",  s:blue, "", "")
-call H("NERDTreeExecFile",  s:fg, "", "")
+" Treesitter capture groups
+" The full list is found here:
+" https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md
+" Base16 styling guidelines will help in choosing sensible colors:
+" https://github.com/chriskempson/base16/blob/main/styling.md
+call H("@comment",              s:comment, "", "italic")
+call H("@preproc",              s:magenta, "", "")
+call H("@define",               s:magenta, "", "")
+call H("@operator",             s:fg, "", "")
+call H("@punctuation",          s:fg, "", "")
+call H("@punctuation.delimiter",s:fg, "", "")
+call H("@punctuation.bracket",  s:fg, "", "")
+call H("@punctuation.special",  s:cyan, "", "")
+call H("@string",               s:green, "", "")
+call H("@string.regex",         s:cyan, "", "")
+call H("@string.escape",        s:cyan, "", "")
+call H("@string.special",       s:cyan, "", "")
+call H("@character",            s:green, "", "")
+call H("@character.special",    s:cyan, "", "")
+call H("@boolean",              s:orange, "", "")
+call H("@number",               s:orange, "", "")
+call H("@float",                s:orange, "", "")
+call H("@function",             s:fg, "", "")
+call H("@function.builtin",     s:magenta, "", "")
+call H("@function.call",        s:fg, "", "")
+call H("@function.macro",       s:fg, "", "")
+call H("@method",               s:fg, "", "")
+call H("@method.call",          s:fg, "", "")
+call H("@constructor",          s:fg, "", "")
+call H("@parameter",            s:fg, "", "")
+call H("@keyword",              s:magenta, "", "")
+call H("@keyword.function",     s:magenta, "", "")
+call H("@keyword.operator",     s:magenta, "", "")
+call H("@keyword.return",       s:magenta, "", "")
+call H("@conditional",          s:magenta, "", "")
+call H("@conditional.ternary",  s:magenta, "", "")
+call H("@repeat",               s:magenta, "", "")
+call H("@debug",                s:magenta, "", "")
+call H("@label",                s:magenta, "", "")
+call H("@include",              s:magenta, "", "")
+call H("@exception",            s:magenta, "", "")
+call H("@type",                 s:blue, "", "")
+call H("@type.builtin",         s:blue, "", "")
+call H("@type.definition",      s:blue, "", "")
+call H("@type.qualifier",       s:blue, "", "")
+call H("@storageclass",         s:magenta, "", "")
+call H("@attribute",            s:orange, "", "")
+call H("@field",                s:fg, "", "")
+call H("@property",             s:fg, "", "")
+call H("@variable",             s:fg, "", "")
+call H("@variable.builtin",     s:magenta, "", "")
+call H("@constant",             s:fg, "", "")
+call H("@constant.builtin",     s:orange, "", "")
+call H("@namespace",            s:blue, "", "")
+call H("@symbol",               s:blue, "", "")
+call H("@text",                 s:fg, "", "")
+call H("@text.strong",          s:yellow, "", "")
+call H("@text.emphasis",        s:magenta, "", "")
+call H("@text.underline",       s:yellow, "", "")
+call H("@text.strike",          s:red, "", "")
+call H("@text.title",           s:blue, "", "")
+call H("@text.literal",         s:green, "", "")
+call H("@text.uri",             s:orange, "", "")
+call H("@text.reference",       s:red, "", "")
+call H("@text.diff.add",        s:green, "", "")
+call H("@text.diff.delete",     s:red, "", "")
+call H("@tag",                  s:red, "", "")
+call H("@tag.attribute",        s:yellow, "", "")
+call H("@tag.delimiter",        s:fg, "", "")
 
-" PHP highlighting
-call H("phpMemberSelector",  s:fg, "", "")
-call H("phpComparison",      s:fg, "", "")
-call H("phpParent",          s:fg, "", "")
-call H("phpMethodsVar",      s:cyan, "", "")
+" Link for languages that don't have a treesitter parser
+" To have somewhat sensible defaults (otherwise Vim's default colorscheme will show)
+hi! link Character @character
+hi! link Comment @comment
+hi! link Conditional @conditional
+hi! link Constant @constant
+hi! link Define @define
+hi! link Delimiter @punctuation.delimiter
+hi! link Float @float
+hi! link Function @function
+hi! link Identifier @text
+hi! link Include @include
+hi! link Keyword @keyword
+hi! link Label @label
+hi! link Number @number
+hi! link Operator @operator
+hi! link PreProc @preproc
+hi! link Repeat @repeat
+hi! link Special @punctuation.special
+hi! link SpecialChar @character.special
+hi! link Statement @keyword
+hi! link StorageClass @storageclass
+hi! link String @string
+hi! link Structure @keyword
+hi! link Tag @tag
+hi! link Type @type
+hi! link Typedef @type.definition
 
-" Python highlighting
-call H("pythonOperator",  s:magenta, "", "")
-call H("pythonRepeat",    s:magenta, "", "")
-call H("pythonInclude",   s:magenta, "", "")
-call H("pythonStatement", s:magenta, "", "")
+" Fine-tuning and pinpointing issues
+" XML
+hi! link xmlTagName @tag
+hi! link xmlProcessingDelim @tag.delimiter
+hi! link xmlAttrib @tag.attribute
 
-" Ruby highlighting
-call H("rubyAttribute",               s:blue, "", "")
-call H("rubyConstant",                s:yellow, "", "")
-call H("rubyInterpolationDelimiter",  s:brown, "", "")
-call H("rubyRegexp",                  s:cyan, "", "")
-call H("rubySymbol",                  s:green, "", "")
-call H("rubyStringDelimiter",         s:green, "", "")
-
-" SASS highlighting
-call H("sassidChar",     s:red, "", "")
-call H("sassClassChar",  s:orange, "", "")
-call H("sassInclude",    s:magenta, "", "")
-call H("sassMixing",     s:magenta, "", "")
-call H("sassMixinName",  s:blue, "", "")
-
-" Signify highlighting
-call H("SignifySignAdd",     s:green, s:light_bg, "")
-call H("SignifySignChange",  s:blue, s:light_bg, "")
-call H("SignifySignDelete",  s:red, s:light_bg, "")
-
-" Spelling highlighting
-call H("SpellBad",     "", "", "undercurl")
-call H("SpellLocal",   "", "", "undercurl")
-call H("SpellCap",     "", "", "undercurl")
-call H("SpellRare",    "", "", "undercurl")
-
-" Startify highlighting
-call H("StartifyBracket",  s:comment, "", "")
-call H("StartifyFile",     s:bright_white, "", "")
-call H("StartifyFooter",   s:comment, "", "")
-call H("StartifyHeader",   s:green, "", "")
-call H("StartifyNumber",   s:orange, "", "")
-call H("StartifyPath",     s:comment, "", "")
-call H("StartifySection",  s:magenta, "", "")
-call H("StartifySelect",   s:cyan, "", "")
-call H("StartifySlash",    s:comment, "", "")
-call H("StartifySpecial",  s:comment, "", "")
-
-" Java highlighting
-call H("javaOperator",     s:blue, "", "")
+" git commit
+call H("@text.reference.gitcommit", s:green, "", "")
+call H("@text.uri.gitcommit",       s:fg, "", "")
 
 " Remove color variables
 unlet s:bg s:fg s:red s:green s:yellow s:blue s:magenta s:cyan s:bright_white s:orange s:brown s:light_bg s:selection_bg s:comment s:dark_fg s:light_fg s:statusln_fg s:line_number
