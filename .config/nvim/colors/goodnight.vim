@@ -249,6 +249,14 @@ hi! link xmlTagName @tag
 hi! link xmlProcessingDelim @tag.delimiter
 hi! link xmlAttrib @tag.attribute
 
+" Markdown
+call H("@punctuation.special.markdown", s:blue, "", "")
+
+" TSPlayground preview window
+hi! link markdownHeadingDelimiter @punctuation.special.markdown
+hi! link markdownListMarker @punctuation.special.markdown
+hi! link markdownOrderedListMarker @punctuation.special.markdown
+
 " git commit
 call H("@text.reference.gitcommit", s:green, "", "")
 call H("@text.uri.gitcommit",       s:fg, "", "")
