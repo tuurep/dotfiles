@@ -96,10 +96,10 @@ call H("Italic",       "", "", "none")
 call H("MatchParen",   "", s:comment, "")
 call H("MoreMsg",      s:fg, "", "")
 call H("Question",     s:fg, "", "")
-call H("Search",       s:bg, s:yellow, "")
-call H("IncSearch",    s:orange, s:bg, "")
-call H("CurrentSearch",s:bg, s:orange, "")        " WARNING: requires plugin qxxxb/vim-searchhi
-call H("SearchCursor", s:orange, s:bg, "")        " WARNING: requires plugin qxxxb/vim-searchhi
+call H("Search",       s:bg, s:brown, "")
+call H("IncSearch",    s:yellow, s:bg, "")
+call H("CurrentSearch",s:bg, s:yellow, "")        " WARNING: requires plugin qxxxb/vim-searchhi
+call H("SearchCursor", s:yellow, s:bg, "")        " WARNING: requires plugin qxxxb/vim-searchhi
 call H("Substitute",   s:bg, s:yellow, "none")
 call H("SpecialKey",   s:comment, "", "")
 call H("TooLong",      s:red, "", "")
