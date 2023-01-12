@@ -49,6 +49,14 @@ nnoremap <C-l> <Nop>
 noremap + <Nop>
 noremap - <Nop>
 noremap <BS> <Nop>
+" Tab to search because / sucks in Finnish layout
+" Side effect: Ctrl+i is understood as Tab in terminals, so "go forward in jump list" breaks
+" Map that to Ctrl+p which is free
+" NOTE: NeoVim can differentiate between these, but alacritty is still implementing, follow here:
+" https://github.com/alacritty/alacritty/issues/3101
+" Remove the Ctrl+P map in the future
+nnoremap <Tab> /
+nnoremap <C-p> <C-i>
 " Clear lingering command msg
 nnoremap <Enter> :echo ''<cr>
 " Show full path of current file (home as tilde)
