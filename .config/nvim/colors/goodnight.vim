@@ -103,7 +103,7 @@ call H("SearchCursor", s:yellow, s:bg, "")        " WARNING: requires plugin qxx
 call H("Substitute",   s:bg, s:yellow, "none")
 call H("SpecialKey",   s:comment, "", "")
 call H("TooLong",      s:red, "", "")
-call H("Underlined",   s:red, "", "")
+call H("Underlined",   s:yellow, "", "none")
 call H("Visual",       s:bg, s:fg, "")
 call H("VisualNOS",    s:red, "", "")
 call H("WarningMsg",   s:red, "", "")
@@ -144,6 +144,21 @@ call H("UndotreeTimeStamp",     s:comment, "", "")
 
 " Fern highlighting
 call H("FernSpinner",    "", s:bg, "")
+
+" vimtex
+call H("texCmd",                s:red, "", "")
+call H("texCmdStyle",           s:red, "", "")
+call H("texFileArg",            s:fg, "", "")
+call H("texFilesArg",           s:fg, "", "")
+call H("texConditionalArg",     s:fg, "", "")
+call H("texEnvArgName",         s:fg, "", "")
+call H("texTitleArg",           s:fg, "", "")
+call H("texPartArgTitle",       s:fg, "", "")
+call H("texRefArg",             s:blue, "", "")
+call H("texRefConcealedArg",    s:blue, "", "")
+call H("texVerbZone",           s:green, "", "")
+call H("texVerbZoneInline",     s:green, "", "")
+
 
 " Treesitter capture groups
 " The full list is found here:
@@ -256,6 +271,9 @@ call H("@punctuation.special.markdown", s:blue, "", "")
 hi! link markdownHeadingDelimiter @punctuation.special.markdown
 hi! link markdownListMarker @punctuation.special.markdown
 hi! link markdownOrderedListMarker @punctuation.special.markdown
+
+" :checkhealth OK
+call H("healthSuccess", s:bg, s:green, "")
 
 " git commit
 call H("@text.reference.gitcommit", s:green, "", "")
