@@ -260,6 +260,9 @@ hi! link Type @type
 hi! link Typedef @type.definition
 
 " Fine-tuning and pinpointing issues
+" Python
+hi! link pythonTodo none
+
 " XML
 hi! link xmlTagName @tag
 hi! link xmlProcessingDelim @tag.delimiter
