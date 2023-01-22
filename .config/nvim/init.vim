@@ -82,6 +82,11 @@ cnoremap <C-j> <Down>
 cnoremap <C-k> <Up>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
+" Scroll window but keep cursor where it is
+nnoremap <M-h> zh
+nnoremap <M-j> <C-e>
+nnoremap <M-k> <C-y>
+nnoremap <M-l> zl
 " One-handed save and quit 
 nnoremap <C-s> :w<cr>
 inoremap <C-s> <C-o>:w<cr>
