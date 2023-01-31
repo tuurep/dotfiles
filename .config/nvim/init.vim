@@ -56,6 +56,7 @@ noremap <BS> <Nop>
 " https://github.com/alacritty/alacritty/issues/3101
 " Remove the Ctrl+P map in the future
 nnoremap <Tab> /
+nnoremap <S-Tab> ?
 nnoremap <C-p> <C-i>
 " Clear lingering command msg
 nnoremap <Enter> :echo ''<cr>

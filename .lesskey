@@ -1,3 +1,4 @@
 #command
-^J  forw-scroll
-^K  back-scroll
+^J forw-scroll
+^K back-scroll
+\t forw-search
