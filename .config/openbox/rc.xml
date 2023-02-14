@@ -243,10 +243,11 @@
         <direction>east</direction>
       </action>
     </keybind>
-    <keybind key="W-space">
+    <!-- adiaeresis is the 'ä' key -->
+    <keybind key="W-adiaeresis">
       <action name="GrowToFill"></action>
     </keybind>
-    <keybind key="W-S-space">
+    <keybind key="W-S-adiaeresis">
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <height>100%</height>
@@ -365,7 +366,7 @@
         <command>alacritty</command>
       </action>
     </keybind>
-    <keybind key="W-p">
+    <keybind key="W-space">
       <action name="Execute">
         <command>rofi -show drun -display-drun "" -theme-str 'window {width: 22%;}'</command>
       </action>
