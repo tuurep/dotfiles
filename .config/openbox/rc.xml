@@ -38,7 +38,7 @@
   </resize>
   <keyboard>
     <!-- Reload config -->
-    <keybind key="W-r">
+    <keybind key="W-0">
       <action name="Execute">
         <command>openbox --restart</command>
       </action>
@@ -111,7 +111,7 @@
       </action>
     </keybind>
     <!-- Window size and position controls -->
-    <keybind key="W-Left">
+    <keybind key="W-a">
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>0</x>
@@ -120,7 +120,7 @@
         <height>100%</height>
       </action>
     </keybind>
-    <keybind key="W-Right">
+    <keybind key="W-d">
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>-0</x>
@@ -129,10 +129,10 @@
         <height>100%</height>
       </action>
     </keybind>
-    <keybind key="W-Up">
+    <keybind key="W-w">
       <action name="ToggleMaximize"/>
     </keybind>
-    <keybind key="W-Down">
+    <keybind key="W-s">
       <action name="MoveResizeTo">
         <y>0</y>
         <height>100%</height>
@@ -173,28 +173,28 @@
         <width>2/3</width>
       </action>
     </keybind>
-    <keybind key="W-period">
+    <keybind key="W-x">
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <y>0</y>
         <height>50%</height>
       </action>
     </keybind>
-    <keybind key="W-comma">
+    <keybind key="W-z">
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <y>-0</y>
         <height>50%</height>
       </action>
     </keybind>
-    <keybind key="W-minus">
+    <keybind key="W-less">
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>center</x>
         <y>center</y>
       </action>
     </keybind>
-    <keybind key="W-S-minus">
+    <keybind key="W-S-less">
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <width>800</width>
@@ -203,42 +203,42 @@
         <y>center</y>
       </action>
     </keybind>
-    <keybind key="W-S-Left">
+    <keybind key="W-S-a">
       <action name="GrowToEdge">
         <direction>west</direction>
       </action>
     </keybind>
-    <keybind key="W-S-Down">
+    <keybind key="W-S-s">
       <action name="GrowToEdge">
         <direction>south</direction>
       </action>
     </keybind>
-    <keybind key="W-S-Up">
+    <keybind key="W-S-w">
       <action name="GrowToEdge">
         <direction>north</direction>
       </action>
     </keybind>
-    <keybind key="W-S-Right">
+    <keybind key="W-S-d">
       <action name="GrowToEdge">
         <direction>east</direction>
       </action>
     </keybind>
-    <keybind key="W-C-Left">
+    <keybind key="W-C-a">
       <action name="ShrinkToEdge">
         <direction>west</direction>
       </action>
     </keybind>
-    <keybind key="W-C-Down">
+    <keybind key="W-C-s">
       <action name="ShrinkToEdge">
         <direction>south</direction>
       </action>
     </keybind>
-    <keybind key="W-C-Up">
+    <keybind key="W-C-w">
       <action name="ShrinkToEdge">
         <direction>north</direction>
       </action>
     </keybind>
-    <keybind key="W-C-Right">
+    <keybind key="W-C-d">
       <action name="ShrinkToEdge">
         <direction>east</direction>
       </action>
@@ -294,46 +294,6 @@
         <direction>east</direction>
       </action>
     </keybind>
-    <keybind key="W-A-h">
-      <action name="MoveRelative">
-        <x>-20</x>
-      </action>
-    </keybind>
-    <keybind key="W-A-j">
-      <action name="MoveRelative">
-        <y>20</y>
-      </action>
-    </keybind>
-    <keybind key="W-A-k">
-      <action name="MoveRelative">
-        <y>-20</y>
-      </action>
-    </keybind>
-    <keybind key="W-A-l">
-      <action name="MoveRelative">
-        <x>20</x>
-      </action>
-    </keybind>
-    <keybind key="W-A-Left">
-      <action name="ResizeRelative">
-        <right>-20</right>
-      </action>
-    </keybind>
-    <keybind key="W-A-Down">
-      <action name="ResizeRelative">
-        <up>-20</up>
-      </action>
-    </keybind>
-    <keybind key="W-A-Up">
-      <action name="ResizeRelative">
-        <down>-20</down>
-      </action>
-    </keybind>
-    <keybind key="W-A-Right">
-      <action name="ResizeRelative">
-        <left>-20</left>
-      </action>
-    </keybind>
     <!-- Keybindings for windows -->
     <keybind key="W-q">
       <action name="Close"/>
@@ -343,10 +303,10 @@
         <command>~/scripts/ob/close-all-except-active.sh</command>
       </action>
     </keybind>
-    <keybind key="W-w">
+    <keybind key="W-e">
       <action name="Iconify"/> <!-- as in "minimize" -->
     </keybind>
-    <keybind key="W-S-w">
+    <keybind key="W-S-e">
       <action name="Execute">
         <command>~/scripts/ob/minimize-all-except-active.sh</command>
       </action>
