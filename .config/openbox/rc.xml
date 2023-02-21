@@ -44,57 +44,57 @@
       </action>
     </keybind>
     <!-- Volume/brightness control and screenlocking through their dedicated keys -->
-    <keybind key="F2">
+    <keybind key="W-Left">
       <action name="Execute">
         <command>pactl -- set-sink-volume 0 -5%</command>
       </action>
     </keybind>
-    <keybind key="W-F2">
+    <keybind key="W-C-Left">
       <action name="Execute">
         <command>pactl -- set-sink-volume 0 -1%</command>
       </action>
     </keybind>
-    <keybind key="W-S-F2">
+    <keybind key="W-S-Left">
       <action name="Execute">
         <command>pactl -- set-sink-volume 0 0%</command>
       </action>
     </keybind>
-    <keybind key="F3">
+    <keybind key="W-Right">
       <action name="Execute">
         <command>~/scripts/ob/increase-volume-with-upper-limit.sh 5</command>
       </action>
     </keybind>
-    <keybind key="W-F3">
+    <keybind key="W-C-Right">
       <action name="Execute">
         <command>~/scripts/ob/increase-volume-with-upper-limit.sh 1</command>
       </action>
     </keybind>
-    <keybind key="F5">
+    <keybind key="W-Down">
       <action name="Execute">
         <command>~/scripts/ob/change-brightness.sh -5</command>
       </action>
     </keybind>
-    <keybind key="F6">
+    <keybind key="W-Up">
       <action name="Execute">
         <command>~/scripts/ob/change-brightness.sh 5</command>
       </action>
     </keybind>
-    <keybind key="W-F5">
+    <keybind key="W-C-Down">
       <action name="Execute">
         <command>~/scripts/ob/change-brightness.sh -1</command>
       </action>
     </keybind>
-    <keybind key="W-F6">
+    <keybind key="W-C-Up">
       <action name="Execute">
         <command>~/scripts/ob/change-brightness.sh 1</command>
       </action>
     </keybind>
-    <keybind key="W-S-F5">
+    <keybind key="W-S-Down">
       <action name="Execute">
         <command>brightnessctl s 0%</command>
       </action>
     </keybind>
-    <keybind key="W-S-F6">
+    <keybind key="W-S-Up">
       <action name="Execute">
         <command>brightnessctl s 100%</command>
       </action>
