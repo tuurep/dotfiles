@@ -44,57 +44,57 @@
       </action>
     </keybind>
     <!-- Volume/brightness control and screenlocking through their dedicated keys -->
-    <keybind key="W-Left">
+    <keybind key="F2 W-Left">
       <action name="Execute">
         <command>pactl -- set-sink-volume 0 -5%</command>
       </action>
     </keybind>
-    <keybind key="W-C-Left">
+    <keybind key="W-F2 W-C-Left">
       <action name="Execute">
         <command>pactl -- set-sink-volume 0 -1%</command>
       </action>
     </keybind>
-    <keybind key="W-S-Left">
+    <keybind key="W-S-F2 W-S-Left">
       <action name="Execute">
         <command>pactl -- set-sink-volume 0 0%</command>
       </action>
     </keybind>
-    <keybind key="W-Right">
+    <keybind key="F3 W-Right">
       <action name="Execute">
         <command>~/scripts/ob/increase-volume-with-upper-limit.sh 5</command>
       </action>
     </keybind>
-    <keybind key="W-C-Right">
+    <keybind key="W-F3 W-C-Right">
       <action name="Execute">
         <command>~/scripts/ob/increase-volume-with-upper-limit.sh 1</command>
       </action>
     </keybind>
-    <keybind key="W-Down">
+    <keybind key="F5 W-Down">
       <action name="Execute">
         <command>~/scripts/ob/change-brightness.sh -5</command>
       </action>
     </keybind>
-    <keybind key="W-Up">
+    <keybind key="F6 W-Up">
       <action name="Execute">
         <command>~/scripts/ob/change-brightness.sh 5</command>
       </action>
     </keybind>
-    <keybind key="W-C-Down">
+    <keybind key="W-F5 W-C-Down">
       <action name="Execute">
         <command>~/scripts/ob/change-brightness.sh -1</command>
       </action>
     </keybind>
-    <keybind key="W-C-Up">
+    <keybind key="W-F6 W-C-Up">
       <action name="Execute">
         <command>~/scripts/ob/change-brightness.sh 1</command>
       </action>
     </keybind>
-    <keybind key="W-S-Down">
+    <keybind key="W-S-F5 W-S-Down">
       <action name="Execute">
         <command>brightnessctl s 0%</command>
       </action>
     </keybind>
-    <keybind key="W-S-Up">
+    <keybind key="W-S-F6 W-S-Up">
       <action name="Execute">
         <command>brightnessctl s 100%</command>
       </action>
