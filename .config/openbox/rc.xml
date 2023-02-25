@@ -11,22 +11,22 @@
     <name>Borderless-Dark</name>
     <titleLayout>LIMC</titleLayout>
     <font place="ActiveWindow">
-      <name>Noto Sans</name>
+      <name>Roboto</name>
       <size>11</size>
       <weight>normal</weight>
     </font>
     <font place="InactiveWindow">
-      <name>Noto Sans</name>
+      <name>Roboto</name>
       <size>11</size>
       <weight>normal</weight>
     </font>
     <font place="MenuHeader">
-      <name>Noto Sans</name>
-      <size>9</size>
+      <name>Roboto</name>
+      <size>11</size>
     </font>
     <font place="MenuItem">
-      <name>Noto Sans</name>
-      <size>9</size>
+      <name>Roboto</name>
+      <size>11</size>
     </font>
   </theme>
   <desktops>
