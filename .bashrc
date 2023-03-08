@@ -6,14 +6,8 @@ export VISUAL=nvim
 # If the running shell is not an interactive shell, return without doing anything
 [[ $- != *i* ]] && return
 
-# If in tty2 console, don't use nerdfont icons in PS1 and PS2
-if [ "$TERM" = "linux" ]; then
-        PS1="\[\e[0;32m\]> \[\e[0m\]"
-        PS2="\[\e[0;32m\]\ \[\e[0m\]"
-else
-        PS1="\[\e[0;32m\] \[\e[0m\]"
-        PS2="\[\e[0;32m\]﬌ \[\e[0m\]"
-fi
+PS1="\[\e[0;32m\]\$ \[\e[0m\]"
+PS2="\[\e[0;32m\]> \[\e[0m\]"
 
 prompt_cmd() {
         if [[ "$TERM" =~ tmux* ]]; then      
