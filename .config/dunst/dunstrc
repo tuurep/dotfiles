@@ -5,7 +5,9 @@
     background = "#222525"
     foreground = "#eaeaea"
     frame_color = "#909090"
-    timeout = 20
+
+    timeout = 15
+    ignore_dbusclose = true # For example, makes discord obey timeout set here
 
     show_indicators = false
     icon_position = off
