@@ -27,8 +27,7 @@ set number
 set noruler
 set nowrap
 set cursorline " For LineNumber highlighting only, with my colorscheme setting (no bg highlight for line)
-set ignorecase
-set smartcase " No ignorecase if Uppercase char present in search
+set gdefault " :substitute g is on by default - adding g will instead toggle it off
 set noerrorbells
 
 " Indentation settings for using 4 spaces instead of tabs.
@@ -58,6 +57,8 @@ noremap <BS> <Nop>
 nnoremap <Tab> /
 nnoremap <S-Tab> ?
 nnoremap <C-p> <C-i>
+" Start a substitute command without finger gymnastics:
+nnoremap <leader><Tab> :%s/
 " Clear lingering command msg
 nnoremap <Enter> :echo ''<cr>
 " Show full path of current file (home as tilde)
