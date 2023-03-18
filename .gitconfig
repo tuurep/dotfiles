@@ -12,9 +12,7 @@
         ds = diff --staged
         b = branch
         co = checkout
+        l = log
 
 [pull]
 	ff = only
-
-[safe]
-	directory = /usr/share/lightdm-webkit/themes/dmg_black
