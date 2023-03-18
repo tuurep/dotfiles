@@ -15,6 +15,13 @@ More clearly explained:
 Video walkthrough:
 * [DistroTube video](https://www.youtube.com/watch?v=tBoLDpTWVOM)
 
-### Vim/terminal color scheme
+### NeoVim/terminal color scheme
 
 * See [color table](https://htmlpreview.github.io/?https://github.com/tuurep/dotfiles/blob/master/.github/colortable.html)
+* Non-CLI applications that also generally follow this color scheme:
+    * polybar
+    * rofi
+    * zathura (pdf reader)
+    * dunst
+    * sxiv
+    * my lightdm web-greeter [theme](https://github.com/tuurep/dmg_black)
