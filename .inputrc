@@ -7,3 +7,6 @@
 "\e[A":history-search-backward
 # arrow down
 "\e[B":history-search-forward
+
+# Case-insensitive tab completion
+set completion-ignore-case On
