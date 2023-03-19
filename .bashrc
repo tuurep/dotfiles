@@ -46,7 +46,6 @@ alias grep="grep --colour=auto"
 alias egrep="egrep --colour=auto"
 alias fgrep="fgrep --colour=auto"
 alias diff="diff --color=auto"
-alias fd="fd --color=never"
 
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
@@ -116,6 +115,8 @@ export PATH="$PATH:$GEM_HOME/bin"
 
 
 # === Settings for tools ===
+
+source ~/.ls_colors
 
 export PYTHONSTARTUP="$HOME/.pyrc" # Config (startup script) for py interactive shell
 
