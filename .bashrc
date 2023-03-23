@@ -28,6 +28,7 @@ PROMPT_COMMAND=prompt_cmd
 
 # Enable history appending instead of overwriting
 shopt -s histappend
+export HISTCONTROL=ignoredups
 
 # Aliases:
 
