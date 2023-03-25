@@ -16,6 +16,17 @@ set vertical-center "true"
 # Hide statusbar (bottom row) by default: toggle with <C-n>
 set guioptions ""
 
+# Keymaps
+map <C-Tab> toggle_index
+map <Tab> focus_inputbar / # Search (forward)
+
+map [index] <C-Tab> toggle_index
+unmap [index] <Tab> # Weird behavior: now pressing tab in index mode starts
+                    # some kind of a floating search field
+                    # Could not figure out why, but it is actually useful!
+                    # A clue: it's the same as when starting to type in
+                    # PCManFM file manager
+
 # goodnight colors:
 
 set default-bg                  "#121212"
