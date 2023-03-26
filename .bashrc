@@ -50,8 +50,8 @@ alias diff="diff --color=auto"
 
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
-alias tls="tmux ls"
-alias tkill="tmux kill-session -t"
+alias tl="tmux ls"
+alias tk="tmux kill-session -t"
 
 alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias gr='cd $(git rev-parse --show-toplevel)' # Go to root of current git repo, if any. Else goes to ~.
