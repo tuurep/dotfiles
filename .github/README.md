@@ -23,5 +23,5 @@ Video walkthrough:
     * rofi
     * zathura (pdf reader)
     * dunst
-    * sxiv
+    * nsxiv
     * my lightdm web-greeter [theme](https://github.com/tuurep/dmg_black)

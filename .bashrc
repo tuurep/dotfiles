@@ -36,7 +36,7 @@ alias c="cd"
 alias l="ls"
 alias p='pwd | sed "s|^$HOME|~|"'
 alias e="nvim"
-alias v="sxiv"
+alias v="nsxiv"
 alias q="exit"
 
 alias ll="ls -oh" # long format with no group info - human readable size
