@@ -1,24 +1,110 @@
 #!/bin/bash
 
+# KEYS
+# ----
+# rs    Reset
+# di    Directory
+# ex    Executable (+x)
+# ln    Symbolic link (set value as 'target' to be colored like the file pointed to)
+# or    Orphan - Symbolic link that points to a file that doesn't exist
+# mi    Missing file - Shown in `ls -l` pointed by an orphan with an arrow
+# mh    Multihardlink - File with more than one hard link
+# pi    Named pipe
+# so    Socket
+# bd    Block device
+# cd    Character device
+# su    Setuid (u+s)
+# sg    Setgid (g+s)
+# ca    File with capabilities set (see `man setcap`)
+# st    Sticky directory (+t)
+# ow    Other-writable directory (o+w)
+# tw    Sticky and other-writable directory (+t, o+w)
+
+# Unset but also available
+# ------------------------
+# no    Normal - Global default color
+# fi    Regular file
+# do    Door - A special file only implemented in Solaris
+
+# (Advanced configuration keys for terminals that use different codes or something)
+# lc    Leftcode
+# rc    Rightcode
+# ec    Endcode
+
+
+# COLORS
+# ------
+# Format: <Effect>;<Foreground>;<Background>
+# Apparently the order does not matter though
+
+# Effects:
+#
+# 00    Regular
+# 01    Bold
+# 03    Italic
+# 04    Underline
+#
+# As these get super obscure, for the rest of them see:
+#      https://en.wikipedia.org/wiki/ANSI_escape_code#SGR
+
+# Foreground:
+#
+# 30    Black           (default bg)
+# 31    Red
+# 32    Green
+# 33    Yellow
+# 34    Blue
+# 35    Magenta
+# 36    Cyan
+# 37    White           (default fg)
+#
+# 90    Bright Black    (comment)
+# 91    Bright Red
+# 92    Bright Green
+# 93    Bright Yellow
+# 94    Bright Blue
+# 95    Bright Magenta
+# 96    Bright Cyan
+# 97    Bright White
+
+# Background:
+#
+# 40    Black           (default bg)
+# 41    Red
+# 42    Green
+# 43    Yellow
+# 44    Blue
+# 45    Magenta
+# 46    Cyan
+# 47    White           (default fg)
+#
+# 100   Bright Black    (comment)
+# 101   Bright Red
+# 102   Bright Green
+# 103   Bright Yellow
+# 104   Bright Blue
+# 105   Bright Magenta
+# 106   Bright Cyan
+# 107   Bright White
+
 LS_COLORS="\
 rs=0:\
 di=01;34:\
+ex=01;32:\
 ln=01;36:\
+or=40;31;01:\
+mi=00:\
 mh=00:\
 pi=40;33:\
 so=01;35:\
-do=01;35:\
 bd=40;33;01:\
 cd=40;33;01:\
-or=40;31;01:\
-mi=00:\
 su=30;41:\
 sg=30;43:\
 ca=00:\
-tw=30;42:\
-ow=30;46:\
 st=30;44:\
-ex=01;32:\
+ow=30;46:\
+tw=30;42:\
 *.tar=01;31:\
 *.tgz=01;31:\
 *.arc=01;31:\
