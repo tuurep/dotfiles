@@ -328,17 +328,17 @@
     </keybind>
     <keybind key="W-space">
       <action name="Execute">
-        <command>rofi -show drun -display-drun "" -theme-str 'window {width: 22%;}'</command>
+        <command>rofi -show drun -theme-str 'window {width: 22%;}'</command>
       </action>
     </keybind>
     <keybind key="W-Tab">
       <action name="Execute">
-        <command>rofi -show window -display-window ""</command>
+        <command>rofi -show window</command>
       </action>
     </keybind>
     <keybind key="W-c">
       <action name="Execute">
-        <command>rofi -modi ":greenclip print" -show  -run-command '{cmd}'</command>
+        <command>rofi -modes "greenclip:greenclip print" -show greenclip -run-command '{cmd}'</command>
       </action>
     </keybind>
     <keybind key="Print">

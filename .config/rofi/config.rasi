@@ -7,7 +7,16 @@ configuration {
     window-format: "{c}    {t}";
 
     window {
+        display-name: "";
         close-on-delete: false;
+    }
+
+    drun {
+        display-name: "";
+    }
+
+    greenclip {
+        display-name: "";
     }
 
     drun-match-fields: "name";
