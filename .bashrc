@@ -6,6 +6,10 @@ export VISUAL=nvim
 # If the running shell is not an interactive shell, return without doing anything
 [[ $- != *i* ]] && return
 
+# Disable Ctrl+s and Ctrl+q freeze/unfreeze
+# Enables Ctrl+s i-search in its place (Ctrl+r opposite direction)
+stty -ixon
+
 # If in tty2 console, don't use nerdfont icons in PS1 and PS2
 if [ "$TERM" = "linux" ]; then
         PS1="\[\e[0;32m\]$ \[\e[0m\]"
