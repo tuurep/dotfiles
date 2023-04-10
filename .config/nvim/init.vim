@@ -30,6 +30,10 @@ set cursorline " For LineNumber highlighting only, with my colorscheme setting (
 set gdefault " :substitute g is on by default - adding g will instead toggle it off
 set noerrorbells
 
+" This helps gx (open url in browser) to get the full url right
+" See: https://vi.stackexchange.com/questions/2801/how-can-i-make-gx-recognise-full-urls-in-vim
+let g:netrw_gx="<cWORD>"
+
 " Indentation settings for using 4 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
 set shiftwidth=4
