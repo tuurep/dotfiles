@@ -22,7 +22,8 @@ rotate() {
 }
 
 case "$1" in
-        "C-c")      while read file; do xclip -selection clipboard -target image/png "$file"; done ;;
+        # Todo: this ain't working
+        # "C-c")      tr '\n' ' ' | cb copy ;;
         "C-comma")  rotate 270 ;;
         "C-period") rotate  90 ;;
         "C-minus")  rotate 180 ;;

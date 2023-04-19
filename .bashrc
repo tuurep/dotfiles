@@ -51,6 +51,7 @@ alias grep="grep --colour=auto"
 alias egrep="egrep --colour=auto"
 alias fgrep="fgrep --colour=auto"
 alias diff="diff --color=auto"
+alias cb="NO_COLOR='please' cb"
 
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
@@ -70,9 +71,6 @@ alias sudoreset='faillock --reset --user $USER'
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias pac="pacman"
 alias sauce="source ~/.bashrc"
-
-alias clip="xclip -selection clip" # Pipe anything to clipboard
-alias cpng="xclip -selection clip -t image/png"
 
 alias py="python"
 alias jl="julia"
