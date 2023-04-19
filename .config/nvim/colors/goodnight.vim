@@ -63,7 +63,6 @@ let s:light_fg = "21"
 let s:statusln_fg = "22"
 let s:line_number = "23"
 
-
 " Highlighting function
 function! H(group, ctermfg, ctermbg, cterm)
     if a:ctermfg != ""
@@ -82,9 +81,18 @@ hi clear CursorLine
 call H("CursorLineNr", s:fg, s:bg, "none")
 call H("LineNr",       s:line_number, "", "")
 
+" Search and substitute (:%s)
+call H("Search",       s:bg, s:brown, "")
+call H("CurSearch",    s:bg, s:yellow, "")
+call H("IncSearch",    s:yellow, s:bg, "")
+call H("Substitute",   s:bg, s:yellow, "none")
+
 " Vim editor colors
+call H("Cursor",       s:bg, s:fg, "")
 call H("Normal",       s:fg, s:bg, "")
 call H("Bold",         "", "", "bold")
+call H("Italic",       "", "", "none")
+call H("Underlined",   s:yellow, "", "none")
 call H("Debug",        s:red, "", "")
 call H("Directory",    s:blue, "", "")
 call H("ErrorMsg",     s:red, s:bg, "")
@@ -92,24 +100,16 @@ call H("Error",        s:bg, s:red, "")
 call H("Exception",    s:red, "", "")
 call H("FoldColumn",   s:cyan, s:light_bg, "")
 call H("Folded",       s:comment, s:light_bg, "")
-call H("Italic",       "", "", "none")
 call H("MatchParen",   "", s:comment, "")
 call H("MoreMsg",      s:fg, "", "")
 call H("Question",     s:fg, "", "")
-call H("Search",       s:bg, s:brown, "")
-call H("IncSearch",    s:yellow, s:bg, "")
-call H("CurrentSearch",s:bg, s:yellow, "")        " WARNING: requires plugin qxxxb/vim-searchhi
-call H("SearchCursor", s:yellow, s:bg, "")        " WARNING: requires plugin qxxxb/vim-searchhi
-call H("Substitute",   s:bg, s:yellow, "none")
 call H("SpecialKey",   s:comment, "", "")
 call H("TooLong",      s:red, "", "")
-call H("Underlined",   s:yellow, "", "none")
 call H("Visual",       s:bg, s:fg, "")
 call H("VisualNOS",    s:red, "", "")
 call H("WarningMsg",   s:red, "", "")
 call H("WildMenu",     s:light_bg, "", "")
 call H("Title",        s:blue, "", "none")
-call H("Cursor",       s:bg, s:fg, "")
 call H("NonText",      s:comment, "", "")
 call H("EndOfBuffer",  s:line_number, "", "")
 call H("SignColum",    s:comment, s:bg, "")
@@ -158,7 +158,6 @@ call H("texRefArg",             s:blue, "", "")
 call H("texRefConcealedArg",    s:blue, "", "")
 call H("texVerbZone",           s:green, "", "")
 call H("texVerbZoneInline",     s:green, "", "")
-
 
 " Treesitter capture groups
 " The full list is found here:

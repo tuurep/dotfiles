@@ -140,15 +140,12 @@ nmap <leader>§ <Plug>SlimeConfig
 " ============== PLUGINS: junegunn/vim-plug ===============
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'jesseleite/vim-noh'
+
 Plug 'inkarkat/vim-ReplaceWithRegister'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
-
-" Highlight current search item differently
-" Note that this remaps all the normal search commands,
-" see searchhi-options.vim under plugin/
-Plug 'qxxxb/vim-searchhi'
 
 " Without this, vimmers can't dot-repeat keymaps that come from plugins
 Plug 'tpope/vim-repeat'
