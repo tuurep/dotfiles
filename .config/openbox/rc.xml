@@ -37,6 +37,13 @@
     <popupShow>Never</popupShow>
   </resize>
   <keyboard>
+    <!-- Escape to left mouse button -->
+    <!-- Holding key for mouse down doesn't work but can rapid fire clicks -->
+    <keybind key="Escape">
+      <action name="Execute">
+        <command>xdotool click 1</command>
+      </action>
+    </keybind>
     <!-- Reload config -->
     <keybind key="W-0">
       <action name="Execute">
