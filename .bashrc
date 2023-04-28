@@ -43,8 +43,10 @@ alias e="nvim"
 alias v="nsxiv"
 alias q="exit"
 
-alias ll="ls -oh" # long format with no group info - human readable size
-alias pl='echo "$OLDPWD" | sed "s|^$HOME|~|"'
+alias ll="ls -oh --color=always | tail -n+2" # Long format with no group info, human readable size
+                                             # Remove first line (example: total 4K)
+
+alias pl='echo "$OLDPWD" | sed "s|^$HOME|~|"' # Show previous directory, useful with `cd -`
 
 alias ls="ls --color=auto"
 alias grep="grep --colour=auto"
