@@ -43,9 +43,6 @@ alias e="nvim"
 alias v="nsxiv"
 alias q="exit"
 
-alias ll="ls -oh --color=always | tail -n+2" # Long format with no group info, human readable size
-                                             # Remove first line (example: total 4K)
-
 alias pl='echo "$OLDPWD" | sed "s|^$HOME|~|"' # Show previous directory, useful with `cd -`
 
 alias ls="ls --color=auto"
@@ -96,6 +93,12 @@ alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0 \
                         | cut -d ':' -f 2"
 
 # Simple commands that can't be aliases because they need arguments:
+
+# ls long listing with the first line (example: "total 4K") removed
+ll() {
+        ls -oh --color=always "$@" | tail -n+2
+}
+
 # cd to where a symlinked file points to
 cdl() {
         cd "$(dirname "$(readlink -f "$1")")" || exit
