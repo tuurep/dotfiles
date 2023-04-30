@@ -94,9 +94,9 @@ alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0 \
 
 # Simple commands that can't be aliases because they need arguments:
 
-# ls long listing with the first line (example: "total 4K") removed
+# ls long listing with the first line (example: "total 4.0K") removed
 ll() {
-        ls -oh --color=always "$@" | tail -n+2
+        ls -oh --color=always "$@" | sed -r '/^total [0-9]+\.?[0-9]*[BKMGT]?$/d'
 }
 
 # cd to where a symlinked file points to
