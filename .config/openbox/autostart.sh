@@ -20,3 +20,5 @@ picom -b
 # through rofi
 parcellite &
 greenclip daemon &
+
+transmission-daemon

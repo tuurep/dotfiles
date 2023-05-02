@@ -80,6 +80,7 @@ alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
 alias vivaldi="vivaldi-stable"
 alias viv="vivaldi-stable"
 alias grip="grip -b"
+alias tmr="transmission-remote"
 
 alias whereami='echo $HOSTNAME'
 alias reset-dunst="killall dunst; notify-send monkey monkey"
