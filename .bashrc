@@ -41,6 +41,7 @@ alias l="ls"
 alias p='pwd | sed "s|^$HOME|~|"'
 alias e="nvim"
 alias v="nsxiv"
+alias g="grep"
 alias q="exit"
 
 alias pl='echo "$OLDPWD" | sed "s|^$HOME|~|"' # Show previous directory, useful with `cd -`
@@ -73,6 +74,7 @@ alias sauce="source ~/.bashrc"
 
 alias py="python"
 alias jl="julia"
+alias sc="shellcheck"
 
 alias zat="zathura"
 alias ff="firefox"
