@@ -47,9 +47,9 @@ alias q="exit"
 alias pl='echo "$OLDPWD" | sed "s|^$HOME|~|"' # Show previous directory, useful with `cd -`
 
 alias ls="ls --color=auto"
-alias grep="grep --colour=auto"
-alias egrep="egrep --colour=auto"
-alias fgrep="fgrep --colour=auto"
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
 alias diff="diff --color=auto"
 alias cb="NO_COLOR='please' cb"
 
@@ -127,7 +127,9 @@ export PATH="$PATH:$GEM_HOME/bin"
 
 # === Settings for tools ===
 
-source ~/.ls_colors
+source ~/.ls_colors # Sets and exports LS_COLORS env variable
+
+export SYSTEMD_COLORS=16 # Prevent systemctl from using colors outside of my colorscheme
 
 export PYTHONSTARTUP="$HOME/.pyrc" # Config (startup script) for py interactive shell
 
