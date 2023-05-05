@@ -267,6 +267,7 @@ hi! link pythonTodo none
 
 " XML
 hi! link xmlTagName @tag
+hi! link xmlTag @tag.delimiter
 hi! link xmlProcessingDelim @tag.delimiter
 hi! link xmlAttrib @tag.attribute
 
