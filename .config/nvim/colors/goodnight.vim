@@ -150,14 +150,16 @@ call H("texCmd",                s:red, "", "")
 call H("texCmdStyle",           s:red, "", "")
 call H("texFileArg",            s:fg, "", "")
 call H("texFilesArg",           s:fg, "", "")
+call H("texConcealedArg",       s:fg, "", "")
 call H("texConditionalArg",     s:fg, "", "")
 call H("texEnvArgName",         s:fg, "", "")
-call H("texTitleArg",           s:fg, "", "")
-call H("texPartArgTitle",       s:fg, "", "")
-call H("texRefArg",             s:blue, "", "")
-call H("texRefConcealedArg",    s:blue, "", "")
-call H("texVerbZone",           s:green, "", "")
-call H("texVerbZoneInline",     s:green, "", "")
+call H("texOptEqual",           s:fg, "", "")
+hi! link texTitleArg @text.title
+hi! link texPartArgTitle @text.title
+hi! link texUrlArg @text.uri
+hi! link texRefArg @text.uri
+hi! link texVerbZone @text.literal
+hi! link texVerbZoneInline @text.literal
 
 " Treesitter capture groups
 " The full list is found here:
