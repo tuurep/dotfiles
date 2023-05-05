@@ -228,7 +228,7 @@ call H("@text.reference",       s:red, "", "")
 call H("@text.diff.add",        s:green, "", "")
 call H("@text.diff.delete",     s:red, "", "")
 call H("@tag",                  s:red, "", "")
-call H("@tag.attribute",        s:orange, "", "")
+call H("@tag.attribute",        s:yellow, "", "")
 call H("@tag.delimiter",        s:fg, "", "")
 
 " Link for languages that don't have a treesitter parser
