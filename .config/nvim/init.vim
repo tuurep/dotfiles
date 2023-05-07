@@ -44,7 +44,10 @@ set expandtab
 " Map leader to space
 nnoremap <Space> <Nop>
 let mapleader=" "
-" Disable keys that can interfere with other settings OR that I later want to repurpose
+" Disable keys that:
+"   1. can interfere with other settings
+"   2. I want to repurpose later 
+"   3. are annoying
 nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
 nnoremap <C-h> <Nop>
@@ -52,6 +55,11 @@ nnoremap <C-l> <Nop>
 noremap + <Nop>
 noremap - <Nop>
 noremap <BS> <Nop>
+noremap <PageDown> <Nop>
+noremap <PageUp> <Nop>
+noremap! <PageDown> <Nop>
+noremap! <PageUp> <Nop>
+
 " Tab to search because / sucks in Finnish layout
 " Side effect: Ctrl+i is understood as Tab in terminals, so "go forward in jump list" breaks
 " Map that to Ctrl+p which is free
