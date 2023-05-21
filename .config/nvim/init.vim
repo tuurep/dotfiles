@@ -16,6 +16,7 @@ autocmd FileType * if &filetype != "gitcommit"
 
 " Preferences
 set mouse=a
+set mousescroll=ver:1,hor:1 " Two-finger scroll on trackpad distance per scroll event (row, col)
 set guicursor=a:block
 set laststatus=1 " Don't show statusline unless there are 2 or more windows
 set shortmess+=I " Don't display intro message (:h :intro) when opening empty buffer
