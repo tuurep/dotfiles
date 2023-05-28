@@ -35,6 +35,17 @@
     opacity: 0 !important;
 }
 
+/*
+    Change color of the solid border that divides address bar and page
+    By default the border color is determined by: 
+        Firefox Colors -> Custom colors -> Background Color
+    In my theme it's almost black (#191919) which is hard on the eyes
+    The following makes it a lighter gray
+*/
+#navigator-toolbox {
+    border-bottom: 1px solid #949494 !important;
+}
+
 #reader-mode-button {
     display: none !important;
 }
@@ -63,3 +74,18 @@
 .findbar-entire-word {
     display: none !important;
 }
+
+/* FIREFOX COLOR THEME NOTES */
+
+/*
+    Link to theme:
+    https://color.firefox.com/?theme=XQAAAAIpAQAAAAAAAABBKYhm849SCia3ftKEGccwS-xMDPsqvGnCXAF6EJDWcx9sS_Bi3JZGE6ZZI2STfI2PTljkR9h-XHM39YpblCWMouVZmYeGLeJSfiVmiQVwIk3UGujkXsu6rNq6j3m1AxNZc-T8yzX8Fabm7i3h9xXjjA1DyVopI9VCZxTaxAJ74aNM9JDnprlmXV_BeRGJ9MzIqY_MRxEpW0f8zOYzMmqI5ZWeLB7SaAM__rccwA
+
+    Advanced Colors:
+
+    Popup Highlight - Selection bg in the dropdown of address bar
+    #3584e4
+
+    Toolbar Field Border Focus - Address bar border when focused
+    #0061e0
+*/
