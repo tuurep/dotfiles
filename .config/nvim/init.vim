@@ -28,8 +28,12 @@ set number
 set noruler
 set nowrap
 set cursorline " For LineNumber highlighting only, with my colorscheme setting (no bg highlight for line)
-set gdefault " :substitute g is on by default - adding g will instead toggle it off
 set noerrorbells
+
+" Search and substitute
+set ignorecase " Warning: unwanted in :substitute, but can be disabled with I flag
+set smartcase
+set gdefault " :substitute g is on by default - adding g will instead toggle it off
 
 " This helps gx (open url in browser) to get the full url right
 " See: https://vi.stackexchange.com/questions/2801/how-can-i-make-gx-recognise-full-urls-in-vim
