@@ -48,9 +48,7 @@ alias q="exit"
 alias pl='echo "$OLDPWD" | sed "s|^$HOME|~|"' # Show previous directory, useful with `cd -`
 
 alias ls="ls --color=auto"
-alias grep="grep --color=auto"
-alias egrep="egrep --color=auto"
-alias fgrep="fgrep --color=auto"
+alias grep="grep --color=auto -i" # Case insensitive
 alias diff="diff --color=auto"
 alias cb="NO_COLOR='please' cb"
 
