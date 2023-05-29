@@ -3,10 +3,27 @@
 # Enable up-arrow history traversal based on partial command
 # https://askubuntu.com/questions/59846/bash-history-search-partial-up-arrow
 
-# arrow up
+# up arrow
 "\e[A":history-search-backward
-# arrow down
+# down arrow
 "\e[B":history-search-forward
+
+# Replace move forward/backward by "word" to forward/backward by "shell-word"
+# The default "word" is any sequence comprising of [A-Z], [a-z] and [0-9]
+# Shell-word: "delimited by non-quoted shell metacharacters"
+# Makes it much easier to go forward/backward one full argument at a time
+
+# Ctrl + left arrow
+"\e[1;5D":shell-backward-word
+# Ctrl + right arrow
+"\e[1;5C":shell-forward-word
 
 # Case-insensitive tab completion
 set completion-ignore-case On
+
+# NOTES:
+# How to find which key combination corresponds to which escape sequence?
+
+# In a bash shell, press Ctrl + V
+# Press desired key combo
+# See output, but replace ^[ with \e
