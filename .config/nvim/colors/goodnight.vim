@@ -262,8 +262,9 @@ hi! link Type @type
 hi! link Typedef @type.definition
 
 " Fine-tuning and pinpointing issues
-" Python
-hi! link pythonTodo none
+
+" Disable standouts in comments
+hi! link Todo @comment
 
 " XML
 hi! link xmlTagName @tag
