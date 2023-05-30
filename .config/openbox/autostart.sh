@@ -3,12 +3,6 @@
 # which is why hsetroot is used instead
 hsetroot -solid '#000000'
 
-# Map capslock to esc
-setxkbmap -option caps:escape
-
-# Key repeat: ms, interval
-xset r rate 315 25
-
 sh ~/.config/polybar/launch.sh &
 dunst &
 
