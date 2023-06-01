@@ -3,10 +3,10 @@
 # which is why hsetroot is used instead
 hsetroot -solid '#000000'
 
-sh ~/.config/polybar/launch.sh &
+polybar bar1 2>&1 & disown
 dunst &
-
 picom -b
+transmission-daemon
 
 # Clipboard management:
 # parcellite for preserving clipboard contents on
@@ -14,5 +14,3 @@ picom -b
 # through rofi
 parcellite &
 greenclip daemon &
-
-transmission-daemon
