@@ -1,8 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <!-- Openbox right-click menu -->
 <!-- Used only as a clutch to launch terminal or exit if setup is broken -->
 <!-- Note: Ctrl+Alt+F2 and Ctrl+Alt+F7 will work just as well -->
 
-<?xml version="1.0" encoding="UTF-8"?>
 <openbox_menu>
   <menu id="root-menu" label="OpenBox 3">
     <item label="alacritty"> <action name="Execute">
