@@ -88,6 +88,9 @@ alias reset-dunst="killall dunst; notify-send monkey monkey"
 alias reset-polybar="killall -q polybar; polybar bar1 2>&1 & disown"
 alias gnu="neofetch -L --ascii_distro GNU"
 
+# for gtts-cli and translate-shell: get list of all language tags (works well with grep)
+alias langtags="gtts-cli --all"
+
 # show charging status and battery percentage
 alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0 \
                         | grep 'state:\|percentage:' \
@@ -109,6 +112,16 @@ cdl() {
 # cd to a global executable you want to locate
 cdw() {
         cd "$(dirname "$(which "$1")")" || exit
+}
+
+# Text-to-speech with Google Translate's API
+# use -l for different language (defaults to english)
+# use alias langtags to find correct tags
+# use -s for slower speech
+say() {
+        # English accent is chosen by location - choose US English with .us top-level domain
+        # Pass -t co.uk to override to British English
+        gtts-cli -t us "$@" | mpv --really-quiet -
 }
 
 # === Add stuff to PATH ===
