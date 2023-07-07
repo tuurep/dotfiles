@@ -149,35 +149,45 @@
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>0</x>
+        <y>0</y>
         <width>1/3</width>
+        <height>100%</height>
       </action>
     </keybind>
     <keybind key="W-2">
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>center</x>
+        <y>0</y>
         <width>1/3</width>
+        <height>100%</height>
       </action>
     </keybind>
     <keybind key="W-3">
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>-0</x>
+        <y>0</y>
         <width>1/3</width>
+        <height>100%</height>
       </action>
     </keybind>
     <keybind key="W-S-1">
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>0</x>
+        <y>0</y>
         <width>2/3</width>
+        <height>100%</height>
       </action>
     </keybind>
     <keybind key="W-S-3">
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>-0</x>
+        <y>0</y>
         <width>2/3</width>
+        <height>100%</height>
       </action>
     </keybind>
     <keybind key="W-x">
