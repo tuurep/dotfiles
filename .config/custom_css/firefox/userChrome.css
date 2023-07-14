@@ -36,14 +36,21 @@
 }
 
 /*
-    Change color of the solid border that divides address bar and page
+    Change the color of the 1px borders that separate the UI bars from the page
+
     By default the border color is determined by: 
         Firefox Colors -> Custom colors -> Background Color
-    In my theme it's almost black (#191919) which is hard on the eyes
-    The following makes it a lighter gray
+
+    In my theme it's almost black (#191919) which looks bad against a white page IMO
+    Same thing with the top border of findbar (Ctrl+f) at the bottom.
+
+    The following makes the borders a lighter gray
 */
 #navigator-toolbox {
     border-bottom: 1px solid #949494 !important;
+}
+.browserContainer > findbar {
+    border-top: 1px solid #949494 !important;
 }
 
 #reader-mode-button {
