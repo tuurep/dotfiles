@@ -86,6 +86,8 @@ noremap  g¤ gJ
 nnoremap <C-d> 0D
 nnoremap å o<Esc>
 nnoremap Å O<Esc>
+nnoremap <Left> :bp<cr>
+nnoremap <Right> :bn<cr>
 " Comfortable movement keys:
 noremap <C-j> <C-d>
 noremap <C-k> <C-u>
