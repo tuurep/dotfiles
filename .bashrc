@@ -74,6 +74,7 @@ alias sauce="source ~/.bashrc"
 alias py="python"
 alias jl="julia"
 alias sc="shellcheck"
+alias vg="valgrind"
 
 alias zat="zathura"
 alias ff="firefox"
