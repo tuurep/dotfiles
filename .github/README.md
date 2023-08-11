@@ -1,4 +1,4 @@
-# This repo
+# Dotfiles
 
 My dotfiles (any configuration files) for backup and quick reference.
 
