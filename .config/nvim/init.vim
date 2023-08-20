@@ -155,6 +155,10 @@ nmap <leader>§ <Plug>SlimeConfig
 " ============== PLUGINS: junegunn/vim-plug ===============
 call plug#begin('~/.config/nvim/plugged')
 
+" Open files in last edit position
+Plug 'farmergreg/vim-lastplace'
+
+" Clear search highlight on cursor move
 Plug 'jesseleite/vim-noh'
 
 Plug 'inkarkat/vim-ReplaceWithRegister'
