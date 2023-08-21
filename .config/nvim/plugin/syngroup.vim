@@ -1,4 +1,4 @@
-" Identify higlight group under cursor
+" Identify highlight group under cursor
 " Shows as
 "   (syngroup) -> (what it links to)
 " Useful for troubleshooting

@@ -19,7 +19,7 @@ set mouse=a
 set mousescroll=ver:1,hor:1 " Two-finger scroll on trackpad distance per scroll event (row, col)
 set guicursor=a:block
 set laststatus=1 " Don't show statusline unless there are 2 or more windows
-set shortmess+=I " Don't display intro message (:h :intro) when opening empty buffer
+set shortmess+=Ia " I: no intro, a: all sorts of abbreviations
 set undofile
 set confirm
 set noswapfile
@@ -74,6 +74,9 @@ noremap! <PageUp> <Nop>
 nnoremap <Tab> /
 nnoremap <S-Tab> ?
 nnoremap <C-p> <C-i>
+" Prevent accidental invokings of macros
+nnoremap Q q
+nnoremap q <Nop>
 " Start a substitute command without finger gymnastics:
 nnoremap <leader><Tab> :%s/
 " Clear lingering command msg
