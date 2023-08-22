@@ -1,8 +1,5 @@
 colorscheme goodnight
 
-set title
-set titlestring=nvim\ %t\ %m
-
 " Don't highlight matchpairs
 let g:loaded_matchparen = 1
 " Don't let vimtex do that either
