@@ -10,6 +10,7 @@
         p = push
         d = diff
         ds = diff --staged
+        rs = restore --staged
         b = branch
         co = checkout
         l = log
