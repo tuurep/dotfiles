@@ -5,7 +5,7 @@ let g:loaded_matchparen = 1
 " Don't let vimtex do that either
 let g:vimtex_matchparen_enabled = 0
 
-" Disable autowraps and comment continuations, 
+" Disable autowraps and comment continuations,
 " and prevent /usr/share/nvim/runtime/ftplugins overriding them
 autocmd FileType * if &filetype != "gitcommit"
     \ | set fo-=t fo-=c fo-=r fo-=o
@@ -16,6 +16,7 @@ set mouse=a
 set mousescroll=ver:1,hor:1 " Two-finger scroll on trackpad distance per scroll event (row, col)
 set guicursor=a:block
 set laststatus=1 " Don't show statusline unless there are 2 or more windows
+set statusline=%f\ %r%m
 set shortmess+=Ia " I: no intro, a: all sorts of abbreviations
 set noshowcmd
 set undofile
@@ -49,7 +50,7 @@ nnoremap <Space> <Nop>
 let mapleader=" "
 " Disable keys that:
 "   1. can interfere with other settings
-"   2. I want to repurpose later 
+"   2. I want to repurpose later
 "   3. are annoying
 nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
@@ -109,7 +110,7 @@ nnoremap <M-h> zh
 nnoremap <M-j> <C-e>
 nnoremap <M-k> <C-y>
 nnoremap <M-l> zl
-" One-handed save and quit 
+" One-handed save and quit
 nnoremap <C-s> :w<cr>
 inoremap <C-s> <C-o>:w<cr>
 nnoremap <C-q> :q<cr>
