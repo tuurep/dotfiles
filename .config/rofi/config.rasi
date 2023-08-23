@@ -8,6 +8,7 @@ configuration {
 
     window {
         display-name: "";
+        hide-active-window: true;
         close-on-delete: false;
     }
 
