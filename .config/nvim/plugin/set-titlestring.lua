@@ -32,14 +32,8 @@ local function set_titlestring()
 
         if r or m then
             t = t .. " "
-        end
-
-        if r then
-            t = t .. "[RO]"
-        end
-
-        if m then
-            t = t .. "[+]"
+                  .. (r and "[RO]" or "")
+                  .. (m and "[+]"  or "")
         end
 
         -- Add separator, unless last element
