@@ -1,21 +1,11 @@
--- TODO:
--- This only clears messages that are shown after doing something on command mode
---
--- How to clear any message, for example
---      y     - n lines yanked
---      u     - n changes; this and that
---      <C-r> - Already at newest change
---
--- ?
+-- This makes any message in cmdline clear out after some idle time
+-- If you missed something you need to see, run :mes[sages]
 
-local timer = vim.loop.new_timer()
-local timeout_sec = 15
+local timeout_sec = 4
+vim.o.updatetime = 1000 * timeout_sec
 
-local function clear_cmdline() vim.cmd("echo ''") end
-
-vim.api.nvim_create_autocmd("CmdLineLeave", {
+vim.api.nvim_create_autocmd("CursorHold", {
     callback = function()
-        timer:stop()
-        timer:start(1000*timeout_sec, 0, vim.schedule_wrap(clear_cmdline))
+        vim.cmd("echo ''")
     end
 })
