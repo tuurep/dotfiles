@@ -5,18 +5,21 @@
 
 vim.o.title = true -- required so that titlestring can be set
 
+local function is_normal_buffer(b)
+    return vim.bo[b].buftype == ""
+end
+
 local function set_titlestring()
     local blist = vim.fn.tabpagebuflist()
-    local t = "nvim "
+    blist = vim.tbl_filter(is_normal_buffer, blist)
 
-    if #blist < 2 then
-        vim.o.titlestring = t .. "%t %m"
-        return
-    end
+    local t = "nvim"
 
     for i, b in ipairs(blist) do
         local name = vim.fn.bufname(b)
         name = vim.fn.fnamemodify(name, ":t") -- remove full path (filename only)
+
+        t = t .. " "
 
         if name == "" then
             t = t .. "[No Name]"
@@ -24,9 +27,24 @@ local function set_titlestring()
             t = t .. name
         end
 
-        -- add separator, unless last element
+        local r = vim.bo[b].readonly
+        local m = vim.bo[b].modified
+
+        if r or m then
+            t = t .. " "
+        end
+
+        if r then
+            t = t .. "[RO]"
+        end
+
+        if m then
+            t = t .. "[+]"
+        end
+
+        -- Add separator, unless last element
         if i ~= #blist then
-            t = t .. ", "
+            t = t .. ","
         end
     end
 
@@ -37,6 +55,6 @@ end
 --      Order of buffernames should change when swapping positions of splits (without resizing any)
 --      I couldn't find a suitable event for now
 --
-vim.api.nvim_create_autocmd({"BufEnter", "WinResized"}, {
+vim.api.nvim_create_autocmd({"BufEnter", "WinResized", "BufModifiedSet"}, {
     callback = set_titlestring
 })
