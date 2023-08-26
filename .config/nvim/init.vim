@@ -119,8 +119,8 @@ inoremap <C-q> <C-o>:q<cr>
 nnoremap <leader>u :UndotreeToggle<cr>
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_HighlightChangedWithSign = 0
-" See highlight group/"capture" under cursor (requires treesitter playground plugin)
-nmap <leader>e :TSHighlightCapturesUnderCursor<cr>
+" See highlight group under cursor
+nmap <leader>e :Inspect<cr>
 " Overwrite default s:
 nmap s <Plug>ReplaceWithRegisterOperator
 nmap ss <Plug>ReplaceWithRegisterLine
@@ -166,7 +166,6 @@ Plug 'jesseleite/vim-noh'
 Plug 'inkarkat/vim-ReplaceWithRegister'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
 
 " Without this, vimmers can't dot-repeat keymaps that come from plugins
 Plug 'tpope/vim-repeat'
