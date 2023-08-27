@@ -78,10 +78,6 @@ nnoremap Q q
 nnoremap q <Nop>
 " Start a substitute command without finger gymnastics:
 nnoremap <leader><Tab> :%s/
-" Clear lingering command msg
-nnoremap <Enter> :echo ''<cr>
-" Show full path of current file (home as tilde)
-nnoremap <leader><Enter> :echo substitute(expand('%:p'), $HOME, '~', '')<cr>
 " Experimental:
 noremap  ¤ J
 noremap  g¤ gJ
