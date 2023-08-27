@@ -29,7 +29,7 @@ local function toggle()
     end
 
     shown = not shown
-    print("Trailing whitespace " .. (shown and "SHOWN" or "HIDDEN"))
+    vim.cmd("echo 'Trailing whitespace " .. (shown and "SHOWN" or "HIDDEN") .. "'")
 end
 
 vim.api.nvim_create_autocmd({"WinEnter"}, {
