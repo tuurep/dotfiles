@@ -12,7 +12,6 @@ autocmd FileType * if &filetype != "gitcommit"
     \ | endif
 
 " Preferences
-set mouse=a
 set mousescroll=ver:1,hor:1 " Two-finger scroll on trackpad distance per scroll event (row, col)
 set guicursor=a:block
 set laststatus=1 " Don't show statusline unless there are 2 or more windows
@@ -22,12 +21,10 @@ set noshowcmd
 set undofile
 set confirm
 set noswapfile
-set nobackup
 set number
 set noruler
 set nowrap
 set cursorline " For LineNumber highlighting only, with my colorscheme setting (no bg highlight for line)
-set noerrorbells
 
 " Search and substitute
 set ignorecase " Warning: unwanted in :substitute, but can be disabled with I flag
@@ -38,8 +35,11 @@ set gdefault " :substitute g is on by default - adding g will instead toggle it 
 " See: https://vi.stackexchange.com/questions/2801/how-can-i-make-gx-recognise-full-urls-in-vim
 let g:netrw_gx="<cWORD>"
 
-" Indentation settings for using 4 spaces instead of tabs.
-" Do not change 'tabstop' from its default value of 8 with this setup.
+" :vsplit and :split
+set splitright
+set splitbelow
+
+" Global indent settings (see ~/.config/nvim/ftplugin for filetype-specific)
 set shiftwidth=4
 set softtabstop=4
 set expandtab
