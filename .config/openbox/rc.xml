@@ -305,12 +305,26 @@
       </action>
     </keybind>
     <!-- Keybindings for windows -->
-    <keybind key="W-q">
-      <action name="Close"/>
+    <keybind key="W-q"> <!-- Window close -->
+      <action name="If">
+        <query target="focus">
+          <!-- Steam will not exit cleanly with Openbox close action -->
+          <class>steam</class>
+          <title type="exact">Steam</title>
+        </query>
+        <then>
+          <action name="Execute">
+            <command>steam -shutdown</command>
+          </action>
+        </then>
+        <else>
+          <action name="Close"/>
+        </else>
+      </action>
     </keybind>
     <keybind key="W-S-q">
       <action name="Execute">
-        <command>~/scripts/ob/close-all-except-active.sh</command>
+        <command>~/scripts/ob/close-all-of-class.sh</command>
       </action>
     </keybind>
     <keybind key="W-e">
@@ -318,7 +332,7 @@
     </keybind>
     <keybind key="W-S-e">
       <action name="Execute">
-        <command>~/scripts/ob/minimize-all-except-active.sh</command>
+        <command>~/scripts/ob/minimize-all-of-class.sh</command>
       </action>
     </keybind>
     <keybind key="W-f">
