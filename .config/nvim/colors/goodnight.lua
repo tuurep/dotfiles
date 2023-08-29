@@ -62,23 +62,53 @@ local l_bg =    18  -- lighter background
 local sel_bg =  19  -- selection background (but in practice: lighter lighter bg)
 local d_fg =    20  -- darker foreground
 local l_fg =    21  -- lighter foreground
-local statusl = 22  -- statusline foreground
+local i_s_fg =  22  -- inactive statusline foreground
 local linenum = 23  -- (non-active) linenumber foreground
 
 local hl = vim.api.nvim_set_hl -- shorthand
-local g = 0 -- global namespace
 
--- No cursorline background, but still need current line number highlighted
-hl(g, "CursorLine",   {}) -- clear
+-- Namespaces
+local g = 0 -- global
+local active = vim.api.nvim_create_namespace("active_window")
+local inactive = vim.api.nvim_create_namespace("inactive_window")
+
+-- No cursorline background, but current linenumber is highlighted:
+--      * this depends on `set cursorline`
+--
+hl(g, "CursorLine",   {}) -- clear (fix weird underline)
 hl(g, "CursorLineNr", { ctermfg = fg, ctermbg = bg })
 hl(g, "LineNr",       { ctermfg = linenum })
 hl(g, "EndOfBuffer",  { ctermfg = linenum })
 
 -- Search and substitute (:%s)
-hl(g, "Search",     { ctermfg = bg, ctermbg = brown  })
-hl(g, "CurSearch",  { ctermfg = bg, ctermbg = yellow })
-hl(g, "IncSearch",  { ctermfg = bg, ctermbg = yellow })
-hl(g, "Substitute", { ctermfg = bg, ctermbg = yellow })
+hl(active, "Search",     { ctermfg = bg, ctermbg = brown  })
+hl(active, "CurSearch",  { ctermfg = bg, ctermbg = yellow })
+hl(active, "IncSearch",  { ctermfg = bg, ctermbg = yellow })
+hl(active, "Substitute", { ctermfg = bg, ctermbg = yellow })
+
+hl(inactive, "Search",     {})
+hl(inactive, "CurSearch",  {})
+hl(inactive, "IncSearch",  {})
+hl(inactive, "Substitute", {})
+
+-- For inactive windows:
+--      * Don't highlight current linenumber
+--      * Don't higlight search/substitute matches
+--
+vim.api.nvim_create_autocmd({"WinLeave"}, {
+    callback = function()
+        vim.opt_local.cursorline = false
+        local w = vim.api.nvim_get_current_win()
+        vim.api.nvim_win_set_hl_ns(w, inactive)
+    end
+})
+vim.api.nvim_create_autocmd({"VimEnter", "WinEnter", "BufWinEnter"}, {
+    callback = function()
+        vim.opt_local.cursorline = true
+        local w = vim.api.nvim_get_current_win()
+        vim.api.nvim_win_set_hl_ns(w, active)
+    end
+})
 
 -- Editor colors
 hl(g, "Cursor",       { ctermfg = bg,      ctermbg = fg   })
@@ -102,7 +132,7 @@ hl(g, "Title",        { ctermfg = blue                    })
 hl(g, "NonText",      { ctermfg = comment                 })
 hl(g, "SignColum",    { ctermfg = comment, ctermbg = bg   })
 hl(g, "StatusLine",   { ctermfg = fg,      ctermbg = l_bg })
-hl(g, "StatusLineNC", { ctermfg = statusl, ctermbg = l_bg })
+hl(g, "StatusLineNC", { ctermfg = i_s_fg,  ctermbg = l_bg })
 hl(g, "VertSplit",    { ctermfg = l_bg,    ctermbg = l_bg })
 hl(g, "ColorColumn",  {                    ctermbg = l_bg })
 hl(g, "CursorColumn", {                    ctermbg = l_bg })

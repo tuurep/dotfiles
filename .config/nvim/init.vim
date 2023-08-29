@@ -24,7 +24,6 @@ set noswapfile
 set number
 set noruler
 set nowrap
-set cursorline " For LineNumber highlighting only, with my colorscheme setting (no bg highlight for line)
 
 " Search and substitute
 set ignorecase " Warning: unwanted in :substitute, but can be disabled with I flag
