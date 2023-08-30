@@ -9,11 +9,3 @@ vim.api.nvim_create_autocmd("CursorHold", {
         vim.cmd("echo ''")
     end
 })
-
--- TODO: move these keymaps back to init(.lua) on lua rewrite
-vim.keymap.set("n", "<Enter>", function() vim.cmd("echo ''") end)
-
-vim.keymap.set("n", "<leader><Enter>", function()
-        -- TODO: opportunity to simplify this quite a bit
-        vim.cmd("echo substitute(expand('%:p'), $HOME, '~', '')")
-    end)

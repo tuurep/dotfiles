@@ -43,113 +43,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-" ======================== KEYMAPS ========================
-" Map leader to space
-nnoremap <Space> <Nop>
-let mapleader=" "
-" Disable keys that:
-"   1. can interfere with other settings
-"   2. I want to repurpose later
-"   3. are annoying
-nnoremap <Up> <Nop>
-nnoremap <Down> <Nop>
-nnoremap <C-h> <Nop>
-nnoremap <C-l> <Nop>
-noremap + <Nop>
-noremap - <Nop>
-noremap <BS> <Nop>
-noremap <PageDown> <Nop>
-noremap <PageUp> <Nop>
-noremap! <PageDown> <Nop>
-noremap! <PageUp> <Nop>
-
-" Tab to search because / sucks in Finnish layout
-" Side effect: Ctrl+i is understood as Tab in terminals, so "go forward in jump list" breaks
-" Map that to Ctrl+p which is free
-" NOTE: NeoVim can differentiate between these, but alacritty is still implementing, follow here:
-" https://github.com/alacritty/alacritty/issues/3101
-" Remove the Ctrl+P map in the future
-nnoremap <Tab> /
-nnoremap <S-Tab> ?
-nnoremap <C-p> <C-i>
-" Prevent accidental invokings of macros
-nnoremap Q q
-nnoremap q <Nop>
-" Start a substitute command without finger gymnastics:
-nnoremap <leader><Tab> :%s/
-" Experimental:
-noremap  ¤ J
-noremap  g¤ gJ
-nnoremap <C-d> 0D
-nnoremap å o<Esc>
-nnoremap Å O<Esc>
-nnoremap <Left> :bp<cr>
-nnoremap <Right> :bn<cr>
-" Comfortable movement keys:
-noremap <C-j> <C-d>
-noremap <C-k> <C-u>
-noremap H ^
-noremap J }
-noremap K {
-noremap L $
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
-cnoremap <C-j> <Down>
-cnoremap <C-k> <Up>
-cnoremap <C-h> <Left>
-cnoremap <C-l> <Right>
-" Scroll window but keep cursor where it is
-nnoremap <M-h> zh
-nnoremap <M-j> <C-e>
-nnoremap <M-k> <C-y>
-nnoremap <M-l> zl
-" One-handed save and quit
-nnoremap <C-s> :w<cr>
-inoremap <C-s> <C-o>:w<cr>
-nnoremap <C-q> :q<cr>
-inoremap <C-q> <C-o>:q<cr>
-" Open and hop into undotree
-nnoremap <leader>u :UndotreeToggle<cr>
-let g:undotree_SetFocusWhenToggle = 1
-let g:undotree_HighlightChangedWithSign = 0
-" See highlight group under cursor
-nmap <leader>e :Inspect<cr>
-" Overwrite default s:
-nmap s <Plug>ReplaceWithRegisterOperator
-nmap ss <Plug>ReplaceWithRegisterLine
-xmap s <Plug>ReplaceWithRegisterVisual
-nmap S s$
-" System clipboard easy:
-nmap <leader>y "+y
-nmap <leader>Y "+Y
-xmap <leader>y "+y
-nmap <leader>p "+p
-nmap <leader>P "+P
-xmap <leader>p "+p
-nmap <leader>s "+s
-nmap <leader>S "+S
-xmap <leader>s "+s
-nmap <leader>d "+d
-nmap <leader>D "+D
-xmap <leader>d "+d
-nmap <leader>c "+c
-nmap <leader>C "+C
-xmap <leader>c "+c
-" Fern maps: _ for :Explore style
-nnoremap <leader>- :Fern %:h -drawer -reveal=%<cr>
-nnoremap <leader>_ :Fern %:h -reveal=%<cr>
-" (Key below esc) Vim-style maps (non-default) - {count}§§, §{motion}
-let g:slime_no_mappings = 1
-xmap § <Plug>SlimeRegionSend
-nmap § <Plug>SlimeMotionSend
-nmap ½ §$
-nmap §§ <Plug>SlimeLineSend
-nmap <leader>§ <Plug>SlimeConfig
-" ==================== END OF KEYMAPS =====================
-
-" ============== PLUGINS: junegunn/vim-plug ===============
+" junegunn/vim-plug
 call plug#begin('~/.config/nvim/plugged')
 
 " Open files in last edit position
@@ -169,6 +63,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 
 " Nonlinear undo history access
+let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_HighlightChangedWithSign = 0
 Plug 'mbbill/undotree'
 
 " netrw replacement: project drawer/file explorer
@@ -185,6 +81,7 @@ Plug 'tuurep/markdown-preview.nvim', { 'do': './build-hook.sh' }
 
 " Send lines to target window/pane to execute (like python shell)
 let g:slime_target = "tmux"
+let g:slime_no_mappings = 1 " disable default mappings
 Plug 'jpalardy/vim-slime'
 
 call plug#end()
