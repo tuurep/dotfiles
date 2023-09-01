@@ -46,6 +46,8 @@ set expandtab
 " junegunn/vim-plug
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 " Open files in last edit position
 Plug 'farmergreg/vim-lastplace'
 
@@ -54,7 +56,8 @@ Plug 'jesseleite/vim-noh'
 
 Plug 'inkarkat/vim-ReplaceWithRegister'
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Macro editor - edit macros with :Me <register>
+Plug 'tuurep/me'
 
 " Without this, vimmers can't dot-repeat keymaps that come from plugins
 Plug 'tpope/vim-repeat'
@@ -63,9 +66,9 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 
 " Nonlinear undo history access
+Plug 'mbbill/undotree'
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_HighlightChangedWithSign = 0
-Plug 'mbbill/undotree'
 
 " netrw replacement: project drawer/file explorer
 " hijack makes fern the 'default' like when running vim dot
@@ -80,8 +83,8 @@ Plug 'lervag/vimtex'
 Plug 'tuurep/markdown-preview.nvim', { 'do': './build-hook.sh' }
 
 " Send lines to target window/pane to execute (like python shell)
+Plug 'jpalardy/vim-slime'
 let g:slime_target = "tmux"
 let g:slime_no_mappings = 1 " disable default mappings
-Plug 'jpalardy/vim-slime'
 
 call plug#end()
