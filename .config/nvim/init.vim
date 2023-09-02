@@ -56,8 +56,8 @@ Plug 'jesseleite/vim-noh'
 
 Plug 'inkarkat/vim-ReplaceWithRegister'
 
-" Macro editor - edit macros with :Me <register>
-Plug 'tuurep/me'
+" Edit registers (especially macros) with :Re <register>
+Plug 'tuurep/registereditor'
 
 " Without this, vimmers can't dot-repeat keymaps that come from plugins
 Plug 'tpope/vim-repeat'
