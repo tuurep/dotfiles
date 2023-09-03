@@ -11,15 +11,17 @@ map("n", "<Up>", "<Nop>")
 map("n", "<Down>", "<Nop>")
 map("n", "<C-h>", "<Nop>")
 map("n", "<C-l>", "<Nop>")
-map({"n", "v"}, "+", "<Nop>")
-map({"n", "v"}, "-", "<Nop>")
 map({"n", "v"}, "<BS>", "<Nop>")
 map({"n", "v", "c"}, "<PageUp>", "Nop")
 map({"n", "v", "c"}, "<PageDown>", "Nop")
+map({"n", "i"}, "<F1>", "Nop")
 
 -- Prevent accidental invokings of macros
 map({"n", "v"}, "Q", "q")
 map({"n", "v"}, "q", "<Nop>")
+
+-- The default Q is not bad but its default mapping is bad, here's a better alternative:
+map("n", "<leader>@", "Q")
 
 -- Tab to search because / sucks in Finnish layout
 -- Side effect: Ctrl+i is understood as Tab in terminals, so "go forward in jump list" breaks
@@ -34,8 +36,6 @@ map("n", "<C-p>", "<C-i>")
 map("n", "<leader><Tab>", ":%s/")
 
 -- Experimental:
-map("n", "¤", "J")
-map("n", "g¤", "gJ")
 map("n", "<C-d>", "0D")
 map("n", "å", "o<Esc>")
 map("n", "Å", "O<Esc>")
@@ -49,6 +49,18 @@ end
 map("n", "<leader><Enter>", echo_fullpath_with_tilde)
 map("n", "<Enter>", function() vim.cmd("echo ''") end) -- clear cmdline text
 
+-- If a special buffer wants <Enter> for something, use + for that (rare)
+-- Example: command mode <C-f>
+-- Todo: would be better to unmap <Enter> for that buffer only
+map({"n", "v"}, "+", "<Enter>")
+
+-- Insert/command mode Ctrl+a for beginning of line, Ctrl+E for end of line (readline style)
+-- If they override something, remap that elsewhere
+map({"i", "c"}, "<C-a>", "<Home>")
+map("i", "<C-e>", "<End>")
+map({"i", "c"}, "<C-b>", "<C-a>") -- command mode: <C-b> == <Home>, insert mode: <C-b> is unmapped
+map("i", "<M-i>", "<C-e>")
+
 -- Comfortable movement keys:
 map({"n", "v", "o"}, "<C-j>", "<C-d>")
 map({"n", "v", "o"}, "<C-k>", "<C-u>")
@@ -56,10 +68,17 @@ map({"n", "v", "o"}, "H", "^")
 map({"n", "v", "o"}, "J", "}")
 map({"n", "v", "o"}, "K", "{")
 map({"n", "v", "o"}, "L", "$")
-map({"i", "c"}, "<C-h>", "<Left>")
-map({"i", "c"}, "<C-j>", "<Down>")
-map({"i", "c"}, "<C-k>", "<Up>")
-map({"i", "c"}, "<C-l>", "<Right>")
+map("i", "<C-h>", "<Left>")
+map("i", "<C-j>", "<Down>")
+map("i", "<C-k>", "<Up>")
+map("i", "<C-l>", "<Right>")
+
+-- Remap what the above has overriden
+map({"n", "v"}, "¤", "J")
+map({"n", "v"}, "g¤", "gJ")
+map({"i", "c"}, "<C-z>", "<C-k>")
+map("n", "g/", "K")
+
 -- Scroll window but keep cursor where it is
 map("n", "<M-h>", "zh")
 map("n", "<M-j>", "<C-e>")
@@ -86,6 +105,10 @@ map("n", "<leader>S", '"+S', {remap=true}) -- S: recursive from plugin
 
 -- See highlight group under cursor
 map("n", "<leader>e", function() vim.cmd("Inspect") end)
+
+-- Mappings to Lua modules
+local tws = require("trailingwhitespace")
+map("n", "ö", tws.toggle_trailing_whitespace)
 
 -- === PLUGINS ===
 
