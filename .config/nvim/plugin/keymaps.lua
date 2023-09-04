@@ -1,4 +1,6 @@
-local map = vim.keymap.set -- shorthand
+-- shorthands
+local map = vim.keymap.set
+local autocmd = vim.api.nvim_create_autocmd
 
 -- <leader> is <Space>
 vim.g.mapleader = " "
@@ -12,9 +14,9 @@ map("n", "<Down>", "<Nop>")
 map("n", "<C-h>", "<Nop>")
 map("n", "<C-l>", "<Nop>")
 map({"n", "v"}, "<BS>", "<Nop>")
-map({"n", "v", "c"}, "<PageUp>", "Nop")
-map({"n", "v", "c"}, "<PageDown>", "Nop")
-map({"n", "i"}, "<F1>", "Nop")
+map({"n", "v", "i", "c"}, "<PageUp>", "<Nop>")
+map({"n", "v", "i", "c"}, "<PageDown>", "<Nop>")
+map({"n", "i"}, "<F1>", "<Nop>")
 
 -- Prevent accidental invokings of macros
 map({"n", "v"}, "Q", "q")
@@ -49,10 +51,12 @@ end
 map("n", "<leader><Enter>", echo_fullpath_with_tilde)
 map("n", "<Enter>", function() vim.cmd("echo ''") end) -- clear cmdline text
 
--- If a special buffer wants <Enter> for something, use + for that (rare)
--- Example: command mode <C-f>
--- Todo: would be better to unmap <Enter> for that buffer only
-map({"n", "v"}, "+", "<Enter>")
+-- Can't do the above mapping for command line <C-f> special buffer
+autocmd({"CmdWinEnter"}, {
+    callback = function()
+        map("n", "<Enter>", "<Enter>", { buffer=0 })
+    end
+})
 
 -- Insert/command mode Ctrl+a for beginning of line, Ctrl+E for end of line (readline style)
 -- If they override something, remap that elsewhere
@@ -132,7 +136,6 @@ map("n", "§", "<Plug>SlimeMotionSend", {remap=true})
 map("n", "½", "§$", {remap=true})
 map("n", "§§", "<Plug>SlimeLineSend", {remap=true})
 map("n", "<leader>§", "<Plug>SlimeConfig", {remap=true})
-
 
 -- NOTES:
 --      Why do you write
