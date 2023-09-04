@@ -2,10 +2,10 @@
 
 local M = {}
 
-local fg = 7
-local red = 1
+local fg =  "#d0d0d0"
+local red = "#cc6666"
 
-vim.api.nvim_set_hl(0, "TrailingWhitespace", { ctermfg=fg, ctermbg=red })
+vim.api.nvim_set_hl(0, "TrailingWhitespace", { fg=fg, bg=red })
 
 local matches = {}
 local shown = false
