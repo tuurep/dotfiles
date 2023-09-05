@@ -484,7 +484,7 @@
     </context>
   </mouse>
   <applications>
-    <application class="firefox" title="Picture-in-Picture">
+    <application role="PictureInPicture">
       <desktop>all</desktop>
     </application>
   </applications>
