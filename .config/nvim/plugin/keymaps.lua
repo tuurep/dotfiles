@@ -1,6 +1,8 @@
 -- shorthands
 local map = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
+local s = {silent=true}
+local r = {remap=true}
 
 -- <leader> is <Space>
 vim.g.mapleader = " "
@@ -9,6 +11,7 @@ vim.g.mapleader = " "
 --   1. can interfere with other settings
 --   2. I want to repurpose later
 --   3. are annoying
+map("n", "s", "<Nop>") -- Will add some incarnation of justinmk's sneak
 map("n", "<Up>", "<Nop>")
 map("n", "<Down>", "<Nop>")
 map("n", "<C-h>", "<Nop>")
@@ -41,20 +44,20 @@ map("n", "<leader><Tab>", ":%s/")
 map("n", "<C-d>", "0D")
 map("n", "å", "o<Esc>")
 map("n", "Å", "O<Esc>")
-map("n", "<Left>", function() vim.cmd("bprevious") end)
-map("n", "<Right>", function() vim.cmd("bnext") end)
+map("n", "<Left>", ":bp<cr>", s)
+map("n", "<Right>", ":bn<cr>", s)
 
 local function echo_fullpath_with_tilde()
     vim.cmd("echo substitute(expand('%:p'), $HOME, '~', '')")
 end
 
 map("n", "<leader><Enter>", echo_fullpath_with_tilde)
-map("n", "<Enter>", function() vim.cmd("echo ''") end) -- clear cmdline text
+map("n", "<Enter>", ":echo ''<cr>", s) -- clear cmdline text
 
 -- Can't do the above mapping for command line <C-f> special buffer
 autocmd({"CmdWinEnter"}, {
     callback = function()
-        map("n", "<Enter>", "<Enter>", { buffer=0 })
+        map("n", "<Enter>", "<Enter>", {buffer=0})
     end
 })
 
@@ -90,25 +93,24 @@ map("n", "<M-k>", "<C-y>")
 map("n", "<M-l>", "zl")
 
 -- One-handed save and quit
-map("n", "<C-s>", function() vim.cmd("w") end)
-map("n", "<C-q>", function() vim.cmd("q") end)
-map("i", "<C-s>", "<C-o>:w<cr>")
-map("i", "<C-q>", "<C-o>:q<cr>")
+map("n", "<C-s>", ":w<cr>", s)
+map("n", "<C-q>", ":q<cr>", s)
+map("i", "<C-s>", "<C-o>:w<cr>", s)
+map("i", "<C-q>", "<C-o>:q<cr>", s)
 
--- System clipboard easy:
-map({"n", "v"}, "<leader>y", '"+y', {remap=true})
-map({"n", "v"}, "<leader>p", '"+p', {remap=true})
-map({"n", "v"}, "<leader>d", '"+d', {remap=true})
-map({"n", "v"}, "<leader>c", '"+c', {remap=true})
-map({"n", "v"}, "<leader>s", '"+s', {remap=true}) -- s: recursive from plugin
-map("n", "<leader>Y", '"+Y', {remap=true})
-map("n", "<leader>P", '"+P', {remap=true})
-map("n", "<leader>D", '"+D', {remap=true})
-map("n", "<leader>C", '"+C', {remap=true})
-map("n", "<leader>S", '"+S', {remap=true}) -- S: recursive from plugin
+-- Registers
+map("n", "x", '"_x') -- Don't mess up registers when using x
+map({"n", "v"}, "<leader>y", '"+y', r)
+map({"n", "v"}, "<leader>p", '"+p', r)
+map({"n", "v"}, "<leader>d", '"+d', r)
+map({"n", "v"}, "<leader>c", '"+c', r)
+map("n", "<leader>Y", '"+Y', r)
+map("n", "<leader>P", '"+P', r)
+map("n", "<leader>D", '"+D', r)
+map("n", "<leader>C", '"+C', r)
 
 -- See highlight group under cursor
-map("n", "<leader>e", function() vim.cmd("Inspect") end)
+map("n", "<leader>e", ":Inspect<cr>", s)
 
 -- Mappings to Lua modules
 local tws = require("trailingwhitespace")
@@ -117,34 +119,23 @@ map("n", "ö", tws.toggle_trailing_whitespace)
 -- === PLUGINS ===
 
 -- inkarkat/vim-ReplaceWithRegister
--- Overwrite default s:
-map("n", "s", "<Plug>ReplaceWithRegisterOperator", {remap=true})
-map("n", "ss", "<Plug>ReplaceWithRegisterLine", {remap=true})
-map("v", "s", "<Plug>ReplaceWithRegisterVisual", {remap=true})
-map("n", "S", "s$", {remap=true})
+map("n", "dp", "<Plug>ReplaceWithRegisterOperator", r)
+map("n", "dpp", "<Plug>ReplaceWithRegisterLine", r)
+map("n", "dP", "dp$", r)
+-- Todo: Match visual mode p and P with this
+--       Add variant d<leader>p
+--       One should add deletion to "", the other should not
 
 -- mbbill/undotree
-map("n", "<leader>u", function() vim.cmd("UndotreeToggle") end)
+map("n", "<leader>u", ":UndotreeToggle<cr>", s)
 
 -- lambdalisue/fern.vim
-map("n", "<leader>-", function() vim.cmd("Fern %:h -drawer -reveal=%") end)
-map("n", "<leader>_", function() vim.cmd("Fern %:h -reveal=%") end)
+map("n", "<leader>-", ":Fern %:h -drawer -reveal=%<cr>", s)
+map("n", "<leader>_", ":Fern %:h -reveal=%", s)
 
 -- jpalardy/vim-slime
-map("v", "§", "<Plug>SlimeRegionSend", {remap=true})
-map("n", "§", "<Plug>SlimeMotionSend", {remap=true})
-map("n", "½", "§$", {remap=true})
-map("n", "§§", "<Plug>SlimeLineSend", {remap=true})
-map("n", "<leader>§", "<Plug>SlimeConfig", {remap=true})
-
--- NOTES:
---      Why do you write
---          function() vim.cmd("vimscript") end
---      instead of
---          ":vimscript<cr>"
---      ?
---
---      - Because that way the command text won't linger in the cmdline
---
---      Isn't there a better/cleaner way?
---      - I don't know.. yet
+map("v", "§", "<Plug>SlimeRegionSend", r)
+map("n", "§", "<Plug>SlimeMotionSend", r)
+map("n", "½", "§$", r)
+map("n", "§§", "<Plug>SlimeLineSend", r)
+map("n", "<leader>§", "<Plug>SlimeConfig", r)

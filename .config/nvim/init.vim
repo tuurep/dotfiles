@@ -43,9 +43,14 @@ set softtabstop=4
 set expandtab
 
 " junegunn/vim-plug
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.config/nvim/vim-plug')
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" Pope
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 
 " Open files in last edit position
 Plug 'farmergreg/vim-lastplace'
@@ -53,37 +58,32 @@ Plug 'farmergreg/vim-lastplace'
 " Clear search highlight on cursor move
 " Plug 'jesseleite/vim-noh' Trying to figure out some issues with this
 
+" For mappings "dp" "dpp" and "dP"
 Plug 'inkarkat/vim-ReplaceWithRegister'
 
 " Edit registers (especially macros) with :Re <register>
 Plug 'tuurep/registereditor'
-
-" Without this, vimmers can't dot-repeat keymaps that come from plugins
-Plug 'tpope/vim-repeat'
-
-" Vim-like binds to comment lines with {count}gcc, gc{motion}
-Plug 'tpope/vim-commentary'
 
 " Nonlinear undo history access
 Plug 'mbbill/undotree'
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_HighlightChangedWithSign = 0
 
-" netrw replacement: project drawer/file explorer
-" hijack makes fern the 'default' like when running vim dot
-Plug 'lambdalisue/fern.vim'
-Plug 'lambdalisue/fern-hijack.vim'
+" Toggle live preview in browser with <leader>gp in markdown files (keymap at ftplugin/markdown.vim)
+" Forked from iamcco/markdown-preview.nvim to make some small changes
+" To be replaced with a less heavy alternative (most likely jannis-baum/vivify)
+Plug 'tuurep/markdown-preview.nvim', { 'do': './build-hook.sh' }
 
 " .tex-files - Compile: <leader>gc View pdf: <leader>gv Toggle error box: <leader>ge
 Plug 'lervag/vimtex'
-
-" Toggle live preview in browser with <leader>gp in markdown files (keymap at ftplugin/markdown.vim)
-" Forked from iamcco/markdown-preview.nvim to make some small changes
-Plug 'tuurep/markdown-preview.nvim', { 'do': './build-hook.sh' }
 
 " Send lines to target window/pane to execute (like python shell)
 Plug 'jpalardy/vim-slime'
 let g:slime_target = "tmux"
 let g:slime_no_mappings = 1 " disable default mappings
+
+" I don't even use this but it's nicer than netrw
+Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern-hijack.vim'
 
 call plug#end()
