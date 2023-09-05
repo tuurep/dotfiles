@@ -53,28 +53,14 @@ hl(g, "CursorLine",   {}) -- clear
 hl(g, "LineNr",       { fg = linenum })
 hl(g, "EndOfBuffer",  { fg = linenum })
 
-hl(g, "Cursor",        { fg = bg, bg = fg   })
-hl(g, "CursorPending", { fg = bg, bg = blue })
+hl(g, "Cursor", { fg = bg, bg = fg })
 
--- Static color cursor with a subtle effect on operator-pending
-vim.o.guicursor = "a:Cursor,o:CursorPending"
+-- Static color
+vim.o.guicursor = "a:Cursor"
 
 -- Make current line number follow cursor hl on operator-pending mode
 hl(g, "CursorLineNr",        { fg = fg,   bg = bg })
 hl(g, "CursorLineNrPending", { fg = blue, bg = bg })
-
-autocmd({"ModeChanged"}, {
-    pattern = { "*:no", "no:*" },
-    callback = function()
-        local pending = vim.v.event.new_mode:match("no")
-        if pending then
-            hl(g, "CursorLineNr", { link = "CursorLineNrPending" })
-            vim.cmd("redraw") -- required
-        else
-            hl(g, "CursorLineNr", { link = "CursorLineNr"})
-        end
-    end
-})
 
 -- Search and substitute (:%s)
 hl(active, "Search",     { fg = bg, bg = dd_fg })
