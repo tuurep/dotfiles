@@ -99,7 +99,6 @@ map("i", "<C-s>", "<C-o>:w<cr>", s)
 map("i", "<C-q>", "<C-o>:q<cr>", s)
 
 -- Registers
-map("n", "x", '"_x') -- Don't mess up registers when using x
 map({"n", "v"}, "<leader>y", '"+y', r)
 map({"n", "v"}, "<leader>p", '"+p', r)
 map({"n", "v"}, "<leader>d", '"+d', r)
@@ -108,6 +107,20 @@ map("n", "<leader>Y", '"+Y', r)
 map("n", "<leader>P", '"+P', r)
 map("n", "<leader>D", '"+D', r)
 map("n", "<leader>C", '"+C', r)
+
+-- Fix x and X (from being terrible)
+-- To be fixed: would like concecutive xxxxxxx to be treated as a single undo item
+-- (not simple)
+local function blackhole(key)
+    local c = vim.v.count
+    if c > 0 then
+        vim.cmd('normal! ' .. c .. key)
+    else
+        vim.cmd('normal! "_' .. key)
+    end
+end
+map("n", "x", function() blackhole("x") end)
+map("n", "X", function() blackhole("X") end)
 
 -- See highlight group under cursor
 map("n", "<leader>e", ":Inspect<cr>", s)
