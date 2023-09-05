@@ -29,12 +29,13 @@ map({"n", "v"}, "q", "<Nop>")
 map("n", "<leader>@", "Q")
 
 -- Tab to search because / sucks in Finnish layout
+map({"n", "v", "o"}, "<Tab>", "/")
+map({"n", "v", "o"}, "<S-Tab>", "?")
+
 -- Side effect: Ctrl+i is understood as Tab in terminals, so "go forward in jump list" breaks
 -- Map that to Ctrl+p which is free
 -- NOTE: NeoVim can differentiate between these, but alacritty can't , see:
 -- https://github.com/alacritty/alacritty/issues/3101
-map("n", "<Tab>", "/")
-map("n", "<S-Tab>", "?")
 map("n", "<C-p>", "<C-i>")
 
 -- Start a substitute command without finger gymnastics:
