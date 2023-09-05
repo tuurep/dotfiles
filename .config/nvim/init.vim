@@ -55,9 +55,6 @@ Plug 'tpope/vim-surround'
 " Open files in last edit position
 Plug 'farmergreg/vim-lastplace'
 
-" Clear search highlight on cursor move
-" Plug 'jesseleite/vim-noh' Trying to figure out some issues with this
-
 " For mappings "dp" "dpp" and "dP"
 Plug 'inkarkat/vim-ReplaceWithRegister'
 
