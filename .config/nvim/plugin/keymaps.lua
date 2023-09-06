@@ -16,6 +16,7 @@ map("n", "<Up>", "<Nop>")
 map("n", "<Down>", "<Nop>")
 map("n", "<C-h>", "<Nop>")
 map("n", "<C-l>", "<Nop>")
+map("n", "<C-e>", "<Nop>") -- <M-j> and <M-k> are remapped as <C-e> and <C-y> 
 map({"n", "v"}, "<BS>", "<Nop>")
 map({"n", "v", "i", "c"}, "<PageUp>", "<Nop>")
 map({"n", "v", "i", "c"}, "<PageDown>", "<Nop>")
@@ -40,13 +41,6 @@ map("n", "<C-p>", "<C-i>")
 
 -- Start a substitute command without finger gymnastics:
 map("n", "<leader><Tab>", ":%s/")
-
--- Experimental:
-map("n", "<C-d>", "0D")
-map("n", "å", "o<Esc>")
-map("n", "Å", "O<Esc>")
-map("n", "<Left>", ":bp<cr>", s)
-map("n", "<Right>", ":bn<cr>", s)
 
 local function echo_fullpath_with_tilde()
     vim.cmd("echo substitute(expand('%:p'), $HOME, '~', '')")
@@ -80,18 +74,18 @@ map("i", "<C-h>", "<Left>")
 map("i", "<C-j>", "<Down>")
 map("i", "<C-k>", "<Up>")
 map("i", "<C-l>", "<Right>")
+map("n", "<M-h>", "zh")
+map("n", "<M-j>", "<C-e>")
+map("n", "<M-k>", "<C-y>")
+map("n", "<M-l>", "zl")
+map("n", "<Left>", ":bp<cr>", s)
+map("n", "<Right>", ":bn<cr>", s)
 
 -- Remap what the above has overriden
 map({"n", "v"}, "¤", "J")
 map({"n", "v"}, "g¤", "gJ")
 map({"i", "c"}, "<C-z>", "<C-k>")
 map("n", "g/", "K")
-
--- Scroll window but keep cursor where it is
-map("n", "<M-h>", "zh")
-map("n", "<M-j>", "<C-e>")
-map("n", "<M-k>", "<C-y>")
-map("n", "<M-l>", "zl")
 
 -- One-handed save and quit
 map("n", "<C-s>", ":w<cr>", s)
@@ -100,17 +94,24 @@ map("i", "<C-s>", "<C-o>:w<cr>", s)
 map("i", "<C-q>", "<C-o>:q<cr>", s)
 
 -- Registers
-map({"n", "v"}, "<leader>y", '"+y', r)
-map({"n", "v"}, "<leader>p", '"+p', r)
-map({"n", "v"}, "<leader>d", '"+d', r)
-map({"n", "v"}, "<leader>c", '"+c', r)
-map("n", "<leader>Y", '"+Y', r)
-map("n", "<leader>P", '"+P', r)
-map("n", "<leader>D", '"+D', r)
-map("n", "<leader>C", '"+C', r)
+map({"n", "v"}, "<leader>y", '"+y')
+map({"n", "v"}, "<leader>p", '"+p')
+map({"n", "v"}, "<leader>d", '"+d')
+map({"n", "v"}, "<leader>c", '"+c')
+map("n", "<leader>Y", '"+Y')
+map("n", "<leader>P", '"+P')
+map("n", "<leader>D", '"+D')
+map("n", "<leader>C", '"+C')
+
+-- Like dd yy but no newline at end (completely awesome)
+map("n", "<C-y>", function()
+    vim.fn.setreg(vim.v.register, vim.api.nvim_get_current_line())
+end)
+map("n", "<C-d>", '<C-y>0"_D', r) -- blackhole the deletion to not set unnamed reg
+                                  -- if another reg was chosen
 
 -- Fix x and X (from being terrible)
--- To be fixed: would like concecutive xxxxxxx to be treated as a single undo item
+-- To be fixed: would like consecutive xxxxxxx to be treated as a single undo item
 -- (not simple)
 local function blackhole(key)
     local c = vim.v.count
@@ -123,6 +124,10 @@ end
 map("n", "x", function() blackhole("x") end)
 map("n", "X", function() blackhole("X") end)
 
+-- o O normal mode companion
+map("n", "å", "o<Esc>")
+map("n", "Å", "O<Esc>")
+
 -- See highlight group under cursor
 map("n", "<leader>e", ":Inspect<cr>", s)
 
@@ -133,8 +138,8 @@ map("n", "ö", tws.toggle_trailing_whitespace)
 -- === PLUGINS ===
 
 -- inkarkat/vim-ReplaceWithRegister
-map("n", "dp", "<Plug>ReplaceWithRegisterOperator", r)
-map("n", "dpp", "<Plug>ReplaceWithRegisterLine", r)
+map("n", "dp", "<Plug>ReplaceWithRegisterOperator")
+map("n", "dpp", "<Plug>ReplaceWithRegisterLine")
 map("n", "dP", "dp$", r)
 -- Todo: Match visual mode p and P with this
 --       Add variant d<leader>p
@@ -148,8 +153,8 @@ map("n", "<leader>-", ":Fern %:h -drawer -reveal=%<cr>", s)
 map("n", "<leader>_", ":Fern %:h -reveal=%", s)
 
 -- jpalardy/vim-slime
-map("v", "§", "<Plug>SlimeRegionSend", r)
-map("n", "§", "<Plug>SlimeMotionSend", r)
+map("v", "§", "<Plug>SlimeRegionSend")
+map("n", "§", "<Plug>SlimeMotionSend")
 map("n", "½", "§$", r)
-map("n", "§§", "<Plug>SlimeLineSend", r)
-map("n", "<leader>§", "<Plug>SlimeConfig", r)
+map("n", "§§", "<Plug>SlimeLineSend")
+map("n", "<leader>§", "<Plug>SlimeConfig")
