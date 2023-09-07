@@ -12,6 +12,7 @@ autocmd FileType * if &filetype != "gitcommit"
     \ | endif
 
 " Preferences
+set guicursor=a:block
 set mousescroll=ver:1,hor:1 " Two-finger scroll on trackpad distance per scroll event (row, col)
 set laststatus=1 " Don't show statusline unless there are 2 or more windows
 set statusline=%f\ %r%m

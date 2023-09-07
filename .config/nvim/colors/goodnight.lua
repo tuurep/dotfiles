@@ -48,19 +48,13 @@ local g = 0 -- global
 local active = vim.api.nvim_create_namespace("active_window")
 local inactive = vim.api.nvim_create_namespace("inactive_window")
 
--- No cursorline background
-hl(g, "CursorLine",   {}) -- clear
+-- Active line
+hl(g, "CursorLine",   {})                   -- clear: no cursorline bg
+hl(g, "CursorLineNr", { fg = fg, bg = bg }) --    ... only the LineNr highlighted
+
+-- Inactive line
 hl(g, "LineNr",       { fg = linenum })
 hl(g, "EndOfBuffer",  { fg = linenum })
-
-hl(g, "Cursor", { fg = bg, bg = fg })
-
--- Static color
-vim.o.guicursor = "a:Cursor"
-
--- Make current line number follow cursor hl on operator-pending mode
-hl(g, "CursorLineNr",        { fg = fg,   bg = bg })
-hl(g, "CursorLineNrPending", { fg = blue, bg = bg })
 
 -- Search and substitute (:%s)
 hl(active, "Search",     { fg = bg, bg = dd_fg })
@@ -87,25 +81,6 @@ autocmd({"VimEnter"}, {
     end
 })
 
--- Annoying workaround: make cursor inside the current search not hide foreground
--- If this looks like it doesn't make sense, tbh I don't blame you...
--- Works, but possible problems if a highlight would have bg other than default bg
-hl(g, "CursorInsideSearch", { bg = bg })
-local win_cursor_match = {}
-
-local function add_cursor_match(w)
-    if not win_cursor_match[w] then
-        win_cursor_match[w] = vim.fn.matchadd("CursorInsideSearch", "\\%#")
-    end
-end
-
-local function del_cursor_match(w)
-    if win_cursor_match[w] then
-        vim.fn.matchdelete(win_cursor_match[w])
-        win_cursor_match[w] = nil
-    end
-end
-
 -- For inactive windows:
 --      * Don't highlight current linenumber
 --      * Don't higlight search/substitute matches
@@ -116,7 +91,6 @@ autocmd({"WinEnter", "BufWinEnter"}, {
         vim.opt_local.cursorline = true
         local w = vim.api.nvim_get_current_win()
         vim.api.nvim_win_set_hl_ns(w, active)
-        add_cursor_match(w)
     end
 })
 -- INACTIVE WINDOW
@@ -125,20 +99,6 @@ autocmd({"WinLeave"}, {
         vim.opt_local.cursorline = false
         local w = vim.api.nvim_get_current_win()
         vim.api.nvim_win_set_hl_ns(w, inactive)
-        del_cursor_match(w)
-    end
-})
--- FIX SUBSTITUTE CURSOR INVISIBLE
-autocmd({"CmdLineEnter"}, {
-    callback = function()
-        local w = vim.api.nvim_get_current_win()
-        del_cursor_match(w)
-    end
-})
-autocmd({"CmdLineLeave"}, {
-    callback = function()
-        local w = vim.api.nvim_get_current_win()
-        add_cursor_match(w)
     end
 })
 

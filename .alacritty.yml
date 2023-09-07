@@ -5,12 +5,12 @@ env:
 font:
   normal:
     family: Alt Hack Nerd Font
-    style: Regular
+    style:  Regular
   
   # Disable bold font:
   bold:
     family: Alt Hack Nerd Font
-    style: Regular
+    style:  Regular
 
   size: 12.5
 
@@ -20,32 +20,38 @@ window:
     x: 7
 
 colors:
+  cursor:
+    custom_colors: true
+    text:   "#121212"
+    cursor: "#d0d0d0"
+
+
   primary:
     background: "#121212"
     foreground: "#d0d0d0"
  
   normal:
-    black: "#121212"
-    red: "#cc6666"
-    green: "#a7bd68"
-    yellow: "#f0c674"
-    blue: "#81a2be"
+    black:   "#121212"
+    red:     "#cc6666"
+    green:   "#a7bd68"
+    yellow:  "#f0c674"
+    blue:    "#81a2be"
     magenta: "#b294bb"
-    cyan: "#8abeb7"
-    white: "#d0d0d0"
+    cyan:    "#8abeb7"
+    white:   "#d0d0d0"
 
   # Red to Cyan are not different from normal
   # 'black' is for code comments
   # bright white is very rarely used
   bright:
-    black: "#5f6160"
-    red: "#cc6666"
-    green: "#a7bd68"
-    yellow: "#f0c674"
-    blue: "#81a2be"
+    black:   "#5f6160"
+    red:     "#cc6666"
+    green:   "#a7bd68"
+    yellow:  "#f0c674"
+    blue:    "#81a2be"
     magenta: "#b294bb"
-    cyan: "#8abeb7"
-    white: "#ffffff"
+    cyan:    "#8abeb7"
+    white:   "#ffffff"
 
   # Colors 16-255 can be set
   indexed_colors: [
