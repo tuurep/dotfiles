@@ -5,6 +5,7 @@ local s = {silent=true}
 local r = {remap=true}
 
 -- <leader> is <Space>
+map("n", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 
 -- Disable keys that:
@@ -33,11 +34,9 @@ map("n", "<leader>@", "Q")
 map({"n", "v", "o"}, "<Tab>", "/")
 map({"n", "v", "o"}, "<S-Tab>", "?")
 
--- Side effect: Ctrl+i is understood as Tab in terminals, so "go forward in jump list" breaks
--- Map that to Ctrl+p which is free
--- NOTE: NeoVim can differentiate between these, but alacritty can't , see:
--- https://github.com/alacritty/alacritty/issues/3101
-map("n", "<C-p>", "<C-i>")
+-- remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
+map("n", "<M-o>", "<C-o>")
+map("n", "<M-i>", "<C-i>")
 
 -- Start a substitute command without finger gymnastics:
 map("n", "<leader><Tab>", ":%s/")
@@ -70,6 +69,10 @@ map({"n", "v", "o"}, "H", "^")
 map({"n", "v", "o"}, "J", "}")
 map({"n", "v", "o"}, "K", "{")
 map({"n", "v", "o"}, "L", "$")
+map({"n", "v", "o"}, "gH", "g^")
+map({"n", "v", "o"}, "gJ", "g}")
+map({"n", "v", "o"}, "gK", "g{")
+map({"n", "v", "o"}, "gL", "g$")
 map("i", "<C-h>", "<Left>")
 map("i", "<C-j>", "<Down>")
 map("i", "<C-k>", "<Up>")
@@ -93,15 +96,18 @@ map("n", "<C-q>", ":q<cr>", s)
 map("i", "<C-s>", "<C-o>:w<cr>", s)
 map("i", "<C-q>", "<C-o>:q<cr>", s)
 
--- Registers
+-- System clipboard
 map({"n", "v"}, "<leader>y", '"+y')
 map({"n", "v"}, "<leader>p", '"+p')
 map({"n", "v"}, "<leader>d", '"+d')
 map({"n", "v"}, "<leader>c", '"+c')
-map("n", "<leader>Y", '"+Y')
+map("n", "<leader>Y", '"+Y', r) -- needs recursion, you may know why (https://github.com/neovim/neovim/issues/416)
 map("n", "<leader>P", '"+P')
 map("n", "<leader>D", '"+D')
 map("n", "<leader>C", '"+C')
+map("n", "<leader><C-y>", '"+<C-y>', r)
+map("n", "<leader><C-p>", '"+<C-p>', r)
+map("n", "<leader><C-d>", '"+<C-d>', r)
 
 -- Like dd yy but no newline at end (completely awesome)
 map("n", "<C-y>", function()
@@ -109,6 +115,21 @@ map("n", "<C-y>", function()
 end)
 map("n", "<C-d>", '<C-y>0"_D', r) -- blackhole the deletion to not set unnamed reg
                                   -- if another reg was chosen
+
+-- Append register to current line as a oneliner
+map("n", "<C-p>", function()
+    local line = vim.api.nvim_get_current_line()
+    local reg = vim.fn.getreg(vim.v.register)
+
+    if reg ~= "" then
+        local joined = reg:gsub("\n$", ""):gsub("^%s*", ""):gsub("%s+", " ")
+        if line ~= "" then
+            line = line .. " "
+        end
+        vim.api.nvim_set_current_line(line .. joined)
+    end
+    vim.cmd.normal("$")
+end)
 
 -- Fix x and X (from being terrible)
 -- To be fixed: would like consecutive xxxxxxx to be treated as a single undo item
@@ -125,15 +146,20 @@ map("n", "x", function() blackhole("x") end)
 map("n", "X", function() blackhole("X") end)
 
 -- o O normal mode companion
-map("n", "å", "o<Esc>")
-map("n", "Å", "O<Esc>")
+map("n", "ö", "o<Esc>")
+map("n", "Ö", "O<Esc>")
+
+-- ~ too hard to press for being so useful
+map("n", "å", "~")
+map("n", "gå", "g~")
+map("n", "gåå", "g~~")
 
 -- See highlight group under cursor
 map("n", "<leader>e", ":Inspect<cr>", s)
 
 -- Mappings to Lua modules
 local tws = require("trailingwhitespace")
-map("n", "ö", tws.toggle_trailing_whitespace)
+map("n", "Å", tws.toggle_trailing_whitespace)
 
 -- === PLUGINS ===
 
