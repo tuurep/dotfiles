@@ -12,6 +12,7 @@ autocmd FileType * if &filetype != "gitcommit"
     \ | endif
 
 " Preferences
+set clipboard=unnamedplus
 set guicursor=a:block
 set mousescroll=ver:1,hor:1 " Two-finger scroll on trackpad distance per scroll event (row, col)
 set laststatus=1 " Don't show statusline unless there are 2 or more windows
@@ -48,13 +49,13 @@ call plug#begin('~/.config/nvim/vim-plug')
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+" Open files in last edit position
+Plug 'farmergreg/vim-lastplace'
+
 " Pope
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-
-" Open files in last edit position
-Plug 'farmergreg/vim-lastplace'
 
 " For mappings "dp" "dpp" and "dP"
 Plug 'inkarkat/vim-ReplaceWithRegister'
