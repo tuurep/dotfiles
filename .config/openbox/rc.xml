@@ -254,15 +254,8 @@
       </action>
     </keybind>
     <!-- adiaeresis is the 'ä' key -->
-    <keybind key="W-adiaeresis">
+    <keybind key="W-f">
       <action name="GrowToFill"></action>
-    </keybind>
-    <keybind key="W-S-adiaeresis">
-      <action name="Unmaximize"/>
-      <action name="MoveResizeTo">
-        <height>100%</height>
-        <width>100%</width>
-      </action>
     </keybind>
     <keybind key="W-h">
       <action name="MoveResizeTo">
@@ -335,7 +328,7 @@
         <command>~/scripts/ob/minimize-all-of-class.sh</command>
       </action>
     </keybind>
-    <keybind key="W-f">
+    <keybind key="W-S-f">
       <action name="ToggleFullscreen"/>
     </keybind>
     <keybind key="W-t">
