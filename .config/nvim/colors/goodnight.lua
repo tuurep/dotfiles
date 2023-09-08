@@ -1,8 +1,6 @@
 -- goodnight.vim colorscheme by tuurep (github.com/tuurep)
 -- This colorscheme is based on Base16-Tomorrow-Night by Chris Kempson (github.com/chriskempson)
 
--- Warning: some pretty experimental stuff here with cursor and autocmds
-
 vim.cmd("highlight clear")
 vim.cmd("syntax reset")
 
@@ -66,6 +64,9 @@ hl(inactive, "Search",     {})
 hl(inactive, "CurSearch",  {})
 hl(inactive, "IncSearch",  {})
 hl(inactive, "Substitute", {})
+
+-- tommcdo/vim-exchange
+hl(g, "ExchangeRegion", { fg = bg, bg = dd_fg })
 
 -- Init inactive windows
 autocmd({"VimEnter"}, {

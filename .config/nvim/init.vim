@@ -57,10 +57,16 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 
-" For mappings "dp" "dpp" and "dP"
+" Align lines by character
+Plug 'tommcdo/vim-lion'
+
+" Exchange operator
+Plug 'tuurep/vim-exchange' " tommcdo/vim-exchange fork
+
+" Like a delete and paste combined, but does not mess up registers + more tidy with newlines
 Plug 'inkarkat/vim-ReplaceWithRegister'
 
-" Edit registers (especially macros) with :Re <register>
+" Edit registers (especially macros) with :R <register>
 Plug 'tuurep/registereditor'
 
 " Nonlinear undo history access
@@ -68,12 +74,10 @@ Plug 'mbbill/undotree'
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_HighlightChangedWithSign = 0
 
-" Toggle live preview in browser with <leader>gp in markdown files (keymap at ftplugin/markdown.vim)
-" Forked from iamcco/markdown-preview.nvim to make some small changes
 " To be replaced with a less heavy alternative (most likely jannis-baum/vivify)
 Plug 'tuurep/markdown-preview.nvim', { 'do': './build-hook.sh' }
 
-" .tex-files - Compile: <leader>gc View pdf: <leader>gv Toggle error box: <leader>ge
+" Compile and view TeX, atm better syntax highlighting than treesitter
 Plug 'lervag/vimtex'
 
 " Send lines to target window/pane to execute (like python shell)
