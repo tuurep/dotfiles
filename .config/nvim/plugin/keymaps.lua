@@ -136,6 +136,14 @@ map("n", "X", function() blackhole("X") end)
 map("n", "ö", "o<Esc>")
 map("n", "Ö", "O<Esc>")
 
+-- Without shift = forward, with shift = backward
+map({"n", "v"}, "<", ">")
+map({"n", "v"}, ">", "<")
+map({"n", "v"}, "<<", ">>")
+map({"n", "v"}, ">>", "<<")
+map({"n", "v", "o"}, ",", ";")
+map({"n", "v", "o"}, ";", ",")
+
 -- ~ too hard to press for being so useful
 map("n", "å", "~")
 map("n", "gå", "g~")
