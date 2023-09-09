@@ -27,10 +27,10 @@ return {
     },
 
     -- :Lazy log
-    -- Problem, would want to only show new commits
-    -- (Like max 2 weeks old)
     git = {
-        log = { "-10" }
+        -- Shows all commits newer than 2 weeks
+        -- Plugins that don't have newer commits aren't shown at all
+        log = { "--since=$(date -d '-2 week')" }
     },
 
     performance = {
