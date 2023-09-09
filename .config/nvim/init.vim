@@ -1,10 +1,5 @@
 colorscheme goodnight
 
-" Don't highlight matchpairs
-let g:loaded_matchparen = 1
-" Don't let vimtex do that either
-let g:vimtex_matchparen_enabled = 0
-
 " Disable autowraps and comment continuations,
 " and prevent /usr/share/nvim/runtime/ftplugins overriding them
 autocmd FileType * if &filetype != "gitcommit"

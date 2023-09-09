@@ -1,6 +1,9 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy"
 vim.opt.runtimepath:prepend(lazypath .. "/lazy.nvim")
 
+-- Override Lazy default keybinds
+require("lazy.view.config").keys.hover = "gx"
+
 return {
     lockfile = lazypath .. "/lazy-lock.json",
 
@@ -22,14 +25,29 @@ return {
             list = { "", "", "", "" }
         }
     },
-    disabled_plugins = {
-        "gzip",
-        "matchit",
-        "matchparen",
-        "netrwPlugin",
-        "tarPlugin",
-        "tohtml",
-        "tutor",
-        "zipPlugin"
+
+    -- :Lazy log
+    -- Problem, would want to only show new commits
+    -- (Like max 2 weeks old)
+    git = {
+        log = { "-10" }
+    },
+
+    performance = {
+        rtp = {
+            disabled_plugins = {
+                "editorconfig",
+                "gzip",
+                "man",
+                "matchparen",
+                "netrwPlugin",
+                "rplugin",
+                "spellfile",
+                "tarPlugin",
+                "tohtml",
+                "tutor",
+                "zipPlugin",
+            }
+        }
     }
 }

@@ -288,11 +288,10 @@ hl(g, "Typedef",      { link = "@type.definition"      })
 
 -- Fine-tuning and pinpointing issues
 
--- Disable Conceal
-hl(g, "Conceal", { link = "None" })
-
--- Disable standouts in comments
-hl(g, "Todo", { link = "@comment" })
+-- Stuff that insists on being annoying
+hl(g, "MatchParen", { link = "None" })
+hl(g, "Conceal",    { link = "None" })
+hl(g, "Todo",   { link = "@comment" })
 
 -- XML
 hl(g, "xmlTagName",         { link = "@tag"           })
