@@ -68,6 +68,10 @@ hl(inactive, "Substitute", {})
 -- tommcdo/vim-exchange
 hl(g, "ExchangeRegion", { fg = bg, bg = dd_fg })
 
+-- vim-sneak
+hl(g, "Sneak", { fg = bg, bg = dd_fg })
+hl(g, "SneakScope", { link = "None" })
+
 -- Init inactive windows
 autocmd({"VimEnter"}, {
     callback = function()
@@ -247,12 +251,12 @@ hl(g, "@text.diff.delete",     { fg = red     })
 hl(g, "@tag",                  { fg = red     })
 hl(g, "@tag.attribute",        { fg = yellow  })
 hl(g, "@tag.delimiter",        { fg = fg      })
-hl(g, "@text.todo",            { link="@none" })
-hl(g, "@text.note",            { link="@none" })
-hl(g, "@text.warning",         { link="@none" })
-hl(g, "@text.danger",          { link="@none" })
-hl(g, "@spell",                { link="@none" })
-hl(g, "@nospell",              { link="@none" })
+hl(g, "@text.todo",            { link="None" })
+hl(g, "@text.note",            { link="None" })
+hl(g, "@text.warning",         { link="None" })
+hl(g, "@text.danger",          { link="None" })
+hl(g, "@spell",                { link="None" })
+hl(g, "@nospell",              { link="None" })
 
 -- Link for languages that don't have a treesitter parser
 -- To have somewhat sensible defaults (otherwise Vim's default colorscheme will show)
@@ -285,7 +289,7 @@ hl(g, "Typedef",      { link = "@type.definition"      })
 -- Fine-tuning and pinpointing issues
 
 -- Disable Conceal
-hl(g, "Conceal", { link = "@none" })
+hl(g, "Conceal", { link = "None" })
 
 -- Disable standouts in comments
 hl(g, "Todo", { link = "@comment" })

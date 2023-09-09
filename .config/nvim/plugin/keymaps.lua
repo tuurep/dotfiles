@@ -12,27 +12,26 @@ vim.g.mapleader = " "
 --   1. can interfere with other settings
 --   2. I want to repurpose later
 --   3. are annoying
-map("n", "s", "<Nop>") -- Will add some incarnation of justinmk's sneak
 map("n", "<Up>", "<Nop>")
 map("n", "<Down>", "<Nop>")
 map("n", "<C-h>", "<Nop>")
 map("n", "<C-l>", "<Nop>")
-map("n", "<C-e>", "<Nop>") -- <M-j> and <M-k> are remapped as <C-e> and <C-y> 
-map({"n", "v"}, "<BS>", "<Nop>")
-map({"n", "v", "i", "c"}, "<PageUp>", "<Nop>")
-map({"n", "v", "i", "c"}, "<PageDown>", "<Nop>")
+map("n", "<C-e>", "<Nop>") -- <M-j> and <M-k> are remapped as <C-e> and <C-y>
+map({"n", "x"}, "<BS>", "<Nop>")
+map({"n", "x", "i", "c"}, "<PageUp>", "<Nop>")
+map({"n", "x", "i", "c"}, "<PageDown>", "<Nop>")
 map({"n", "i"}, "<F1>", "<Nop>")
 
 -- Prevent accidental invokings of macros
-map({"n", "v"}, "Q", "q")
-map({"n", "v"}, "q", "<Nop>")
+map({"n", "x"}, "Q", "q")
+map({"n", "x"}, "q", "<Nop>")
 
 -- The default Q is not bad but its default mapping is bad, here's a better alternative:
 map("n", "<leader>@", "Q")
 
 -- Tab to search because / sucks in Finnish layout
-map({"n", "v", "o"}, "<Tab>", "/")
-map({"n", "v", "o"}, "<S-Tab>", "?")
+map({"n", "x", "o"}, "<Tab>", "/")
+map({"n", "x", "o"}, "<S-Tab>", "?")
 
 -- remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
 map("n", "<M-o>", "<C-o>")
@@ -63,16 +62,16 @@ map({"i", "c"}, "<C-b>", "<C-a>") -- command mode: <C-b> == <Home>, insert mode:
 map("i", "<M-i>", "<C-e>")
 
 -- Comfortable movement keys:
-map({"n", "v", "o"}, "<C-j>", "<C-d>")
-map({"n", "v", "o"}, "<C-k>", "<C-u>")
-map({"n", "v", "o"}, "H", "^")
-map({"n", "v", "o"}, "J", "}")
-map({"n", "v", "o"}, "K", "{")
-map({"n", "v", "o"}, "L", "$")
-map({"n", "v", "o"}, "gH", "g^")
-map({"n", "v", "o"}, "gJ", "g}")
-map({"n", "v", "o"}, "gK", "g{")
-map({"n", "v", "o"}, "gL", "g$")
+map({"n", "x", "o"}, "<C-j>", "<C-d>")
+map({"n", "x", "o"}, "<C-k>", "<C-u>")
+map({"n", "x", "o"}, "H", "^")
+map({"n", "x", "o"}, "J", "}")
+map({"n", "x", "o"}, "K", "{")
+map({"n", "x", "o"}, "L", "$")
+map({"n", "x", "o"}, "gH", "g^")
+map({"n", "x", "o"}, "gJ", "g}")
+map({"n", "x", "o"}, "gK", "g{")
+map({"n", "x", "o"}, "gL", "g$")
 map("i", "<C-h>", "<Left>")
 map("i", "<C-j>", "<Down>")
 map("i", "<C-k>", "<Up>")
@@ -85,8 +84,8 @@ map("n", "<Left>", ":bp<cr>", s)
 map("n", "<Right>", ":bn<cr>", s)
 
 -- Remap what the above has overriden
-map({"n", "v"}, "¤", "J")
-map({"n", "v"}, "g¤", "gJ")
+map({"n", "x"}, "¤", "J")
+map({"n", "x"}, "g¤", "gJ")
 map({"i", "c"}, "<C-z>", "<C-k>")
 map("n", "g/", "K")
 
@@ -137,12 +136,12 @@ map("n", "ö", "o<Esc>")
 map("n", "Ö", "O<Esc>")
 
 -- Without shift = forward, with shift = backward
-map({"n", "v"}, "<", ">")
-map({"n", "v"}, ">", "<")
-map({"n", "v"}, "<<", ">>")
-map({"n", "v"}, ">>", "<<")
-map({"n", "v", "o"}, ",", ";")
-map({"n", "v", "o"}, ";", ",")
+map({"n", "x"}, "<", ">")
+map({"n", "x"}, ">", "<")
+map({"n", "x"}, "<<", ">>")
+map({"n", "x"}, ">>", "<<")
+map({"n", "x", "o"}, ",", ";")
+map({"n", "x", "o"}, ";", ",")
 
 -- ~ too hard to press for being so useful
 map("n", "å", "~")
@@ -157,6 +156,14 @@ local tws = require("trailingwhitespace")
 map("n", "Å", tws.toggle_trailing_whitespace)
 
 -- === PLUGINS ===
+
+-- justinmk/vim-sneak
+map({"n", "x", "o"}, ",", "<Plug>Sneak_;")
+map({"n", "x", "o"}, ";", "<Plug>Sneak_,")
+map({"n", "x", "o"}, "f", "<Plug>Sneak_f")
+map({"n", "x", "o"}, "F", "<Plug>Sneak_F")
+map({"n", "x", "o"}, "t", "<Plug>Sneak_t")
+map({"n", "x", "o"}, "T", "<Plug>Sneak_T")
 
 -- inkarkat/vim-ReplaceWithRegister
 map("n", "dp", "<Plug>ReplaceWithRegisterOperator")
@@ -174,7 +181,7 @@ map("n", "<leader>-", ":Fern %:h -drawer -reveal=%<cr>", s)
 map("n", "<leader>_", ":Fern %:h -reveal=%", s)
 
 -- jpalardy/vim-slime
-map("v", "§", "<Plug>SlimeRegionSend")
+map("x", "§", "<Plug>SlimeRegionSend")
 map("n", "§", "<Plug>SlimeMotionSend")
 map("n", "½", "§$", r)
 map("n", "§§", "<Plug>SlimeLineSend")

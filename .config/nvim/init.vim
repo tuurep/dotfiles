@@ -69,6 +69,11 @@ local plugins = {
     -- Exchange operator
     "tuurep/vim-exchange", -- tommcdo/vim-exchange fork
 
+    -- 2-character f and a bit of an overhaul of fFtT,;
+    -- Todo + keep an eye: remove prompt:
+    --      https://github.com/justinmk/vim-sneak/issues/300
+    "justinmk/vim-sneak",
+
     -- Like a delete and paste in one but doesn't mess up registers
     "inkarkat/vim-ReplaceWithRegister",
 
