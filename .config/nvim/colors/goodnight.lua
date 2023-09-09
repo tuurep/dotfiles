@@ -1,8 +1,8 @@
--- goodnight.vim colorscheme by tuurep (github.com/tuurep)
+-- goodnight.lua colorscheme by tuurep (github.com/tuurep)
 -- This colorscheme is based on Base16-Tomorrow-Night by Chris Kempson (github.com/chriskempson)
 
-vim.cmd("highlight clear")
-vim.cmd("syntax reset")
+vim.cmd.highlight("clear")
+vim.cmd.syntax("reset")
 
 vim.o.termguicolors = true
 vim.o.background = "dark"
@@ -118,7 +118,7 @@ hl(g, "SpecialKey",   { fg = comment            })
 hl(g, "TooLong",      { fg = red                })
 hl(g, "Visual",       { fg = bg,      bg = fg   })
 hl(g, "VisualNOS",    { fg = red                })
-hl(g, "WarningMsg",   { fg = red                })
+hl(g, "WarningMsg",   { fg = yellow             })
 hl(g, "WildMenu",     { fg = l_bg               })
 hl(g, "Title",        { fg = blue               })
 hl(g, "NonText",      { fg = comment            })
@@ -284,6 +284,9 @@ hl(g, "Typedef",      { link = "@type.definition"      })
 
 -- Fine-tuning and pinpointing issues
 
+-- Disable Conceal
+hl(g, "Conceal", { link = "@none" })
+
 -- Disable standouts in comments
 hl(g, "Todo", { link = "@comment" })
 
@@ -295,6 +298,14 @@ hl(g, "xmlAttrib",          { link = "@tag.attribute" })
 
 -- Markdown
 hl(g, "@punctuation.special.markdown", { fg = red })
+
+-- Lazy.nvim UI (Note: can break other floating windows)
+hl(g, "NormalFloat",     { bg = bg      })
+hl(g, "DiagnosticError", { fg = red     })
+hl(g, "DiagnosticOk",    { fg = green   })
+hl(g, "DiagnosticWarn",  { fg = yellow  })
+hl(g, "DiagnosticInfo",  { fg = comment })
+hl(g, "DiagnosticHint",  { fg = comment })
 
 -- :checkhealth OK
 hl(g, "healthSuccess", { fg = bg, bg = green })

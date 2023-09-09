@@ -1,4 +1,4 @@
-require'nvim-treesitter.configs'.setup {
+require'nvim-treesitter.configs'.setup({
     ensure_installed = "all",
     sync_install = false,
     auto_install = false,
@@ -13,4 +13,4 @@ require'nvim-treesitter.configs'.setup {
     indent = {
         enable = false
     }
-}
+})

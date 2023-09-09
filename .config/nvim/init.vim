@@ -44,49 +44,68 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-" junegunn/vim-plug
-call plug#begin('~/.config/nvim/vim-plug')
+" <leader> is <Space>
+map <Space> <Nop>
+let g:mapleader=" "
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" folke/lazy.nvim
+lua <<EOF
+local lazy_config = require("lazy-config")
 
-" Open files in last edit position
-Plug 'farmergreg/vim-lastplace'
+local plugins = {
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
-" Pope
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
+    -- Open files in last edit position
+    "farmergreg/vim-lastplace",
 
-" Align lines by character
-Plug 'tommcdo/vim-lion'
+    -- Pope
+    "tpope/vim-repeat",
+    "tpope/vim-commentary",
+    "tpope/vim-surround",
 
-" Exchange operator
-Plug 'tuurep/vim-exchange' " tommcdo/vim-exchange fork
+    -- Align lines by character
+    "tommcdo/vim-lion",
 
-" Like a delete and paste combined, but does not mess up registers + more tidy with newlines
-Plug 'inkarkat/vim-ReplaceWithRegister'
+    -- Exchange operator
+    "tuurep/vim-exchange", -- tommcdo/vim-exchange fork
 
-" Edit registers (especially macros) with :R <register>
-Plug 'tuurep/registereditor'
+    -- Like a delete and paste in one but doesn't mess up registers
+    "inkarkat/vim-ReplaceWithRegister",
 
-" Nonlinear undo history access
-Plug 'mbbill/undotree'
-let g:undotree_SetFocusWhenToggle = 1
-let g:undotree_HighlightChangedWithSign = 0
+    -- Edit registers (especially macros) with :R <register>
+    "tuurep/registereditor",
 
-" To be replaced with a less heavy alternative (most likely jannis-baum/vivify)
-Plug 'tuurep/markdown-preview.nvim', { 'do': './build-hook.sh' }
+    -- Nonlinear undo history access
+    {
+        "mbbill/undotree",
+        config = function()
+            vim.g.undotree_SetFocusWhenToggle = 1
+            vim.g.undotree_HighlightChangedWithSign = 0
+        end
+    },
 
-" Compile and view TeX, atm better syntax highlighting than treesitter
-Plug 'lervag/vimtex'
+    -- To be replaced with a less heavy alternative (most likely jannis-baum/vivify)
+    {
+        "tuurep/markdown-preview.nvim",
+        build = "yarn install && yarn build && cd app && yarn install"
+    },
 
-" Send lines to target window/pane to execute (like python shell)
-Plug 'jpalardy/vim-slime'
-let g:slime_target = "tmux"
-let g:slime_no_mappings = 1 " disable default mappings
+    -- Compile and view TeX, atm better syntax highlighting than treesitter
+    "lervag/vimtex",
 
-" I don't even use this but it's nicer than netrw
-Plug 'lambdalisue/fern.vim'
-Plug 'lambdalisue/fern-hijack.vim'
+    -- Send lines to target window/pane to execute (like python shell)
+    {
+        "jpalardy/vim-slime",
+        config = function()
+            vim.g.slime_target = "tmux"
+            vim.g.slime_no_mappings = 1 -- disable default mappings
+        end
+    },
 
-call plug#end()
+    -- I don't even use this but it's nicer than netrw
+    "lambdalisue/fern.vim",
+    "lambdalisue/fern-hijack.vim"
+}
+
+require("lazy").setup(plugins, lazy_config)
+EOF
