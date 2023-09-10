@@ -55,8 +55,14 @@ local plugins = {
 
     -- Pope
     "tpope/vim-repeat",
-    "tpope/vim-commentary",
     "tpope/vim-surround",
+
+    {
+        "numtostr/Comment.nvim",
+        config = function()
+            require("Comment").setup()
+        end
+    },
 
     -- Align lines by character
     "tommcdo/vim-lion",
