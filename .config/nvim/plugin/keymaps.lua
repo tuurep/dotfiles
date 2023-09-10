@@ -166,12 +166,16 @@ map({"n", "x", "o"}, "t", "<Plug>Sneak_t")
 map({"n", "x", "o"}, "T", "<Plug>Sneak_T")
 
 -- inkarkat/vim-ReplaceWithRegister
-map("n", "dp", "<Plug>ReplaceWithRegisterOperator")
-map("n", "dpp", "<Plug>ReplaceWithRegisterLine")
-map("n", "dP", "dp$", r)
 -- Todo: Match visual mode p and P with this
 --       Add variant d<leader>p
 --       One should add deletion to "", the other should not
+map("n", "dp", "<Plug>ReplaceWithRegisterOperator")
+map("n", "dpp", "<Plug>ReplaceWithRegisterLine")
+map("n", "dP", "dp$", r)
+
+-- tommcdo/vim-exchange
+map("n", "cX", "cx$", r)
+map("n", "c<C-x>", "0cx$", r)
 
 -- mbbill/undotree
 map("n", "<leader>u", ":UndotreeToggle<cr>", s)
