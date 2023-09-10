@@ -77,10 +77,25 @@ local plugins = {
 
     -- Nonlinear undo history access
     {
-        "mbbill/undotree",
+        "tuurep/undotree", -- mbbill/undotree fork
         config = function()
             vim.g.undotree_SetFocusWhenToggle = 1
             vim.g.undotree_HighlightChangedWithSign = 0
+            vim.g.undotree_ShortIndicators = 1
+            vim.g.undotree_HelpLine = 0
+            vim.api.nvim_create_autocmd({"WinEnter"}, {
+                pattern = "undotree_2",
+                callback = function()
+                    vim.keymap.set("n", "<C-q>", function()
+                        print(
+                            "Exiting with :q in undotree causes a bad bug\n" ..
+                            "Use q instead\n" ..
+                            "Follow this issue:\n" ..
+                            "https://github.com/mbbill/undotree/issues/130"
+                        )
+                    end, {buffer=0})
+                end
+            })
         end
     },
 

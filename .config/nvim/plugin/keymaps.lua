@@ -143,6 +143,11 @@ map({"n", "x"}, ">>", "<<")
 map({"n", "x", "o"}, ",", ";")
 map({"n", "x", "o"}, ";", ",")
 
+-- Undo follows the same idea as above
+-- Map <M-u> to WeirdUndo so it's still available when you want to use it (never)
+map("n", "U", "<C-r>")
+map("n", "<M-u>", "U")
+
 -- ~ too hard to press for being so useful
 map("n", "å", "~")
 map("n", "gå", "g~")

@@ -146,12 +146,12 @@ hl(g, "TabLineSel",   { fg = green,   bg = l_bg })
 
 -- Diff highlighting
 hl(g, "DiffAdd",     { fg = bg,    bg = green   })
-hl(g, "DiffChange",  { fg = bg,    bg = dark_fg })
+hl(g, "DiffChange",  { fg = bg,    bg = d_fg    })
 hl(g, "DiffDelete",  { fg = bg,    bg = red     })
 hl(g, "DiffText",    { fg = bg,    bg = green   })
 hl(g, "DiffAdded",   { fg = green, bg = bg      })
 hl(g, "DiffRemoved", { fg = red,   bg = bg      })
-hl(g, "DiffLine",    { fg = blue,  bg = bg      })
+hl(g, "DiffLine",    { fg = cyan,  bg = bg      })
 
 -- Undotree highlighting
 hl(g, "UndoTreeNodeCurrent", { fg = fg                  })
