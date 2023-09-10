@@ -11,9 +11,12 @@ vim.g.mapleader = " "
 -- Disable keys that:
 --   1. can interfere with other settings
 --   2. I want to repurpose later
---   3. are annoying
+--   3. are annoying
 map("n", "<Up>", "<Nop>")
 map("n", "<Down>", "<Nop>")
+map("n", "M", "<Nop>")
+map("n", "+", "<Nop>")
+map("n", "<C-o>", "<Nop>")
 map("n", "<C-h>", "<Nop>")
 map("n", "<C-l>", "<Nop>")
 map("n", "<C-e>", "<Nop>") -- <M-j> and <M-k> are remapped as <C-e> and <C-y>
@@ -88,6 +91,9 @@ map({"n", "x"}, "¤", "J")
 map({"n", "x"}, "g¤", "gJ")
 map({"i", "c"}, "<C-z>", "<C-k>")
 map("n", "g/", "K")
+map("n", "_", "H")
+map("n", "<M-->", "M")
+map("n", "-", "L")
 
 -- One-handed save and quit
 map("n", "<C-s>", ":w<cr>", s)
@@ -138,8 +144,8 @@ map("n", "Ö", "O<Esc>")
 -- Without shift = forward, with shift = backward
 map({"n", "x"}, "<", ">")
 map({"n", "x"}, ">", "<")
-map({"n", "x"}, "<<", ">>")
-map({"n", "x"}, ">>", "<<")
+map("n", "<<", ">>")
+map("n", ">>", "<<")
 map({"n", "x", "o"}, ",", ";")
 map({"n", "x", "o"}, ";", ",")
 
@@ -180,7 +186,7 @@ map("n", "dP", "dp$", r)
 
 -- tommcdo/vim-exchange
 map("n", "cX", "cx$", r)
-map("n", "c<C-x>", "0cx$", r)
+map("n", "c<C-x>", "0cx$", r) -- Not dot-repeatable... but that would be extremely niche
 
 -- mbbill/undotree
 map("n", "<leader>u", ":UndotreeToggle<cr>", s)
