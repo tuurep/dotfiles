@@ -1,17 +1,14 @@
 -- shorthands
 local map = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
-local s = {silent=true}
-local r = {remap=true}
-
--- <leader> is <Space>
-map("n", "<Space>", "<Nop>")
-vim.g.mapleader = " "
+local s = { silent = true }
+local r = { remap = true }
+local b = { buffer = 0 }
 
 -- Disable keys that:
 --   1. can interfere with other settings
 --   2. I want to repurpose later
---   3. are annoying
+--   3. are annoying
 map("n", "<Up>", "<Nop>")
 map("n", "<Down>", "<Nop>")
 map("n", "M", "<Nop>")
@@ -53,7 +50,7 @@ map("n", "<Enter>", ":echo ''<cr>", s) -- clear cmdline text
 -- Can't do the above mapping for command line <C-f> special buffer
 autocmd({"CmdWinEnter"}, {
     callback = function()
-        map("n", "<Enter>", "<Enter>", {buffer=0})
+        map("n", "<Enter>", "<Enter>", b)
     end
 })
 
@@ -91,9 +88,9 @@ map({"n", "x"}, "¤", "J")
 map({"n", "x"}, "g¤", "gJ")
 map({"i", "c"}, "<C-z>", "<C-k>")
 map("n", "g/", "K")
-map("n", "_", "H")
-map("n", "<M-->", "M")
-map("n", "-", "L")
+map("n", "_", "H")     -- underscore
+map("n", "-", "M")     -- dash
+map("n", "<M-->", "L") -- Alt + dash
 
 -- One-handed save and quit
 map("n", "<C-s>", ":w<cr>", s)
@@ -189,15 +186,18 @@ map("n", "cX", "cx$", r)
 map("n", "c<C-x>", "0cx$", r) -- Not dot-repeatable... but that would be extremely niche
 
 -- mbbill/undotree
+-- Note: using <C-w> + o to hide undotree causes the same bug as :q
+-- issues: https://github.com/mbbill/undotree/issues/129
+--         https://github.com/mbbill/undotree/issues/156
+
+-- Better hide it with <leader>u
 map("n", "<leader>u", ":UndotreeToggle<cr>", s)
 
--- lambdalisue/fern.vim
-map("n", "<leader>-", ":Fern %:h -drawer -reveal=%<cr>", s)
-map("n", "<leader>_", ":Fern %:h -reveal=%", s)
-
--- jpalardy/vim-slime
-map("x", "§", "<Plug>SlimeRegionSend")
-map("n", "§", "<Plug>SlimeMotionSend")
-map("n", "½", "§$", r)
-map("n", "§§", "<Plug>SlimeLineSend")
-map("n", "<leader>§", "<Plug>SlimeConfig")
+vim.g.Undotree_CustomMap = function()
+    map("n", "<C-q>", "<Plug>UndotreeClose", b)
+    map("n", "U", "<Plug>UndotreeRedo", b)
+    map("n", "J", "<Plug>UndotreePreviousSavedState", b)
+    map("n", "K", "<Plug>UndotreeNextSavedState", b)
+    map("n", "<Tab>", "/", b)
+    map("n", "C", "<Nop>", b)
+end
