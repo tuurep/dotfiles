@@ -20,7 +20,7 @@ else
 fi
 
 prompt_cmd() {
-        if [[ "$TERM" =~ tmux* ]]; then      
+        if [[ "$TERM" =~ tmux* ]]; then
                 tmux refresh-client -S # Redraw tmux status bar
         fi
         local short_pwd
@@ -49,6 +49,7 @@ alias pl='echo "$OLDPWD" | sed "s|^$HOME|~|"' # Show previous directory, useful 
 
 alias ls="ls --color=auto"
 alias grep="grep --color=auto -i" # Case insensitive
+alias rg="rg --smart-case"
 alias diff="diff --color=auto"
 alias cb="NO_COLOR='please' cb"
 
