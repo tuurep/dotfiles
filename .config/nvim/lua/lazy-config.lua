@@ -39,7 +39,8 @@ return {
                 "editorconfig",
                 "gzip",
                 "man",
-                "matchparen",
+                -- "matchparen", -- Disabling this breaks vim-sneak, see:
+                                 -- https://github.com/justinmk/vim-sneak/issues/305
                 "netrwPlugin",
                 "rplugin",
                 "spellfile",
