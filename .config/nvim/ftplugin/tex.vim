@@ -2,6 +2,6 @@
 setlocal wrap linebreak
 
 " Vimtex keymaps
-nmap <buffer> <leader>gc <Plug>(vimtex-compile)
-nmap <buffer> <leader>gv <Plug>(vimtex-view)
-nmap <buffer> <leader>ge <Plug>(vimtex-errors)
+nnoremap <buffer> <leader>gc <Plug>(vimtex-compile)
+nnoremap <buffer> <leader>gv <Plug>(vimtex-view)
+nnoremap <buffer> <leader>ge <Plug>(vimtex-errors)

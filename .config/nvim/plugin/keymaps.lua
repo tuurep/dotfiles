@@ -12,7 +12,6 @@ local b = { buffer = 0 }
 map("n", "<Up>", "<Nop>")
 map("n", "<Down>", "<Nop>")
 map("n", "M", "<Nop>")
-map("n", "+", "<Nop>")
 map("n", "<C-o>", "<Nop>")
 map("n", "<C-h>", "<Nop>")
 map("n", "<C-l>", "<Nop>")
@@ -94,10 +93,12 @@ map("n", "<Right>", ":bn<cr>", s)
 map({"n", "x"}, "¤", "J")
 map({"n", "x"}, "g¤", "gJ")
 map({"i", "c"}, "<C-z>", "<C-k>")
-map("n", "g/", "K")
 map("n", "_", "H")     -- underscore
 map("n", "-", "M")     -- dash
 map("n", "<M-->", "L") -- Alt + dash
+map("n", "+", "K")
+
+vim.o.keywordprg = ":help" -- for +
 
 -- One-handed save and quit
 map("n", "<C-s>", ":w<cr>", s)

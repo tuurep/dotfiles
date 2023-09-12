@@ -1,1 +1,1 @@
-nnoremap <silent> q :bd<cr>
+nnoremap <silent> <buffer> q :bd<cr>
