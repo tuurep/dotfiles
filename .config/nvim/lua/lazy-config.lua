@@ -38,7 +38,6 @@ return {
             disabled_plugins = {
                 "editorconfig",
                 "gzip",
-                "man",
                 -- "matchparen", -- Disabling this breaks vim-sneak, see:
                                  -- https://github.com/justinmk/vim-sneak/issues/305
                 "netrwPlugin",

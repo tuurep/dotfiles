@@ -2,6 +2,10 @@
 local o, g, opt = vim.o, vim.g, vim.opt
 local autocmd = vim.api.nvim_create_autocmd
 
+-- Be faster
+-- https://github.com/neovim/neovim/commit/2257ade3dc2daab5ee12d27807c0b3bcf103cd29
+vim.loader.enable()
+
 vim.cmd.colorscheme("goodnight")
 
 -- Disable autowraps and comment continuations,

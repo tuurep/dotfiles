@@ -9,13 +9,15 @@ local b = { buffer = 0 }
 --   1. can interfere with other settings
 --   2. I want to repurpose later
 --   3. are annoying
-map("n", "<Up>", "<Nop>")
-map("n", "<Down>", "<Nop>")
-map("n", "M", "<Nop>")
+map({"n", "x", "o"}, "<Up>", "<Nop>")
+map({"n", "x", "o"}, "<Down>", "<Nop>")
+map({"n", "x", "o"}, "+", "<Nop>")
+map({"n", "x", "o"}, "M", "<Nop>")      -- H M L -> _ - Alt-
+map({"n", "x", "o"}, "/", "<Nop>")      -- Tab/S-Tab as search, ? is now :help
 map("n", "<C-o>", "<Nop>")
 map("n", "<C-h>", "<Nop>")
 map("n", "<C-l>", "<Nop>")
-map("n", "<C-e>", "<Nop>") -- <M-j> and <M-k> are remapped as <C-e> and <C-y>
+map("n", "<C-e>", "<Nop>")              -- <M-j> and <M-k> are remapped as <C-e> and <C-y>
 map({"n", "x"}, "<BS>", "<Nop>")
 map({"n", "x", "i", "c"}, "<PageUp>", "<Nop>")
 map({"n", "x", "i", "c"}, "<PageDown>", "<Nop>")
@@ -93,12 +95,10 @@ map("n", "<Right>", ":bn<cr>", s)
 map({"n", "x"}, "¤", "J")
 map({"n", "x"}, "g¤", "gJ")
 map({"i", "c"}, "<C-z>", "<C-k>")
-map("n", "_", "H")     -- underscore
-map("n", "-", "M")     -- dash
-map("n", "<M-->", "L") -- Alt + dash
-map("n", "+", "K")
-
-vim.o.keywordprg = ":help" -- for +
+map({"n", "x", "o"}, "_", "H")     -- underscore
+map({"n", "x", "o"}, "-", "M")     -- dash
+map({"n", "x", "o"}, "<M-->", "L") -- Alt + dash
+map({"n", "x"}, "?", "K")
 
 -- One-handed save and quit
 map("n", "<C-s>", ":w<cr>", s)
