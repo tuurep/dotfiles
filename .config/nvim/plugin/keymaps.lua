@@ -181,6 +181,10 @@ map({"n", "x", "o"}, "F", "<Plug>Sneak_F")
 map({"n", "x", "o"}, "t", "<Plug>Sneak_t")
 map({"n", "x", "o"}, "T", "<Plug>Sneak_T")
 
+-- haya14busa/vim-edgemotion
+map({"n", "x", "o"}, "<leader>j", "<Plug>(edgemotion-j)")
+map({"n", "x", "o"}, "<leader>k", "<Plug>(edgemotion-k)")
+
 -- inkarkat/vim-ReplaceWithRegister
 -- Todo: Match visual mode p and P with this
 --       Add variant d<leader>p

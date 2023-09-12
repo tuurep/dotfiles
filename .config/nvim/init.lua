@@ -84,6 +84,9 @@ local plugins = {
     --      https://github.com/justinmk/vim-sneak/issues/300
     "justinmk/vim-sneak",
 
+    -- Go up/down until hitting an empty column
+    "haya14busa/vim-edgemotion",
+
     -- Like a delete and paste in one but doesn't mess up registers
     "inkarkat/vim-ReplaceWithRegister",
 
