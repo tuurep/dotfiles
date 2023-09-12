@@ -2,17 +2,6 @@
 local o, g, opt = vim.o, vim.g, vim.opt
 local autocmd = vim.api.nvim_create_autocmd
 
--- WIP
--- autocmd({"BufEnter"}, {
---     callback = function()
---         local bufname = vim.fn.expand("%")
---         if vim.fn.isdirectory(bufname) == 1 then
---             vim.cmd.bwipeout()
---             print(bufname .. " is a directory")
---         end
---     end
--- })
-
 vim.cmd.colorscheme("goodnight")
 
 -- Disable autowraps and comment continuations,
@@ -32,7 +21,7 @@ o.guicursor = "a:block"
 o.mousescroll = "ver:1,hor:1"
 
 o.laststatus = 1
-o.statusline = "%f  %r%m"
+o.statusline = "%t %r%m"
 o.showcmd = false
 o.ruler = false
 o.number = true
@@ -40,7 +29,7 @@ o.wrap = false
 
 o.undofile = true
 o.confirm = true
-o.swapfile = true
+o.swapfile = false
 
 -- Search and substitute
 o.ignorecase = true -- Warning: unwanted in :substitute, but can be disabled with I flag
@@ -116,6 +105,9 @@ local plugins = {
 
     -- Compile and view TeX, atm better syntax highlighting than treesitter
     "lervag/vimtex",
+
+    -- netrw replacement
+    "justinmk/vim-dirvish"
 }
 
 require("lazy").setup(plugins, lazy_config)

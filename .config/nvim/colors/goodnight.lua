@@ -161,8 +161,8 @@ hl(g, "UndotreeSavedSmall",  { fg = green               })
 hl(g, "UndoTreeSavedBig",    { fg = bg,      bg = green })
 hl(g, "UndotreeTimeStamp",   { fg = comment             })
 
--- Fern highlighting
-hl(g, "FernSpinner",  { bg = bg })
+-- Dirvish
+hl(g, "DirvishArg", { fg = green })
 
 -- vimtex
 hl(g, "texCmd",            { fg = red })

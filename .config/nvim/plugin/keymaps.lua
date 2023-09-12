@@ -1,4 +1,4 @@
--- shorthands
+-- Shorthands
 local map = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
 local s = { silent = true }
@@ -40,12 +40,19 @@ map("n", "<M-i>", "<C-i>")
 -- Start a substitute command without finger gymnastics:
 map("n", "<leader><Tab>", ":%s/")
 
-local function echo_fullpath_with_tilde()
-    vim.cmd("echo substitute(expand('%:p'), $HOME, '~', '')")
-end
+map("n", "<leader><Enter>", function()
+    local path = vim.fn.expand("%")
+    local tildepath = vim.fn.fnamemodify(path, ":p:~")
+    if vim.fn.bufname() == "" then
+        tildepath = tildepath .. "[No Name]"
+    end
+    vim.api.nvim_echo({{tildepath}}, false, {})      -- current buffer full path
+end)                                                 -- $HOME as ~
 
-map("n", "<leader><Enter>", echo_fullpath_with_tilde)
-map("n", "<Enter>", ":echo ''<cr>", s) -- clear cmdline text
+map("n", "<leader><leader><Enter>",
+    ":echo fnamemodify(getcwd(), ':p:~')<cr>", s)    -- pwd but with tilde
+
+map("n", "<Enter>", ":echo ''<cr>", s)               -- clear cmdline text
 
 -- Can't do the above mapping for command line <C-f> special buffer
 autocmd({"CmdWinEnter"}, {
@@ -201,3 +208,6 @@ vim.g.Undotree_CustomMap = function()
     map("n", "<Tab>", "/", b)
     map("n", "C", "<Nop>", b)
 end
+
+-- justinmk/vim-dirvish
+map("n", "<leader>-", "<Plug>(dirvish_up)")
