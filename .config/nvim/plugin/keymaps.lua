@@ -211,4 +211,4 @@ vim.g.Undotree_CustomMap = function()
 end
 
 -- justinmk/vim-dirvish
-map("n", "<leader>-", "<Plug>(dirvish_up)")
+map("n", "<C-PageUp>", "<Plug>(dirvish_up)")
