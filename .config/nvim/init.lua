@@ -70,7 +70,7 @@ local plugins = {
     {
         "justinmk/vim-dirvish",
         config = function()
-            map("n", "<BS>", "<Plug>(dirvish_up)")
+            map("n", "<C-PageUp>", "<Plug>(dirvish_up)")
         end,
         lazy = false
     },
@@ -189,7 +189,7 @@ local plugins = {
     },
 
     -- Compile and view TeX, atm better syntax highlighting than treesitter
-    { "lervag/vimtex", ft = "tex" }
+    { "lervag/vimtex", ft = "tex" },
 }
 
 local lazy_config = require("conf.lazy")

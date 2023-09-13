@@ -20,6 +20,7 @@ map("n", "<C-o>", "<Nop>")              -- <C-i> is compromised so use <M-o> and
 map("n", "<C-h>", "<Nop>")
 map("n", "<C-l>", "<Nop>")
 map("n", "<C-e>", "<Nop>")              -- <M-j> and <M-k> are remapped as <C-e> and <C-y>
+map({"n", "x"}, "<BS>", "<Nop>")
 
 -- Free (but bad):
 map({"n", "x", "i", "c"}, "<PageUp>", "<Nop>")
