@@ -5,20 +5,24 @@ local s = { silent = true }
 local r = { remap = true }
 local b = { buffer = 0 }
 
--- Disable keys that:
---   1. can interfere with other settings
---   2. I want to repurpose later
---   3. are annoying
+-- <leader> is <Space>
+vim.keymap.set({"n", "x", "o"}, "<Space>", "<Nop>")
+vim.g.mapleader = " "
+
+-- Free keys:
 map({"n", "x", "o"}, "<Up>", "<Nop>")
 map({"n", "x", "o"}, "<Down>", "<Nop>")
 map({"n", "x", "o"}, "+", "<Nop>")
 map({"n", "x", "o"}, "M", "<Nop>")      -- H M L -> _ - Alt-
 map({"n", "x", "o"}, "/", "<Nop>")      -- Tab/S-Tab as search, ? is now :help
-map("n", "<C-o>", "<Nop>")
+map("n", "<C-r>", "<Nop>")              -- U as redo
+map("n", "<C-o>", "<Nop>")              -- <C-i> is compromised so use <M-o> and <M-i>
 map("n", "<C-h>", "<Nop>")
 map("n", "<C-l>", "<Nop>")
 map("n", "<C-e>", "<Nop>")              -- <M-j> and <M-k> are remapped as <C-e> and <C-y>
 map({"n", "x"}, "<BS>", "<Nop>")
+
+-- Free (but bad):
 map({"n", "x", "i", "c"}, "<PageUp>", "<Nop>")
 map({"n", "x", "i", "c"}, "<PageDown>", "<Nop>")
 map({"n", "i"}, "<F1>", "<Nop>")
@@ -103,8 +107,6 @@ map({"n", "x"}, "?", "K")
 -- One-handed save and quit
 map("n", "<C-s>", ":w<cr>", s)
 map("n", "<C-q>", ":q<cr>", s)
-map("i", "<C-s>", "<C-o>:w<cr>", s)
-map("i", "<C-q>", "<C-o>:q<cr>", s)
 
 -- Like dd yy but no newline at end (completely awesome)
 map("n", "<C-y>", function()
@@ -167,52 +169,5 @@ map("n", "gåå", "g~~")
 -- See highlight group under cursor
 map("n", "<leader>e", ":Inspect<cr>", s)
 
--- Mappings to Lua modules
-local tws = require("trailingwhitespace")
-map("n", "Å", tws.toggle_trailing_whitespace)
-
--- === PLUGINS ===
-
--- justinmk/vim-sneak
-map({"n", "x", "o"}, ",", "<Plug>Sneak_;")
-map({"n", "x", "o"}, ";", "<Plug>Sneak_,")
-map({"n", "x", "o"}, "f", "<Plug>Sneak_f")
-map({"n", "x", "o"}, "F", "<Plug>Sneak_F")
-map({"n", "x", "o"}, "t", "<Plug>Sneak_t")
-map({"n", "x", "o"}, "T", "<Plug>Sneak_T")
-
--- haya14busa/vim-edgemotion
-map({"n", "x", "o"}, "<leader>j", "<Plug>(edgemotion-j)")
-map({"n", "x", "o"}, "<leader>k", "<Plug>(edgemotion-k)")
-
--- inkarkat/vim-ReplaceWithRegister
--- Todo: Match visual mode p and P with this
---       Add variant d<leader>p
---       One should add deletion to "", the other should not
-map("n", "dp", "<Plug>ReplaceWithRegisterOperator")
-map("n", "dpp", "<Plug>ReplaceWithRegisterLine")
-map("n", "dP", "dp$", r)
-
--- tommcdo/vim-exchange
-map("n", "cX", "cx$", r)
-map("n", "c<C-x>", "0cx$", r) -- Not dot-repeatable... but that would be extremely niche
-
--- mbbill/undotree
--- Note: using <C-w> + o to hide undotree causes the same bug as :q
--- issues: https://github.com/mbbill/undotree/issues/129
---         https://github.com/mbbill/undotree/issues/156
-
--- Better hide it with <leader>u
-map("n", "<leader>u", ":UndotreeToggle<cr>", s)
-
-vim.g.Undotree_CustomMap = function()
-    map("n", "<C-q>", "<Plug>UndotreeClose", b)
-    map("n", "U", "<Plug>UndotreeRedo", b)
-    map("n", "J", "<Plug>UndotreePreviousSavedState", b)
-    map("n", "K", "<Plug>UndotreeNextSavedState", b)
-    map("n", "<Tab>", "/", b)
-    map("n", "C", "<Nop>", b)
-end
-
--- justinmk/vim-dirvish
-map("n", "<C-PageUp>", "<Plug>(dirvish_up)")
+-- Bigger lua functions
+map("n", "Å", require("trailingwhite-toggle"))

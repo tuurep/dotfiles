@@ -5,6 +5,10 @@ vim.opt.runtimepath:prepend(lazypath .. "/lazy.nvim")
 require("lazy.view.config").keys.hover = "gx"
 
 return {
+    defaults = {
+        lazy = true
+    },
+
     lockfile = lazypath .. "/lazy-lock.json",
 
     ui = {

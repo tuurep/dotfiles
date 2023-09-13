@@ -1,8 +1,9 @@
 -- shorthands
 local o, g, opt = vim.o, vim.g, vim.opt
 local autocmd = vim.api.nvim_create_autocmd
+local map = vim.keymap.set
 
--- Be faster
+-- Should this be on or no?
 -- https://github.com/neovim/neovim/commit/2257ade3dc2daab5ee12d27807c0b3bcf103cd29
 vim.loader.enable()
 
@@ -49,72 +50,147 @@ o.shiftwidth = 4
 o.softtabstop = 4
 o.expandtab = true
 
--- <leader> is <Space>
-vim.keymap.set({"n", "x", "o"}, "<Space>", "<Nop>")
-g.mapleader = " "
+require("conf.keymaps")
 
 -- folke/lazy.nvim
-local lazy_config = require("lazy-config")
-
 local plugins = {
-    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        config = function()
+            require("conf.treesitter")
+        end,
+        event = "BufReadPre"
+    },
 
     -- Open files in last edit position
-    "farmergreg/vim-lastplace",
+    { "farmergreg/vim-lastplace", lazy = false },
 
-    -- Pope
-    "tpope/vim-repeat",
-    "tpope/vim-surround",
+    -- netrw replacement
+    {
+        "justinmk/vim-dirvish",
+        config = function()
+            map("n", "<C-PageUp>", "<Plug>(dirvish_up)")
+        end,
+        lazy = false
+    },
+
+    { "tpope/vim-repeat", keys = "." },
+
+    {
+        "tpope/vim-surround",
+        keys = {
+            { "cs" }, { "cS" }, { "ds" }, { "ys" }, { "yS" },
+            { "S", mode = "x" }, { "gS", mode = "x" },
+            { "<C-g>", mode = "i" }, { "<C-s>", mode = "i" }
+        }
+    },
 
     {
         "numtostr/Comment.nvim",
         config = function()
             require("Comment").setup()
-        end
+        end,
+        keys = {
+            { "gc", mode = {"n", "x"} },
+            { "gb", mode = {"n", "x"} }
+        }
     },
 
     -- Align lines by character
-    "tommcdo/vim-lion",
+    {
+	"tommcdo/vim-lion",
+        keys = {
+            { "gl", mode = {"n", "x"} },
+            { "gL", mode = {"n", "x"} }
+        }
+    },
 
     -- Exchange operator
-    "tuurep/vim-exchange", -- tommcdo/vim-exchange fork
+    {
+        "tuurep/vim-exchange", -- tommcdo/vim-exchange fork
+        keys = {
+            { "cx" },
+            { "X", mode = {"x"} },
+            { "cX", "cx$", remap = true },
+            { "c<C-x>", "0cx$", remap = true } -- c<C-x> not dot-repeatable...
+        }                                      -- but that would be extremely niche
+    },
 
     -- 2-character f and a bit of an overhaul of fFtT,;
     -- Todo + keep an eye: remove prompt:
     --      https://github.com/justinmk/vim-sneak/issues/300
-    "justinmk/vim-sneak",
+    {
+	"justinmk/vim-sneak",
+	keys = {
+            { "s", mode = {"n", "x"} },
+            { "S", mode = {"n", "x"} },
+            { "z", mode = "o" },
+            { "Z", mode = "o" },
+            { "f", "<Plug>Sneak_f", mode = {"n", "x", "o"} },
+            { "F", "<Plug>Sneak_F", mode = {"n", "x", "o"} },
+            { "t", "<Plug>Sneak_t", mode = {"n", "x", "o"} },
+            { "T", "<Plug>Sneak_T", mode = {"n", "x", "o"} },
+            { ",", "<Plug>Sneak_;", mode = {"n", "x", "o"} },
+            { ";", "<Plug>Sneak_,", mode = {"n", "x", "o"} }
+	},
+    },
 
     -- Go up/down until hitting an empty column
-    "haya14busa/vim-edgemotion",
+    {
+        "haya14busa/vim-edgemotion",
+        keys = {
+            { "<leader>j", "<Plug>(edgemotion-j)", mode = {"n", "x", "o"} },
+            { "<leader>k", "<Plug>(edgemotion-k)", mode = {"n", "x", "o"} }
+        }
+    },
 
     -- Like a delete and paste in one but doesn't mess up registers
-    "inkarkat/vim-ReplaceWithRegister",
+    {
+        "inkarkat/vim-ReplaceWithRegister",
+        keys = {
+            { "dp", "<Plug>ReplaceWithRegisterOperator" },
+            { "dpp", "<Plug>ReplaceWithRegisterLine" },
+            { "dP", "<Plug>ReplaceWithRegisterLine", remap=true }
+        }
+    },
 
     -- Edit registers (especially macros) with :R <register>
-    "tuurep/registereditor",
+    { "tuurep/registereditor", cmd = "RegisterEdit" },
 
     -- Nonlinear undo history access
     {
         "tuurep/undotree", -- mbbill/undotree fork
         config = function()
-            vim.g.undotree_SetFocusWhenToggle = 1
-            vim.g.undotree_HighlightChangedWithSign = 0
-            vim.g.undotree_ShortIndicators = 1
-            vim.g.undotree_HelpLine = 0
-        end
+            g.undotree_SetFocusWhenToggle = 1
+            g.undotree_HighlightChangedWithSign = 0
+            g.undotree_ShortIndicators = 1
+            g.undotree_HelpLine = 0
+
+            g.Undotree_CustomMap = function()
+                local b = {buffer=0}
+                map("n", "<C-q>", "<Plug>UndotreeClose", b)
+                map("n", "U", "<Plug>UndotreeRedo", b)
+                map("n", "J", "<Plug>UndotreePreviousSavedState", b)
+                map("n", "K", "<Plug>UndotreeNextSavedState", b)
+                map("n", "<Tab>", "/", b)
+                map("n", "C", "<Nop>", b)
+            end
+        end,
+
+        keys = { {"<leader>u", ":UndotreeToggle<cr>", silent=true} }
     },
 
     -- To be replaced with a less heavy alternative (most likely jannis-baum/vivify)
     {
         "tuurep/markdown-preview.nvim",
-        build = "yarn install && yarn build && cd app && yarn install"
+        build = "yarn install && yarn build && cd app && yarn install",
+        ft = "markdown"
     },
 
     -- Compile and view TeX, atm better syntax highlighting than treesitter
-    "lervag/vimtex",
-
-    -- netrw replacement
-    "justinmk/vim-dirvish"
+    { "lervag/vimtex", ft = "tex" },
 }
 
+local lazy_config = require("conf.lazy")
 require("lazy").setup(plugins, lazy_config)

@@ -1,7 +1,5 @@
 -- Toggle a highlight group to reveal trailing whitespace
 
-local M = {}
-
 local fg =  "#d0d0d0"
 local red = "#cc6666"
 
@@ -16,7 +14,7 @@ local function enable_hl(window)
     end
 end
 
-function M.toggle_trailing_whitespace()
+local function toggle_trailing_whitespace()
     local wlist = vim.api.nvim_tabpage_list_wins(0)
 
     for _, w in ipairs(wlist) do
@@ -43,4 +41,4 @@ vim.api.nvim_create_autocmd({"WinEnter"}, {
     end
 })
 
-return M
+return toggle_trailing_whitespace
