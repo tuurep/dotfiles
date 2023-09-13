@@ -23,9 +23,8 @@ prompt_cmd() {
         if [[ "$TERM" =~ tmux* ]]; then
                 tmux refresh-client -S # Redraw tmux status bar
         fi
-        local short_pwd
-        short_pwd=$(basename "$(p)") # See alias for 'p'
-        echo -ne "\033]0;${short_pwd}\007" # Set window title; in tmux title is set in .tmux.conf
+        title=$(basename "$(dirs +0)")
+        echo -ne "\033]0;${title}\007" # Set window title; in tmux title is set in .tmux.conf
 }
 
 # Right before drawing prompt, this function is executed:
@@ -37,15 +36,15 @@ export HISTCONTROL=ignoredups
 
 # Aliases:
 
-alias c="cd"
-alias l="ls"
-alias p='pwd | sed "s|^$HOME|~|"'
+alias l="ls --color=always --group-directories-first"
 alias e="nvim"
 alias v="nsxiv"
 alias g="grep"
 alias q="exit"
 
-alias pl='echo "$OLDPWD" | sed "s|^$HOME|~|"' # Show previous directory, useful with `cd -`
+alias ..="c .."
+alias .="c ."
+alias -- -="c -" # -- required to alias dash
 
 alias ls="ls --color=auto"
 alias grep="grep --color=auto -i" # Case insensitive
@@ -98,11 +97,65 @@ alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0 \
                         | tr -d ' ' \
                         | cut -d ':' -f 2"
 
-# Simple commands that can't be aliases because they need arguments:
 
-# ls long listing with the first line (example: "total 4.0K") removed
+# Functions:
+
+# Helper for p and pl: path under $HOME: green
+#                      path under root:  red
+colorprint_path() {
+        red=$'\e[31m'
+        green=$'\e[32m'
+        reset=$'\e[0m'
+        case $1 in
+                ~*)
+                        echo "${green}$1${reset}" ;;
+                *)
+                        echo "${red}$1${reset}" ;;
+        esac
+}
+
+# pwd but with tilde
+p() {
+        cwd=$(dirs +0)
+        colorprint_path "$cwd"
+}
+
+# print last dir, useful with cd -
+pl() {
+        lwd=${OLDPWD/#$HOME/\~}
+        colorprint_path "$lwd"
+}
+
+c() {
+        builtin cd "$@" > /dev/null\
+                && p \
+                && l
+}
+
+eval "$(zoxide init bash)" # https://github.com/ajeetdsouza/zoxide
+z() {
+        __zoxide_z "$@" \
+                && p \
+                && l
+}
+
+# ls long listing
+#       - sed removes first line (example: "total 4.0K")
+#       - TODO: remove size column or don't print size for dirs
+#               - problem for the below awk:
+#                 columns can be left-aligned col 3
+#                 or right-aligned: col 2 and 4
+#                 Handles left-aligned incorrectly
 ll() {
-        ls -oh --color=always "$@" | sed -r '/^total [0-9]+\.?[0-9]*[BKMGT]?$/d'
+        l -oh --time-style=long-iso "$@" \
+                | sed -r '/^total [0-9]+\.?[0-9]*[BKMGT]?$/d' #\
+                # | awk '{
+                #         n = patsplit($0, out, /\s*\S*/);
+                #         out[4] = ""
+                #         for (f in out)
+                #                 printf out[f]
+                #         printf "\n"
+                # }'
 }
 
 # cd to where a symlinked file points to
@@ -156,10 +209,6 @@ export LESS_TERMCAP_so=$'\e[30;47m'     # Standout: bg on fg
 export LESS_TERMCAP_me=$'\e[0m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_se=$'\e[0m'
-
-# zoxide: go quickly to frequently visited dir with z <substring-of-path>
-# https://github.com/ajeetdsouza/zoxide
-eval "$(zoxide init bash)"
 
 # https://github.com/junegunn/fzf
 # Enable fzf keybindings:
