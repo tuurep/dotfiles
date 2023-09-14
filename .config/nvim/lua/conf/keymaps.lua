@@ -19,7 +19,8 @@ map("n", "<C-r>", "<Nop>")              -- U as redo
 map("n", "<C-o>", "<Nop>")              -- <C-i> is compromised so use <M-o> and <M-i>
 map("n", "<C-h>", "<Nop>")
 map("n", "<C-l>", "<Nop>")
-map("n", "<C-e>", "<Nop>")              -- <M-j> and <M-k> are remapped as <C-e> and <C-y>
+map({"n", "x"}, "<C-e>", "<Nop>")       -- <M-j> and <M-k> are remapped as <C-e> and <C-y>
+map("x", "<C-y>", "<Nop>")
 map({"n", "x"}, "<BS>", "<Nop>")
 
 -- Free (but bad):
@@ -84,14 +85,14 @@ map({"n", "x", "o"}, "gH", "g^")
 map({"n", "x", "o"}, "gJ", "g}")
 map({"n", "x", "o"}, "gK", "g{")
 map({"n", "x", "o"}, "gL", "g$")
+map({"n", "x"}, "<M-j>", "<C-e>")
+map({"n", "x"}, "<M-k>", "<C-y>")
+map("n", "<M-h>", "zh")
+map("n", "<M-l>", "zl")
 map("i", "<C-h>", "<Left>")
 map("i", "<C-j>", "<Down>")
 map("i", "<C-k>", "<Up>")
 map("i", "<C-l>", "<Right>")
-map("n", "<M-h>", "zh")
-map("n", "<M-j>", "<C-e>")
-map("n", "<M-k>", "<C-y>")
-map("n", "<M-l>", "zl")
 map("n", "<Left>", ":bp<cr>", s)
 map("n", "<Right>", ":bn<cr>", s)
 
