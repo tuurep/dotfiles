@@ -182,7 +182,7 @@ local plugins = {
             end
         end,
 
-        keys = { {"<leader>u", ":UndotreeToggle<cr>", silent=true} }
+        keys = { {"<leader>u", "<cmd>UndotreeToggle<cr>"} }
     },
 
     -- To be replaced with a less heavy alternative (most likely jannis-baum/vivify)

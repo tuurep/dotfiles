@@ -1,7 +1,6 @@
 -- Shorthands
 local map = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
-local s = { silent = true }
 local r = { remap = true }
 local b = { buffer = 0 }
 
@@ -56,9 +55,9 @@ map("n", "<leader><Enter>", function()
 end)                                                 -- $HOME as ~
 
 map("n", "<leader><leader><Enter>",
-    ":echo fnamemodify(getcwd(), ':p:~')<cr>", s)    -- pwd but with tilde
+    "<cmd>echo fnamemodify(getcwd(), ':p:~')<cr>")    -- pwd but with tilde
 
-map("n", "<Enter>", ":echo ''<cr>", s)               -- clear cmdline text
+map("n", "<Enter>", "<cmd>echo ''<cr>")               -- clear cmdline text
 
 -- Can't do the above mapping for command line <C-f> special buffer
 autocmd({"CmdWinEnter"}, {
@@ -93,8 +92,9 @@ map("i", "<C-h>", "<Left>")
 map("i", "<C-j>", "<Down>")
 map("i", "<C-k>", "<Up>")
 map("i", "<C-l>", "<Right>")
-map("n", "<Left>", ":bp<cr>", s)
-map("n", "<Right>", ":bn<cr>", s)
+map("n", "<Left>", "<cmd>bp<cr>")
+map("n", "<Right>", "<cmd>bn<cr>")
+
 
 -- Remap what the above has overriden
 map({"n", "x"}, "¤", "J")
@@ -106,8 +106,8 @@ map({"n", "x", "o"}, "<M-->", "L") -- Alt + dash
 map({"n", "x"}, "?", "K")
 
 -- One-handed save and quit
-map("n", "<C-s>", ":w<cr>", s)
-map("n", "<C-q>", ":q<cr>", s)
+map("n", "<C-s>", "<cmd>w<cr>")
+map("n", "<C-q>", "<cmd>q<cr>")
 
 -- Like dd yy but no newline at end (completely awesome)
 map("n", "<C-y>", function()
@@ -168,7 +168,7 @@ map("n", "gå", "g~")
 map("n", "gåå", "g~~")
 
 -- See highlight group under cursor
-map("n", "<leader>e", ":Inspect<cr>", s)
+map("n", "<leader>e", "<cmd>Inspect<cr>")
 
 -- Bigger lua functions
 map("n", "Å", require("trailingwhite-toggle"))
