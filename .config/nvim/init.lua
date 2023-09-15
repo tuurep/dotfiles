@@ -75,7 +75,7 @@ local plugins = {
         lazy = false
     },
 
-    { "tpope/vim-repeat", keys = "." },
+    { "tpope/vim-repeat", event = "VeryLazy" },
 
     {
         "tpope/vim-surround",
@@ -99,7 +99,11 @@ local plugins = {
 
     -- Align lines by character
     {
-	"tommcdo/vim-lion",
+	"tuurep/vim-lion", -- tommcdo/vim-lion fork
+        init = function()
+            g.lion_prompt = "Pattern: "
+            g.lion_prompt_map = "<Tab>"
+        end,
         keys = {
             { "gl", mode = {"n", "x"} },
             { "gL", mode = {"n", "x"} }
@@ -189,7 +193,7 @@ local plugins = {
     },
 
     -- Compile and view TeX, atm better syntax highlighting than treesitter
-    { "lervag/vimtex", ft = "tex" },
+    { "lervag/vimtex", ft = "tex" }
 }
 
 local lazy_config = require("conf.lazy")
