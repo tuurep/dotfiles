@@ -60,7 +60,7 @@ local plugins = {
         config = function()
             require("conf.treesitter")
         end,
-        event = "BufReadPre"
+        lazy = false
     },
 
     -- Open files in last edit position
