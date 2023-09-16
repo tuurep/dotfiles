@@ -45,7 +45,7 @@ map("n", "<M-i>", "<C-i>")
 -- Start a substitute command without finger gymnastics:
 map("n", "<leader><Tab>", ":%s/")
 
-map("n", "<leader><Enter>", function()
+map("n", "<M-Enter>", function()
     local path = vim.fn.expand("%")
     local tildepath = vim.fn.fnamemodify(path, ":p:~")
     if vim.fn.bufname() == "" then
@@ -54,7 +54,7 @@ map("n", "<leader><Enter>", function()
     vim.api.nvim_echo({{tildepath}}, false, {})      -- current buffer full path
 end)                                                 -- $HOME as ~
 
-map("n", "<leader><leader><Enter>",
+map("n", "<leader><Enter>",
     "<cmd>echo fnamemodify(getcwd(), ':p:~')<cr>")    -- pwd but with tilde
 
 map("n", "<Enter>", "<cmd>echo ''<cr>")               -- clear cmdline text
