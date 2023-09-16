@@ -83,9 +83,10 @@ alias vivaldi="vivaldi-stable"
 alias grip="grip -b"
 alias tmr="transmission-remote"
 
-alias whereami='echo $HOSTNAME'
 alias reset-dunst="killall dunst; notify-send monkey monkey"
 alias reset-polybar="killall -q polybar; polybar bar1 2>&1 & disown"
+
+alias whereami='echo $HOSTNAME'
 alias gnu="neofetch -L --ascii_distro GNU"
 
 # for gtts-cli and translate-shell: get list of all language tags (works well with grep)
@@ -96,7 +97,6 @@ alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0 \
                         | grep 'state:\|percentage:' \
                         | tr -d ' ' \
                         | cut -d ':' -f 2"
-
 
 # Functions:
 
@@ -127,7 +127,7 @@ pl() {
 }
 
 c() {
-        builtin cd "$@" > /dev/null\
+        builtin cd "$@" > /dev/null \
                 && p \
                 && l
 }
@@ -156,16 +156,6 @@ ll() {
                 #                 printf out[f]
                 #         printf "\n"
                 # }'
-}
-
-# cd to where a symlinked file points to
-cdl() {
-        cd "$(dirname "$(readlink -f "$1")")" || exit
-}
-
-# cd to a global executable you want to locate
-cdw() {
-        cd "$(dirname "$(which "$1")")" || exit
 }
 
 # Text-to-speech with Google Translate's API
