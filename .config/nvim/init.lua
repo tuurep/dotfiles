@@ -27,6 +27,8 @@ o.mousescroll = "ver:1,hor:1"
 
 o.laststatus = 1
 o.statusline = "%t %r%m"
+
+o.timeout = false
 o.showcmd = false
 o.ruler = false
 o.number = true
