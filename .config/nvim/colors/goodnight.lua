@@ -307,6 +307,13 @@ hl(g, "xmlAttrib",          { link = "@tag.attribute" })
 -- Markdown
 hl(g, "@punctuation.special.markdown", { fg = red })
 
+-- Manpage buffer
+hl(g, "manItalic",         { fg = red      }) -- in `less` manpage, this is underlined
+hl(g, "manHeader",         { link = "None" })
+hl(g, "manSectionHeading", { link = "None" })
+hl(g, "manSubHeading",     { link = "None" })
+hl(g, "manReference",      { link = "None" })
+
 -- Lazy.nvim UI (Note: can break other floating windows)
 hl(g, "NormalFloat",     { bg = bg      })
 hl(g, "DiagnosticError", { fg = red     })
