@@ -193,12 +193,11 @@ export PYTHONSTARTUP="$HOME/.pyrc" # Config (startup script) for py interactive 
 export LESS='-iR'
 
 # Colorize manpages
-export LESS_TERMCAP_md=$'\e[32m'        # Bold: green
-export LESS_TERMCAP_us=$'\e[34m'        # Underlined: blue (and no underline)
+export LESS_TERMCAP_us=$'\e[31m'        # Underlined: red (and no underline)
 export LESS_TERMCAP_so=$'\e[30;47m'     # Standout: bg on fg
-export LESS_TERMCAP_me=$'\e[0m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_se=$'\e[0m'
+export GROFF_NO_SGR=1
 
 # https://github.com/junegunn/fzf
 # Enable fzf keybindings:
