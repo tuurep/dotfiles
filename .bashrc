@@ -46,6 +46,9 @@ alias ..="c .."
 alias .="c ."
 alias -- -="c -" # -- required to alias dash
 
+alias p="dirs +0"
+alias pl='echo "${OLDPWD/#$HOME/\~}"'
+
 alias ls="ls --color=auto"
 alias grep="grep --color=auto -i" # Case insensitive
 alias rg="rg --smart-case"
@@ -100,62 +103,31 @@ alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0 \
 
 # Functions:
 
-# Helper for p and pl: path under $HOME: green
-#                      path under root:  red
-colorprint_path() {
-        red=$'\e[31m'
-        green=$'\e[32m'
+nice_pwd() {
+        bright_black=$'\e[90m'
         reset=$'\e[0m'
-        case $1 in
-                ~*)
-                        echo "${green}$1${reset}" ;;
-                *)
-                        echo "${red}$1${reset}" ;;
-        esac
-}
-
-# pwd but with tilde
-p() {
         cwd=$(dirs +0)
-        colorprint_path "$cwd"
-}
-
-# print last dir, useful with cd -
-pl() {
-        lwd=${OLDPWD/#$HOME/\~}
-        colorprint_path "$lwd"
+        echo "${bright_black}${cwd}${reset}"
 }
 
 c() {
         builtin cd "$@" > /dev/null \
-                && p \
+                && nice_pwd \
                 && l
 }
 
 eval "$(zoxide init bash)" # https://github.com/ajeetdsouza/zoxide
 z() {
         __zoxide_z "$@" \
-                && p \
+                && nice_pwd \
                 && l
 }
 
 # ls long listing
 #       - sed removes first line (example: "total 4.0K")
-#       - TODO: remove size column or don't print size for dirs
-#               - problem for the below awk:
-#                 columns can be left-aligned col 3
-#                 or right-aligned: col 2 and 4
-#                 Handles left-aligned incorrectly
 ll() {
         l -oh --time-style=long-iso "$@" \
-                | sed -r '/^total [0-9]+\.?[0-9]*[BKMGT]?$/d' #\
-                # | awk '{
-                #         n = patsplit($0, out, /\s*\S*/);
-                #         out[4] = ""
-                #         for (f in out)
-                #                 printf out[f]
-                #         printf "\n"
-                # }'
+                | sed -r '/^total [0-9]+\.?[0-9]*[BKMGT]?$/d'
 }
 
 # Text-to-speech with Google Translate's API
