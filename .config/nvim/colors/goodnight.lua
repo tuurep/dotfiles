@@ -17,7 +17,7 @@ local red =     "#cc6666"
 local green =   "#a7bd68"
 local yellow =  "#f0c674"
 local blue =    "#81a2be"
-local magenta = "#b294bb"
+local magenta = "#ac8fb5"
 local cyan =    "#8abeb7"
 
 -- "Bright black", chosen with comments in mind
