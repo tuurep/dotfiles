@@ -46,9 +46,6 @@ alias ..="c .."
 alias .="c ."
 alias -- -="c -" # -- required to alias dash
 
-alias p="dirs +0"
-alias pl='echo "${OLDPWD/#$HOME/\~}"'
-
 alias ls="ls --color=auto"
 alias grep="grep --color=auto -i" # Case insensitive
 alias rg="rg --smart-case"
@@ -103,23 +100,30 @@ alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0 \
 
 # Functions:
 
-nice_pwd() {
-        bright_black=$'\e[90m'
+grayprint_path() {
+        grayscale_243=$'\e[38;5;243m' # 767676
         reset=$'\e[0m'
-        cwd=$(dirs +0)
-        echo "${bright_black}${cwd}${reset}"
+        echo "${grayscale_243}$1${reset}"
+}
+
+p() {
+        grayprint_path "$(dirs +0)"
+}
+
+pl() {
+        grayprint_path "${OLDPWD/#$HOME/\~}"
 }
 
 c() {
         builtin cd "$@" > /dev/null \
-                && nice_pwd \
+                && p \
                 && l
 }
 
 eval "$(zoxide init bash)" # https://github.com/ajeetdsouza/zoxide
 z() {
         __zoxide_z "$@" \
-                && nice_pwd \
+                && p \
                 && l
 }
 
