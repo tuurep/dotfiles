@@ -28,14 +28,23 @@ local b_white = "#ffffff" -- bright white
 local orange =  "#de935f"
 local brown =   "#a3685a"
 
--- Mostly greyish, important colors for statusbars, borders and such:
+-- Borders and floating window backgrounds:
 local l_bg =    "#222525" -- lighter background
 local ll_bg =   "#313438" -- lighter lighter background
-local dd_fg =   "#6b6b6b" -- darker darker foreground (but not as dark as comment)
-local d_fg =    "#909090" -- darker foreground
-local l_fg =    "#eaeaea" -- lighter foreground
-local i_s_fg =  "#656e6e" -- inactive statusline foreground
-local linenum = "#404040" -- (non-active) linenumber foreground
+
+-- fg variants for more concealed/more emphasized text
+-- local dd_fg =   "#767676" -- darker darker foreground (but not as dark as comment)
+-- local l_fg =    "#eaeaea" -- lighter foreground
+
+-- Inactive UI elements colors:
+local stat_fg = "#656e6e" -- inactive statusline foreground
+local linenum = "#404040" -- inactive linenumber foreground
+local search =  "#6b6b6b" -- inactive search bg
+
+-- (Note: the 'active' counterpart is just default fg)
+
+-- Specific purpose:
+local diffch =  "#909090" -- 'diff changed' background
 
 -- shorthands
 local hl = vim.api.nvim_set_hl
@@ -43,8 +52,8 @@ local autocmd = vim.api.nvim_create_autocmd
 
 -- Namespaces
 local g = 0 -- global
-local active = vim.api.nvim_create_namespace("active_window")
-local inactive = vim.api.nvim_create_namespace("inactive_window")
+local active_win = vim.api.nvim_create_namespace("active_window")
+local inactive_win = vim.api.nvim_create_namespace("inactive_window")
 
 -- Active line
 hl(g, "CursorLine",   {})                   -- clear: no cursorline bg
@@ -55,20 +64,20 @@ hl(g, "LineNr",       { fg = linenum })
 hl(g, "EndOfBuffer",  { fg = linenum })
 
 -- Search and substitute (:%s)
-hl(g, "Search",     { fg = bg, bg = dd_fg })
-hl(g, "CurSearch",  { fg = bg, bg = fg    })
-hl(g, "IncSearch",  { fg = bg, bg = fg    })
-hl(g, "Substitute", { fg = bg, bg = fg    })
+hl(g, "Search",     { fg = bg, bg = search }) -- cursor not in result
+hl(g, "CurSearch",  { fg = bg, bg = fg     }) -- cursor in result
+hl(g, "IncSearch",  { fg = bg, bg = fg     })
+hl(g, "Substitute", { fg = bg, bg = fg     })
 
-hl(active, "Search",     { link = "Search"     })
-hl(active, "CurSearch",  { link = "Cursearch"  })
-hl(active, "IncSearch",  { link = "IncSearch"  })
-hl(active, "Substitute", { link = "Substitute" })
+hl(active_win, "search",     { link = "Search"     })
+hl(active_win, "cursearch",  { link = "Cursearch"  })
+hl(active_win, "incsearch",  { link = "IncSearch"  })
+hl(active_win, "substitute", { link = "Substitute" })
 
-hl(inactive, "Search",     { link = "None" })
-hl(inactive, "CurSearch",  { link = "None" })
-hl(inactive, "IncSearch",  { link = "None" })
-hl(inactive, "Substitute", { link = "None" })
+hl(inactive_win, "Search",     { link = "None" })
+hl(inactive_win, "CurSearch",  { link = "None" })
+hl(inactive_win, "IncSearch",  { link = "None" })
+hl(inactive_win, "Substitute", { link = "None" })
 
 -- tommcdo/vim-exchange
 hl(g, "ExchangeRegion", { link = "Search" })
@@ -85,7 +94,7 @@ autocmd({"VimEnter"}, {
         for _, w in ipairs(wlist) do
             if w ~= current_w then
                 vim.wo[w].cursorline = false
-                vim.api.nvim_win_set_hl_ns(w, inactive)
+                vim.api.nvim_win_set_hl_ns(w, inactive_win)
             end
         end
     end
@@ -100,7 +109,7 @@ autocmd({"WinEnter", "BufWinEnter"}, {
     callback = function()
         vim.opt_local.cursorline = true
         local w = vim.api.nvim_get_current_win()
-        vim.api.nvim_win_set_hl_ns(w, active)
+        vim.api.nvim_win_set_hl_ns(w, active_win)
     end
 })
 -- INACTIVE WINDOW
@@ -108,7 +117,7 @@ autocmd({"WinLeave"}, {
     callback = function()
         vim.opt_local.cursorline = false
         local w = vim.api.nvim_get_current_win()
-        vim.api.nvim_win_set_hl_ns(w, inactive)
+        vim.api.nvim_win_set_hl_ns(w, inactive_win)
     end
 })
 
@@ -133,7 +142,7 @@ hl(g, "Title",        { fg = blue               })
 hl(g, "NonText",      { fg = comment            })
 hl(g, "SignColum",    { fg = comment, bg = bg   })
 hl(g, "StatusLine",   { fg = fg,      bg = l_bg })
-hl(g, "StatusLineNC", { fg = i_s_fg,  bg = l_bg })
+hl(g, "StatusLineNC", { fg = stat_fg, bg = l_bg })
 hl(g, "WinSeparator", { fg = l_bg,    bg = l_bg })
 hl(g, "ColorColumn",  {               bg = l_bg })
 hl(g, "CursorColumn", {               bg = l_bg })
@@ -145,13 +154,13 @@ hl(g, "TabLineFill",  { fg = comment, bg = l_bg })
 hl(g, "TabLineSel",   { fg = green,   bg = l_bg })
 
 -- Diff highlighting
-hl(g, "DiffAdd",     { fg = bg,    bg = green   })
-hl(g, "DiffChange",  { fg = bg,    bg = d_fg    })
-hl(g, "DiffDelete",  { fg = bg,    bg = red     })
-hl(g, "DiffText",    { fg = bg,    bg = green   })
-hl(g, "DiffAdded",   { fg = green, bg = bg      })
-hl(g, "DiffRemoved", { fg = red,   bg = bg      })
-hl(g, "DiffLine",    { fg = cyan,  bg = bg      })
+hl(g, "DiffAdd",     { fg = bg,    bg = green  })
+hl(g, "DiffChange",  { fg = bg,    bg = diffch })
+hl(g, "DiffDelete",  { fg = bg,    bg = red    })
+hl(g, "DiffText",    { fg = bg,    bg = green  })
+hl(g, "DiffAdded",   { fg = green, bg = bg     })
+hl(g, "DiffRemoved", { fg = red,   bg = bg     })
+hl(g, "DiffLine",    { fg = cyan,  bg = bg     })
 
 -- Undotree highlighting
 hl(g, "UndoTreeNodeCurrent", { fg = fg                  })
@@ -159,7 +168,7 @@ hl(g, "UndoTreeCurrent",     { fg = fg                  })
 hl(g, "UndoTreeHead",        { fg = green               })
 hl(g, "UndotreeSavedSmall",  { fg = green               })
 hl(g, "UndoTreeSavedBig",    { fg = bg,      bg = green })
-hl(g, "UndotreeTimeStamp",   { fg = comment             })
+hl(g, "UndotreeTimeStamp",   { fg = linenum             })
 
 -- Dirvish
 hl(g, "DirvishArg", { fg = green })
