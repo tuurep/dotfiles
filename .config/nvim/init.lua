@@ -103,12 +103,13 @@ local plugins = {
     {
 	"tuurep/vim-lion", -- tommcdo/vim-lion fork
         init = function()
+            g.lion_map_left = "gh"
             g.lion_prompt = "Pattern: "
             g.lion_prompt_map = "<Tab>"
         end,
         keys = {
             { "gl", mode = {"n", "x"} },
-            { "gL", mode = {"n", "x"} }
+            { "gh", mode = {"n", "x"} }
         }
     },
 
