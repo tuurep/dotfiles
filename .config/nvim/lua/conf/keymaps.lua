@@ -21,6 +21,8 @@ map("n", "<C-l>", "<Nop>")
 map({"n", "x"}, "<C-e>", "<Nop>")       -- <M-j> and <M-k> are remapped as <C-e> and <C-y>
 map("x", "<C-y>", "<Nop>")
 map({"n", "x"}, "<BS>", "<Nop>")
+map({"n", "x"}, "gJ", "<Nop>")          -- g¤ for spaceless join, leave gJ and gK
+                                        -- as ideas for vertical movement mappings
 
 -- Free (but bad):
 map({"n", "x", "i", "c"}, "<PageUp>", "<Nop>")
@@ -81,8 +83,6 @@ map({"n", "x", "o"}, "J", "}")
 map({"n", "x", "o"}, "K", "{")
 map({"n", "x", "o"}, "L", "$")
 map({"n", "x", "o"}, "gH", "g^")
-map({"n", "x", "o"}, "gJ", "g}")
-map({"n", "x", "o"}, "gK", "g{")
 map({"n", "x", "o"}, "gL", "g$")
 map({"n", "x"}, "<M-j>", "<C-e>")
 map({"n", "x"}, "<M-k>", "<C-y>")
@@ -94,7 +94,6 @@ map("i", "<C-k>", "<Up>")
 map("i", "<C-l>", "<Right>")
 map("n", "<Left>", "<cmd>bp<cr>")
 map("n", "<Right>", "<cmd>bn<cr>")
-
 
 -- Remap what the above has overriden
 map({"n", "x"}, "¤", "J")
