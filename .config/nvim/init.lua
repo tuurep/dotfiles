@@ -196,7 +196,7 @@ local plugins = {
     },
 
     -- Compile and view TeX, atm better syntax highlighting than treesitter
-    { "lervag/vimtex", ft = "tex" }
+    { "lervag/vimtex", lazy = false }
 }
 
 local lazy_config = require("conf.lazy")

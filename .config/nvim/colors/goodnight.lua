@@ -307,6 +307,9 @@ hl(g, "MatchParen", { link = "None" })
 hl(g, "Conceal",    { link = "None" })
 hl(g, "Todo",   { link = "@comment" })
 
+-- Vimtex
+hl(g, "texError", { link = "None" }) -- Please stop trying to use syntax highlighting
+                                     -- as a wannabe linter
 -- XML
 hl(g, "xmlTagName",         { link = "@tag"           })
 hl(g, "xmlTag",             { link = "@tag.delimiter" })
