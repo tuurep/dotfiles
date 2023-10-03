@@ -317,16 +317,11 @@
     </keybind>
     <keybind key="W-S-q">
       <action name="Execute">
-        <command>~/scripts/ob/close-all-of-class.sh</command>
+        <command>~/scripts/ob/close-all-inactive-sameclass.sh</command>
       </action>
     </keybind>
     <keybind key="W-e">
       <action name="Iconify"/> <!-- as in "minimize" -->
-    </keybind>
-    <keybind key="W-S-e">
-      <action name="Execute">
-        <command>~/scripts/ob/minimize-all-of-class.sh</command>
-      </action>
     </keybind>
     <keybind key="W-S-f">
       <action name="ToggleFullscreen"/>
