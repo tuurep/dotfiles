@@ -9,7 +9,7 @@ vim.o.background = "dark"
 vim.g.colors_name = "goodnight"
 
 -- Default background and foreround:
-local bg =      "#121212"
+local bg =      "#0f0f0f"
 local fg =      "#d0d0d0"
 
 -- The six basic (ANSI) colors:

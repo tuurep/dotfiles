@@ -22,16 +22,16 @@ window:
 colors:
   cursor:
     custom_colors: true
-    text:   "#121212"
+    text:   "#0f0f0f"
     cursor: "#d0d0d0"
 
 
   primary:
-    background: "#121212"
+    background: "#0f0f0f"
     foreground: "#d0d0d0"
  
   normal:
-    black:   "#121212"
+    black:   "#0f0f0f"
     red:     "#cc6666"
     green:   "#a7bd68"
     yellow:  "#f0c674"
