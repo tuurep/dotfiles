@@ -158,7 +158,7 @@ local plugins = {
         keys = {
             { "dp", "<Plug>ReplaceWithRegisterOperator" },
             { "dpp", "<Plug>ReplaceWithRegisterLine" },
-            { "dP", "<Plug>ReplaceWithRegisterLine", remap=true }
+            { "dP", "dp$", remap=true }
         }
     },
 
