@@ -12,8 +12,9 @@
     show_indicators = false
     icon_position = off
 
-    origin = bottom-right
-    offset = 12x44
+    origin = top-right
+    offset = 6x6
+    width = (0, 300)
     horizontal_padding = 11
     frame_width = 1
     separator_height = 1
@@ -21,6 +22,7 @@
     sort = no
     show_age_threshold = -1
     stack_duplicates = false
+    notification_limit = 18
 
     mouse_left_click = do_action, close_current
 
@@ -39,3 +41,13 @@
     # notify-send -c history_ignore <summary> <body>
     category = "history_ignore"
     history_ignore = true
+
+[volume]
+    stack_tag = "volume"
+    history_ignore = true
+    format="%s"
+
+[brightness]
+    stack_tag = "brightness"
+    history_ignore = true
+    format="%s"

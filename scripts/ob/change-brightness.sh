@@ -14,12 +14,20 @@ n=$1
 current_brightness=$(brightnessctl -P g)
 new_brightness=$((current_brightness + n))
 
-# If brightness would go below 0, set 0% because attempting
-# to set negative will not change brightness
-# Going above 100 doesn't need this treatment, brightnessctl
-# will set it at 100%
 if [ $new_brightness -lt 0 ]; then
-        brightnessctl s 0%
-else
-        brightnessctl s "$new_brightness"%
+        new_brightness=0
+elif [ $new_brightness -gt 100 ]; then
+        new_brightness=100
+fi
+
+brightnessctl s "$new_brightness"%
+
+# If window is fullscreen, show notification because
+# Polybar is not visible
+fullscreen=$(xprop -id "$(xdo id)" _NET_WM_STATE | grep _NET_WM_STATE_FULLSCREEN)
+
+if [ -n "$fullscreen" ]; then
+        notify-send -t 700 \
+                    --hint=string:x-dunst-stack-tag:brightness \
+                    "盛  $new_brightness"
 fi
