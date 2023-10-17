@@ -1,6 +1,6 @@
 [global]
     format = "<b>%s</b>\n%b"
-    font = Roboto 10.5
+    font = Roboto 11
 
     background = "#222525"
     foreground = "#eaeaea"
