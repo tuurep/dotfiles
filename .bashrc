@@ -25,6 +25,12 @@ prompt_cmd() {
         fi
         title=$(basename "$(dirs +0)")
         echo -ne "\033]0;${title}\007" # Set window title; in tmux title is set in .tmux.conf
+
+        # If python-virtualenv activated, print venv name on a separate line before PS1
+        if [[ -n "$VIRTUAL_ENV" ]]; then
+                venv=$(basename "$VIRTUAL_ENV")
+                echo -e "\e[0;32m(${venv})\e[0m"
+        fi
 }
 
 # Right before drawing prompt, this function is executed:
@@ -163,6 +169,7 @@ source ~/.ls_colors # Sets and exports LS_COLORS env variable
 
 export SYSTEMD_COLORS=16 # Prevent systemctl from using colors outside of my colorscheme
 
+export VIRTUAL_ENV_DISABLE_PROMPT=1 # Use custom venv-prompt in prompt_cmd
 export PYTHONSTARTUP="$HOME/.pyrc" # Config (startup script) for py interactive shell
 
 # Flags for less: case insensitive search and colors
