@@ -412,7 +412,14 @@
     <!-- Area inside window decorations -->
     <context name="Client">
       <mousebind button="Left Right" action="Press">
-        <action name="Focus"/>
+        <action name="If">
+          <query>
+            <focused>no</focused>
+          </query>
+          <then>
+            <action name="Focus"/>
+          </then>
+        </action>
         <action name="Raise"/>
       </mousebind>
     </context>
