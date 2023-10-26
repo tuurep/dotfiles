@@ -47,6 +47,7 @@ alias e="nvim"
 alias v="nsxiv"
 alias g="grep"
 alias q="exit"
+alias m="mkdir"
 
 alias ..="c .."
 alias .="c ."
@@ -124,6 +125,10 @@ c() {
         builtin cd "$@" > /dev/null \
                 && p \
                 && l
+}
+
+mc() {
+        mkdir "$@" && c "$@"
 }
 
 eval "$(zoxide init bash)" # https://github.com/ajeetdsouza/zoxide
