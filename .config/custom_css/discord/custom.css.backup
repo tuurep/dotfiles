@@ -15,10 +15,19 @@ button[aria-label="Open sticker picker"] {
     display: none;
 }
 
+/* Hide Super Reaction button */
+
+.button_d553e5[aria-label="Add Super Reaction"] {
+    display: none;
+}
 
 /* Hide "Nitro" channel */
 
-.link-39sEB3[data-list-item-id$="___nitro"] {
+.link__2e8e1[data-list-item-id$="private-channels-uid_335___nitro"] {
+    display: none;
+}
+
+.link__2e8e1[data-list-item-id$="private-channels-uid_335___shop"] {
     display: none;
 }
 
