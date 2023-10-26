@@ -17,17 +17,17 @@ button[aria-label="Open sticker picker"] {
 
 /* Hide Super Reaction button */
 
-.button_d553e5[aria-label="Add Super Reaction"] {
+div[aria-label="Add Super Reaction"] {
     display: none;
 }
 
-/* Hide "Nitro" channel */
+/* Hide Nitro Shops in inappropriate place */
 
-.link__2e8e1[data-list-item-id$="private-channels-uid_335___nitro"] {
+a[data-list-item-id$="___nitro"] {
     display: none;
 }
 
-.link__2e8e1[data-list-item-id$="private-channels-uid_335___shop"] {
+a[data-list-item-id$="___shop"] {
     display: none;
 }
 
