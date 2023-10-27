@@ -5,12 +5,15 @@ active_class=$(xdotool getwindowclassname "$active_window")
 
 # Steam will leave only the main client window open
 if [ "$active_class" == "steam" ]; then
+
         for w in $(xdo id -dN "$active_class"); do
                 w_title=$(xdotool getwindowname "$w")
                 if [ "$w_title" != "Steam" ]; then
                         xdo close "$w"
                 fi
         done
+
+        wmctrl -xa "steam" # Raise and focus steam client
         exit 0
 fi
 
