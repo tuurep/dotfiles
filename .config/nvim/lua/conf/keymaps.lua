@@ -166,6 +166,10 @@ map("n", "å", "~")
 map("n", "gå", "g~")
 map("n", "gåå", "g~~")
 
+-- Square bracket text-object alias (AltGr+7 is horrid)
+map("o", "ie", "i[")
+map("o", "ae", "a[")
+
 -- See highlight group under cursor
 map("n", "<leader>e", "<cmd>Inspect<cr>")
 
