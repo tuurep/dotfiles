@@ -1,12 +1,13 @@
 -- Shorthands
 local map = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
+local g = vim.g
 local r = { remap = true }
 local b = { buffer = 0 }
 
 -- <leader> is <Space>
-vim.keymap.set({"n", "x", "o"}, "<Space>", "<Nop>")
-vim.g.mapleader = " "
+map({"n", "x", "o"}, "<Space>", "<Nop>")
+g.mapleader = " "
 
 -- Free keys:
 map({"n", "x", "o"}, "<Up>", "<Nop>")
@@ -175,3 +176,46 @@ map("n", "<leader>e", "<cmd>Inspect<cr>")
 
 -- Bigger lua functions
 map("n", "Å", require("trailingwhite-toggle"))
+
+-- ===== PLUGINS =====
+
+-- vim-sneak
+map({"n", "x", "o"}, "f", "<Plug>Sneak_f")
+map({"n", "x", "o"}, "F", "<Plug>Sneak_F")
+map({"n", "x", "o"}, "t", "<Plug>Sneak_t")
+map({"n", "x", "o"}, "T", "<Plug>Sneak_T")
+map({"n", "x", "o"}, ",", "<Plug>Sneak_;")
+map({"n", "x", "o"}, ";", "<Plug>Sneak_,")
+
+-- vim-lion
+g.lion_map_left = "gh"
+g.lion_prompt_map = "<Tab>" -- (added in my fork)
+
+-- vim-exchange
+map("n", "cX", "cx$", r)
+map("n", "c<C-x>", "0cx$", r) -- This one is not dot-repeatable...
+                              -- but that would be extremely niche
+-- vim-edgemotion
+map({"n", "x", "o"}, "<leader>j", "<Plug>(edgemotion-j)")
+map({"n", "x", "o"}, "<leader>k", "<Plug>(edgemotion-k)")
+
+-- vim-ReplaceWithRegister
+map("n", "dp", "<Plug>ReplaceWithRegisterOperator")
+map("n", "dpp", "<Plug>ReplaceWithRegisterLine")
+map("n", "dP", "dp$", r)
+
+-- undotree
+map("n", "<leader>u", "<cmd>UndotreeToggle<cr>", r)
+
+-- undotree buffer default overwrites
+g.Undotree_CustomMap = function()
+    map("n", "<C-q>", "<Plug>UndotreeClose", b)
+    map("n", "U", "<Plug>UndotreeRedo", b)
+    map("n", "J", "<Plug>UndotreePreviousSavedState", b) -- Note: PreviousSaved and NextSaved
+    map("n", "K", "<Plug>UndotreeNextSavedState", b)     --     seem broken, jumping to
+    map("n", "<Tab>", "/", b)                            --     wrong nodes or getting stuck
+    map("n", "C", "<Nop>", b)
+end
+
+-- vim-dirvish
+map("n", "<C-PageUp>", "<Plug>(dirvish_up)") -- Other dirvish maps in ftplugin/dirvish.lua

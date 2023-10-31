@@ -162,6 +162,12 @@ hl(g, "DiffAdded",   { fg = green, bg = bg     })
 hl(g, "DiffRemoved", { fg = red,   bg = bg     })
 hl(g, "DiffLine",    { fg = cyan,  bg = bg     })
 
+hl(g, "DiagnosticError", { fg = red     })
+hl(g, "DiagnosticWarn",  { fg = yellow  })
+hl(g, "DiagnosticOk",    { fg = green   })
+hl(g, "DiagnosticInfo",  { fg = comment })
+hl(g, "DiagnosticHint",  { fg = comment })
+
 -- Undotree highlighting
 hl(g, "UndoTreeNodeCurrent", { fg = fg                  })
 hl(g, "UndoTreeCurrent",     { fg = fg                  })
@@ -325,14 +331,6 @@ hl(g, "manHeader",         { link = "None" })
 hl(g, "manSectionHeading", { link = "None" })
 hl(g, "manSubHeading",     { link = "None" })
 hl(g, "manReference",      { link = "None" })
-
--- Lazy.nvim UI (Note: can break other floating windows)
-hl(g, "NormalFloat",     { bg = bg      })
-hl(g, "DiagnosticError", { fg = red     })
-hl(g, "DiagnosticOk",    { fg = green   })
-hl(g, "DiagnosticWarn",  { fg = yellow  })
-hl(g, "DiagnosticInfo",  { fg = comment })
-hl(g, "DiagnosticHint",  { fg = comment })
 
 -- :checkhealth OK
 hl(g, "healthSuccess", { fg = bg, bg = green })
