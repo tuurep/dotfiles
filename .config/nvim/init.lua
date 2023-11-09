@@ -1,7 +1,6 @@
 -- shorthands
 local o, g, opt = vim.o, vim.g, vim.opt
 local autocmd = vim.api.nvim_create_autocmd
-local map = vim.keymap.set
 
 -- Should this be on or no?
 -- https://github.com/neovim/neovim/commit/2257ade3dc2daab5ee12d27807c0b3bcf103cd29
@@ -89,7 +88,7 @@ require("paq") {
     "tuurep/registereditor",
 
     -- Filetypes:
-    -- TODO "jannis-baum/vivify.vim" markdown preview
+    "jannis-baum/vivify.vim", -- markdown preview
     "lervag/vimtex",
     "justinmk/vim-dirvish", -- netrw replacement
 }

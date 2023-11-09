@@ -1,4 +1,5 @@
 " Soft wrap long lines
 setlocal wrap linebreak
 
-" Todo <leader>gp to preview in browser
+" Preview file in browser
+nnoremap <buffer> § <cmd>Vivify<cr>
