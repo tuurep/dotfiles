@@ -1,0 +1,44 @@
+html {
+    background-color: #ffffff;
+    color: #1f2328;
+}
+
+h1, h2 {
+    border-bottom: 0.2px solid #d8dee4;
+}
+
+a {
+    color: #0969da;
+}
+
+a.header-anchor {
+    color: #adb6bf;
+}
+
+a#parent-dir {
+    background-color: #afb8c133;
+    color: #16191d;
+}
+
+blockquote {
+    padding: 0 1em;
+    color: #656d76;
+    border-left: .25em solid #d0d7de;
+    margin-left: 0
+}
+
+code {
+    background-color: #afb8c133;
+    color: #16191d;
+}
+
+pre {
+    background-color: #f6f8fa;
+    overflow: auto;
+}
+
+/* Disable syntax highlighting in code blocks */
+span[class^="hljs"] {
+    color: #16191d;
+    font-weight: normal;
+}
