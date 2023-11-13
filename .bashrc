@@ -65,7 +65,7 @@ alias tl="tmux ls"
 alias tk="tmux kill-session -t"
 
 alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias gr='cd $(git rev-parse --show-toplevel)' # Go to root of current git repo, if any. Else goes to ~.
+alias gr='cd $(git rev-parse --show-toplevel) && p' # Go to root of current git repo, if any. Else goes to ~.
 alias todo='nvim ~/projects/todo.txt'
 
 alias cp="cp -i"
