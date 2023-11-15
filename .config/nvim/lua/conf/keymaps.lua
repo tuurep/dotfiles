@@ -167,9 +167,12 @@ map("n", "å", "~")
 map("n", "gå", "g~")
 map("n", "gåå", "g~~")
 
--- Square bracket text-object alias (AltGr+7 is horrid)
-map("o", "ie", "i[")
-map("o", "ae", "a[")
+-- vim-surround uses targets r for ] and a for >
+-- those are great ideas, add these mappings more generally
+map("o", "ir", "i]")
+map("o", "ar", "a]")
+map("o", "ia", "i>")
+map("o", "aa", "a>")
 
 -- See highlight group under cursor
 map("n", "<leader>e", "<cmd>Inspect<cr>")
