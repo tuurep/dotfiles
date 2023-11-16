@@ -33,5 +33,5 @@ fullscreen=$(xprop -id "$(xdo id)" _NET_WM_STATE | grep _NET_WM_STATE_FULLSCREEN
 if [ -n "$fullscreen" ]; then
         notify-send -t 700 \
                     --hint=string:x-dunst-stack-tag:volume \
-                    "墳  $new_volume"
+                    "墳 $new_volume"
 fi

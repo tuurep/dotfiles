@@ -1,6 +1,6 @@
 [global]
     format = "<b>%s</b>\n%b"
-    font = Roboto 11
+    font = Roboto 11.5
 
     background = "#222525"
     foreground = "#eaeaea"
@@ -12,8 +12,8 @@
     show_indicators = false
     icon_position = off
 
-    origin = top-right
-    offset = 6x6
+    origin = top-center
+    offset = 0x6
     width = (0, 300)
     horizontal_padding = 11
     frame_width = 1
@@ -45,9 +45,17 @@
 [volume]
     stack_tag = "volume"
     history_ignore = true
-    format="%s"
+    format="<span font="Alt Hack Nerd Font 10.5">%s</span>"
 
 [brightness]
     stack_tag = "brightness"
     history_ignore = true
-    format="%s"
+    format="<span font="Alt Hack Nerd Font 10.5">%s</span>"
+
+[hack_font]
+    category = "hack_font"
+    format = "<span font="Alt Hack Nerd Font 10.5"><b>%s</b>\n%b</span>"
+
+    # I put this here for ob/notify-current-date.sh
+    # since I couldn't match multiple categories
+    history_ignore = true

@@ -1,3 +1,5 @@
 #!/bin/bash
 
-notify-send -c history_ignore "$(date +%-d.%-m.)" "$(date +%A)"
+notify-send -t 3000 \
+            -c hack_font \
+            "$(date +%-d.%-m.)" "$(date +%A)"
