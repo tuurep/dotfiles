@@ -76,6 +76,7 @@ alias sudo="sudo -v; sudo "
 alias sudoreset='faillock --reset --user $USER'
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias pac="pacman"
+alias srcinfo="makepkg --printsrcinfo > .SRCINFO"
 alias sauce="source ~/.bashrc"
 
 alias py="python"
