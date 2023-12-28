@@ -1,0 +1,66 @@
+[env]
+# Fix not being able to set font size (huge initial font):
+WINIT_X11_SCALE_FACTOR = "1"
+
+[window.padding]
+x = 7
+
+[font]
+size = 12.5
+
+    [font.normal]
+    family = "Alt Hack Nerd Font"
+    style =  "Regular"
+
+    # Disable bold font:
+    [font.bold]
+    family = "Alt Hack Nerd Font"
+    style =  "Regular"
+
+[colors]
+# Extra colors for specific purposes, colors 16-255 can be set:
+indexed_colors = [
+    { index = 16, color = "#de935f" },
+    { index = 17, color = "#a3685a" },
+    { index = 18, color = "#222525" },
+    { index = 19, color = "#313438" },
+    { index = 20, color = "#6b6b6b" },
+    { index = 21, color = "#909090" },
+    { index = 22, color = "#eaeaea" },
+    { index = 23, color = "#656e6e" },
+    { index = 24, color = "#404040" },
+    { index = 25, color = "#2a2c2d" },
+    { index = 26, color = "#797b7a" }
+]
+
+    [colors.cursor]
+    cursor = "#d0d0d0"
+    text =   "#0f0f0f"
+
+    [colors.primary]
+    background = "#0f0f0f"
+    foreground = "#d0d0d0"
+
+    [colors.normal]
+    black =   "#0f0f0f"
+    red =     "#cc6666"
+    green =   "#a7bd68"
+    yellow =  "#f0c674"
+    blue =    "#81a2be"
+    magenta = "#ac8fb5"
+    cyan =    "#8abeb7"
+    white =   "#d0d0d0"
+
+    # Red to Cyan are not different from normal
+    # Black is for code comments
+    # White is very rarely used
+
+    [colors.bright]
+    black =   "#5f6160"
+    red =     "#cc6666"
+    green =   "#a7bd68"
+    yellow =  "#f0c674"
+    blue =    "#81a2be"
+    magenta = "#ac8fb5"
+    cyan =    "#8abeb7"
+    white =   "#ffffff"
