@@ -33,8 +33,9 @@ local l_bg =    "#222525" -- lighter background
 local ll_bg =   "#313438" -- lighter lighter background
 
 -- fg variants for more concealed/more emphasized text
--- local dd_fg =   "#767676" -- darker darker foreground (but not as dark as comment)
--- local l_fg =    "#eaeaea" -- lighter foreground
+local d_fg =    "#909090" -- darker foreground
+local dd_fg =   "#787878" -- darker darker foreground (but not as dark as comment)
+-- local l_fg = "#eaeaea" -- lighter foreground
 
 -- Inactive UI elements colors:
 local stat_fg = "#656e6e" -- inactive statusline foreground
@@ -42,9 +43,6 @@ local linenum = "#404040" -- inactive linenumber foreground
 local search =  "#6b6b6b" -- inactive search bg
 
 -- (Note: the 'active' counterpart is just default fg)
-
--- Specific purpose:
-local diffch =  "#909090" -- 'diff changed' background
 
 -- shorthands
 local hl = vim.api.nvim_set_hl
@@ -56,8 +54,8 @@ local active_win = vim.api.nvim_create_namespace("active_window")
 local inactive_win = vim.api.nvim_create_namespace("inactive_window")
 
 -- Active line
-hl(g, "CursorLine",   {})                   -- clear: no cursorline bg
-hl(g, "CursorLineNr", { fg = fg, bg = bg }) --    ... only the LineNr highlighted
+hl(g, "CursorLine",   {})                      -- clear: no cursorline bg
+hl(g, "CursorLineNr", { fg = dd_fg, bg = bg }) --    ... only the LineNr highlighted
 
 -- Inactive line
 hl(g, "LineNr",       { fg = linenum })
@@ -155,7 +153,7 @@ hl(g, "TabLineSel",   { fg = green,   bg = l_bg })
 
 -- Diff highlighting
 hl(g, "DiffAdd",     { fg = bg,    bg = green  })
-hl(g, "DiffChange",  { fg = bg,    bg = diffch })
+hl(g, "DiffChange",  { fg = bg,    bg = d_fg   })
 hl(g, "DiffDelete",  { fg = bg,    bg = red    })
 hl(g, "DiffText",    { fg = bg,    bg = green  })
 hl(g, "DiffAdded",   { fg = green, bg = bg     })
