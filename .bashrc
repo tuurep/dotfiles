@@ -44,7 +44,6 @@ export HISTCONTROL=ignoredups
 
 alias l="ls --color=always --group-directories-first"
 alias e="nvim"
-alias v="nsxiv"
 alias g="grep"
 alias q="exit"
 alias m="mkdir"
@@ -144,6 +143,14 @@ z() {
 ll() {
         l -oh --time-style=long-iso "$@" \
                 | sed -r '/^total [0-9]+\.?[0-9]*[BKMGT]?$/d'
+}
+
+mp() {
+        mpv --no-terminal "$@" & disown $!
+}
+
+v() {
+        nsxiv "$@" &> /dev/null & disown $!
 }
 
 # Text-to-speech with Google Translate's API
