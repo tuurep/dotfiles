@@ -146,11 +146,11 @@ ll() {
 }
 
 mp() {
-        mpv --no-terminal "$@" & disown $!
+        mpv --no-terminal "$@" & disown
 }
 
 v() {
-        nsxiv "$@" &> /dev/null & disown $!
+        nsxiv "$@" &> /dev/null & disown
 }
 
 # Text-to-speech with Google Translate's API
