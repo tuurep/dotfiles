@@ -209,11 +209,12 @@ hl(g, "@punctuation.bracket",  { fg = fg      })
 hl(g, "@punctuation.special",  { fg = cyan    })
 hl(g, "@string",               { fg = green   })
 hl(g, "@string.documentation", { fg = green   })
-hl(g, "@string.regex",         { fg = cyan    })
+hl(g, "@string.regexp",        { fg = cyan    })
 hl(g, "@string.escape",        { fg = cyan    })
 hl(g, "@string.special",       { fg = cyan    })
 hl(g, "@character",            { fg = green   })
 hl(g, "@character.special",    { fg = cyan    })
+hl(g, "@character.printf",     { fg = cyan    })
 hl(g, "@boolean",              { fg = orange  })
 hl(g, "@number",               { fg = orange  })
 hl(g, "@float",                { fg = orange  })
@@ -305,6 +306,13 @@ hl(g, "Type",         { link = "@type"                 })
 hl(g, "Typedef",      { link = "@type.definition"      })
 
 -- Fine-tuning and pinpointing issues
+
+-- Regex
+hl(g, "@constant.regex",              { fg = cyan })
+hl(g, "@operator.regex",              { fg = cyan })
+hl(g, "@punctuation.delimiter.regex", { fg = cyan })
+hl(g, "@punctuation.bracket.regex",   { fg = cyan })
+hl(g, "@variable.builtin.regex",      { fg = cyan })
 
 -- Stuff that insists on being annoying
 hl(g, "MatchParen", { link = "None" })
