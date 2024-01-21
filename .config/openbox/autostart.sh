@@ -3,7 +3,7 @@
 # which is why hsetroot is used instead
 hsetroot -solid '#000000'
 
-polybar bar1 2>&1 & disown
+polybar bar1 &
 dunst &
 picom -b
 transmission-daemon
