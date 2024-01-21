@@ -174,8 +174,9 @@ map("o", "ar", "a]")
 map("o", "ia", "i>")
 map("o", "aa", "a>")
 
--- See highlight group under cursor
+-- Treesitter tools
 map("n", "<leader>e", "<cmd>Inspect<cr>")
+map("n", "<leader>E", "<cmd>InspectTree<cr>")
 
 -- Bigger lua functions
 map("n", "Å", require("trailingwhite-toggle"))
