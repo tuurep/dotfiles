@@ -83,7 +83,6 @@ alias jl="julia"
 alias sc="shellcheck"
 alias vg="valgrind"
 
-alias zat="zathura"
 alias ff="firefox"
 alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
 alias vivaldi="vivaldi-stable"
@@ -147,6 +146,10 @@ ll() {
 
 mp() {
         mpv --no-terminal "$@" & disown
+}
+
+zat() {
+        zathura "$@" &> /dev/null & disown
 }
 
 v() {
