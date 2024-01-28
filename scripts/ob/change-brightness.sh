@@ -10,8 +10,9 @@
 # Change brightness by n (can be negative to decrease)
 n=$1
 
-# Get current brightness as percentage with -P flag
-current_brightness=$(brightnessctl -P g)
+# Round current brightness percentage to nearest integer
+current_brightness=$(printf "%.0f" "$(brillo -G)")
+
 new_brightness=$((current_brightness + n))
 
 if [ $new_brightness -lt 0 ]; then
@@ -20,7 +21,7 @@ elif [ $new_brightness -gt 100 ]; then
         new_brightness=100
 fi
 
-brightnessctl s "$new_brightness"%
+brillo -S "$new_brightness"
 
 # If window is fullscreen, show notification because
 # Polybar is not visible
