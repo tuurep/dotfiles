@@ -16,17 +16,15 @@ local fg =      "#d0d0d0"
 local red =     "#cc6666"
 local green =   "#a7bd68"
 local yellow =  "#f0c674"
-local blue =    "#81a2be"
-local magenta = "#ac8fb5"
+local blue =    "#80a1bd"
+local magenta = "#aa8bb3"
 local cyan =    "#8abeb7"
 
 -- "Bright black", chosen with comments in mind
 local comment = "#5f6160"
 
--- More colors (orange most common):
-local b_white = "#ffffff" -- bright white
-local orange =  "#de935f"
-local brown =   "#a3685a"
+-- Standout color mainly for numbers (int, float, bool, const)
+local pink =    "#bd7b89"
 
 -- Borders and floating window backgrounds:
 local l_bg =    "#222525" -- lighter background
@@ -43,6 +41,13 @@ local linenum = "#404040" -- inactive linenumber foreground
 local search =  "#6b6b6b" -- inactive search bg
 
 -- (Note: the 'active' counterpart is just default fg)
+
+-- These colors are part of the palette, but haven't found use:
+-- local b_white = "#ffffff" -- bright white
+-- local brown =   "#a3685a"
+
+-- This color was replaced by 'pink' but could still be useful for a different purpose:
+-- local orange =  "#de935f"
 
 -- shorthands
 local hl = vim.api.nvim_set_hl
@@ -187,7 +192,7 @@ hl(g, "texConditionalArg", { fg = fg  })
 hl(g, "texEnvArgName",     { fg = fg  })
 hl(g, "texOptEqual",       { fg = fg  })
 hl(g, "texTitleArg",       { link = "@markup.heading"  })
-hl(g, "texPartArgTitle",   { link = "@markup.link.url" })
+hl(g, "texPartArgTitle",   { link = "@markup.heading"  })
 hl(g, "texUrlArg",         { link = "@markup.link.url" })
 hl(g, "texRefArg",         { link = "@markup.link.url" })
 hl(g, "texVerbZone",       { link = "@markup.raw"      })
@@ -206,12 +211,11 @@ hl(g, "@string",               { fg = green   })
 hl(g, "@string.regexp",        { fg = cyan    })
 hl(g, "@string.escape",        { fg = cyan    })
 hl(g, "@string.special",       { fg = cyan    })
-hl(g, "@string.special.url",   { fg = orange  })
 hl(g, "@character",            { fg = green   })
 hl(g, "@character.special",    { fg = cyan    })
 hl(g, "@character.printf",     { fg = cyan    })
-hl(g, "@boolean",              { fg = orange  })
-hl(g, "@number",               { fg = orange  })
+hl(g, "@boolean",              { fg = pink    })
+hl(g, "@number",               { fg = pink    })
 hl(g, "@function",             { fg = blue    })
 hl(g, "@function.builtin",     { fg = blue    })
 hl(g, "@constructor",          { fg = blue    })
@@ -227,8 +231,8 @@ hl(g, "@property",             { fg = fg      })
 hl(g, "@variable",             { fg = fg      })
 hl(g, "@variable.builtin",     { fg = magenta })
 hl(g, "@constant",             { fg = fg      })
-hl(g, "@constant.builtin",     { fg = orange  })
-hl(g, "@constant.macro",       { fg = orange  })
+hl(g, "@constant.builtin",     { fg = pink    })
+hl(g, "@constant.macro",       { fg = pink    })
 hl(g, "@module",               { fg = fg      })
 hl(g, "@tag",                  { fg = red     })
 hl(g, "@tag.attribute",        { fg = yellow  })
@@ -251,7 +255,7 @@ hl(g, "@markup.raw",                   { fg = green   })
 hl(g, "@markup.math",                  { fg = green   })
 hl(g, "@markup.link",                  { fg = fg      })
 hl(g, "@markup.link.label",            { fg = red     })
-hl(g, "@markup.link.url",              { fg = orange  })
+hl(g, "@markup.link.url",              { fg = cyan    })
 hl(g, "@markup.strikethrough",         { fg = red     })
 
 -- Regex
