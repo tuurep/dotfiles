@@ -24,7 +24,7 @@ local cyan =    "#8abeb7"
 local comment = "#5f6160"
 
 -- Standout color mainly for numbers (int, float, bool, const)
-local pink =    "#bd7b89"
+local orange =  "#d17c6b"
 
 -- Borders and floating window backgrounds:
 local l_bg =    "#222525" -- lighter background
@@ -45,9 +45,6 @@ local search =  "#6b6b6b" -- inactive search bg
 -- These colors are part of the palette, but haven't found use:
 -- local b_white = "#ffffff" -- bright white
 -- local brown =   "#a3685a"
-
--- This color was replaced by 'pink' but could still be useful for a different purpose:
--- local orange =  "#de935f"
 
 -- shorthands
 local hl = vim.api.nvim_set_hl
@@ -214,8 +211,8 @@ hl(g, "@string.special",       { fg = cyan    })
 hl(g, "@character",            { fg = green   })
 hl(g, "@character.special",    { fg = cyan    })
 hl(g, "@character.printf",     { fg = cyan    })
-hl(g, "@boolean",              { fg = pink    })
-hl(g, "@number",               { fg = pink    })
+hl(g, "@boolean",              { fg = orange  })
+hl(g, "@number",               { fg = orange  })
 hl(g, "@function",             { fg = blue    })
 hl(g, "@function.builtin",     { fg = blue    })
 hl(g, "@constructor",          { fg = blue    })
@@ -231,8 +228,8 @@ hl(g, "@property",             { fg = fg      })
 hl(g, "@variable",             { fg = fg      })
 hl(g, "@variable.builtin",     { fg = magenta })
 hl(g, "@constant",             { fg = fg      })
-hl(g, "@constant.builtin",     { fg = pink    })
-hl(g, "@constant.macro",       { fg = pink    })
+hl(g, "@constant.builtin",     { fg = orange  })
+hl(g, "@constant.macro",       { fg = orange  })
 hl(g, "@module",               { fg = fg      })
 hl(g, "@tag",                  { fg = red     })
 hl(g, "@tag.attribute",        { fg = yellow  })

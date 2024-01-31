@@ -20,7 +20,7 @@ size = 12.5
 [colors]
 # Extra colors for specific purposes, colors 16-255 can be set:
 indexed_colors = [
-    { index = 16, color = "#bd7b89" },
+    { index = 16, color = "#d17c6b" },
     { index = 17, color = "#a3685a" },
     { index = 18, color = "#222525" },
     { index = 19, color = "#313438" },
