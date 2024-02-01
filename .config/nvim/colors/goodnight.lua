@@ -311,11 +311,15 @@ hl(g, "xmlProcessingDelim", { link = "@tag.delimiter" })
 hl(g, "xmlAttrib",          { link = "@tag.attribute" })
 
 -- CSS
-hl(g, "@tag.css",          { link = "None" }) -- Todo: rework CSS highlights
-hl(g, "@number.css",       { fg = green    }) -- problems: punctuation.delimiter granularity
-hl(g, "@number.float.css", { fg = green    }) --           @string and @number priority with "px", "em", "vh"...
-hl(g, "@string.css",       { fg = green    })
-
+hl(g, "@tag.css",          { fg = red      })
+hl(g, "@type.css",         { fg = red      })
+hl(g, "@attribute.css",    { fg = red      })
+hl(g, "@constant.css",     { fg = red      })
+hl(g, "@property.css",     { fg = magenta  })
+hl(g, "@number.css",       { fg = fg       }) -- Todo: numbers and strings are a mess
+hl(g, "@number.float.css", { fg = fg       }) --       (punctuation.delimiter granularity)
+hl(g, "@string.css",       { fg = fg       }) --       (@string priorized over @number on words like "px", "em", "vh"...)
+                                              -- Looks pretty good with no color though
 -- Manpage buffer
 hl(g, "manItalic",         { fg = red      }) -- in `less` manpage, this is underlined
 hl(g, "manHeader",         { link = "None" })
