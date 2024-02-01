@@ -16,7 +16,7 @@ local fg =      "#d0d0d0"
 local red =     "#d46161"
 local green =   "#a7bd68"
 local yellow =  "#edc36f"
-local blue =    "#7ea0bd"
+local blue =    "#7d9fbd"
 local magenta = "#a986b3"
 local cyan =    "#8abdb6"
 
