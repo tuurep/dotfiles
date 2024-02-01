@@ -310,6 +310,12 @@ hl(g, "xmlTag",             { link = "@tag.delimiter" })
 hl(g, "xmlProcessingDelim", { link = "@tag.delimiter" })
 hl(g, "xmlAttrib",          { link = "@tag.attribute" })
 
+-- CSS
+hl(g, "@tag.css",          { link = "None" }) -- Todo: rework CSS highlights
+hl(g, "@number.css",       { fg = green    }) -- problems: punctuation.delimiter granularity
+hl(g, "@number.float.css", { fg = green    }) --           @string and @number priority with "px", "em", "vh"...
+hl(g, "@string.css",       { fg = green    })
+
 -- Manpage buffer
 hl(g, "manItalic",         { fg = red      }) -- in `less` manpage, this is underlined
 hl(g, "manHeader",         { link = "None" })
