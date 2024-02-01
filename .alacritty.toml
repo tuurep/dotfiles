@@ -44,12 +44,12 @@ indexed_colors = [
 
     [colors.normal]
     black =   "#0f0f0f"
-    red =     "#cc6666"
+    red =     "#d46161"
     green =   "#a7bd68"
-    yellow =  "#f0c674"
-    blue =    "#80a1bd"
-    magenta = "#aa8bb3"
-    cyan =    "#8abeb7"
+    yellow =  "#edc36f"
+    blue =    "#7ea0bd"
+    magenta = "#a986b3"
+    cyan =    "#8abdb6"
     white =   "#d0d0d0"
 
     # Red to Cyan are not different from normal
@@ -58,10 +58,10 @@ indexed_colors = [
 
     [colors.bright]
     black =   "#5f6160"
-    red =     "#cc6666"
+    red =     "#d46161"
     green =   "#a7bd68"
-    yellow =  "#f0c674"
-    blue =    "#80a1bd"
-    magenta = "#aa8bb3"
-    cyan =    "#8abeb7"
+    yellow =  "#edc36f"
+    blue =    "#7ea0bd"
+    magenta = "#a986b3"
+    cyan =    "#8abdb6"
     white =   "#ffffff"
