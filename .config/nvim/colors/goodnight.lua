@@ -13,11 +13,11 @@ local bg =      "#0f0f0f"
 local fg =      "#d0d0d0"
 
 -- The six basic (ANSI) colors:
-local red =     "#d46161"
+local red =     "#c25d5d"
 local green =   "#a7bd68"
-local yellow =  "#edc36f"
+local yellow =  "#e8c174"
 local blue =    "#7d9fbd"
-local magenta = "#a986b3"
+local magenta = "#a684b0"
 local cyan =    "#88bab0"
 
 -- "Bright black", chosen with comments in mind
