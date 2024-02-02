@@ -49,7 +49,7 @@ indexed_colors = [
     yellow =  "#edc36f"
     blue =    "#7d9fbd"
     magenta = "#a986b3"
-    cyan =    "#8abdb6"
+    cyan =    "#88bab0"
     white =   "#d0d0d0"
 
     # Red to Cyan are not different from normal
@@ -63,5 +63,5 @@ indexed_colors = [
     yellow =  "#edc36f"
     blue =    "#7d9fbd"
     magenta = "#a986b3"
-    cyan =    "#8abdb6"
+    cyan =    "#88bab0"
     white =   "#ffffff"
