@@ -46,11 +46,16 @@ alias l="ls --color=always --group-directories-first"
 alias e="nvim"
 alias g="grep"
 alias q="exit"
-alias m="mkdir"
 
 alias ..="c .."
 alias .="c ."
 alias -- -="c -" # -- required to alias dash
+
+alias mk="mkdir"
+
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
 
 alias ls="ls --color=auto"
 alias grep="grep --color=auto -i" # Case insensitive
@@ -66,10 +71,6 @@ alias tk="tmux kill-session -t"
 alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias gr='cd $(git rev-parse --show-toplevel) && p' # Go to root of current git repo, if any. Else goes to ~.
 alias todo='nvim ~/projects/todo.txt'
-
-alias cp="cp -i"
-alias mv="mv -i"
-alias rm="rm -i"
 
 alias sudo="sudo -v; sudo "
 alias sudoreset='faillock --reset --user $USER'
@@ -144,7 +145,7 @@ ll() {
                 | sed -r '/^total [0-9]+\.?[0-9]*[BKMGT]?$/d'
 }
 
-mp() {
+m() {
         mpv --no-terminal "$@" & disown
 }
 
