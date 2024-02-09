@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=mpv Media Player with loop flag
+TryExec=mpv
+Exec=mpv --player-operation-mode=pseudo-gui --loop -- %U
+Terminal=false
+StartupWMClass=mpv
+NoDisplay=true

@@ -157,6 +157,12 @@ v() {
         nsxiv "$@" &> /dev/null & disown
 }
 
+o() {
+        for file in "$@"; do
+                xdg-open "$file" &> /dev/null & disown
+        done
+}
+
 # Text-to-speech with Google Translate's API
 # use -l for different language (defaults to english)
 # use alias langtags to find correct tags
