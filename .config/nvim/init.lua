@@ -19,7 +19,7 @@ autocmd({"FileType"}, {
 })
 
 opt.shortmess:prepend("Ia")
-opt.fillchars:prepend("eob:·")
+opt.fillchars:prepend("eob:󰧟")
 
 o.clipboard = "unnamedplus"
 o.guicursor = "a:block"

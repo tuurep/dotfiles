@@ -10,12 +10,12 @@ export VISUAL=nvim
 # Enables Ctrl+s i-search in its place (Ctrl+r opposite direction)
 stty -ixon
 
-# If in tty2 console, don't use nerdfont icons in PS1 and PS2
+# If in tty2 console, don't use unrenderable symbols (unicode, nerdfont)
 if [ "$TERM" = "linux" ]; then
         PS1="\[\e[0;32m\]$ \[\e[0m\]"
         PS2="\[\e[0;32m\]> \[\e[0m\]"
 else
-        PS1="\[\e[0;32m\] \[\e[0m\]"
+        PS1="\[\e[0;32m\]🞂 \[\e[0m\]" # Unicode symbol: U+1F782
         PS2="\[\e[0;32m\]﬌ \[\e[0m\]"
 fi
 
