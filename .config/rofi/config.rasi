@@ -7,7 +7,7 @@ configuration {
     window-format: "{c}    {t}";
 
     window {
-        display-name: "󰘔 ";
+        display-name: "";
         hide-active-window: true;
         close-on-delete: false;
     }
@@ -17,7 +17,7 @@ configuration {
     }
 
     greenclip {
-        display-name: "󰅍 ";
+        display-name: "";
     }
 
     drun-match-fields: "name";
