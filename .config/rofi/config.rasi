@@ -7,7 +7,7 @@ configuration {
     window-format: "{c}    {t}";
 
     window {
-        display-name: "󰖲 ";
+        display-name: "󰘔 ";
         hide-active-window: true;
         close-on-delete: false;
     }
