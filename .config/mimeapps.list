@@ -11,6 +11,7 @@ image/gif=mpv-loop.desktop
 
 audio/vnd.wave=mpv.desktop
 audio/x-vorbis+ogg=mpv.desktop
+audio/mpeg=mpv.desktop
 
 video/mp4=mpv.desktop
 video/x-matroska=mpv.desktop
