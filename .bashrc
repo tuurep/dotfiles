@@ -20,6 +20,9 @@ else
 fi
 
 prompt_cmd() {
+        history -a # Add previous command to ~/.bash_history
+                   # (so that new session has access to this session's command history)
+
         if [[ "$TERM" =~ tmux* ]]; then
                 tmux refresh-client -S # Redraw tmux status bar
         fi
@@ -35,10 +38,6 @@ prompt_cmd() {
 
 # Right before drawing prompt, this function is executed:
 PROMPT_COMMAND=prompt_cmd
-
-# Enable history appending instead of overwriting
-shopt -s histappend
-export HISTCONTROL=ignoredups
 
 # Aliases:
 
@@ -78,6 +77,7 @@ alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias pac="pacman"
 alias srcinfo="makepkg --printsrcinfo > .SRCINFO"
 alias sauce="source ~/.bashrc"
+alias hist="cleandups; history -r" # Read history, in case you want commands from another session
 
 alias py="python"
 alias jl="julia"
@@ -106,6 +106,10 @@ alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0 \
                         | cut -d ':' -f 2"
 
 # Functions:
+
+cleandups() {
+        uniq ~/.bash_history | sponge ~/.bash_history
+}
 
 grayprint_path() {
         grayscale_243=$'\e[38;5;243m' # 767676
@@ -172,6 +176,12 @@ say() {
         # Pass -t co.uk to override to British English
         gtts-cli -t us "$@" | mpv --really-quiet -
 }
+
+# === Bash command history ===
+
+cleandups # Clean up in case multiple sessions have created unwanted history dups
+export HISTCONTROL=ignoredups
+export HISTSIZE=5000
 
 # === Add stuff to PATH ===
 
