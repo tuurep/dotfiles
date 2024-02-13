@@ -44,9 +44,9 @@ indexed_colors = [
 
     [colors.normal]
     black =   "#0f0f0f"
-    red =     "#c25d5d"
+    red =     "#c36060"
     green =   "#a7bd68"
-    yellow =  "#e8c174"
+    yellow =  "#e8c47b"
     blue =    "#7d9fbd"
     magenta = "#a684b0"
     cyan =    "#88bab0"
@@ -58,9 +58,9 @@ indexed_colors = [
 
     [colors.bright]
     black =   "#5f6160"
-    red =     "#c25d5d"
+    red =     "#c36060"
     green =   "#a7bd68"
-    yellow =  "#e8c174"
+    yellow =  "#e8c47b"
     blue =    "#7d9fbd"
     magenta = "#a684b0"
     cyan =    "#88bab0"

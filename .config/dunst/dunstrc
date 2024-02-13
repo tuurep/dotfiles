@@ -33,7 +33,7 @@
     # Default
 
 [urgency_critical]
-    foreground = "#e8c174"
+    foreground = "#e8c47b"
     timeout = 0
 
 [history_ignore]

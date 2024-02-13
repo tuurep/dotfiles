@@ -229,7 +229,7 @@ source /usr/share/fzf/completion.bash
 # Changes fzf colors, see https://github.com/junegunn/fzf/wiki/Color-schemes
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
         --color=fg:#5f6160,bg:#0f0f0f,hl:#d0d0d0
-        --color=fg+:#d0d0d0,bg+:#0f0f0f,hl+:#c25d5d
-        --color=info:#e8c174,prompt:#a684b0,pointer:#c25d5d
-        --color=marker:#a684b0,spinner:#e8c174,header:#5f6160
+        --color=fg+:#d0d0d0,bg+:#0f0f0f,hl+:#c36060
+        --color=info:#e8c47b,prompt:#a684b0,pointer:#c36060
+        --color=marker:#a684b0,spinner:#e8c47b,header:#5f6160
 '

@@ -42,10 +42,10 @@ set notification-bg             "#0f0f0f"
 set notification-fg             "#d0d0d0"
 
 set notification-error-bg       "#0f0f0f"
-set notification-error-fg       "#c25d5d"
+set notification-error-fg       "#c36060"
 
 set notification-warning-bg     "#0f0f0f"
-set notification-warning-fg     "#c25d5d"
+set notification-warning-fg     "#c36060"
 
 set completion-bg               "#0f0f0f"
 set completion-fg               "#7d9fbd"

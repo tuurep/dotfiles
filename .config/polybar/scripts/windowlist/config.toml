@@ -4,7 +4,7 @@ max_windows = 13
 active_window_fg_color = "#e0e0e0"
 inactive_window_fg_color = "#787878"
 separator_fg_color = "#787878"
-overflow_fg_color = "#e8c174"
+overflow_fg_color = "#e8c47b"
 
 separator_string = "󰧟"
 spaces = 1

@@ -1,7 +1,7 @@
 -- Toggle a highlight group to reveal trailing whitespace
 
 local fg =  "#d0d0d0"
-local red = "#c25d5d"
+local red = "#c36060"
 
 vim.api.nvim_set_hl(0, "TrailingWhitespace", { fg=fg, bg=red })
 
