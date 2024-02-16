@@ -62,6 +62,8 @@ alias rg="rg --smart-case"
 alias diff="diff --color=auto"
 alias cb="NO_COLOR='please' cb"
 
+alias drag="blobdrop -p"
+
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
 alias tl="tmux ls"
