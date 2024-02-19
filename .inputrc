@@ -1,4 +1,6 @@
-# readline keybinds
+# readline settings
+
+# === KEYBINDS ===
 
 # Enable up-arrow history traversal based on partial command
 # https://askubuntu.com/questions/59846/bash-history-search-partial-up-arrow
@@ -18,12 +20,18 @@
 # Ctrl + right arrow
 "\e[1;5C":shell-forward-word
 
-# Case-insensitive tab completion
-set completion-ignore-case On
+# Notes:
 
-# NOTES:
 # How to find which key combination corresponds to which escape sequence?
 
 # In a bash shell, press Ctrl + V
 # Press desired key combo
 # See output, but replace ^[ with \e
+
+# === TAB COMPETIONS ===
+
+# Case-insensitive tab completion
+set completion-ignore-case On
+
+# Show list of ambiguous matches on first Tab press
+set show-all-if-ambiguous On
