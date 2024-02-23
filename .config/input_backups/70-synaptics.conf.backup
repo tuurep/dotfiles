@@ -15,9 +15,8 @@ Section "InputClass"
             # Option "FingerHigh" "30"
             Option "FingerLow" "1"
 
-            # Reduce area by 15% from the Left Edge
-            # to reduce accidentals while typing
+            # Create a dead zone at the Left Edge to reduce accidentals while typing
             # Note: it only means that actions can't *start* there,
             # but dragging can continue to the physical edge
-            Option "AreaLeftEdge" "1927"
+            Option "AreaLeftEdge" "1500"
 EndSection
