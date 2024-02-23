@@ -228,10 +228,14 @@ source /usr/share/fzf/key-bindings.bash
 # fzf tab completion on **
 source /usr/share/fzf/completion.bash
 
-# Changes fzf colors, see https://github.com/junegunn/fzf/wiki/Color-schemes
+# Change fzf colors and icons, refer to: https://vitormv.github.io/fzf-themes/
+# Todo: fzf would be a useful tool in tty2, but can't show these icons and some of the colors (e.g. green)
+#       However, it's still usable, and this is a very niche use case...
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-        --color=fg:#5f6160,bg:#0f0f0f,hl:#d0d0d0
+        --color=fg:#767676,bg:#0f0f0f,hl:#d0d0d0
         --color=fg+:#d0d0d0,bg+:#0f0f0f,hl+:#c36060
-        --color=info:#e8c47b,prompt:#a684b0,pointer:#c36060
-        --color=marker:#a684b0,spinner:#e8c47b,header:#5f6160
+        --color=prompt:#a7bd68,pointer:#c36060,marker:#c36060
+        --color=info:#404040,spinner:#404040
+        --color=border:#5f6160,header:#7d9fbd
+        --prompt=" " --pointer="" --marker="" --separator="" --scrollbar="󰇙"
 '
