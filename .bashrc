@@ -58,7 +58,7 @@ alias rm="rm -i"
 
 alias ls="ls --color=auto"
 alias grep="grep --color=auto -i" # Case insensitive
-alias rg="rg --smart-case"
+alias rg="rg --smart-case --colors 'path:fg:blue'"
 alias diff="diff --color=auto"
 alias cb="NO_COLOR='please' cb"
 
