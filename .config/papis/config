@@ -1,0 +1,16 @@
+[papers]
+dir = ~/files/docs/papers
+
+[thesis]
+dir = ~/files/docs/papers/thesis
+
+[systematic-literature-review]
+dir = ~/files/docs/papers/systematic-literature-review
+
+[settings]
+default-library = papers
+picktool = fzf
+
+fzf-header-format = {doc[author_list][0][family]} ({doc[year]}) - {doc[title]}
+add-folder-name =   {doc[author_list][0][family]}{doc[year]}
+add-file-name =     {doc[author_list][0][family]}{doc[year]}

@@ -91,6 +91,7 @@ alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
 alias vivaldi="vivaldi-stable"
 alias grip="grip -b"
 alias tmr="transmission-remote"
+alias fp="papis open"
 
 alias reset-dunst="killall dunst; notify-send monkey monkey"
 alias reset-polybar="killall -q polybar; polybar bar1 2>&1 & disown"
