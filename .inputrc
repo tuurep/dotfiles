@@ -34,4 +34,4 @@
 set completion-ignore-case On
 
 # Show list of ambiguous matches on first Tab press
-set show-all-if-ambiguous On
+set show-all-if-unmodified On
