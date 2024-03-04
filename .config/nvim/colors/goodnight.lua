@@ -320,10 +320,10 @@ hl(g, "@number.float.css", { fg = fg       }) --       (punctuation.delimiter gr
 hl(g, "@string.css",       { fg = fg       }) --       (@string priorized over @number on words like "px", "em", "vh"...)
                                               -- Looks pretty good with no color though
 -- Manpage buffer
-hl(g, "manItalic",         { fg = red      }) -- in `less` manpage, this is underlined
+hl(g, "manItalic",         { fg = green    }) -- in `less` manpage, this is underlined
+hl(g, "manSectionHeading", { fg = blue     })
+hl(g, "manSubHeading",     { fg = blue     })
 hl(g, "manHeader",         { link = "None" })
-hl(g, "manSectionHeading", { link = "None" })
-hl(g, "manSubHeading",     { link = "None" })
 hl(g, "manReference",      { link = "None" })
 hl(g, "manOptionDesc",     { link = "None" })
 

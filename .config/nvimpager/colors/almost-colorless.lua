@@ -72,10 +72,10 @@ hl(g, "DiffRemoved", { fg = red,   bg = bg     })
 hl(g, "DiffLine",    { fg = cyan,  bg = bg     })
 
 -- Manpage buffer
-hl(g, "manItalic",         { fg = red }) -- in `less` manpage, this is underlined
+hl(g, "manItalic",         { fg = green    }) -- in `less` manpage, this is underlined
+hl(g, "manSectionHeading", { fg = blue     })
+hl(g, "manSubHeading",     { fg = blue     })
 hl(g, "manHeader",         { link = "None" })
-hl(g, "manSectionHeading", { link = "None" })
-hl(g, "manSubHeading",     { link = "None" })
 hl(g, "manReference",      { link = "None" })
 hl(g, "manOptionDesc",     { link = "None" })
 
