@@ -66,6 +66,33 @@ map({"n", "x", "o"}, "<S-Tab>", "?")
 map("n", "<M-o>", "<C-o>")
 map("n", "<M-i>", "<C-i>")
 
+map("n", "<M-Enter>", function()
+    local path = vim.fn.expand("%")
+    local tildepath = vim.fn.fnamemodify(path, ":p:~")
+    if vim.fn.bufname() == "" then
+        tildepath = tildepath .. "[No Name]"
+    end
+    vim.api.nvim_echo({{tildepath}}, false, {})      -- current buffer full path
+end)                                                 -- $HOME as ~
+
+map("n", "<leader><Enter>",
+    "<cmd>echo fnamemodify(getcwd(), ':p:~')<cr>")    -- pwd but with tilde
+
+map("n", "<Enter>", "<cmd>echo ''<cr>")               -- clear cmdline text
+
+-- Can't do the above mapping for command line <C-f> special buffer
+autocmd({"CmdWinEnter"}, {
+    callback = function()
+        map("n", "<Enter>", "<Enter>", b)
+    end
+})
+
+-- Insert/command mode Ctrl+a for beginning of line, Ctrl+E for end of line (readline style)
+-- If they override something, remap that elsewhere
+map({"i", "c"}, "<C-a>", "<Home>")
+map("i", "<C-e>", "<End>")
+map({"i", "c"}, "<C-b>", "<C-a>") -- command mode: <C-b> == <Home>, insert mode: <C-b> is unmapped
+map("i", "<M-i>", "<C-e>")
 map({"n", "x", "o"}, "<C-j>", "<C-d>")
 map({"n", "x", "o"}, "<C-k>", "<C-u>")
 map({"n", "x", "o"}, "H", "^")
