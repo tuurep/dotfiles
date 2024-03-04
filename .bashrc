@@ -2,6 +2,7 @@
 
 export EDITOR=nvim
 export VISUAL=nvim
+export PAGER=nvimpager
 
 # If the running shell is not an interactive shell, return without doing anything
 [[ $- != *i* ]] && return
@@ -80,6 +81,7 @@ alias pac="pacman"
 alias srcinfo="makepkg --printsrcinfo > .SRCINFO"
 alias sauce="source ~/.bashrc"
 alias hist="cleandups; history -r" # Read history, in case you want commands from another session
+alias page="nvimpager"
 
 alias py="python"
 alias jl="julia"
