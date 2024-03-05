@@ -48,7 +48,6 @@ alias g="grep"
 alias q="exit"
 
 alias ..="c .."
-alias .="c ."
 alias -- -="c -" # -- required to alias dash
 
 alias mk="mkdir"
