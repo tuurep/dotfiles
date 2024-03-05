@@ -8,6 +8,8 @@ local o, g, opt = vim.o, vim.g, vim.opt
 local map = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
 
+-- SETTINGS
+
 autocmd("VimEnter", {
     callback = function()
         vim.cmd("normal! L") -- Put cursor on the last line of the first page
@@ -22,8 +24,9 @@ opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/vim-edgemotion"
 
 g.loaded_netrwPlugin = 0 -- When unloading netrw, `nvimpager <dir>` shows a blank buffer in pager mode
 
-vim.cmd.colorscheme("almost-colorless")
+vim.cmd.colorscheme("goodnight-pager")
 
+opt.shortmess:prepend("Ia")
 opt.fillchars:prepend("eob:󰧟")
 
 o.clipboard = "unnamedplus"
@@ -45,7 +48,9 @@ o.smartcase = true
 o.splitright = true
 o.splitbelow = true
 
--- Let me set my own keymaps, I don't agree with some of your stuff
+-- KEYMAPS
+
+-- Disable nvimpager default keymaps
 nvimpager.maps = false
 
 map({"n", "x", "o"}, "<Space>", "<Nop>")
