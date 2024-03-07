@@ -34,38 +34,38 @@ unmap [index] <Tab> # Weird behavior: now pressing tab in index mode starts
 
 # goodnight colors:
 
-set default-bg                  "#0f0f0f"
-set default-fg                  "#d0d0d0"
+set default-bg              "#0f0f0f"
+set default-fg              "#d0d0d0"
 
-set statusbar-bg                "#0f0f0f"
-set statusbar-fg                "#d0d0d0"
+set statusbar-bg            "#0f0f0f"
+set statusbar-fg            "#d0d0d0"
 
-set inputbar-bg                 "#0f0f0f"
-set inputbar-fg                 "#d0d0d0"
+set inputbar-bg             "#0f0f0f"
+set inputbar-fg             "#d0d0d0"
 
-set notification-bg             "#0f0f0f"
-set notification-fg             "#d0d0d0"
+set notification-bg         "#0f0f0f"
+set notification-fg         "#d0d0d0"
 
-set notification-error-bg       "#0f0f0f"
-set notification-error-fg       "#c36060"
+set notification-error-bg   "#0f0f0f"
+set notification-error-fg   "#c36060"
 
-set notification-warning-bg     "#0f0f0f"
-set notification-warning-fg     "#c36060"
+set notification-warning-bg "#0f0f0f"
+set notification-warning-fg "#c36060"
 
-set completion-bg               "#0f0f0f"
-set completion-fg               "#7d9fbd"
-set completion-group-bg         "#0f0f0f"
-set completion-group-fg         "#d0d0d0"
+set completion-bg           "#0f0f0f"
+set completion-fg           "#7d9fbd"
+set completion-group-bg     "#0f0f0f"
+set completion-group-fg     "#d0d0d0"
 
-set completion-highlight-fg     "#0f0f0f"
-set completion-highlight-bg     "#7d9fbd"
+set completion-highlight-fg "#0f0f0f"
+set completion-highlight-bg "#7d9fbd"
 
-set index-fg                    "#d0d0d0"
-set index-bg                    "#0f0f0f"
-set index-active-fg             "#0f0f0f"
-set index-active-bg             "#a7bd68"
+set index-fg                "#d0d0d0"
+set index-bg                "#0f0f0f"
+set index-active-fg         "#0f0f0f"
+set index-active-bg         "#a7bd68"
 
 # Search highlight colors same as in Vivaldi:
 
-set highlight-color             "#ffff00"
-set highlight-active-color      "#ff9632"
+set highlight-color        "rgba(255, 255, 0,  0.5)"
+set highlight-active-color "rgba(255, 150, 50, 0.5)"
