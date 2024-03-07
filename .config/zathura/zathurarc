@@ -1,3 +1,8 @@
+# Startup window size: Half screen width
+# (if height exceeds available space above polybar, it sets it at 1050 anyways)
+set window-height 1050
+set window-width 960
+
 # Fix not being able to follow URLs
 # https://git.pwmt.org/pwmt/zathura/-/issues/151
 set sandbox none
