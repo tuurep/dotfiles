@@ -116,7 +116,7 @@ cleandups() {
 }
 
 grayprint_path() {
-        grayscale_243=$'\e[38;5;243m' # 767676
+        grayscale_243=$'\e[38;5;243m' # #767676
         reset=$'\e[0m'
         echo "${grayscale_243}$1${reset}"
 }
@@ -151,6 +151,16 @@ z() {
 ll() {
         l -oh --time-style=long-iso "$@" \
                 | sed -r '/^total [0-9]+\.?[0-9]*[BKMGT]?$/d'
+}
+
+# tree with the box-drawing characters and end report turned into a dimmed fg color
+tree() {
+        grayscale_238=$'\e[38;5;238m' # #444444
+        grayscale_243=$'\e[38;5;240m' # #585858
+        reset=$'\e[0m'
+        /usr/bin/tree -C "$@" \
+                | sed -r -e "s/[├└│─]/${grayscale_238}&${reset}/g" \
+                         -e "s/[0-9]+ directories, [0-9]+ files/${grayscale_243}&${reset}/g"
 }
 
 m() {
@@ -237,6 +247,6 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
         --color=fg:#767676,bg:#0f0f0f,hl:#d0d0d0
         --color=fg+:#d0d0d0,bg+:#0f0f0f,hl+:#c36060
         --color=prompt:#a7bd68,pointer:#c36060,marker:#c36060
-        --color=info:#404040,spinner:#404040,border:#404040,header:#7d9fbd
+        --color=info:#444444,spinner:#444444,border:#444444,header:#7d9fbd
         --prompt=" " --pointer="" --marker="" --separator=""
 '
