@@ -156,11 +156,11 @@ ll() {
 # tree with the box-drawing characters and end report turned into a dimmed fg color
 tree() {
         grayscale_238=$'\e[38;5;238m' # #444444
-        grayscale_243=$'\e[38;5;240m' # #585858
+        grayscale_240=$'\e[38;5;240m' # #585858
         reset=$'\e[0m'
         /usr/bin/tree -C "$@" \
                 | sed -r -e "s/[├└│─]/${grayscale_238}&${reset}/g" \
-                         -e "s/[0-9]+ directories, [0-9]+ files/${grayscale_243}&${reset}/g"
+                         -e "s/[0-9]+ director(y|ies), [0-9]+ files?/${grayscale_240}&${reset}/g"
 }
 
 m() {
