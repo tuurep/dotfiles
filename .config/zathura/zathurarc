@@ -8,15 +8,15 @@ set window-width 960
 set sandbox none
 
 set selection-clipboard clipboard
+set vertical-center "true"
+set incremental-search "true"
+
+set font "Alt Hack Nerd Font 11"
 
 set window-title-basename "true"
 set window-title-page "true"
 
 set statusbar-home-tilde "true"
-
-set font "Alt Hack Nerd Font 11"
-
-set vertical-center "true"
 
 # Hide statusbar (bottom row) by default: toggle with <C-n>
 set guioptions ""
