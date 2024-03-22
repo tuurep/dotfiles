@@ -101,7 +101,7 @@
     </keybind>
     <keybind key="W-Delete">
       <action name="Execute">
-        <command>slock</command>
+        <command>light-locker-command --lock</command>
       </action>
     </keybind>
     <!-- Window focus -->

@@ -8,6 +8,10 @@ dunst &
 picom -b
 transmission-daemon
 
+# lightdm greeter as lock screen
+# only on keybind
+light-locker --no-lock-on-suspend --no-lock-on-lid &
+
 # Clipboard management:
 # parcellite for preserving clipboard contents on
 # application close, greenclip for history access
