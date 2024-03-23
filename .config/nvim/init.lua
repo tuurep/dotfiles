@@ -56,6 +56,7 @@ require("conf.keymaps")
 
 -- Globals for plugins
 g.lion_prompt = "Pattern: "
+g.lion_squeeze_spaces = 1
 
 g.undotree_SetFocusWhenToggle = 1
 g.undotree_HighlightChangedWithSign = 0
