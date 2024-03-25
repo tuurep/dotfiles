@@ -253,7 +253,6 @@
         <direction>east</direction>
       </action>
     </keybind>
-    <!-- adiaeresis is the 'ä' key -->
     <keybind key="W-f">
       <action name="GrowToFill"></action>
     </keybind>
