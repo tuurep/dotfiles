@@ -65,3 +65,15 @@ indexed_colors = [
     magenta = "#a684b0"
     cyan =    "#88bab0"
     white =   "#ffffff"
+
+    [colors.selection]
+    text =       "#0f0f0f"
+    background = "#d0d0d0"
+
+    [colors.search]
+    matches =       { foreground = "#0f0f0f", background = "#6b6b6b" }
+    focused_match = { foreground = "#0f0f0f", background = "#d0d0d0" }
+
+    [colors.footer_bar]
+    foreground = "#d0d0d0"
+    background = "#0f0f0f"
