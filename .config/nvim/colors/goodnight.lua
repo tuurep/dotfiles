@@ -296,6 +296,7 @@ hl(0, "Typedef",      { link = "@type.definition"      })
 -- Fine-tuning and pinpointing issues
 
 -- Gitcommit
+hl(0, "@comment.warning.gitcommit",    { fg = red   }) -- Title exceeds 50 chars warning
 hl(0, "@string.special.url.gitcommit", { fg = fg    })
 hl(0, "@markup.link.gitcommit",        { fg = green })
 
