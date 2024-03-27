@@ -249,4 +249,5 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
         --color=prompt:#a7bd68,pointer:#c36060,marker:#c36060
         --color=info:#444444,spinner:#444444,border:#444444,header:#7d9fbd
         --prompt=" " --pointer="" --marker="" --separator=""
+        --bind alt-j:down,alt-k:up
 '
