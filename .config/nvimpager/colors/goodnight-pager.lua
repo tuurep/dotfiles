@@ -23,6 +23,9 @@ local blue =    "#7d9fbd"
 local magenta = "#a684b0"
 local cyan =    "#88bab0"
 
+-- "Bright black"
+local black =   "#5f6160"
+
 -- Borders
 local l_bg =    "#222525" -- lighter background
 
@@ -60,13 +63,17 @@ hl(0, "Sneak",      { link = "Search" })
 hl(0, "SneakScope", { link = "None"   })
 
 -- Diff highlighting
-hl(0, "DiffAdd",     { fg = bg,    bg = green  })
-hl(0, "DiffChange",  { fg = bg,    bg = d_fg   })
-hl(0, "DiffDelete",  { fg = bg,    bg = red    })
-hl(0, "DiffText",    { fg = bg,    bg = green  })
-hl(0, "DiffAdded",   { fg = green, bg = bg     })
-hl(0, "DiffRemoved", { fg = red,   bg = bg     })
-hl(0, "DiffLine",    { fg = cyan,  bg = bg     })
+hl(0, "DiffAdd",       { fg = bg, bg = green   })
+hl(0, "DiffChange",    { fg = bg, bg = d_fg    })
+hl(0, "DiffDelete",    { fg = bg, bg = red     })
+hl(0, "DiffText",      { fg = bg, bg = green   })
+hl(0, "DiffAdded",     { fg = green, bg = bg   })
+hl(0, "DiffRemoved",   { fg = red, bg = bg     })
+hl(0, "DiffLine",      { fg = cyan, bg = bg    })
+hl(0, "DiffFile",      { fg = black, bg = bg   })
+hl(0, "DiffIndexLine", { fg = black, bg = bg   })
+hl(0, "DiffOldFile",   { fg = black, bg = bg   })
+hl(0, "DiffNewFile",   { fg = black, bg = bg   })
 
 -- Manpage buffer
 hl(0, "manItalic",         { fg = green    }) -- in `less` manpage, this is underlined
