@@ -25,7 +25,7 @@ indexed_colors = [
     { index = 18, color = "#222525" },
     { index = 19, color = "#313438" },
     { index = 20, color = "#909090" },
-    { index = 21, color = "#787878" },
+    { index = 21, color = "#767676" },
     { index = 22, color = "#eaeaea" },
     { index = 23, color = "#404040" },
     { index = 24, color = "#6b6b6b" },

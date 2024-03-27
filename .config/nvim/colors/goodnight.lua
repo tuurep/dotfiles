@@ -32,7 +32,7 @@ local ll_bg =   "#313438" -- lighter lighter background
 
 -- fg variants for more concealed/more emphasized text
 local d_fg =    "#909090" -- darker foreground
-local dd_fg =   "#787878" -- darker darker foreground (but not as dark as comment)
+local dd_fg =   "#767676" -- darker darker foreground (but not as dark as comment)
 -- local l_fg = "#eaeaea" -- lighter foreground
 
 -- Inactive UI elements colors:

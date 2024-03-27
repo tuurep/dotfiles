@@ -23,14 +23,11 @@ local blue =    "#7d9fbd"
 local magenta = "#a684b0"
 local cyan =    "#88bab0"
 
--- "Bright black"
-local black =   "#5f6160"
-
 -- Borders
 local l_bg =    "#222525" -- lighter background
 
 local d_fg =    "#909090" -- darker foreground
-local dd_fg =   "#787878" -- darker darker foreground
+local dd_fg =   "#767676" -- darker darker foreground
 
 -- Inactive UI elements colors:
 local stat_fg = "#656e6e" -- inactive statusline foreground
@@ -70,10 +67,10 @@ hl(0, "DiffText",      { fg = bg, bg = green   })
 hl(0, "DiffAdded",     { fg = green, bg = bg   })
 hl(0, "DiffRemoved",   { fg = red, bg = bg     })
 hl(0, "DiffLine",      { fg = cyan, bg = bg    })
-hl(0, "DiffFile",      { fg = black, bg = bg   })
-hl(0, "DiffIndexLine", { fg = black, bg = bg   })
-hl(0, "DiffOldFile",   { fg = black, bg = bg   })
-hl(0, "DiffNewFile",   { fg = black, bg = bg   })
+hl(0, "DiffFile",      { fg = dd_fg, bg = bg   })
+hl(0, "DiffIndexLine", { fg = dd_fg, bg = bg   })
+hl(0, "DiffOldFile",   { fg = dd_fg, bg = bg   })
+hl(0, "DiffNewFile",   { fg = dd_fg, bg = bg   })
 
 -- Manpage buffer
 hl(0, "manItalic",         { fg = green    }) -- in `less` manpage, this is underlined
