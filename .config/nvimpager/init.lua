@@ -56,18 +56,23 @@ nvimpager.maps = false
 map({"n", "x", "o"}, "<Space>", "<Nop>")
 g.mapleader = " "
 
+-- Pager specifics:
 map({"n", "x"}, "§", "<cmd>set number!<cr>")
 map({"n", "x"}, "<leader>§", "<cmd>set wrap!<cr>")
-
 map({"n", "x"}, "q", "<cmd>q<cr>")
+
+-- One-handed save
 map({"n", "x"}, "<C-q>", "<cmd>q<cr>")
 
+-- Remap macros
 map({"n", "x"}, "Q", "q")
 map("n", "<leader>@", "Q")
 
+-- Tab to search
 map({"n", "x", "o"}, "<Tab>", "/")
 map({"n", "x", "o"}, "<S-Tab>", "?")
 
+-- Remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
 map("n", "<M-o>", "<C-o>")
 map("n", "<M-i>", "<C-i>")
 
@@ -85,10 +90,14 @@ map("n", "<leader><Enter>",
 
 map("n", "<Enter>", "<cmd>echo ''<cr>")               -- clear cmdline text
 
--- Can't do the above mapping for command line <C-f> special buffer
+-- Command mode <C-f> special buffer fixes
 autocmd({"CmdWinEnter"}, {
     callback = function()
-        map("n", "<Enter>", "<Enter>", b)
+        map("n", "<Enter>", "<Enter>", b) -- The above Enter mapping can't be used here
+        map("n", "q", "<cmd>q<cr>", b)
+        -- Todo: this window opens too small,
+        --       how to make it behave like normal splits: take half of the
+        --       available space above?
     end
 })
 
@@ -98,6 +107,14 @@ map({"i", "c"}, "<C-a>", "<Home>")
 map("i", "<C-e>", "<End>")
 map({"i", "c"}, "<C-b>", "<C-a>") -- command mode: <C-b> == <Home>, insert mode: <C-b> is unmapped
 map("i", "<M-i>", "<C-e>")
+
+-- Command mode home row traversal alternatives
+map("c", "<M-j>", "<Down>")
+map("c", "<M-k>", "<Up>")
+map("c", "<M-h>", "<C-Left>")
+map("c", "<M-l>", "<C-Right>")
+
+-- Comfortable movement keys:
 map({"n", "x", "o"}, "<C-j>", "<C-d>")
 map({"n", "x", "o"}, "<C-k>", "<C-u>")
 map({"n", "x", "o"}, "H", "^")
@@ -111,29 +128,40 @@ map({"n", "x"}, "<M-k>", "<C-y>")
 map("n", "<M-h>", "zh")
 map("n", "<M-l>", "zl")
 
+-- Remap what the above has overriden
 map({"n", "x", "o"}, "_", "H")     -- underscore
 map({"n", "x", "o"}, "-", "M")     -- dash
 map({"n", "x", "o"}, "<M-->", "L") -- Alt + dash
 map({"n", "x"}, "?", "K")
 
+-- Like yy but no newline at end
 map("n", "<C-y>", function()
     vim.fn.setreg(vim.v.register, vim.api.nvim_get_current_line())
 end)
 
+-- Without shift = forward, with shift = backward
 map({"n", "x", "o"}, ",", ";")
 map({"n", "x", "o"}, ";", ",")
 
+-- Undo follows the same idea as above
+-- Map <M-u> to WeirdUndo so it's still available when you want to use it (never)
 map("n", "U", "<C-r>")
 map("n", "<M-u>", "U")
 
+-- vim-surround uses targets r for ] and a for >
+-- those are great ideas, add these mappings more generally
 map("o", "ir", "i]")
 map("o", "ar", "a]")
 map("o", "ia", "i>")
 map("o", "aa", "a>")
 
+-- Treesitter tools
 map("n", "<leader>e", "<cmd>Inspect<cr>")
 map("n", "<leader>E", "<cmd>InspectTree<cr>")
 
+-- ===== PLUGINS =====
+
+-- vim-sneak
 map({"n", "x", "o"}, "f", "<Plug>Sneak_f")
 map({"n", "x", "o"}, "F", "<Plug>Sneak_F")
 map({"n", "x", "o"}, "t", "<Plug>Sneak_t")
@@ -141,5 +169,6 @@ map({"n", "x", "o"}, "T", "<Plug>Sneak_T")
 map({"n", "x", "o"}, ",", "<Plug>Sneak_;")
 map({"n", "x", "o"}, ";", "<Plug>Sneak_,")
 
+-- vim-edgemotion
 map({"n", "x", "o"}, "<leader>j", "<Plug>(edgemotion-j)")
 map({"n", "x", "o"}, "<leader>k", "<Plug>(edgemotion-k)")

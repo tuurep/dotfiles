@@ -37,11 +37,11 @@ map({"n", "x"}, "q", "<Nop>")
 -- The default Q is not bad but its default mapping is bad, here's a better alternative:
 map("n", "<leader>@", "Q")
 
--- Tab to search because / sucks in Finnish layout
+-- Tab to search
 map({"n", "x", "o"}, "<Tab>", "/")
 map({"n", "x", "o"}, "<S-Tab>", "?")
 
--- remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
+-- Remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
 map("n", "<M-o>", "<C-o>")
 map("n", "<M-i>", "<C-i>")
 
@@ -62,10 +62,14 @@ map("n", "<leader><Enter>",
 
 map("n", "<Enter>", "<cmd>echo ''<cr>")               -- clear cmdline text
 
--- Can't do the above mapping for command line <C-f> special buffer
+-- Command mode <C-f> special buffer fixes
 autocmd({"CmdWinEnter"}, {
     callback = function()
-        map("n", "<Enter>", "<Enter>", b)
+        map("n", "<Enter>", "<Enter>", b) -- The above Enter mapping can't be used here
+        map("n", "q", "<cmd>q<cr>", b)
+        -- Todo: this window opens too small,
+        --       how to make it behave like normal splits: take half of the
+        --       available space above?
     end
 })
 
@@ -75,6 +79,12 @@ map({"i", "c"}, "<C-a>", "<Home>")
 map("i", "<C-e>", "<End>")
 map({"i", "c"}, "<C-b>", "<C-a>") -- command mode: <C-b> == <Home>, insert mode: <C-b> is unmapped
 map("i", "<M-i>", "<C-e>")
+
+-- Command mode home row traversal alternatives
+map("c", "<M-j>", "<Down>")
+map("c", "<M-k>", "<Up>")
+map("c", "<M-h>", "<C-Left>")
+map("c", "<M-l>", "<C-Right>")
 
 -- Comfortable movement keys:
 map({"n", "x", "o"}, "<C-j>", "<C-d>")
@@ -109,12 +119,12 @@ map({"n", "x"}, "?", "K")
 map("n", "<C-s>", "<cmd>w<cr>")
 map("n", "<C-q>", "<cmd>q<cr>")
 
--- Like dd yy but no newline at end (completely awesome)
+-- Like yy dd cc but no newline at end
 map("n", "<C-y>", function()
     vim.fn.setreg(vim.v.register, vim.api.nvim_get_current_line())
 end)
 map("n", "<C-d>", '<C-y>0"_D', r) -- blackhole the deletion to not set unnamed reg
-                                  -- if another reg was chosen
+map("n", "<C-c>", '<C-y>0"_C', r) -- if another reg was chosen
 
 -- Append register to current line as a oneliner
 map("n", "<C-p>", function()
