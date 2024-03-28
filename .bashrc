@@ -60,7 +60,7 @@ alias ls="ls --color=auto"
 alias grep="grep --color=auto -i" # Case insensitive
 alias rg="rg --smart-case --colors 'path:fg:blue'"
 alias diff="diff --color=auto"
-alias cb="NO_COLOR='please' cb"
+alias cb="NO_COLOR=1 cb"
 
 alias drag="blobdrop -p"
 
@@ -86,6 +86,7 @@ alias py="python"
 alias jl="julia"
 alias sc="shellcheck"
 alias vg="valgrind"
+alias pipx="USE_EMOJI=0 pipx"
 
 alias ff="firefox"
 alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
