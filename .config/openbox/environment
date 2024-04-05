@@ -1,0 +1,13 @@
+# Allow firefox to use Client-Side Decoration
+# to merge titlebar and tab bar (hide OB titlebar)
+export MOZ_GTK_TITLEBAR_DECORATION=client
+
+# Enable pixel-perfect trackpad scrolling in firefox
+export MOZ_USE_XINPUT2=1
+
+# xsecurelock conf
+export XSECURELOCK_SHOW_KEYBOARD_LAYOUT=0
+export XSECURELOCK_PASSWORD_PROMPT=asterisks
+export XSECURELOCK_AUTH_CURSOR_BLINK=0
+export XSECURELOCK_FONT="Alt Hack Nerd Font"
+export XSECURELOCK_AUTH_FOREGROUND_COLOR="#d0d0d0"
