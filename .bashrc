@@ -74,7 +74,6 @@ alias gr='cd $(git rev-parse --show-toplevel) && p' # Go to root of current git 
 alias todo='nvim ~/projects/todo.txt'
 
 alias sudo="sudo -v; sudo "
-alias sudoreset='faillock --reset --user $USER'
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias pac="pacman"
 alias srcinfo="makepkg --printsrcinfo > .SRCINFO"
