@@ -26,3 +26,8 @@ inactive_window_ul_color = "none"
 empty_desktop_ul_color = "none"
 separator_ul_color = "none"
 overflow_ul_color = "none"
+
+ignored_classes = []
+
+[window_nicknames]
+TelegramDesktop = "telegram"
