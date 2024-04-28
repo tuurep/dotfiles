@@ -319,6 +319,16 @@
         <command>~/scripts/ob/close-all-inactive-sameclass.sh</command>
       </action>
     </keybind>
+    <keybind key="W-section"> <!-- section = § -->
+      <action name="Execute">
+        <command>~/scripts/ob/cycle-sameclass --forward</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-section">
+      <action name="Execute">
+        <command>~/scripts/ob/cycle-sameclass --backward</command>
+      </action>
+    </keybind>
     <keybind key="W-e">
       <action name="Iconify"/> <!-- as in "minimize" -->
     </keybind>
