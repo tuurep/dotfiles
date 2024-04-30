@@ -1,8 +1,8 @@
 function on_fullscreen_change(name, value)
     if value == true then
-        mp.set_property("background", "#000000")
+        mp.set_property("background-color", "#000000")
     else
-        mp.set_property("background", "#0f0f0f")
+        mp.set_property("background-color", "#0f0f0f")
     end
 end
 
