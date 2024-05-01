@@ -135,6 +135,11 @@ int client_msg(Display* d, Window w, char* msg) {
     e.xclient.message_type = XInternAtom(d, msg, False);
     e.xclient.window = w;
     e.xclient.format = 32;
+    e.xclient.data.l[0] = 0;
+    e.xclient.data.l[1] = 0;
+    e.xclient.data.l[2] = 0;
+    e.xclient.data.l[3] = 0;
+    e.xclient.data.l[4] = 0;
 
     if (XSendEvent(d, DefaultRootWindow(d), False, mask, &e)) {
         return EXIT_SUCCESS;
@@ -152,49 +157,47 @@ void activate_window(Display* d, Window w) {
 int main(int argc, char* argv[]) {
     Display* d = XOpenDisplay(NULL);
 
-    Window active_window = get_active_window(d);
-    char* active_window_class = get_window_class(d, active_window);
+    Window active_w = get_active_window(d);
+    char* active_w_class = get_window_class(d, active_w);
+    bool past_active_w = false;
+    Window next = 0;
 
     unsigned long size;
     Window* windows = get_client_list(d, &size);
 
     int n = size / sizeof(Window);
 
-    Window next = 0;
-    bool past_active_window = false;
-
     for (int i = 0; i < n; i++) {
-        Window current_window = windows[i];
+        Window w = windows[i];
 
         if (argc > 1 && !strcmp(argv[1], "--backward")) {
-            current_window = windows[n-i-1];
+            w = windows[n-i-1];
         }
 
-        if (current_window == active_window) {
-            past_active_window = true;
+        if (w == active_w) {
+            past_active_w = true;
             continue;
         }
 
-        char* current_window_class = get_window_class(d, current_window);
+        char* w_class = get_window_class(d, w);
         
-        if (!strcmp(current_window_class, active_window_class)) {
-            if (!past_active_window && next == 0) {
+        if (!strcmp(w_class, active_w_class)) {
+            if (!past_active_w && next == 0) {
                 // Remember this window in case wrap is necessary
-                next = current_window;
-    
+                next = w;
             }
-            if (past_active_window) {
+            if (past_active_w) {
                 // Next window found with no wrap necessary
-                next = current_window;
-                free(current_window_class);
+                next = w;
+                free(w_class);
                 break;
             }
         }
-        free(current_window_class);
+        free(w_class);
     }
 
     free(windows);
-    free(active_window_class);
+    free(active_w_class);
 
     if (next != 0) {
         activate_window(d, next);
