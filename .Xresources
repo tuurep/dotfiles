@@ -1,6 +1,6 @@
 ! nsxiv image viewer
-Nsxiv.window.background: #0f0f0f
+Nsxiv.window.background: #0d0d0d
 Nsxiv.window.foreground: #d0d0d0
 Nsxiv.bar.background: #d0d0d0
-Nsxiv.bar.foreground: #0f0f0f
+Nsxiv.bar.foreground: #0d0d0d
 Nsxiv.bar.font: Alt Hack Nerd Font:size=11

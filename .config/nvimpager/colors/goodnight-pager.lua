@@ -12,7 +12,7 @@ vim.o.background = "dark"
 vim.g.colors_name = "goodnight-pager"
 
 -- Default background and foreround:
-local bg =      "#0f0f0f"
+local bg =      "#0d0d0d"
 local fg =      "#d0d0d0"
 
 -- The six basic (ANSI) colors:

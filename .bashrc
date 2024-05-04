@@ -155,11 +155,11 @@ ll() {
 
 # tree with the box-drawing characters and end report turned into a dimmed fg color
 tree() {
-        grayscale_238=$'\e[38;5;238m' # #444444
+        grayscale_237=$'\e[38;5;237m' # #3a3a3a
         grayscale_240=$'\e[38;5;240m' # #585858
         reset=$'\e[0m'
         /usr/bin/tree -C "$@" \
-                | sed -r -e "s/[├└│─]/${grayscale_238}&${reset}/g" \
+                | sed -r -e "s/[├└│─]/${grayscale_237}&${reset}/g" \
                          -e "s/[0-9]+ director(y|ies), [0-9]+ files?/${grayscale_240}&${reset}/g"
 }
 
@@ -244,8 +244,8 @@ source /usr/share/fzf/completion.bash
 # Todo: fzf would be a useful tool in tty2, but can't show these icons and some of the colors (e.g. green)
 #       However, it's still usable, and this is a very niche use case...
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-        --color=fg:#767676,bg:#0f0f0f,hl:#d0d0d0
-        --color=fg+:#d0d0d0,bg+:#0f0f0f,hl+:#c36060
+        --color=fg:#767676,bg:#0d0d0d,hl:#d0d0d0
+        --color=fg+:#d0d0d0,bg+:#0d0d0d,hl+:#c36060
         --color=prompt:#a7bd68,pointer:#c36060,marker:#c36060
         --color=info:#444444,spinner:#444444,border:#444444,header:#7d9fbd
         --prompt=" " --pointer="" --marker="" --separator=""
