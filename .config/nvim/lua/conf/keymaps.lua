@@ -12,6 +12,8 @@ g.mapleader = " "
 -- Free keys:
 map({"n", "x", "o"}, "<Up>", "<Nop>")
 map({"n", "x", "o"}, "<Down>", "<Nop>")
+map({"n", "x", "o"}, "<Left>", "<Nop>")
+map({"n", "x", "o"}, "<Right>", "<Nop>")
 map({"n", "x", "o"}, "+", "<Nop>")
 map({"n", "x", "o"}, "M", "<Nop>")      -- H M L -> _ - Alt-
 map({"n", "x", "o"}, "/", "<Nop>")      -- Tab/S-Tab as search, ? is now :help
@@ -20,7 +22,6 @@ map("n", "<C-o>", "<Nop>")              -- <C-i> is compromised so use <M-o> and
 map("n", "<C-h>", "<Nop>")
 map("n", "<C-l>", "<Nop>")
 map({"n", "x"}, "<C-e>", "<Nop>")       -- <M-j> and <M-k> are remapped as <C-e> and <C-y>
-map("x", "<C-y>", "<Nop>")
 map({"n", "x"}, "<BS>", "<Nop>")
 map({"n", "x"}, "gJ", "<Nop>")          -- g¤ for spaceless join, leave gJ and gK
                                         -- as ideas for vertical movement mappings
@@ -89,9 +90,9 @@ map("c", "<M-l>", "<C-Right>")
 -- Comfortable movement keys:
 map({"n", "x", "o"}, "<C-j>", "<C-d>")
 map({"n", "x", "o"}, "<C-k>", "<C-u>")
+map({"n", "x", "o"}, "<leader>j", "}")
+map({"n", "x", "o"}, "<leader>k", "{")
 map({"n", "x", "o"}, "H", "^")
-map({"n", "x", "o"}, "J", "}")
-map({"n", "x", "o"}, "K", "{")
 map({"n", "x", "o"}, "L", "$")
 map({"n", "x", "o"}, "gH", "g^")
 map({"n", "x", "o"}, "gL", "g$")
@@ -103,8 +104,8 @@ map("i", "<C-h>", "<Left>")
 map("i", "<C-j>", "<Down>")
 map("i", "<C-k>", "<Up>")
 map("i", "<C-l>", "<Right>")
-map("n", "<Left>", "<cmd>bp<cr>")
-map("n", "<Right>", "<cmd>bn<cr>")
+map("n", "<C-h>", "<cmd>bp<cr>")
+map("n", "<C-l>", "<cmd>bn<cr>")
 
 -- Remap what the above has overriden
 map({"n", "x"}, "¤", "J")
@@ -210,8 +211,8 @@ map("n", "cX", "cx$", r)
 map("n", "c<C-x>", "0cx$", r) -- This one is not dot-repeatable...
                               -- but that would be extremely niche
 -- vim-edgemotion
-map({"n", "x", "o"}, "<leader>j", "<Plug>(edgemotion-j)")
-map({"n", "x", "o"}, "<leader>k", "<Plug>(edgemotion-k)")
+map({"n", "x", "o"}, "J", "<Plug>(edgemotion-j)")
+map({"n", "x", "o"}, "K", "<Plug>(edgemotion-k)")
 
 -- vim-ReplaceWithRegister
 map("n", "dp", "<Plug>ReplaceWithRegisterOperator")
