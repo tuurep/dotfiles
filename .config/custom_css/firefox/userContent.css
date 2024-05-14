@@ -1,0 +1,14 @@
+/* NoDistractions */
+@-moz-document url-prefix(moz-extension://3648bf66-93f1-4eb6-b3ad-310099b7de9d/blocked/blocked.html?url=) {
+    :root {
+        --primary-color: #1f2328 !important;
+        --secondary-color: #1f2328 !important;
+    }
+    body {
+        font-family: "Roboto" !important;
+        background: #ffffff !important;
+    }
+    #buttonAreaContainer {
+        display: none !important;
+    }
+}
