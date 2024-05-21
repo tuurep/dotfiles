@@ -1,11 +1,5 @@
 -- goodnight.lua colorscheme by tuurep (github.com/tuurep)
 -- This colorscheme is based on Base16-Tomorrow-Night by Chris Kempson (github.com/chriskempson)
-
-vim.cmd.highlight("clear")
-vim.cmd.syntax("reset")
-
-vim.o.termguicolors = true
-vim.o.background = "dark"
 vim.g.colors_name = "goodnight"
 
 -- Default background and foreround:
@@ -130,6 +124,7 @@ hl(0, "Exception",    { fg = red                  })
 hl(0, "FoldColumn",   { fg = cyan,    bg = l_bg   })
 hl(0, "Folded",       { fg = comment, bg = l_bg   })
 hl(0, "MoreMsg",      { fg = fg                   })
+hl(0, "ModeMsg",      { fg = fg                   })
 hl(0, "Question",     { fg = fg                   })
 hl(0, "SpecialKey",   { fg = comment              })
 hl(0, "TooLong",      { fg = red                  })
