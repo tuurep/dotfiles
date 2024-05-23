@@ -319,12 +319,12 @@
         <command>~/scripts/ob/close-all-inactive-sameclass.sh</command>
       </action>
     </keybind>
-    <keybind key="A-section"> <!-- section = § -->
+    <keybind key="W-section A-section"> <!-- section = § -->
       <action name="Execute">
         <command>~/scripts/ob/cycle-sameclass --forward</command>
       </action>
     </keybind>
-    <keybind key="A-S-section">
+    <keybind key="W-S-section A-S-section">
       <action name="Execute">
         <command>~/scripts/ob/cycle-sameclass --backward</command>
       </action>
