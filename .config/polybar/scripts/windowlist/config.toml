@@ -1,5 +1,7 @@
 sort_by = "position"
 separator_string = "󰧟"
 
+overflow_fg_color = "#e8c47b"
+
 [window_nicknames]
 TelegramDesktop = "telegram"
