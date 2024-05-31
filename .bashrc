@@ -212,6 +212,8 @@ export PATH="$PATH:$GEM_HOME/bin"
 
 # === Settings for tools ===
 
+source /usr/share/git/completion/git-completion.bash
+
 source ~/.ls_colors # Sets and exports LS_COLORS env variable
 
 export SYSTEMD_COLORS=16 # Prevent systemctl from using colors outside of my colorscheme
