@@ -26,6 +26,8 @@
 
     mouse_left_click = do_action, close_current
 
+    enable_posix_regex = true
+
 [urgency_low]
     # Default
 
@@ -58,4 +60,12 @@
 
     # I put this here for ob/notify-current-date.sh
     # since I couldn't match multiple categories
+    history_ignore = true
+
+[NoDistractions_toggle]
+    title = "NoDistractions"
+    body = "Enabled|Disabled"
+
+    icon_position = left
+    timeout = 1
     history_ignore = true
