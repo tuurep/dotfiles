@@ -12,8 +12,8 @@
     show_indicators = false
     icon_position = off
 
-    origin = top-center
-    offset = 0x6
+    origin = bottom-right
+    offset = 40x40
     width = (0, 300)
     horizontal_padding = 11
     frame_width = 1
