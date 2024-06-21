@@ -4,4 +4,5 @@ separator_string = "󰧟"
 overflow_fg_color = "#e8c47b"
 
 [window_nicknames]
-TelegramDesktop = "telegram"
+"TelegramDesktop" = "telegram"
+"ardour-8.6.0"    = "ardour"
