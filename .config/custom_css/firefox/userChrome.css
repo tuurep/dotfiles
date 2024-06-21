@@ -1,4 +1,41 @@
 /* TAB BAR */
+/* Extremely compact title bar and tabs */
+
+/* Todo: window control buttons size and spacing */
+
+:root {
+    --tab-min-height: 0 !important;
+    --tab-content-offset-top: 4px;
+}
+
+#TabsToolbar {
+    max-height: 28px !important; /* Same as Openbox titlebar height */
+    font-size: 12px !important;
+}
+
+.tab-background {
+    margin-top: var(--tab-content-offset-top) !important;
+    margin-bottom: 0px !important;
+}
+
+#titlebar {
+    /* First tab as close to the left as possible */
+    margin-left: -2px !important;
+}
+
+.tab-close-button, .tab-icon-image, .tab-icon-overlay, .tab-throbber {
+    margin-top: var(--tab-content-offset-top) !important;
+}
+
+.tab-text {
+    padding-top: var(--tab-content-offset-top) !important;
+}
+
+#tabs-newtab-button > image, #new-tab-button > image,
+#scrollbutton-up > image, #scrollbutton-down > image {
+    margin-top: 3px !important; /* Looks better slightly higher for some reason */
+    height: 14px !important;
+}
 
 /* Hide tab bar spacer on the left corner */
 .titlebar-spacer[type="pre-tabs"] {
