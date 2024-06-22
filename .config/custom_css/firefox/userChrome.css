@@ -1,8 +1,6 @@
 /* TAB BAR */
 /* Extremely compact title bar and tabs */
 
-/* Todo: window control buttons size and spacing */
-
 :root {
     --tab-min-height: 0 !important;
     --tab-content-offset-top: 4px;
@@ -35,6 +33,19 @@
 #scrollbutton-up > image, #scrollbutton-down > image {
     margin-top: 3px !important; /* Looks better slightly higher for some reason */
     height: 14px !important;
+    width: 14px !important;
+}
+
+/* Reduce size of window control buttons */
+/* (Also seems to reduce the spacing between them) */
+.titlebar-min > image, .titlebar-max > image, .titlebar-close > image {
+    height: 20px !important;
+    width: 20px !important;
+}
+
+/* Make close button same color as other buttons on hover, instead of red */
+.titlebar-close:hover > image {
+    background-color: #484746 !important;
 }
 
 /* Hide tab bar spacer on the left corner */
