@@ -134,6 +134,30 @@
     display: none !important;
 }
 
+/* EXTENSIONS DROPDOWN */
+
+/* Hide settings gear spam, because right clicking does the exact same */
+.unified-extensions-item-menu-button {
+    display: none !important;
+}
+
+/* Reduce width since the gear icons are hidden */
+/* (final width is decided by longest extension name) */
+#unified-extensions-view {
+    width: unset !important;
+}
+
+/* Hide repetitive permission info in a place where I'd never care to see it */
+.unified-extensions-item-message-deck {
+    display: none !important;
+}
+
+/* Hide header "Extensions" and the separator line below it */
+#unified-extensions-view > .panel-header,
+#unified-extensions-view > toolbarseparator:first-of-type {
+    display: none !important;
+}
+
 /* FIREFOX COLOR THEME NOTES */
 
 /*
