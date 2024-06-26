@@ -87,6 +87,11 @@
     opacity: 0 !important;
 }
 
+/* Reduce spacing between text prompt and magnifying glass icon */
+#identity-box[pageproxystate="invalid"] {
+    margin-right: 1px !important;
+}
+
 /*
     Change the color of the 1px borders that separate the UI bars from the page
 
