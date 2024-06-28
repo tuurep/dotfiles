@@ -11,6 +11,7 @@
         d = diff
         ds = diff --staged
         rs = restore --staged
+        r = remote
         b = branch
         co = checkout
         l = log
