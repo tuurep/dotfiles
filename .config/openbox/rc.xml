@@ -462,6 +462,20 @@
         <action name="Close"/>
       </mousebind>
     </context>
+    <context name="Shade">
+      <mousebind button="Left Right" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="ToggleShade"/>
+      </mousebind>
+    </context>
+    <context name="AllDesktops">
+      <mousebind button="Left Right" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="ToggleOmnipresent"/>
+      </mousebind>
+    </context>
     <!-- Areas outside of titlebar can't be clicked or dragged in a borderless theme -->
     <!-- Sad but true -->
     <!-- Applications like Steam or Vivaldi allow resizing from anywhere regardless of these settings -->
