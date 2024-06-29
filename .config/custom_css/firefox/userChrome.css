@@ -45,7 +45,7 @@
 
 /* Make close button same color as other buttons on hover, instead of red */
 .titlebar-close:hover > image {
-    background-color: #484746 !important;
+    background-color: #383838 !important;
 }
 
 /* Hide tab bar spacer on the left corner */
