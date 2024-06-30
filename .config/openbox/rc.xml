@@ -421,6 +421,8 @@
     <!-- Area inside window decorations -->
     <context name="Client">
       <mousebind button="Left Right" action="Press">
+        <!-- WORKAROUND for Steam's messed up context menus: -->
+        <!-- https://github.com/ValveSoftware/steam-for-linux/issues/9273#issuecomment-1766922429 -->
         <action name="If">
           <query>
             <focused>no</focused>
