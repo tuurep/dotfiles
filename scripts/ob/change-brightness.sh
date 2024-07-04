@@ -11,7 +11,7 @@
 n=$1
 
 # Round current brightness percentage to nearest integer
-current_brightness=$(brillo -G | awk '{printf "%d", ($1 + 0.5)}')
+current_brightness=$(printf "%.0f" "$(brillo -G)")
 
 new_brightness=$((current_brightness + n))
 
