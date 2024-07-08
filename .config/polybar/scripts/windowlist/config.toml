@@ -4,6 +4,7 @@ separator_string = "󰧟"
 overflow_fg_color = "#e8c47b"
 
 [window_nicknames]
-"TelegramDesktop" = "telegram"
-"ardour-8.6.0"    = "ardour"
-"gimp-2.10"       = "gimp"
+"TelegramDesktop"         = "telegram"
+"firefoxdeveloperedition" = "firefox-dev"
+"ardour-8.6.0"            = "ardour"
+"gimp-2.10"               = "gimp"
