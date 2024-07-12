@@ -1,0 +1,23 @@
+/* NoDistractions */
+@-moz-document url-prefix(moz-extension://7101c6e4-42a3-42a9-8cf9-88f72553721f/blocked/Blocked.html?url=) {
+    :root {
+        --primary-color: #1f2328 !important;
+        --secondary-color: #1f2328 !important;
+    }
+    body {
+        font-family: system-ui !important;
+        background: #ffffff !important;
+    }
+    a, .white {
+        color: #0969da !important;
+    }
+    #buttonArea > button {
+        color: var(--primary-color) !important;
+        background-color: #e9e9ed !important;
+        border: 2px solid #8f8f9d !important;
+    }
+    #buttonArea > button:hover {
+        background-color: #d0d0d7 !important;
+        border: 2px solid #676774 !important;
+    }
+}
