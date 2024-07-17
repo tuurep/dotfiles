@@ -63,7 +63,7 @@
     history_ignore = true
 
 [NoDistractions_toggle]
-    title = "NoDistractions"
+    summary = "NoDistractions"
     body = "Enabled|Disabled"
 
     icon_position = left
