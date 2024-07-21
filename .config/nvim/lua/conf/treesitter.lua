@@ -20,3 +20,6 @@ require'nvim-treesitter.configs'.setup({
         enable = false
     }
 })
+
+-- Use bash parser for filetype PKGBUILD
+vim.treesitter.language.register("bash", "PKGBUILD")
