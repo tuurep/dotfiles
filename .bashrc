@@ -49,7 +49,8 @@ alias q="exit"
 
 alias ..="c .."
 alias -- -="c -" # -- required to alias dash
-
+alias r='cd $(git rev-parse --show-toplevel) && p && l' # Go to root of current git repo,
+                                                        # if any. Else goes to ~.
 alias mk="mkdir"
 
 alias cp="cp -i"
@@ -70,7 +71,6 @@ alias tl="tmux ls"
 alias tk="tmux kill-session -t"
 
 alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias gr='cd $(git rev-parse --show-toplevel) && p' # Go to root of current git repo, if any. Else goes to ~.
 alias todo='nvim ~/projects/todo.txt'
 
 alias sudo="sudo -v; sudo "
@@ -211,6 +211,8 @@ export PATH="$PATH:$GEM_HOME/bin"
 
 
 # === Settings for tools ===
+
+source /usr/share/nvm/init-nvm.sh
 
 source /usr/share/git/completion/git-completion.bash
 
