@@ -194,6 +194,42 @@ map("n", "Å", require("trailingwhite-toggle"))
 
 -- ===== PLUGINS =====
 
+-- nvim-spider
+vim.keymap.set({"n", "x", "o"}, "w", "<cmd>lua require('spider').motion('w')<cr>")
+vim.keymap.set({"n", "x", "o"}, "b", "<cmd>lua require('spider').motion('b')<CR>")
+vim.keymap.set({"n", "x", "o"}, "e", "<cmd>lua require('spider').motion('e')<cr>")
+vim.keymap.set({"n", "x", "o"}, "ge", "<cmd>lua require('spider').motion('ge')<cr>")
+
+-- nvim-various-textobjs
+vim.keymap.set(
+    {"x", "o"}, "iw",
+    "<cmd>lua require('various-textobjs').subword('inner')<cr>"
+)
+vim.keymap.set(
+    {"x", "o"}, "aw",
+    "<cmd>lua require('various-textobjs').subword('outer')<cr>"
+)
+vim.keymap.set(
+    {"x", "o"}, "iq",
+    "<cmd>lua require('various-textobjs').anyQuote('inner')<cr>"
+)
+vim.keymap.set(
+    {"x", "o"}, "aq",
+    "<cmd>lua require('various-textobjs').anyQuote('outer')<cr>"
+)
+vim.keymap.set(
+    {"x", "o"}, "ii",
+    "<cmd>lua require('various-textobjs').indentation('inner', 'inner')<cr>"
+)
+vim.keymap.set(
+    {"x", "o"}, "ai",
+    "<cmd>lua require('various-textobjs').indentation('outer', 'outer')<cr>"
+)
+vim.keymap.set(
+    {"x", "o"}, "I",
+    "<cmd>lua require('various-textobjs').restOfIndentation()<cr>"
+)
+
 -- vim-sneak
 map({"n", "x", "o"}, "f", "<Plug>Sneak_f")
 map({"n", "x", "o"}, "F", "<Plug>Sneak_F")
