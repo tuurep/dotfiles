@@ -329,5 +329,9 @@ hl(0, "manHeader",         { link = "None" })
 hl(0, "manReference",      { link = "None" })
 hl(0, "manOptionDesc",     { link = "None" })
 
+-- Vimdoc
+hl(0, "@label.vimdoc",       { fg = red  })
+hl(0, "@markup.link.vimdoc", { fg = cyan })
+
 -- :checkhealth OK
 hl(0, "healthSuccess", { fg = bg, bg = green })
