@@ -21,6 +21,7 @@ vim.loader.enable()
 -- Leech plugins from nvim (paq)
 opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/vim-sneak")
 opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/vim-edgemotion")
+opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/nvim-various-textobjs")
 
 g.loaded_netrwPlugin = 0 -- When unloading netrw, `nvimpager <dir>` shows a blank buffer in pager mode
 
@@ -160,6 +161,25 @@ map("n", "<leader>e", "<cmd>Inspect<cr>")
 map("n", "<leader>E", "<cmd>InspectTree<cr>")
 
 -- ===== PLUGINS =====
+
+-- nvim-various-textobjs
+require("various-textobjs").setup({notifyNotFound = false})
+map(
+    {"x", "o"}, "ii",
+    "<cmd>lua require('various-textobjs').indentation('inner', 'inner')<cr>"
+)
+map(
+    {"x", "o"}, "ai",
+    "<cmd>lua require('various-textobjs').indentation('outer', 'outer')<cr>"
+)
+map(
+    {"x", "o"}, "iq",
+    "<cmd>lua require('various-textobjs').anyQuote('inner')<cr>"
+)
+map(
+    {"x", "o"}, "aq",
+    "<cmd>lua require('various-textobjs').anyQuote('outer')<cr>"
+)
 
 -- vim-sneak
 map({"n", "x", "o"}, "f", "<Plug>Sneak_f")

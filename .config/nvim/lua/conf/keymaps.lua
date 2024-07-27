@@ -111,7 +111,7 @@ map("n", "<C-l>", "<cmd>bn<cr>")
 map({"n", "x"}, "¤", "J")
 map({"n", "x"}, "g¤", "gJ")
 map({"i", "c"}, "<C-z>", "<C-k>")
-map({"n", "x", --[["o"]]}, "_", "H") -- https://github.com/echasnovski/mini.nvim/issues/1088
+map({"n", "x", "o"}, "_", "H")
 map({"n", "x", "o"}, "-", "M")     -- dash
 map({"n", "x", "o"}, "<M-->", "L") -- Alt + dash
 map({"n", "x"}, "?", "K")
@@ -201,11 +201,19 @@ operators.setup({
     exchange = { prefix = "" }
 })
 operators.make_mappings(
-    "replace", { textobject = "dp", line = "dpp", selection = "" } -- in visual, P already does it
+    "replace", { textobject = "dp", line = "", selection = "" } -- in visual, P already does it
 )
 operators.make_mappings(
-    "exchange", { textobject = "cx", line = "cxx", selection = "X" }
+    "exchange", { textobject = "cx", line = "", selection = "X" }
 )
+-- The fact that I remap _ in operator-pending causes a (solvable) mess here:
+-- https://github.com/echasnovski/mini.nvim/issues/1088
+map("o", "💩", "_")
+map("n", "dpp", "dp💩", r)
+map("n", "cxx", "cx💩", r)
+map("n", "gmm", "gm💩", r)
+map("n", "g==", "g=💩", r)
+
 map("n", "dP", "dp$", r)
 map("n", "cX", "cx$", r)
 map("n", "gM", "gm$", r)
