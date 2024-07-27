@@ -72,8 +72,8 @@ hl(inactive_win, "CurSearch",  { link = "None" })
 hl(inactive_win, "IncSearch",  { link = "None" })
 hl(inactive_win, "Substitute", { link = "None" })
 
--- tommcdo/vim-exchange
-hl(0, "ExchangeRegion", { link = "Search" })
+-- echasnovski/mini.operators exchange
+hl(0, "MiniOperatorsExchangeFrom", { link = "Search" })
 
 -- vim-sneak
 hl(0, "Sneak",      { link = "Search" })

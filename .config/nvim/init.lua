@@ -74,18 +74,17 @@ require("paq") {
     "farmergreg/vim-lastplace", -- Open files in last edit position
     "tpope/vim-repeat",         -- Dot-repeat mappings from plugins too
 
-    -- Word delimiters rework:
-    "chrisgrieser/nvim-spider",           -- w, b, e, ge
-    "chrisgrieser/nvim-various-textobjs", -- iw, aw
-                                          -- (and more stuff, see keymaps)
     -- Operators:
     "tpope/vim-surround",
     "numtostr/Comment.nvim",
     "justinmk/vim-sneak",
-    "tuurep/vim-lion",          -- tommcdo/vim-lion fork
-    "tuurep/vim-exchange",      -- tommcdo/vim-exchange fork
+    "tuurep/vim-lion",            -- tommcdo/vim-lion fork
     "haya14busa/vim-edgemotion",
-    "inkarkat/vim-ReplaceWithRegister",
+    "echasnovski/mini.operators", -- exchange, replacewithregister, sort, duplicate
+
+    -- Textobjects stuff
+    "chaoren/vim-wordmotion",             -- Rework word delimiters for w b e ge iw aw
+    "chrisgrieser/nvim-various-textobjs", -- indent, anyQuote
 
     -- Nonlinear undo history access
     "tuurep/undotree", -- mbbill/undotree fork
@@ -96,13 +95,13 @@ require("paq") {
     -- Filetypes:
     "jannis-baum/vivify.vim", -- markdown preview
     "lervag/vimtex",
-    "justinmk/vim-dirvish",   -- netrw replacement
+    "justinmk/vim-dirvish"    -- netrw replacement
 }
 
 -- Larger plugin configurations:
 require("conf.treesitter")
-require("various-textobjs").setup({notifyNotFound = false})
 require("Comment").setup()
+require("various-textobjs").setup({notifyNotFound = false})
 
 -- Disable builtin plugins
 g.loaded_netrwPlugin = 0

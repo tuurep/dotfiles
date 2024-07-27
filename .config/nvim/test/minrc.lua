@@ -19,4 +19,9 @@ for _, plugin in ipairs({
     vim.opt.runtimepath:append(install_path)
 end
 
--- nvim --clean -u ~/.config/nvim/test/minrc.lua
+-- require("bar-plugin").setup()
+
+
+--
+
+-- nvim --clean -nu ~/.config/nvim/test/minrc.lua

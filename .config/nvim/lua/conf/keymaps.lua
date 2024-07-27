@@ -111,7 +111,7 @@ map("n", "<C-l>", "<cmd>bn<cr>")
 map({"n", "x"}, "¤", "J")
 map({"n", "x"}, "g¤", "gJ")
 map({"i", "c"}, "<C-z>", "<C-k>")
-map({"n", "x", "o"}, "_", "H")     -- underscore
+map({"n", "x", --[["o"]]}, "_", "H") -- https://github.com/echasnovski/mini.nvim/issues/1088
 map({"n", "x", "o"}, "-", "M")     -- dash
 map({"n", "x", "o"}, "<M-->", "L") -- Alt + dash
 map({"n", "x"}, "?", "K")
@@ -194,40 +194,39 @@ map("n", "Å", require("trailingwhite-toggle"))
 
 -- ===== PLUGINS =====
 
--- nvim-spider
-vim.keymap.set({"n", "x", "o"}, "w", "<cmd>lua require('spider').motion('w')<cr>")
-vim.keymap.set({"n", "x", "o"}, "b", "<cmd>lua require('spider').motion('b')<CR>")
-vim.keymap.set({"n", "x", "o"}, "e", "<cmd>lua require('spider').motion('e')<cr>")
-vim.keymap.set({"n", "x", "o"}, "ge", "<cmd>lua require('spider').motion('ge')<cr>")
+-- mini.operators
+local operators = require("mini.operators")
+operators.setup({
+    replace  = { prefix = "" },
+    exchange = { prefix = "" }
+})
+operators.make_mappings(
+    "replace", { textobject = "dp", line = "dpp", selection = "" } -- in visual, P already does it
+)
+operators.make_mappings(
+    "exchange", { textobject = "cx", line = "cxx", selection = "X" }
+)
+map("n", "dP", "dp$", r)
+map("n", "cX", "cx$", r)
+map("n", "gM", "gm$", r)
+map("n", "gS", "gs$", r)
 
 -- nvim-various-textobjs
-vim.keymap.set(
-    {"x", "o"}, "iw",
-    "<cmd>lua require('various-textobjs').subword('inner')<cr>"
-)
-vim.keymap.set(
-    {"x", "o"}, "aw",
-    "<cmd>lua require('various-textobjs').subword('outer')<cr>"
-)
-vim.keymap.set(
-    {"x", "o"}, "iq",
-    "<cmd>lua require('various-textobjs').anyQuote('inner')<cr>"
-)
-vim.keymap.set(
-    {"x", "o"}, "aq",
-    "<cmd>lua require('various-textobjs').anyQuote('outer')<cr>"
-)
-vim.keymap.set(
+map(
     {"x", "o"}, "ii",
     "<cmd>lua require('various-textobjs').indentation('inner', 'inner')<cr>"
 )
-vim.keymap.set(
+map(
     {"x", "o"}, "ai",
     "<cmd>lua require('various-textobjs').indentation('outer', 'outer')<cr>"
 )
-vim.keymap.set(
-    {"x", "o"}, "I",
-    "<cmd>lua require('various-textobjs').restOfIndentation()<cr>"
+map(
+    {"x", "o"}, "iq",
+    "<cmd>lua require('various-textobjs').anyQuote('inner')<cr>"
+)
+map(
+    {"x", "o"}, "aq",
+    "<cmd>lua require('various-textobjs').anyQuote('outer')<cr>"
 )
 
 -- vim-sneak
@@ -238,22 +237,13 @@ map({"n", "x", "o"}, "T", "<Plug>Sneak_T")
 map({"n", "x", "o"}, ",", "<Plug>Sneak_;")
 map({"n", "x", "o"}, ";", "<Plug>Sneak_,")
 
--- vim-lion
-g.lion_map_left = "gh"
-g.lion_prompt_map = "<Tab>" -- (added in my fork)
-
--- vim-exchange
-map("n", "cX", "cx$", r)
-map("n", "c<C-x>", "0cx$", r) -- This one is not dot-repeatable...
-                              -- but that would be extremely niche
 -- vim-edgemotion
 map({"n", "x", "o"}, "J", "<Plug>(edgemotion-j)")
 map({"n", "x", "o"}, "K", "<Plug>(edgemotion-k)")
 
--- vim-ReplaceWithRegister
-map("n", "dp", "<Plug>ReplaceWithRegisterOperator")
-map("n", "dpp", "<Plug>ReplaceWithRegisterLine")
-map("n", "dP", "dp$", r)
+-- vim-lion
+g.lion_map_left = "gh"
+g.lion_prompt_map = "<Tab>" -- (added in my fork)
 
 -- undotree
 map("n", "<leader>u", "<cmd>UndotreeToggle<cr>", r)
