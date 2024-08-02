@@ -47,6 +47,9 @@ alias e="nvim"
 alias g="grep"
 alias q="exit"
 
+alias sudo="sudo " # Be able to use sudo with aliased commands
+alias s="sudo "
+
 alias ..="c .."
 alias -- -="c -" # -- required to alias dash
 alias r='cd $(git rev-parse --show-toplevel) && p && l' # Go to root of current git repo,
@@ -65,18 +68,12 @@ alias cb="NO_COLOR=1 cb"
 
 alias drag="blobdrop -p"
 
-alias tn="tmux new -s"
-alias ta="tmux attach -t"
-alias tl="tmux ls"
-alias tk="tmux kill-session -t"
-
 alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias todo='nvim ~/projects/todo.txt'
 
-alias sudo="sudo -v; sudo "
-alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias pac="pacman"
 alias srcinfo="makepkg --printsrcinfo > .SRCINFO"
+alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias sauce="source ~/.bashrc"
 alias hist="cleandups; history -r" # Read history, in case you want commands from another session
 alias page="nvimpager"
