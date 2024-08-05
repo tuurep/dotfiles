@@ -1,7 +1,12 @@
-a#parent-dir {
-    color: #16191d;
+body {
+    padding-top: 0.3rem;
+    padding-bottom: 1rem;
+}
+
+#top-nav {
+    display: none;
 }
 
 a.header-anchor {
-    color: #adb6bf;
+    color: #808ea6;
 }
