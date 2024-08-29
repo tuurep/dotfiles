@@ -143,9 +143,18 @@ z() {
                 && l
 }
 zi() {
-        __zoxide_zi "$@" \
-                && p \
-                && l
+        list=$(zoxide query -l | sed "s|^$HOME|~|g")
+        for subword in "$@"; do
+                list=$(/usr/bin/grep -i "$subword" <<< "$list")
+        done
+
+        if [[ -z $list ]]; then
+                echo "zoxide: no match found"
+                return
+        fi
+
+        target=$(fzf --height=~40% --no-sort --select-1 <<< "$list")
+        c "${target/#~/$HOME}"
 }
 
 # ls long listing
@@ -259,5 +268,5 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
         --bind alt-j:down,alt-k:up
 '
 export _ZO_FZF_OPTS=$FZF_DEFAULT_OPTS'
-        --height=~40%
+        --height=~40% --no-sort --select-1 --exit-0
 '
