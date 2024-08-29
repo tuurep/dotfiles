@@ -9,8 +9,21 @@ dir = ~/files/docs/papers/systematic-literature-review
 
 [settings]
 default-library = papers
-picktool = fzf
 
-fzf-header-format = {doc[author_list][0][family]} ({doc[year]}) - {doc[title]}
-add-folder-name =   {doc[author_list][0][family]}{doc[year]}
-add-file-name =     {doc[author_list][0][family]}{doc[year]}
+# Would be nice to use cache but I keep having to manually clear it
+# Mostly after moving/renaming files outside of the `papis` subcommands?
+use-cache = False
+
+picktool = fzf
+formatter = jinja2
+
+header-format =     {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%} ({{ doc["year"] }}) - {{ doc["title"] }}
+fzf-header-format = {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%} ({{ doc["year"] }}) - {{ doc["title"] }}
+
+match-format =      {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%} ({{ doc["year"] }}) - {{ doc["title"] }}
+
+ref-format =        {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%} ({{ doc["year"] }})
+
+add-folder-name =   {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%}{{ doc["year"] }}
+add-file-name =     {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%}{{ doc["year"] }}
+notes-name =        {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%}{{ doc["year"] }}.md
