@@ -208,11 +208,6 @@ export PATH="$PATH:$GEM_HOME/bin"
 
 
 # === Settings for tools ===
-
-source /usr/share/nvm/init-nvm.sh
-
-source /usr/share/git/completion/git-completion.bash
-
 source ~/.ls_colors # Sets and exports LS_COLORS env variable
 
 export SYSTEMD_COLORS=16 # Prevent systemctl from using colors outside of my colorscheme
@@ -230,16 +225,21 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_se=$'\e[0m'
 export GROFF_NO_SGR=1
 
+# Extra tab completions
+source /usr/share/git/completion/git-completion.bash
+source /usr/share/fzf/completion.bash # fzf completion on **
+
+# Make custom completions work on aliases too
+# Todo: doesn't work for my custom commands
+source /usr/share/bash-complete-alias/complete_alias
+complete -F _complete_alias "${!BASH_ALIASES[@]}"
+
 # https://github.com/junegunn/fzf
 # Enable fzf keybindings:
 #       Ctrl-R  command history fzf overwrite
 #       Ctrl-T  add fzf search result to command
 #       Alt-C   cd to fzf search result (folder)
 source /usr/share/fzf/key-bindings.bash
-
-# https://github.com/junegunn/fzf#fuzzy-completion-for-bash-and-zsh
-# fzf tab completion on **
-source /usr/share/fzf/completion.bash
 
 # Change fzf colors and icons, refer to: https://vitormv.github.io/fzf-themes/
 # Todo: fzf would be a useful tool in tty2, but can't show these icons and some of the colors (e.g. green)
