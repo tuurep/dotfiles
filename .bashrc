@@ -142,6 +142,11 @@ z() {
                 && p \
                 && l
 }
+zi() {
+        __zoxide_zi "$@" \
+                && p \
+                && l
+}
 
 # ls long listing
 #       - sed removes first line (example: "total 4.0K")
@@ -252,4 +257,7 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
         --prompt=" " --pointer="" --marker=""
         --separator=" " --info=inline-right
         --bind alt-j:down,alt-k:up
+'
+export _ZO_FZF_OPTS=$FZF_DEFAULT_OPTS'
+        --height=~40%
 '
