@@ -153,7 +153,7 @@ zi() {
                 return
         fi
 
-        target=$(fzf --height=~40% --no-sort --select-1 <<< "$list")
+        target=$(fzf --height=~40% --no-sort --exact --select-1 <<< "$list")
         c "${target/#~/$HOME}"
 }
 
