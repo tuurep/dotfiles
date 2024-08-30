@@ -1,0 +1,1 @@
+/home/tuure/.config/nvim/plugin/search-improvements.lua

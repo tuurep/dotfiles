@@ -1,1 +1,0 @@
-../../nvim/plugin/auto-hlsearch.lua
