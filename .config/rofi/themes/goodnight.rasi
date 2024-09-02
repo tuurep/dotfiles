@@ -4,7 +4,7 @@
     background-light:            #222525;
     bordercolor:                 #313438;
     green:                       #a7bd68;
-    yellow:                      #e8c47b;
+    yellow:                      #e8c580;
 
     background-color:            @background-light;
     border-color:                @bordercolor;
