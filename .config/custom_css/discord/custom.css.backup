@@ -31,8 +31,8 @@ a[data-list-item-id$="___shop"] {
     display: none;
 }
 
-/* Hide blue notice at top about BetterDiscord updates */
+/* Hide donation reminder with weeaboo content */
 
-.bd-notice-info {
-    display: none;
+.vc-settings-donate {
+    display: none !important;
 }
