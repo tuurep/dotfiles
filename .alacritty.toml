@@ -39,8 +39,9 @@ indexed_colors = [
     text =   "#0d0d0d"
 
     [colors.primary]
-    background = "#0d0d0d"
-    foreground = "#d0d0d0"
+    background =     "#0d0d0d"
+    foreground =     "#d0d0d0"
+    dim_foreground = "#d0d0d0" # No such thing
 
     [colors.normal]
     black =   "#0d0d0d"
@@ -52,11 +53,22 @@ indexed_colors = [
     cyan =    "#88bab0"
     white =   "#d0d0d0"
 
-    # Red to Cyan are not different from normal
-    # Black is for code comments
-    # White is very rarely used
-
     [colors.bright]
+    black =   "#5f6160" # Comment
+    red =     "#c36060"
+    green =   "#a7bd68"
+    yellow =  "#e8c580"
+    blue =    "#7d9fbd"
+    magenta = "#a684b0"
+    cyan =    "#88bab0"
+    white =   "#ffffff" # Bright white exists but pretty much never used
+
+    # Basically setting these to disallow using 'dim'
+    #   https://en.wikipedia.org/wiki/ANSI_escape_code#SGR
+    #
+    # Otherwise alacritty calculates a darker version of normal color:
+    #   https://alacritty.org/config-alacritty.html#s44
+    [colors.dim]
     black =   "#5f6160"
     red =     "#c36060"
     green =   "#a7bd68"
@@ -64,7 +76,7 @@ indexed_colors = [
     blue =    "#7d9fbd"
     magenta = "#a684b0"
     cyan =    "#88bab0"
-    white =   "#ffffff"
+    white =   "#d0d0d0"
 
     [colors.selection]
     text =       "#0d0d0d"

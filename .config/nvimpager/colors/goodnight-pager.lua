@@ -148,3 +148,16 @@ hl(0, "Todo",       { link = "None" })
 
 -- Anything else that comes up
 hl(0, "Underlined", { link = "None" })
+
+-- These come up for example in `nmcli device wifi list`
+-- NvimPager creates these highlight groups based on escape sequences:
+--
+-- https://github.com/lucc/nvimpager/blob/da3bbf02fac10fa3f1d5df501f856c2959329ebf/lua/nvimpager/ansi2highlight.lua
+--
+-- Set the 6 ANSI colors and add more if it comes up
+hl(0, "NvimPagerFG_red_BG_",     { fg = red     })
+hl(0, "NvimPagerFG_green_BG_",   { fg = green   })
+hl(0, "NvimPagerFG_yellow_BG_",  { fg = yellow  })
+hl(0, "NvimPagerFG_blue_BG_",    { fg = blue    })
+hl(0, "NvimPagerFG_magenta_BG_", { fg = magenta })
+hl(0, "NvimPagerFG_cyan_BG_",    { fg = cyan    })

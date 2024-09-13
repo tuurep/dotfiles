@@ -46,6 +46,7 @@ alias l="ls --color=always --group-directories-first"
 alias e="nvim"
 alias g="grep"
 alias q="exit"
+alias n="nmcli"
 
 alias sudo="sudo " # Be able to use sudo with aliased commands
 alias s="sudo "
