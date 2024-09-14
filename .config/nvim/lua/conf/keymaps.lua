@@ -253,6 +253,14 @@ map({"n", "x", "o"}, "K", "<Plug>(edgemotion-k)")
 g.lion_map_left = "gh"
 g.lion_prompt_map = "<Tab>" -- (added in my fork)
 
+-- toggle g:lion_squeeze_spaces
+map("n", "<leader>gl", function()
+    g.lion_squeeze_spaces = not g.lion_squeeze_spaces
+    vim.cmd("echo 'g:lion_squeeze_spaces "
+        .. (g.lion_squeeze_spaces and "ON" or "OFF")
+        .. "'")
+end)
+
 -- undotree
 map("n", "<leader>u", "<cmd>UndotreeToggle<cr>", r)
 
