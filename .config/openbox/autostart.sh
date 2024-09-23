@@ -16,3 +16,6 @@ transmission-daemon
 # through rofi
 parcellite &
 greenclip daemon &
+
+# `proton-vpn-gtk-app` needs this
+nm-applet &
