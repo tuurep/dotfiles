@@ -89,7 +89,9 @@ alias ff="firefox"
 alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
 alias vivaldi="vivaldi-stable"
 alias grip="grip -b"
+
 alias tmr="transmission-remote"
+alias ml="mullvad"
 alias pap="papis"
 
 alias reset-dunst="killall dunst; notify-send monkey monkey"
