@@ -69,7 +69,7 @@ alias cb="NO_COLOR=1 cb"
 
 alias drag="blobdrop -p"
 
-alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias cg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias todo='nvim ~/projects/todo.txt'
 
 alias pac="pacman"
@@ -91,7 +91,7 @@ alias vivaldi="vivaldi-stable"
 alias grip="grip -b"
 
 alias tmr="transmission-remote"
-alias ml="mullvad"
+alias m="mullvad"
 alias pap="papis"
 
 alias reset-dunst="killall dunst; notify-send monkey monkey"
@@ -177,7 +177,7 @@ tree() {
                          -e "s/[0-9]+ director(y|ies), [0-9]+ files?/${grayscale_240}&${reset}/g"
 }
 
-m() {
+mp() {
         mpv --no-terminal "$@" & disown
 }
 
