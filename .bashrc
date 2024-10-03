@@ -264,7 +264,8 @@ source /usr/share/fzf/key-bindings.bash
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
         --color=fg:#767676,bg:#0d0d0d,hl:#d0d0d0
         --color=fg+:#d0d0d0,bg+:#0d0d0d,hl+:#c36060
-        --color=prompt:#a7bd68,pointer:#a7bd68,marker:#c36060
+        --color=selected-fg:#d0d0d0,selected-hl:#c36060
+        --color=prompt:#a7bd68,pointer:#a7bd68,marker:#a7bd68
         --color=info:#444444,spinner:#444444,border:#444444,header:#7d9fbd
         --prompt=" " --pointer="│" --marker="" --wrap-sign="        󱞩 "
         --separator=" " --info=inline-right
