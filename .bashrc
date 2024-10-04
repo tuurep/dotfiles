@@ -90,7 +90,7 @@ alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
 alias vivaldi="vivaldi-stable"
 alias grip="grip -b"
 
-alias tmr="transmission-remote"
+alias tm="transmission-remote"
 alias m="mullvad"
 alias pap="papis"
 
