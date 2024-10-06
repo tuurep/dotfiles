@@ -146,6 +146,13 @@ z() {
                 && l
 }
 zi() {
+        # Reimplement default `zi` (zoxide interactive)
+
+        # Improvements:
+        #       - Replace $HOME with ~
+        #       - Don't show frecency score on the left (still sorted by it)
+        #       - "Exact" matching feels better for filepaths
+
         list=$(zoxide query -l | sed "s|^$HOME|~|g")
         for subword in "$@"; do
                 list=$(/usr/bin/grep -i "$subword" <<< "$list")
