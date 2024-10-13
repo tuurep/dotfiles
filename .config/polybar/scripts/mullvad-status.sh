@@ -3,7 +3,7 @@
 # Must be same as polybar config's foreground-alt
 foreground_alt=#808080
 
-status=$(mullvad status | head -n1)
+status=$(mullvad status 2> /dev/null | head -n1)
 
 if [[ "$status" == "Connected"* ]]; then
         country=$(echo "$status" | cut -d " " -f3 | cut -d "-" -f1)
