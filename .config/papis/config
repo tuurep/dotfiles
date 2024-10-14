@@ -17,12 +17,15 @@ use-cache = False
 picktool = fzf
 formatter = jinja2
 
+#------------------------------------------------------------------
+# TODO: this is getting unreadable, migrate this stuff to config.py
+#       to be able to write these in multiple lines
+#------------------------------------------------------------------
 header-format =     {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%} ({{ doc["year"] }}) - {{ doc["title"] }}
 fzf-header-format = {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%} ({{ doc["year"] }}) - {{ doc["title"] }}
 
-match-format =      {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%} ({{ doc["year"] }}) - {{ doc["title"] }}
-
-ref-format =        {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%} ({{ doc["year"] }})
+ref-format =        {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"].lower() }}{%% else %%}{{ doc["publisher"].lower() }}{%% endif %%}{{ doc["year"] }}
+match-format =      {{ doc["ref"] }} {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%} ({{ doc["year"] }}) - {{ doc["title"] }}
 
 add-folder-name =   {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%}{{ doc["year"] }}
 add-file-name =     {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%}{{ doc["year"] }}
