@@ -109,6 +109,9 @@ alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0 \
                         | tr -d ' ' \
                         | cut -d ':' -f 2"
 
+# Show fan RPM and CPU celsius
+alias heat="sensors | grep 'fan\|CPU' | tr -d ' ' | cut -d ':' -f 2"
+
 # Functions:
 
 cleandups() {
