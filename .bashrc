@@ -224,14 +224,14 @@ export HISTSIZE=5000
 # === Add stuff to PATH ===
 
 # User scripts and python (pip) stuff
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
 
-# cargo install destination
-export PATH="$PATH:$HOME/.cargo/bin"
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
 
-# Originally for vimgolf
+# Ruby
 GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
-export PATH="$PATH:$GEM_HOME/bin"
+export PATH="$GEM_HOME/bin:$PATH"
 
 
 # === Settings for tools ===
