@@ -32,6 +32,8 @@ o.timeout = false
 o.showcmd = false
 o.ruler = false
 o.number = true
+
+o.textwidth = 80
 o.wrap = false
 
 o.undofile = true
