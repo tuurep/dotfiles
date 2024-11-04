@@ -13,7 +13,7 @@ vim.cmd.colorscheme("goodnight")
 autocmd({"FileType"}, {
     callback = function()
         if vim.bo.filetype  ~= "gitcommit" then
-            opt.formatoptions:remove({"f", "c", "r", "o"})
+            opt.formatoptions:remove({"t", "f", "c", "r", "o"})
         end
     end
 })
