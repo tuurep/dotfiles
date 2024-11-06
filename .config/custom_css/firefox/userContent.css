@@ -21,3 +21,11 @@
         border: 2px solid #676774 !important;
     }
 }
+
+/* Firefox's PDF viewer */
+@-moz-document regexp(".+\\.pdf$") {
+    .textLayer .highlight {
+        --highlight-bg-color:          rgb(255, 255, 0,  0.5) !important;
+        --highlight-selected-bg-color: rgb(255, 150, 50, 0.5) !important;
+    }
+}
