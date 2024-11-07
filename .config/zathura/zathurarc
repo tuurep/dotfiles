@@ -63,7 +63,7 @@ set completion-highlight-bg "#7d9fbd"
 set index-fg                "#d0d0d0"
 set index-bg                "#0d0d0d"
 set index-active-fg         "#0d0d0d"
-set index-active-bg         "#a7bd68"
+set index-active-bg         "#d0d0d0"
 
 # Search highlight colors same as in Vivaldi:
 
