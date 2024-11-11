@@ -24,9 +24,13 @@ formatter = jinja2
 header-format =     {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%} ({{ doc["year"] }}) - {{ doc["title"] }}
 fzf-header-format = {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%} ({{ doc["year"] }}) - {{ doc["title"] }}
 
-ref-format =        {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"].lower() }}{%% else %%}{{ doc["publisher"].lower() }}{%% endif %%}{{ doc["year"] }}
 match-format =      {{ doc["ref"] }} {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%} ({{ doc["year"] }}) - {{ doc["title"] }}
 
 add-folder-name =   {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%}{{ doc["year"] }}
 add-file-name =     {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%}{{ doc["year"] }}
+
 notes-name =        {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%}{{ doc["year"] }}.md
+ref-format =        {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"].lower() }}{%% else %%}{{ doc["publisher"].lower() }}{%% endif %%}{{ doc["year"] }}
+
+ref-word-separator = -
+notes-template = ~/.config/papis/notes-template.md
