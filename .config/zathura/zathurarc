@@ -32,6 +32,9 @@ unmap [index] <Tab> # Weird behavior: now pressing tab in index mode starts
                     # A clue: it's the same as when starting to type in
                     # PCManFM file manager
 
+map <A-o> jumplist backward
+map <A-i> jumplist forward
+
 # goodnight colors:
 
 set default-bg              "#0d0d0d"
