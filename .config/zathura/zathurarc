@@ -21,19 +21,28 @@ set statusbar-home-tilde "true"
 # Hide statusbar (bottom row) by default: toggle with <C-n>
 set guioptions ""
 
-# Keymaps
+# Keymaps:
+
 map <C-Tab> toggle_index
 map <Tab> focus_inputbar / # Search (forward)
 
 map [index] <C-Tab> toggle_index
 unmap [index] <Tab> # Weird behavior: now pressing tab in index mode starts
                     # some kind of a floating search field
-                    # Could not figure out why, but it is actually useful!
-                    # A clue: it's the same as when starting to type in
-                    # PCManFM file manager
+
+                    # Take a look at:
+                    # https://github.com/pwmt/zathura/issues/565
+
+                    # Todo:
+                    # How to enable search in index?
 
 map <A-o> jumplist backward
 map <A-i> jumplist forward
+
+# Default <C-j> and <C-k> keybinds are reduntant IMO:
+# "Bisect forward and backward between the last two jump points"
+map <C-j> scroll full-down 
+map <C-k> scroll full-up
 
 # goodnight colors:
 
