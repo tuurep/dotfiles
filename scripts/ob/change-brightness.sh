@@ -1,11 +1,9 @@
 #!/bin/bash
 
-# This script is meant so that Polybar shows the
-# brightness percentage in neat increments from 0-100
-# when the raw value is 0-255 and using direct
-# percentage increments/decrements with brightnessctl s
-# will result in rounding errors without floating
-# point arithmetic.
+# This script is meant so that Polybar shows the brightness percentage in neat
+# increments from 0-100 when the raw value is 0-255 and using direct percentage
+# increments/decrements with brillo -G will result in rounding errors without
+# floating point arithmetic.
 
 # Change brightness by n (can be negative to decrease)
 n=$1
