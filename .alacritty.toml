@@ -28,7 +28,7 @@ indexed_colors = [
     { index = 21, color = "#767676" },
     { index = 22, color = "#eaeaea" },
     { index = 23, color = "#404040" },
-    { index = 24, color = "#6b6b6b" },
+    { index = 24, color = "#7d7d7d" },
     { index = 25, color = "#656e6e" },
     { index = 26, color = "#2a2c2d" },
     { index = 27, color = "#797b7a" }
@@ -83,7 +83,7 @@ indexed_colors = [
     background = "#d0d0d0"
 
     [colors.search]
-    matches =       { foreground = "#0d0d0d", background = "#6b6b6b" }
+    matches =       { foreground = "#0d0d0d", background = "#7d7d7d" }
     focused_match = { foreground = "#0d0d0d", background = "#d0d0d0" }
 
     [colors.footer_bar]

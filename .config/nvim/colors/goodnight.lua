@@ -32,7 +32,7 @@ local dd_fg =   "#767676" -- darker darker foreground (but not as dark as commen
 -- Inactive UI elements colors:
 local stat_fg = "#656e6e" -- inactive statusline foreground
 local linenum = "#404040" -- inactive linenumber foreground
-local search =  "#6b6b6b" -- inactive search bg
+local search =  "#7d7d7d" -- inactive search bg
 
 -- (Note: the 'active' counterpart is just default fg)
 
