@@ -196,7 +196,7 @@ hl(0, "texVerbZoneInline", { link = "@markup.raw"      })
 
 -- Treesitter capture groups
 -- The full list is found here:
--- http//github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md
+-- https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md
 -- Base16 styling guidelines will help in choosing sensible colors:
 -- https://github.com/chriskempson/base16/blob/main/styling.md
 hl(0, "@comment",              { fg = comment })
