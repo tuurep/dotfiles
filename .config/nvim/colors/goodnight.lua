@@ -34,8 +34,6 @@ local stat_fg = "#656e6e" -- inactive statusline foreground
 local linenum = "#404040" -- inactive linenumber foreground
 local search =  "#7d7d7d" -- inactive search bg
 
--- (Note: the 'active' counterpart is just default fg)
-
 -- These colors are part of the palette, but haven't found use:
 -- local b_white = "#ffffff" -- bright white
 -- local brown =   "#a3685a"
