@@ -180,10 +180,10 @@ map("n", "gåå", "g~~")
 
 -- vim-surround uses targets r for ] and a for >
 -- those are great ideas, add these mappings more generally
-map("o", "ir", "i]")
-map("o", "ar", "a]")
-map("o", "ia", "i>")
-map("o", "aa", "a>")
+map({"x", "o"}, "ir", "i]")
+map({"x", "o"}, "ar", "a]")
+map({"x", "o"}, "ia", "i>")
+map({"x", "o"}, "aa", "a>")
 
 -- Treesitter tools
 map("n", "<leader>e", "<cmd>Inspect<cr>")
