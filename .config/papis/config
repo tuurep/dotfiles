@@ -1,14 +1,23 @@
+[papis]
+dir = ~/files/docs/papis
+
 [papers]
-dir = ~/files/docs/papers
+dir = ~/files/docs/papis/papers
 
 [thesis]
-dir = ~/files/docs/papers/thesis
+dir = ~/files/docs/papis/papers/thesis
 
 [systematic-literature-review]
-dir = ~/files/docs/papers/systematic-literature-review
+dir = ~/files/docs/papis/papers/systematic-literature-review
+
+[books]
+dir = ~/files/docs/papis/books
+add-folder-name = {{ doc["title"] }}
+add-file-name =   {{ doc["title"] }}
+notes-name =      {{ doc["title"] }}.md
 
 [settings]
-default-library = papers
+default-library = papis
 
 # Would be nice to use cache but I keep having to manually clear it
 # Mostly after moving/renaming files outside of the `papis` subcommands?
