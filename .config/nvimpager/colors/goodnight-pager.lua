@@ -113,6 +113,8 @@ hl(0, "SignColum",    { link = "None" })
 hl(0, "ColorColumn",  { link = "None" })
 hl(0, "CursorColumn", { link = "None" })
 hl(0, "QuickFixLine", { link = "None" })
+hl(0, "QfLineNr",     { link = "None" })
+hl(0, "qfSeparator",  { link = "None" })
 
 -- Syntax highlighting
 hl(0, "Character",    { link = "None" })
