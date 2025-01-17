@@ -48,8 +48,9 @@ alias g="grep"
 alias q="exit"
 alias n="nmcli"
 
-alias sudo="sudo " # Be able to use sudo with aliased commands
-alias s="sudo "
+# Reset password timeout, space at end: allow using sudo with aliased commands
+alias sudo="sudo -v; sudo "
+alias s="sudo -v; sudo "
 
 alias ..="c .."
 alias -- -="c -" # -- required to alias dash
