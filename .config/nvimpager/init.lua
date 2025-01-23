@@ -7,6 +7,7 @@
 local o, g, opt = vim.o, vim.g, vim.opt
 local map = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
+local r = { remap = true }
 
 -- SETTINGS
 
@@ -22,6 +23,7 @@ vim.loader.enable()
 opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/vim-sneak")
 opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/vim-edgemotion")
 opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/nvim-various-textobjs")
+opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/mini.ai")
 
 g.loaded_netrwPlugin = 0 -- When unloading netrw, `nvimpager <dir>` shows a blank buffer in pager mode
 
@@ -163,7 +165,9 @@ map("n", "<leader>E", "<cmd>InspectTree<cr>")
 -- ===== PLUGINS =====
 
 -- nvim-various-textobjs
-require("various-textobjs").setup({notifyNotFound = false})
+require("various-textobjs").setup({
+    notify = { whenObjectNotFound = false }
+})
 map(
     {"x", "o"}, "ii",
     "<cmd>lua require('various-textobjs').indentation('inner', 'inner')<cr>"
@@ -172,14 +176,11 @@ map(
     {"x", "o"}, "ai",
     "<cmd>lua require('various-textobjs').indentation('outer', 'outer')<cr>"
 )
-map(
-    {"x", "o"}, "iq",
-    "<cmd>lua require('various-textobjs').anyQuote('inner')<cr>"
-)
-map(
-    {"x", "o"}, "aq",
-    "<cmd>lua require('various-textobjs').anyQuote('outer')<cr>"
-)
+
+-- mini.ai (experimental)
+require("mini.ai").setup({silent=true})
+map({"n", "x", "o"}, "<leader>q", "g]q", r) -- to next closing anyquote
+map({"n", "x", "o"}, "<leader>b", "g]b", r) -- to next closing anybracket
 
 -- vim-sneak
 map({"n", "x", "o"}, "f", "<Plug>Sneak_f")

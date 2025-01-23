@@ -77,16 +77,17 @@ require("paq") {
     "tpope/vim-repeat",         -- Dot-repeat mappings from plugins too
 
     -- Operators:
+    "echasnovski/mini.operators", -- exchange, replacewithregister, sort, duplicate
     "tpope/vim-surround",
+    "tuurep/vim-lion",            -- tommcdo/vim-lion fork
     "numtostr/Comment.nvim",
     "justinmk/vim-sneak",
-    "tuurep/vim-lion",            -- tommcdo/vim-lion fork
     "haya14busa/vim-edgemotion",
-    "echasnovski/mini.operators", -- exchange, replacewithregister, sort, duplicate
 
     -- Textobjects stuff
     "chaoren/vim-wordmotion",             -- Rework word delimiters for w b e ge iw aw
-    "chrisgrieser/nvim-various-textobjs", -- indent, anyQuote
+    "echasnovski/mini.ai",                -- Anybracket, anyquote, function, argument
+    "chrisgrieser/nvim-various-textobjs", -- Indent textobject
 
     -- Nonlinear undo history access
     "tuurep/undotree", -- mbbill/undotree fork
@@ -99,11 +100,14 @@ require("paq") {
     "lervag/vimtex",
     "justinmk/vim-dirvish"    -- netrw replacement
 }
+require("Comment").setup()
+require("mini.ai").setup({silent=true})
+require("various-textobjs").setup({
+    notify = { whenObjectNotFound = false }
+})
 
 -- Larger plugin configurations:
 require("conf.treesitter")
-require("Comment").setup()
-require("various-textobjs").setup({notifyNotFound = false})
 
 -- Disable builtin plugins
 g.loaded_netrwPlugin = 0

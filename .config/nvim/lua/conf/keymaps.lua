@@ -178,12 +178,11 @@ map("n", "å", "~")
 map("n", "gå", "g~")
 map("n", "gåå", "g~~")
 
--- vim-surround uses targets r for ] and a for >
--- those are great ideas, add these mappings more generally
+-- Brackets aliases, TODO: incompatibility with some aspects of mini.ai
+map({"x", "o"}, "ic", "i}")
+map({"x", "o"}, "ac", "a}")
 map({"x", "o"}, "ir", "i]")
 map({"x", "o"}, "ar", "a]")
-map({"x", "o"}, "ia", "i>")
-map({"x", "o"}, "aa", "a>")
 
 -- Treesitter tools
 map("n", "<leader>e", "<cmd>Inspect<cr>")
@@ -228,14 +227,10 @@ map(
     {"x", "o"}, "ai",
     "<cmd>lua require('various-textobjs').indentation('outer', 'outer')<cr>"
 )
-map(
-    {"x", "o"}, "iq",
-    "<cmd>lua require('various-textobjs').anyQuote('inner')<cr>"
-)
-map(
-    {"x", "o"}, "aq",
-    "<cmd>lua require('various-textobjs').anyQuote('outer')<cr>"
-)
+
+-- mini.ai (experimental)
+map({"n", "x", "o"}, "<leader>q", "g]q", r) -- to next closing anyquote
+map({"n", "x", "o"}, "<leader>b", "g]b", r) -- to next closing anybracket
 
 -- vim-sneak
 map({"n", "x", "o"}, "f", "<Plug>Sneak_f")
@@ -269,8 +264,8 @@ g.Undotree_CustomMap = function()
     map("n", "<C-q>", "<Plug>UndotreeClose", b)
     map("n", "U", "<Plug>UndotreeRedo", b)
     map("n", "J", "<Plug>UndotreePreviousSavedState", b) -- Note: PreviousSaved and NextSaved
-    map("n", "K", "<Plug>UndotreeNextSavedState", b)     --     seem broken, jumping to
-    map("n", "<Tab>", "/", b)                            --     wrong nodes or getting stuck
+    map("n", "K", "<Plug>UndotreeNextSavedState", b)     --       seem broken, jumping to
+    map("n", "<Tab>", "/", b)                            --       wrong nodes or getting stuck
     map("n", "C", "<Nop>", b)
 end
 
