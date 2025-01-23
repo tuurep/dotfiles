@@ -178,11 +178,67 @@ map("n", "å", "~")
 map("n", "gå", "g~")
 map("n", "gåå", "g~~")
 
--- Brackets aliases, TODO: incompatibility with some aspects of mini.ai
-map({"x", "o"}, "ic", "i}")
-map({"x", "o"}, "ac", "a}")
-map({"x", "o"}, "ir", "i]")
-map({"x", "o"}, "ar", "a]")
+-- Brackets aliases
+map({"x", "o"}, "ie", "i)", r)
+map({"x", "o"}, "iE", "i(", r)
+map({"x", "o"}, "ae", "a)", r)
+map({"x", "o"}, "aE", "a(", r)
+
+map({"x", "o"}, "ile", "il)", r)
+map({"x", "o"}, "ilE", "il(", r)
+map({"x", "o"}, "ale", "al)", r)
+map({"x", "o"}, "alE", "al(", r)
+
+map({"x", "o"}, "ine", "in)", r)
+map({"x", "o"}, "inE", "in(", r)
+map({"x", "o"}, "ane", "an)", r)
+map({"x", "o"}, "anE", "an{", r)
+
+map({"x", "o"}, "ic", "i}", r)
+map({"x", "o"}, "iC", "i{", r)
+map({"x", "o"}, "ac", "a}", r)
+map({"x", "o"}, "aC", "a{", r)
+
+map({"x", "o"}, "ilc", "il}", r)
+map({"x", "o"}, "ilC", "il{", r)
+map({"x", "o"}, "alc", "al}", r)
+map({"x", "o"}, "alC", "al}", r)
+
+map({"x", "o"}, "inc", "in}", r)
+map({"x", "o"}, "inC", "in{", r)
+map({"x", "o"}, "anc", "an}", r)
+map({"x", "o"}, "anC", "an{", r)
+
+map({"x", "o"}, "ir", "i]", r)
+map({"x", "o"}, "iR", "i[", r)
+map({"x", "o"}, "ar", "a]", r)
+map({"x", "o"}, "aR", "a[", r)
+
+map({"x", "o"}, "ilr", "il]", r)
+map({"x", "o"}, "ilR", "il[", r)
+map({"x", "o"}, "alr", "al]", r)
+map({"x", "o"}, "alR", "al[", r)
+
+map({"x", "o"}, "inr", "in]", r)
+map({"x", "o"}, "inR", "in[", r)
+map({"x", "o"}, "anr", "an]", r)
+map({"x", "o"}, "anR", "an[", r)
+
+-- Todo: swap these mappings without creating a recursive mapping
+-- map({"x", "o"}, "i<", "i>", r)
+-- map({"x", "o"}, "i>", "i<", r)
+-- map({"x", "o"}, "a<", "a>", r)
+-- map({"x", "o"}, "a>", "a<", r)
+--
+-- map({"x", "o"}, "il<", "il>", r)
+-- map({"x", "o"}, "il>", "il<", r)
+-- map({"x", "o"}, "al<", "al>", r)
+-- map({"x", "o"}, "al>", "al<", r)
+--
+-- map({"x", "o"}, "in<", "in>", r)
+-- map({"x", "o"}, "in>", "in<", r)
+-- map({"x", "o"}, "an<", "an>", r)
+-- map({"x", "o"}, "an>", "an<", r)
 
 -- Treesitter tools
 map("n", "<leader>e", "<cmd>Inspect<cr>")
@@ -229,6 +285,8 @@ map(
 )
 
 -- mini.ai (experimental)
+-- todo: ? to <tab>
+--       B to anybracket containing spaces
 map({"n", "x", "o"}, "<leader>q", "g]q", r) -- to next closing anyquote
 map({"n", "x", "o"}, "<leader>b", "g]b", r) -- to next closing anybracket
 
