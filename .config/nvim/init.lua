@@ -65,6 +65,8 @@ g.undotree_HighlightChangedWithSign = 0
 g.undotree_ShortIndicators = 1
 g.undotree_HelpLine = 0
 
+g.miniindentscope_disable = true -- Only care about the textobjects and motions (no visuals)
+
 -- Plugins
 require("paq") {
     "savq/paq-nvim", -- Updates self
@@ -85,9 +87,9 @@ require("paq") {
     "haya14busa/vim-edgemotion",
 
     -- Textobjects stuff
-    "chaoren/vim-wordmotion",             -- Rework word delimiters for w b e ge iw aw
-    "echasnovski/mini.ai",                -- Anybracket, anyquote, function, argument
-    "chrisgrieser/nvim-various-textobjs", -- Indent textobject
+    "chaoren/vim-wordmotion",       -- Rework word delimiters for w b e ge iw aw
+    "echasnovski/mini.ai",          -- Anybracket, anyquote, function, argument
+    "echasnovski/mini.indentscope", -- Indent textobject and motions
 
     -- Nonlinear undo history access
     "tuurep/undotree", -- mbbill/undotree fork
@@ -102,8 +104,11 @@ require("paq") {
 }
 require("Comment").setup()
 require("mini.ai").setup({silent=true})
-require("various-textobjs").setup({
-    notify = { whenObjectNotFound = false }
+require("mini.indentscope").setup({
+    options = {
+        indent_at_cursor = false,
+        try_as_border = true
+    }
 })
 
 -- Larger plugin configurations:

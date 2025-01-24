@@ -22,8 +22,8 @@ vim.loader.enable()
 -- Leech plugins from nvim (paq)
 opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/vim-sneak")
 opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/vim-edgemotion")
-opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/nvim-various-textobjs")
 opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/mini.ai")
+opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/mini.indentscope")
 
 g.loaded_netrwPlugin = 0 -- When unloading netrw, `nvimpager <dir>` shows a blank buffer in pager mode
 
@@ -219,23 +219,21 @@ map("n", "<leader>E", "<cmd>InspectTree<cr>")
 
 -- ===== PLUGINS =====
 
--- nvim-various-textobjs
-require("various-textobjs").setup({
-    notify = { whenObjectNotFound = false }
-})
-map(
-    {"x", "o"}, "ii",
-    "<cmd>lua require('various-textobjs').indentation('inner', 'inner')<cr>"
-)
-map(
-    {"x", "o"}, "ai",
-    "<cmd>lua require('various-textobjs').indentation('outer', 'outer')<cr>"
-)
-
 -- mini.ai (experimental)
 require("mini.ai").setup({silent=true})
 map({"n", "x", "o"}, "<leader>q", "g]q", r) -- to next closing anyquote
 map({"n", "x", "o"}, "<leader>b", "g]b", r) -- to next closing anybracket
+
+-- mini.indentscope
+require("mini.indentscope").setup({
+    options = {
+        indent_at_cursor = false,
+        try_as_border = true
+    }
+})
+g.miniindentscope_disable = true
+map({"n", "x", "o"}, "<leader>i", "]i", r) -- to current indentation level bottom edge
+map({"n", "x", "o"}, "<leader>I", "[i", r) -- to current indentation level top edge
 
 -- vim-sneak
 map({"n", "x", "o"}, "f", "<Plug>Sneak_f")

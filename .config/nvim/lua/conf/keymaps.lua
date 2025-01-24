@@ -274,21 +274,15 @@ map("n", "cX", "cx$", r)
 map("n", "gM", "gm$", r)
 map("n", "gS", "gs$", r)
 
--- nvim-various-textobjs
-map(
-    {"x", "o"}, "ii",
-    "<cmd>lua require('various-textobjs').indentation('inner', 'inner')<cr>"
-)
-map(
-    {"x", "o"}, "ai",
-    "<cmd>lua require('various-textobjs').indentation('outer', 'outer')<cr>"
-)
-
 -- mini.ai (experimental)
 -- todo: ? to <tab>
 --       B to anybracket containing spaces
 map({"n", "x", "o"}, "<leader>q", "g]q", r) -- to next closing anyquote
 map({"n", "x", "o"}, "<leader>b", "g]b", r) -- to next closing anybracket
+
+-- mini.indentscope
+map({"n", "x", "o"}, "<leader>i", "]i", r) -- to current indentation level bottom edge
+map({"n", "x", "o"}, "<leader>I", "[i", r) -- to current indentation level top edge
 
 -- vim-sneak
 map({"n", "x", "o"}, "f", "<Plug>Sneak_f")
