@@ -103,7 +103,6 @@ require("paq") {
     "justinmk/vim-dirvish"    -- netrw replacement
 }
 require("Comment").setup()
-require("mini.ai").setup({silent=true})
 require("mini.indentscope").setup({
     options = {
         indent_at_cursor = false,
