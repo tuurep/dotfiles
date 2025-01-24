@@ -80,9 +80,10 @@ require("paq") {
 
     -- Operators:
     "echasnovski/mini.operators", -- exchange, replacewithregister, sort, duplicate
-    "tpope/vim-surround",
+    -- "tpope/vim-surround",      -- todo: visualmode gS conflicts with mini.splitjoin
     "tuurep/vim-lion",            -- tommcdo/vim-lion fork
     "numtostr/Comment.nvim",
+    "echasnovski/mini.splitjoin",
     "justinmk/vim-sneak",
     "haya14busa/vim-edgemotion",
 
@@ -103,6 +104,7 @@ require("paq") {
     "justinmk/vim-dirvish"    -- netrw replacement
 }
 require("Comment").setup()
+require("mini.splitjoin").setup()
 require("mini.indentscope").setup({
     options = {
         indent_at_cursor = false,
