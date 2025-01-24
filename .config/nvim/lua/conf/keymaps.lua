@@ -124,7 +124,10 @@ map("n", "<C-q>", "<cmd>q<cr>")
 map("n", "<C-y>", function()
     vim.fn.setreg(vim.v.register, vim.api.nvim_get_current_line())
 end)
+
+-- TODO: visual line -mode counterpart where it leaves one empty line
 map("n", "<C-d>", '<C-y>0"_D', r) -- blackhole the deletion to not set unnamed reg
+
 map("n", "<C-c>", '<C-y>0"_C', r) -- if another reg was chosen
 
 -- Append register to current line as a oneliner
@@ -212,24 +215,93 @@ map("n", "cX", "cx$", r)
 map("n", "gM", "gm$", r)
 map("n", "gS", "gs$", r)
 
+-- mini.surround
+-- todo: ? to <tab>
+--       also it turns on unwanted search hl (look at plugin/search-improvements.lua)
+-- todo: vim-wordmotion can make message noise on dot repeat
+
+-- TODO: separate lines problem:
+--
+--       The way e.g. `ysip` doesn't put the surroundings on separate lines (like tpope/vim-surround does)
+--       will not work for me.
+--      
+--       Think about yS mapping variant that turns on 'respect_selection_type'
+--       (see tpope/vim-surround's yS mapping)
+--
+--       The yS mapping however is not an answer to the first problem. Consider forking mini.surround.
+
+require("mini.surround").setup({
+    -- Can't use s mappings because of sneak, use tpope style
+    mappings = {
+        add = "ys",
+        delete = "ds",
+        replace = "cs",
+        find = "",          -- todo: idk what to choose
+        find_left = "",     -- todo: idk what to choose
+
+        -- Disable
+        update_n_lines = "",
+        highlight = ""
+    },
+    custom_surroundings = {
+
+        -- For cohesion with lowercase b
+        ["B"] = { input = { { "%b()", "%b[]", "%b{}" }, "^.().*().$" }, output = { left = "( ", right = " )" }},
+
+        -- Brackets aliases
+        ["e"] = { input = { "%b()", "^.().*().$" }, output = { left = "(",  right = ")"  } },
+        ["c"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{",  right = "}"  } },
+        ["r"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[",  right = "]"  } },
+        ["<"] = { input = { "%b<>", "^.().*().$" }, output = { left = "<",  right = ">"  } },
+        ["E"] = { input = { "%b()", "^.().*().$" }, output = { left = "( ", right = " )" } },
+        ["C"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{ ", right = " }" } },
+        ["R"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[ ", right = " ]" } },
+        [">"] = { input = { "%b<>", "^.().*().$" }, output = { left = "< ", right = " >" } },
+
+        -- Markdown (experimental)
+        ["m"] = { input = { "%*().-()%*"     }, output = { left = "*",   right = "*"   } },
+        ["M"] = { input = { "%*%*().-()%*%*" }, output = { left = "**",  right = "**"  } },
+        ["x"] = { input = { "`().-()`"       }, output = { left = "`",   right = "`"   } },
+        ["X"] = { input = { "```().-()```"   }, output = { left = "```", right = "```" } }
+
+    },
+    search_method = "cover_or_next",
+    silent = true
+})
+vim.keymap.del("x", "ys")
+map("x", "S", [[:<C-u>lua MiniSurround.add("visual")<CR>]], { silent = true })
+map("n", "yss", "ys💩", r) -- workaround because I remap _, see above about mini.operators
+map("n", "yS", "ys$", r)
+
 -- mini.ai
 -- todo: ? to <tab>
 --       look at: https://github.com/echasnovski/mini.nvim/blob/f90b6b820062fc06d6d51ed61a0f9b7f9a13b01b/lua/mini/ai.lua#L1097
+
+local spec_pair = require('mini.ai').gen_spec.pair
+
 require("mini.ai").setup({
     custom_textobjects = {
 
         -- Anybracket equivalent for e.g. i(
-        ['B'] = { { '%b()', '%b[]', '%b{}' }, '^.%s*().-()%s*.$' },
+        ["B"] = { { "%b()", "%b[]", "%b{}" }, "^.%s*().-()%s*.$" },
 
-        -- Aliases for default brackets
-        ['e'] = { '%b()', '^.().*().$' },
-        ['E'] = { '%b()', '^.%s*().-()%s*.$' },
-        ['r'] = { '%b[]', '^.().*().$' },
-        ['R'] = { '%b[]', '^.%s*().-()%s*.$' },
-        ['c'] = { '%b{}', '^.().*().$' },
-        ['C'] = { '%b{}', '^.%s*().-()%s*.$' },
-        ['<'] = { '%b<>', '^.().*().$' },
-        ['>'] = { '%b<>', '^.%s*().-()%s*.$' },
+        -- Brackets aliases
+        ["e"] = { "%b()", "^.().*().$" },
+        ["c"] = { "%b{}", "^.().*().$" },
+        ["r"] = { "%b[]", "^.().*().$" },
+        ["<"] = { "%b<>", "^.().*().$" },
+        ["E"] = { "%b()", "^.%s*().-()%s*.$" },
+        ["C"] = { "%b{}", "^.%s*().-()%s*.$" },
+        ["R"] = { "%b[]", "^.%s*().-()%s*.$" },
+        [">"] = { "%b<>", "^.%s*().-()%s*.$" },
+
+        -- Markdown (experimental)
+        ["m"] = spec_pair("*", "*", { type = "greedy" }),
+        ["M"] = spec_pair("*", "*", { type = "greedy" }),
+        ["x"] = spec_pair("`", "`", { type = "greedy" }),
+        ["X"] = spec_pair("`", "`", { type = "greedy" }),
+        ["*"] = spec_pair("*", "*", { type = "greedy" }),
+        ["_"] = spec_pair("_", "_", { type = "greedy" })
 
     },
     silent = true

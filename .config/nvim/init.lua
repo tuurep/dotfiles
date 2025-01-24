@@ -80,7 +80,7 @@ require("paq") {
 
     -- Operators:
     "echasnovski/mini.operators", -- exchange, replacewithregister, sort, duplicate
-    -- "tpope/vim-surround",      -- todo: visualmode gS conflicts with mini.splitjoin
+    "echasnovski/mini.surround",
     "tuurep/vim-lion",            -- tommcdo/vim-lion fork
     "numtostr/Comment.nvim",
     "echasnovski/mini.splitjoin",
