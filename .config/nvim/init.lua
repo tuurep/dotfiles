@@ -81,9 +81,10 @@ require("paq") {
     -- Operators:
     "echasnovski/mini.operators", -- exchange, replacewithregister, sort, duplicate
     "echasnovski/mini.surround",
-    "tuurep/vim-lion",            -- tommcdo/vim-lion fork
     "numtostr/Comment.nvim",
     "echasnovski/mini.splitjoin",
+    "tuurep/vim-lion",            -- tommcdo/vim-lion fork
+    "echasnovski/mini.move",
     "justinmk/vim-sneak",
     "haya14busa/vim-edgemotion",
 
@@ -105,6 +106,7 @@ require("paq") {
 }
 require("Comment").setup()
 require("mini.splitjoin").setup()
+require("mini.move").setup()
 require("mini.indentscope").setup({
     options = {
         indent_at_cursor = false,

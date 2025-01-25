@@ -126,16 +126,18 @@ map({"n", "x", "o"}, "H", "^")
 map({"n", "x", "o"}, "L", "$")
 map({"n", "x", "o"}, "gH", "g^")
 map({"n", "x", "o"}, "gL", "g$")
-map({"n", "x"}, "<M-j>", "<C-e>")
-map({"n", "x"}, "<M-k>", "<C-y>")
-map("n", "<M-h>", "zh")
-map("n", "<M-l>", "zl")
 
 -- Remap what the above has overriden
 map({"n", "x", "o"}, "_", "H")     -- underscore
 map({"n", "x", "o"}, "-", "M")     -- dash
 map({"n", "x", "o"}, "<M-->", "L") -- Alt + dash
 map({"n", "x"}, "?", "K")
+
+-- Group together similar mappings that move the view without moving the cursor
+map({"n", "x"}, "<M-s>", "<C-e>")
+map({"n", "x"}, "<M-d>", "<C-y>")
+map({"n", "x"}, "<M-a>", "zh")
+map({"n", "x"}, "<M-f>", "zl")
 
 -- Like yy but no newline at end
 map("n", "<C-y>", function()
