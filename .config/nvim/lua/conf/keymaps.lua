@@ -48,6 +48,7 @@ map("n", "<M-i>", "<C-i>")
 
 -- Start a substitute command without finger gymnastics:
 map("n", "<leader><Tab>", ":%s/")
+map("x", "<leader><Tab>", ":s/")
 
 map("n", "<M-Enter>", function()
     local path = vim.fn.expand("%")
@@ -125,9 +126,7 @@ map("n", "<C-y>", function()
     vim.fn.setreg(vim.v.register, vim.api.nvim_get_current_line())
 end)
 
--- TODO: visual line -mode counterpart where it leaves one empty line
 map("n", "<C-d>", '<C-y>0"_D', r) -- blackhole the deletion to not set unnamed reg
-
 map("n", "<C-c>", '<C-y>0"_C', r) -- if another reg was chosen
 
 -- Append register to current line as a oneliner
@@ -144,6 +143,17 @@ map("n", "<C-p>", function()
     end
     vim.cmd.normal("$")
 end)
+
+-- Visual mode variants
+map("x", "<C-d>", function()
+    -- Only in visual line selection, delete and leave one empty line
+    if vim.fn.mode() == "V" then
+        vim.cmd.normal("c") -- (does not stay in insert mode)
+    end
+end)
+map("x", "<C-c>", "<Nop>")
+map("x", "<C-y>", "<Nop>")
+map("x", "<C-p>", "<Nop>") -- todo: this could make sense in visual block mode
 
 -- Fix x and X (from being terrible)
 -- To be fixed: would like consecutive xxxxxxx to be treated as a single undo item
