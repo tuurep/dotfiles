@@ -320,6 +320,7 @@ map({"n", "x", "o"}, "t", "<Plug>Sneak_t")
 map({"n", "x", "o"}, "T", "<Plug>Sneak_T")
 map({"n", "x", "o"}, ",", "<Plug>Sneak_;")
 map({"n", "x", "o"}, ";", "<Plug>Sneak_,")
+g["sneak#s_next"] = true
 
 -- vim-edgemotion
 map({"n", "x", "o"}, "J", "<Plug>(edgemotion-j)")
