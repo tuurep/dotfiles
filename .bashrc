@@ -72,6 +72,7 @@ alias drag="blobdrop -p"
 
 alias cg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias todo='nvim ~/projects/todo.txt'
+alias eclean="nvim --clean -nu ~/.config/nvim/test/minimal-init.lua"
 
 alias pac="pacman"
 alias srcinfo="makepkg --printsrcinfo > .SRCINFO"

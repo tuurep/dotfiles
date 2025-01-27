@@ -9,7 +9,9 @@ for _, plugin in ipairs({
 
     --
 }) do
-    local install_path = vim.fn.fnamemodify("plugins" .. plugin:match("/%S+$"), ":p")
+    local install_path = vim.fn.fnamemodify(
+        "~/.config/nvim/test/plugins" .. plugin:match("/%S+$"), ":p"
+    )
     if vim.fn.isdirectory(install_path) == 0 then
         vim.fn.system({
             "git", "clone", "--depth=1",
@@ -24,4 +26,4 @@ end
 
 --
 
--- nvim --clean -nu ~/.config/nvim/test/minrc.lua
+-- nvim --clean -nu ~/.config/nvim/test/minimal-init.lua
