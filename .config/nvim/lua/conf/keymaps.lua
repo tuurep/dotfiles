@@ -232,15 +232,7 @@ map("n", "gS", "gs$", r)
 --       also it turns on unwanted search hl (look at plugin/search-improvements.lua)
 -- todo: vim-wordmotion can make message noise on dot repeat
 
--- TODO: separate lines problem:
---
---       The way e.g. `ysip` doesn't put the surroundings on separate lines (like tpope/vim-surround does)
---       will not work for me.
---      
---       Think about yS mapping variant that turns on 'respect_selection_type'
---       (see tpope/vim-surround's yS mapping)
---
---       The yS mapping however is not an answer to the first problem. Consider forking mini.surround.
+-- todo: fork -- https://github.com/tuurep/mini.tpopesurround
 
 require("mini.surround").setup({
     -- Can't use s mappings because of sneak, use tpope style
@@ -280,10 +272,9 @@ require("mini.surround").setup({
     search_method = "cover_or_next",
     silent = true
 })
-vim.keymap.del("x", "ys")
+vim.keymap.del("x", "ys") -- does this actually do anything? (from the helpfile)
 map("x", "S", [[:<C-u>lua MiniSurround.add("visual")<CR>]], { silent = true })
 map("n", "yss", "ys💩", r) -- workaround because I remap _, see above about mini.operators
-map("n", "yS", "ys$", r)
 
 -- mini.ai
 -- todo: ? to <tab>
