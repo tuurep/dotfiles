@@ -378,12 +378,12 @@
         <command>dunstctl history-pop</command>
       </action>
     </keybind>
-    <keybind key="W-b">
+    <keybind key="W-S-n">
       <action name="Execute">
         <command>dunstctl close</command>
       </action>
     </keybind>
-    <keybind key="W-S-b">
+    <keybind key="W-C-S-n">
       <action name="Execute">
         <command>dunstctl close-all</command>
       </action>
