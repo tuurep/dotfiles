@@ -60,6 +60,9 @@ require("conf.keymaps")
 g.lion_prompt = "Pattern: "
 g.lion_squeeze_spaces = 1
 
+g["sneak#s_next"] = true     -- f/t/s repeat same key to go forward
+g["sneak#use_ic_scs"] = true -- f/t/s ignorecase and smartcase
+
 g.undotree_SetFocusWhenToggle = 1
 g.undotree_HighlightChangedWithSign = 0
 g.undotree_ShortIndicators = 1
