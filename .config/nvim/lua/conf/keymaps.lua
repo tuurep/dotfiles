@@ -237,9 +237,9 @@ map("n", "gS", "gs$", r)
 require("mini.surround").setup({
     -- Can't use s mappings because of sneak, use tpope style
     mappings = {
-        add = "ys",
-        delete = "ds",
-        replace = "cs",
+        add = "yz",
+        delete = "dz",
+        replace = "cz",
         find = "",          -- todo: idk what to choose
         find_left = "",     -- todo: idk what to choose
 
@@ -272,9 +272,9 @@ require("mini.surround").setup({
     search_method = "cover_or_next",
     silent = true
 })
-vim.keymap.del("x", "ys") -- does this actually do anything? (from the helpfile)
-map("x", "S", [[:<C-u>lua MiniSurround.add("visual")<CR>]], { silent = true })
-map("n", "yss", "ys💩", r) -- workaround because I remap _, see above about mini.operators
+vim.keymap.del("x", "yz") -- does this actually do anything? (from the helpfile)
+map("x", "Z", [[:<C-u>lua MiniSurround.add("visual")<CR>]], { silent = true })
+map("n", "yzz", "yz💩", r) -- workaround because I remap _, see above about mini.operators
 
 -- mini.ai
 -- todo: ? to <tab>
@@ -323,6 +323,10 @@ map({"n", "x", "o"}, "t", "<Plug>Sneak_t")
 map({"n", "x", "o"}, "T", "<Plug>Sneak_T")
 map({"n", "x", "o"}, ",", "<Plug>Sneak_;")
 map({"n", "x", "o"}, ";", "<Plug>Sneak_,")
+
+-- allow sneak to use s in all cases, because surround is mapped to z
+map({"x", "o"}, "s", "<Plug>Sneak_s")
+map({"x", "o"}, "S", "<Plug>Sneak_S")
 
 -- vim-edgemotion
 map({"n", "x", "o"}, "J", "<Plug>(edgemotion-j)")
