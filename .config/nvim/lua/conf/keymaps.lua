@@ -25,7 +25,6 @@ map({"n", "x"}, "<C-e>", "<Nop>")       -- <M-j> and <M-k> are remapped as <C-e>
 map({"n", "x"}, "<BS>", "<Nop>")
 map({"n", "x"}, "gJ", "<Nop>")          -- g¤ for spaceless join, leave gJ and gK
                                         -- as ideas for vertical movement mappings
-
 -- Free (but bad):
 map({"n", "x", "i", "c"}, "<PageUp>", "<Nop>")
 map({"n", "x", "i", "c"}, "<PageDown>", "<Nop>")
@@ -82,6 +81,44 @@ map("i", "<C-e>", "<End>")
 map({"i", "c"}, "<C-b>", "<C-a>") -- command mode: <C-b> == <Home>, insert mode: <C-b> is unmapped
 map("i", "<M-i>", "<C-e>")
 
+-- Insert mode bracket/quote aliases with autopair behavior
+-- Todo: Turn into a plugin to better control when to indent and when not to
+map("i", "<M-b>", "()<Left>")
+map("i", "<M-r>", "()<Left>")
+map("i", "<M-e>", "{}<Left>")
+map("i", "<M-d>", "[]<Left>")
+map("i", "<M-<>", "<><Left>")
+
+map("i", "<M-B>",    "(  )<Left><Left>")
+map("i", "<M-R>",    "(  )<Left><Left>")
+map("i", "<M-E>",    "{  }<Left><Left>")
+map("i", "<M-D>",    "[  ]<Left><Left>")
+map("i", "<M-S-lt>", "<  ><Left><Left>") -- ">" would close the key tag
+
+map("i", "<M-q>", '""<Left>')
+map("i", "<M-'>", "''<Left>")
+map("i", "<M-x>", "``<Left>")
+
+map("i", "<M-m>", "**<Left>")
+map("i", "<M-M>", "****<Left><Left>")
+map("i", "<M-X>", "``````<Left><Left><Left>")
+map("i", "<M-Q>", '""""""<left><left><left>')
+
+map("i", "<M-Enter><M-b>", "()<left><Enter><Esc>O")
+map("i", "<M-Enter><M-r>", "()<left><Enter><Esc>O")
+map("i", "<M-Enter><M-e>", "{}<left><Enter><Esc>O")
+map("i", "<M-Enter><M-d>", "[]<left><Enter><Esc>O")
+map("i", "<M-Enter><M-<>", "<><left><Enter><Esc>O")
+
+map("i", "<M-Enter><M-q>", '""<left><Enter><Esc>O')
+map("i", "<M-Enter><M-'>", "''<left><Enter><Esc>O")
+map("i", "<M-Enter><M-x>", "``<left><Enter><Esc>O")
+
+map("i", "<M-Enter><M-m>", "**<left><Enter><Esc>O")
+map("i", "<M-Enter><M-M>", "****<left><left><Enter><Esc>O")
+map("i", "<M-Enter><M-X>", "``````<left><left><left><Enter><Esc>O")
+map("i", "<M-Enter><M-Q>", '""""""<left><left><left><Enter><Esc>O')
+
 -- Command mode home row traversal alternatives
 map("c", "<M-j>", "<Down>")
 map("c", "<M-k>", "<Up>")
@@ -101,6 +138,10 @@ map("i", "<C-h>", "<Left>")
 map("i", "<C-j>", "<Down>")
 map("i", "<C-k>", "<Up>")
 map("i", "<C-l>", "<Right>")
+map("i", "<M-h>", "<Left>")
+map("i", "<M-j>", "<Down>")
+map("i", "<M-k>", "<Up>")
+map("i", "<M-l>", "<Right>")
 map("n", "<C-h>", "<cmd>bp<cr>")
 map("n", "<C-l>", "<cmd>bn<cr>")
 
@@ -253,20 +294,23 @@ require("mini.surround").setup({
         ["B"] = { input = { { "%b()", "%b[]", "%b{}" }, "^.().*().$" }, output = { left = "( ", right = " )" }},
 
         -- Brackets aliases
-        ["e"] = { input = { "%b()", "^.().*().$" }, output = { left = "(",  right = ")"  } },
-        ["c"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{",  right = "}"  } },
-        ["r"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[",  right = "]"  } },
+        ["r"] = { input = { "%b()", "^.().*().$" }, output = { left = "(",  right = ")"  } },
+        ["e"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{",  right = "}"  } },
+        ["d"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[",  right = "]"  } },
         ["<"] = { input = { "%b<>", "^.().*().$" }, output = { left = "<",  right = ">"  } },
-        ["E"] = { input = { "%b()", "^.().*().$" }, output = { left = "( ", right = " )" } },
-        ["C"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{ ", right = " }" } },
-        ["R"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[ ", right = " ]" } },
+        ["R"] = { input = { "%b()", "^.().*().$" }, output = { left = "( ", right = " )" } },
+        ["E"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{ ", right = " }" } },
+        ["D"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[ ", right = " ]" } },
         [">"] = { input = { "%b<>", "^.().*().$" }, output = { left = "< ", right = " >" } },
 
         -- Markdown (experimental)
         ["m"] = { input = { "%*().-()%*"     }, output = { left = "*",   right = "*"   } },
         ["M"] = { input = { "%*%*().-()%*%*" }, output = { left = "**",  right = "**"  } },
         ["x"] = { input = { "`().-()`"       }, output = { left = "`",   right = "`"   } },
-        ["X"] = { input = { "```().-()```"   }, output = { left = "```", right = "```" } }
+        ["X"] = { input = { "```().-()```"   }, output = { left = "```", right = "```" } },
+
+        -- Triple quote (experimental)
+        ["Q"] = { input = { '"""().-()"""' }, output = { left = '"""', right = '"""' } }
 
     },
     search_method = "cover_or_next",
@@ -289,26 +333,30 @@ require("mini.ai").setup({
         ["B"] = { { "%b()", "%b[]", "%b{}" }, "^.%s*().-()%s*.$" },
 
         -- Brackets aliases
-        ["e"] = { "%b()", "^.().*().$" },
-        ["c"] = { "%b{}", "^.().*().$" },
-        ["r"] = { "%b[]", "^.().*().$" },
+        ["r"] = { "%b()", "^.().*().$" },
+        ["e"] = { "%b{}", "^.().*().$" },
+        ["d"] = { "%b[]", "^.().*().$" },
         ["<"] = { "%b<>", "^.().*().$" },
-        ["E"] = { "%b()", "^.%s*().-()%s*.$" },
-        ["C"] = { "%b{}", "^.%s*().-()%s*.$" },
-        ["R"] = { "%b[]", "^.%s*().-()%s*.$" },
+        ["R"] = { "%b()", "^.%s*().-()%s*.$" },
+        ["E"] = { "%b{}", "^.%s*().-()%s*.$" },
+        ["D"] = { "%b[]", "^.%s*().-()%s*.$" },
         [">"] = { "%b<>", "^.%s*().-()%s*.$" },
 
         -- Markdown (experimental)
         ["m"] = spec_pair("*", "*", { type = "greedy" }),
-        ["M"] = spec_pair("*", "*", { type = "greedy" }),
         ["x"] = spec_pair("`", "`", { type = "greedy" }),
-        ["X"] = spec_pair("`", "`", { type = "greedy" }),
         ["*"] = spec_pair("*", "*", { type = "greedy" }),
-        ["_"] = spec_pair("_", "_", { type = "greedy" })
+        ["_"] = spec_pair("_", "_", { type = "greedy" }),
+        ["M"] = { "%*%*().-()%*%*" },
+        ["X"] = { "```().-()```" },
+
+        -- Triple quote (experimental)
+        ["Q"] = { '"""().-()"""' }
 
     },
     silent = true
 })
+
 map({"n", "x", "o"}, "<leader>q", "g]q", r) -- to next closing anyquote
 map({"n", "x", "o"}, "<leader>b", "g]b", r) -- to next closing anybracket
 
