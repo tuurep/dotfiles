@@ -70,7 +70,7 @@ alias cb="NO_COLOR=1 cb"
 
 alias drag="blobdrop -p"
 
-alias cg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias cf='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias todo='nvim ~/projects/todo.txt'
 alias eclean="nvim --clean -nu ~/.config/nvim/test/minimal-init.lua"
 
