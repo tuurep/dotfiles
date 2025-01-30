@@ -60,10 +60,10 @@ hl(0, "CurSearch",  { fg = bg, bg = fg     }) -- cursor in result
 hl(0, "IncSearch",  { fg = bg, bg = fg     })
 hl(0, "Substitute", { fg = bg, bg = fg     })
 
-hl(active_win, "search",     { link = "Search"     })
-hl(active_win, "cursearch",  { link = "Cursearch"  })
-hl(active_win, "incsearch",  { link = "IncSearch"  })
-hl(active_win, "substitute", { link = "Substitute" })
+hl(active_win, "Search",     { link = "Search"     })
+hl(active_win, "CurSearch",  { link = "CurSearch"  })
+hl(active_win, "IncSearch",  { link = "IncSearch"  })
+hl(active_win, "Substitute", { link = "Substitute" })
 
 hl(inactive_win, "Search",     { link = "None" })
 hl(inactive_win, "CurSearch",  { link = "None" })
