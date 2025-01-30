@@ -111,10 +111,7 @@ require("Comment").setup()
 require("mini.splitjoin").setup()
 require("mini.move").setup()
 require("mini.indentscope").setup({
-    options = {
-        indent_at_cursor = false,
-        try_as_border = true
-    }
+    options = { indent_at_cursor = false }
 })
 
 -- Larger plugin configurations:
