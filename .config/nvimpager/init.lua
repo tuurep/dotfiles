@@ -34,7 +34,7 @@ opt.fillchars:prepend("eob:󰧟")
 
 o.clipboard = "unnamedplus"
 o.guicursor = "a:block"
-o.mousescroll = "ver:1,hor:1"
+o.mouse = ""
 
 o.laststatus = 1
 o.statusline = "%t %r%m"
