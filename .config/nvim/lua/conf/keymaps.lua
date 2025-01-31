@@ -15,16 +15,26 @@ map({"n", "x", "o"}, "<Down>", "<Nop>")
 map({"n", "x", "o"}, "<Left>", "<Nop>")
 map({"n", "x", "o"}, "<Right>", "<Nop>")
 map({"n", "x", "o"}, "+", "<Nop>")
-map({"n", "x", "o"}, "M", "<Nop>")      -- H M L -> _ - Alt-
+map({"n", "x", "o"}, "M", "<Nop>")      -- H M L -> <leader>k <leader>m <leader>j
 map({"n", "x", "o"}, "/", "<Nop>")      -- Tab/S-Tab as search, ? is now :help
 map("n", "<C-r>", "<Nop>")              -- U as redo
 map("n", "<C-o>", "<Nop>")              -- <C-i> is compromised so use <M-o> and <M-i>
-map("n", "<C-h>", "<Nop>")
-map("n", "<C-l>", "<Nop>")
-map({"n", "x"}, "<C-e>", "<Nop>")       -- <M-j> and <M-k> are remapped as <C-e> and <C-y>
+map({"n", "x"}, "<C-e>", "<Nop>")       -- <M-s> and <M-d> are remapped as <C-e> and <C-y>
 map({"n", "x"}, "<BS>", "<Nop>")
 map({"n", "x"}, "gJ", "<Nop>")          -- g¤ for spaceless join, leave gJ and gK
                                         -- as ideas for vertical movement mappings
+
+-- gy gY
+-- gz gZ
+-- ä Ä gä gÄ
+-- gÅ
+-- gö gÖ
+-- ½
+
+-- Practically free:
+-- , ;      surpassed by clever-f/t/s
+--          although only , and ; will repeat last f/t/s regardless of what it as
+
 -- Free (but bad):
 map({"n", "x", "i", "c"}, "<PageUp>", "<Nop>")
 map({"n", "x", "i", "c"}, "<PageDown>", "<Nop>")
