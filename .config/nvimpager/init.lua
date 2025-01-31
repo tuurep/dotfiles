@@ -45,6 +45,8 @@ o.timeout = false
 o.showcmd = false
 o.ruler = false
 
+o.scrolloff = 6
+
 o.ignorecase = true
 o.smartcase = true
 
