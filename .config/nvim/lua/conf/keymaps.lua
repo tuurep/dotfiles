@@ -150,8 +150,8 @@ map({"n", "x"}, "¤", "J")
 map({"n", "x"}, "g¤", "gJ")
 map({"i", "c"}, "<C-z>", "<C-k>")
 map({"n", "x", "o"}, "_", "H")
-map({"n", "x", "o"}, "-", "M")     -- dash
-map({"n", "x", "o"}, "<M-->", "L") -- Alt + dash
+map({"n", "x", "o"}, "<M-->", "M")
+map({"n", "x", "o"}, "-", "L")
 map({"n", "x"}, "?", "K")
 
 -- Group together similar mappings that move the view without moving the cursor
