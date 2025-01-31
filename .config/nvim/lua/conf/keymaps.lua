@@ -84,15 +84,15 @@ map("i", "<M-i>", "<C-e>")
 -- Insert mode bracket/quote aliases with autopair behavior
 -- Todo: Turn into a plugin to better control when to indent and when not to
 map("i", "<M-b>", "()<Left>")
-map("i", "<M-r>", "()<Left>")
-map("i", "<M-e>", "{}<Left>")
-map("i", "<M-d>", "[]<Left>")
+map("i", "<M-e>", "()<Left>")
+map("i", "<M-d>", "{}<Left>")
+map("i", "<M-r>", "[]<Left>")
 map("i", "<M-<>", "<><Left>")
 
 map("i", "<M-B>",    "(  )<Left><Left>")
-map("i", "<M-R>",    "(  )<Left><Left>")
-map("i", "<M-E>",    "{  }<Left><Left>")
-map("i", "<M-D>",    "[  ]<Left><Left>")
+map("i", "<M-E>",    "(  )<Left><Left>")
+map("i", "<M-D>",    "{  }<Left><Left>")
+map("i", "<M-R>",    "[  ]<Left><Left>")
 map("i", "<M-S-lt>", "<  ><Left><Left>") -- ">" would close the key tag
 
 map("i", "<M-q>", '""<Left>')
@@ -105,9 +105,9 @@ map("i", "<M-X>", "``````<Left><Left><Left>")
 map("i", "<M-Q>", '""""""<left><left><left>')
 
 map("i", "<M-Enter><M-b>", "()<left><Enter><Esc>O")
-map("i", "<M-Enter><M-r>", "()<left><Enter><Esc>O")
-map("i", "<M-Enter><M-e>", "{}<left><Enter><Esc>O")
-map("i", "<M-Enter><M-d>", "[]<left><Enter><Esc>O")
+map("i", "<M-Enter><M-e>", "()<left><Enter><Esc>O")
+map("i", "<M-Enter><M-d>", "{}<left><Enter><Esc>O")
+map("i", "<M-Enter><M-r>", "[]<left><Enter><Esc>O")
 map("i", "<M-Enter><M-<>", "<><left><Enter><Esc>O")
 
 map("i", "<M-Enter><M-q>", '""<left><Enter><Esc>O')
@@ -294,13 +294,13 @@ require("mini.surround").setup({
         ["B"] = { input = { { "%b()", "%b[]", "%b{}" }, "^.().*().$" }, output = { left = "( ", right = " )" }},
 
         -- Brackets aliases
-        ["r"] = { input = { "%b()", "^.().*().$" }, output = { left = "(",  right = ")"  } },
-        ["e"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{",  right = "}"  } },
-        ["d"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[",  right = "]"  } },
+        ["e"] = { input = { "%b()", "^.().*().$" }, output = { left = "(",  right = ")"  } },
+        ["d"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{",  right = "}"  } },
+        ["r"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[",  right = "]"  } },
         ["<"] = { input = { "%b<>", "^.().*().$" }, output = { left = "<",  right = ">"  } },
-        ["R"] = { input = { "%b()", "^.().*().$" }, output = { left = "( ", right = " )" } },
-        ["E"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{ ", right = " }" } },
-        ["D"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[ ", right = " ]" } },
+        ["E"] = { input = { "%b()", "^.().*().$" }, output = { left = "( ", right = " )" } },
+        ["D"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{ ", right = " }" } },
+        ["R"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[ ", right = " ]" } },
         [">"] = { input = { "%b<>", "^.().*().$" }, output = { left = "< ", right = " >" } },
 
         -- Markdown (experimental)
@@ -333,13 +333,13 @@ require("mini.ai").setup({
         ["B"] = { { "%b()", "%b[]", "%b{}" }, "^.%s*().-()%s*.$" },
 
         -- Brackets aliases
-        ["r"] = { "%b()", "^.().*().$" },
-        ["e"] = { "%b{}", "^.().*().$" },
-        ["d"] = { "%b[]", "^.().*().$" },
+        ["e"] = { "%b()", "^.().*().$" },
+        ["d"] = { "%b{}", "^.().*().$" },
+        ["r"] = { "%b[]", "^.().*().$" },
         ["<"] = { "%b<>", "^.().*().$" },
-        ["R"] = { "%b()", "^.%s*().-()%s*.$" },
-        ["E"] = { "%b{}", "^.%s*().-()%s*.$" },
-        ["D"] = { "%b[]", "^.%s*().-()%s*.$" },
+        ["E"] = { "%b()", "^.%s*().-()%s*.$" },
+        ["D"] = { "%b{}", "^.%s*().-()%s*.$" },
+        ["R"] = { "%b[]", "^.%s*().-()%s*.$" },
         [">"] = { "%b<>", "^.%s*().-()%s*.$" },
 
         -- Markdown (experimental)
