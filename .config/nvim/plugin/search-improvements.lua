@@ -5,6 +5,8 @@ local save_scrolloff = vim.o.scrolloff
 
 -- hlsearch: don't consider keypresses (of 'n' mostly) when using sneak's s/f/t
 local was_sneak_input = false
+-- TODO: this is still a probnlem in at least vim-lion `glipn` (align by literal 'n')
+--       note: *not* a problem in mini.surround `yzinb` or even `yziwn` (surround with literal 'n')
 
 vim.api.nvim_create_autocmd("User", {
     pattern = "SneakEnter",
