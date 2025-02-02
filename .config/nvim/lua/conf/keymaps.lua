@@ -14,7 +14,6 @@ map({"n", "x", "o"}, "<Up>", "<Nop>")
 map({"n", "x", "o"}, "<Down>", "<Nop>")
 map({"n", "x", "o"}, "<Left>", "<Nop>")
 map({"n", "x", "o"}, "<Right>", "<Nop>")
-map({"n", "x", "o"}, "+", "<Nop>")
 map({"n", "x", "o"}, "M", "<Nop>")      -- H M L -> <leader>k <leader>m <leader>j
 map({"n", "x", "o"}, "/", "<Nop>")      -- Tab/S-Tab as search, ? is now :help
 map("n", "<C-r>", "<Nop>")              -- U as redo
@@ -40,12 +39,14 @@ map({"n", "x", "i", "c"}, "<PageUp>", "<Nop>")
 map({"n", "x", "i", "c"}, "<PageDown>", "<Nop>")
 map({"n", "i"}, "<F1>", "<Nop>")
 
--- Prevent accidental invokings of macros
-map({"n", "x"}, "Q", "q")
+-- q/Q for macros problems:
+--     1. it's easy to enter a macro by accident
+--     2. will conflict with visual mode Q surround mapping
 map({"n", "x"}, "q", "<Nop>")
-
--- The default Q is not bad but its default mapping is bad, here's a better alternative:
-map("n", "<leader>@", "Q")
+map({"n", "x"}, "Q", "<Nop>")
+map({"n", "x"}, "+", "q")
+map({"n", "x"}, "<leader>+", "Q")   -- Todo: maybe give ? to this and put :help somewhere else
+map({"n", "x"}, "<M-+", "@")        -- @ too hard to press and too separated from the other macro mappings
 
 -- Tab to search
 map({"n", "x", "o"}, "<Tab>", "/")
