@@ -380,15 +380,15 @@ require("mini.ai").setup({
 
 require("mini.move").setup({
     mappings = {
-        down =  '<M-s>',
-        up =    '<M-d>',
-        left =  '<M-a>',
-        right = '<M-f>',
+        down =  '<C-S-j>',
+        up =    '<C-S-k>',
+        left =  '<C-S-h>',
+        right = '<C-S-l>',
 
-        line_down =  '<M-s>',
-        line_up =    '<M-d>',
-        line_left =  '<M-a>',
-        line_right = '<M-f>'
+        line_down =  '<C-S-j>',
+        line_up =    '<C-S-k>',
+        line_left =  '<C-S-h>',
+        line_right = '<C-S-l>'
     }
 })
 
