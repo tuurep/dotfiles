@@ -165,10 +165,20 @@ map({"n", "x", "o"}, "<leader>j", "L")
 map({"n", "x"}, "?", "K")
 
 -- Group together similar mappings that move the view without moving the cursor
-map({"n", "x"}, "<M-s>", "<C-e>")
-map({"n", "x"}, "<M-d>", "<C-y>")
-map({"n", "x"}, "<M-a>", "zh")
-map({"n", "x"}, "<M-f>", "zl")
+map({"n", "x"}, "<M-j>", "3<C-e>")
+map({"n", "x"}, "<M-k>", "3<C-y>")
+map({"n", "x"}, "<M-S-j>", "<C-e>")
+map({"n", "x"}, "<M-S-k>", "<C-y>")
+map({"n", "x"}, "<M-h>", "3zh")
+map({"n", "x"}, "<M-l>", "3zl")
+map({"n", "x"}, "<M-S-h>", "zh")
+map({"n", "x"}, "<M-S-l>", "zl")
+map({"n", "x"}, "zj", "zt")
+map({"n", "x"}, "zk", "zb")
+
+-- (Never used folds but) swap what was overriden above
+map({"n", "x"}, "zt", "zk")
+map({"n", "x"}, "zb", "zj")
 
 -- One-handed save and quit
 map("n", "<C-s>", "<cmd>w<cr>")
@@ -367,8 +377,19 @@ require("mini.ai").setup({
     silent = true
 })
 
-map({"n", "x", "o"}, "<leader>q", "g]q", r) -- to next closing anyquote
-map({"n", "x", "o"}, "<leader>b", "g]b", r) -- to next closing anybracket
+require("mini.move").setup({
+    mappings = {
+        down =  '<M-s>',
+        up =    '<M-d>',
+        left =  '<M-a>',
+        right = '<M-f>',
+
+        line_down =  '<M-s>',
+        line_up =    '<M-d>',
+        line_left =  '<M-a>',
+        line_right = '<M-f>'
+    }
+})
 
 -- mini.indentscope
 map({"n", "x", "o"}, "<leader>i", "]i", r) -- to current indentation level bottom edge
