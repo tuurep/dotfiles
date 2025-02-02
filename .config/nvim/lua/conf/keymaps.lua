@@ -25,9 +25,9 @@ map({"n", "x"}, "gJ", "<Nop>")          -- g¤ for spaceless join, leave gJ and 
 
 -- gy gY
 -- gz gZ
--- ä Ä gä gÄ
--- gÅ
--- gö gÖ
+-- ä Ä      (and g or z prefix)
+-- ö Ö      (and g or z prefix)
+-- å Å      g or z prefix
 -- ½
 
 -- Practically free:
@@ -40,7 +40,7 @@ map({"n", "x", "i", "c"}, "<PageDown>", "<Nop>")
 map({"n", "i"}, "<F1>", "<Nop>")
 
 -- q/Q for macros problems:
---     1. it's easy to enter a macro by accident
+--     1. it's easy to start recording a macro by accident
 --     2. will conflict with visual mode Q surround mapping
 map({"n", "x"}, "q", "<Nop>")
 map({"n", "x"}, "Q", "<Nop>")
@@ -53,8 +53,8 @@ map({"n", "x", "o"}, "<Tab>", "/")
 map({"n", "x", "o"}, "<S-Tab>", "?")
 
 -- Remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
-map("n", "<M-o>", "<C-o>")
-map("n", "<M-i>", "<C-i>")
+map("n", "<M-n>", "<C-o>")
+map("n", "<M-S-n>", "<C-i>")
 
 -- Start a substitute command without finger gymnastics:
 map("n", "<leader><Tab>", ":%s/")
@@ -161,7 +161,7 @@ map({"n", "x"}, "¤", "J")
 map({"n", "x"}, "g¤", "gJ")
 map({"i", "c"}, "<C-z>", "<C-k>")
 map({"n", "x", "o"}, "<leader>k", "H")
-map({"n", "x", "o"}, "<leader>m", "M")
+map({"n", "x", "o"}, "<leader>m", "M") -- (pretty random choice)
 map({"n", "x", "o"}, "<leader>j", "L")
 map({"n", "x"}, "?", "K")
 
@@ -234,8 +234,8 @@ map("n", "x", function() blackhole("x") end)
 map("n", "X", function() blackhole("X") end)
 
 -- o O normal mode companion
-map("n", "ö", "o<Esc>")
-map("n", "Ö", "O<Esc>")
+map("n", "<M-o>", "o<Esc>")
+map("n", "<M-S-o>", "O<Esc>")
 
 -- Without shift = forward, with shift = backward
 map({"n", "x"}, "<", ">")
