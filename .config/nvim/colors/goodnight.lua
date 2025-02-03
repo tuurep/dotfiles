@@ -74,8 +74,9 @@ hl(inactive_win, "Substitute", { link = "None" })
 hl(0, "MiniOperatorsExchangeFrom", { link = "Search" })
 
 -- vim-sneak
-hl(0, "Sneak",      { link = "Search" })
-hl(0, "SneakScope", { link = "None"   })
+hl(0, "Sneak",        { link = "Search"    })
+hl(0, "SneakCurrent", { link = "CurSearch" })
+hl(0, "SneakScope",   { link = "None"      })
 
 -- Init inactive windows
 autocmd({"VimEnter"}, {
