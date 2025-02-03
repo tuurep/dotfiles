@@ -65,9 +65,8 @@ g.mapleader = " "
 -- Pager specifics:
 map({"n", "x"}, "§", "<cmd>set number!<cr>")
 map({"n", "x"}, "<leader>§", "<cmd>set wrap!<cr>")
-map({"n", "x"}, "q", "<cmd>q<cr>")
 
--- One-handed save
+-- One-handed quit
 map({"n", "x"}, "<C-q>", "<cmd>q<cr>")
 
 -- Remap macros
