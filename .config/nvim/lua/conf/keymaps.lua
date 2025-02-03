@@ -97,38 +97,40 @@ map("i", "<M-i>", "<C-e>")
 map("i", "<M-b>", "()<Left>")
 map("i", "<M-e>", "()<Left>")
 map("i", "<M-d>", "{}<Left>")
-map("i", "<M-r>", "[]<Left>")
+map("i", "<M-a>", "[]<Left>")
 map("i", "<M-<>", "<><Left>")
 
 map("i", "<M-B>",    "(  )<Left><Left>")
 map("i", "<M-E>",    "(  )<Left><Left>")
 map("i", "<M-D>",    "{  }<Left><Left>")
-map("i", "<M-R>",    "[  ]<Left><Left>")
+map("i", "<M-A>",    "[  ]<Left><Left>")
 map("i", "<M-S-lt>", "<  ><Left><Left>") -- ">" would close the key tag
 
 map("i", "<M-q>", '""<Left>')
-map("i", "<M-'>", "''<Left>")
+map("i", "<M-r>", "''<Left>")
 map("i", "<M-x>", "``<Left>")
+
+map("i", "<M-Q>", '""""""<left><left><left>')
+map("i", "<M-X>", "``````<Left><Left><Left>")
 
 map("i", "<M-m>", "**<Left>")
 map("i", "<M-M>", "****<Left><Left>")
-map("i", "<M-X>", "``````<Left><Left><Left>")
-map("i", "<M-Q>", '""""""<left><left><left>')
 
 map("i", "<M-Enter><M-b>", "()<left><Enter><Esc>O")
 map("i", "<M-Enter><M-e>", "()<left><Enter><Esc>O")
 map("i", "<M-Enter><M-d>", "{}<left><Enter><Esc>O")
-map("i", "<M-Enter><M-r>", "[]<left><Enter><Esc>O")
+map("i", "<M-Enter><M-a>", "[]<left><Enter><Esc>O")
 map("i", "<M-Enter><M-<>", "<><left><Enter><Esc>O")
 
 map("i", "<M-Enter><M-q>", '""<left><Enter><Esc>O')
-map("i", "<M-Enter><M-'>", "''<left><Enter><Esc>O")
+map("i", "<M-Enter><M-r>", "''<left><Enter><Esc>O")
 map("i", "<M-Enter><M-x>", "``<left><Enter><Esc>O")
+
+map("i", "<M-Enter><M-Q>", '""""""<left><left><left><Enter><Esc>O')
+map("i", "<M-Enter><M-X>", "``````<left><left><left><Enter><Esc>O")
 
 map("i", "<M-Enter><M-m>", "**<left><Enter><Esc>O")
 map("i", "<M-Enter><M-M>", "****<left><left><Enter><Esc>O")
-map("i", "<M-Enter><M-X>", "``````<left><left><left><Enter><Esc>O")
-map("i", "<M-Enter><M-Q>", '""""""<left><left><left><Enter><Esc>O')
 
 -- Command mode home row traversal alternatives
 map("c", "<M-j>", "<Down>")
@@ -296,12 +298,22 @@ map("n", "gS", "gs$", r)
 
 -- todo: fork -- https://github.com/tuurep/mini.tpopesurround
 
-require("mini.surround").setup({
-    -- Can't use s mappings because of sneak, use tpope style
+-- working on it
+vim.opt.runtimepath:append("~/.config/nvim/plugin/mini.tpopesurround")
+
+require("mini.tpopesurround").setup({
     mappings = {
-        add = "yz",
-        delete = "dz",
-        replace = "cz",
+        add = "q",
+        delete = "qd",
+        replace = "qr",
+
+        add_visual = "Q",
+
+        add_line = "qq",
+
+        add_and_indent = "Q",
+        replace_and_indent = "Qr",
+
         find = "",          -- todo: idk what to choose
         find_left = "",     -- todo: idk what to choose
 
@@ -317,38 +329,39 @@ require("mini.surround").setup({
         -- Brackets aliases
         ["e"] = { input = { "%b()", "^.().*().$" }, output = { left = "(",  right = ")"  } },
         ["d"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{",  right = "}"  } },
-        ["r"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[",  right = "]"  } },
+        ["a"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[",  right = "]"  } },
         ["<"] = { input = { "%b<>", "^.().*().$" }, output = { left = "<",  right = ">"  } },
         ["E"] = { input = { "%b()", "^.().*().$" }, output = { left = "( ", right = " )" } },
         ["D"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{ ", right = " }" } },
-        ["R"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[ ", right = " ]" } },
+        ["A"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[ ", right = " ]" } },
         [">"] = { input = { "%b<>", "^.().*().$" }, output = { left = "< ", right = " >" } },
 
         -- Markdown (experimental)
         ["m"] = { input = { "%*().-()%*"     }, output = { left = "*",   right = "*"   } },
         ["M"] = { input = { "%*%*().-()%*%*" }, output = { left = "**",  right = "**"  } },
-        ["x"] = { input = { "`().-()`"       }, output = { left = "`",   right = "`"   } },
-        ["X"] = { input = { "```().-()```"   }, output = { left = "```", right = "```" } },
 
-        -- Triple quote (experimental)
-        ["Q"] = { input = { '"""().-()"""' }, output = { left = '"""', right = '"""' } }
+        -- Quotation aliases (experimental)
+        ["r"] = { input = { "%b''", "^.().*().$" }, output = { left = "'",   right = "'"   } },
+        ["x"] = { input = { "%b``", "^.().*().$" }, output = { left = "`",   right = "`"   } },
+        ["Q"] = { input = { '"""().-()"""'       }, output = { left = '"""', right = '"""' } },
+        ["X"] = { input = { "```().-()```"       }, output = { left = "```", right = "```" } },
 
     },
     search_method = "cover_or_next",
     silent = true
 })
-vim.keymap.del("x", "yz") -- does this actually do anything? (from the helpfile)
-map("x", "Z", [[:<C-u>lua MiniSurround.add("visual")<CR>]], { silent = true })
-map("n", "yzz", "yz💩", r) -- workaround because I remap _, see above about mini.operators
 
 -- mini.ai
 -- todo: ? to <tab>
 --       look at: https://github.com/echasnovski/mini.nvim/blob/f90b6b820062fc06d6d51ed61a0f9b7f9a13b01b/lua/mini/ai.lua#L1097
 
-local spec_pair = require('mini.ai').gen_spec.pair
+local gen_spec = require('mini.ai').gen_spec
 
 require("mini.ai").setup({
     custom_textobjects = {
+
+        -- Remap 'argument' textobject, I want it for square bracket
+        ["c"] = gen_spec.argument(),
 
         -- Anybracket equivalent for e.g. i(
         ["B"] = { { "%b()", "%b[]", "%b{}" }, "^.%s*().-()%s*.$" },
@@ -356,23 +369,24 @@ require("mini.ai").setup({
         -- Brackets aliases
         ["e"] = { "%b()", "^.().*().$" },
         ["d"] = { "%b{}", "^.().*().$" },
-        ["r"] = { "%b[]", "^.().*().$" },
+        ["a"] = { "%b[]", "^.().*().$" },
         ["<"] = { "%b<>", "^.().*().$" },
         ["E"] = { "%b()", "^.%s*().-()%s*.$" },
         ["D"] = { "%b{}", "^.%s*().-()%s*.$" },
-        ["R"] = { "%b[]", "^.%s*().-()%s*.$" },
+        ["A"] = { "%b[]", "^.%s*().-()%s*.$" },
         [">"] = { "%b<>", "^.%s*().-()%s*.$" },
 
-        -- Markdown (experimental)
-        ["m"] = spec_pair("*", "*", { type = "greedy" }),
-        ["x"] = spec_pair("`", "`", { type = "greedy" }),
-        ["*"] = spec_pair("*", "*", { type = "greedy" }),
-        ["_"] = spec_pair("_", "_", { type = "greedy" }),
-        ["M"] = { "%*%*().-()%*%*" },
+        -- Quotation aliases (experimental)
+        ["r"] = { "%b''", "^.().*().$" },
+        ["x"] = { "%b``", "^.().*().$" },
+        ["Q"] = { '"""().-()"""' },
         ["X"] = { "```().-()```" },
 
-        -- Triple quote (experimental)
-        ["Q"] = { '"""().-()"""' }
+        -- Markdown (experimental)
+        ["m"] = gen_spec.pair("*", "*", { type = "greedy" }),
+        ["*"] = gen_spec.pair("*", "*", { type = "greedy" }),
+        ["_"] = gen_spec.pair("_", "_", { type = "greedy" }),
+        ["M"] = { "%*%*().-()%*%*" },
 
     },
     silent = true
@@ -404,7 +418,7 @@ map({"n", "x", "o"}, "T", "<Plug>Sneak_T")
 map({"n", "x", "o"}, ",", "<Plug>Sneak_;")
 map({"n", "x", "o"}, ";", "<Plug>Sneak_,")
 
--- allow sneak to use s in all cases, because surround is mapped to z
+-- allow sneak to use s in all cases, because surround is mapped to q
 map({"x", "o"}, "s", "<Plug>Sneak_s")
 map({"x", "o"}, "S", "<Plug>Sneak_S")
 
