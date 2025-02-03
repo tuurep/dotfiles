@@ -56,8 +56,9 @@ hl(0, "CurSearch",  { fg = bg, bg = fg     }) -- cursor in result
 hl(0, "IncSearch",  { fg = bg, bg = fg     })
 
 -- vim-sneak
-hl(0, "Sneak",      { link = "Search" })
-hl(0, "SneakScope", { link = "None"   })
+hl(0, "Sneak",        { link = "Search"    })
+hl(0, "SneakCurrent", { link = "CurSearch" })
+hl(0, "SneakScope",   { link = "None"      })
 
 -- Diff highlighting
 hl(0, "DiffAdd",       { fg = bg, bg = green   })

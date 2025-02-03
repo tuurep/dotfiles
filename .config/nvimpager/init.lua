@@ -70,8 +70,11 @@ map({"n", "x"}, "<leader>§", "<cmd>set wrap!<cr>")
 map({"n", "x"}, "<C-q>", "<cmd>q<cr>")
 
 -- Remap macros
-map({"n", "x"}, "Q", "q")
-map("n", "<leader>@", "Q")
+map({"n", "x"}, "q", "<Nop>")
+map({"n", "x"}, "Q", "<Nop>")
+map({"n", "x"}, "+", "q")
+map({"n", "x"}, "<leader>+", "Q")
+map({"n", "x"}, "<M-+", "@")
 
 -- Tab to search
 map({"n", "x", "o"}, "<Tab>", "/")
@@ -122,24 +125,34 @@ map("c", "<M-l>", "<C-Right>")
 -- Comfortable movement keys:
 map({"n", "x", "o"}, "<C-j>", "<C-d>")
 map({"n", "x", "o"}, "<C-k>", "<C-u>")
-map({"n", "x", "o"}, "<leader>j", "}")
-map({"n", "x", "o"}, "<leader>k", "{")
+map({"n", "x", "o"}, "-", "}")
+map({"n", "x", "o"}, "_", "{")
 map({"n", "x", "o"}, "H", "^")
 map({"n", "x", "o"}, "L", "$")
 map({"n", "x", "o"}, "gH", "g^")
 map({"n", "x", "o"}, "gL", "g$")
 
 -- Remap what the above has overriden
-map({"n", "x", "o"}, "_", "H")     -- underscore
-map({"n", "x", "o"}, "-", "M")     -- dash
-map({"n", "x", "o"}, "<M-->", "L") -- Alt + dash
+map({"n", "x", "o"}, "<leader>k", "H")
+map({"n", "x", "o"}, "<leader>m", "M")
+map({"n", "x", "o"}, "<leader>j", "L")
 map({"n", "x"}, "?", "K")
 
 -- Group together similar mappings that move the view without moving the cursor
-map({"n", "x"}, "<M-s>", "<C-e>")
-map({"n", "x"}, "<M-d>", "<C-y>")
-map({"n", "x"}, "<M-a>", "zh")
-map({"n", "x"}, "<M-f>", "zl")
+map({"n", "x"}, "<M-j>", "3<C-e>")
+map({"n", "x"}, "<M-k>", "3<C-y>")
+map({"n", "x"}, "<M-S-j>", "<C-e>")
+map({"n", "x"}, "<M-S-k>", "<C-y>")
+map({"n", "x"}, "<M-h>", "3zh")
+map({"n", "x"}, "<M-l>", "3zl")
+map({"n", "x"}, "<M-S-h>", "zh")
+map({"n", "x"}, "<M-S-l>", "zl")
+map({"n", "x"}, "zj", "zt")
+map({"n", "x"}, "zk", "zb")
+
+-- Swap what was overriden above
+map({"n", "x"}, "zt", "zk")
+map({"n", "x"}, "zb", "zj")
 
 -- Like yy but no newline at end
 map("n", "<C-y>", function()
@@ -162,21 +175,37 @@ map("n", "<leader>E", "<cmd>InspectTree<cr>")
 -- ===== PLUGINS =====
 
 -- mini.ai
+local gen_spec = require('mini.ai').gen_spec
 require("mini.ai").setup({
     custom_textobjects = {
 
-        -- Anybracket equivalent for e.g. i(
-        ['B'] = { { '%b()', '%b[]', '%b{}' }, '^.%s*().-()%s*.$' },
+        -- Remap 'argument' textobject
+        ["c"] = gen_spec.argument(),
 
-        -- Aliases for default brackets
-        ['e'] = { '%b()', '^.().*().$' },
-        ['E'] = { '%b()', '^.%s*().-()%s*.$' },
-        ['r'] = { '%b[]', '^.().*().$' },
-        ['R'] = { '%b[]', '^.%s*().-()%s*.$' },
-        ['c'] = { '%b{}', '^.().*().$' },
-        ['C'] = { '%b{}', '^.%s*().-()%s*.$' },
-        ['<'] = { '%b<>', '^.().*().$' },
-        ['>'] = { '%b<>', '^.%s*().-()%s*.$' },
+        -- Anybracket equivalent for e.g. i(
+        ["B"] = { { "%b()", "%b[]", "%b{}" }, "^.%s*().-()%s*.$" },
+
+        -- Brackets aliases
+        ["e"] = { "%b()", "^.().*().$" },
+        ["d"] = { "%b{}", "^.().*().$" },
+        ["a"] = { "%b[]", "^.().*().$" },
+        ["<"] = { "%b<>", "^.().*().$" },
+        ["E"] = { "%b()", "^.%s*().-()%s*.$" },
+        ["D"] = { "%b{}", "^.%s*().-()%s*.$" },
+        ["A"] = { "%b[]", "^.%s*().-()%s*.$" },
+        [">"] = { "%b<>", "^.%s*().-()%s*.$" },
+
+        -- Quotation aliases (experimental)
+        ["r"] = { "%b''", "^.().*().$" },
+        ["x"] = { "%b``", "^.().*().$" },
+        ["Q"] = { '"""().-()"""' },
+        ["X"] = { "```().-()```" },
+
+        -- Markdown (experimental)
+        ["m"] = gen_spec.pair("*", "*", { type = "greedy" }),
+        ["*"] = gen_spec.pair("*", "*", { type = "greedy" }),
+        ["_"] = gen_spec.pair("_", "_", { type = "greedy" }),
+        ["M"] = { "%*%*().-()%*%*" },
 
     },
     silent = true
@@ -186,22 +215,23 @@ map({"n", "x", "o"}, "<leader>b", "g]b", r) -- to next closing anybracket
 
 -- mini.indentscope
 require("mini.indentscope").setup({
-    options = {
-        indent_at_cursor = false,
-        try_as_border = true
-    }
+    options = { indent_at_cursor = false }
 })
 g.miniindentscope_disable = true
 map({"n", "x", "o"}, "<leader>i", "]i", r) -- to current indentation level bottom edge
 map({"n", "x", "o"}, "<leader>I", "[i", r) -- to current indentation level top edge
 
 -- vim-sneak
+g["sneak#s_next"] = true
+g["sneak#use_ic_scs"] = true
 map({"n", "x", "o"}, "f", "<Plug>Sneak_f")
 map({"n", "x", "o"}, "F", "<Plug>Sneak_F")
 map({"n", "x", "o"}, "t", "<Plug>Sneak_t")
 map({"n", "x", "o"}, "T", "<Plug>Sneak_T")
 map({"n", "x", "o"}, ",", "<Plug>Sneak_;")
 map({"n", "x", "o"}, ";", "<Plug>Sneak_,")
+map({"x", "o"}, "s", "<Plug>Sneak_s")
+map({"x", "o"}, "S", "<Plug>Sneak_S")
 
 -- vim-edgemotion
 map({"n", "x", "o"}, "J", "<Plug>(edgemotion-j)")
