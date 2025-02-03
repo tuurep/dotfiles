@@ -33,6 +33,7 @@ o.showcmd = false
 o.ruler = false
 o.number = true
 
+o.scroll = 12
 opt.scrolloff = 6
 
 o.textwidth = 80
