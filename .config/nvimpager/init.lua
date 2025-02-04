@@ -66,9 +66,6 @@ g.mapleader = " "
 map({"n", "x"}, "§", "<cmd>set number!<cr>")
 map({"n", "x"}, "<leader>§", "<cmd>set wrap!<cr>")
 
--- One-handed quit
-map({"n", "x"}, "<C-q>", "<cmd>q<cr>")
-
 -- Remap macros
 map({"n", "x"}, "q", "<Nop>")
 map({"n", "x"}, "Q", "<Nop>")
@@ -81,8 +78,8 @@ map({"n", "x", "o"}, "<Tab>", "/")
 map({"n", "x", "o"}, "<S-Tab>", "?")
 
 -- Remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
-map("n", "<M-o>", "<C-o>")
-map("n", "<M-i>", "<C-i>")
+map("n", "<M-n>", "<C-o>")
+map("n", "<M-S-n>", "<C-i>")
 
 map("n", "<M-Enter>", function()
     local path = vim.fn.expand("%")
@@ -111,10 +108,8 @@ autocmd({"CmdWinEnter"}, {
 
 -- Insert/command mode Ctrl+a for beginning of line, Ctrl+E for end of line (readline style)
 -- If they override something, remap that elsewhere
-map({"i", "c"}, "<C-a>", "<Home>")
-map("i", "<C-e>", "<End>")
-map({"i", "c"}, "<C-b>", "<C-a>") -- command mode: <C-b> == <Home>, insert mode: <C-b> is unmapped
-map("i", "<M-i>", "<C-e>")
+map({"c"}, "<C-a>", "<Home>")
+map({"c"}, "<C-b>", "<C-a>") -- command mode: <C-b> == <Home>, insert mode: <C-b> is unmapped
 
 -- Command mode home row traversal alternatives
 map("c", "<M-j>", "<Down>")
@@ -122,9 +117,8 @@ map("c", "<M-k>", "<Up>")
 map("c", "<M-h>", "<C-Left>")
 map("c", "<M-l>", "<C-Right>")
 
--- Comfortable movement keys:
-map({"n", "x", "o"}, "<C-j>", "<C-d>")
-map({"n", "x", "o"}, "<C-k>", "<C-u>")
+-- Essential keys for both movement and operator pending
+-- (with the worst defaults known to man)
 map({"n", "x", "o"}, "-", "}")
 map({"n", "x", "o"}, "_", "{")
 map({"n", "x", "o"}, "H", "^")
@@ -180,7 +174,7 @@ require("mini.ai").setup({
     custom_textobjects = {
 
         -- Remap 'argument' textobject
-        ["c"] = gen_spec.argument(),
+        ["v"] = gen_spec.argument(),
 
         -- Anybracket equivalent for e.g. i(
         ["B"] = { { "%b()", "%b[]", "%b{}" }, "^.%s*().-()%s*.$" },
@@ -210,8 +204,6 @@ require("mini.ai").setup({
     },
     silent = true
 })
-map({"n", "x", "o"}, "<leader>q", "g]q", r) -- to next closing anyquote
-map({"n", "x", "o"}, "<leader>b", "g]b", r) -- to next closing anybracket
 
 -- mini.indentscope
 require("mini.indentscope").setup({

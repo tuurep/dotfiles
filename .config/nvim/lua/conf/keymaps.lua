@@ -23,6 +23,7 @@ map({"n", "x"}, "<BS>", "<Nop>")
 map({"n", "x"}, "gJ", "<Nop>")          -- g¤ for spaceless join, leave gJ and gK
                                         -- as ideas for vertical movement mappings
 
+-- zh zl
 -- gy gY
 -- gz gZ
 -- ä Ä      (and g or z prefix)
@@ -132,21 +133,7 @@ map("i", "<M-Enter><M-X>", "``````<left><left><left><Enter><Esc>O")
 map("i", "<M-Enter><M-m>", "**<left><Enter><Esc>O")
 map("i", "<M-Enter><M-M>", "****<left><left><Enter><Esc>O")
 
--- Command mode home row traversal alternatives
-map("c", "<M-j>", "<Down>")
-map("c", "<M-k>", "<Up>")
-map("c", "<M-h>", "<C-Left>")
-map("c", "<M-l>", "<C-Right>")
-
--- Comfortable movement keys:
-map({"n", "x", "o"}, "<C-j>", "<C-d>")
-map({"n", "x", "o"}, "<C-k>", "<C-u>")
-map({"n", "x", "o"}, "-", "}")
-map({"n", "x", "o"}, "_", "{")
-map({"n", "x", "o"}, "H", "^")
-map({"n", "x", "o"}, "L", "$")
-map({"n", "x", "o"}, "gH", "g^")
-map({"n", "x", "o"}, "gL", "g$")
+-- Need these to avoid arrow keys
 map("i", "<C-h>", "<Left>")
 map("i", "<C-j>", "<Down>")
 map("i", "<C-k>", "<Up>")
@@ -155,6 +142,22 @@ map("i", "<M-h>", "<Left>")
 map("i", "<M-j>", "<Down>")
 map("i", "<M-k>", "<Up>")
 map("i", "<M-l>", "<Right>")
+
+-- TODO: need some changes and C-hjkl added
+map("c", "<M-j>", "<Down>")
+map("c", "<M-k>", "<Up>")
+map("c", "<M-h>", "<C-Left>")
+map("c", "<M-l>", "<C-Right>")
+
+-- Essential keys for both movement and operator pending
+-- (with the worst defaults known to man)
+map({"n", "x", "o"}, "-", "}")
+map({"n", "x", "o"}, "_", "{")
+map({"n", "x", "o"}, "H", "^")
+map({"n", "x", "o"}, "L", "$")
+map({"n", "x", "o"}, "gH", "g^")
+map({"n", "x", "o"}, "gL", "g$")
+
 map("n", "<C-h>", "<cmd>bp<cr>")
 map("n", "<C-l>", "<cmd>bn<cr>")
 
@@ -336,15 +339,15 @@ require("mini.tpopesurround").setup({
         ["A"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[ ", right = " ]" } },
         [">"] = { input = { "%b<>", "^.().*().$" }, output = { left = "< ", right = " >" } },
 
-        -- Markdown (experimental)
-        ["m"] = { input = { "%*().-()%*"     }, output = { left = "*",   right = "*"   } },
-        ["M"] = { input = { "%*%*().-()%*%*" }, output = { left = "**",  right = "**"  } },
-
         -- Quotation aliases (experimental)
         ["r"] = { input = { "%b''", "^.().*().$" }, output = { left = "'",   right = "'"   } },
         ["x"] = { input = { "%b``", "^.().*().$" }, output = { left = "`",   right = "`"   } },
         ["Q"] = { input = { '"""().-()"""'       }, output = { left = '"""', right = '"""' } },
         ["X"] = { input = { "```().-()```"       }, output = { left = "```", right = "```" } },
+
+        -- Markdown (experimental)
+        ["m"] = { input = { "%*().-()%*"     }, output = { left = "*",   right = "*"   } },
+        ["M"] = { input = { "%*%*().-()%*%*" }, output = { left = "**",  right = "**"  } },
 
     },
     search_method = "cover_or_next",
@@ -361,7 +364,7 @@ require("mini.ai").setup({
     custom_textobjects = {
 
         -- Remap 'argument' textobject, I want it for square bracket
-        ["c"] = gen_spec.argument(),
+        ["v"] = gen_spec.argument(),
 
         -- Anybracket equivalent for e.g. i(
         ["B"] = { { "%b()", "%b[]", "%b{}" }, "^.%s*().-()%s*.$" },
