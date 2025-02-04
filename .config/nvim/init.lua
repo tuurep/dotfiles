@@ -111,9 +111,16 @@ require("paq") {
     "justinmk/vim-dirvish"    -- netrw replacement
 }
 require("Comment").setup()
-require("mini.splitjoin").setup()
 require("mini.indentscope").setup({
     options = { indent_at_cursor = false }
+})
+local splitjoin = require("mini.splitjoin")
+splitjoin.setup({
+    join = {
+        hooks_post = {
+            splitjoin.gen_hook.pad_brackets({ brackets = { '%b{}' } })
+        }
+    }
 })
 
 -- Larger plugin configurations:
