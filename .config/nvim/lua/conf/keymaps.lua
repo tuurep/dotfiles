@@ -166,7 +166,7 @@ map({"n", "x"}, "¤", "J")
 map({"n", "x"}, "g¤", "gJ")
 map({"i", "c"}, "<C-z>", "<C-k>")
 map({"n", "x", "o"}, "<leader>k", "H")
-map({"n", "x", "o"}, "<leader>m", "M") -- (pretty random choice)
+map({"n", "x", "o"}, "<leader><leader>", "M")
 map({"n", "x", "o"}, "<leader>j", "L")
 map({"n", "x"}, "?", "K")
 

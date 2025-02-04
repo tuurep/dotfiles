@@ -128,7 +128,7 @@ map({"n", "x", "o"}, "gL", "g$")
 
 -- Remap what the above has overriden
 map({"n", "x", "o"}, "<leader>k", "H")
-map({"n", "x", "o"}, "<leader>m", "M")
+map({"n", "x", "o"}, "<leader><leader>", "M")
 map({"n", "x", "o"}, "<leader>j", "L")
 map({"n", "x"}, "?", "K")
 
