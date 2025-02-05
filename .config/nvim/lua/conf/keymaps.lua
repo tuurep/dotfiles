@@ -14,6 +14,7 @@ map({"n", "x", "o"}, "<Up>", "<Nop>")
 map({"n", "x", "o"}, "<Down>", "<Nop>")
 map({"n", "x", "o"}, "<Left>", "<Nop>")
 map({"n", "x", "o"}, "<Right>", "<Nop>")
+map({"n", "x", "o"}, "<C-d>", "<Nop>")  -- <C-d> is remapped, and <C-j> <C-k> preferred for scrolling
 map({"n", "x", "o"}, "M", "<Nop>")      -- H M L -> <leader>k <leader>m <leader>j
 map({"n", "x", "o"}, "/", "<Nop>")      -- Tab/S-Tab as search, ? is now :help
 map("n", "<C-r>", "<Nop>")              -- U as redo
@@ -22,7 +23,6 @@ map({"n", "x"}, "<C-e>", "<Nop>")       -- <M-s> and <M-d> are remapped as <C-e>
 map({"n", "x"}, "<BS>", "<Nop>")
 map({"n", "x"}, "gJ", "<Nop>")          -- g¤ for spaceless join, leave gJ and gK
                                         -- as ideas for vertical movement mappings
-
 -- zh zl
 -- gy gY
 -- gz gZ
@@ -185,6 +185,73 @@ map({"n", "x"}, "zk", "zb")
 -- (Never used folds but) swap what was overriden above
 map({"n", "x"}, "zt", "zk")
 map({"n", "x"}, "zb", "zj")
+
+-- Like <C-d> and <C-u> but never moves the cursor relative to the 'view'
+
+-- Todo:
+--      Doesn't work with `smoothscroll`:
+--          - Can't make the first line partially shown on its own
+--          - It there is a partially shown line (through other scroll method),
+--            the '<<<' gets stuck at top even when it should not be there,
+--            until screen is scrolled by any other way than this function.
+--      Wrap edge case:
+--          - At EOB, if there's a line in the previous view that's heavily wrapped,
+--            many EOB characters can be shown in the last view.
+--          - It's an impossible scenario: one line is too far, but the previous
+--            line doesn't show the last line of the buffer.
+--            The former case is the better compromise.
+--      Fold behavior:
+--          - Looks like it isn't moving, but goes through the fold lines,
+--            passing through eventually. Would be nice to ignore folded lines
+--            completely.
+--            See `:h foldclosed`
+
+local function scroll(distance)
+    local top = vim.fn.line("w0")
+    local bottom = vim.fn.line("w$")
+
+    local keep_at_bottom = false
+    local keep_at_top = false
+
+    local curpos = vim.fn.getcurpos(0)
+    local lnum = curpos[2]
+    local curswant = curpos[5]
+
+    -- When there are soft wrapped lines,
+    -- If cursor is at the extreme top/bottom line (only possible with no scrolloff),
+    -- make sure it stays there in the next view.
+    if vim.o.scrolloff == 0 then
+        if lnum == bottom then
+            keep_at_bottom = true
+        end
+        if lnum == top then
+            keep_at_top = true
+        end
+    end
+
+    local n = 0
+    if distance > 0 then
+        local eof = vim.api.nvim_buf_line_count(0)
+        n = math.min(distance, eof - bottom)
+    else
+        n = math.max(distance, -top + 1)
+    end
+
+    vim.fn.winrestview({
+        topline = top + n,
+        lnum = lnum + n,
+        curswant = curswant - 1,
+        col = curswant - 1
+    })
+
+    if keep_at_bottom then
+        vim.fn.cursor({vim.fn.line("w$"), curswant, 0, curswant})
+    elseif keep_at_top then
+        vim.fn.cursor({vim.fn.line("w0"), curswant, 0, curswant})
+    end
+end
+map({"n", "x", "o"}, "<C-j>", function() scroll(12) end)
+map({"n", "x", "o"}, "<C-k>", function() scroll(-12) end)
 
 -- One-handed save and quit
 map("n", "<C-s>", "<cmd>w<cr>")

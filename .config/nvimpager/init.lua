@@ -46,7 +46,6 @@ o.showcmd = false
 o.ruler = false
 
 o.scroll = 12
-o.scrolloff = 6
 
 o.ignorecase = true
 o.smartcase = true
@@ -147,6 +146,57 @@ map({"n", "x"}, "zk", "zb")
 -- Swap what was overriden above
 map({"n", "x"}, "zt", "zk")
 map({"n", "x"}, "zb", "zj")
+
+-- Like <C-d> and <C-u> but never moves the cursor relative to the 'view'
+local function scroll(distance)
+    local top = vim.fn.line("w0")
+    local bottom = vim.fn.line("w$")
+
+    local keep_at_bottom = false
+    local keep_at_top = false
+
+    local curpos = vim.fn.getcurpos(0)
+    local lnum = curpos[2]
+    local curswant = curpos[5]
+
+    -- When there are soft wrapped lines,
+    -- If cursor is at the extreme top/bottom line (only possible with no scrolloff),
+    -- make sure it stays there in the next view.
+    if vim.o.scrolloff == 0 then
+        if lnum == bottom then
+            keep_at_bottom = true
+        end
+        if lnum == top then
+            keep_at_top = true
+        end
+    end
+
+    local n = 0
+    if distance > 0 then
+        local eof = vim.api.nvim_buf_line_count(0)
+        n = math.min(distance, eof - bottom)
+    else
+        n = math.max(distance, -top + 1)
+    end
+
+    vim.fn.winrestview({
+        topline = top + n,
+        lnum = lnum + n,
+        curswant = curswant - 1,
+        col = curswant - 1
+    })
+
+    if keep_at_bottom then
+        vim.fn.cursor({vim.fn.line("w$"), curswant, 0, curswant})
+    elseif keep_at_top then
+        vim.fn.cursor({vim.fn.line("w0"), curswant, 0, curswant})
+    end
+end
+map({"n", "x", "o"}, "<C-j>", function() scroll(12) end)
+map({"n", "x", "o"}, "<C-k>", function() scroll(-12) end)
+
+-- One-handed quit
+map({"n", "x"}, "<C-q>", "<cmd>q<cr>")
 
 -- Like yy but no newline at end
 map("n", "<C-y>", function()
