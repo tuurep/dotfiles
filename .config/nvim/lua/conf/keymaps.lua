@@ -134,20 +134,13 @@ map("i", "<M-Enter><M-m>", "**<left><Enter><Esc>O")
 map("i", "<M-Enter><M-M>", "****<left><left><Enter><Esc>O")
 
 -- Need these to avoid arrow keys
-map("i", "<C-h>", "<Left>")
-map("i", "<C-j>", "<Down>")
-map("i", "<C-k>", "<Up>")
-map("i", "<C-l>", "<Right>")
-map("i", "<M-h>", "<Left>")
-map("i", "<M-j>", "<Down>")
-map("i", "<M-k>", "<Up>")
-map("i", "<M-l>", "<Right>")
-
--- TODO: need some changes and C-hjkl added
-map("c", "<M-j>", "<Down>")
-map("c", "<M-k>", "<Up>")
-map("c", "<M-h>", "<C-Left>")
-map("c", "<M-l>", "<C-Right>")
+-- Todo: Ctrk+hjkl full word navigation?
+--       Try to make consistent with bash
+--       Problem: Ctrl+l for `clear` so useful in bash
+map({"i", "c"}, "<M-h>", "<Left>")
+map({"i", "c"}, "<M-j>", "<Down>")
+map({"i", "c"}, "<M-k>", "<Up>")
+map({"i", "c"}, "<M-l>", "<Right>")
 
 -- Essential keys for both movement and operator pending
 -- (with the worst defaults known to man)
