@@ -30,8 +30,6 @@ indexed_colors = [
     { index = 23, color = "#404040" },
     { index = 24, color = "#7d7d7d" },
     { index = 25, color = "#656e6e" },
-    { index = 26, color = "#2a2c2d" },
-    { index = 27, color = "#797b7a" }
 ]
 
     [colors.cursor]

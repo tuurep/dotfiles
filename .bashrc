@@ -24,11 +24,8 @@ prompt_cmd() {
         history -a # Add previous command to ~/.bash_history
                    # (so that new session has access to this session's command history)
 
-        if [[ "$TERM" =~ tmux* ]]; then
-                tmux refresh-client -S # Redraw tmux status bar
-        fi
         title=$(basename "$(dirs +0)")
-        echo -ne "\033]0;${title}\007" # Set window title; in tmux title is set in .tmux.conf
+        echo -ne "\033]0;${title}\007" # Set WM window title
 
         # If python-virtualenv activated, print venv name on a separate line before PS1
         if [[ -n "$VIRTUAL_ENV" ]]; then
