@@ -20,7 +20,7 @@ map({"n", "x", "o"}, "/", "<Nop>")      -- Tab/S-Tab as search, ? is now :help
 map("n", "<C-r>", "<Nop>")              -- U as redo
 map("n", "<C-o>", "<Nop>")              -- <C-i> is compromised so use <M-o> and <M-i>
 map({"n", "x"}, "<C-e>", "<Nop>")       -- <M-s> and <M-d> are remapped as <C-e> and <C-y>
-map({"n", "x"}, "<BS>", "<Nop>")
+map({"n", "x"}, "<Backspace>", "<Nop>")
 map({"n", "x"}, "gJ", "<Nop>")          -- g¤ for spaceless join, leave gJ and gK
                                         -- as ideas for vertical movement mappings
 -- zh zl
@@ -61,7 +61,7 @@ map("n", "<M-S-n>", "<C-i>")
 map("n", "<leader><Tab>", ":%s/")
 map("x", "<leader><Tab>", ":s/")
 
-map("n", "<M-Enter>", function()
+map("n", "<leader><Enter>", function()
     local path = vim.fn.expand("%")
     local tildepath = vim.fn.fnamemodify(path, ":p:~")
     if vim.fn.bufname() == "" then
@@ -70,7 +70,7 @@ map("n", "<M-Enter>", function()
     vim.api.nvim_echo({{tildepath}}, false, {})      -- current buffer full path
 end)                                                 -- $HOME as ~
 
-map("n", "<leader><Enter>",
+map("n", "<leader><Backspace>",
     "<cmd>echo fnamemodify(getcwd(), ':p:~')<cr>")    -- pwd but with tilde
 
 map("n", "<Enter>", "<cmd>echo ''<cr>")               -- clear cmdline text
@@ -151,9 +151,6 @@ map({"n", "x", "o"}, "L", "$")
 map({"n", "x", "o"}, "gH", "g^")
 map({"n", "x", "o"}, "gL", "g$")
 
-map("n", "<C-h>", "<cmd>bp<cr>")
-map("n", "<C-l>", "<cmd>bn<cr>")
-
 -- Remap what the above has overriden
 map({"n", "x"}, "¤", "J")
 map({"n", "x"}, "g¤", "gJ")
@@ -162,6 +159,15 @@ map({"n", "x", "o"}, "<leader>k", "H")
 map({"n", "x", "o"}, "<leader><leader>", "M")
 map({"n", "x", "o"}, "<leader>j", "L")
 map({"n", "x"}, "?", "K")
+
+-- (Experimental)
+-- Shift+g slightly too annoying to press
+map({"n", "x", "o"}, "<M-Enter>", "G")
+map({"n", "x", "o"}, "<M-Backspace>", "gg")
+
+-- Spammable buffer navigation
+map("n", "<C-h>", "<cmd>bp<cr>")
+map("n", "<C-l>", "<cmd>bn<cr>")
 
 -- Group together similar mappings that move the view without moving the cursor
 map({"n", "x"}, "<M-j>", "3<C-e>")

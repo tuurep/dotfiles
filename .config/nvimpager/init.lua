@@ -45,8 +45,6 @@ o.timeout = false
 o.showcmd = false
 o.ruler = false
 
-o.scroll = 12
-
 o.ignorecase = true
 o.smartcase = true
 
@@ -80,7 +78,7 @@ map({"n", "x", "o"}, "<S-Tab>", "?")
 map("n", "<M-n>", "<C-o>")
 map("n", "<M-S-n>", "<C-i>")
 
-map("n", "<M-Enter>", function()
+map("n", "<leader><Enter>", function()
     local path = vim.fn.expand("%")
     local tildepath = vim.fn.fnamemodify(path, ":p:~")
     if vim.fn.bufname() == "" then
@@ -89,7 +87,7 @@ map("n", "<M-Enter>", function()
     vim.api.nvim_echo({{tildepath}}, false, {})      -- current buffer full path
 end)                                                 -- $HOME as ~
 
-map("n", "<leader><Enter>",
+map("n", "<leader><Backspace>",
     "<cmd>echo fnamemodify(getcwd(), ':p:~')<cr>")    -- pwd but with tilde
 
 map("n", "<Enter>", "<cmd>echo ''<cr>")               -- clear cmdline text
@@ -113,8 +111,8 @@ map({"c"}, "<C-b>", "<C-a>") -- command mode: <C-b> == <Home>, insert mode: <C-b
 -- Command mode home row traversal alternatives
 map("c", "<M-j>", "<Down>")
 map("c", "<M-k>", "<Up>")
-map("c", "<M-h>", "<C-Left>")
-map("c", "<M-l>", "<C-Right>")
+map("c", "<M-h>", "Left>")
+map("c", "<M-l>", "Right>")
 
 -- Essential keys for both movement and operator pending
 -- (with the worst defaults known to man)
@@ -130,6 +128,16 @@ map({"n", "x", "o"}, "<leader>k", "H")
 map({"n", "x", "o"}, "<leader><leader>", "M")
 map({"n", "x", "o"}, "<leader>j", "L")
 map({"n", "x"}, "?", "K")
+
+-- (Experimental)
+-- Shift+g slightly too annoying to press
+map({"n", "x", "o"}, "<M-Enter>", "G")
+map({"n", "x", "o"}, "<M-Backspace>", "gg")
+
+-- (Todo: pager can't handle multiple files as arguments atm)
+-- Spammable buffer navigation
+map("n", "<C-h>", "<cmd>bp<cr>")
+map("n", "<C-l>", "<cmd>bn<cr>")
 
 -- Group together similar mappings that move the view without moving the cursor
 map({"n", "x"}, "<M-j>", "3<C-e>")
