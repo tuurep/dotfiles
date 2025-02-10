@@ -276,14 +276,14 @@ map("n", "<C-p>", function()
         end
         vim.api.nvim_set_current_line(line .. joined)
     end
-    vim.cmd.normal("$")
+    vim.cmd.normal({ "$", bang = true })
 end)
 
 -- Visual mode variants
 map("x", "<C-d>", function()
     -- Only in visual line selection, delete and leave one empty line
     if vim.fn.mode() == "V" then
-        vim.cmd.normal("c") -- (does not stay in insert mode)
+        vim.cmd.normal({ "c", bang = true }) -- (does not stay in insert mode)
     end
 end)
 map("x", "<C-c>", "<Nop>")
