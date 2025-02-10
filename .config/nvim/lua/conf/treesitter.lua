@@ -10,8 +10,7 @@ require'nvim-treesitter.configs'.setup({
     highlight = {
         enable = true,
         disable = {
-            "latex", -- vimtex better atm
-            "diff"   -- doesn't work in undotree
+            "diff" -- doesn't work in undotree
         },
         additional_vim_regex_highlighting = { "python" }
     },

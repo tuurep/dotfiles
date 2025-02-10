@@ -72,6 +72,9 @@ g.undotree_HelpLine = 0
 
 g.miniindentscope_disable = true -- Only care about the textobjects and motions (no visuals)
 
+g.vimtex_syntax_enabled = 0         -- Let latex be handled by treesitter parser
+g.vimtex_syntax_conceal_disable = 1
+
 -- Plugins
 require("paq") {
     "savq/paq-nvim", -- Updates self

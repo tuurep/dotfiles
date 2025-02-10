@@ -178,22 +178,6 @@ hl(0, "UndotreeTimeStamp",   { fg = linenum             })
 -- Dirvish
 hl(0, "DirvishArg", { fg = green })
 
--- vimtex
-hl(0, "texCmd",            { fg = red })
-hl(0, "texCmdStyle",       { fg = red })
-hl(0, "texFileArg",        { fg = fg  })
-hl(0, "texFilesArg",       { fg = fg  })
-hl(0, "texConcealedArg",   { fg = fg  })
-hl(0, "texConditionalArg", { fg = fg  })
-hl(0, "texEnvArgName",     { fg = fg  })
-hl(0, "texOptEqual",       { fg = fg  })
-hl(0, "texTitleArg",       { link = "@markup.heading"  })
-hl(0, "texPartArgTitle",   { link = "@markup.heading"  })
-hl(0, "texUrlArg",         { link = "@markup.link.url" })
-hl(0, "texRefArg",         { link = "@markup.link.url" })
-hl(0, "texVerbZone",       { link = "@markup.raw"      })
-hl(0, "texVerbZoneInline", { link = "@markup.raw"      })
-
 -- Treesitter capture groups
 -- The full list is found here:
 -- https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md
@@ -239,6 +223,15 @@ hl(0, "@diff.minus",           { fg = red     })
 hl(0, "@diff.delta",           { fg = green   })
 hl(0, "@spell",                { link="None"  })
 hl(0, "@nospell",              { link="None"  })
+
+-- Latex
+hl(0, "@module.latex",              { fg = red })
+hl(0, "@function.latex",            { fg = red })
+hl(0, "@function.macro.latex",      { fg = red })
+hl(0, "@keyword.import.latex",      { fg = red })
+hl(0, "@string.latex",              { fg = fg  })
+hl(0, "@string.special.path.latex", { fg = fg  })
+hl(0, "@string.regexp.latex",       { fg = fg  })
 
 -- Markdown
 hl(0, "@punctuation.special.markdown", { fg = red     })
@@ -302,9 +295,6 @@ hl(0, "MatchParen", { link = "None" })
 hl(0, "Conceal",    { link = "None" })
 hl(0, "Todo",   { link = "@comment" })
 
--- Vimtex
-hl(0, "texError", { link = "None" }) -- Please stop trying to use syntax highlighting
-                                     -- as a wannabe linter
 -- XML
 hl(0, "xmlTagName",         { link = "@tag"           })
 hl(0, "xmlTag",             { link = "@tag.delimiter" })
