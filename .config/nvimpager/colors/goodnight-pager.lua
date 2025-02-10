@@ -61,17 +61,17 @@ hl(0, "SneakCurrent", { link = "CurSearch" })
 hl(0, "SneakScope",   { link = "None"      })
 
 -- Diff highlighting
-hl(0, "DiffAdd",       { fg = bg, bg = green   })
-hl(0, "DiffChange",    { fg = bg, bg = d_fg    })
-hl(0, "DiffDelete",    { fg = bg, bg = red     })
-hl(0, "DiffText",      { fg = bg, bg = green   })
-hl(0, "DiffAdded",     { fg = green, bg = bg   })
-hl(0, "DiffRemoved",   { fg = red, bg = bg     })
-hl(0, "DiffLine",      { fg = cyan, bg = bg    })
-hl(0, "DiffFile",      { fg = dd_fg, bg = bg   })
-hl(0, "DiffIndexLine", { fg = dd_fg, bg = bg   })
-hl(0, "DiffOldFile",   { fg = dd_fg, bg = bg   })
-hl(0, "DiffNewFile",   { fg = dd_fg, bg = bg   })
+hl(0, "DiffAdd",       { fg = bg,    bg = green })
+hl(0, "DiffChange",    { fg = bg,    bg = d_fg  })
+hl(0, "DiffDelete",    { fg = bg,    bg = red   })
+hl(0, "DiffText",      { fg = bg,    bg = green })
+hl(0, "DiffAdded",     { fg = green, bg = bg    })
+hl(0, "DiffRemoved",   { fg = red,   bg = bg    })
+hl(0, "DiffLine",      { fg = cyan,  bg = bg    })
+hl(0, "DiffFile",      { fg = dd_fg, bg = bg    })
+hl(0, "DiffIndexLine", { fg = dd_fg, bg = bg    })
+hl(0, "DiffOldFile",   { fg = dd_fg, bg = bg    })
+hl(0, "DiffNewFile",   { fg = dd_fg, bg = bg    })
 
 -- Manpage buffer
 hl(0, "manItalic",         { fg = green    }) -- in `less` manpage, this is underlined

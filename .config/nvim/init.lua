@@ -33,7 +33,6 @@ o.showcmd = false
 o.ruler = false
 o.number = true
 
-o.scroll = 12
 opt.scrolloff = 6
 
 o.textwidth = 80
@@ -86,7 +85,7 @@ require("paq") {
 
     -- Operators:
     "echasnovski/mini.operators", -- exchange, replacewithregister, sort, duplicate
-    "echasnovski/mini.surround",
+    -- "echasnovski/mini.surround",
     "numtostr/Comment.nvim",
     "echasnovski/mini.splitjoin",
     "tuurep/vim-lion",            -- tommcdo/vim-lion fork
