@@ -241,16 +241,6 @@ export SYSTEMD_COLORS=16 # Prevent systemctl from using colors outside of my col
 export VIRTUAL_ENV_DISABLE_PROMPT=1 # Use custom venv-prompt in prompt_cmd
 export PYTHONSTARTUP="$HOME/.pyrc" # Config (startup script) for py interactive shell
 
-# Flags for less: case insensitive search and colors
-export LESS='-iR'
-
-# Colorize manpages
-export LESS_TERMCAP_us=$'\e[31m'        # Underlined: red (and no underline)
-export LESS_TERMCAP_so=$'\e[30;47m'     # Standout: bg on fg
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export GROFF_NO_SGR=1
-
 # Extra tab completions
 source /usr/share/git/completion/git-completion.bash
 source /usr/share/fzf/completion.bash # fzf completion on **
