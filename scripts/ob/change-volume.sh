@@ -16,14 +16,14 @@ current_volume=$(pactl get-sink-volume $sink | grep -Po '\d+(?=%)' | head -1)
 new_volume=$((current_volume + n))
 
 if [ "$1" == "0" ] || [ "$new_volume" -lt 0 ]; then
-        new_volume=0
+    new_volume=0
 fi
 
 if [ $new_volume -le $upper_limit ]; then
-        pactl -- set-sink-volume $sink $new_volume%
+    pactl -- set-sink-volume $sink $new_volume%
 else
-        pactl -- set-sink-volume $sink $upper_limit%
-        new_volume="$upper_limit"
+    pactl -- set-sink-volume $sink $upper_limit%
+    new_volume="$upper_limit"
 fi
 
 # If window is fullscreen, show notification because
@@ -31,7 +31,7 @@ fi
 fullscreen=$(xprop -id "$(xdo id)" _NET_WM_STATE | grep _NET_WM_STATE_FULLSCREEN)
 
 if [ -n "$fullscreen" ]; then
-        notify-send -t 700 \
-                    --hint=string:x-dunst-stack-tag:volume \
-                    "墳 $new_volume"
+    notify-send -t 700 \
+                --hint=string:x-dunst-stack-tag:volume \
+                "墳 $new_volume"
 fi

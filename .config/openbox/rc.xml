@@ -1,514 +1,514 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <resistance>
-    <strength>20</strength>
-    <screen_edge_strength>40</screen_edge_strength>
-  </resistance>
-  <placement>
-    <center>yes</center>
-  </placement>
-  <theme>
-    <name>Borderless-Dark</name>
-    <titleLayout>LIMC</titleLayout>
-    <font place="ActiveWindow">
-      <name>Roboto</name>
-      <size>11</size>
-      <weight>normal</weight>
-    </font>
-    <font place="InactiveWindow">
-      <name>Roboto</name>
-      <size>11</size>
-      <weight>normal</weight>
-    </font>
-    <font place="MenuHeader">
-      <name>Roboto</name>
-      <size>11</size>
-    </font>
-    <font place="MenuItem">
-      <name>Roboto</name>
-      <size>11</size>
-    </font>
-  </theme>
-  <desktops>
-    <number>1</number>
-  </desktops>
-  <resize>
-    <drawContents>yes</drawContents>
-    <popupShow>Never</popupShow>
-  </resize>
-  <keyboard>
-    <!-- Reload config -->
-    <keybind key="W-0">
-      <action name="Execute">
-        <command>openbox --restart</command>
-      </action>
-    </keybind>
-    <!-- Volume/brightness control and screenlocking through their dedicated keys -->
-    <keybind key="F2">
-      <action name="Execute">
-        <command>~/scripts/ob/change-volume.sh -5</command>
-      </action>
-    </keybind>
-    <keybind key="W-F2">
-      <action name="Execute">
-        <command>~/scripts/ob/change-volume.sh -1</command>
-      </action>
-    </keybind>
-    <keybind key="W-S-F2">
-      <action name="Execute">
-        <command>~/scripts/ob/change-volume.sh 0</command>
-      </action>
-    </keybind>
-    <keybind key="F3">
-      <action name="Execute">
-        <command>~/scripts/ob/change-volume.sh +5</command>
-      </action>
-    </keybind>
-    <keybind key="W-F3">
-      <action name="Execute">
-        <command>~/scripts/ob/change-volume.sh +1</command>
-      </action>
-    </keybind>
-    <keybind key="F5">
-      <action name="Execute">
-        <command>~/scripts/ob/change-brightness.sh -5</command>
-      </action>
-    </keybind>
-    <keybind key="F6">
-      <action name="Execute">
-        <command>~/scripts/ob/change-brightness.sh +5</command>
-      </action>
-    </keybind>
-    <keybind key="W-F5">
-      <action name="Execute">
-        <command>~/scripts/ob/change-brightness.sh -1</command>
-      </action>
-    </keybind>
-    <keybind key="W-F6">
-      <action name="Execute">
-        <command>~/scripts/ob/change-brightness.sh +1</command>
-      </action>
-    </keybind>
-    <keybind key="W-S-F5">
-      <action name="Execute">
-        <command>~/scripts/ob/change-brightness.sh -100</command>
-      </action>
-    </keybind>
-    <keybind key="W-S-F6">
-      <action name="Execute">
-        <command>~/scripts/ob/change-brightness.sh +100</command>
-      </action>
-    </keybind>
-    <keybind key="W-Delete">
-      <action name="Execute">
-        <command>xsecurelock</command>
-      </action>
-    </keybind>
-    <!-- Window focus -->
-    <keybind key="A-Tab">
-      <action name="NextWindow">
-        <interactive>no</interactive>
-      </action>
-    </keybind>
-    <!-- Window size and position controls -->
-    <keybind key="W-a">
-      <action name="Unmaximize"/>
-      <action name="MoveResizeTo">
-        <x>0</x>
-        <y>0</y>
-        <width>50%</width>
-        <height>100%</height>
-      </action>
-    </keybind>
-    <keybind key="W-d">
-      <action name="Unmaximize"/>
-      <action name="MoveResizeTo">
-        <x>-0</x>
-        <y>0</y>
-        <width>50%</width>
-        <height>100%</height>
-      </action>
-    </keybind>
-    <keybind key="W-w">
-      <action name="ToggleMaximize"/>
-    </keybind>
-    <keybind key="W-s">
-      <action name="MoveResizeTo">
-        <y>0</y>
-        <height>100%</height>
-      </action>
-    </keybind>
-    <keybind key="W-1">
-      <action name="Unmaximize"/>
-      <action name="MoveResizeTo">
-        <x>0</x>
-        <y>0</y>
-        <width>1/3</width>
-        <height>100%</height>
-      </action>
-    </keybind>
-    <keybind key="W-2">
-      <action name="Unmaximize"/>
-      <action name="MoveResizeTo">
-        <x>center</x>
-        <y>0</y>
-        <width>1/3</width>
-        <height>100%</height>
-      </action>
-    </keybind>
-    <keybind key="W-3">
-      <action name="Unmaximize"/>
-      <action name="MoveResizeTo">
-        <x>-0</x>
-        <y>0</y>
-        <width>1/3</width>
-        <height>100%</height>
-      </action>
-    </keybind>
-    <keybind key="W-S-1">
-      <action name="Unmaximize"/>
-      <action name="MoveResizeTo">
-        <x>0</x>
-        <y>0</y>
-        <width>2/3</width>
-        <height>100%</height>
-      </action>
-    </keybind>
-    <keybind key="W-S-3">
-      <action name="Unmaximize"/>
-      <action name="MoveResizeTo">
-        <x>-0</x>
-        <y>0</y>
-        <width>2/3</width>
-        <height>100%</height>
-      </action>
-    </keybind>
-    <keybind key="W-x">
-      <action name="Unmaximize"/>
-      <action name="MoveResizeTo">
-        <y>0</y>
-        <height>50%</height>
-      </action>
-    </keybind>
-    <keybind key="W-z">
-      <action name="Unmaximize"/>
-      <action name="MoveResizeTo">
-        <y>-0</y>
-        <height>50%</height>
-      </action>
-    </keybind>
-    <keybind key="W-less">
-      <action name="Unmaximize"/>
-      <action name="MoveResizeTo">
-        <x>center</x>
-        <y>center</y>
-      </action>
-    </keybind>
-    <keybind key="W-S-less">
-      <action name="Unmaximize"/>
-      <action name="MoveResizeTo">
-        <width>800</width>
-        <height>630</height>
-        <x>center</x>
-        <y>center</y>
-      </action>
-    </keybind>
-    <keybind key="W-S-a">
-      <action name="GrowToEdge">
-        <direction>west</direction>
-      </action>
-    </keybind>
-    <keybind key="W-S-s">
-      <action name="GrowToEdge">
-        <direction>south</direction>
-      </action>
-    </keybind>
-    <keybind key="W-S-w">
-      <action name="GrowToEdge">
-        <direction>north</direction>
-      </action>
-    </keybind>
-    <keybind key="W-S-d">
-      <action name="GrowToEdge">
-        <direction>east</direction>
-      </action>
-    </keybind>
-    <keybind key="W-C-a">
-      <action name="ShrinkToEdge">
-        <direction>west</direction>
-      </action>
-    </keybind>
-    <keybind key="W-C-s">
-      <action name="ShrinkToEdge">
-        <direction>south</direction>
-      </action>
-    </keybind>
-    <keybind key="W-C-w">
-      <action name="ShrinkToEdge">
-        <direction>north</direction>
-      </action>
-    </keybind>
-    <keybind key="W-C-d">
-      <action name="ShrinkToEdge">
-        <direction>east</direction>
-      </action>
-    </keybind>
-    <keybind key="W-f">
-      <action name="GrowToFill"></action>
-    </keybind>
-    <keybind key="W-h">
-      <action name="MoveResizeTo">
-        <x>0</x>
-      </action>
-    </keybind>
-    <keybind key="W-j">
-      <action name="MoveResizeTo">
-        <y>-0</y>
-      </action>
-    </keybind>
-    <keybind key="W-k">
-      <action name="MoveResizeTo">
-        <y>0</y>
-      </action>
-    </keybind>
-    <keybind key="W-l">
-      <action name="MoveResizeTo">
-        <x>-0</x>
-      </action>
-    </keybind>
-    <keybind key="W-S-h">
-      <action name="MoveToEdge">
-        <direction>west</direction>
-      </action>
-    </keybind>
-    <keybind key="W-S-j">
-      <action name="MoveToEdge">
-        <direction>south</direction>
-      </action>
-    </keybind>
-    <keybind key="W-S-k">
-      <action name="MoveToEdge">
-        <direction>north</direction>
-      </action>
-    </keybind>
-    <keybind key="W-S-l">
-      <action name="MoveToEdge">
-        <direction>east</direction>
-      </action>
-    </keybind>
-    <!-- Keybindings for windows -->
-    <keybind key="W-q"> <!-- Window close -->
-      <action name="If">
-        <query target="focus">
-          <!-- Steam will not exit cleanly with Openbox close action -->
-          <class>steam</class>
-          <title type="exact">Steam</title>
-        </query>
-        <then>
-          <action name="Execute">
-            <command>steam -shutdown</command>
-          </action>
-        </then>
-        <else>
-          <action name="Close"/>
-        </else>
-      </action>
-    </keybind>
-    <keybind key="W-S-q">
-      <action name="Execute">
-        <command>~/scripts/ob/close-all-inactive-sameclass.sh</command>
-      </action>
-    </keybind>
-    <keybind key="W-section A-section"> <!-- section = § -->
-      <action name="Execute">
-        <command>~/scripts/ob/cycle-sameclass --forward</command>
-      </action>
-    </keybind>
-    <keybind key="W-S-section A-S-section">
-      <action name="Execute">
-        <command>~/scripts/ob/cycle-sameclass --backward</command>
-      </action>
-    </keybind>
-    <keybind key="W-e">
-      <action name="Iconify"/> <!-- as in "minimize" -->
-    </keybind>
-    <keybind key="W-S-f">
-      <action name="ToggleFullscreen"/>
-    </keybind>
-    <keybind key="W-t">
-      <action name="ToggleAlwaysOnTop"/>
-    </keybind>
-    <keybind key="W-S-t">
-      <action name="ToggleAlwaysOnBottom"/>
-    </keybind>
-    <!-- Keybindings for running applications -->
-    <keybind key="W-Return">
-      <action name="Execute">
-        <command>alacritty</command>
-      </action>
-    </keybind>
-    <keybind key="W-space">
-      <action name="Execute">
-        <command>rofi -show drun -theme-str 'window {width: 22%;}'</command>
-      </action>
-    </keybind>
-    <keybind key="W-Tab">
-      <action name="Execute">
-        <command>rofi -show window</command>
-      </action>
-    </keybind>
-    <keybind key="W-c">
-      <action name="Execute">
-        <command>rofi -modes "greenclip:greenclip print" -show greenclip -run-command '{cmd}'</command>
-      </action>
-    </keybind>
-    <keybind key="Print">
-      <action name="Execute">
-        <command>flameshot gui</command>
-      </action>
-    </keybind>
-    <keybind key="C-S-Print">
-      <action name="Execute">
-        <command>flameshot full -p ~/files/pics/screenshots</command>
-      </action>
-    </keybind>
-    <!-- Dunst keybinds (control popup notifications) -->
-    <keybind key="W-n">
-      <action name="Execute">
-        <command>dunstctl history-pop</command>
-      </action>
-    </keybind>
-    <keybind key="W-S-n">
-      <action name="Execute">
-        <command>dunstctl close</command>
-      </action>
-    </keybind>
-    <keybind key="W-C-S-n">
-      <action name="Execute">
-        <command>dunstctl close-all</command>
-      </action>
-    </keybind>
-    <keybind key="W-m">
-      <action name="Execute">
-        <command>dunstctl action</command>
-      </action>
-    </keybind>
-    <keybind key="W-v">
-      <action name="Execute">
-        <command>~/scripts/ob/notify-current-date.sh</command>
-      </action>
-    </keybind>
-  </keyboard>
-  <mouse>
-    <dragThreshold>2</dragThreshold>
-    <!-- Whole window including decorations -->
-    <context name="Frame">
-      <mousebind button="A-Left" action="Press">
-        <action name="Focus"/>
-        <action name="Raise"/>
-      </mousebind>
-      <mousebind button="A-Left" action="Drag">
-        <action name="Move"/>
-      </mousebind>
-      <mousebind button="W-Left" action="Press">
-        <action name="Focus"/>
-        <action name="Raise"/>
-      </mousebind>
-      <mousebind button="W-Left" action="Drag">
-        <action name="Resize"/>
-      </mousebind>
-    </context>
-    <!-- Area inside window decorations -->
-    <context name="Client">
-      <mousebind button="Left Right" action="Press">
-        <!-- WORKAROUND for Steam's messed up context menus: -->
-        <!-- https://github.com/ValveSoftware/steam-for-linux/issues/9273#issuecomment-1766922429 -->
-        <action name="If">
-          <query>
-            <focused>no</focused>
-          </query>
-          <then>
-            <action name="Focus"/>
-          </then>
-        </action>
-        <action name="Raise"/>
-      </mousebind>
-    </context>
-    <context name="Titlebar">
-      <mousebind button="Left Right" action="Press">
-        <action name="Focus"/>
-        <action name="Raise"/>
-      </mousebind>
-      <mousebind button="Left" action="Drag">
-        <action name="Move"/>
-      </mousebind>
-    </context>
-    <context name="Iconify">
-      <mousebind button="Left Right" action="Press">
-        <action name="Focus"/>
-        <action name="Raise"/>
-        <action name="Iconify"/>
-      </mousebind>
-    </context>
-    <context name="Maximize">
-      <mousebind button="Left Right" action="Press">
-        <action name="Focus"/>
-        <action name="Raise"/>
-        <action name="ToggleMaximize"/>
-      </mousebind>
-    </context>
-    <context name="Close">
-      <mousebind button="Left Right" action="Press">
-        <action name="Focus"/>
-        <action name="Raise"/>
-        <action name="Close"/>
-      </mousebind>
-    </context>
-    <context name="Shade">
-      <mousebind button="Left Right" action="Press">
-        <action name="Focus"/>
-        <action name="Raise"/>
-        <action name="ToggleShade"/>
-      </mousebind>
-    </context>
-    <context name="AllDesktops">
-      <mousebind button="Left Right" action="Press">
-        <action name="Focus"/>
-        <action name="Raise"/>
-        <action name="ToggleOmnipresent"/>
-      </mousebind>
-    </context>
-    <!-- Areas outside of titlebar can't be clicked or dragged in a borderless theme -->
-    <!-- Sad but true -->
-    <!-- Applications like Steam or Vivaldi allow resizing from anywhere regardless of these settings -->
-    <context name="TLCorner Top TRCorner">
-      <mousebind button="Left Right" action="Press">
-        <action name="Focus"/>
-        <action name="Raise"/>
-      </mousebind>
-      <mousebind button="Left" action="Drag">
-        <action name="Resize"/> 
-      </mousebind>
-    </context>
-    <context name="Desktop">
-      <!-- To have none of the windows focused, click on desktop -->
-      <mousebind button="Left" action="Click">
-        <action name="Focus"/>
-        <action name="raise"/>
-      </mousebind>
-      <mousebind button="Right" action="Press">
-        <action name="ShowMenu">
-          <menu>root-menu</menu>
-        </action>
-      </mousebind>
-    </context>
-  </mouse>
-  <applications>
-    <application role="PictureInPicture">
-      <desktop>all</desktop>
-    </application>
-  </applications>
-  <menu>
-    <file>menu.xml</file>
-  </menu>
+    <resistance>
+        <strength>20</strength>
+        <screen_edge_strength>40</screen_edge_strength>
+    </resistance>
+    <placement>
+        <center>yes</center>
+    </placement>
+    <theme>
+        <name>Borderless-Dark</name>
+        <titleLayout>LIMC</titleLayout>
+        <font place="ActiveWindow">
+            <name>Roboto</name>
+            <size>11</size>
+            <weight>normal</weight>
+        </font>
+        <font place="InactiveWindow">
+            <name>Roboto</name>
+            <size>11</size>
+            <weight>normal</weight>
+        </font>
+        <font place="MenuHeader">
+            <name>Roboto</name>
+            <size>11</size>
+        </font>
+        <font place="MenuItem">
+            <name>Roboto</name>
+            <size>11</size>
+        </font>
+    </theme>
+    <desktops>
+        <number>1</number>
+    </desktops>
+    <resize>
+        <drawContents>yes</drawContents>
+        <popupShow>Never</popupShow>
+    </resize>
+    <keyboard>
+        <!-- Reload config -->
+        <keybind key="W-0">
+            <action name="Execute">
+                <command>openbox --restart</command>
+            </action>
+        </keybind>
+        <!-- Volume/brightness control and screenlocking through their dedicated keys -->
+        <keybind key="F2">
+            <action name="Execute">
+                <command>~/scripts/ob/change-volume.sh -5</command>
+            </action>
+        </keybind>
+        <keybind key="W-F2">
+            <action name="Execute">
+                <command>~/scripts/ob/change-volume.sh -1</command>
+            </action>
+        </keybind>
+        <keybind key="W-S-F2">
+            <action name="Execute">
+                <command>~/scripts/ob/change-volume.sh 0</command>
+            </action>
+        </keybind>
+        <keybind key="F3">
+            <action name="Execute">
+                <command>~/scripts/ob/change-volume.sh +5</command>
+            </action>
+        </keybind>
+        <keybind key="W-F3">
+            <action name="Execute">
+                <command>~/scripts/ob/change-volume.sh +1</command>
+            </action>
+        </keybind>
+        <keybind key="F5">
+            <action name="Execute">
+                <command>~/scripts/ob/change-brightness.sh -5</command>
+            </action>
+        </keybind>
+        <keybind key="F6">
+            <action name="Execute">
+                <command>~/scripts/ob/change-brightness.sh +5</command>
+            </action>
+        </keybind>
+        <keybind key="W-F5">
+            <action name="Execute">
+                <command>~/scripts/ob/change-brightness.sh -1</command>
+            </action>
+        </keybind>
+        <keybind key="W-F6">
+            <action name="Execute">
+                <command>~/scripts/ob/change-brightness.sh +1</command>
+            </action>
+        </keybind>
+        <keybind key="W-S-F5">
+            <action name="Execute">
+                <command>~/scripts/ob/change-brightness.sh -100</command>
+            </action>
+        </keybind>
+        <keybind key="W-S-F6">
+            <action name="Execute">
+                <command>~/scripts/ob/change-brightness.sh +100</command>
+            </action>
+        </keybind>
+        <keybind key="W-Delete">
+            <action name="Execute">
+                <command>xsecurelock</command>
+            </action>
+        </keybind>
+        <!-- Window focus -->
+        <keybind key="A-Tab">
+            <action name="NextWindow">
+                <interactive>no</interactive>
+            </action>
+        </keybind>
+        <!-- Window size and position controls -->
+        <keybind key="W-a">
+            <action name="Unmaximize"/>
+            <action name="MoveResizeTo">
+                <x>0</x>
+                <y>0</y>
+                <width>50%</width>
+                <height>100%</height>
+            </action>
+        </keybind>
+        <keybind key="W-d">
+            <action name="Unmaximize"/>
+            <action name="MoveResizeTo">
+                <x>-0</x>
+                <y>0</y>
+                <width>50%</width>
+                <height>100%</height>
+            </action>
+        </keybind>
+        <keybind key="W-w">
+            <action name="ToggleMaximize"/>
+        </keybind>
+        <keybind key="W-s">
+            <action name="MoveResizeTo">
+                <y>0</y>
+                <height>100%</height>
+            </action>
+        </keybind>
+        <keybind key="W-1">
+            <action name="Unmaximize"/>
+            <action name="MoveResizeTo">
+                <x>0</x>
+                <y>0</y>
+                <width>1/3</width>
+                <height>100%</height>
+            </action>
+        </keybind>
+        <keybind key="W-2">
+            <action name="Unmaximize"/>
+            <action name="MoveResizeTo">
+                <x>center</x>
+                <y>0</y>
+                <width>1/3</width>
+                <height>100%</height>
+            </action>
+        </keybind>
+        <keybind key="W-3">
+            <action name="Unmaximize"/>
+            <action name="MoveResizeTo">
+                <x>-0</x>
+                <y>0</y>
+                <width>1/3</width>
+                <height>100%</height>
+            </action>
+        </keybind>
+        <keybind key="W-S-1">
+            <action name="Unmaximize"/>
+            <action name="MoveResizeTo">
+                <x>0</x>
+                <y>0</y>
+                <width>2/3</width>
+                <height>100%</height>
+            </action>
+        </keybind>
+        <keybind key="W-S-3">
+            <action name="Unmaximize"/>
+            <action name="MoveResizeTo">
+                <x>-0</x>
+                <y>0</y>
+                <width>2/3</width>
+                <height>100%</height>
+            </action>
+        </keybind>
+        <keybind key="W-x">
+            <action name="Unmaximize"/>
+            <action name="MoveResizeTo">
+                <y>0</y>
+                <height>50%</height>
+            </action>
+        </keybind>
+        <keybind key="W-z">
+            <action name="Unmaximize"/>
+            <action name="MoveResizeTo">
+                <y>-0</y>
+                <height>50%</height>
+            </action>
+        </keybind>
+        <keybind key="W-less">
+            <action name="Unmaximize"/>
+            <action name="MoveResizeTo">
+                <x>center</x>
+                <y>center</y>
+            </action>
+        </keybind>
+        <keybind key="W-S-less">
+            <action name="Unmaximize"/>
+            <action name="MoveResizeTo">
+                <width>800</width>
+                <height>630</height>
+                <x>center</x>
+                <y>center</y>
+            </action>
+        </keybind>
+        <keybind key="W-S-a">
+            <action name="GrowToEdge">
+                <direction>west</direction>
+            </action>
+        </keybind>
+        <keybind key="W-S-s">
+            <action name="GrowToEdge">
+                <direction>south</direction>
+            </action>
+        </keybind>
+        <keybind key="W-S-w">
+            <action name="GrowToEdge">
+                <direction>north</direction>
+            </action>
+        </keybind>
+        <keybind key="W-S-d">
+            <action name="GrowToEdge">
+                <direction>east</direction>
+            </action>
+        </keybind>
+        <keybind key="W-C-a">
+            <action name="ShrinkToEdge">
+                <direction>west</direction>
+            </action>
+        </keybind>
+        <keybind key="W-C-s">
+            <action name="ShrinkToEdge">
+                <direction>south</direction>
+            </action>
+        </keybind>
+        <keybind key="W-C-w">
+            <action name="ShrinkToEdge">
+                <direction>north</direction>
+            </action>
+        </keybind>
+        <keybind key="W-C-d">
+            <action name="ShrinkToEdge">
+                <direction>east</direction>
+            </action>
+        </keybind>
+        <keybind key="W-f">
+            <action name="GrowToFill"></action>
+        </keybind>
+        <keybind key="W-h">
+            <action name="MoveResizeTo">
+                <x>0</x>
+            </action>
+        </keybind>
+        <keybind key="W-j">
+            <action name="MoveResizeTo">
+                <y>-0</y>
+            </action>
+        </keybind>
+        <keybind key="W-k">
+            <action name="MoveResizeTo">
+                <y>0</y>
+            </action>
+        </keybind>
+        <keybind key="W-l">
+            <action name="MoveResizeTo">
+                <x>-0</x>
+            </action>
+        </keybind>
+        <keybind key="W-S-h">
+            <action name="MoveToEdge">
+                <direction>west</direction>
+            </action>
+        </keybind>
+        <keybind key="W-S-j">
+            <action name="MoveToEdge">
+                <direction>south</direction>
+            </action>
+        </keybind>
+        <keybind key="W-S-k">
+            <action name="MoveToEdge">
+                <direction>north</direction>
+            </action>
+        </keybind>
+        <keybind key="W-S-l">
+            <action name="MoveToEdge">
+                <direction>east</direction>
+            </action>
+        </keybind>
+        <!-- Keybindings for windows -->
+        <keybind key="W-q"> <!-- Window close -->
+            <action name="If">
+                <query target="focus">
+                    <!-- Steam will not exit cleanly with Openbox close action -->
+                    <class>steam</class>
+                    <title type="exact">Steam</title>
+                </query>
+                <then>
+                    <action name="Execute">
+                        <command>steam -shutdown</command>
+                    </action>
+                </then>
+                <else>
+                    <action name="Close"/>
+                </else>
+            </action>
+        </keybind>
+        <keybind key="W-S-q">
+            <action name="Execute">
+                <command>~/scripts/ob/close-all-inactive-sameclass.sh</command>
+            </action>
+        </keybind>
+        <keybind key="W-section A-section"> <!-- section = § -->
+            <action name="Execute">
+                <command>~/scripts/ob/cycle-sameclass --forward</command>
+            </action>
+        </keybind>
+        <keybind key="W-S-section A-S-section">
+            <action name="Execute">
+                <command>~/scripts/ob/cycle-sameclass --backward</command>
+            </action>
+        </keybind>
+        <keybind key="W-e">
+            <action name="Iconify"/> <!-- as in "minimize" -->
+        </keybind>
+        <keybind key="W-S-f">
+            <action name="ToggleFullscreen"/>
+        </keybind>
+        <keybind key="W-t">
+            <action name="ToggleAlwaysOnTop"/>
+        </keybind>
+        <keybind key="W-S-t">
+            <action name="ToggleAlwaysOnBottom"/>
+        </keybind>
+        <!-- Keybindings for running applications -->
+        <keybind key="W-Return">
+            <action name="Execute">
+                <command>alacritty</command>
+            </action>
+        </keybind>
+        <keybind key="W-space">
+            <action name="Execute">
+                <command>rofi -show drun -theme-str 'window {width: 22%;}'</command>
+            </action>
+        </keybind>
+        <keybind key="W-Tab">
+            <action name="Execute">
+                <command>rofi -show window</command>
+            </action>
+        </keybind>
+        <keybind key="W-c">
+            <action name="Execute">
+                <command>rofi -modes "greenclip:greenclip print" -show greenclip -run-command '{cmd}'</command>
+            </action>
+        </keybind>
+        <keybind key="Print">
+            <action name="Execute">
+                <command>flameshot gui</command>
+            </action>
+        </keybind>
+        <keybind key="C-S-Print">
+            <action name="Execute">
+                <command>flameshot full -p ~/files/pics/screenshots</command>
+            </action>
+        </keybind>
+        <!-- Dunst keybinds (control popup notifications) -->
+        <keybind key="W-n">
+            <action name="Execute">
+                <command>dunstctl history-pop</command>
+            </action>
+        </keybind>
+        <keybind key="W-S-n">
+            <action name="Execute">
+                <command>dunstctl close</command>
+            </action>
+        </keybind>
+        <keybind key="W-C-S-n">
+            <action name="Execute">
+                <command>dunstctl close-all</command>
+            </action>
+        </keybind>
+        <keybind key="W-m">
+            <action name="Execute">
+                <command>dunstctl action</command>
+            </action>
+        </keybind>
+        <keybind key="W-v">
+            <action name="Execute">
+                <command>~/scripts/ob/notify-current-date.sh</command>
+            </action>
+        </keybind>
+    </keyboard>
+    <mouse>
+        <dragThreshold>2</dragThreshold>
+        <!-- Whole window including decorations -->
+        <context name="Frame">
+            <mousebind button="A-Left" action="Press">
+                <action name="Focus"/>
+                <action name="Raise"/>
+            </mousebind>
+            <mousebind button="A-Left" action="Drag">
+                <action name="Move"/>
+            </mousebind>
+            <mousebind button="W-Left" action="Press">
+                <action name="Focus"/>
+                <action name="Raise"/>
+            </mousebind>
+            <mousebind button="W-Left" action="Drag">
+                <action name="Resize"/>
+            </mousebind>
+        </context>
+        <!-- Area inside window decorations -->
+        <context name="Client">
+            <mousebind button="Left Right" action="Press">
+                <!-- WORKAROUND for Steam's messed up context menus: -->
+                <!-- https://github.com/ValveSoftware/steam-for-linux/issues/9273#issuecomment-1766922429 -->
+                <action name="If">
+                    <query>
+                        <focused>no</focused>
+                    </query>
+                    <then>
+                        <action name="Focus"/>
+                    </then>
+                </action>
+                <action name="Raise"/>
+            </mousebind>
+        </context>
+        <context name="Titlebar">
+            <mousebind button="Left Right" action="Press">
+                <action name="Focus"/>
+                <action name="Raise"/>
+            </mousebind>
+            <mousebind button="Left" action="Drag">
+                <action name="Move"/>
+            </mousebind>
+        </context>
+        <context name="Iconify">
+            <mousebind button="Left Right" action="Press">
+                <action name="Focus"/>
+                <action name="Raise"/>
+                <action name="Iconify"/>
+            </mousebind>
+        </context>
+        <context name="Maximize">
+            <mousebind button="Left Right" action="Press">
+                <action name="Focus"/>
+                <action name="Raise"/>
+                <action name="ToggleMaximize"/>
+            </mousebind>
+        </context>
+        <context name="Close">
+            <mousebind button="Left Right" action="Press">
+                <action name="Focus"/>
+                <action name="Raise"/>
+                <action name="Close"/>
+            </mousebind>
+        </context>
+        <context name="Shade">
+            <mousebind button="Left Right" action="Press">
+                <action name="Focus"/>
+                <action name="Raise"/>
+                <action name="ToggleShade"/>
+            </mousebind>
+        </context>
+        <context name="AllDesktops">
+            <mousebind button="Left Right" action="Press">
+                <action name="Focus"/>
+                <action name="Raise"/>
+                <action name="ToggleOmnipresent"/>
+            </mousebind>
+        </context>
+        <!-- Areas outside of titlebar can't be clicked or dragged in a borderless theme -->
+        <!-- Sad but true -->
+        <!-- Applications like Steam or Vivaldi allow resizing from anywhere regardless of these settings -->
+        <context name="TLCorner Top TRCorner">
+            <mousebind button="Left Right" action="Press">
+                <action name="Focus"/>
+                <action name="Raise"/>
+            </mousebind>
+            <mousebind button="Left" action="Drag">
+                <action name="Resize"/> 
+            </mousebind>
+        </context>
+        <context name="Desktop">
+            <!-- To have none of the windows focused, click on desktop -->
+            <mousebind button="Left" action="Click">
+                <action name="Focus"/>
+                <action name="raise"/>
+            </mousebind>
+            <mousebind button="Right" action="Press">
+                <action name="ShowMenu">
+                    <menu>root-menu</menu>
+                </action>
+            </mousebind>
+        </context>
+    </mouse>
+    <applications>
+        <application role="PictureInPicture">
+            <desktop>all</desktop>
+        </application>
+    </applications>
+    <menu>
+        <file>menu.xml</file>
+    </menu>
 </openbox_config>

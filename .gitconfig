@@ -1,23 +1,23 @@
 [user]
-	email = tuure.piitulainen@gmail.com
-	name = Tuure
+    email = tuure.piitulainen@gmail.com
+    name = Tuure
 
 [alias]
-        s = status
-	a = add
-	c = commit
-        ca = commit --amend
-        p = push
-        d = diff
-        ds = diff --staged
-        rs = restore --staged
-        r = remote
-        b = branch
-        co = checkout
-        l = log
+    s = status
+    a = add
+    c = commit
+    ca = commit --amend
+    p = push
+    d = diff
+    ds = diff --staged
+    rs = restore --staged
+    r = remote
+    b = branch
+    co = checkout
+    l = log
 
 [pull]
-	ff = only
+    ff = only
 
 [diff "color"]
-	commit = blue
+    commit = blue

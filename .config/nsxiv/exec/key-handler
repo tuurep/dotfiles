@@ -12,20 +12,20 @@
 # keysym as listed in /usr/include/X11/keysymdef.h without the "XK_" prefix.
 
 rotate() {
-	degree="$1"
-	tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read file; do
-		case "$(file -b -i "$file")" in
-                        image/jpeg*) jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
-                        *)           mogrify  -rotate "$degree" "$file" ;;
-		esac
-	done
+    degree="$1"
+    tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read file; do
+    case "$(file -b -i "$file")" in
+        image/jpeg*) jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
+        *)           mogrify  -rotate "$degree" "$file" ;;
+    esac
+done
 }
 
 case "$1" in
-        # Todo: this ain't working
-        # "C-c")      tr '\n' ' ' | cb copy ;;
-        "C-comma")  rotate 270 ;;
-        "C-period") rotate  90 ;;
-        "C-minus")  rotate 180 ;;
+    # Todo: this ain't working
+    # "C-c")      tr '\n' ' ' | cb copy ;;
+    "C-comma")  rotate 270 ;;
+    "C-period") rotate  90 ;;
+    "C-minus")  rotate 180 ;;
 esac
 

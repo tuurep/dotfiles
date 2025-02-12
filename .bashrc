@@ -13,25 +13,25 @@ stty -ixon
 
 # If in tty2 console, don't use unrenderable symbols (unicode, nerdfont)
 if [ "$TERM" = "linux" ]; then
-        PS1="\[\e[0;32m\]$ \[\e[0m\]"
-        PS2="\[\e[0;32m\]> \[\e[0m\]"
+    PS1="\[\e[0;32m\]$ \[\e[0m\]"
+    PS2="\[\e[0;32m\]> \[\e[0m\]"
 else
-        PS1="\[\e[0;32m\] \[\e[0m\]"
-        PS2="\[\e[0;32m\]󱞩 \[\e[0m\]"
+    PS1="\[\e[0;32m\] \[\e[0m\]"
+    PS2="\[\e[0;32m\]󱞩 \[\e[0m\]"
 fi
 
 prompt_cmd() {
-        history -a # Add previous command to ~/.bash_history
-                   # (so that new session has access to this session's command history)
+    history -a # Add previous command to ~/.bash_history
+               # (so that new session has access to this session's command history)
 
-        title=$(basename "$(dirs +0)")
-        echo -ne "\033]0;${title}\007" # Set WM window title
+    title=$(basename "$(dirs +0)")
+    echo -ne "\033]0;${title}\007" # Set WM window title
 
-        # If python-virtualenv activated, print venv name on a separate line before PS1
-        if [[ -n "$VIRTUAL_ENV" ]]; then
-                venv=$(basename "$VIRTUAL_ENV")
-                echo -e "\e[0;32m(${venv})\e[0m"
-        fi
+    # If python-virtualenv activated, print venv name on a separate line before PS1
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        venv=$(basename "$VIRTUAL_ENV")
+        echo -e "\e[0;32m(${venv})\e[0m"
+    fi
 }
 
 # Right before drawing prompt, this function is executed:
@@ -114,94 +114,94 @@ alias heat="sensors | grep 'fan\|CPU' | tr -d ' ' | cut -d ':' -f 2"
 # Functions:
 
 cleandups() {
-        uniq ~/.bash_history | sponge ~/.bash_history
+    uniq ~/.bash_history | sponge ~/.bash_history
 }
 
 grayprint_path() {
-        grayscale_243=$'\e[38;5;243m' # #767676
-        reset=$'\e[0m'
-        echo "${grayscale_243}$1${reset}"
+    grayscale_243=$'\e[38;5;243m' # #767676
+    reset=$'\e[0m'
+    echo "${grayscale_243}$1${reset}"
 }
 
 p() {
-        grayprint_path "$(dirs +0)"
+    grayprint_path "$(dirs +0)"
 }
 
 pl() {
-        grayprint_path "${OLDPWD/#$HOME/\~}"
+    grayprint_path "${OLDPWD/#$HOME/\~}"
 }
 
 c() {
-        builtin cd "$@" > /dev/null \
-                && p \
-                && l
+builtin cd "$@" > /dev/null \
+        && p \
+        && l
 }
 
 mc() {
-        mkdir "$@" && c "$@"
+    mkdir "$@" && c "$@"
 }
 
 eval "$(zoxide init bash)" # https://github.com/ajeetdsouza/zoxide
 z() {
-        __zoxide_z "$@" \
-                && p \
-                && l
+    __zoxide_z "$@" \
+            && p \
+            && l
 }
 zi() {
-        # Reimplement default `zi` (zoxide interactive)
+    # Reimplement default `zi` (zoxide interactive)
 
-        # Improvements:
-        #       - Replace $HOME with ~
-        #       - Don't show frecency score on the left (still sorted by it)
-        #       - "Exact" matching feels better for filepaths
+    # Improvements:
+    #       - Replace $HOME with ~
+    #       - Don't show frecency score on the left (still sorted by it)
+    #       - "Exact" matching feels better for filepaths
 
-        list=$(zoxide query -l | sed "s|^$HOME|~|g")
-        for subword in "$@"; do
-                list=$(/usr/bin/grep -i "$subword" <<< "$list")
-        done
+    list=$(zoxide query -l | sed "s|^$HOME|~|g")
+    for subword in "$@"; do
+        list=$(/usr/bin/grep -i "$subword" <<< "$list")
+    done
 
-        if [[ -z $list ]]; then
-                echo "zoxide: no match found"
-                return
-        fi
+    if [[ -z $list ]]; then
+        echo "zoxide: no match found"
+        return
+    fi
 
-        target=$(fzf --height=~40% --no-sort --exact --select-1 <<< "$list")
-        c "${target/#~/$HOME}"
+    target=$(fzf --height=~40% --no-sort --exact --select-1 <<< "$list")
+    c "${target/#~/$HOME}"
 }
 
 # ls long listing
 #       - sed removes first line (example: "total 4.0K")
 ll() {
-        l -oh --time-style=long-iso "$@" \
-                | sed -r '/^total [0-9]+\.?[0-9]*[BKMGT]?$/d'
+l -oh --time-style=long-iso "$@" \
+    | sed -r '/^total [0-9]+\.?[0-9]*[BKMGT]?$/d'
 }
 
 # tree with the box-drawing characters and end report turned into a dimmed fg color
 tree() {
-        grayscale_237=$'\e[38;5;237m' # #3a3a3a
-        grayscale_240=$'\e[38;5;240m' # #585858
-        reset=$'\e[0m'
-        /usr/bin/tree -C "$@" \
-                | sed -r -e "s/[├└│─]/${grayscale_237}&${reset}/g" \
-                         -e "s/[0-9]+ director(y|ies), [0-9]+ files?/${grayscale_240}&${reset}/g"
+    grayscale_237=$'\e[38;5;237m' # #3a3a3a
+    grayscale_240=$'\e[38;5;240m' # #585858
+    reset=$'\e[0m'
+    /usr/bin/tree -C "$@" \
+        | sed -r -e "s/[├└│─]/${grayscale_237}&${reset}/g" \
+                 -e "s/[0-9]+ director(y|ies), [0-9]+ files?/${grayscale_240}&${reset}/g"
 }
 
 mp() {
-        mpv --no-terminal "$@" & disown
+    mpv --no-terminal "$@" & disown
 }
 
 zat() {
-        zathura "$@" &> /dev/null & disown
+    zathura "$@" &> /dev/null & disown
 }
 
 v() {
-        nsxiv "$@" &> /dev/null & disown
+    nsxiv "$@" &> /dev/null & disown
 }
 
 o() {
-        for file in "$@"; do
-                xdg-open "$file" &> /dev/null & disown
-        done
+    for file in "$@"; do
+        xdg-open "$file" &> /dev/null & disown
+    done
 }
 
 # Text-to-speech with Google Translate's API
@@ -209,9 +209,9 @@ o() {
 # use alias langtags to find correct tags
 # use -s for slower speech
 say() {
-        # English accent is chosen by location - choose US English with .us top-level domain
-        # Pass -t co.uk to override to British English
-        gtts-cli -t us "$@" | mpv --really-quiet -
+    # English accent is chosen by location - choose US English with .us top-level domain
+    # Pass -t co.uk to override to British English
+    gtts-cli -t us "$@" | mpv --really-quiet -
 }
 
 # === Bash command history ===
@@ -252,24 +252,24 @@ complete -F _complete_alias "${!BASH_ALIASES[@]}"
 
 # https://github.com/junegunn/fzf
 # Enable fzf keybindings:
-#       Ctrl-R  command history fzf overwrite
-#       Ctrl-T  add fzf search result to command
-#       Alt-C   cd to fzf search result (folder)
+#   Ctrl-R  command history fzf overwrite
+#   Ctrl-T  add fzf search result to command
+#   Alt-C   cd to fzf search result (folder)
 source /usr/share/fzf/key-bindings.bash
 
 # Change fzf colors and icons, refer to: https://vitormv.github.io/fzf-themes/
 # Todo: fzf would be a useful tool in tty2, but can't show these icons and some of the colors (e.g. green)
 #       However, it's still usable, and this is a very niche use case...
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-        --color=fg:#767676,bg:#0d0d0d,hl:#d0d0d0
-        --color=fg+:#d0d0d0,bg+:#0d0d0d,hl+:#c36060
-        --color=selected-fg:#d0d0d0,selected-hl:#c36060
-        --color=prompt:#a7bd68,pointer:#a7bd68,marker:#a7bd68
-        --color=info:#444444,spinner:#444444,border:#444444,header:#7d9fbd
-        --prompt=" " --pointer="│" --marker="" --wrap-sign="        󱞩 "
-        --separator=" " --info=inline-right
-        --bind alt-j:down,alt-k:up,§:toggle-wrap
+    --color=fg:#767676,bg:#0d0d0d,hl:#d0d0d0
+    --color=fg+:#d0d0d0,bg+:#0d0d0d,hl+:#c36060
+    --color=selected-fg:#d0d0d0,selected-hl:#c36060
+    --color=prompt:#a7bd68,pointer:#a7bd68,marker:#a7bd68
+    --color=info:#444444,spinner:#444444,border:#444444,header:#7d9fbd
+    --prompt=" " --pointer="│" --marker="" --wrap-sign="        󱞩 "
+    --separator=" " --info=inline-right
+    --bind alt-j:down,alt-k:up,§:toggle-wrap
 '
 export _ZO_FZF_OPTS=$FZF_DEFAULT_OPTS'
-        --height=~40% --no-sort --select-1 --exit-0
+    --height=~40% --no-sort --select-1 --exit-0
 '
