@@ -51,7 +51,7 @@ o.gdefault = true -- substitute g is on by default - adding g will instead toggl
 o.splitright = true
 o.splitbelow = true
 
--- Global indent settings (see ~/.config/nvim/ftplugin for filetype-specific)
+-- Indent settings for new files (otherwise guessed by 'guess-indent.nvim')
 o.shiftwidth = 4
 o.softtabstop = 4
 o.expandtab = true
@@ -83,8 +83,9 @@ require("paq") {
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
     -- Essential:
-    "farmergreg/vim-lastplace", -- Open files in last edit position
-    "tpope/vim-repeat",         -- Dot-repeat mappings from plugins too
+    "farmergreg/vim-lastplace",
+    "tpope/vim-repeat",
+    "NMAC427/guess-indent.nvim",
 
     -- Operators:
     "echasnovski/mini.operators", -- exchange, replacewithregister, sort, duplicate
@@ -112,6 +113,7 @@ require("paq") {
     "lervag/vimtex",
     "justinmk/vim-dirvish"    -- netrw replacement
 }
+require("guess-indent").setup()
 require("Comment").setup()
 require("mini.indentscope").setup({
     options = { indent_at_cursor = false }
