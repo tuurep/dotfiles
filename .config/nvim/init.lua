@@ -83,9 +83,9 @@ require("paq") {
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
     -- Essential:
-    "farmergreg/vim-lastplace",
     "tpope/vim-repeat",
-    "NMAC427/guess-indent.nvim",
+    "farmergreg/vim-lastplace", -- remember last cursor position
+    "Darazaki/indent-o-matic",  -- change tab width when working on other peoples' files
 
     -- Operators:
     "echasnovski/mini.operators", -- exchange, replacewithregister, sort, duplicate
@@ -98,9 +98,9 @@ require("paq") {
     "haya14busa/vim-edgemotion",
 
     -- Textobjects stuff
-    "chaoren/vim-wordmotion",       -- Rework word delimiters for w b e ge iw aw
-    "echasnovski/mini.ai",          -- Anybracket, anyquote, function, argument
-    "echasnovski/mini.indentscope", -- Indent textobject and motions
+    "chaoren/vim-wordmotion",       -- rework word delimiters for w b e ge iw aw
+    "echasnovski/mini.ai",          -- anybracket, anyquote, function, argument
+    "echasnovski/mini.indentscope", -- indent textobject and motions
 
     -- Nonlinear undo history access
     "tuurep/undotree", -- mbbill/undotree fork
@@ -113,7 +113,6 @@ require("paq") {
     "lervag/vimtex",
     "justinmk/vim-dirvish"    -- netrw replacement
 }
-require("guess-indent").setup()
 require("Comment").setup()
 require("mini.indentscope").setup({
     options = { indent_at_cursor = false }
