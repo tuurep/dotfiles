@@ -56,8 +56,6 @@ o.shiftwidth = 4
 o.softtabstop = 4
 o.expandtab = true
 
-require("conf.keymaps")
-
 -- Globals for plugins
 g.lion_prompt = "Pattern: "
 g.lion_squeeze_spaces = 1
@@ -113,6 +111,8 @@ require("paq") {
     "lervag/vimtex",
     "justinmk/vim-dirvish"    -- netrw replacement
 }
+
+-- Setups
 require("Comment").setup()
 require("mini.indentscope").setup({
     options = { indent_at_cursor = false }
@@ -125,11 +125,32 @@ splitjoin.setup({
         }
     }
 })
+require'nvim-treesitter.configs'.setup({
 
--- Larger plugin configurations:
-require("conf.treesitter")
+    -- -- Todo: try to install/update parsers in the global update script
+    -- ensure_installed = "all",
+    -- auto_install = true,
+
+    ignore_install = {
+        "comment", -- too complicated comment parsing
+        "luap"     -- too complicated regex parsing in lua
+    },
+    highlight = {
+        enable = true,
+        disable = {
+            "diff" -- doesn't work in undotree
+        },
+    },
+    indent = {
+        enable = false
+    }
+})
+-- Use bash parser for filetype PKGBUILD
+vim.treesitter.language.register("bash", "PKGBUILD")
 
 -- Disable builtin plugins
 g.loaded_netrwPlugin = 0
 -- g.loaded_matchparen = 0 -- Disabling matchparen breaks vim-sneak highlight, see:
                            -- https://github.com/justinmk/vim-sneak/issues/305
+
+require("keymaps")
