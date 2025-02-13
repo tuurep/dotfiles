@@ -1,5 +1,9 @@
 -- Toggle a highlight group to reveal trailing whitespace
 
+-- Todo: add color to the SHOWN and HIDDEN messages
+-- Todo: additionally add a vertical line on lines exceeding `textwidth` cols
+--    -> change name e.g. `trailingwhite-toggle` -> `mistakes-hl-toggle`
+
 local fg =  "#d0d0d0"
 local red = "#c36060"
 

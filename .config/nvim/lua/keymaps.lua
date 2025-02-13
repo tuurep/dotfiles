@@ -331,6 +331,8 @@ map("n", "<leader>e", "<cmd>Inspect<cr>")
 map("n", "<leader>E", "<cmd>InspectTree<cr>")
 
 -- Bigger lua functions
+-- Todo: consider making `Å` a backwards `å` (builtin ~) instead,
+--       come up with another keymap for this
 map("n", "Å", require("trailingwhite-toggle"))
 
 -- ===== PLUGINS =====
