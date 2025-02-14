@@ -7,6 +7,7 @@ local autocmd = vim.api.nvim_create_autocmd
 vim.loader.enable()
 
 vim.cmd.colorscheme("goodnight")
+require("keymaps")
 
 -- Disable autowraps and comment continuations,
 -- and prevent /usr/share/nvim/runtime/ftplugins overriding them
@@ -51,7 +52,7 @@ o.gdefault = true -- substitute g is on by default - adding g will instead toggl
 o.splitright = true
 o.splitbelow = true
 
--- Indent settings for new files (otherwise guessed by 'guess-indent.nvim')
+-- Indent settings for new files (otherwise guessed by 'indent-o-matic')
 o.shiftwidth = 4
 o.softtabstop = 4
 o.expandtab = true
@@ -73,45 +74,6 @@ g.miniindentscope_disable = true -- Only care about the textobjects and motions 
 g.vimtex_syntax_enabled = 0         -- Let latex be handled by treesitter parser
 g.vimtex_syntax_conceal_disable = 1
 
--- Plugins
-require("paq") {
-    "savq/paq-nvim", -- Updates self
-
-    -- Syntax highlighting
-    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-
-    -- Essential:
-    "tpope/vim-repeat",
-    "farmergreg/vim-lastplace", -- remember last cursor position
-    "Darazaki/indent-o-matic",  -- change tab width when working on other peoples' files
-
-    -- Operators:
-    "echasnovski/mini.operators", -- exchange, replacewithregister, sort, duplicate
-    -- "echasnovski/mini.surround",
-    "numtostr/Comment.nvim",
-    "echasnovski/mini.splitjoin",
-    "tuurep/vim-lion",            -- tommcdo/vim-lion fork
-    "echasnovski/mini.move",
-    "justinmk/vim-sneak",
-    "haya14busa/vim-edgemotion",
-
-    -- Textobjects stuff
-    "chaoren/vim-wordmotion",       -- rework word delimiters for w b e ge iw aw
-    "echasnovski/mini.ai",          -- anybracket, anyquote, function, argument
-    "echasnovski/mini.indentscope", -- indent textobject and motions
-
-    -- Nonlinear undo history access
-    "tuurep/undotree", -- mbbill/undotree fork
-
-    -- Edit registers (especially macros) with :R[egisterEdit] <register>
-    "tuurep/registereditor",
-
-    -- Filetypes:
-    "jannis-baum/vivify.vim", -- markdown preview
-    "lervag/vimtex",
-    "justinmk/vim-dirvish"    -- netrw replacement
-}
-
 -- Setups
 require("Comment").setup()
 require("mini.indentscope").setup({
@@ -125,25 +87,13 @@ splitjoin.setup({
         }
     }
 })
-require'nvim-treesitter.configs'.setup({
-
-    -- -- Todo: try to install/update parsers in the global update script
-    -- ensure_installed = "all",
-    -- auto_install = true,
-
-    ignore_install = {
-        "comment", -- too complicated comment parsing
-        "luap"     -- too complicated regex parsing in lua
-    },
+require("nvim-treesitter.configs").setup({
     highlight = {
         enable = true,
         disable = {
             "diff" -- doesn't work in undotree
         },
     },
-    indent = {
-        enable = false
-    }
 })
 -- Use bash parser for filetype PKGBUILD
 vim.treesitter.language.register("bash", "PKGBUILD")
@@ -153,4 +103,6 @@ g.loaded_netrwPlugin = 0
 -- g.loaded_matchparen = 0 -- Disabling matchparen breaks vim-sneak highlight, see:
                            -- https://github.com/justinmk/vim-sneak/issues/305
 
-require("keymaps")
+-- Where plugins?
+-- See ./lua/update/plugins.lua
+-- Plugins are only updated with a bash script

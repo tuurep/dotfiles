@@ -1,0 +1,15 @@
+#!/bin/bash
+
+sudo pacman -Syu
+yay -Syu --aur
+
+paccache -rk1 # Keep only one past version of packages in /var/cache/pacman/pkg/
+yay -Yc       # Remove orphans
+
+# Update neovim plugins and treesitter parsers
+nvim -l ~/.config/nvim/lua/update/plugins.lua
+nvim -l ~/.config/nvim/lua/update/ts-parsers.lua
+
+# Why does my key repeat rate and caps-to-esc sometimes revert?
+# Reset them here as a workaround
+kbreset

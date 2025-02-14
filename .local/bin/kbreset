@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Map capslock to esc
+setxkbmap -option caps:escape
+
+# Key repeat: ms, interval
+xset r rate 315 25
