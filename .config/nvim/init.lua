@@ -57,6 +57,9 @@ o.shiftwidth = 4
 o.softtabstop = 4
 o.expandtab = true
 
+-- ~ takes a motion instead of changing case of 1 character and moving right
+o.tildeop = true
+
 -- Globals for plugins
 g.lion_prompt = "Pattern: "
 g.lion_squeeze_spaces = 1

@@ -21,14 +21,14 @@ map("n", "<C-r>", "<Nop>")              -- U as redo
 map("n", "<C-o>", "<Nop>")              -- <C-i> is compromised so use <M-o> and <M-i>
 map({"n", "x"}, "<C-e>", "<Nop>")       -- <M-s> and <M-d> are remapped as <C-e> and <C-y>
 map({"n", "x"}, "<Backspace>", "<Nop>")
-map({"n", "x"}, "gJ", "<Nop>")          -- g¤ for spaceless join, leave gJ and gK
+map({"n", "x"}, "gJ", "<Nop>")          -- gä for spaceless join, leave gJ and gK
                                         -- as ideas for vertical movement mappings
 -- zh zl
 -- gy gY
 -- gz gZ
--- ä Ä      (and g or z prefix)
--- ö Ö      (and g or z prefix)
--- å Å      g or z prefix
+-- gå gÅ zå zÅ
+-- ö Ö gö gÖ zö zÖ
+-- Ä gÄ zä zÄ
 -- ½
 
 -- Practically free:
@@ -152,8 +152,6 @@ map({"n", "x", "o"}, "gH", "g^")
 map({"n", "x", "o"}, "gL", "g$")
 
 -- Remap what the above has overriden
-map({"n", "x"}, "¤", "J")
-map({"n", "x"}, "g¤", "gJ")
 map({"i", "c"}, "<C-z>", "<C-k>")
 map({"n", "x", "o"}, "<leader>k", "H")
 map({"n", "x", "o"}, "<leader><leader>", "M")
@@ -256,7 +254,20 @@ map({"n", "x", "o"}, "<C-k>", function() scroll(-12) end)
 map("n", "<C-s>", "<cmd>w<cr>")
 map("n", "<C-q>", "<cmd>q<cr>")
 
--- Like yy dd cc but no newline at end
+-- Replace builtin J with an equivalent that takes a motion
+-- (meaning I won't find a new mapping for J because it's that much worse)
+-- (note: these functions are global)
+function J_motion(type)
+    vim.cmd("'[,']join")
+end
+function gJ_motion(type)
+    vim.cmd("'[,']join!")
+end
+map({"n", "x"}, "ä", "<cmd>set opfunc=v:lua.J_motion<cr>g@")
+map({"n", "x"}, "gä", "<cmd>set opfunc=v:lua.gJ_motion<cr>g@")
+map({"n", "x"}, "ää", "äj", r) -- Todo: handle [count]ää
+
+-- Like yy dd cc but no newline at end (Todo: handle counts)
 map("n", "<C-y>", function()
     vim.fn.setreg(vim.v.register, vim.api.nvim_get_current_line())
 end)
@@ -322,18 +333,16 @@ map("n", "U", "<C-r>")
 map("n", "<M-u>", "U")
 
 -- ~ too hard to press for being so useful
-map("n", "å", "~")
-map("n", "gå", "g~")
-map("n", "gåå", "g~~")
+map({"n", "x"}, "å", "~")
+map("n", "åå", "~~")
+map("n", "Å", "~$")
 
 -- Treesitter tools
 map("n", "<leader>e", "<cmd>Inspect<cr>")
 map("n", "<leader>E", "<cmd>InspectTree<cr>")
 
 -- Bigger lua functions
--- Todo: consider making `Å` a backwards `å` (builtin ~) instead,
---       come up with another keymap for this
-map("n", "Å", require("trailingwhite-toggle"))
+map({"n", "x"}, "¤", require("trailingwhite-toggle"))
 
 -- ===== PLUGINS =====
 
