@@ -66,9 +66,9 @@ map({"n", "x"}, "<leader>§", "<cmd>set wrap!<cr>")
 -- Remap macros
 map({"n", "x"}, "q", "<Nop>")
 map({"n", "x"}, "Q", "<Nop>")
-map({"n", "x"}, "+", "q")
-map({"n", "x"}, "<leader>+", "Q")
-map({"n", "x"}, "<M-+", "@")
+map({"n", "x"}, "<Del>", "q")
+map({"n", "x"}, "<S-Del>", "Q")
+map({"n", "x"}, "<M-Del>", "@")
 
 -- Tab to search
 map({"n", "x", "o"}, "<Tab>", "/")

@@ -14,6 +14,7 @@ map({"n", "x", "o"}, "<Up>", "<Nop>")
 map({"n", "x", "o"}, "<Down>", "<Nop>")
 map({"n", "x", "o"}, "<Left>", "<Nop>")
 map({"n", "x", "o"}, "<Right>", "<Nop>")
+map({"n", "x", "o"}, "+", "<Nop>")
 map({"n", "x", "o"}, "<C-d>", "<Nop>")  -- <C-d> is remapped, and <C-j> <C-k> preferred for scrolling
 map({"n", "x", "o"}, "M", "<Nop>")      -- H M L -> <leader>k <leader>m <leader>j
 map({"n", "x", "o"}, "/", "<Nop>")      -- Tab/S-Tab as search, ? is now :help
@@ -23,13 +24,13 @@ map({"n", "x"}, "<C-e>", "<Nop>")       -- <M-s> and <M-d> are remapped as <C-e>
 map({"n", "x"}, "<Backspace>", "<Nop>")
 map({"n", "x"}, "gJ", "<Nop>")          -- gä for spaceless join, leave gJ and gK
                                         -- as ideas for vertical movement mappings
+-- ½
 -- zh zl
 -- gy gY
 -- gz gZ
 -- gå gÅ zå zÅ
 -- ö Ö gö gÖ zö zÖ
 -- Ä gÄ zä zÄ
--- ½
 
 -- Practically free:
 -- , ;      surpassed by clever-f/t/s
@@ -45,9 +46,9 @@ map({"n", "i"}, "<F1>", "<Nop>")
 --     2. will conflict with visual mode Q surround mapping
 map({"n", "x"}, "q", "<Nop>")
 map({"n", "x"}, "Q", "<Nop>")
-map({"n", "x"}, "+", "q")
-map({"n", "x"}, "<leader>+", "Q")   -- Todo: maybe give ? to this and put :help somewhere else
-map({"n", "x"}, "<M-+", "@")        -- @ too hard to press and too separated from the other macro mappings
+map({"n", "x"}, "<Del>", "q")
+map({"n", "x"}, "<S-Del>", "Q")
+map({"n", "x"}, "<M-Del>", "@") -- @ too hard to press and too separated from the other macro mappings
 
 -- Tab to search
 map({"n", "x", "o"}, "<Tab>", "/")
