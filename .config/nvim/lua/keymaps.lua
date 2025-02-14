@@ -28,13 +28,13 @@ map({"n", "x"}, "gJ", "<Nop>")          -- gä for spaceless join, leave gJ and 
 -- zh zl
 -- gy gY
 -- gz gZ
--- gå gÅ zå zÅ
+-- gä gÄ zä zÄ
 -- ö Ö gö gÖ zö zÖ
--- Ä gÄ zä zÄ
+-- Å gÅ zå zå
 
 -- Practically free:
 -- , ;      surpassed by clever-f/t/s
---          although only , and ; will repeat last f/t/s regardless of what it as
+--          although only , and ; will repeat last f/t/s regardless of what it was
 
 -- Free (but bad):
 map({"n", "x", "i", "c"}, "<PageUp>", "<Nop>")
@@ -264,9 +264,9 @@ end
 function gJ_motion(type)
     vim.cmd("'[,']join!")
 end
-map({"n", "x"}, "ä", "<cmd>set opfunc=v:lua.J_motion<cr>g@")
-map({"n", "x"}, "gä", "<cmd>set opfunc=v:lua.gJ_motion<cr>g@")
-map({"n", "x"}, "ää", "äj", r) -- Todo: handle [count]ää
+map({"n", "x"}, "å", "<cmd>set opfunc=v:lua.J_motion<cr>g@")
+map({"n", "x"}, "gå", "<cmd>set opfunc=v:lua.gJ_motion<cr>g@")
+map({"n", "x"}, "åå", "åj", r) -- Todo: handle [count]åå
 
 -- Like yy dd cc but no newline at end (Todo: handle counts)
 map("n", "<C-y>", function()
@@ -334,9 +334,9 @@ map("n", "U", "<C-r>")
 map("n", "<M-u>", "U")
 
 -- ~ too hard to press for being so useful
-map({"n", "x"}, "å", "~")
-map("n", "åå", "~~")
-map("n", "Å", "~$")
+map({"n", "x"}, "ä", "~")
+map("n", "ää", "~~")
+map("n", "Ä", "~$")
 
 -- Treesitter tools
 map("n", "<leader>e", "<cmd>Inspect<cr>")
