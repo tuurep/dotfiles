@@ -1,28 +1,21 @@
--- Shorthands
-local map = vim.keymap.set
-local autocmd = vim.api.nvim_create_autocmd
-local g = vim.g
-local r = { remap = true }
-local b = { buffer = 0 }
-
 -- <leader> is <Space>
-map({"n", "x", "o"}, "<Space>", "<Nop>")
-g.mapleader = " "
+vim.keymap.set({"n", "x", "o"}, "<Space>", "<Nop>")
+vim.g.mapleader = " "
 
 -- Free keys:
-map({"n", "x", "o"}, "<Up>", "<Nop>")
-map({"n", "x", "o"}, "<Down>", "<Nop>")
-map({"n", "x", "o"}, "<Left>", "<Nop>")
-map({"n", "x", "o"}, "<Right>", "<Nop>")
-map({"n", "x", "o"}, "+", "<Nop>")
-map({"n", "x", "o"}, "<C-d>", "<Nop>")  -- <C-d> is remapped, and <C-j> <C-k> preferred for scrolling
-map({"n", "x", "o"}, "M", "<Nop>")      -- H M L -> <leader>k <leader>m <leader>j
-map({"n", "x", "o"}, "/", "<Nop>")      -- Tab/S-Tab as search, ? is now :help
-map("n", "<C-r>", "<Nop>")              -- U as redo
-map("n", "<C-o>", "<Nop>")              -- <C-i> is compromised so use <M-o> and <M-i>
-map({"n", "x"}, "<C-e>", "<Nop>")       -- <M-s> and <M-d> are remapped as <C-e> and <C-y>
-map({"n", "x"}, "<Backspace>", "<Nop>")
-map({"n", "x"}, "gJ", "<Nop>")          -- gä for spaceless join, leave gJ and gK
+vim.keymap.set({"n", "x", "o"}, "<Up>", "<Nop>")
+vim.keymap.set({"n", "x", "o"}, "<Down>", "<Nop>")
+vim.keymap.set({"n", "x", "o"}, "<Left>", "<Nop>")
+vim.keymap.set({"n", "x", "o"}, "<Right>", "<Nop>")
+vim.keymap.set({"n", "x", "o"}, "+", "<Nop>")
+vim.keymap.set({"n", "x", "o"}, "<C-d>", "<Nop>")  -- <C-d> is remapped, and <C-j> <C-k> preferred for scrolling
+vim.keymap.set({"n", "x", "o"}, "M", "<Nop>")      -- H M L -> <leader>k <leader>m <leader>j
+vim.keymap.set({"n", "x", "o"}, "/", "<Nop>")      -- Tab/S-Tab as search, ? is now :help
+vim.keymap.set("n", "<C-r>", "<Nop>")              -- U as redo
+vim.keymap.set("n", "<C-o>", "<Nop>")              -- <C-i> is compromised so use <M-o> and <M-i>
+vim.keymap.set({"n", "x"}, "<C-e>", "<Nop>")       -- <M-s> and <M-d> are remapped as <C-e> and <C-y>
+vim.keymap.set({"n", "x"}, "<Backspace>", "<Nop>")
+vim.keymap.set({"n", "x"}, "gJ", "<Nop>")          -- gä for spaceless join, leave gJ and gK
                                         -- as ideas for vertical movement mappings
 -- ½
 -- zh zl
@@ -37,32 +30,32 @@ map({"n", "x"}, "gJ", "<Nop>")          -- gä for spaceless join, leave gJ and 
 --          although only , and ; will repeat last f/t/s regardless of what it was
 
 -- Free (but bad):
-map({"n", "x", "i", "c"}, "<PageUp>", "<Nop>")
-map({"n", "x", "i", "c"}, "<PageDown>", "<Nop>")
-map({"n", "i"}, "<F1>", "<Nop>")
+vim.keymap.set({"n", "x", "i", "c"}, "<PageUp>", "<Nop>")
+vim.keymap.set({"n", "x", "i", "c"}, "<PageDown>", "<Nop>")
+vim.keymap.set({"n", "i"}, "<F1>", "<Nop>")
 
 -- q/Q for macros problems:
 --     1. it's easy to start recording a macro by accident
 --     2. will conflict with visual mode Q surround mapping
-map({"n", "x"}, "q", "<Nop>")
-map({"n", "x"}, "Q", "<Nop>")
-map({"n", "x"}, "<Del>", "q")
-map({"n", "x"}, "<S-Del>", "Q")
-map({"n", "x"}, "<M-Del>", "@") -- @ too hard to press and too separated from the other macro mappings
+vim.keymap.set({"n", "x"}, "q", "<Nop>")
+vim.keymap.set({"n", "x"}, "Q", "<Nop>")
+vim.keymap.set({"n", "x"}, "<Del>", "q")
+vim.keymap.set({"n", "x"}, "<S-Del>", "Q")
+vim.keymap.set({"n", "x"}, "<M-Del>", "@") -- @ too hard to press and too separated from the other macro mappings
 
 -- Tab to search
-map({"n", "x", "o"}, "<Tab>", "/")
-map({"n", "x", "o"}, "<S-Tab>", "?")
+vim.keymap.set({"n", "x", "o"}, "<Tab>", "/")
+vim.keymap.set({"n", "x", "o"}, "<S-Tab>", "?")
 
 -- Remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
-map("n", "<M-n>", "<C-o>")
-map("n", "<M-S-n>", "<C-i>")
+vim.keymap.set("n", "<M-n>", "<C-o>")
+vim.keymap.set("n", "<M-S-n>", "<C-i>")
 
 -- Start a substitute command without finger gymnastics:
-map("n", "<leader><Tab>", ":%s/")
-map("x", "<leader><Tab>", ":s/")
+vim.keymap.set("n", "<leader><Tab>", ":%s/")
+vim.keymap.set("x", "<leader><Tab>", ":s/")
 
-map("n", "<leader><Enter>", function()
+vim.keymap.set("n", "<leader><Enter>", function()
     local path = vim.fn.expand("%")
     local tildepath = vim.fn.fnamemodify(path, ":p:~")
     if vim.fn.bufname() == "" then
@@ -71,16 +64,16 @@ map("n", "<leader><Enter>", function()
     vim.api.nvim_echo({{tildepath}}, false, {})      -- current buffer full path
 end)                                                 -- $HOME as ~
 
-map("n", "<leader><Backspace>",
+vim.keymap.set("n", "<leader><Backspace>",
     "<cmd>echo fnamemodify(getcwd(), ':p:~')<cr>")    -- pwd but with tilde
 
-map("n", "<Enter>", "<cmd>echo ''<cr>")               -- clear cmdline text
+vim.keymap.set("n", "<Enter>", "<cmd>echo ''<cr>")               -- clear cmdline text
 
 -- Command mode <C-f> special buffer fixes
-autocmd({"CmdWinEnter"}, {
+vim.api.nvim_create_autocmd({"CmdWinEnter"}, {
     callback = function()
-        map("n", "<Enter>", "<Enter>", b) -- The above Enter mapping can't be used here
-        map("n", "q", "<cmd>q<cr>", b)
+        vim.keymap.set("n", "<Enter>", "<Enter>", { buffer = 0 }) -- The above Enter mapping can't be used here
+        vim.keymap.set("n", "q", "<cmd>q<cr>", { buffer = 0 })
         -- Todo: this window opens too small,
         --       how to make it behave like normal splits: take half of the
         --       available space above?
@@ -89,100 +82,100 @@ autocmd({"CmdWinEnter"}, {
 
 -- Insert/command mode Ctrl+a for beginning of line, Ctrl+E for end of line (readline style)
 -- If they override something, remap that elsewhere
-map({"i", "c"}, "<C-a>", "<Home>")
-map("i", "<C-e>", "<End>")
-map({"i", "c"}, "<C-b>", "<C-a>") -- command mode: <C-b> == <Home>, insert mode: <C-b> is unmapped
-map("i", "<M-i>", "<C-e>")
+vim.keymap.set({"i", "c"}, "<C-a>", "<Home>")
+vim.keymap.set("i", "<C-e>", "<End>")
+vim.keymap.set({"i", "c"}, "<C-b>", "<C-a>") -- command mode: <C-b> == <Home>, insert mode: <C-b> is unmapped
+vim.keymap.set("i", "<M-i>", "<C-e>")
 
 -- Insert mode bracket/quote aliases with autopair behavior
 -- Todo: Turn into a plugin to better control when to indent and when not to
-map("i", "<M-b>", "()<Left>")
-map("i", "<M-e>", "()<Left>")
-map("i", "<M-d>", "{}<Left>")
-map("i", "<M-a>", "[]<Left>")
-map("i", "<M-<>", "<><Left>")
+vim.keymap.set("i", "<M-b>", "()<Left>")
+vim.keymap.set("i", "<M-e>", "()<Left>")
+vim.keymap.set("i", "<M-d>", "{}<Left>")
+vim.keymap.set("i", "<M-a>", "[]<Left>")
+vim.keymap.set("i", "<M-<>", "<><Left>")
 
-map("i", "<M-B>",    "(  )<Left><Left>")
-map("i", "<M-E>",    "(  )<Left><Left>")
-map("i", "<M-D>",    "{  }<Left><Left>")
-map("i", "<M-A>",    "[  ]<Left><Left>")
-map("i", "<M-S-lt>", "<  ><Left><Left>") -- ">" would close the key tag
+vim.keymap.set("i", "<M-B>",    "(  )<Left><Left>")
+vim.keymap.set("i", "<M-E>",    "(  )<Left><Left>")
+vim.keymap.set("i", "<M-D>",    "{  }<Left><Left>")
+vim.keymap.set("i", "<M-A>",    "[  ]<Left><Left>")
+vim.keymap.set("i", "<M-S-lt>", "<  ><Left><Left>") -- ">" would close the key tag
 
-map("i", "<M-q>", '""<Left>')
-map("i", "<M-r>", "''<Left>")
-map("i", "<M-x>", "``<Left>")
+vim.keymap.set("i", "<M-q>", '""<Left>')
+vim.keymap.set("i", "<M-r>", "''<Left>")
+vim.keymap.set("i", "<M-x>", "``<Left>")
 
-map("i", "<M-Q>", '""""""<left><left><left>')
-map("i", "<M-X>", "``````<Left><Left><Left>")
+vim.keymap.set("i", "<M-Q>", '""""""<left><left><left>')
+vim.keymap.set("i", "<M-X>", "``````<Left><Left><Left>")
 
-map("i", "<M-m>", "**<Left>")
-map("i", "<M-M>", "****<Left><Left>")
+vim.keymap.set("i", "<M-m>", "**<Left>")
+vim.keymap.set("i", "<M-M>", "****<Left><Left>")
 
-map("i", "<M-Enter><M-b>", "()<left><Enter><Esc>O")
-map("i", "<M-Enter><M-e>", "()<left><Enter><Esc>O")
-map("i", "<M-Enter><M-d>", "{}<left><Enter><Esc>O")
-map("i", "<M-Enter><M-a>", "[]<left><Enter><Esc>O")
-map("i", "<M-Enter><M-<>", "<><left><Enter><Esc>O")
+vim.keymap.set("i", "<M-Enter><M-b>", "()<left><Enter><Esc>O")
+vim.keymap.set("i", "<M-Enter><M-e>", "()<left><Enter><Esc>O")
+vim.keymap.set("i", "<M-Enter><M-d>", "{}<left><Enter><Esc>O")
+vim.keymap.set("i", "<M-Enter><M-a>", "[]<left><Enter><Esc>O")
+vim.keymap.set("i", "<M-Enter><M-<>", "<><left><Enter><Esc>O")
 
-map("i", "<M-Enter><M-q>", '""<left><Enter><Esc>O')
-map("i", "<M-Enter><M-r>", "''<left><Enter><Esc>O")
-map("i", "<M-Enter><M-x>", "``<left><Enter><Esc>O")
+vim.keymap.set("i", "<M-Enter><M-q>", '""<left><Enter><Esc>O')
+vim.keymap.set("i", "<M-Enter><M-r>", "''<left><Enter><Esc>O")
+vim.keymap.set("i", "<M-Enter><M-x>", "``<left><Enter><Esc>O")
 
-map("i", "<M-Enter><M-Q>", '""""""<left><left><left><Enter><Esc>O')
-map("i", "<M-Enter><M-X>", "``````<left><left><left><Enter><Esc>O")
+vim.keymap.set("i", "<M-Enter><M-Q>", '""""""<left><left><left><Enter><Esc>O')
+vim.keymap.set("i", "<M-Enter><M-X>", "``````<left><left><left><Enter><Esc>O")
 
-map("i", "<M-Enter><M-m>", "**<left><Enter><Esc>O")
-map("i", "<M-Enter><M-M>", "****<left><left><Enter><Esc>O")
+vim.keymap.set("i", "<M-Enter><M-m>", "**<left><Enter><Esc>O")
+vim.keymap.set("i", "<M-Enter><M-M>", "****<left><left><Enter><Esc>O")
 
 -- Need these to avoid arrow keys
 -- Todo: Ctrk+hjkl full word navigation?
 --       Try to make consistent with bash
 --       Problem: Ctrl+l for `clear` so useful in bash
-map({"i", "c"}, "<M-h>", "<Left>")
-map({"i", "c"}, "<M-j>", "<Down>")
-map({"i", "c"}, "<M-k>", "<Up>")
-map({"i", "c"}, "<M-l>", "<Right>")
+vim.keymap.set({"i", "c"}, "<M-h>", "<Left>")
+vim.keymap.set({"i", "c"}, "<M-j>", "<Down>")
+vim.keymap.set({"i", "c"}, "<M-k>", "<Up>")
+vim.keymap.set({"i", "c"}, "<M-l>", "<Right>")
 
 -- Essential keys for both movement and operator pending
 -- (with the worst defaults known to man)
-map({"n", "x", "o"}, "-", "}")
-map({"n", "x", "o"}, "_", "{")
-map({"n", "x", "o"}, "H", "^")
-map({"n", "x", "o"}, "L", "$")
-map({"n", "x", "o"}, "gH", "g^")
-map({"n", "x", "o"}, "gL", "g$")
+vim.keymap.set({"n", "x", "o"}, "-", "}")
+vim.keymap.set({"n", "x", "o"}, "_", "{")
+vim.keymap.set({"n", "x", "o"}, "H", "^")
+vim.keymap.set({"n", "x", "o"}, "L", "$")
+vim.keymap.set({"n", "x", "o"}, "gH", "g^")
+vim.keymap.set({"n", "x", "o"}, "gL", "g$")
 
 -- Remap what the above has overriden
-map({"i", "c"}, "<C-z>", "<C-k>")
-map({"n", "x", "o"}, "<leader>k", "H")
-map({"n", "x", "o"}, "<leader><leader>", "M")
-map({"n", "x", "o"}, "<leader>j", "L")
-map({"n", "x"}, "?", "K")
+vim.keymap.set({"i", "c"}, "<C-z>", "<C-k>")
+vim.keymap.set({"n", "x", "o"}, "<leader>k", "H")
+vim.keymap.set({"n", "x", "o"}, "<leader><leader>", "M")
+vim.keymap.set({"n", "x", "o"}, "<leader>j", "L")
+vim.keymap.set({"n", "x"}, "?", "K")
 
 -- (Experimental)
 -- Shift+g slightly too annoying to press
-map({"n", "x", "o"}, "<M-Enter>", "G")
-map({"n", "x", "o"}, "<M-Backspace>", "gg")
+vim.keymap.set({"n", "x", "o"}, "<M-Enter>", "G")
+vim.keymap.set({"n", "x", "o"}, "<M-Backspace>", "gg")
 
 -- Spammable buffer navigation
-map("n", "<C-h>", "<cmd>bp<cr>")
-map("n", "<C-l>", "<cmd>bn<cr>")
+vim.keymap.set("n", "<C-h>", "<cmd>bp<cr>")
+vim.keymap.set("n", "<C-l>", "<cmd>bn<cr>")
 
 -- Group together similar mappings that move the view without moving the cursor
-map({"n", "x"}, "<M-j>", "3<C-e>")
-map({"n", "x"}, "<M-k>", "3<C-y>")
-map({"n", "x"}, "<M-S-j>", "<C-e>")
-map({"n", "x"}, "<M-S-k>", "<C-y>")
-map({"n", "x"}, "<M-h>", "3zh")
-map({"n", "x"}, "<M-l>", "3zl")
-map({"n", "x"}, "<M-S-h>", "zh")
-map({"n", "x"}, "<M-S-l>", "zl")
-map({"n", "x"}, "zj", "zt")
-map({"n", "x"}, "zk", "zb")
+vim.keymap.set({"n", "x"}, "<M-j>", "3<C-e>")
+vim.keymap.set({"n", "x"}, "<M-k>", "3<C-y>")
+vim.keymap.set({"n", "x"}, "<M-S-j>", "<C-e>")
+vim.keymap.set({"n", "x"}, "<M-S-k>", "<C-y>")
+vim.keymap.set({"n", "x"}, "<M-h>", "3zh")
+vim.keymap.set({"n", "x"}, "<M-l>", "3zl")
+vim.keymap.set({"n", "x"}, "<M-S-h>", "zh")
+vim.keymap.set({"n", "x"}, "<M-S-l>", "zl")
+vim.keymap.set({"n", "x"}, "zj", "zt")
+vim.keymap.set({"n", "x"}, "zk", "zb")
 
 -- (Never used folds but) swap what was overriden above
-map({"n", "x"}, "zt", "zk")
-map({"n", "x"}, "zb", "zj")
+vim.keymap.set({"n", "x"}, "zt", "zk")
+vim.keymap.set({"n", "x"}, "zb", "zj")
 
 -- Like <C-d> and <C-u> but never moves the cursor relative to the 'view'
 
@@ -248,12 +241,12 @@ local function scroll(distance)
         vim.fn.cursor({vim.fn.line("w0"), curswant, 0, curswant})
     end
 end
-map({"n", "x", "o"}, "<C-j>", function() scroll(12) end)
-map({"n", "x", "o"}, "<C-k>", function() scroll(-12) end)
+vim.keymap.set({"n", "x", "o"}, "<C-j>", function() scroll(12) end)
+vim.keymap.set({"n", "x", "o"}, "<C-k>", function() scroll(-12) end)
 
 -- One-handed save and quit
-map("n", "<C-s>", "<cmd>w<cr>")
-map("n", "<C-q>", "<cmd>q<cr>")
+vim.keymap.set("n", "<C-s>", "<cmd>w<cr>")
+vim.keymap.set("n", "<C-q>", "<cmd>q<cr>")
 
 -- Replace builtin J with an equivalent that takes a motion
 -- (meaning I won't find a new mapping for J because it's that much worse)
@@ -264,20 +257,20 @@ end
 function gJ_motion(type)
     vim.cmd("'[,']join!")
 end
-map({"n", "x"}, "å", "<cmd>set opfunc=v:lua.J_motion<cr>g@")
-map({"n", "x"}, "gå", "<cmd>set opfunc=v:lua.gJ_motion<cr>g@")
-map({"n", "x"}, "åå", "åj", r) -- Todo: handle [count]åå
+vim.keymap.set({"n", "x"}, "å", "<cmd>set opfunc=v:lua.J_motion<cr>g@")
+vim.keymap.set({"n", "x"}, "gå", "<cmd>set opfunc=v:lua.gJ_motion<cr>g@")
+vim.keymap.set({"n", "x"}, "åå", "åj", { remap = true }) -- Todo: handle [count]ää
 
 -- Like yy dd cc but no newline at end (Todo: handle counts)
-map("n", "<C-y>", function()
+vim.keymap.set("n", "<C-y>", function()
     vim.fn.setreg(vim.v.register, vim.api.nvim_get_current_line())
 end)
 
-map("n", "<C-d>", '<C-y>0"_D', r) -- blackhole the deletion to not set unnamed reg
-map("n", "<C-c>", '<C-y>0"_C', r) -- if another reg was chosen
+vim.keymap.set("n", "<C-d>", '<C-y>0"_D', { remap = true }) -- blackhole the deletion to not set unnamed reg
+vim.keymap.set("n", "<C-c>", '<C-y>0"_C', { remap = true }) -- if another reg was chosen
 
 -- Append register to current line as a oneliner
-map("n", "<C-p>", function()
+vim.keymap.set("n", "<C-p>", function()
     local line = vim.api.nvim_get_current_line()
     local reg = vim.fn.getreg(vim.v.register)
 
@@ -292,15 +285,15 @@ map("n", "<C-p>", function()
 end)
 
 -- Visual mode variants
-map("x", "<C-d>", function()
+vim.keymap.set("x", "<C-d>", function()
     -- Only in visual line selection, delete and leave one empty line
     if vim.fn.mode() == "V" then
         vim.cmd.normal({ "c", bang = true }) -- (does not stay in insert mode)
     end
 end)
-map("x", "<C-c>", "<Nop>")
-map("x", "<C-y>", "<Nop>")
-map("x", "<C-p>", "<Nop>") -- todo: this could make sense in visual block mode
+vim.keymap.set("x", "<C-c>", "<Nop>")
+vim.keymap.set("x", "<C-y>", "<Nop>")
+vim.keymap.set("x", "<C-p>", "<Nop>") -- todo: this could make sense in visual block mode
 
 -- Fix x and X (from being terrible)
 -- To be fixed: would like consecutive xxxxxxx to be treated as a single undo item
@@ -313,37 +306,37 @@ local function blackhole(key)
         vim.cmd('normal! "_' .. key)
     end
 end
-map("n", "x", function() blackhole("x") end)
-map("n", "X", function() blackhole("X") end)
+vim.keymap.set("n", "x", function() blackhole("x") end)
+vim.keymap.set("n", "X", function() blackhole("X") end)
 
 -- o O normal mode companion
-map("n", "<M-o>", "o<Esc>")
-map("n", "<M-S-o>", "O<Esc>")
+vim.keymap.set("n", "<M-o>", "o<Esc>")
+vim.keymap.set("n", "<M-S-o>", "O<Esc>")
 
 -- Without shift = forward, with shift = backward
-map({"n", "x"}, "<", ">")
-map({"n", "x"}, ">", "<")
-map("n", "<<", ">>")
-map("n", ">>", "<<")
-map({"n", "x", "o"}, ",", ";")
-map({"n", "x", "o"}, ";", ",")
+vim.keymap.set({"n", "x"}, "<", ">")
+vim.keymap.set({"n", "x"}, ">", "<")
+vim.keymap.set("n", "<<", ">>")
+vim.keymap.set("n", ">>", "<<")
+vim.keymap.set({"n", "x", "o"}, ",", ";")
+vim.keymap.set({"n", "x", "o"}, ";", ",")
 
 -- Undo follows the same idea as above
 -- Map <M-u> to WeirdUndo so it's still available when you want to use it (never)
-map("n", "U", "<C-r>")
-map("n", "<M-u>", "U")
+vim.keymap.set("n", "U", "<C-r>")
+vim.keymap.set("n", "<M-u>", "U")
 
 -- ~ too hard to press for being so useful
-map({"n", "x"}, "ä", "~")
-map("n", "ää", "~~")
-map("n", "Ä", "~$")
+vim.keymap.set({"n", "x"}, "ä", "~")
+vim.keymap.set("n", "ää", "~~")
+vim.keymap.set("n", "Ä", "~$")
 
 -- Treesitter tools
-map("n", "<leader>e", "<cmd>Inspect<cr>")
-map("n", "<leader>E", "<cmd>InspectTree<cr>")
+vim.keymap.set("n", "<leader>e", "<cmd>Inspect<cr>")
+vim.keymap.set("n", "<leader>E", "<cmd>InspectTree<cr>")
 
 -- Bigger lua functions
-map({"n", "x"}, "¤", require("trailingwhite-toggle"))
+vim.keymap.set({"n", "x"}, "¤", require("trailingwhite-toggle"))
 
 -- ===== PLUGINS =====
 
@@ -361,16 +354,16 @@ operators.make_mappings(
 )
 -- The fact that I remap _ in operator-pending causes a (solvable) mess here:
 -- https://github.com/echasnovski/mini.nvim/issues/1088
-map("o", "💩", "_")
-map("n", "dpp", "dp💩", r)
-map("n", "cxx", "cx💩", r)
-map("n", "gmm", "gm💩", r)
-map("n", "g==", "g=💩", r)
+vim.keymap.set("o", "💩", "_")
+vim.keymap.set("n", "dpp", "dp💩", { remap = true })
+vim.keymap.set("n", "cxx", "cx💩", { remap = true })
+vim.keymap.set("n", "gmm", "gm💩", { remap = true })
+vim.keymap.set("n", "g==", "g=💩", { remap = true })
 
-map("n", "dP", "dp$", r)
-map("n", "cX", "cx$", r)
-map("n", "gM", "gm$", r)
-map("n", "gS", "gs$", r)
+vim.keymap.set("n", "dP", "dp$", { remap = true })
+vim.keymap.set("n", "cX", "cx$", { remap = true })
+vim.keymap.set("n", "gM", "gm$", { remap = true })
+vim.keymap.set("n", "gS", "gs$", { remap = true })
 
 -- mini.surround
 -- todo: ? to <tab>
@@ -488,31 +481,31 @@ require("mini.move").setup({
 })
 
 -- mini.indentscope
-map({"n", "x", "o"}, "<leader>i", "]i", r) -- to current indentation level bottom edge
-map({"n", "x", "o"}, "<leader>I", "[i", r) -- to current indentation level top edge
+vim.keymap.set({"n", "x", "o"}, "<leader>i", "]i", { remap = true }) -- to current indentation level bottom edge
+vim.keymap.set({"n", "x", "o"}, "<leader>I", "[i", { remap = true }) -- to current indentation level top edge
 
 -- vim-sneak
-map({"n", "x", "o"}, "f", "<Plug>Sneak_f")
-map({"n", "x", "o"}, "F", "<Plug>Sneak_F")
-map({"n", "x", "o"}, "t", "<Plug>Sneak_t")
-map({"n", "x", "o"}, "T", "<Plug>Sneak_T")
-map({"n", "x", "o"}, ",", "<Plug>Sneak_;")
-map({"n", "x", "o"}, ";", "<Plug>Sneak_,")
+vim.keymap.set({"n", "x", "o"}, "f", "<Plug>Sneak_f")
+vim.keymap.set({"n", "x", "o"}, "F", "<Plug>Sneak_F")
+vim.keymap.set({"n", "x", "o"}, "t", "<Plug>Sneak_t")
+vim.keymap.set({"n", "x", "o"}, "T", "<Plug>Sneak_T")
+vim.keymap.set({"n", "x", "o"}, ",", "<Plug>Sneak_;")
+vim.keymap.set({"n", "x", "o"}, ";", "<Plug>Sneak_,")
 
 -- allow sneak to use s in all cases, because surround is mapped to q
-map({"x", "o"}, "s", "<Plug>Sneak_s")
-map({"x", "o"}, "S", "<Plug>Sneak_S")
+vim.keymap.set({"x", "o"}, "s", "<Plug>Sneak_s")
+vim.keymap.set({"x", "o"}, "S", "<Plug>Sneak_S")
 
 -- vim-edgemotion
-map({"n", "x", "o"}, "J", "<Plug>(edgemotion-j)")
-map({"n", "x", "o"}, "K", "<Plug>(edgemotion-k)")
+vim.keymap.set({"n", "x", "o"}, "J", "<Plug>(edgemotion-j)")
+vim.keymap.set({"n", "x", "o"}, "K", "<Plug>(edgemotion-k)")
 
 -- vim-lion
-g.lion_map_left = "gh"
-g.lion_prompt_map = "<Tab>" -- (added in my fork)
+vim.g.lion_map_left = "gh"
+vim.g.lion_prompt_map = "<Tab>" -- (added in my fork)
 
 -- toggle g:lion_squeeze_spaces
-map("n", "<leader>gl", function()
+vim.keymap.set("n", "<leader>gl", function()
     g.lion_squeeze_spaces = not g.lion_squeeze_spaces
     vim.cmd("echo 'g:lion_squeeze_spaces "
         .. (g.lion_squeeze_spaces and "ON" or "OFF")
@@ -520,17 +513,17 @@ map("n", "<leader>gl", function()
 end)
 
 -- undotree
-map("n", "<leader>u", "<cmd>UndotreeToggle<cr>", r)
+vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { remap = true })
 
 -- undotree buffer default overwrites
-g.Undotree_CustomMap = function()
-    map("n", "<C-q>", "<Plug>UndotreeClose", b)
-    map("n", "U", "<Plug>UndotreeRedo", b)
-    map("n", "J", "<Plug>UndotreePreviousSavedState", b) -- Note: PreviousSaved and NextSaved
-    map("n", "K", "<Plug>UndotreeNextSavedState", b)     --       seem broken, jumping to
-    map("n", "<Tab>", "/", b)                            --       wrong nodes or getting stuck
-    map("n", "C", "<Nop>", b)
+vim.g.Undotree_CustomMap = function()
+    vim.keymap.set("n", "<C-q>", "<Plug>UndotreeClose", { buffer = 0 })
+    vim.keymap.set("n", "U", "<Plug>UndotreeRedo", { buffer = 0 })
+    vim.keymap.set("n", "J", "<Plug>UndotreePreviousSavedState", { buffer = 0 }) -- Note: PreviousSaved and NextSaved
+    vim.keymap.set("n", "K", "<Plug>UndotreeNextSavedState", { buffer = 0 })     --       seem broken, jumping to
+    vim.keymap.set("n", "<Tab>", "/", { buffer = 0 })                            --       wrong nodes or getting stuck
+    vim.keymap.set("n", "C", "<Nop>", { buffer = 0 })
 end
 
 -- vim-dirvish
-map("n", "<C-PageUp>", "<Plug>(dirvish_up)") -- Other dirvish maps in ftplugin/dirvish.lua
+vim.keymap.set("n", "<C-PageUp>", "<Plug>(dirvish_up)") -- Other dirvish maps in ftplugin/dirvish.lua
