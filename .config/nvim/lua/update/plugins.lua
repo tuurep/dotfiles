@@ -1,3 +1,5 @@
+-- nvim -l plugins.lua
+
 local paq = require("paq") {
     "savq/paq-nvim", -- Updates self
 
