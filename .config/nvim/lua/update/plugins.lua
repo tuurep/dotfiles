@@ -23,8 +23,7 @@ local paq = require("paq") {
 
     -- Textobjects stuff
     "chaoren/vim-wordmotion",       -- rework word delimiters for w b e ge iw aw
-    "echasnovski/mini.ai",          -- anybracket, anyquote, function, argument
-    "echasnovski/mini.indentscope", -- indent textobject and motions
+    "echasnovski/mini.ai",
 
     -- Nonlinear undo history access
     "tuurep/undotree", -- mbbill/undotree fork

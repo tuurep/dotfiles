@@ -221,7 +221,85 @@ vim.keymap.set("n", "<leader>E", "<cmd>InspectTree<cr>")
 -- ===== PLUGINS =====
 
 -- mini.ai
+
+local function get_line_indent(line)
+    local prev_nonblank = vim.fn.prevnonblank(line)
+    local res = vim.fn.indent(prev_nonblank)
+
+    -- Compute indent of blank line
+    if line ~= prev_nonblank then
+        local next_indent = vim.fn.indent(vim.fn.nextnonblank(line))
+        res = math.max(res, next_indent)
+    end
+
+    return res
+end
+
+local function ai_indent(ai_type)
+    local res = {}
+
+    local target_indent = math.max(
+        get_line_indent(vim.fn.line(".")),
+        1 -- If cursor is at an unindented part, target all top-level indents
+    )
+
+    local from_line, to_line
+    local scoping = false
+    local eob = vim.fn.line("$")
+
+    for i = 1, eob, 1 do
+
+        -- Find region end
+        if scoping then
+            local line = vim.fn.getline(i)
+
+            if not line:match("^%s*$") and vim.fn.indent(i) < target_indent then
+
+                to_line = i
+
+                if ai_type == "a" then
+                    from_line = math.max(from_line - 1, 1)
+                else
+                    to_line = to_line - 1
+                end
+
+                local region = {
+                    from = { line = from_line, col = 1 },
+                    to = { line = to_line, col = vim.fn.col({ to_line, "$" }) },
+                    vis_mode = "V"
+                }
+                table.insert(res, region)
+                scoping = false
+            end
+
+        -- Find region start
+        else
+            if get_line_indent(i) >= target_indent then
+                from_line = i 
+                scoping = true
+            end
+        end
+
+        -- Last buffer line edge case
+        if i == eob and scoping then
+            if ai_type == "a" then
+                from_line = math.max(from_line - 1, 1)
+            end
+            local region = {
+                from = { line = from_line, col = 1 },
+                to = { line = eob, col = vim.fn.col({ eob, "$" }) },
+                vis_mode = "V"
+            }
+            table.insert(res, region)
+        end
+
+    end
+
+    return res
+end
+
 local gen_spec = require('mini.ai').gen_spec
+
 require("mini.ai").setup({
     custom_textobjects = {
 
@@ -253,17 +331,12 @@ require("mini.ai").setup({
         ["_"] = gen_spec.pair("_", "_", { type = "greedy" }),
         ["M"] = { "%*%*().-()%*%*" },
 
+        ["i"] = ai_indent
+
     },
+    n_lines = 100,
     silent = true
 })
-
--- mini.indentscope
-require("mini.indentscope").setup({
-    options = { indent_at_cursor = false }
-})
-vim.g.miniindentscope_disable = true
-vim.keymap.set({"n", "x", "o"}, "<leader>i", "]i", r) -- to current indentation level bottom edge
-vim.keymap.set({"n", "x", "o"}, "<leader>I", "[i", r) -- to current indentation level top edge
 
 -- vim-sneak
 vim.g["sneak#s_next"] = true

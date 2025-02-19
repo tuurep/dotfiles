@@ -68,16 +68,11 @@ vim.g.undotree_HighlightChangedWithSign = 0
 vim.g.undotree_ShortIndicators = 1
 vim.g.undotree_HelpLine = 0
 
-vim.g.miniindentscope_disable = true -- Only care about the textobjects and motions (no visuals)
-
 vim.g.vimtex_syntax_enabled = 0         -- Let latex be handled by treesitter parser
 vim.g.vimtex_syntax_conceal_disable = 1
 
 -- Setups
 require("Comment").setup()
-require("mini.indentscope").setup({
-    options = { indent_at_cursor = false }
-})
 local splitjoin = require("mini.splitjoin")
 splitjoin.setup({
     join = {
