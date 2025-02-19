@@ -132,7 +132,7 @@ pl() {
 }
 
 c() {
-builtin cd "$@" > /dev/null \
+    builtin cd "$@" > /dev/null \
         && p \
         && l
 }
@@ -172,8 +172,8 @@ zi() {
 # ls long listing
 #       - sed removes first line (example: "total 4.0K")
 ll() {
-l -oh --time-style=long-iso "$@" \
-    | sed -r '/^total [0-9]+\.?[0-9]*[BKMGT]?$/d'
+    l -oh --time-style=long-iso "$@" \
+        | sed -r '/^total [0-9]+\.?[0-9]*[BKMGT]?$/d'
 }
 
 # tree with the box-drawing characters and end report turned into a dimmed fg color
