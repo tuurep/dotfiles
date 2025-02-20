@@ -138,12 +138,16 @@ vim.keymap.set({"i", "c"}, "<M-l>", "<Right>")
 
 -- Essential keys for both movement and operator pending
 -- (with the worst defaults known to man)
-vim.keymap.set({"n", "x", "o"}, "-", "}")
-vim.keymap.set({"n", "x", "o"}, "_", "{")
+vim.keymap.set({"n", "x"}, "-", "}")
+vim.keymap.set({"n", "x"}, "_", "{")
 vim.keymap.set({"n", "x", "o"}, "H", "^")
 vim.keymap.set({"n", "x", "o"}, "L", "$")
 vim.keymap.set({"n", "x", "o"}, "gH", "g^")
 vim.keymap.set({"n", "x", "o"}, "gL", "g$")
+
+-- Force operator-pending paragraph motion linewise (otherwise almost useless)
+vim.keymap.set("o", "-", "V}")
+vim.keymap.set("o", "_", "V{")
 
 -- Remap what the above has overriden
 vim.keymap.set({"i", "c"}, "<C-z>", "<C-k>")
