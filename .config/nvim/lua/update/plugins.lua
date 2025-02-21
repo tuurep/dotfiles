@@ -13,7 +13,7 @@ local paq = require("paq") {
 
     -- Operators:
     "echasnovski/mini.operators", -- exchange, replacewithregister, sort, duplicate
-    -- "echasnovski/mini.surround",
+    "tuurep/mini.tpopesurround",  -- echasnovski/mini.surround fork
     "numtostr/Comment.nvim",
     "echasnovski/mini.splitjoin",
     "tuurep/vim-lion",            -- tommcdo/vim-lion fork

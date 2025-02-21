@@ -371,13 +371,7 @@ vim.keymap.set("n", "gS", "gs$", { remap = true })
 
 -- mini.surround
 -- todo: ? to <tab>
---       also it turns on unwanted search hl (look at plugin/search-improvements.lua)
 -- todo: vim-wordmotion can make message noise on dot repeat
-
--- todo: fork -- https://github.com/tuurep/mini.tpopesurround
-
--- working on it
-vim.opt.runtimepath:append("~/.config/nvim/plugin/mini.tpopesurround")
 
 require("mini.tpopesurround").setup({
     mappings = {
@@ -385,17 +379,17 @@ require("mini.tpopesurround").setup({
         delete = "qd",
         replace = "qr",
 
-        add_visual = "Q",
-
-        add_line = "qq",
+        add_visual = "q",
 
         add_and_indent = "Q",
         replace_and_indent = "Qr",
 
-        find = "",          -- todo: idk what to choose
-        find_left = "",     -- todo: idk what to choose
+        add_line = "qq",
+        add_line_and_indent = "QQ",
 
         -- Disable
+        find = "",
+        find_left = "",
         update_n_lines = "",
         highlight = ""
     },
@@ -414,13 +408,13 @@ require("mini.tpopesurround").setup({
         ["A"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[ ", right = " ]" } },
         [">"] = { input = { "%b<>", "^.().*().$" }, output = { left = "< ", right = " >" } },
 
-        -- Quotation aliases (experimental)
+        -- Quotation aliases
         ["r"] = { input = { "%b''", "^.().*().$" }, output = { left = "'",   right = "'"   } },
         ["x"] = { input = { "%b``", "^.().*().$" }, output = { left = "`",   right = "`"   } },
         ["Q"] = { input = { '"""().-()"""'       }, output = { left = '"""', right = '"""' } },
         ["X"] = { input = { "```().-()```"       }, output = { left = "```", right = "```" } },
 
-        -- Markdown (experimental)
+        -- Markdown
         ["m"] = { input = { "%*().-()%*"     }, output = { left = "*",   right = "*"   } },
         ["M"] = { input = { "%*%*().-()%*%*" }, output = { left = "**",  right = "**"  } },
 
@@ -530,13 +524,13 @@ require("mini.ai").setup({
         ["A"] = { "%b[]", "^.%s*().-()%s*.$" },
         [">"] = { "%b<>", "^.%s*().-()%s*.$" },
 
-        -- Quotation aliases (experimental)
+        -- Quotation aliases
         ["r"] = { "%b''", "^.().*().$" },
         ["x"] = { "%b``", "^.().*().$" },
         ["Q"] = { '"""().-()"""' },
         ["X"] = { "```().-()```" },
 
-        -- Markdown (experimental)
+        -- Markdown
         ["m"] = gen_spec.pair("*", "*", { type = "greedy" }),
         ["*"] = gen_spec.pair("*", "*", { type = "greedy" }),
         ["_"] = gen_spec.pair("_", "_", { type = "greedy" }),
