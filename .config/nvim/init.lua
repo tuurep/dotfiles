@@ -73,14 +73,6 @@ vim.g.vimtex_syntax_conceal_disable = 1
 
 -- Setups
 require("Comment").setup()
-local splitjoin = require("mini.splitjoin")
-splitjoin.setup({
-    join = {
-        hooks_post = {
-            splitjoin.gen_hook.pad_brackets({ brackets = { '%b{}' } })
-        }
-    }
-})
 require("nvim-treesitter.configs").setup({
     highlight = {
         enable = true,

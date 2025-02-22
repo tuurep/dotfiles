@@ -23,7 +23,7 @@ vim.keymap.set({"n", "x"}, "gJ", "<Nop>")          -- gä for spaceless join, le
 -- gz gZ
 -- gä gÄ zä zÄ
 -- ö Ö gö gÖ zö zÖ
--- Å gÅ zå zå
+-- gÅ zå zå
 
 -- Practically free:
 -- , ;      surpassed by clever-f/t/s
@@ -344,6 +344,19 @@ vim.keymap.set({"n", "x"}, "¤", require("trailingwhite-toggle"))
 
 -- ===== PLUGINS =====
 
+-- mini.splitjoin
+local splitjoin = require("mini.splitjoin")
+splitjoin.setup({
+    mappings = {
+        toggle = "Å"
+    },
+    join = {
+        hooks_post = {
+            splitjoin.gen_hook.pad_brackets({ brackets = { '%b{}' } })
+        }
+    }
+})
+
 -- mini.operators
 local operators = require("mini.operators")
 operators.setup({
@@ -354,7 +367,10 @@ operators.make_mappings(
     "replace", { textobject = "dp", line = "", selection = "" } -- in visual, P already does it
 )
 operators.make_mappings(
-    "exchange", { textobject = "cx", line = "", selection = "X" }
+    "exchange", { textobject = "cx", line = "", selection = "x" }
+)
+operators.make_mappings(
+    "evaluate", { textobject = "g.", line = "", selection = "g." }
 )
 -- The fact that I remap _ in operator-pending causes a (solvable) mess here:
 -- https://github.com/echasnovski/mini.nvim/issues/1088
@@ -362,12 +378,14 @@ vim.keymap.set("o", "💩", "_")
 vim.keymap.set("n", "dpp", "dp💩", { remap = true })
 vim.keymap.set("n", "cxx", "cx💩", { remap = true })
 vim.keymap.set("n", "gmm", "gm💩", { remap = true })
-vim.keymap.set("n", "g==", "g=💩", { remap = true })
+vim.keymap.set("n", "gss", "gs💩", { remap = true })
+vim.keymap.set("n", "g..", "g.💩", { remap = true })
 
 vim.keymap.set("n", "dP", "dp$", { remap = true })
 vim.keymap.set("n", "cX", "cx$", { remap = true })
 vim.keymap.set("n", "gM", "gm$", { remap = true })
 vim.keymap.set("n", "gS", "gs$", { remap = true })
+vim.keymap.set("n", "g:", "g.$", { remap = true })
 
 -- mini.surround
 -- todo: ? to <tab>
