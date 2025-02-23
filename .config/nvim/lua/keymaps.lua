@@ -363,13 +363,17 @@ splitjoin.setup({
 local operators = require("mini.operators")
 operators.setup({
     replace  = { prefix = "" },
-    exchange = { prefix = "" }
+    exchange = { prefix = "" },
+    multiply = { prefix = "" }
 })
 operators.make_mappings(
     "replace", { textobject = "dp", line = "", selection = "" } -- in visual, P already does it
 )
 operators.make_mappings(
     "exchange", { textobject = "cx", line = "", selection = "x" }
+)
+operators.make_mappings(
+    "multiply", { textobject = "gr", line = "", selection = "gr" }
 )
 operators.make_mappings(
     "evaluate", { textobject = "g.", line = "", selection = "g." }
@@ -379,13 +383,13 @@ operators.make_mappings(
 vim.keymap.set("o", "💩", "_")
 vim.keymap.set("n", "dpp", "dp💩", { remap = true })
 vim.keymap.set("n", "cxx", "cx💩", { remap = true })
-vim.keymap.set("n", "gmm", "gm💩", { remap = true })
+vim.keymap.set("n", "grr", "gr💩", { remap = true })
 vim.keymap.set("n", "gss", "gs💩", { remap = true })
 vim.keymap.set("n", "g..", "g.💩", { remap = true })
 
 vim.keymap.set("n", "dP", "dp$", { remap = true })
 vim.keymap.set("n", "cX", "cx$", { remap = true })
-vim.keymap.set("n", "gM", "gm$", { remap = true })
+vim.keymap.set("n", "gR", "gr$", { remap = true })
 vim.keymap.set("n", "gS", "gs$", { remap = true })
 vim.keymap.set("n", "g:", "g.$", { remap = true })
 
