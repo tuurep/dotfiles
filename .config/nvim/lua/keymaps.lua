@@ -9,7 +9,6 @@ vim.keymap.set({"n", "x", "o"}, "<Left>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<Right>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "+", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<C-d>", "<Nop>")  -- <C-d> is remapped, and <C-j> <C-k> preferred for scrolling
-vim.keymap.set({"n", "x", "o"}, "M", "<Nop>")      -- H M L -> <leader>k <leader>m <leader>j
 vim.keymap.set({"n", "x", "o"}, "/", "<Nop>")      -- Tab/S-Tab as search, ? is now :help
 vim.keymap.set("n", "<C-r>", "<Nop>")              -- U as redo
 vim.keymap.set("n", "<C-o>", "<Nop>")              -- <C-i> is compromised so use <M-o> and <M-i>
@@ -42,6 +41,9 @@ vim.keymap.set({"n", "x"}, "Q", "<Nop>")
 vim.keymap.set({"n", "x"}, "<Del>", "q")
 vim.keymap.set({"n", "x"}, "<S-Del>", "Q")
 vim.keymap.set({"n", "x"}, "<M-Del>", "@") -- @ too hard to press and too separated from the other macro mappings
+
+-- Move the mark key to the edge of the keyboard to use m for mini.ai textobject motions
+vim.keymap.set("n", "<Ins>", "m")
 
 -- Tab to search
 vim.keymap.set({"n", "x", "o"}, "<Tab>", "/")
@@ -524,6 +526,10 @@ end
 local gen_spec = require("mini.ai").gen_spec
 
 require("mini.ai").setup({
+    mappings = {
+        goto_right = "m",
+        goto_left = "M"
+    },
     custom_textobjects = {
 
         -- Remap 'argument' textobject, I want it for square bracket
