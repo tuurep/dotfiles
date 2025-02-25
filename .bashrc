@@ -70,6 +70,12 @@ alias drag="blobdrop -p"
 alias cf='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias todo='nvim ~/projects/todo.txt'
 alias eclean="nvim --clean -nu ~/.config/nvim/test/minimal-init.lua"
+alias paqsync="nvim -l ~/.config/nvim/lua/update/plugins.lua"
+alias tsupdate="nvim -l ~/.config/nvim/lua/update/ts-parsers.lua"
+
+# Use in case of diff `\ No newline at end of file` to prevent diff noise
+# https://salferrarello.com/remove-newline-at-end-of-text-file/
+alias chompeof="perl -pi -e 'chomp if eof'"
 
 alias pac="pacman"
 alias srcinfo="makepkg --printsrcinfo > .SRCINFO"
