@@ -158,7 +158,6 @@ vim.keymap.set({"n", "x", "o"}, "<leader><leader>", "M")
 vim.keymap.set({"n", "x", "o"}, "<leader>j", "L")
 vim.keymap.set({"n", "x"}, "?", "K")
 
--- (Experimental)
 -- Shift+g slightly too annoying to press
 vim.keymap.set({"n", "x", "o"}, "<M-Enter>", "G")
 vim.keymap.set({"n", "x", "o"}, "<M-Backspace>", "gg")
@@ -312,12 +311,15 @@ local function blackhole(key)
         vim.cmd('normal! "_' .. key)
     end
 end
-vim.keymap.set("n", "x", function() blackhole("x") end)
-vim.keymap.set("n", "X", function() blackhole("X") end)
+vim.keymap.set("n", "<M-d>", function() blackhole("x") end)
+vim.keymap.set("n", "<M-D>", function() blackhole("X") end)
+
+-- Reimplementation of default s for consistency with <M-d> above
+vim.keymap.set("n", "<M-c>", function() blackhole("x") vim.fn.feedkeys("i") end)
 
 -- o O normal mode companion
 vim.keymap.set("n", "<M-o>", "o<Esc>")
-vim.keymap.set("n", "<M-S-o>", "O<Esc>")
+vim.keymap.set("n", "<M-O>", "O<Esc>")
 
 -- Without shift = forward, with shift = backward
 vim.keymap.set({"n", "x"}, "<", ">")
@@ -405,11 +407,11 @@ require("mini.tpopesurround").setup({
 
         add_visual = "q",
 
-        add_and_indent = "Q",
-        replace_and_indent = "Qr",
+        add_and_indent = "<M-q>",
+        replace_and_indent = "<M-q>r",
 
         add_line = "qq",
-        add_line_and_indent = "QQ",
+        add_line_and_indent = "<M-q><M-q>",
 
         -- Disable
         find = "",
@@ -446,6 +448,8 @@ require("mini.tpopesurround").setup({
     search_method = "cover_or_next",
     silent = true
 })
+vim.keymap.set("n", "Q", "q$", { remap = true })
+vim.keymap.set("n", "<M-Q>", "<M-q>$", { remap = true })
 
 -- mini.ai
 -- todo: ? to <tab>
