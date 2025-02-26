@@ -21,7 +21,7 @@ vim.keymap.set({"n", "x"}, "gJ", "<Nop>")          -- gä for spaceless join, le
 -- gy gY
 -- gz gZ
 -- gä gÄ zä zÄ
--- ö Ö gö gÖ zö zÖ
+-- gö gÖ zö zÖ
 -- gÅ zå zå
 
 -- Practically free:
@@ -364,34 +364,22 @@ splitjoin.setup({
 -- mini.operators
 local operators = require("mini.operators")
 operators.setup({
-    replace  = { prefix = "" },
-    exchange = { prefix = "" },
-    multiply = { prefix = "" }
+    replace  = { prefix = "dp", selection = "p" },
+    exchange = { prefix = "x"  },
+    multiply = { prefix = "ö"  },
+    evaluate = { prefix = "g." }
 })
-operators.make_mappings(
-    "replace", { textobject = "dp", line = "", selection = "" } -- in visual, P already does it
-)
-operators.make_mappings(
-    "exchange", { textobject = "cx", line = "", selection = "x" }
-)
-operators.make_mappings(
-    "multiply", { textobject = "gr", line = "", selection = "gr" }
-)
-operators.make_mappings(
-    "evaluate", { textobject = "g.", line = "", selection = "g." }
-)
--- The fact that I remap _ in operator-pending causes a (solvable) mess here:
--- https://github.com/echasnovski/mini.nvim/issues/1088
-vim.keymap.set("o", "💩", "_")
-vim.keymap.set("n", "dpp", "dp💩", { remap = true })
-vim.keymap.set("n", "cxx", "cx💩", { remap = true })
-vim.keymap.set("n", "grr", "gr💩", { remap = true })
-vim.keymap.set("n", "gss", "gs💩", { remap = true })
-vim.keymap.set("n", "g..", "g.💩", { remap = true })
+
+-- Make P the one that puts the replaced part in default register
+-- because now p doesn't.
+-- Todo: make that preserve indent as well.
+--       (but I want this more generally for p/P in every mode)
+--       (relevant plugin: vim-pasta)
+vim.keymap.set("x", "P", "p")
 
 vim.keymap.set("n", "dP", "dp$", { remap = true })
-vim.keymap.set("n", "cX", "cx$", { remap = true })
-vim.keymap.set("n", "gR", "gr$", { remap = true })
+vim.keymap.set("n", "X",  "x$",  { remap = true })
+vim.keymap.set("n", "Ö",  "ö$",  { remap = true })
 vim.keymap.set("n", "gS", "gs$", { remap = true })
 vim.keymap.set("n", "g:", "g.$", { remap = true })
 

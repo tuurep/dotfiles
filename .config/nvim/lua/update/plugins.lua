@@ -12,7 +12,10 @@ local paq = require("paq") {
     "Darazaki/indent-o-matic",  -- change tab width when working on other peoples' files
 
     -- Operators:
-    "echasnovski/mini.operators", -- exchange, replacewithregister, sort, duplicate
+    {
+        "tuurep/mini.operators",
+        branch = "tweak-mapping-mechanisms"
+    },
     "tuurep/mini.tpopesurround",  -- echasnovski/mini.surround fork
     "numtostr/Comment.nvim",
     "echasnovski/mini.splitjoin",
@@ -22,7 +25,7 @@ local paq = require("paq") {
     "haya14busa/vim-edgemotion",
 
     -- Textobjects stuff
-    "chaoren/vim-wordmotion",       -- rework word delimiters for w b e ge iw aw
+    "chaoren/vim-wordmotion", -- rework word delimiters for w b e ge iw aw
     "echasnovski/mini.ai",
 
     -- Nonlinear undo history access
