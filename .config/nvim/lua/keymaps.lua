@@ -15,7 +15,7 @@ vim.keymap.set("n", "<C-o>", "<Nop>")              -- <C-i> is compromised so us
 vim.keymap.set({"n", "x"}, "<C-e>", "<Nop>")       -- <M-s> and <M-d> are remapped as <C-e> and <C-y>
 vim.keymap.set({"n", "x"}, "<Backspace>", "<Nop>")
 vim.keymap.set({"n", "x"}, "gJ", "<Nop>")          -- gä for spaceless join, leave gJ and gK
-                                        -- as ideas for vertical movement mappings
+                                                   -- as ideas for vertical movement mappings
 -- ½
 -- zh zl
 -- gy gY
@@ -33,11 +33,7 @@ vim.keymap.set({"n", "x", "i", "c"}, "<PageUp>", "<Nop>")
 vim.keymap.set({"n", "x", "i", "c"}, "<PageDown>", "<Nop>")
 vim.keymap.set({"n", "i"}, "<F1>", "<Nop>")
 
--- q/Q for macros problems:
---     1. it's easy to start recording a macro by accident
---     2. will conflict with visual mode Q surround mapping
-vim.keymap.set({"n", "x"}, "q", "<Nop>")
-vim.keymap.set({"n", "x"}, "Q", "<Nop>")
+-- Give macro keys to mini.tpopesurround
 vim.keymap.set({"n", "x"}, "<Del>", "q")
 vim.keymap.set({"n", "x"}, "<S-Del>", "Q")
 vim.keymap.set({"n", "x"}, "<M-Del>", "@") -- @ too hard to press and too separated from the other macro mappings
@@ -63,13 +59,13 @@ vim.keymap.set("n", "<leader><Enter>", function()
     if vim.fn.bufname() == "" then
         tildepath = tildepath .. "[No Name]"
     end
-    vim.api.nvim_echo({{tildepath}}, false, {})      -- current buffer full path
-end)                                                 -- $HOME as ~
+    vim.api.nvim_echo({{tildepath}}, false, {})  -- current buffer full path
+end)                                             -- $HOME as ~
 
 vim.keymap.set("n", "<leader><Backspace>",
-    "<cmd>echo fnamemodify(getcwd(), ':p:~')<cr>")    -- pwd but with tilde
+    "<cmd>echo fnamemodify(getcwd(), ':p:~')<cr>") -- pwd but with tilde
 
-vim.keymap.set("n", "<Enter>", "<cmd>echo ''<cr>")               -- clear cmdline text
+vim.keymap.set("n", "<Enter>", "<cmd>echo ''<cr>") -- clear cmdline text
 
 -- Command mode <C-f> special buffer fixes
 vim.api.nvim_create_autocmd({"CmdWinEnter"}, {
@@ -264,7 +260,7 @@ function gJ_motion(type)
 end
 vim.keymap.set({"n", "x"}, "å", "<cmd>set opfunc=v:lua.J_motion<cr>g@")
 vim.keymap.set({"n", "x"}, "gå", "<cmd>set opfunc=v:lua.gJ_motion<cr>g@")
-vim.keymap.set({"n", "x"}, "åå", "åj", { remap = true }) -- Todo: handle [count]ää
+vim.keymap.set({"n", "x"}, "åå", "åj", { remap = true }) -- Todo: handle [count]åå
 
 -- Like yy dd cc but no newline at end (Todo: handle counts)
 vim.keymap.set("n", "<C-y>", function()
@@ -384,7 +380,6 @@ vim.keymap.set("n", "gS", "gs$", { remap = true })
 vim.keymap.set("n", "g:", "g.$", { remap = true })
 
 -- mini.surround
--- todo: ? to <tab>
 -- todo: vim-wordmotion can make message noise on dot repeat
 
 require("mini.tpopesurround").setup({
@@ -432,6 +427,27 @@ require("mini.tpopesurround").setup({
         ["m"] = { input = { "%*().-()%*"     }, output = { left = "*",   right = "*"   } },
         ["M"] = { input = { "%*%*().-()%*%*" }, output = { left = "**",  right = "**"  } },
 
+        -- <Tab> to prompt for surroundings
+        -- Taken straight from the builtin ? surrounding:
+        -- https://github.com/echasnovski/mini.surround/blob/f90069c7441a5fb04c3de42eacf93e16b64dd3eb/lua/mini/surround.lua#L1091-L1107
+        ["\t"] = {
+            input = function()
+                local left = MiniSurround.user_input("Left surrounding")
+                if left == nil or left == "" then return end
+                local right = MiniSurround.user_input("Right surrounding")
+                if right == nil or right == "" then return end
+
+                return { vim.pesc(left) .. "().-()" .. vim.pesc(right) }
+            end,
+            output = function()
+                local left = MiniSurround.user_input("Left surrounding")
+                if left == nil then return end
+                local right = MiniSurround.user_input("Right surrounding")
+                if right == nil then return end
+                return { left = left, right = right }
+            end,
+        },
+
     },
     search_method = "cover_or_next",
     silent = true
@@ -440,8 +456,6 @@ vim.keymap.set("n", "Q", "q$", { remap = true })
 vim.keymap.set("n", "<M-Q>", "<M-q>$", { remap = true })
 
 -- mini.ai
--- todo: ? to <tab>
---       look at: https://github.com/echasnovski/mini.nvim/blob/f90b6b820062fc06d6d51ed61a0f9b7f9a13b01b/lua/mini/ai.lua#L1097
 
 local function get_line_indent(line)
     local prev_nonblank = vim.fn.prevnonblank(line)
@@ -563,17 +577,29 @@ require("mini.ai").setup({
     silent = true
 })
 
+-- Lazy way to set <Tab> as builtin mini.ai `?` textobject
+-- Uses many helpers inside the mini.ai module:
+-- https://github.com/echasnovski/mini.ai/blob/6e01c0e5a15554852546fac9853960780ac52ed4/lua/mini/ai.lua#L1099-L1115
+-- Todo: see if I could achieve it anyway
+vim.keymap.set({"o", "x"}, "i<Tab>",  "i?",  { remap = true })
+vim.keymap.set({"o", "x"}, "in<Tab>", "in?", { remap = true })
+vim.keymap.set({"o", "x"}, "il<Tab>", "il?", { remap = true })
+vim.keymap.set({"o", "x"}, "a<Tab>",  "a?",  { remap = true })
+vim.keymap.set({"o", "x"}, "an<Tab>", "an?", { remap = true })
+vim.keymap.set({"o", "x"}, "al<Tab>", "al?", { remap = true })
+
+-- mini.move
 require("mini.move").setup({
     mappings = {
-        down =  '<C-S-j>',
-        up =    '<C-S-k>',
-        left =  '<C-S-h>',
-        right = '<C-S-l>',
+        down =  "<C-S-j>",
+        up =    "<C-S-k>",
+        left =  "<C-S-h>",
+        right = "<C-S-l>",
 
-        line_down =  '<C-S-j>',
-        line_up =    '<C-S-k>',
-        line_left =  '<C-S-h>',
-        line_right = '<C-S-l>'
+        line_down =  "<C-S-j>",
+        line_up =    "<C-S-k>",
+        line_left =  "<C-S-h>",
+        line_right = "<C-S-l>"
     }
 })
 

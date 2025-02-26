@@ -64,7 +64,7 @@ vim.keymap.set({"n", "x"}, "<Del>", "q")
 vim.keymap.set({"n", "x"}, "<S-Del>", "Q")
 vim.keymap.set({"n", "x"}, "<M-Del>", "@")
 
--- Remap mark
+-- Give mark key to `mini.ai` textobject motions
 vim.keymap.set("n", "<Ins>", "m")
 
 -- Tab to search
@@ -348,6 +348,12 @@ require("mini.ai").setup({
     n_lines = 100,
     silent = true
 })
+vim.keymap.set({"o", "x"}, "i<Tab>",  "i?",  { remap = true })
+vim.keymap.set({"o", "x"}, "in<Tab>", "in?", { remap = true })
+vim.keymap.set({"o", "x"}, "il<Tab>", "il?", { remap = true })
+vim.keymap.set({"o", "x"}, "a<Tab>",  "a?",  { remap = true })
+vim.keymap.set({"o", "x"}, "an<Tab>", "an?", { remap = true })
+vim.keymap.set({"o", "x"}, "al<Tab>", "al?", { remap = true })
 
 -- vim-sneak
 vim.g["sneak#s_next"] = true
