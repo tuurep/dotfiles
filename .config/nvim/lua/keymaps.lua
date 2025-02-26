@@ -365,7 +365,7 @@ splitjoin.setup({
 local operators = require("mini.operators")
 operators.setup({
     replace  = { prefix = "dp", selection = "p" },
-    exchange = { prefix = "x"  },
+    exchange = { prefix = "x", cancel = "<Esc>" },
     multiply = { prefix = "ö"  },
     evaluate = { prefix = "g." }
 })

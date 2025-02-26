@@ -12,10 +12,7 @@ local paq = require("paq") {
     "Darazaki/indent-o-matic",  -- change tab width when working on other peoples' files
 
     -- Operators:
-    {
-        "tuurep/mini.operators",
-        branch = "tweak-mapping-mechanisms"
-    },
+    "tuurep/mini.operators",      -- echasnovski/mini.operators fork
     "tuurep/mini.tpopesurround",  -- echasnovski/mini.surround fork
     "numtostr/Comment.nvim",
     "echasnovski/mini.splitjoin",
