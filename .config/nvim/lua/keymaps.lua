@@ -408,14 +408,15 @@ require("mini.tpopesurround").setup({
         ["B"] = { input = { { "%b()", "%b[]", "%b{}" }, "^.().*().$" }, output = { left = "( ", right = " )" }},
 
         -- Brackets aliases
-        ["e"] = { input = { "%b()", "^.().*().$" }, output = { left = "(",  right = ")"  } },
-        ["d"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{",  right = "}"  } },
-        ["a"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[",  right = "]"  } },
-        ["<"] = { input = { "%b<>", "^.().*().$" }, output = { left = "<",  right = ">"  } },
-        ["E"] = { input = { "%b()", "^.().*().$" }, output = { left = "( ", right = " )" } },
-        ["D"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{ ", right = " }" } },
-        ["A"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[ ", right = " ]" } },
-        [">"] = { input = { "%b<>", "^.().*().$" }, output = { left = "< ", right = " >" } },
+        ["e"] = { input = { "%b()", "^.().*().$" }, output = { left = "(",  right = ")" } },
+        ["d"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{",  right = "}" } },
+        ["a"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[",  right = "]" } },
+        ["<"] = { input = { "%b<>", "^.().*().$" }, output = { left = "<",  right = ">" } },
+
+        ["E"] = { input = { "%b()", "^. +().-() +.$" }, output = { left = "( ", right = " )" } },
+        ["D"] = { input = { "%b{}", "^. +().-() +.$" }, output = { left = "{ ", right = " }" } },
+        ["A"] = { input = { "%b[]", "^. +().-() +.$" }, output = { left = "[ ", right = " ]" } },
+        [">"] = { input = { "%b<>", "^. +().-() +.$" }, output = { left = "< ", right = " >" } },
 
         -- Quotation aliases
         ["r"] = { input = { "%b''", "^.().*().$" }, output = { left = "'",   right = "'"   } },
@@ -424,8 +425,8 @@ require("mini.tpopesurround").setup({
         ["X"] = { input = { "```().-()```"       }, output = { left = "```", right = "```" } },
 
         -- Markdown
-        ["m"] = { input = { "%*().-()%*"     }, output = { left = "*",   right = "*"   } },
-        ["M"] = { input = { "%*%*().-()%*%*" }, output = { left = "**",  right = "**"  } },
+        ["m"] = { input = { "%*().-()%*"     }, output = { left = "*",   right = "*"  } },
+        ["M"] = { input = { "%*%*().-()%*%*" }, output = { left = "**",  right = "**" } },
 
         -- <Tab> to prompt for surroundings
         -- Taken straight from the builtin ? surrounding:
