@@ -9,6 +9,11 @@
 --        - (turns hlsearch off)
 --        - hlsearch could be useful here...
 
+-- Todo:
+--    - after completing a substitute, shows searchhl
+--      on every instance of the substituted string
+--    - example: `:s/key/foo`
+
 local searchkeys = { "n", "N", "*", "#" }
 
 vim.api.nvim_create_autocmd({"CursorMoved"}, {
