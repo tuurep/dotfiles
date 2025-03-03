@@ -307,11 +307,8 @@ local function blackhole(key)
         vim.cmd('normal! "_' .. key)
     end
 end
-vim.keymap.set("n", "<M-d>", function() blackhole("x") end)
-vim.keymap.set("n", "<M-D>", function() blackhole("X") end)
-
--- Reimplementation of default s for consistency with <M-d> above
-vim.keymap.set("n", "<M-c>", function() blackhole("x") vim.fn.feedkeys("i") end)
+vim.keymap.set("n", "x", function() blackhole("x") end)
+vim.keymap.set("n", "X", function() blackhole("X") end)
 
 -- o O normal mode companion
 vim.keymap.set("n", "<M-o>", "o<Esc>")
@@ -361,8 +358,8 @@ splitjoin.setup({
 local operators = require("mini.operators")
 operators.setup({
     replace  = { prefix = "dp", selection = "p" },
-    exchange = { prefix = "x", cancel = "<Esc>" },
-    multiply = { prefix = "ö"  },
+    exchange = { prefix = "cx", selection = "x", cancel = "<Esc>" },
+    multiply = { prefix = "ö" },
     evaluate = { prefix = "g." }
 })
 
@@ -374,7 +371,7 @@ operators.setup({
 vim.keymap.set("x", "P", "p")
 
 vim.keymap.set("n", "dP", "dp$", { remap = true })
-vim.keymap.set("n", "X",  "x$",  { remap = true })
+vim.keymap.set("n", "cX",  "x$",  { remap = true })
 vim.keymap.set("n", "Ö",  "ö$",  { remap = true })
 vim.keymap.set("n", "gS", "gs$", { remap = true })
 vim.keymap.set("n", "g:", "g.$", { remap = true })
