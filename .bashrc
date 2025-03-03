@@ -95,6 +95,8 @@ alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
 alias vivaldi="vivaldi-stable"
 alias grip="grip -b"
 
+alias yt-dlp="yt-dlp --cookies-from-browser firefox"
+
 alias tm="transmission-remote"
 alias m="mullvad"
 alias pap="papis"
