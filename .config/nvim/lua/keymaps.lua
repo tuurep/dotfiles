@@ -299,16 +299,26 @@ vim.keymap.set("x", "<C-p>", "<Nop>") -- todo: this could make sense in visual b
 -- Fix x and X (from being terrible)
 -- To be fixed: would like consecutive xxxxxxx to be treated as a single undo item
 -- (not simple)
-local function blackhole(key)
-    local c = vim.v.count
-    if c > 0 then
-        vim.cmd('normal! ' .. c .. key)
+local function blackhole(count, key)
+    if count > 1 then
+        -- If count is given, you probably do want it in the register
+        vim.cmd('normal! ' .. count .. key)
     else
         vim.cmd('normal! "_' .. key)
     end
 end
-vim.keymap.set("n", "x", function() blackhole("x") end)
-vim.keymap.set("n", "X", function() blackhole("X") end)
+
+vim.keymap.set("n", "x", function() blackhole(vim.v.count1, "x") end)
+
+-- Delete the last character of the line (haven't found builtin X useful)
+vim.keymap.set("n", "X", function()
+    local count = vim.v.count1
+    vim.cmd("normal! $")
+    if count > 1 then
+        vim.cmd("normal! " .. count - 1 .. "h")
+    end
+    blackhole(count, "x")
+end)
 
 -- o O normal mode companion
 vim.keymap.set("n", "<M-o>", "o<Esc>")
