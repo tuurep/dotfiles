@@ -403,6 +403,9 @@ require("mini.tpopesurround").setup({
         add_line = "qq",
         add_line_and_indent = "<M-q><M-q>",
 
+        suffix_next = "l",
+        suffix_last = "h",
+
         -- Disable
         find = "",
         find_left = "",
@@ -546,7 +549,12 @@ local gen_spec = require("mini.ai").gen_spec
 require("mini.ai").setup({
     mappings = {
         goto_right = "m",
-        goto_left = "M"
+        goto_left = "M",
+
+        inside_next = "il",
+        around_next = "al",
+        inside_last = "ih",
+        around_last = "ah"
     },
     custom_textobjects = {
 
