@@ -2,8 +2,9 @@
 # Fix not being able to set font size (huge initial font):
 WINIT_X11_SCALE_FACTOR = "1"
 
-[window.padding]
-x = 7
+[window]
+title = "~" # Prevent flashing "Alacritty" before .bashrc changes title
+padding = { x = 7 }
 
 [font]
 size = 10.5
