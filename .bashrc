@@ -102,7 +102,7 @@ alias m="mullvad"
 alias pap="papis"
 
 alias reset-dunst="killall dunst; notify-send monkey monkey"
-alias reset-polybar="killall -q polybar; polybar bar1 2>&1 & disown"
+alias reset-polybar="killall -q polybar; polybar bar1 -q & disown"
 
 alias whereami='echo $HOSTNAME'
 alias gnu="neofetch -L --ascii_distro GNU"
