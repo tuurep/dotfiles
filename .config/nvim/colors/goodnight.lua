@@ -321,7 +321,7 @@ vim.api.nvim_set_hl(0, "@number.float.css", { fg = fg       }) --       (punctua
 vim.api.nvim_set_hl(0, "@string.css",       { fg = fg       }) --       (@string priorized over @number on words like "px", "em", "vh"...)
                                                                -- Looks pretty good with no color though
 -- Manpage buffer
-vim.api.nvim_set_hl(0, "manItalic",         { fg = green    }) -- in `less` manpage, this is underlined
+vim.api.nvim_set_hl(0, "manUndeline",       { fg = green    })
 vim.api.nvim_set_hl(0, "manSectionHeading", { fg = blue     })
 vim.api.nvim_set_hl(0, "manSubHeading",     { fg = blue     })
 vim.api.nvim_set_hl(0, "manHeader",         { link = "None" })

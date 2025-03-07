@@ -70,7 +70,7 @@ vim.api.nvim_set_hl(0, "DiffOldFile",   { fg = dd_fg, bg = bg    })
 vim.api.nvim_set_hl(0, "DiffNewFile",   { fg = dd_fg, bg = bg    })
 
 -- Manpage buffer
-vim.api.nvim_set_hl(0, "manItalic",         { fg = green    }) -- in `less` manpage, this is underlined
+vim.api.nvim_set_hl(0, "manUnderline",      { fg = green    })
 vim.api.nvim_set_hl(0, "manSectionHeading", { fg = blue     })
 vim.api.nvim_set_hl(0, "manSubHeading",     { fg = blue     })
 vim.api.nvim_set_hl(0, "manHeader",         { link = "None" })
