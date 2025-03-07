@@ -1,4 +1,10 @@
-#!/bin/bash
+#!/bin/zsh
+
+# Bash to Zsh migration
+# Todo:
+#   - history
+#   - zle keybinds (was .inputrc for bash/readline)
+#   - completions
 
 export EDITOR=nvim
 export VISUAL=nvim
@@ -13,18 +19,15 @@ stty -ixon
 
 # If in tty2 console, don't use unrenderable symbols (unicode, nerdfont)
 if [ "$TERM" = "linux" ]; then
-    PS1="\[\e[0;32m\]$ \[\e[0m\]"
-    PS2="\[\e[0;32m\]> \[\e[0m\]"
+    PS1="%F{green}$ %f"
+    PS2="%F{green}> %f"
 else
-    PS1="\[\e[0;32m\] \[\e[0m\]"
-    PS2="\[\e[0;32m\]󱞩 \[\e[0m\]"
+    PS1="%F{green} %f"
+    PS2="%F{green}󱞩 %f"
 fi
 
-prompt_cmd() {
-    history -a # Add previous command to ~/.bash_history
-               # (so that new session has access to this session's command history)
-
-    title=$(basename "$(dirs +0)")
+precmd() {
+    title=$(basename "${PWD/#$HOME/~}")
     echo -ne "\033]0;${title}\007" # Set WM window title
 
     # If python-virtualenv activated, print venv name on a separate line before PS1
@@ -33,9 +36,6 @@ prompt_cmd() {
         echo -e "\e[0;32m(${venv})\e[0m"
     fi
 }
-
-# Right before drawing prompt, this function is executed:
-PROMPT_COMMAND=prompt_cmd
 
 # Aliases:
 
@@ -63,7 +63,6 @@ alias ls="ls --color=auto"
 alias grep="grep --color=auto -i" # Case insensitive
 alias rg="rg --smart-case --colors 'path:fg:blue'"
 alias diff="diff --color=auto"
-alias cb="NO_COLOR=1 cb"
 
 alias drag="blobdrop -p"
 
@@ -80,8 +79,7 @@ alias chompeof="perl -pi -e 'chomp if eof'"
 alias pac="pacman"
 alias srcinfo="makepkg --printsrcinfo > .SRCINFO"
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
-alias sauce="source ~/.bashrc"
-alias hist="cleandups; history -r" # Read history, in case you want commands from another session
+alias sauce="source ~/.zshrc"
 alias page="nvimpager"
 
 alias py="python"
@@ -121,10 +119,6 @@ alias heat="sensors | grep 'fan\|CPU' | tr -d ' ' | cut -d ':' -f 2"
 
 # Functions:
 
-cleandups() {
-    uniq ~/.bash_history | sponge ~/.bash_history
-}
-
 grayprint_path() {
     grayscale_243=$'\e[38;5;243m' # #767676
     reset=$'\e[0m'
@@ -132,11 +126,11 @@ grayprint_path() {
 }
 
 p() {
-    grayprint_path "$(dirs +0)"
+    grayprint_path "${PWD/#$HOME/~}"
 }
 
 pl() {
-    grayprint_path "${OLDPWD/#$HOME/\~}"
+    grayprint_path "${OLDPWD/#$HOME/~}"
 }
 
 c() {
@@ -149,7 +143,7 @@ mc() {
     mkdir "$@" && c "$@"
 }
 
-eval "$(zoxide init bash)" # https://github.com/ajeetdsouza/zoxide
+eval "$(zoxide init zsh)" # https://github.com/ajeetdsouza/zoxide
 z() {
     __zoxide_z "$@" \
             && p \
@@ -163,7 +157,7 @@ zi() {
     #       - Don't show frecency score on the left (still sorted by it)
     #       - "Exact" matching feels better for filepaths
 
-    list=$(zoxide query -l | sed "s|^$HOME|~|g")
+    list=$(zoxide query -l | sed "s|^$HOME|~|")
     for subword in "$@"; do
         list=$(/usr/bin/grep -i "$subword" <<< "$list")
     done
@@ -174,7 +168,7 @@ zi() {
     fi
 
     target=$(fzf --height=~40% --no-sort --exact --select-1 <<< "$list")
-    c "${target/#~/$HOME}"
+    c "${target/#\~/$HOME}"
 }
 
 # ls long listing
@@ -222,24 +216,11 @@ say() {
     gtts-cli -t us "$@" | mpv --really-quiet -
 }
 
-# === Bash command history ===
-
-cleandups # Clean up in case multiple sessions have created unwanted history dups
-export HISTCONTROL=ignoredups
-export HISTSIZE=5000
-
-# === Add stuff to PATH ===
-
-# User scripts and python (pip) stuff
+# === PATH ===
 export PATH="$HOME/.local/bin:$PATH"
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
-
-# Ruby
-GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
-export PATH="$GEM_HOME/bin:$PATH"
-
 
 # === Settings for tools ===
 source ~/.ls_colors # Sets and exports LS_COLORS env variable
@@ -249,21 +230,7 @@ export SYSTEMD_COLORS=16 # Prevent systemctl from using colors outside of my col
 export VIRTUAL_ENV_DISABLE_PROMPT=1 # Use custom venv-prompt in prompt_cmd
 export PYTHONSTARTUP="$HOME/.pyrc" # Config (startup script) for py interactive shell
 
-# Extra tab completions
-source /usr/share/git/completion/git-completion.bash
-source /usr/share/fzf/completion.bash # fzf completion on **
-
-# Make custom completions work on aliases too
-# Todo: doesn't work for my custom commands
-source /usr/share/bash-complete-alias/complete_alias
-complete -F _complete_alias "${!BASH_ALIASES[@]}"
-
-# https://github.com/junegunn/fzf
-# Enable fzf keybindings:
-#   Ctrl-R  command history fzf overwrite
-#   Ctrl-T  add fzf search result to command
-#   Alt-C   cd to fzf search result (folder)
-source /usr/share/fzf/key-bindings.bash
+source <(fzf --zsh) # Set up fzf key bindings and fuzzy completion
 
 # Change fzf colors and icons, refer to: https://vitormv.github.io/fzf-themes/
 # Todo: fzf would be a useful tool in tty2, but can't show these icons and some of the colors (e.g. green)

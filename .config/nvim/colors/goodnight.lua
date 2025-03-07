@@ -282,6 +282,16 @@ vim.api.nvim_set_hl(0, "Tag",          { link = "@tag"                  })
 vim.api.nvim_set_hl(0, "Type",         { link = "@type"                 })
 vim.api.nvim_set_hl(0, "Typedef",      { link = "@type.definition"      })
 
+-- There's no treesitter parser for zsh yet
+-- There's not enough granularity in the zsh highlight groups,
+-- but set them as something semi-sensible for now
+vim.api.nvim_set_hl(0, "zshFunction",   { fg = blue     })
+vim.api.nvim_set_hl(0, "zshCommands",   { fg = blue     })
+vim.api.nvim_set_hl(0, "zshDeref",      { fg = cyan     })
+vim.api.nvim_set_hl(0, "zshShortDeref", { fg = cyan     })
+vim.api.nvim_set_hl(0, "zshException",  { fg = magenta  })
+vim.api.nvim_set_hl(0, "zshSubst",      { link = "None" })
+
 -- Fine-tuning and pinpointing issues
 
 -- Gitcommit
