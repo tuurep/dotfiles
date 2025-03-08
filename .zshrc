@@ -4,12 +4,11 @@ export EDITOR=nvim
 export VISUAL=nvim
 export PAGER=nvimpager
 
-# Don't use vi mode for zle
-bindkey -e
-
 # Disable Ctrl+s and Ctrl+q freeze/unfreeze
 # Enables Ctrl+s i-search in its place (Ctrl+r opposite direction)
 stty -ixon
+
+# === Prompt ===
 
 # If in tty2 console, don't use unrenderable symbols (unicode, nerdfont)
 if [ "$TERM" = "linux" ]; then
@@ -31,7 +30,7 @@ precmd() {
     fi
 }
 
-# Aliases:
+# === Aliases ===
 
 alias l="ls --color=always --group-directories-first"
 alias e="nvim"
@@ -111,7 +110,7 @@ alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0 \
 # Show fan RPM and CPU celsius
 alias heat="sensors | grep 'fan\|CPU' | tr -d ' ' | cut -d ':' -f 2"
 
-# Functions:
+# === Functions ===
 
 grayprint_path() {
     grayscale_243=$'\e[38;5;243m' # #767676
@@ -211,50 +210,95 @@ say() {
 }
 
 # === Tab completion ===
+
 setopt noautomenu # Completion option close to bash's "show-all-if-unmodified"
 autoload -U compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # Smartcase tab completion
 
 # === ZLE ===
 
+bindkey -e # Emacs/readline style
+
 # History completion with typed string as prefix
+# (I'm not big on the "up/down-line" part though)
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search   # up
-bindkey "^[[B" down-line-or-beginning-search # down
-bindkey "^K"   up-line-or-beginning-search   # Ctrl + k
-bindkey "^J"   down-line-or-beginning-search # Ctrl + j
 
-# Todo: would be nice to land on the 'blank' character for backward at least
-bindkey "^H"  emacs-backward-word # Ctrl + h
-bindkey "^L"  emacs-forward-word  # Ctrl + l
+# Other shells get history immediately even without pressing enter first
+local up-line-or-beginning-search-reread() {
+    # Todo: doesn't work with prefixed search
+    #       Reading on non-empty lines isn't a fix: will always go back to the start of history
+    [[ -z $BUFFER ]] && fc -R $HISTFILE
+    zle up-line-or-beginning-search
+}
+zle -N up-line-or-beginning-search-reread
+
+bindkey "^[[A" up-line-or-beginning-search-reread # up
+bindkey "^[[B" down-line-or-beginning-search      # down
+
+# Todo: would have set Ctrl + j/k as these, but can't make the "-reread" variant work
+#       when trying to call `zle history-beginning-search-backward-end` in the func
+# autoload -U history-search-end
+# zle -N history-beginning-search-backward-end history-search-end
+# zle -N history-beginning-search-forward-end history-search-end
+
+bindkey "^K"  up-line-or-beginning-search-reread # Ctrl + k
+bindkey "^J"  down-line-or-beginning-search      # Ctrl + j
+bindkey "^[k" up-line   # Alt + k
+bindkey "^[j" down-line # Alt + j
+
+local backward-end-blank() {
+    # Todo: moves to an awkward spot if on the first word of the line
+    zle backward-char
+    zle vi-backward-blank-word-end
+    zle forward-char
+}
+local forward-end-blank() {
+    zle vi-forward-blank-word-end
+    zle forward-char
+}
+zle -N backward-end-blank
+zle -N forward-end-blank
+
+bindkey "^H"  backward-end-blank # Ctrl + h
+bindkey "^L"  forward-end-blank  # Ctrl + l
 
 bindkey "^[h" backward-char # Alt + h
 bindkey "^[l" forward-char  # Alt + l
 
-bindkey "^[[3~" vi-delete-char # Del
+bindkey "^U"  backward-kill-line # Ctrl + u
+bindkey "^[u" kill-line # Alt + u
+bindkey "^[w" kill-word # Alt + w
 
-bindkey "^@" clear-screen # Ctrl + Space
+bindkey "^[[3~" vi-delete-char  # Del
+bindkey "^[ "   kill-whole-line # Alt + Space
+bindkey "^@"    clear-screen    # Ctrl + Space
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey "^[e" edit-command-line # Alt + e
 
 # === History ===
+
 export HISTSIZE=5000
 export SAVEHIST=5000
 export HISTFILE=~/.zsh_history
-# Todo: other window only gets new entries after <enter>
-# https://superuser.com/questions/843138/how-can-i-get-zsh-shared-history-to-work
 setopt share_history
-setopt hist_ignore_dups
 setopt hist_reduce_blanks
+setopt hist_ignore_dups
+setopt hist_expire_dups_first
 
 # === PATH ===
+
 export PATH="$HOME/.local/bin:$PATH"
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # === Settings for tools ===
+
 source ~/.ls_colors # Sets and exports LS_COLORS env variable
 
 export SYSTEMD_COLORS=16 # Prevent systemctl from using colors outside of my colorscheme

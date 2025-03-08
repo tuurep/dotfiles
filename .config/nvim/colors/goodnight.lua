@@ -287,6 +287,7 @@ vim.api.nvim_set_hl(0, "Typedef",      { link = "@type.definition"      })
 -- but set them as something semi-sensible for now
 vim.api.nvim_set_hl(0, "zshCommands",   { fg = magenta  })
 vim.api.nvim_set_hl(0, "zshException",  { fg = magenta  })
+vim.api.nvim_set_hl(0, "zshTypes",      { fg = magenta  })
 vim.api.nvim_set_hl(0, "zshFunction",   { fg = blue     })
 vim.api.nvim_set_hl(0, "zshDeref",      { fg = cyan     })
 vim.api.nvim_set_hl(0, "zshShortDeref", { fg = cyan     })
