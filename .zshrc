@@ -244,10 +244,10 @@ bindkey "^[[B" down-line-or-beginning-search      # down
 # zle -N history-beginning-search-backward-end history-search-end
 # zle -N history-beginning-search-forward-end history-search-end
 
-bindkey "^K"  up-line-or-beginning-search-reread # Ctrl + k
-bindkey "^J"  down-line-or-beginning-search      # Ctrl + j
-bindkey "^[k" up-line   # Alt + k
-bindkey "^[j" down-line # Alt + j
+bindkey "^[k" up-line-or-beginning-search-reread # Ctrl + k
+bindkey "^[j" down-line-or-beginning-search      # Ctrl + j
+bindkey "^K"  up-line   # Alt + k
+bindkey "^J"  down-line # Alt + j
 
 local backward-end-blank() {
     # Todo: moves to an awkward spot if on the first word of the line
@@ -262,18 +262,19 @@ local forward-end-blank() {
 zle -N backward-end-blank
 zle -N forward-end-blank
 
-bindkey "^H"  backward-end-blank # Ctrl + h
-bindkey "^L"  forward-end-blank  # Ctrl + l
+bindkey "^[h" backward-end-blank # Ctrl + h
+bindkey "^[l" forward-end-blank  # Ctrl + l
 
-bindkey "^[h" backward-char # Alt + h
-bindkey "^[l" forward-char  # Alt + l
+bindkey "^H"  backward-char # Alt + h
+bindkey "^L"  forward-char  # Alt + l
 
-bindkey "^U"  backward-kill-line # Ctrl + u
-bindkey "^[u" kill-line # Alt + u
-bindkey "^[w" kill-word # Alt + w
+bindkey "^[w" backward-kill-word # Alt  + w
+bindkey "^W"  kill-word          # Ctrl + w
+bindkey "^[u" backward-kill-line # Alt  + u
+bindkey "^U"  kill-line          # Ctrl + u
 
 bindkey "^[[3~" vi-delete-char  # Del
-bindkey "^[ "   kill-whole-line # Alt + Space
+bindkey "^[ "   kill-whole-line # Alt  + Space
 bindkey "^@"    clear-screen    # Ctrl + Space
 
 autoload -U edit-command-line
@@ -287,8 +288,7 @@ export SAVEHIST=5000
 export HISTFILE=~/.zsh_history
 setopt share_history
 setopt hist_reduce_blanks
-setopt hist_ignore_dups
-setopt hist_expire_dups_first
+setopt hist_ignore_all_dups
 
 # === PATH ===
 
