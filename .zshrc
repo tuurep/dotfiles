@@ -1,17 +1,11 @@
 #!/bin/zsh
 
-# Bash to Zsh migration
-# Todo:
-#   - history
-#   - zle keybinds (was .inputrc for bash/readline)
-#   - completions
-
 export EDITOR=nvim
 export VISUAL=nvim
 export PAGER=nvimpager
 
-# If the running shell is not an interactive shell, return without doing anything
-[[ $- != *i* ]] && return
+# Don't use vi mode for zle
+bindkey -e
 
 # Disable Ctrl+s and Ctrl+q freeze/unfreeze
 # Enables Ctrl+s i-search in its place (Ctrl+r opposite direction)
@@ -103,7 +97,7 @@ alias reset-dunst="killall dunst; notify-send monkey monkey"
 alias reset-polybar="killall -q polybar; polybar bar1 -q & disown"
 
 alias whereami='echo $HOSTNAME'
-alias gnu="neofetch -L --ascii_distro GNU"
+alias gnu="fastfetch -l GNU" # Todo: print only the logo
 
 # for gtts-cli and translate-shell: get list of all language tags (works well with grep)
 alias langtags="gtts-cli --all"
@@ -215,6 +209,44 @@ say() {
     # Pass -t co.uk to override to British English
     gtts-cli -t us "$@" | mpv --really-quiet -
 }
+
+# === Tab completion ===
+setopt noautomenu # Completion option close to bash's "show-all-if-unmodified"
+autoload -U compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # Smartcase tab completion
+
+# === ZLE ===
+
+# History completion with typed string as prefix
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search   # up
+bindkey "^[[B" down-line-or-beginning-search # down
+bindkey "^K"   up-line-or-beginning-search   # Ctrl + k
+bindkey "^J"   down-line-or-beginning-search # Ctrl + j
+
+# Todo: would be nice to land on the 'blank' character for backward at least
+bindkey "^H"  emacs-backward-word # Ctrl + h
+bindkey "^L"  emacs-forward-word  # Ctrl + l
+
+bindkey "^[h" backward-char # Alt + h
+bindkey "^[l" forward-char  # Alt + l
+
+bindkey "^[[3~" vi-delete-char # Del
+
+bindkey "^@" clear-screen # Ctrl + Space
+
+# === History ===
+export HISTSIZE=5000
+export SAVEHIST=5000
+export HISTFILE=~/.zsh_history
+# Todo: other window only gets new entries after <enter>
+# https://superuser.com/questions/843138/how-can-i-get-zsh-shared-history-to-work
+setopt share_history
+setopt hist_ignore_dups
+setopt hist_reduce_blanks
 
 # === PATH ===
 export PATH="$HOME/.local/bin:$PATH"
