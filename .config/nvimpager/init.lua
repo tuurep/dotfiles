@@ -318,12 +318,15 @@ require("mini.ai").setup({
         around_last = "ah"
     },
     custom_textobjects = {
+        
+        -- Disable 'anybracket'
+        ["b"] = gen_spec.pair('b', 'b', nil),
 
-        -- Remap 'argument' textobject
+        -- Override 'anyquote' with just doublequote
+        ["q"] = { '%b""', "^.().*().$" },
+
+        -- Remap 'argument' textobject, I want it for square bracket
         ["v"] = gen_spec.argument(),
-
-        -- Anybracket equivalent for e.g. i(
-        ["B"] = { { "%b()", "%b[]", "%b{}" }, "^.%s*().-()%s*.$" },
 
         -- Brackets aliases
         ["e"] = { "%b()", "^.().*().$" },
@@ -335,13 +338,13 @@ require("mini.ai").setup({
         ["A"] = { "%b[]", "^.%s*().-()%s*.$" },
         [">"] = { "%b<>", "^.%s*().-()%s*.$" },
 
-        -- Quotation aliases (experimental)
+        -- Quotation aliases
         ["r"] = { "%b''", "^.().*().$" },
         ["x"] = { "%b``", "^.().*().$" },
         ["Q"] = { '"""().-()"""' },
         ["X"] = { "```().-()```" },
 
-        -- Markdown (experimental)
+        -- Markdown
         ["m"] = gen_spec.pair("*", "*", { type = "greedy" }),
         ["*"] = gen_spec.pair("*", "*", { type = "greedy" }),
         ["_"] = gen_spec.pair("_", "_", { type = "greedy" }),

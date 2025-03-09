@@ -381,90 +381,10 @@ operators.setup({
 vim.keymap.set("x", "P", "p")
 
 vim.keymap.set("n", "dP", "dp$", { remap = true })
-vim.keymap.set("n", "cX",  "x$",  { remap = true })
+vim.keymap.set("n", "cX", "x$",  { remap = true })
 vim.keymap.set("n", "Ö",  "ö$",  { remap = true })
 vim.keymap.set("n", "gS", "gs$", { remap = true })
 vim.keymap.set("n", "g:", "g.$", { remap = true })
-
--- mini.surround
--- todo: vim-wordmotion can make message noise on dot repeat
-
-require("mini.tpopesurround").setup({
-    mappings = {
-        add = "q",
-        delete = "qd",
-        replace = "qr",
-
-        add_visual = "q",
-
-        add_and_indent = "<M-q>",
-        replace_and_indent = "<M-q>r",
-
-        add_line = "qq",
-        add_line_and_indent = "<M-q><M-q>",
-
-        suffix_next = "l",
-        suffix_last = "h",
-
-        -- Disable
-        find = "",
-        find_left = "",
-        update_n_lines = "",
-        highlight = ""
-    },
-    custom_surroundings = {
-
-        -- For cohesion with lowercase b
-        ["B"] = { input = { { "%b()", "%b[]", "%b{}" }, "^.().*().$" }, output = { left = "( ", right = " )" }},
-
-        -- Brackets aliases
-        ["e"] = { input = { "%b()", "^.().*().$" }, output = { left = "(",  right = ")" } },
-        ["d"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{",  right = "}" } },
-        ["a"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[",  right = "]" } },
-        ["<"] = { input = { "%b<>", "^.().*().$" }, output = { left = "<",  right = ">" } },
-
-        ["E"] = { input = { "%b()", "^. +().-() +.$" }, output = { left = "( ", right = " )" } },
-        ["D"] = { input = { "%b{}", "^. +().-() +.$" }, output = { left = "{ ", right = " }" } },
-        ["A"] = { input = { "%b[]", "^. +().-() +.$" }, output = { left = "[ ", right = " ]" } },
-        [">"] = { input = { "%b<>", "^. +().-() +.$" }, output = { left = "< ", right = " >" } },
-
-        -- Quotation aliases
-        ["r"] = { input = { "%b''", "^.().*().$" }, output = { left = "'",   right = "'"   } },
-        ["x"] = { input = { "%b``", "^.().*().$" }, output = { left = "`",   right = "`"   } },
-        ["Q"] = { input = { '"""().-()"""'       }, output = { left = '"""', right = '"""' } },
-        ["X"] = { input = { "```().-()```"       }, output = { left = "```", right = "```" } },
-
-        -- Markdown
-        ["m"] = { input = { "%*().-()%*"     }, output = { left = "*",   right = "*"  } },
-        ["M"] = { input = { "%*%*().-()%*%*" }, output = { left = "**",  right = "**" } },
-
-        -- <Tab> to prompt for surroundings
-        -- Taken straight from the builtin ? surrounding:
-        -- https://github.com/echasnovski/mini.surround/blob/f90069c7441a5fb04c3de42eacf93e16b64dd3eb/lua/mini/surround.lua#L1091-L1107
-        ["\t"] = {
-            input = function()
-                local left = MiniSurround.user_input("Left surrounding")
-                if left == nil or left == "" then return end
-                local right = MiniSurround.user_input("Right surrounding")
-                if right == nil or right == "" then return end
-
-                return { vim.pesc(left) .. "().-()" .. vim.pesc(right) }
-            end,
-            output = function()
-                local left = MiniSurround.user_input("Left surrounding")
-                if left == nil then return end
-                local right = MiniSurround.user_input("Right surrounding")
-                if right == nil then return end
-                return { left = left, right = right }
-            end,
-        },
-
-    },
-    search_method = "cover_or_next",
-    silent = true
-})
-vim.keymap.set("n", "Q", "q$", { remap = true })
-vim.keymap.set("n", "<M-Q>", "<M-q>$", { remap = true })
 
 -- mini.ai
 
@@ -557,12 +477,15 @@ require("mini.ai").setup({
         around_last = "ah"
     },
     custom_textobjects = {
+        
+        -- Disable 'anybracket'
+        ["b"] = gen_spec.pair('b', 'b', nil),
+
+        -- Override 'anyquote' with just doublequote
+        ["q"] = { '%b""', "^.().*().$" },
 
         -- Remap 'argument' textobject, I want it for square bracket
         ["v"] = gen_spec.argument(),
-
-        -- Anybracket equivalent for e.g. i(
-        ["B"] = { { "%b()", "%b[]", "%b{}" }, "^.%s*().-()%s*.$" },
 
         -- Brackets aliases
         ["e"] = { "%b()", "^.().*().$" },
@@ -592,6 +515,89 @@ require("mini.ai").setup({
     n_lines = 100,
     silent = true
 })
+
+-- mini.surround
+-- todo: vim-wordmotion can make message noise on dot repeat
+
+require("mini.tpopesurround").setup({
+    mappings = {
+        add = "q",
+        delete = "qd",
+        replace = "qr",
+
+        add_visual = "q",
+
+        add_and_indent = "<M-q>",
+        replace_and_indent = "<M-q>r",
+
+        add_line = "qq",
+        add_line_and_indent = "<M-q><M-q>",
+
+        suffix_next = "l",
+        suffix_last = "h",
+
+        -- Disable
+        find = "",
+        find_left = "",
+        update_n_lines = "",
+        highlight = ""
+    },
+    custom_surroundings = {
+
+        -- Disable 'anybracket'
+        ["b"] = { input = gen_spec.pair('b', 'b', nil), output = { left = "b", right = "b" }},
+
+        -- Override 'anyquote' with just doublequote
+        ["q"] = { input = { '%b""', "^.().*().$" }, output = { left = '"',   right = '"' } },
+
+        -- Brackets aliases
+        ["e"] = { input = { "%b()", "^.().*().$" }, output = { left = "(",  right = ")" } },
+        ["d"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{",  right = "}" } },
+        ["a"] = { input = { "%b[]", "^.().*().$" }, output = { left = "[",  right = "]" } },
+        ["<"] = { input = { "%b<>", "^.().*().$" }, output = { left = "<",  right = ">" } },
+
+        ["E"] = { input = { "%b()", "^. +().-() +.$" }, output = { left = "( ", right = " )" } },
+        ["D"] = { input = { "%b{}", "^. +().-() +.$" }, output = { left = "{ ", right = " }" } },
+        ["A"] = { input = { "%b[]", "^. +().-() +.$" }, output = { left = "[ ", right = " ]" } },
+        [">"] = { input = { "%b<>", "^. +().-() +.$" }, output = { left = "< ", right = " >" } },
+
+        -- Quotation aliases
+        ["r"] = { input = { "%b''", "^.().*().$" }, output = { left = "'",   right = "'"   } },
+        ["x"] = { input = { "%b``", "^.().*().$" }, output = { left = "`",   right = "`"   } },
+        ["Q"] = { input = { '"""().-()"""'       }, output = { left = '"""', right = '"""' } },
+        ["X"] = { input = { "```().-()```"       }, output = { left = "```", right = "```" } },
+
+        -- Markdown
+        ["m"] = { input = { "%*().-()%*"     }, output = { left = "*",   right = "*"  } },
+        ["M"] = { input = { "%*%*().-()%*%*" }, output = { left = "**",  right = "**" } },
+
+        -- <Tab> to prompt for surroundings
+        -- Taken straight from the builtin ? surrounding:
+        -- https://github.com/echasnovski/mini.surround/blob/f90069c7441a5fb04c3de42eacf93e16b64dd3eb/lua/mini/surround.lua#L1091-L1107
+        ["\t"] = {
+            input = function()
+                local left = MiniSurround.user_input("Left surrounding")
+                if left == nil or left == "" then return end
+                local right = MiniSurround.user_input("Right surrounding")
+                if right == nil or right == "" then return end
+
+                return { vim.pesc(left) .. "().-()" .. vim.pesc(right) }
+            end,
+            output = function()
+                local left = MiniSurround.user_input("Left surrounding")
+                if left == nil then return end
+                local right = MiniSurround.user_input("Right surrounding")
+                if right == nil then return end
+                return { left = left, right = right }
+            end,
+        },
+
+    },
+    search_method = "cover_or_next",
+    silent = true
+})
+vim.keymap.set("n", "Q", "q$", { remap = true })
+vim.keymap.set("n", "<M-Q>", "<M-q>$", { remap = true })
 
 -- Lazy way to set <Tab> as builtin mini.ai `?` textobject
 -- Uses many helpers inside the mini.ai module:
