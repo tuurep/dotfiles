@@ -44,8 +44,8 @@ alias s="sudo -v; sudo "
 
 alias ..="c .."
 alias -- -="c -" # -- required to alias dash
-alias r='cd $(git rev-parse --show-toplevel) && p && l' # Go to root of current git repo,
-                                                        # if any. Else goes to ~.
+alias r='c $(git rev-parse --show-toplevel)' # Go to root of current git repo,
+                                             # if any. Else goes to ~.
 alias mk="mkdir"
 
 alias cp="cp -i"
@@ -139,8 +139,8 @@ mc() {
 eval "$(zoxide init zsh)" # https://github.com/ajeetdsouza/zoxide
 z() {
     __zoxide_z "$@" \
-            && p \
-            && l
+        && p \
+        && l
 }
 zi() {
     # Reimplement default `zi` (zoxide interactive)
@@ -298,15 +298,11 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # === Settings for tools ===
-
-source ~/.ls_colors # Sets and exports LS_COLORS env variable
-
-export SYSTEMD_COLORS=16 # Prevent systemctl from using colors outside of my colorscheme
-
+source ~/.ls_colors                 # Sets and exports LS_COLORS env variable
+export SYSTEMD_COLORS=16            # Prevent systemctl from using colors outside of my colorscheme
 export VIRTUAL_ENV_DISABLE_PROMPT=1 # Use custom venv-prompt in prompt_cmd
-export PYTHONSTARTUP="$HOME/.pyrc" # Config (startup script) for py interactive shell
-
-source <(fzf --zsh) # Set up fzf key bindings and fuzzy completion
+export PYTHONSTARTUP="$HOME/.pyrc"  # Config (startup script) for py interactive shell
+source <(fzf --zsh)                 # Set up fzf key bindings and fuzzy completion
 
 # Change fzf colors and icons, refer to: https://vitormv.github.io/fzf-themes/
 # Todo: fzf would be a useful tool in tty2, but can't show these icons and some of the colors (e.g. green)
