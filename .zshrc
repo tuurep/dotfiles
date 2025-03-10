@@ -211,7 +211,12 @@ say() {
 
 # === Tab completion ===
 
-setopt noautomenu # Completion option close to bash's "show-all-if-unmodified"
+# Make completion as close as possible to bash's "show-all-if-unmodified"
+setopt no_automenu              # Don't start cycling anything
+setopt no_always_last_prompt    # "Print" the completion list and redraw prompt
+
+setopt list_packed # Makes list a little more compact - definitely nice
+
 autoload -U compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # Smartcase tab completion
 
