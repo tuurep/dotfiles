@@ -94,9 +94,31 @@ alias pap="papis"
 
 alias reset-dunst="killall dunst; notify-send monkey monkey"
 alias reset-polybar="killall -q polybar; polybar bar1 -q & disown"
+alias whereami="echo $HOST"
 
-alias whereami='echo $HOSTNAME'
-alias gnu="fastfetch -l GNU" # Todo: print only the logo
+ascii_gnu=$(
+cat << 'EOF'
+    _-`````-,           ,- '- .
+  .'   .- - |          | - -.  `.
+ /.'  /                     `.   \
+:/   :      _...   ..._      ``   :
+::   :     /._ .`:'_.._\.    ||   :
+::    `._ ./  ,`  :    \ . _.''   .
+`:.      /   |  -.  \-. \\_      /
+  \:._ _/  .'   .@)  \@) ` `\ ,.'
+     _/,--'       .- .\,-.`--`.
+       ,'/''     (( \ `  )
+        /'/'  \    `-'  (
+         '/''  `._,-----'
+          ''/'    .,---'
+           ''/'      ;:
+             ''/''  ''/
+               ''/''/''
+                 '/'/'
+                  `;
+EOF
+)
+alias gnu='echo "$ascii_gnu"'
 
 # for gtts-cli and translate-shell: get list of all language tags (works well with grep)
 alias langtags="gtts-cli --all"
@@ -212,10 +234,10 @@ say() {
 # === Tab completion ===
 
 # Make completion as close as possible to bash's "show-all-if-unmodified"
-setopt no_automenu              # Don't start cycling anything
-setopt no_always_last_prompt    # "Print" the completion list and redraw prompt
+setopt NO_AUTO_MENU             # Don't start cycling anything
+setopt NO_ALWAYS_LAST_PROMPT    # "Print" the completion list and redraw prompt
 
-setopt list_packed # Makes list a little more compact - definitely nice
+setopt LIST_PACKED # Makes completion list a little more compact - definitely nice
 
 autoload -U compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # Smartcase tab completion
@@ -232,7 +254,7 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
 # Other shells get history immediately even without pressing enter first
-local up-line-or-beginning-search-reread() {
+up-line-or-beginning-search-reread() {
     # Todo: doesn't work with prefixed search
     #       Reading on non-empty lines isn't a fix: will always go back to the start of history
     [[ -z $BUFFER ]] && fc -R $HISTFILE
@@ -254,13 +276,13 @@ bindkey "^[j" down-line-or-beginning-search      # Ctrl + j
 bindkey "^K"  up-line   # Alt + k
 bindkey "^J"  down-line # Alt + j
 
-local backward-end-blank() {
+backward-end-blank() {
     # Todo: moves to an awkward spot if on the first word of the line
     zle backward-char
     zle vi-backward-blank-word-end
     zle forward-char
 }
-local forward-end-blank() {
+forward-end-blank() {
     zle vi-forward-blank-word-end
     zle forward-char
 }
@@ -291,15 +313,13 @@ bindkey "^[e" edit-command-line # Alt + e
 export HISTSIZE=5000
 export SAVEHIST=5000
 export HISTFILE=~/.zsh_history
-setopt share_history
-setopt hist_reduce_blanks
-setopt hist_ignore_all_dups
+setopt SHARE_HISTORY
+setopt HIST_REDUCE_BLANKS
+setopt HIST_IGNORE_ALL_DUPS
 
 # === PATH ===
 
 export PATH="$HOME/.local/bin:$PATH"
-
-# Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # === Settings for tools ===
