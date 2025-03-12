@@ -30,6 +30,17 @@ precmd() {
     fi
 }
 
+# === Tab completion ===
+
+# Make completion as close as possible to bash's "show-all-if-unmodified"
+setopt NO_AUTO_MENU             # Don't start cycling anything
+setopt NO_ALWAYS_LAST_PROMPT    # "Print" the completion list and redraw prompt
+
+setopt LIST_PACKED # Makes completion list a little more compact - definitely nice
+
+autoload -U compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # Smartcase tab completion
+
 # === Aliases ===
 
 alias l="ls --color=always --group-directories-first"
@@ -148,6 +159,13 @@ pl() {
     grayprint_path "${OLDPWD/#$HOME/~}"
 }
 
+# ls long listing
+#   - sed removes first line (example: "total 4.0K")
+ll() {
+    l -oh --time-style=long-iso "$@" \
+        | sed -r '/^total [0-9]+\.?[0-9]*[BKMGT]?$/d'
+}
+
 c() {
     builtin cd "$@" > /dev/null \
         && p \
@@ -158,7 +176,7 @@ mc() {
     mkdir "$@" && c "$@"
 }
 
-eval "$(zoxide init zsh)" # https://github.com/ajeetdsouza/zoxide
+eval "$(zoxide init zsh --no-cmd)" # https://github.com/ajeetdsouza/zoxide
 z() {
     __zoxide_z "$@" \
         && p \
@@ -184,13 +202,6 @@ zi() {
 
     target=$(fzf --height=~40% --no-sort --exact --select-1 <<< "$list")
     c "${target/#\~/$HOME}"
-}
-
-# ls long listing
-#       - sed removes first line (example: "total 4.0K")
-ll() {
-    l -oh --time-style=long-iso "$@" \
-        | sed -r '/^total [0-9]+\.?[0-9]*[BKMGT]?$/d'
 }
 
 # tree with the box-drawing characters and end report turned into a dimmed fg color
@@ -231,20 +242,33 @@ say() {
     gtts-cli -t us "$@" | mpv --really-quiet -
 }
 
-# === Tab completion ===
+# === Function completions ===
 
-# Make completion as close as possible to bash's "show-all-if-unmodified"
-setopt NO_AUTO_MENU             # Don't start cycling anything
-setopt NO_ALWAYS_LAST_PROMPT    # "Print" the completion list and redraw prompt
+compdef _ls ll
+compdef _cd c
+compdef _mkdir mc
+# compdef _mpv mp
+compdef _zathura zat
+compdef __zoxide_z z # Completes flags, but not dirs
+                     # Todo: would prefer both, but couldn't figure out how (yet)
+# Todo:
+#   zi can't use flags, all args are treated as subwords
+#   mp flag completion fails with:
+#       _mpv_generate_if_changed:zstat:7: mp: no such file or directory
 
-setopt LIST_PACKED # Makes completion list a little more compact - definitely nice
+# Works without compdef:
+#   tree
 
-autoload -U compinit && compinit
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # Smartcase tab completion
+# No special completions:
+#   nsxiv
+#   xdg-open
+#   gtts-cli
 
 # === ZLE ===
 
 bindkey -e # Emacs/readline style
+
+setopt INTERACTIVE_COMMENTS
 
 # History completion with typed string as prefix
 # (I'm not big on the "up/down-line" part though)
@@ -271,10 +295,10 @@ bindkey "^[[B" down-line-or-beginning-search      # down
 # zle -N history-beginning-search-backward-end history-search-end
 # zle -N history-beginning-search-forward-end history-search-end
 
-bindkey "^[k" up-line-or-beginning-search-reread # Ctrl + k
-bindkey "^[j" down-line-or-beginning-search      # Ctrl + j
-bindkey "^K"  up-line   # Alt + k
-bindkey "^J"  down-line # Alt + j
+bindkey "^[k" up-line-or-beginning-search-reread # Alt + k
+bindkey "^[j" down-line-or-beginning-search      # Alt + j
+bindkey "^K"  up-line   # Ctrl + k
+bindkey "^J"  down-line # Ctrl + j
 
 backward-end-blank() {
     # Todo: moves to an awkward spot if on the first word of the line
@@ -307,6 +331,9 @@ bindkey "^@"    clear-screen    # Ctrl + Space
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey "^[e" edit-command-line # Alt + e
+
+# Debug completion functions: press F1 instead of Tab at completion point
+bindkey "^[OP" _complete_help # F1
 
 # === History ===
 
