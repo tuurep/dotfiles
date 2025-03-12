@@ -338,9 +338,10 @@ vim.keymap.set("n", "U", "<C-r>")
 vim.keymap.set("n", "<M-u>", "U")
 
 -- ~ too hard to press for being so useful
-vim.keymap.set({"n", "x"}, "ä", "~")
-vim.keymap.set("n", "ää", "~~")
-vim.keymap.set("n", "Ä", "~$")
+vim.keymap.set({"n", "x"}, "ä", "~") -- 
+vim.keymap.set("n", "gä", "g~")
+vim.keymap.set("n", "gää", "g~~")
+vim.keymap.set("n", "gÄ", "g~$")
 
 -- Treesitter tools
 vim.keymap.set("n", "<leader>e", "<cmd>Inspect<cr>")
