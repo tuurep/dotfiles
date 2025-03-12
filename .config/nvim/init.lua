@@ -53,9 +53,6 @@ vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
 vim.o.expandtab = true
 
--- ~ takes a motion instead of changing case of 1 character and moving right
-vim.o.tildeop = true
-
 -- Globals for plugins
 vim.g.lion_prompt = "Pattern: "
 vim.g.lion_squeeze_spaces = 1
@@ -70,6 +67,7 @@ vim.g.undotree_HelpLine = 0
 
 vim.g.vimtex_syntax_enabled = 0         -- Let latex be handled by treesitter parser
 vim.g.vimtex_syntax_conceal_disable = 1
+vim.g.vimtex_mappings_enabled = 0
 
 -- Plugin setups that aren't related to keymaps
 -- (others are in ./lua/keymaps.lua)
