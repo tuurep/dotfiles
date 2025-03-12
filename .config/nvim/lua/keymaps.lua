@@ -385,7 +385,7 @@ operators.setup({
 vim.keymap.set("x", "P", "p")
 
 vim.keymap.set("n", "dP", "dp$", { remap = true })
-vim.keymap.set("n", "cX", "x$",  { remap = true })
+vim.keymap.set("n", "cX", "cx$", { remap = true })
 vim.keymap.set("n", "Ö",  "ö$",  { remap = true })
 vim.keymap.set("n", "gS", "gs$", { remap = true })
 vim.keymap.set("n", "g:", "g.$", { remap = true })
