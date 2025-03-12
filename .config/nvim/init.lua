@@ -71,8 +71,8 @@ vim.g.undotree_HelpLine = 0
 vim.g.vimtex_syntax_enabled = 0         -- Let latex be handled by treesitter parser
 vim.g.vimtex_syntax_conceal_disable = 1
 
--- Setups
-require("Comment").setup()
+-- Plugin setups that aren't related to keymaps
+-- (others are in ./lua/keymaps.lua)
 require("nvim-treesitter.configs").setup({
     highlight = {
         enable = true,
@@ -91,4 +91,4 @@ vim.g.loaded_netrwPlugin = 0
 
 -- Where plugins?
 -- See ./lua/update/plugins.lua
--- Plugins are only updated with a bash script
+-- Plugins are only updated with a shell script

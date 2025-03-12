@@ -625,6 +625,40 @@ require("mini.move").setup({
     }
 })
 
+-- Comment.nvim
+require("Comment").setup({
+    opleader = {
+        -- Swap the defaults,
+        -- this allows to use `gbb` instead of `gbc`
+        -- (line-operator doesn't need to use `b` motion)
+        -- Slight inconsistency: line-operator with motions within a single line
+        --                       insert block comments, so actually the `b` motion would work,
+        --                       but I don't want to use `gb` this way.
+        line = "gb",
+        block = "gc"
+    },
+    toggler = {
+        line = "gbb",
+        block = "gcc"
+    },
+    extra = {
+        below = "gbo",
+        above = "gbO",
+        eol = "gbA"
+    }
+})
+vim.keymap.set("n", "gC", "gc$", { remap = true })
+
+-- Todo:
+-- Put line-comment string at cursor position, to comment til the end of line
+-- vim.keymap.set("n", "gB", function()
+--     local left, right = string.match(vim.bo.commentstring, "(.*)%%s(.*)")
+--     left = vim.trim(left)
+--     right = vim.trim(right)
+--     -- Problem: for example in C we would get `/*`, when we want `//` for this,
+--     --          and `/*`, `*/` for the block operator
+-- end)
+
 -- vim-sneak
 vim.keymap.set({"n", "x", "o"}, "f", "<Plug>Sneak_f")
 vim.keymap.set({"n", "x", "o"}, "F", "<Plug>Sneak_F")
