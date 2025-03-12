@@ -271,12 +271,15 @@ vim.keymap.set("n", "<C-d>", '<C-y>0"_D', { remap = true }) -- blackhole the del
 vim.keymap.set("n", "<C-c>", '<C-y>0"_C', { remap = true }) -- if another reg was chosen
 
 -- Append register to current line as a oneliner
+-- Sanitizes whitespace:
+--      Trim leading/trailing whitespace
+--      Tabs/indents in the middle get reduced to 1 space
 vim.keymap.set("n", "<C-p>", function()
     local line = vim.api.nvim_get_current_line()
     local reg = vim.fn.getreg(vim.v.register)
 
     if reg ~= "" then
-        local joined = reg:gsub("\n$", ""):gsub("^%s*", ""):gsub("%s+", " ")
+        local joined = reg:gsub("\n$", ""):gsub("^%s*", ""):gsub("%s*$", ""):gsub("%s+", " ")
         if line ~= "" then
             line = line .. " "
         end
