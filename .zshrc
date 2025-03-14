@@ -99,7 +99,6 @@ alias grip="grip -b"
 
 alias yt-dlp="yt-dlp --cookies-from-browser firefox"
 
-alias tm="transmission-remote"
 alias m="mullvad"
 alias pap="papis"
 
@@ -144,6 +143,8 @@ alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0 \
 alias heat="sensors | grep 'fan\|CPU' | tr -d ' ' | cut -d ':' -f 2"
 
 # === Functions ===
+
+autoload -U zmv # Mass-rename command provided by zsh
 
 grayprint_path() {
     grayscale_243=$'\e[38;5;243m' # #767676
@@ -268,7 +269,10 @@ compdef __zoxide_z z # Completes flags, but not dirs
 
 bindkey -e # Emacs/readline style
 
-setopt INTERACTIVE_COMMENTS
+setopt INTERACTIVE_COMMENTS # Ignore comments
+setopt NO_AUTO_REMOVE_SLASH # Don't remove trailing slash when moving left
+setopt MARK_DIRS            # Globbed dirs have trailing slash
+setopt NO_CASE_GLOB         # Glob case insensitively
 
 # History completion with typed string as prefix
 # (I'm not big on the "up/down-line" part though)
@@ -300,24 +304,11 @@ bindkey "^[j" down-line-or-beginning-search      # Alt + j
 bindkey "^K"  up-line   # Ctrl + k
 bindkey "^J"  down-line # Ctrl + j
 
-backward-end-blank() {
-    # Todo: moves to an awkward spot if on the first word of the line
-    zle backward-char
-    zle vi-backward-blank-word-end
-    zle forward-char
-}
-forward-end-blank() {
-    zle vi-forward-blank-word-end
-    zle forward-char
-}
-zle -N backward-end-blank
-zle -N forward-end-blank
+bindkey "^[h" emacs-backward-word # Alt + h
+bindkey "^[l" emacs-forward-word  # Alt + l
 
-bindkey "^[h" backward-end-blank # Ctrl + h
-bindkey "^[l" forward-end-blank  # Ctrl + l
-
-bindkey "^H"  backward-char # Alt + h
-bindkey "^L"  forward-char  # Alt + l
+bindkey "^H"  backward-char # Ctrl + h
+bindkey "^L"  forward-char  # Ctrl + l
 
 bindkey "^[w" backward-kill-word # Alt  + w
 bindkey "^W"  kill-word          # Ctrl + w
