@@ -281,17 +281,8 @@ autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-# Other shells get history immediately even without pressing enter first
-up-line-or-beginning-search-reread() {
-    # Todo: doesn't work with prefixed search
-    #       Reading on non-empty lines isn't a fix: will always go back to the start of history
-    [[ -z $BUFFER ]] && fc -R $HISTFILE
-    zle up-line-or-beginning-search
-}
-zle -N up-line-or-beginning-search-reread
-
-bindkey "^[[A" up-line-or-beginning-search-reread # up
-bindkey "^[[B" down-line-or-beginning-search      # down
+bindkey "^[[A" up-line-or-beginning-search   # up
+bindkey "^[[B" down-line-or-beginning-search # down
 
 # Todo: would have set Ctrl + j/k as these, but can't make the "-reread" variant work
 #       when trying to call `zle history-beginning-search-backward-end` in the func
@@ -299,8 +290,8 @@ bindkey "^[[B" down-line-or-beginning-search      # down
 # zle -N history-beginning-search-backward-end history-search-end
 # zle -N history-beginning-search-forward-end history-search-end
 
-bindkey "^[k" up-line-or-beginning-search-reread # Alt + k
-bindkey "^[j" down-line-or-beginning-search      # Alt + j
+bindkey "^[k" up-line-or-beginning-search   # Alt + k
+bindkey "^[j" down-line-or-beginning-search # Alt + j
 bindkey "^K"  up-line   # Ctrl + k
 bindkey "^J"  down-line # Ctrl + j
 
@@ -331,7 +322,7 @@ bindkey "^[OP" _complete_help # F1
 export HISTSIZE=5000
 export SAVEHIST=5000
 export HISTFILE=~/.zsh_history
-setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
 setopt HIST_REDUCE_BLANKS
 setopt HIST_IGNORE_ALL_DUPS
 
