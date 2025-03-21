@@ -369,8 +369,8 @@ splitjoin.setup({
 })
 
 -- mini.operators
-local operators = require("mini.operators")
-operators.setup({
+
+require("mini.operators").setup({
     replace  = { prefix = "dp", selection = "p" },
     exchange = { prefix = "cx", selection = "x", cancel = "<Esc>" },
     multiply = { prefix = "ö" },
@@ -482,14 +482,13 @@ require("mini.ai").setup({
     },
     custom_textobjects = {
         
-        -- Disable 'anybracket'
-        ["b"] = gen_spec.pair('b', 'b', nil),
-
-        -- Override 'anyquote' with just doublequote
-        ["q"] = { '%b""', "^.().*().$" },
+        ["b"] = gen_spec.treesitter({ i = "@comment.inner", a = "@comment.outer" }),
 
         -- Remap 'argument' textobject, I want it for square bracket
         ["v"] = gen_spec.argument(),
+
+        -- Override 'anyquote' with just doublequote
+        ["q"] = { '%b""', "^.().*().$" },
 
         -- Brackets aliases
         ["e"] = { "%b()", "^.().*().$" },
