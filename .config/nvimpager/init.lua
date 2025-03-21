@@ -319,9 +319,6 @@ require("mini.ai").setup({
     },
     custom_textobjects = {
         
-        -- Disable 'anybracket'
-        ["b"] = gen_spec.pair('b', 'b', nil),
-
         -- Override 'anyquote' with just doublequote
         ["q"] = { '%b""', "^.().*().$" },
 
