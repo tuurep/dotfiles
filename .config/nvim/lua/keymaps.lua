@@ -392,6 +392,8 @@ vim.keymap.set("n", "g:", "g.$", { remap = true })
 
 -- mini.ai
 
+vim.opt.rtp:append("~/projects/mini.ai")
+
 local function get_line_indent(line)
     local prev_nonblank = vim.fn.prevnonblank(line)
     local res = vim.fn.indent(prev_nonblank)
@@ -472,13 +474,15 @@ local gen_spec = require("mini.ai").gen_spec
 
 require("mini.ai").setup({
     mappings = {
-        goto_right = "m",
-        goto_left = "M",
-
         inside_next = "il",
         around_next = "al",
         inside_last = "ih",
-        around_last = "ah"
+        around_last = "ah",
+
+        goto_next_end = "m",
+        goto_next_start = "gm",
+        goto_prev_start = "M",
+        goto_prev_end = "gM"
     },
     custom_textobjects = {
         
@@ -486,9 +490,6 @@ require("mini.ai").setup({
 
         -- Remap 'argument' textobject, I want it for square bracket
         ["v"] = gen_spec.argument(),
-
-        -- Override 'anyquote' with just doublequote
-        ["q"] = { '%b""', "^.().*().$" },
 
         -- Brackets aliases
         ["e"] = { "%b()", "^.().*().$" },
@@ -503,21 +504,32 @@ require("mini.ai").setup({
         -- Quotation aliases
         ["r"] = { "%b''", "^.().*().$" },
         ["x"] = { "%b``", "^.().*().$" },
+        ["q"] = { '%b""', "^.().*().$" },
         ["Q"] = { '"""().-()"""' },
         ["X"] = { "```().-()```" },
 
         -- Markdown
-        ["m"] = gen_spec.pair("*", "*", { type = "greedy" }),
         ["*"] = gen_spec.pair("*", "*", { type = "greedy" }),
         ["_"] = gen_spec.pair("_", "_", { type = "greedy" }),
-        ["M"] = { "%*%*().-()%*%*" },
 
+        -- Custom
         ["i"] = ai_indent
 
     },
     n_lines = 100,
     silent = true
 })
+
+-- Lazy way to set <Tab> as builtin mini.ai `?` textobject
+-- Uses many helpers inside the mini.ai module:
+-- https://github.com/echasnovski/mini.ai/blob/6e01c0e5a15554852546fac9853960780ac52ed4/lua/mini/ai.lua#L1099-L1115
+-- Todo: see if I could achieve it anyway
+vim.keymap.set({"o", "x"}, "i<Tab>",  "i?",  { remap = true })
+vim.keymap.set({"o", "x"}, "il<Tab>", "il?", { remap = true })
+vim.keymap.set({"o", "x"}, "ih<Tab>", "ih?", { remap = true })
+vim.keymap.set({"o", "x"}, "a<Tab>",  "a?",  { remap = true })
+vim.keymap.set({"o", "x"}, "al<Tab>", "al?", { remap = true })
+vim.keymap.set({"o", "x"}, "ah<Tab>", "ah?", { remap = true })
 
 -- mini.surround
 -- todo: vim-wordmotion can make message noise on dot repeat
@@ -550,9 +562,6 @@ require("mini.tpopesurround").setup({
         -- Disable 'anybracket'
         ["b"] = { input = gen_spec.pair('b', 'b', nil), output = { left = "b", right = "b" }},
 
-        -- Override 'anyquote' with just doublequote
-        ["q"] = { input = { '%b""', "^.().*().$" }, output = { left = '"',   right = '"' } },
-
         -- Brackets aliases
         ["e"] = { input = { "%b()", "^.().*().$" }, output = { left = "(",  right = ")" } },
         ["d"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{",  right = "}" } },
@@ -567,12 +576,10 @@ require("mini.tpopesurround").setup({
         -- Quotation aliases
         ["r"] = { input = { "%b''", "^.().*().$" }, output = { left = "'",   right = "'"   } },
         ["x"] = { input = { "%b``", "^.().*().$" }, output = { left = "`",   right = "`"   } },
+        ["q"] = { input = { '%b""', "^.().*().$" }, output = { left = '"',   right = '"' } },
+
         ["Q"] = { input = { '"""().-()"""'       }, output = { left = '"""', right = '"""' } },
         ["X"] = { input = { "```().-()```"       }, output = { left = "```", right = "```" } },
-
-        -- Markdown
-        ["m"] = { input = { "%*().-()%*"     }, output = { left = "*",   right = "*"  } },
-        ["M"] = { input = { "%*%*().-()%*%*" }, output = { left = "**",  right = "**" } },
 
         -- <Tab> to prompt for surroundings
         -- Taken straight from the builtin ? surrounding:
@@ -601,17 +608,6 @@ require("mini.tpopesurround").setup({
 })
 vim.keymap.set("n", "Q", "q$", { remap = true })
 vim.keymap.set("n", "<M-Q>", "<M-q>$", { remap = true })
-
--- Lazy way to set <Tab> as builtin mini.ai `?` textobject
--- Uses many helpers inside the mini.ai module:
--- https://github.com/echasnovski/mini.ai/blob/6e01c0e5a15554852546fac9853960780ac52ed4/lua/mini/ai.lua#L1099-L1115
--- Todo: see if I could achieve it anyway
-vim.keymap.set({"o", "x"}, "i<Tab>",  "i?",  { remap = true })
-vim.keymap.set({"o", "x"}, "in<Tab>", "in?", { remap = true })
-vim.keymap.set({"o", "x"}, "il<Tab>", "il?", { remap = true })
-vim.keymap.set({"o", "x"}, "a<Tab>",  "a?",  { remap = true })
-vim.keymap.set({"o", "x"}, "an<Tab>", "an?", { remap = true })
-vim.keymap.set({"o", "x"}, "al<Tab>", "al?", { remap = true })
 
 -- mini.move
 require("mini.move").setup({

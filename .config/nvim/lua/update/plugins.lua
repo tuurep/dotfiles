@@ -23,7 +23,6 @@ local paq = require("paq") {
 
     -- Textobjects stuff
     "chaoren/vim-wordmotion", -- rework word delimiters for w b e ge iw aw
-    "echasnovski/mini.ai",
     "nvim-treesitter/nvim-treesitter-textobjects",
 
     -- Nonlinear undo history access

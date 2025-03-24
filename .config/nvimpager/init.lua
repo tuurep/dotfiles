@@ -16,8 +16,7 @@ vim.loader.enable()
 -- Leech plugins from nvim (paq)
 vim.opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/vim-sneak")
 vim.opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/vim-edgemotion")
-vim.opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/mini.ai")
-vim.opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/mini.indentscope")
+vim.opt.runtimepath:append("~/projects/mini.ai")
 
 vim.g.loaded_netrwPlugin = 0 -- When unloading netrw, `nvimpager <dir>` shows a blank buffer in pager mode
 
@@ -309,19 +308,18 @@ local gen_spec = require('mini.ai').gen_spec
 
 require("mini.ai").setup({
     mappings = {
-        goto_right = "m",
-        goto_left = "M",
-
         inside_next = "il",
         around_next = "al",
         inside_last = "ih",
-        around_last = "ah"
+        around_last = "ah",
+
+        goto_next_end = "m",
+        goto_next_start = "gm",
+        goto_prev_start = "M",
+        goto_prev_end = "gM"
     },
     custom_textobjects = {
         
-        -- Override 'anyquote' with just doublequote
-        ["q"] = { '%b""', "^.().*().$" },
-
         -- Remap 'argument' textobject, I want it for square bracket
         ["v"] = gen_spec.argument(),
 
@@ -338,14 +336,13 @@ require("mini.ai").setup({
         -- Quotation aliases
         ["r"] = { "%b''", "^.().*().$" },
         ["x"] = { "%b``", "^.().*().$" },
+        ["q"] = { '%b""', "^.().*().$" },
         ["Q"] = { '"""().-()"""' },
         ["X"] = { "```().-()```" },
 
         -- Markdown
-        ["m"] = gen_spec.pair("*", "*", { type = "greedy" }),
         ["*"] = gen_spec.pair("*", "*", { type = "greedy" }),
         ["_"] = gen_spec.pair("_", "_", { type = "greedy" }),
-        ["M"] = { "%*%*().-()%*%*" },
 
         ["i"] = ai_indent
 
@@ -354,11 +351,11 @@ require("mini.ai").setup({
     silent = true
 })
 vim.keymap.set({"o", "x"}, "i<Tab>",  "i?",  { remap = true })
-vim.keymap.set({"o", "x"}, "in<Tab>", "in?", { remap = true })
 vim.keymap.set({"o", "x"}, "il<Tab>", "il?", { remap = true })
+vim.keymap.set({"o", "x"}, "ih<Tab>", "ih?", { remap = true })
 vim.keymap.set({"o", "x"}, "a<Tab>",  "a?",  { remap = true })
-vim.keymap.set({"o", "x"}, "an<Tab>", "an?", { remap = true })
 vim.keymap.set({"o", "x"}, "al<Tab>", "al?", { remap = true })
+vim.keymap.set({"o", "x"}, "ah<Tab>", "ah?", { remap = true })
 
 -- vim-sneak
 vim.g["sneak#s_next"] = true
