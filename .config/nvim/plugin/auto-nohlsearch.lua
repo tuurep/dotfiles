@@ -16,18 +16,10 @@
 
 local searchkeys = { "n", "N", "*", "#" }
 
-vim.api.nvim_create_autocmd({"CursorMoved"}, {
-    callback = function()
-
-        if vim.v.hlsearch == 0 then
-            return
+vim.on_key(function(key)
+    if vim.v.hlsearch == 1 then
+        if not vim.tbl_contains(searchkeys, key) then
+            vim.cmd.nohlsearch()
         end
-
-        vim.on_key(function(key)
-            if not vim.tbl_contains(searchkeys, key) then
-                vim.cmd.nohlsearch()
-            end
-        end)
-
     end
-})
+end)
