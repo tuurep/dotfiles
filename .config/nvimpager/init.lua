@@ -211,12 +211,7 @@ vim.keymap.set("n", "<C-y>", function()
     vim.fn.setreg(vim.v.register, vim.api.nvim_get_current_line())
 end)
 
--- Without shift = forward, with shift = backward
-vim.keymap.set({"n", "x", "o"}, ",", ";")
-vim.keymap.set({"n", "x", "o"}, ";", ",")
-
--- Undo follows the same idea as above
--- Map <M-u> to WeirdUndo so it's still available when you want to use it (never)
+-- Sensible undo
 vim.keymap.set("n", "U", "<C-r>")
 vim.keymap.set("n", "<M-u>", "U")
 
@@ -364,8 +359,6 @@ vim.keymap.set({"n", "x", "o"}, "f", "<Plug>Sneak_f")
 vim.keymap.set({"n", "x", "o"}, "F", "<Plug>Sneak_F")
 vim.keymap.set({"n", "x", "o"}, "t", "<Plug>Sneak_t")
 vim.keymap.set({"n", "x", "o"}, "T", "<Plug>Sneak_T")
-vim.keymap.set({"n", "x", "o"}, ",", "<Plug>Sneak_;")
-vim.keymap.set({"n", "x", "o"}, ";", "<Plug>Sneak_,")
 vim.keymap.set({"x", "o"}, "s", "<Plug>Sneak_s")
 vim.keymap.set({"x", "o"}, "S", "<Plug>Sneak_S")
 

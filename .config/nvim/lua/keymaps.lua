@@ -24,10 +24,6 @@ vim.keymap.set({"n", "x"}, "gJ", "<Nop>")          -- gä for spaceless join, le
 -- gö gÖ zö zÖ
 -- gÅ zå zå
 
--- Practically free:
--- , ;      surpassed by clever-f/t/s
---          although only , and ; will repeat last f/t/s regardless of what it was
-
 -- Free (but bad):
 vim.keymap.set({"n", "x", "i", "c"}, "<PageUp>", "<Nop>")
 vim.keymap.set({"n", "x", "i", "c"}, "<PageDown>", "<Nop>")
@@ -332,8 +328,13 @@ vim.keymap.set({"n", "x"}, "<", ">")
 vim.keymap.set({"n", "x"}, ">", "<")
 vim.keymap.set("n", "<<", ">>")
 vim.keymap.set("n", ">>", "<<")
-vim.keymap.set({"n", "x", "o"}, ",", ";")
-vim.keymap.set({"n", "x", "o"}, ";", ",")
+
+-- regular , and ; are surpassed by 'clever' f/t/s with option g:sneak#s_next
+-- remap to jump between last edit positions (:h changelist)
+vim.keymap.set("n", ",", "g;")
+vim.keymap.set("n", ";", "g,")
+vim.keymap.set({"x", "o"}, ",", "<Nop>")
+vim.keymap.set({"x", "o"}, ";", "<Nop>")
 
 -- Undo follows the same idea as above
 -- Map <M-u> to WeirdUndo so it's still available when you want to use it (never)
@@ -663,8 +664,6 @@ vim.keymap.set({"n", "x", "o"}, "f", "<Plug>Sneak_f")
 vim.keymap.set({"n", "x", "o"}, "F", "<Plug>Sneak_F")
 vim.keymap.set({"n", "x", "o"}, "t", "<Plug>Sneak_t")
 vim.keymap.set({"n", "x", "o"}, "T", "<Plug>Sneak_T")
-vim.keymap.set({"n", "x", "o"}, ",", "<Plug>Sneak_;")
-vim.keymap.set({"n", "x", "o"}, ";", "<Plug>Sneak_,")
 
 -- allow sneak to use s in all cases, because surround is mapped to q
 vim.keymap.set({"x", "o"}, "s", "<Plug>Sneak_s")
