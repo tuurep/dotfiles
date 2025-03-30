@@ -74,14 +74,27 @@ vim.api.nvim_create_autocmd({"CmdWinEnter"}, {
     end
 })
 
--- Insert/command mode Ctrl+a for beginning of line, Ctrl+E for end of line (readline style)
--- If they override something, remap that elsewhere
-vim.keymap.set({"i", "c"}, "<C-a>", "<Home>")
-vim.keymap.set("i", "<C-e>", "<End>")
-vim.keymap.set({"i", "c"}, "<C-b>", "<C-a>") -- command mode: <C-b> == <Home>, insert mode: <C-b> is unmapped
-vim.keymap.set("i", "<M-i>", "<C-e>")
+-- Mappings like in zsh line editing
+vim.keymap.set({"c", "i"}, "<C-h>", "<Left>")
+vim.keymap.set({"c", "i"}, "<C-l>", "<Right>")
+
+vim.keymap.set({"c", "i"}, "<M-h>", "<C-Left>")
+vim.keymap.set({"c", "i"}, "<M-l>", "<C-Right>")
+
+vim.keymap.set({"c", "i"}, "<C-k>", "<Up>")
+vim.keymap.set({"c", "i"}, "<C-j>", "<Down>")
+vim.keymap.set({"c", "i"}, "<M-k>", "<Up>")
+vim.keymap.set({"c", "i"}, "<M-j>", "<Down>")
+
+vim.keymap.set({"c", "i"}, "<M-w>", "<C-w>") -- Todo: <C-w>
+vim.keymap.set({"c", "i"}, "<M-u>", "<C-u>") -- Todo: <C-u>
+-- Todo: <M-Space>
+
+vim.keymap.set({"c", "i"}, "<C-a>", "<Home>")
+vim.keymap.set("i", "<C-e>", "<End>") -- Redundant in command mode
 
 -- Insert mode bracket/quote aliases with autopair behavior
+-- Todo: Same for command mode
 -- Todo: Turn into a plugin to better control when to indent and when not to
 vim.keymap.set("i", "<M-b>", "()<Left>")
 vim.keymap.set("i", "<M-e>", "()<Left>")
@@ -120,15 +133,6 @@ vim.keymap.set("i", "<M-Enter><M-X>", "``````<left><left><left><Enter><Esc>O")
 
 vim.keymap.set("i", "<M-Enter><M-m>", "**<left><Enter><Esc>O")
 vim.keymap.set("i", "<M-Enter><M-M>", "****<left><left><Enter><Esc>O")
-
--- Need these to avoid arrow keys
--- Todo: Ctrk+hjkl full word navigation?
---       Try to make consistent with bash
---       Problem: Ctrl+l for `clear` so useful in bash
-vim.keymap.set({"i", "c"}, "<M-h>", "<Left>")
-vim.keymap.set({"i", "c"}, "<M-j>", "<Down>")
-vim.keymap.set({"i", "c"}, "<M-k>", "<Up>")
-vim.keymap.set({"i", "c"}, "<M-l>", "<Right>")
 
 -- Essential keys for both movement and operator pending
 -- (with the worst defaults known to man)
@@ -342,7 +346,7 @@ vim.keymap.set("n", "U", "<C-r>")
 vim.keymap.set("n", "<M-u>", "U")
 
 -- ~ too hard to press for being so useful
-vim.keymap.set({"n", "x"}, "ä", "~") -- 
+vim.keymap.set({"n", "x"}, "ä", "~")
 vim.keymap.set("n", "gä", "g~")
 vim.keymap.set("n", "gää", "g~~")
 vim.keymap.set("n", "gÄ", "g~$")
@@ -560,9 +564,6 @@ require("mini.tpopesurround").setup({
     },
     custom_surroundings = {
 
-        -- Disable 'anybracket'
-        ["b"] = { input = gen_spec.pair('b', 'b', nil), output = { left = "b", right = "b" }},
-
         -- Brackets aliases
         ["e"] = { input = { "%b()", "^.().*().$" }, output = { left = "(",  right = ")" } },
         ["d"] = { input = { "%b{}", "^.().*().$" }, output = { left = "{",  right = "}" } },
@@ -575,12 +576,12 @@ require("mini.tpopesurround").setup({
         [">"] = { input = { "%b<>", "^. +().-() +.$" }, output = { left = "< ", right = " >" } },
 
         -- Quotation aliases
-        ["r"] = { input = { "%b''", "^.().*().$" }, output = { left = "'",   right = "'"   } },
-        ["x"] = { input = { "%b``", "^.().*().$" }, output = { left = "`",   right = "`"   } },
-        ["q"] = { input = { '%b""', "^.().*().$" }, output = { left = '"',   right = '"' } },
+        ["r"] = { input = { "%b''", "^.().*().$" }, output = { left = "'", right = "'" } },
+        ["x"] = { input = { "%b``", "^.().*().$" }, output = { left = "`", right = "`" } },
+        ["q"] = { input = { '%b""', "^.().*().$" }, output = { left = '"', right = '"' } },
 
-        ["Q"] = { input = { '"""().-()"""'       }, output = { left = '"""', right = '"""' } },
-        ["X"] = { input = { "```().-()```"       }, output = { left = "```", right = "```" } },
+        ["Q"] = { input = { '"""().-()"""' }, output = { left = '"""', right = '"""' } },
+        ["X"] = { input = { "```().-()```" }, output = { left = "```", right = "```" } },
 
         -- <Tab> to prompt for surroundings
         -- Taken straight from the builtin ? surrounding:
@@ -604,7 +605,6 @@ require("mini.tpopesurround").setup({
         },
 
     },
-    search_method = "cover_or_next",
     silent = true
 })
 vim.keymap.set("n", "Q", "q$", { remap = true })

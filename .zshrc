@@ -275,7 +275,6 @@ setopt MARK_DIRS            # Globbed dirs have trailing slash
 setopt NO_CASE_GLOB         # Glob case insensitively
 
 # History completion with typed string as prefix
-# (I'm not big on the "up/down-line" part though)
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
@@ -283,12 +282,6 @@ zle -N down-line-or-beginning-search
 
 bindkey "^[[A" up-line-or-beginning-search   # up
 bindkey "^[[B" down-line-or-beginning-search # down
-
-# Todo: would have set Ctrl + j/k as these, but can't make the "-reread" variant work
-#       when trying to call `zle history-beginning-search-backward-end` in the func
-# autoload -U history-search-end
-# zle -N history-beginning-search-backward-end history-search-end
-# zle -N history-beginning-search-forward-end history-search-end
 
 bindkey "^[k" up-line-or-beginning-search   # Alt + k
 bindkey "^[j" down-line-or-beginning-search # Alt + j
@@ -312,7 +305,7 @@ bindkey "^@"    clear-screen    # Ctrl + Space
 
 autoload -U edit-command-line
 zle -N edit-command-line
-bindkey "^[e" edit-command-line # Alt + e
+bindkey "^[i" edit-command-line # Alt + i
 
 # Debug completion functions: press F1 instead of Tab at completion point
 bindkey "^[OP" _complete_help # F1

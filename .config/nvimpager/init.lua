@@ -99,16 +99,23 @@ vim.api.nvim_create_autocmd({"CmdWinEnter"}, {
     end
 })
 
--- Insert/command mode Ctrl+a for beginning of line, Ctrl+E for end of line (readline style)
--- If they override something, remap that elsewhere
-vim.keymap.set({"c"}, "<C-a>", "<Home>")
-vim.keymap.set({"c"}, "<C-b>", "<C-a>") -- command mode: <C-b> == <Home>, insert mode: <C-b> is unmapped
+-- Mappings like in zsh line editing
+vim.keymap.set("c", "<C-h>", "<Left>")
+vim.keymap.set("c", "<C-l>", "<Right>")
 
--- Command mode home row traversal alternatives
-vim.keymap.set("c", "<M-j>", "<Down>")
+vim.keymap.set("c", "<M-h>", "<C-Left>")
+vim.keymap.set("c", "<M-l>", "<C-Right>")
+
+vim.keymap.set("c", "<C-k>", "<Up>")
+vim.keymap.set("c", "<C-j>", "<Down>")
 vim.keymap.set("c", "<M-k>", "<Up>")
-vim.keymap.set("c", "<M-h>", "Left>")
-vim.keymap.set("c", "<M-l>", "Right>")
+vim.keymap.set("c", "<M-j>", "<Down>")
+
+vim.keymap.set("c", "<M-w>", "<C-w>") -- Todo: <C-w>
+vim.keymap.set("c", "<M-u>", "<C-u>") -- Todo: <C-u>
+-- Todo: <M-Space>
+
+vim.keymap.set("c", "<C-a>", "<Home>")
 
 -- Essential keys for both movement and operator pending
 -- (with the worst defaults known to man)
