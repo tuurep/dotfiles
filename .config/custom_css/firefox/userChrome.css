@@ -7,8 +7,8 @@
 }
 
 #TabsToolbar {
-    max-height: 28px !important; /* Same as Openbox titlebar height */
-    font-size: 12px !important;
+    max-height: 26px !important; /* Same as Openbox titlebar height */
+    font-size: 11px !important;
 }
 
 .tab-background {
@@ -21,7 +21,8 @@
     margin-left: -2px !important;
 }
 
-.tab-close-button, .tab-icon-image, .tab-icon-overlay, .tab-throbber {
+.tab-close-button, .tab-icon-image, .tab-icon-overlay, .tab-throbber,
+button[aria-label="Mute tab"] {
     margin-top: var(--tab-content-offset-top) !important;
 }
 
