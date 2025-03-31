@@ -8,13 +8,14 @@ vim.keymap.set({"n", "x", "o"}, "<Down>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<Left>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<Right>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "+", "<Nop>")
-vim.keymap.set({"n", "x", "o"}, "<C-d>", "<Nop>")  -- <C-d> is remapped, and <C-j> <C-k> preferred for scrolling
+vim.keymap.set({"n", "x", "o"}, "<C-u>", "<Nop>")  -- <C-d> is remapped, and <C-j> <C-k> preferred for scrolling
 vim.keymap.set({"n", "x", "o"}, "/", "<Nop>")      -- Tab/S-Tab as search, ? is now :help
 vim.keymap.set("n", "<C-r>", "<Nop>")              -- U as redo
 vim.keymap.set("n", "<C-o>", "<Nop>")              -- <C-i> is compromised so use <M-o> and <M-i>
 vim.keymap.set({"n", "x"}, "<C-e>", "<Nop>")       -- <M-s> and <M-d> are remapped as <C-e> and <C-y>
 vim.keymap.set({"n", "x"}, "<Backspace>", "<Nop>")
-vim.keymap.set({"n", "x"}, "gJ", "<Nop>")          -- gä for spaceless join, leave gJ and gK
+vim.keymap.set({"n", "x"}, "<Enter>", "<Nop>")
+vim.keymap.set({"n", "x"}, "gJ", "<Nop>")          -- gå for spaceless join, leave gJ and gK
                                                    -- as ideas for vertical movement mappings
 -- ½
 -- zh zl
@@ -55,24 +56,22 @@ vim.keymap.set("n", "<leader><Enter>", function()
     if vim.fn.bufname() == "" then
         tildepath = tildepath .. "[No Name]"
     end
-    vim.api.nvim_echo({{tildepath}}, false, {})  -- current buffer full path
-end)                                             -- $HOME as ~
+    vim.api.nvim_echo({{tildepath}}, false, {}) -- current buffer full path
+end)                                            -- $HOME as ~
 
 vim.keymap.set("n", "<leader><Backspace>",
     "<cmd>echo fnamemodify(getcwd(), ':p:~')<cr>") -- pwd but with tilde
 
-vim.keymap.set("n", "<Enter>", "<cmd>echo ''<cr>") -- clear cmdline text
+vim.keymap.set("n", "<Esc>", "<cmd>echo ''<cr>") -- clear cmdline text
 
 -- Command mode <C-f> special buffer fixes
-vim.api.nvim_create_autocmd({"CmdWinEnter"}, {
-    callback = function()
-        vim.keymap.set("n", "<Enter>", "<Enter>", { buffer = 0 }) -- The above Enter mapping can't be used here
-        vim.keymap.set("n", "q", "<cmd>q<cr>", { buffer = 0 })
-        -- Todo: this window opens too small,
-        --       how to make it behave like normal splits: take half of the
-        --       available space above?
-    end
-})
+-- (currently not needed because I don't have an <Enter> mapping)
+-- 
+-- vim.api.nvim_create_autocmd({"CmdWinEnter"}, {
+--     callback = function()
+--         vim.keymap.set("n", "<Enter>", "<Enter>", b)
+--     end
+-- })
 
 -- Mappings like in zsh line editing
 vim.keymap.set({"c", "i"}, "<C-h>", "<Left>")
