@@ -92,32 +92,28 @@ vim.keymap.set({"c", "i"}, "<M-u>", "<C-u>") -- Todo: <C-u>
 vim.keymap.set({"c", "i"}, "<C-a>", "<Home>")
 vim.keymap.set("i", "<C-e>", "<End>") -- Redundant in command mode
 
--- Insert mode bracket/quote aliases with autopair behavior
--- Todo: Same for command mode
+-- Autopair-like mappings with the same aliases as mini.surround and mini.ai
 -- Todo: Turn into a plugin to better control when to indent and when not to
-vim.keymap.set("i", "<M-b>", "()<Left>")
-vim.keymap.set("i", "<M-e>", "()<Left>")
-vim.keymap.set("i", "<M-d>", "{}<Left>")
-vim.keymap.set("i", "<M-a>", "[]<Left>")
-vim.keymap.set("i", "<M-<>", "<><Left>")
+vim.keymap.set({"i", "c"}, "<M-e>", "()<Left>")
+vim.keymap.set({"i", "c"}, "<M-d>", "{}<Left>")
+vim.keymap.set({"i", "c"}, "<M-a>", "[]<Left>")
+vim.keymap.set({"i", "c"}, "<M-<>", "<><Left>")
 
-vim.keymap.set("i", "<M-B>",    "(  )<Left><Left>")
-vim.keymap.set("i", "<M-E>",    "(  )<Left><Left>")
-vim.keymap.set("i", "<M-D>",    "{  }<Left><Left>")
-vim.keymap.set("i", "<M-A>",    "[  ]<Left><Left>")
-vim.keymap.set("i", "<M-S-lt>", "<  ><Left><Left>") -- ">" would close the key tag
+vim.keymap.set({"i", "c"}, "<M-E>",    "(  )<Left><Left>")
+vim.keymap.set({"i", "c"}, "<M-D>",    "{  }<Left><Left>")
+vim.keymap.set({"i", "c"}, "<M-A>",    "[  ]<Left><Left>")
+vim.keymap.set({"i", "c"}, "<M-S-lt>", "<  ><Left><Left>") -- ">" would close the key tag
 
-vim.keymap.set("i", "<M-q>", '""<Left>')
-vim.keymap.set("i", "<M-r>", "''<Left>")
-vim.keymap.set("i", "<M-x>", "``<Left>")
+vim.keymap.set({"i", "c"}, "<M-q>", '""<Left>')
+vim.keymap.set({"i", "c"}, "<M-r>", "''<Left>")
+vim.keymap.set({"i", "c"}, "<M-x>", "``<Left>")
 
-vim.keymap.set("i", "<M-Q>", '""""""<left><left><left>')
-vim.keymap.set("i", "<M-X>", "``````<Left><Left><Left>")
+vim.keymap.set({"i", "c"}, "<M-Q>", '""""""<left><left><left>')
+vim.keymap.set({"i", "c"}, "<M-X>", "``````<Left><Left><Left>")
 
-vim.keymap.set("i", "<M-m>", "**<Left>")
-vim.keymap.set("i", "<M-M>", "****<Left><Left>")
+vim.keymap.set({"i", "c"}, "<M-m>", "**<Left>")
+vim.keymap.set({"i", "c"}, "<M-M>", "****<Left><Left>")
 
-vim.keymap.set("i", "<M-Enter><M-b>", "()<left><Enter><Esc>O")
 vim.keymap.set("i", "<M-Enter><M-e>", "()<left><Enter><Esc>O")
 vim.keymap.set("i", "<M-Enter><M-d>", "{}<left><Enter><Esc>O")
 vim.keymap.set("i", "<M-Enter><M-a>", "[]<left><Enter><Esc>O")

@@ -130,6 +130,27 @@ vim.keymap.set("c", "<M-u>", "<C-u>") -- Todo: <C-u>
 
 vim.keymap.set("c", "<C-a>", "<Home>")
 
+-- Autopair-like mappings with the same aliases as mini.surround and mini.ai
+vim.keymap.set("c", "<M-e>", "()<Left>")
+vim.keymap.set("c", "<M-d>", "{}<Left>")
+vim.keymap.set("c", "<M-a>", "[]<Left>")
+vim.keymap.set("c", "<M-<>", "<><Left>")
+
+vim.keymap.set("c", "<M-E>",    "(  )<Left><Left>")
+vim.keymap.set("c", "<M-D>",    "{  }<Left><Left>")
+vim.keymap.set("c", "<M-A>",    "[  ]<Left><Left>")
+vim.keymap.set("c", "<M-S-lt>", "<  ><Left><Left>") -- ">" would close the key tag
+
+vim.keymap.set("c", "<M-q>", '""<Left>')
+vim.keymap.set("c", "<M-r>", "''<Left>")
+vim.keymap.set("c", "<M-x>", "``<Left>")
+
+vim.keymap.set("c", "<M-Q>", '""""""<left><left><left>')
+vim.keymap.set("c", "<M-X>", "``````<Left><Left><Left>")
+
+vim.keymap.set("c", "<M-m>", "**<Left>")
+vim.keymap.set("c", "<M-M>", "****<Left><Left>")
+
 -- Essential keys for both movement and operator pending
 -- (with the worst defaults known to man)
 vim.keymap.set({"n", "x"}, "-", "}")
