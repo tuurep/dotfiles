@@ -309,55 +309,41 @@ bindkey "^[i" edit-command-line # Alt + i
 # Debug completion functions: press F1 instead of Tab at completion point
 bindkey "^[OP" _complete_help # F1
 
-# Autopair-like binds consistent with neovim
-insert-pair() {
-    LBUFFER+="$1"
-    RBUFFER="$2"$RBUFFER
+register-surround-bind() {
+    # Insert given surroundings to the left and right of the cursor
+    # Needs to escape some problem characters
+    local left="$(echo "$1" | sed -e 's/"/\\"/g' -e 's/`/\\`/g' -e 's/\$/\\$/g')"
+    local right="$(echo "$2" | sed -e 's/"/\\"/g' -e 's/`/\\`/g' -e 's/\$/\\$/g')"
+    eval "
+        insert-$4() {
+            LBUFFER+=\"$left\"
+            RBUFFER=\"$right\$RBUFFER\"
+        }
+    "
+    zle -N insert-$4
+    bindkey "$3" insert-$4
 }
+register-surround-bind '(' ')' "^[e" "parens"   # Alt + e
+register-surround-bind '{' '}' "^[d" "braces"   # Alt + d
+register-surround-bind '[' ']' "^[a" "brackets" # Alt + a
+register-surround-bind '<' '>' "^[<" "angles"   # Alt + <
 
-insert-parens()   { insert-pair '(' ')' }; zle -N insert-parens
-insert-braces()   { insert-pair '{' '}' }; zle -N insert-braces
-insert-brackets() { insert-pair '[' ']' }; zle -N insert-brackets
-insert-angles()   { insert-pair '<' '>' }; zle -N insert-angles
+register-surround-bind '( ' ' )' "^[E" "parens-with-spaces"   # Shift + Alt + e
+register-surround-bind '{ ' ' }' "^[D" "braces-with-spaces"   # Shift + Alt + d
+register-surround-bind '[ ' ' ]' "^[A" "brackets-with-spaces" # Shift + Alt + a
+register-surround-bind '< ' ' >' "^[>" "angles-with-spaces"   # Shift + Alt + <
 
-insert-parens-with-spaces()   { insert-pair '( ' ' )' }; zle -N insert-parens-with-spaces
-insert-braces-with-spaces()   { insert-pair '{ ' ' }' }; zle -N insert-braces-with-spaces
-insert-brackets-with-spaces() { insert-pair '[ ' ' ]' }; zle -N insert-brackets-with-spaces
-insert-angles-with-spaces()   { insert-pair '< ' ' >' }; zle -N insert-angles-with-spaces
+register-surround-bind '"' '"' "^[q" "quotes"    # Alt + q
+register-surround-bind "'" "'" "^[r" "ticks"     # Alt + r
+register-surround-bind '`' '`' "^[x" "backticks" # Alt + x
 
-insert-quotes()    { insert-pair '"' '"' }; zle -N insert-quotes
-insert-ticks()     { insert-pair "'" "'" }; zle -N insert-ticks
-insert-backticks() { insert-pair '`' '`' }; zle -N insert-backticks
+register-surround-bind ' ' ' ' "^[ " "spaces" # Alt + Space
 
-insert-spaces() { insert-pair ' ' ' ' }; zle -N insert-spaces
+register-surround-bind '"""' '"""' "^[Q" "triple-quotes"    # Shift + Alt + q
+register-surround-bind '```' '```' "^[X" "triple-backticks" # Shift + Alt + x
 
-insert-triple-quotes()    { insert-pair '"""' '"""' }; zle -N insert-triple-quotes
-insert-triple-backticks() { insert-pair '```' '```' }; zle -N insert-triple-backticks
-
-insert-asterisks()        { insert-pair '*'  '*'  }; zle -N insert-asterisks
-insert-double-asterisks() { insert-pair '**' '**' }; zle -N insert-double-asterisks
-
-bindkey "^[e" insert-parens   # Alt + e
-bindkey "^[d" insert-braces   # Alt + d
-bindkey "^[a" insert-brackets # Alt + a
-bindkey "^[<" insert-angles   # Alt + <
-
-bindkey "^[E" insert-parens-with-spaces   # Shift + Alt + e
-bindkey "^[D" insert-braces-with-spaces   # Shift + Alt + d
-bindkey "^[A" insert-brackets-with-spaces # Shift + Alt + a
-bindkey "^[>" insert-angles-with-spaces   # Shift + Alt + <
-
-bindkey "^[q" insert-quotes    # Alt + q
-bindkey "^[r" insert-ticks     # Alt + r
-bindkey "^[x" insert-backticks # Alt + x
-
-bindkey "^[ " insert-spaces # Alt + Space
-
-bindkey "^[Q" insert-triple-quotes    # Shift + Alt + q
-bindkey "^[X" insert-triple-backticks # Shift + Alt + x
-
-bindkey "^['" insert-asterisks        # Alt + '
-bindkey "^[*" insert-double-asterisks # Shift + Alt + '
+register-surround-bind '*'  '*'  "^['" "asterisks"        # Alt + '
+register-surround-bind '**' '**' "^[*" "double-asterisks" # Shift + Alt + '
 
 # === History ===
 
