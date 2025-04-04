@@ -87,8 +87,7 @@ vim.keymap.set({"c", "i"}, "<M-j>", "<Down>")
 
 vim.keymap.set({"c", "i"}, "<M-w>", "<C-w>") -- Todo: <C-w>
 vim.keymap.set({"c", "i"}, "<M-u>", "<C-u>") -- Todo: <C-u>
--- Todo: <M-Space>
-
+                                             -- Todo: <M-U>
 vim.keymap.set({"c", "i"}, "<C-a>", "<Home>")
 vim.keymap.set("i", "<C-e>", "<End>") -- Redundant in command mode
 
@@ -108,11 +107,13 @@ vim.keymap.set({"i", "c"}, "<M-q>", '""<Left>')
 vim.keymap.set({"i", "c"}, "<M-r>", "''<Left>")
 vim.keymap.set({"i", "c"}, "<M-x>", "``<Left>")
 
+vim.keymap.set({"i", "c"}, "<M-Space>", "  <Left>")
+
 vim.keymap.set({"i", "c"}, "<M-Q>", '""""""<left><left><left>')
 vim.keymap.set({"i", "c"}, "<M-X>", "``````<Left><Left><Left>")
 
-vim.keymap.set({"i", "c"}, "<M-m>", "**<Left>")
-vim.keymap.set({"i", "c"}, "<M-M>", "****<Left><Left>")
+vim.keymap.set({"i", "c"}, "<M-'>",   "**<Left>")
+vim.keymap.set({"i", "c"}, "<M-S-'>", "****<Left><Left>")
 
 vim.keymap.set("i", "<M-Enter><M-e>", "()<left><Enter><Esc>O")
 vim.keymap.set("i", "<M-Enter><M-d>", "{}<left><Enter><Esc>O")
@@ -508,7 +509,8 @@ require("mini.ai").setup({
         ["Q"] = { '"""().-()"""' },
         ["X"] = { "```().-()```" },
 
-        -- Markdown
+        -- Markdown (experimental)
+        ["'"] = gen_spec.pair("*", "*", { type = "greedy" }),
         ["*"] = gen_spec.pair("*", "*", { type = "greedy" }),
         ["_"] = gen_spec.pair("_", "_", { type = "greedy" }),
 
@@ -577,6 +579,10 @@ require("mini.tpopesurround").setup({
 
         ["Q"] = { input = { '"""().-()"""' }, output = { left = '"""', right = '"""' } },
         ["X"] = { input = { "```().-()```" }, output = { left = "```", right = "```" } },
+
+        -- Markdown (experimental)
+        ["'"] = { input = { "*().-()*"       }, output = { left = "*",  right = "*"  } },
+        ["*"] = { input = { "%*%*().-()%*%*" }, output = { left = "**", right = "**" } },
 
         -- <Tab> to prompt for surroundings
         -- Taken straight from the builtin ? surrounding:

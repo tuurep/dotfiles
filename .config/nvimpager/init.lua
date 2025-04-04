@@ -59,6 +59,7 @@ vim.keymap.set({"n", "x", "o"}, "<Left>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<Right>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "+", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<C-u>", "<Nop>")
+vim.keymap.set({"n", "x", "o"}, "<C-d>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "/", "<Nop>")
 vim.keymap.set("n", "<C-r>", "<Nop>")
 vim.keymap.set("n", "<C-o>", "<Nop>")
@@ -66,6 +67,11 @@ vim.keymap.set({"n", "x"}, "<C-e>", "<Nop>")
 vim.keymap.set({"n", "x"}, "<Backspace>", "<Nop>")
 vim.keymap.set({"n", "x"}, "<Enter>", "<Nop>")
 vim.keymap.set({"n", "x"}, "gJ", "<Nop>")
+
+-- Free (but bad):
+vim.keymap.set({"n", "x", "c"}, "<PageUp>", "<Nop>")
+vim.keymap.set({"n", "x", "c"}, "<PageDown>", "<Nop>")
+vim.keymap.set("n", "<F1>", "<Nop>")
 
 -- Pager specifics:
 vim.keymap.set({"n", "x"}, "§", "<cmd>set number!<cr>")
@@ -126,8 +132,7 @@ vim.keymap.set("c", "<M-j>", "<Down>")
 
 vim.keymap.set("c", "<M-w>", "<C-w>") -- Todo: <C-w>
 vim.keymap.set("c", "<M-u>", "<C-u>") -- Todo: <C-u>
--- Todo: <M-Space>
-
+                                      -- Todo: <M-U>
 vim.keymap.set("c", "<C-a>", "<Home>")
 
 -- Autopair-like mappings with the same aliases as mini.surround and mini.ai
@@ -144,6 +149,8 @@ vim.keymap.set("c", "<M-S-lt>", "<  ><Left><Left>") -- ">" would close the key t
 vim.keymap.set("c", "<M-q>", '""<Left>')
 vim.keymap.set("c", "<M-r>", "''<Left>")
 vim.keymap.set("c", "<M-x>", "``<Left>")
+
+vim.keymap.set("c", "<M-Space>", "  <Left>")
 
 vim.keymap.set("c", "<M-Q>", '""""""<left><left><left>')
 vim.keymap.set("c", "<M-X>", "``````<Left><Left><Left>")
@@ -376,10 +383,12 @@ require("mini.ai").setup({
         ["Q"] = { '"""().-()"""' },
         ["X"] = { "```().-()```" },
 
-        -- Markdown
+        -- Markdown (experimental)
+        ["'"] = gen_spec.pair("*", "*", { type = "greedy" }),
         ["*"] = gen_spec.pair("*", "*", { type = "greedy" }),
         ["_"] = gen_spec.pair("_", "_", { type = "greedy" }),
 
+        -- Custom
         ["i"] = ai_indent
 
     },

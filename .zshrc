@@ -298,10 +298,9 @@ bindkey "^[w" backward-kill-word # Alt  + w
 bindkey "^W"  kill-word          # Ctrl + w
 bindkey "^[u" backward-kill-line # Alt  + u
 bindkey "^U"  kill-line          # Ctrl + u
+bindkey "^[U" kill-whole-line    # Shfit + Alt + u
 
 bindkey "^[[3~" vi-delete-char  # Del
-bindkey "^[ "   kill-whole-line # Alt  + Space
-bindkey "^@"    clear-screen    # Ctrl + Space
 
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -309,6 +308,56 @@ bindkey "^[i" edit-command-line # Alt + i
 
 # Debug completion functions: press F1 instead of Tab at completion point
 bindkey "^[OP" _complete_help # F1
+
+# Autopair-like binds consistent with neovim
+insert-pair() {
+    LBUFFER+="$1"
+    RBUFFER="$2"$RBUFFER
+}
+
+insert-parens()   { insert-pair '(' ')' }; zle -N insert-parens
+insert-braces()   { insert-pair '{' '}' }; zle -N insert-braces
+insert-brackets() { insert-pair '[' ']' }; zle -N insert-brackets
+insert-angles()   { insert-pair '<' '>' }; zle -N insert-angles
+
+insert-parens-with-spaces()   { insert-pair '( ' ' )' }; zle -N insert-parens-with-spaces
+insert-braces-with-spaces()   { insert-pair '{ ' ' }' }; zle -N insert-braces-with-spaces
+insert-brackets-with-spaces() { insert-pair '[ ' ' ]' }; zle -N insert-brackets-with-spaces
+insert-angles-with-spaces()   { insert-pair '< ' ' >' }; zle -N insert-angles-with-spaces
+
+insert-quotes()    { insert-pair '"' '"' }; zle -N insert-quotes
+insert-ticks()     { insert-pair "'" "'" }; zle -N insert-ticks
+insert-backticks() { insert-pair '`' '`' }; zle -N insert-backticks
+
+insert-spaces() { insert-pair ' ' ' ' }; zle -N insert-spaces
+
+insert-triple-quotes()    { insert-pair '"""' '"""' }; zle -N insert-triple-quotes
+insert-triple-backticks() { insert-pair '```' '```' }; zle -N insert-triple-backticks
+
+insert-asterisks()        { insert-pair '*'  '*'  }; zle -N insert-asterisks
+insert-double-asterisks() { insert-pair '**' '**' }; zle -N insert-double-asterisks
+
+bindkey "^[e" insert-parens   # Alt + e
+bindkey "^[d" insert-braces   # Alt + d
+bindkey "^[a" insert-brackets # Alt + a
+bindkey "^[<" insert-angles   # Alt + <
+
+bindkey "^[E" insert-parens-with-spaces   # Shift + Alt + e
+bindkey "^[D" insert-braces-with-spaces   # Shift + Alt + d
+bindkey "^[A" insert-brackets-with-spaces # Shift + Alt + a
+bindkey "^[>" insert-angles-with-spaces   # Shift + Alt + <
+
+bindkey "^[q" insert-quotes    # Alt + q
+bindkey "^[r" insert-ticks     # Alt + r
+bindkey "^[x" insert-backticks # Alt + x
+
+bindkey "^[ " insert-spaces # Alt + Space
+
+bindkey "^[Q" insert-triple-quotes    # Shift + Alt + q
+bindkey "^[X" insert-triple-backticks # Shift + Alt + x
+
+bindkey "^['" insert-asterisks        # Alt + '
+bindkey "^[*" insert-double-asterisks # Shift + Alt + '
 
 # === History ===
 
