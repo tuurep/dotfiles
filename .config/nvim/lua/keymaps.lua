@@ -26,8 +26,8 @@ vim.keymap.set({"n", "x"}, "gJ", "<Nop>")          -- gå for spaceless join, le
 -- gÅ zå zå
 
 -- Free (but bad):
-vim.keymap.set({"n", "x", "i", "c"}, "<PageUp>", "<Nop>")
-vim.keymap.set({"n", "x", "i", "c"}, "<PageDown>", "<Nop>")
+vim.keymap.set({"n", "x", "!"}, "<PageUp>", "<Nop>")
+vim.keymap.set({"n", "x", "!"}, "<PageDown>", "<Nop>")
 vim.keymap.set({"n", "i"}, "<F1>", "<Nop>")
 
 -- Give macro keys to mini.tpopesurround
@@ -74,46 +74,47 @@ vim.keymap.set("n", "<Esc>", "<cmd>echo ''<cr>") -- clear cmdline text
 -- })
 
 -- Mappings like in zsh line editing
-vim.keymap.set({"c", "i"}, "<C-h>", "<Left>")
-vim.keymap.set({"c", "i"}, "<C-l>", "<Right>")
+vim.keymap.set("!", "<C-h>", "<Left>")
+vim.keymap.set("!", "<C-l>", "<Right>")
 
-vim.keymap.set({"c", "i"}, "<M-h>", "<C-Left>")
-vim.keymap.set({"c", "i"}, "<M-l>", "<C-Right>")
+-- Todo: nothing like 'emacs-*-word' in insert mode
+vim.keymap.set("!", "<M-h>", "<C-Left>")
+vim.keymap.set("!", "<M-l>", "<C-Right>")
 
-vim.keymap.set({"c", "i"}, "<C-k>", "<Up>")
-vim.keymap.set({"c", "i"}, "<C-j>", "<Down>")
-vim.keymap.set({"c", "i"}, "<M-k>", "<Up>")
-vim.keymap.set({"c", "i"}, "<M-j>", "<Down>")
+vim.keymap.set("!", "<C-k>", "<Up>")
+vim.keymap.set("!", "<C-j>", "<Down>")
+vim.keymap.set("!", "<M-k>", "<Up>")
+vim.keymap.set("!", "<M-j>", "<Down>")
 
-vim.keymap.set({"c", "i"}, "<M-w>", "<C-w>") -- Todo: <C-w>
-vim.keymap.set({"c", "i"}, "<M-u>", "<C-u>") -- Todo: <C-u>
+vim.keymap.set("!", "<M-w>", "<C-w>") -- Todo: <C-w>
+vim.keymap.set("!", "<M-u>", "<C-u>") -- Todo: <C-u>
                                              -- Todo: <M-U>
-vim.keymap.set({"c", "i"}, "<C-a>", "<Home>")
-vim.keymap.set("i", "<C-e>", "<End>") -- Redundant in command mode
+vim.keymap.set("!", "<M-H>", "<Home>")
+vim.keymap.set("!", "<M-L>", "<End>")
 
 -- Autopair-like mappings with the same aliases as mini.surround and mini.ai
 -- Todo: Turn into a plugin to better control when to indent and when not to
-vim.keymap.set({"i", "c"}, "<M-e>", "()<Left>")
-vim.keymap.set({"i", "c"}, "<M-d>", "{}<Left>")
-vim.keymap.set({"i", "c"}, "<M-a>", "[]<Left>")
-vim.keymap.set({"i", "c"}, "<M-<>", "<><Left>")
+vim.keymap.set("!", "<M-e>", "()<Left>")
+vim.keymap.set("!", "<M-d>", "{}<Left>")
+vim.keymap.set("!", "<M-a>", "[]<Left>")
+vim.keymap.set("!", "<M-<>", "<><Left>")
 
-vim.keymap.set({"i", "c"}, "<M-E>",    "(  )<Left><Left>")
-vim.keymap.set({"i", "c"}, "<M-D>",    "{  }<Left><Left>")
-vim.keymap.set({"i", "c"}, "<M-A>",    "[  ]<Left><Left>")
-vim.keymap.set({"i", "c"}, "<M-S-lt>", "<  ><Left><Left>") -- ">" would close the key tag
+vim.keymap.set("!", "<M-E>",    "(  )<Left><Left>")
+vim.keymap.set("!", "<M-D>",    "{  }<Left><Left>")
+vim.keymap.set("!", "<M-A>",    "[  ]<Left><Left>")
+vim.keymap.set("!", "<M-S-lt>", "<  ><Left><Left>") -- ">" would close the key tag
 
-vim.keymap.set({"i", "c"}, "<M-q>", '""<Left>')
-vim.keymap.set({"i", "c"}, "<M-r>", "''<Left>")
-vim.keymap.set({"i", "c"}, "<M-x>", "``<Left>")
+vim.keymap.set("!", "<M-q>", '""<Left>')
+vim.keymap.set("!", "<M-r>", "''<Left>")
+vim.keymap.set("!", "<M-x>", "``<Left>")
 
-vim.keymap.set({"i", "c"}, "<M-Space>", "  <Left>")
+vim.keymap.set("!", "<M-Space>", "  <Left>")
 
-vim.keymap.set({"i", "c"}, "<M-Q>", '""""""<left><left><left>')
-vim.keymap.set({"i", "c"}, "<M-X>", "``````<Left><Left><Left>")
+vim.keymap.set("!", "<M-Q>", '""""""<left><left><left>')
+vim.keymap.set("!", "<M-X>", "``````<Left><Left><Left>")
 
-vim.keymap.set({"i", "c"}, "<M-'>",   "**<Left>")
-vim.keymap.set({"i", "c"}, "<M-S-'>", "****<Left><Left>")
+vim.keymap.set("!", "<M-'>",   "**<Left>")
+vim.keymap.set("!", "<M-S-'>", "****<Left><Left>")
 
 vim.keymap.set("i", "<M-Enter><M-e>", "()<left><Enter><Esc>O")
 vim.keymap.set("i", "<M-Enter><M-d>", "{}<left><Enter><Esc>O")
@@ -144,7 +145,7 @@ vim.keymap.set("o", "-", "V}")
 vim.keymap.set("o", "_", "V{")
 
 -- Remap what the above has overriden
-vim.keymap.set({"i", "c"}, "<C-z>", "<C-k>")
+vim.keymap.set("!", "<C-z>", "<C-k>")
 vim.keymap.set({"n", "x", "o"}, "<leader>k", "H")
 vim.keymap.set({"n", "x", "o"}, "<leader><leader>", "M")
 vim.keymap.set({"n", "x", "o"}, "<leader>j", "L")
@@ -489,7 +490,7 @@ require("mini.ai").setup({
         
         ["b"] = gen_spec.treesitter({ i = "@comment.inner", a = "@comment.outer" }),
 
-        -- Remap 'argument' textobject, I want it for square bracket
+        -- Remap 'argument' textobject, 'a' for square bracket
         ["v"] = gen_spec.argument(),
 
         -- Brackets aliases

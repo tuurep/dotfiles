@@ -122,6 +122,7 @@ vim.keymap.set("n", "<Esc>", "<cmd>echo ''<cr>") -- clear cmdline text
 vim.keymap.set("c", "<C-h>", "<Left>")
 vim.keymap.set("c", "<C-l>", "<Right>")
 
+-- Todo: nothing like 'emacs-*-word' in insert mode
 vim.keymap.set("c", "<M-h>", "<C-Left>")
 vim.keymap.set("c", "<M-l>", "<C-Right>")
 
@@ -133,7 +134,8 @@ vim.keymap.set("c", "<M-j>", "<Down>")
 vim.keymap.set("c", "<M-w>", "<C-w>") -- Todo: <C-w>
 vim.keymap.set("c", "<M-u>", "<C-u>") -- Todo: <C-u>
                                       -- Todo: <M-U>
-vim.keymap.set("c", "<C-a>", "<Home>")
+vim.keymap.set("c", "<M-H>", "<Home>")
+vim.keymap.set("c", "<M-L>", "<End>")
 
 -- Autopair-like mappings with the same aliases as mini.surround and mini.ai
 vim.keymap.set("c", "<M-e>", "()<Left>")
@@ -363,7 +365,7 @@ require("mini.ai").setup({
     },
     custom_textobjects = {
         
-        -- Remap 'argument' textobject, I want it for square bracket
+        -- Remap 'argument' textobject, 'a' for square bracket
         ["v"] = gen_spec.argument(),
 
         -- Brackets aliases
