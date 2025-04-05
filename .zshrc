@@ -45,6 +45,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # Smartcase tab completio
 
 alias l="ls --color=always --group-directories-first"
 alias e="nvim"
+alias d="clear"
 alias g="grep"
 alias q="exit"
 alias n="nmcli"
@@ -290,6 +291,9 @@ bindkey "^J"  down-line # Ctrl + j
 
 bindkey "^[h" emacs-backward-word # Alt + h
 bindkey "^[l" emacs-forward-word  # Alt + l
+
+bindkey "^[H" beginning-of-line # Shift + Alt + h
+bindkey "^[L" end-of-line       # Shift + Alt + l
 
 bindkey "^H"  backward-char # Ctrl + h
 bindkey "^L"  forward-char  # Ctrl + l
