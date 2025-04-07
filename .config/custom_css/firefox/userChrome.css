@@ -22,7 +22,7 @@
 }
 
 .tab-close-button, .tab-icon-image, .tab-icon-overlay, .tab-throbber,
-button[aria-label="Mute tab"] {
+button[aria-label="Mute tab"], button[aria-label="Unmute tab"] {
     margin-top: var(--tab-content-offset-top) !important;
 }
 
