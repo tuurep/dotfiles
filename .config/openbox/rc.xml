@@ -319,16 +319,29 @@
                 <command>~/scripts/ob/close-all-inactive-sameclass.sh</command>
             </action>
         </keybind>
-        <keybind key="W-section A-section"> <!-- section = § -->
+        <keybind key="A-section"> <!-- section = § -->
             <action name="Execute">
                 <command>~/scripts/ob/cycle-sameclass --forward</command>
             </action>
         </keybind>
-        <keybind key="W-S-section A-S-section">
+        <keybind key="A-S-section">
             <action name="Execute">
                 <command>~/scripts/ob/cycle-sameclass --backward</command>
             </action>
         </keybind>
+        <!-- Todo: cycle windowlist in order -script for Meta + § -->
+        <!--       Actually something like Meta + h/l would be better for those... -->
+        <!--       Anyways, free Meta + § for some other idea (currently no idea) -->
+        <!-- <keybind key="W-section"> -->
+        <!--     <action name="Execute"> -->
+        <!--         <command>~/scripts/ob/...</command> -->
+        <!--     </action> -->
+        <!-- </keybind> -->
+        <!-- <keybind key="W-S-section"> -->
+        <!--     <action name="Execute"> -->
+        <!--         <command>~/scripts/ob/...</command> -->
+        <!--     </action> -->
+        <!-- </keybind> -->
         <keybind key="W-e">
             <action name="Iconify"/> <!-- as in "minimize" -->
         </keybind>
