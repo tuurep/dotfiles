@@ -5,6 +5,13 @@ vim.loader.enable()
 vim.cmd.colorscheme("goodnight")
 require("keymaps")
 
+if vim.env.TEXTERN == "1" then
+    vim.o.title = true
+    vim.o.titlestring = "[Textern] %m"
+else
+    require("dynamic-titlestring")
+end
+
 -- Disable autowraps and comment continuations,
 -- and prevent /usr/share/nvim/runtime/ftplugins overriding them
 vim.api.nvim_create_autocmd({"FileType"}, {
