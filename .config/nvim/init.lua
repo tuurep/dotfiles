@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 })
 
 vim.opt.shortmess:prepend("Ia")
-vim.opt.fillchars:prepend("eob:󰧟")
+vim.opt.fillchars:prepend("eob:󰧟") -- nf-md-circle_small
 
 vim.o.clipboard = "unnamedplus"
 vim.o.guicursor = "a:block"

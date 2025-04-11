@@ -15,8 +15,8 @@ if [ "$TERM" = "linux" ]; then
     PS1="%F{green}$ %f"
     PS2="%F{green}> %f"
 else
-    PS1="%F{green} %f"
-    PS2="%F{green}󱞩 %f"
+    PS1="%F{green} %f"     # nf-fa-caret_right
+    PS2="%F{green}󱞩 %f"     # nf-md-arrow_right_bottom
 fi
 
 precmd() {
@@ -29,6 +29,11 @@ precmd() {
         echo -e "\e[0;32m(${venv})\e[0m"
     fi
 }
+
+# Symbol shown on 'partial lines'
+# 1. when starting to type faster than prompt draws
+# 2. lines without newline at the end like: `printf foo`
+PROMPT_EOL_MARK=$'%{\e[38;5;243m%}%{\e[0m%}'  # nf-cod-circle_small_filled, gray fg color
 
 # === Tab completion ===
 
@@ -313,6 +318,7 @@ bindkey "^[i" edit-command-line # Alt + i
 # Debug completion functions: press F1 instead of Tab at completion point
 bindkey "^[OP" _complete_help # F1
 
+# Autopair-like binds consistent with neovim insert/command mode
 register-surround-bind() {
     # Insert given surroundings to the left and right of the cursor
     # Needs to escape some problem characters

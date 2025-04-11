@@ -1,5 +1,5 @@
 sort_by = "position"
-separator_string = "󰧟"
+separator_string = "󰧟"  # nf-md-circle_small
 
 overflow_fg_color = "#e8c580"
 
