@@ -74,21 +74,23 @@ vim.keymap.set("n", "<Esc>", "<cmd>echo ''<cr>") -- clear cmdline text
 -- })
 
 -- Mappings like in zsh line editing
+-- Todo: not quite consistent with zsh emacs-mode in all cases
 vim.keymap.set("!", "<C-h>", "<Left>")
 vim.keymap.set("!", "<C-l>", "<Right>")
-
--- Todo: nothing like 'emacs-*-word' in insert mode
-vim.keymap.set("!", "<M-h>", "<C-Left>")
-vim.keymap.set("!", "<M-l>", "<C-Right>")
 
 vim.keymap.set("!", "<C-k>", "<Up>")
 vim.keymap.set("!", "<C-j>", "<Down>")
 vim.keymap.set("!", "<M-k>", "<Up>")
 vim.keymap.set("!", "<M-j>", "<Down>")
 
+vim.keymap.set("i", "<M-h>", "<C-o>B")
+vim.keymap.set("i", "<M-l>", "<C-o>E<Right>") -- Todo: when already at 'E' position, should just move right
+vim.keymap.set("c", "<M-h>", "<C-Left>")
+vim.keymap.set("c", "<M-l>", "<C-Right>")
+
 vim.keymap.set("!", "<M-w>", "<C-w>") -- Todo: <C-w>
 vim.keymap.set("!", "<M-u>", "<C-u>") -- Todo: <C-u>
-                                             -- Todo: <M-U>
+                                      -- Todo: <M-U>
 vim.keymap.set("!", "<M-H>", "<Home>")
 vim.keymap.set("!", "<M-L>", "<End>")
 
@@ -116,20 +118,8 @@ vim.keymap.set("!", "<M-X>", "``````<Left><Left><Left>")
 vim.keymap.set("!", "<M-'>",   "**<Left>")
 vim.keymap.set("!", "<M-S-'>", "****<Left><Left>")
 
-vim.keymap.set("i", "<M-Enter><M-e>", "()<left><Enter><Esc>O")
-vim.keymap.set("i", "<M-Enter><M-d>", "{}<left><Enter><Esc>O")
-vim.keymap.set("i", "<M-Enter><M-a>", "[]<left><Enter><Esc>O")
-vim.keymap.set("i", "<M-Enter><M-<>", "<><left><Enter><Esc>O")
-
-vim.keymap.set("i", "<M-Enter><M-q>", '""<left><Enter><Esc>O')
-vim.keymap.set("i", "<M-Enter><M-r>", "''<left><Enter><Esc>O")
-vim.keymap.set("i", "<M-Enter><M-x>", "``<left><Enter><Esc>O")
-
-vim.keymap.set("i", "<M-Enter><M-Q>", '""""""<left><left><left><Enter><Esc>O')
-vim.keymap.set("i", "<M-Enter><M-X>", "``````<left><left><left><Enter><Esc>O")
-
-vim.keymap.set("i", "<M-Enter><M-m>", "**<left><Enter><Esc>O")
-vim.keymap.set("i", "<M-Enter><M-M>", "****<left><left><Enter><Esc>O")
+vim.keymap.set("i", "<M-Enter>", "<Enter><Esc>O")
+vim.keymap.set("i", "<M-S-Enter>", "<M-Enter>", { remap = true })
 
 -- Essential keys for both movement and operator pending
 -- (with the worst defaults known to man)
