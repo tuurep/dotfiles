@@ -15,7 +15,7 @@ More clearly explained:
 Video walkthrough:
 * [DistroTube video](https://www.youtube.com/watch?v=tBoLDpTWVOM)
 
-## NeoVim/terminal color scheme
+## Neovim/terminal color scheme
 
 * See [color table](https://htmlpreview.github.io/?https://github.com/tuurep/dotfiles/blob/master/.github/colortable.html)
 * Non-CLI applications that also generally follow this color scheme:
