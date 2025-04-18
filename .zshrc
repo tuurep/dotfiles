@@ -211,6 +211,20 @@ zi() {
     c "${target/#\~/$HOME}"
 }
 
+clone() {
+    case $# in
+        1)
+            git clone "git@github.com:$1.git"
+            ;;
+        2)
+            git clone "git@github.com:$1.git" "$2"
+            ;;
+        *)
+            echo "Usage: clone <author>/<reponame> [<directory>]"
+            ;;
+    esac
+}
+
 # tree with the box-drawing characters and end report turned into a dimmed fg color
 tree() {
     grayscale_237=$'\e[38;5;237m' # #3a3a3a
