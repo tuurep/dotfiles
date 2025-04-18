@@ -121,6 +121,10 @@ vim.keymap.set("!", "<M-S-'>", "****<Left><Left>")
 vim.keymap.set("i", "<M-Enter>", "<Enter><Esc>O")
 vim.keymap.set("i", "<M-S-Enter>", "<M-Enter>", { remap = true })
 
+-- Weird experimental mappings to enter some of the most annoying-to-type chars
+vim.keymap.set("!", "<M-1>", "~/")
+vim.keymap.set("!", "<M-2>", "&")
+
 -- Essential keys for both movement and operator pending
 -- (with the worst defaults known to man)
 vim.keymap.set({"n", "x"}, "-", "}")

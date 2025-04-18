@@ -369,6 +369,10 @@ register-surround-bind '```' '```' "^[X" "triple-backticks" # Shift + Alt + x
 register-surround-bind '*'  '*'  "^['" "asterisks"        # Alt + '
 register-surround-bind '**' '**' "^[*" "double-asterisks" # Shift + Alt + '
 
+# Non-surrounding inserts of frequent, hard-to-type chars
+register-surround-bind '~/' '' "^[1" "tilde-path"
+register-surround-bind '&'  '' "^[2" "ampersand"
+
 # === History ===
 
 export HISTSIZE=5000

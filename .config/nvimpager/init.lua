@@ -160,6 +160,10 @@ vim.keymap.set("c", "<M-X>", "``````<Left><Left><Left>")
 vim.keymap.set("c", "<M-m>", "**<Left>")
 vim.keymap.set("c", "<M-M>", "****<Left><Left>")
 
+-- Weird experimental mappings to enter some of the most annoying-to-type chars
+vim.keymap.set("c", "<M-1>", "~/")
+vim.keymap.set("c", "<M-2>", "&")
+
 -- Essential keys for both movement and operator pending
 -- (with the worst defaults known to man)
 vim.keymap.set({"n", "x"}, "-", "}")
