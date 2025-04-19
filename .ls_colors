@@ -237,6 +237,9 @@ tw=30;42:\
 *.rpmsave=00;90:\
 *.pacsave=00;90:\
 *.pacnew=00;90:\
+*.pdf=01;31:\
+*.epub=01;31:\
+*.tex=01;32:\
 "
 
 export LS_COLORS
