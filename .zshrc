@@ -293,6 +293,7 @@ setopt INTERACTIVE_COMMENTS # Ignore comments
 setopt NO_AUTO_REMOVE_SLASH # Don't remove trailing slash when moving left
 setopt MARK_DIRS            # Globbed dirs have trailing slash
 setopt NO_CASE_GLOB         # Glob case insensitively
+setopt EXTENDED_GLOB        # Enable all patterns such as ^ and ~
 
 # History completion with typed string as prefix
 autoload -U up-line-or-beginning-search
