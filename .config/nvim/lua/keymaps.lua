@@ -83,8 +83,58 @@ vim.keymap.set("!", "<C-j>", "<Down>")
 vim.keymap.set("!", "<M-k>", "<Up>")
 vim.keymap.set("!", "<M-j>", "<Down>")
 
-vim.keymap.set("i", "<M-h>", "<C-o>B")
-vim.keymap.set("i", "<M-l>", "<C-o>E<Right>") -- Todo: when already at 'E' position, should just move right
+-- Similar to zsh 'emacs-forward-word':
+-- Go to the next word end (on the whitespace), or if EOL comes first, go to EOL
+vim.keymap.set("i", "<M-l>", function()
+    local line = vim.fn.getline(".")
+    local col = vim.fn.col(".")
+    local eol_col = #line + 1
+
+    local pair_at_cursor = line:sub(col, col + 1)
+    
+    -- At the last char of a word, move to the whitespace after it
+    if pair_at_cursor:match("%S%s") then
+        vim.cmd("normal! l")
+        return
+    end
+
+    -- Cursor initially at EOL edge cases
+    if col == eol_col then
+        vim.cmd("normal! El") -- Move to the next word end on the next line
+
+        -- If next line has only one word, need to correct col to the next line's EOL
+        local next_line = vim.fn.getline(".")
+        local next_col = vim.fn.col(".")
+        local next_eol_col = #next_line + 1
+
+        if next_col == #next_line then
+            vim.api.nvim_win_set_cursor(0, { vim.fn.line('.'), next_eol_col })
+        end
+        return
+    end
+
+    local rest_of_line = line:sub(col + 1)
+
+    -- Go to the next word end, or EOL if that comes first
+    if rest_of_line:find("%S%s") then
+        vim.cmd("normal! El")
+    else
+        vim.api.nvim_win_set_cursor(0, { vim.fn.line('.'), eol_col })
+    end
+end)
+
+-- Basically a simple `B` is sufficient as a backwards variant,
+-- but needs to skip empty lines
+vim.keymap.set("i", "<M-h>", function()
+    vim.cmd("normal! B")
+
+    -- Skip empty lines
+    while vim.fn.getline(".") == "" do
+        vim.cmd("normal! B")
+    end
+end)
+
+-- Same idea in command mode (has differences with word delimiters)
 vim.keymap.set("c", "<M-h>", "<C-Left>")
 vim.keymap.set("c", "<M-l>", "<C-Right>")
 
@@ -118,6 +168,7 @@ vim.keymap.set("!", "<M-X>", "``````<Left><Left><Left>")
 vim.keymap.set("!", "<M-'>",   "**<Left>")
 vim.keymap.set("!", "<M-S-'>", "****<Left><Left>")
 
+-- Todo: syntax highlight flashes uncomfortably. Reimplement with nvim API stuff.
 vim.keymap.set("i", "<M-Enter>", "<Enter><Esc>O")
 vim.keymap.set("i", "<M-S-Enter>", "<M-Enter>", { remap = true })
 
@@ -276,14 +327,14 @@ vim.keymap.set("n", "<C-p>", function()
         end
         vim.api.nvim_set_current_line(line .. joined)
     end
-    vim.cmd.normal({ "$", bang = true })
+    vim.cmd("normal! $")
 end)
 
 -- Visual mode variants
 vim.keymap.set("x", "<C-d>", function()
     -- Only in visual line selection, delete and leave one empty line
     if vim.fn.mode() == "V" then
-        vim.cmd.normal({ "c", bang = true }) -- (does not stay in insert mode)
+        vim.cmd("normal! c") -- (does not stay in insert mode)
     end
 end)
 vim.keymap.set("x", "<C-c>", "<Nop>")
