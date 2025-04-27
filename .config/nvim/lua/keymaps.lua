@@ -537,7 +537,7 @@ require("mini.ai").setup({
         ["b"] = gen_spec.treesitter({ i = "@comment.inner", a = "@comment.outer" }),
 
         -- Remap 'argument' textobject, 'a' for square bracket
-        ["v"] = gen_spec.argument(),
+        ["c"] = gen_spec.argument(),
 
         -- Brackets aliases
         ["e"] = { "%b()", "^.().*().$" },

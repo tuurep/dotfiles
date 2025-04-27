@@ -370,7 +370,7 @@ require("mini.ai").setup({
     custom_textobjects = {
         
         -- Remap 'argument' textobject, 'a' for square bracket
-        ["v"] = gen_spec.argument(),
+        ["c"] = gen_spec.argument(),
 
         -- Brackets aliases
         ["e"] = { "%b()", "^.().*().$" },
