@@ -130,6 +130,7 @@ vim.keymap.set("i", "<M-h>", function()
 
     -- Skip empty lines
     while vim.fn.getline(".") == "" do
+        if vim.fn.line(".") == 1 then break end
         vim.cmd("normal! B")
     end
 end)
