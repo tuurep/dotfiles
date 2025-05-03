@@ -146,6 +146,8 @@ vim.keymap.set("!", "<M-H>", "<Home>")
 vim.keymap.set("!", "<M-L>", "<End>")
 
 -- Autopair-like mappings with the same aliases as mini.surround and mini.ai
+-- Todo: Won't cleanly undo when these mappings are used
+-- Todo: Visual block mode various strange behaviors (unusable really)
 -- Todo: Turn into a plugin to better control when to indent and when not to
 vim.keymap.set("!", "<M-e>", "()<Left>")
 vim.keymap.set("!", "<M-d>", "{}<Left>")
