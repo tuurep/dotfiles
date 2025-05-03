@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# papis-short-help: Open a document's note and pdf in a combined action
+# papis-short-help: Open a document's note and PDF in a combined action.
 
 import papis.api
 import papis.cli
