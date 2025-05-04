@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Update everything that needs to be regularly updated
+
 sudo pacman -Syu
 yay -Syu --aur
 
