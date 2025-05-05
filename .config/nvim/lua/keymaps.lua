@@ -179,6 +179,9 @@ vim.keymap.set("i", "<M-S-Enter>", "<M-Enter>", { remap = true })
 vim.keymap.set("!", "<M-1>", "~/")
 vim.keymap.set("!", "<M-2>", "&")
 
+-- "Repeat last substitute" mappings consistent with the above idea
+vim.keymap.set("n", "<M-2>", "g&") -- g for "use the same flags"
+
 -- Essential keys for both movement and operator pending
 -- (with the worst defaults known to man)
 vim.keymap.set({"n", "x"}, "-", "}")
