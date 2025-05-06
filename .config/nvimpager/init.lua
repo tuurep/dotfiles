@@ -256,6 +256,8 @@ local function scroll(distance)
 end
 vim.keymap.set({"n", "x", "o"}, "<C-j>", function() scroll(12) end)
 vim.keymap.set({"n", "x", "o"}, "<C-k>", function() scroll(-12) end)
+vim.keymap.set({"n", "x", "o"}, "<C-M-j>", function() scroll(1) end)
+vim.keymap.set({"n", "x", "o"}, "<C-M-k>", function() scroll(-1) end)
 
 -- One-handed quit
 vim.keymap.set({"n", "x"}, "<C-q>", "<cmd>q<cr>")
