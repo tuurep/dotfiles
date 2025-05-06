@@ -29,6 +29,8 @@ vim.o.clipboard = "unnamedplus"
 vim.o.guicursor = "a:block"
 vim.o.mouse = ""
 
+vim.opt.jumpoptions:append("view")
+
 vim.o.laststatus = 1
 vim.o.statusline = "%t %r%m"
 
