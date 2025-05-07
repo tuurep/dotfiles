@@ -85,6 +85,7 @@ vim.keymap.set({"n", "x"}, "Q", "<Nop>")
 vim.keymap.set({"n", "x"}, "<Del>", "q")
 vim.keymap.set({"n", "x"}, "<S-Del>", "Q")
 vim.keymap.set({"n", "x"}, "<M-Del>", "@")
+vim.keymap.set({"n", "x"}, "<M-Del><M-Del>", "@@")
 
 -- Give mark key to `mini.ai` textobject motions
 vim.keymap.set("n", "<Ins>", "m")
@@ -165,6 +166,8 @@ vim.keymap.set("c", "<M-M>", "****<Left><Left>")
 -- Weird experimental mappings to enter some of the most annoying-to-type chars
 vim.keymap.set("c", "<M-1>", "~/")
 vim.keymap.set("c", "<M-2>", "&")
+
+vim.keymap.set({"n", "x"}, "<M-.>", "@:") -- Repeat last command
 
 -- Essential keys for both movement and operator pending
 -- (with the worst defaults known to man)

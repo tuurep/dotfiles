@@ -33,7 +33,8 @@ vim.keymap.set({"n", "i"}, "<F1>", "<Nop>")
 -- Give macro keys to mini.tpopesurround
 vim.keymap.set({"n", "x"}, "<Del>", "q")
 vim.keymap.set({"n", "x"}, "<S-Del>", "Q")
-vim.keymap.set({"n", "x"}, "<M-Del>", "@") -- @ too hard to press and too separated from the other macro mappings
+vim.keymap.set({"n", "x"}, "<M-Del>", "@")
+vim.keymap.set({"n", "x"}, "<M-Del><M-Del>", "@@")
 
 -- Move the mark key to the edge of the keyboard to use m for mini.ai textobject motions
 vim.keymap.set("n", "<Ins>", "m")
@@ -179,8 +180,10 @@ vim.keymap.set("i", "<M-S-Enter>", "<M-Enter>", { remap = true })
 vim.keymap.set("!", "<M-1>", "~/")
 vim.keymap.set("!", "<M-2>", "&")
 
--- "Repeat last substitute" mappings consistent with the above idea
-vim.keymap.set("n", "<M-2>", "g&") -- g for "use the same flags"
+ -- Todo: turn this into 'repeat last substitute exactly as it was'
+ --       meaning: including range or `%s`, and same flags
+-- vim.keymap.set("n", "<M-2>", "g&")
+vim.keymap.set({"n", "x"}, "<M-.>", "@:") -- Repeat last command
 
 -- Essential keys for both movement and operator pending
 -- (with the worst defaults known to man)
