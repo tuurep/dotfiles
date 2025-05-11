@@ -334,15 +334,12 @@ bindkey "^[i" edit-command-line # Alt + i
 bindkey "^[OP" _complete_help # F1
 
 # Autopair-like binds consistent with neovim insert/command mode
+# Insert given surroundings to the left and right of the cursor
 register-surround-bind() {
-    # Insert given surroundings to the left and right of the cursor
-    # Needs to escape some problem characters
-    local left="$(echo "$1" | sed -e 's/"/\\"/g' -e 's/`/\\`/g' -e 's/\$/\\$/g')"
-    local right="$(echo "$2" | sed -e 's/"/\\"/g' -e 's/`/\\`/g' -e 's/\$/\\$/g')"
     eval "
         insert-$4() {
-            LBUFFER+=\"$left\"
-            RBUFFER=\"$right\$RBUFFER\"
+            LBUFFER+=\"$1\"
+            RBUFFER=\"$2\$RBUFFER\"
         }
     "
     zle -N insert-$4
@@ -358,14 +355,14 @@ register-surround-bind '{ ' ' }' "^[D" "braces-with-spaces"   # Shift + Alt + d
 register-surround-bind '[ ' ' ]' "^[A" "brackets-with-spaces" # Shift + Alt + a
 register-surround-bind '< ' ' >' "^[>" "angles-with-spaces"   # Shift + Alt + <
 
-register-surround-bind '"' '"' "^[q" "quotes"    # Alt + q
-register-surround-bind "'" "'" "^[r" "ticks"     # Alt + r
-register-surround-bind '`' '`' "^[x" "backticks" # Alt + x
+register-surround-bind '\"' '\"' "^[q" "quotes"    # Alt + q
+register-surround-bind \'   \'   "^[r" "ticks"     # Alt + r
+register-surround-bind '\`' '\`' "^[x" "backticks" # Alt + x
 
 register-surround-bind ' ' ' ' "^[ " "spaces" # Alt + Space
 
-register-surround-bind '"""' '"""' "^[Q" "triple-quotes"    # Shift + Alt + q
-register-surround-bind '```' '```' "^[X" "triple-backticks" # Shift + Alt + x
+register-surround-bind '\"\"\"' '\"\"\"' "^[Q" "triple-quotes"    # Shift + Alt + q
+register-surround-bind '\`\`\`' '\`\`\`' "^[X" "triple-backticks" # Shift + Alt + x
 
 register-surround-bind '*'  '*'  "^['" "asterisks"        # Alt + '
 register-surround-bind '**' '**' "^[*" "double-asterisks" # Shift + Alt + '
