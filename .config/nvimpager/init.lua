@@ -283,6 +283,7 @@ vim.keymap.set("n", "<leader>E", "<cmd>InspectTree<cr>")
 -- ===== PLUGINS =====
 
 -- mini.ai
+local MiniAi = require("mini.ai")
 
 local function get_line_indent(line)
     local prev_nonblank = vim.fn.prevnonblank(line)
@@ -360,8 +361,6 @@ local function ai_indent(ai_type)
     return res
 end
 
-local gen_spec = require('mini.ai').gen_spec
-
 require("mini.ai").setup({
     mappings = {
         inside_next = "il",
@@ -377,7 +376,10 @@ require("mini.ai").setup({
     custom_textobjects = {
         
         -- Remap 'argument' textobject, 'a' for square bracket
-        ["c"] = gen_spec.argument(),
+        ["c"] = MiniAi.gen_spec.argument(),
+
+        -- Remap builtin '?'
+        ["\t"] = MiniAi.gen_spec.user_prompt(),
 
         -- Brackets aliases
         ["e"] = { "%b()", "^.().*().$" },
@@ -397,9 +399,9 @@ require("mini.ai").setup({
         ["X"] = { "```().-()```" },
 
         -- Markdown (experimental)
-        ["'"] = gen_spec.pair("*", "*", { type = "greedy" }),
-        ["*"] = gen_spec.pair("*", "*", { type = "greedy" }),
-        ["_"] = gen_spec.pair("_", "_", { type = "greedy" }),
+        ["'"] = MiniAi.gen_spec.pair("*", "*", { type = "greedy" }),
+        ["*"] = MiniAi.gen_spec.pair("*", "*", { type = "greedy" }),
+        ["_"] = MiniAi.gen_spec.pair("_", "_", { type = "greedy" }),
 
         -- Custom
         ["i"] = ai_indent

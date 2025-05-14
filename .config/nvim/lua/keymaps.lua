@@ -414,14 +414,14 @@ vim.keymap.set({"n", "x"}, "¤", require("trailingwhite-toggle"))
 -- ===== PLUGINS =====
 
 -- mini.splitjoin
-local splitjoin = require("mini.splitjoin")
-splitjoin.setup({
+local MiniSplitjoin = require("mini.splitjoin")
+MiniSplitjoin.setup({
     mappings = {
         toggle = "Å"
     },
     join = {
         hooks_post = {
-            splitjoin.gen_hook.pad_brackets({ brackets = { '%b{}' } })
+            MiniSplitjoin.gen_hook.pad_brackets({ brackets = { '%b{}' } })
         }
     }
 })
@@ -449,8 +449,7 @@ vim.keymap.set("n", "gS", "gs$", { remap = true })
 vim.keymap.set("n", "g:", "g.$", { remap = true })
 
 -- mini.ai
-
-vim.opt.rtp:append("~/projects/mini.ai")
+local MiniAi = require("mini.ai")
 
 local function get_line_indent(line)
     local prev_nonblank = vim.fn.prevnonblank(line)
@@ -528,9 +527,7 @@ local function ai_indent(ai_type)
     return res
 end
 
-local gen_spec = require("mini.ai").gen_spec
-
-require("mini.ai").setup({
+MiniAi.setup({
     mappings = {
         inside_next = "il",
         around_next = "al",
@@ -544,10 +541,13 @@ require("mini.ai").setup({
     },
     custom_textobjects = {
         
-        ["b"] = gen_spec.treesitter({ i = "@comment.inner", a = "@comment.outer" }),
+        ["b"] = MiniAi.gen_spec.treesitter({ i = "@comment.inner", a = "@comment.outer" }),
 
         -- Remap 'argument' textobject, 'a' for square bracket
-        ["c"] = gen_spec.argument(),
+        ["c"] = MiniAi.gen_spec.argument(),
+
+        -- Remap builtin '?'
+        ["\t"] = MiniAi.gen_spec.user_prompt(),
 
         -- Brackets aliases
         ["e"] = { "%b()", "^.().*().$" },
@@ -567,9 +567,9 @@ require("mini.ai").setup({
         ["X"] = { "```().-()```" },
 
         -- Markdown (experimental)
-        ["'"] = gen_spec.pair("*", "*", { type = "greedy" }),
-        ["*"] = gen_spec.pair("*", "*", { type = "greedy" }),
-        ["_"] = gen_spec.pair("_", "_", { type = "greedy" }),
+        ["'"] = MiniAi.gen_spec.pair("*", "*", { type = "greedy" }),
+        ["*"] = MiniAi.gen_spec.pair("*", "*", { type = "greedy" }),
+        ["_"] = MiniAi.gen_spec.pair("_", "_", { type = "greedy" }),
 
         -- Custom
         ["i"] = ai_indent
@@ -579,21 +579,11 @@ require("mini.ai").setup({
     silent = true
 })
 
--- Lazy way to set <Tab> as builtin mini.ai `?` textobject
--- Uses many helpers inside the mini.ai module:
--- https://github.com/echasnovski/mini.ai/blob/6e01c0e5a15554852546fac9853960780ac52ed4/lua/mini/ai.lua#L1099-L1115
--- Todo: see if I could achieve it anyway
-vim.keymap.set({"o", "x"}, "i<Tab>",  "i?",  { remap = true })
-vim.keymap.set({"o", "x"}, "il<Tab>", "il?", { remap = true })
-vim.keymap.set({"o", "x"}, "ih<Tab>", "ih?", { remap = true })
-vim.keymap.set({"o", "x"}, "a<Tab>",  "a?",  { remap = true })
-vim.keymap.set({"o", "x"}, "al<Tab>", "al?", { remap = true })
-vim.keymap.set({"o", "x"}, "ah<Tab>", "ah?", { remap = true })
-
--- mini.surround
+-- mini.tpopesurround
 -- todo: vim-wordmotion can make message noise on dot repeat
+local MiniTpopesurround = require("mini.tpopesurround")
 
-require("mini.tpopesurround").setup({
+MiniTpopesurround.setup({
     mappings = {
         add = "q",
         delete = "qd",
@@ -641,26 +631,11 @@ require("mini.tpopesurround").setup({
         ["'"] = { input = { "*().-()*"       }, output = { left = "*",  right = "*"  } },
         ["*"] = { input = { "%*%*().-()%*%*" }, output = { left = "**", right = "**" } },
 
-        -- <Tab> to prompt for surroundings
-        -- Taken straight from the builtin ? surrounding:
-        -- https://github.com/echasnovski/mini.surround/blob/f90069c7441a5fb04c3de42eacf93e16b64dd3eb/lua/mini/surround.lua#L1091-L1107
+        -- Map <Tab> to builtin `?`
         ["\t"] = {
-            input = function()
-                local left = MiniSurround.user_input("Left surrounding")
-                if left == nil or left == "" then return end
-                local right = MiniSurround.user_input("Right surrounding")
-                if right == nil or right == "" then return end
-
-                return { vim.pesc(left) .. "().-()" .. vim.pesc(right) }
-            end,
-            output = function()
-                local left = MiniSurround.user_input("Left surrounding")
-                if left == nil then return end
-                local right = MiniSurround.user_input("Right surrounding")
-                if right == nil then return end
-                return { left = left, right = right }
-            end,
-        },
+            input = MiniTpopesurround.gen_spec.input.user_prompt(),
+            output = MiniTpopesurround.gen_spec.output.user_prompt()
+        }
 
     },
     silent = true
