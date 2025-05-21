@@ -4,6 +4,7 @@
 --
 
 for _, plugin in ipairs({
+    "nvim-treesitter/nvim-treesitter",
     -- "foo-author/bar-plugin",
 
 
