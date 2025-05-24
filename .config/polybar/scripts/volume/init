@@ -1,10 +1,19 @@
 #!/bin/bash
 
-sink=0
-current_volume=$(pactl get-sink-volume $sink | grep -Po '\d+(?=%)' | head -1)
+# Todo: seems to always have empty volume value on Openbox login
+#       but works on bar reset
 
-if [ "$current_volume" == 0 ]; then
-    echo "%{F#808080}墳 0%{F-}"
+sink=0
+volume=$(pactl get-sink-volume $sink | grep -Po '\d+(?=%)' | head -1)
+
+icon="墳"
+if pactl list sinks | grep 'Active Port' | grep -q 'headphones'; then
+    icon="󰋋"
+fi
+label="$icon $volume"
+
+if [ "$volume" == 0 ]; then
+    echo "%{F#808080}$label%{F-}"
 else
-    echo "墳 $current_volume"
+    echo "$label"
 fi

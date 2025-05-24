@@ -24,7 +24,11 @@ else
     new_volume="$upper_limit"
 fi
 
-label="墳 $new_volume"
+icon="墳"
+if pactl list sinks | grep 'Active Port' | grep -q 'headphones'; then
+    icon="󰋋"
+fi
+label="$icon $new_volume"
 
 # If window is fullscreen, show notification because Polybar is not visible
 fullscreen=$(xprop -id "$(xdo id)" _NET_WM_STATE | grep _NET_WM_STATE_FULLSCREEN)
