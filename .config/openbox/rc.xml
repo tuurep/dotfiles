@@ -46,57 +46,57 @@
         <!-- Volume/brightness control and screenlocking through their dedicated keys -->
         <keybind key="F2">
             <action name="Execute">
-                <command>~/scripts/ob/change-volume.sh -5</command>
+                <command>~/.config/polybar/scripts/volume/change-volume -5</command>
             </action>
         </keybind>
         <keybind key="W-F2">
             <action name="Execute">
-                <command>~/scripts/ob/change-volume.sh -1</command>
+                <command>~/.config/polybar/scripts/volume/change-volume -1</command>
             </action>
         </keybind>
         <keybind key="W-S-F2">
             <action name="Execute">
-                <command>~/scripts/ob/change-volume.sh 0</command>
+                <command>~/.config/polybar/scripts/volume/change-volume 0</command>
             </action>
         </keybind>
         <keybind key="F3">
             <action name="Execute">
-                <command>~/scripts/ob/change-volume.sh +5</command>
+                <command>~/.config/polybar/scripts/volume/change-volume +5</command>
             </action>
         </keybind>
         <keybind key="W-F3">
             <action name="Execute">
-                <command>~/scripts/ob/change-volume.sh +1</command>
+                <command>~/.config/polybar/scripts/volume/change-volume +1</command>
             </action>
         </keybind>
         <keybind key="F5">
             <action name="Execute">
-                <command>~/scripts/ob/change-brightness.sh -5</command>
+                <command>~/.config/polybar/scripts/brightness/change-brightness -5</command>
             </action>
         </keybind>
         <keybind key="F6">
             <action name="Execute">
-                <command>~/scripts/ob/change-brightness.sh +5</command>
+                <command>~/.config/polybar/scripts/brightness/change-brightness +5</command>
             </action>
         </keybind>
         <keybind key="W-F5">
             <action name="Execute">
-                <command>~/scripts/ob/change-brightness.sh -1</command>
+                <command>~/.config/polybar/scripts/brightness/change-brightness -1</command>
             </action>
         </keybind>
         <keybind key="W-F6">
             <action name="Execute">
-                <command>~/scripts/ob/change-brightness.sh +1</command>
+                <command>~/.config/polybar/scripts/brightness/change-brightness +1</command>
             </action>
         </keybind>
         <keybind key="W-S-F5">
             <action name="Execute">
-                <command>~/scripts/ob/change-brightness.sh -100</command>
+                <command>~/.config/polybar/scripts/brightness/change-brightness -100</command>
             </action>
         </keybind>
         <keybind key="W-S-F6">
             <action name="Execute">
-                <command>~/scripts/ob/change-brightness.sh +100</command>
+                <command>~/.config/polybar/scripts/brightness/change-brightness +100</command>
             </action>
         </keybind>
         <keybind key="W-Delete">

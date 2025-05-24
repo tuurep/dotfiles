@@ -1,0 +1,10 @@
+#!/bin/bash
+
+sink=0
+current_volume=$(pactl get-sink-volume $sink | grep -Po '\d+(?=%)' | head -1)
+
+if [ "$current_volume" == 0 ]; then
+    echo "%{F#808080}墳 0%{F-}"
+else
+    echo "墳 $current_volume"
+fi

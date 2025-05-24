@@ -1,21 +1,24 @@
 #!/bin/bash
 
+# Workaround script for polybar click action hooks:
+# Looks like using `polybar-msg` freezes the whole bar when used from scroll-up
+# or scroll-down. Use `echo` instead.
+
 # Change volume by n:
 #       - can be negative to decrease
 #       - or 0 to set volume at 0
 n=$1
 
-sink=0
-
 # Pavucontrol graphical slider caps at 153 (%)
 # Cap at 150 here (a nice round number)
 upper_limit=150
 
+sink=0
 current_volume=$(pactl get-sink-volume $sink | grep -Po '\d+(?=%)' | head -1)
 
 new_volume=$((current_volume + n))
 
-if [ "$1" == "0" ] || [ "$new_volume" -lt 0 ]; then
+if [ "$1" == 0 ] || [ "$new_volume" -lt 0 ]; then
     new_volume=0
 fi
 
@@ -26,12 +29,10 @@ else
     new_volume="$upper_limit"
 fi
 
-# If window is fullscreen, show notification because
-# Polybar is not visible
-fullscreen=$(xprop -id "$(xdo id)" _NET_WM_STATE | grep _NET_WM_STATE_FULLSCREEN)
+label="墳 $new_volume"
 
-if [ -n "$fullscreen" ]; then
-    notify-send -t 700 \
-                --hint=string:x-dunst-stack-tag:volume \
-                "墳 $new_volume"
+if [ "$new_volume" == 0 ]; then
+    echo "%{F#808080}$label%{F-}"
+else
+    echo "$label"
 fi

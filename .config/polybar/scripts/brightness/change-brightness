@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Script for Polybar IPC module to solve the following problems:
+
+# - Able to change brightness in even increments of e.g. 5%, needs floating
+#   point arithmetic as the raw value is 0-255.
+
+# - The Polybar builtin `backlight` module is unable to update in real time
+#   on my system.
+
+# - On system reboot, I get a different brightness value than before reboot.
+#   Not exactly a Polybar issue, but the workaround here is to write last
+#   brightness value to a file and set it to that on boot.
+
+# Depends on `brillo`:
+#   https://aur.archlinux.org/packages/brillo
+
+# Change brightness by n (can be negative to decrease)
+n=$1
+
+# Round current brightness percentage to nearest integer
+current_brightness=$(printf "%.0f" "$(brillo -G)")
+
+new_brightness=$((current_brightness + n))
+
+if [ $new_brightness -lt 0 ]; then
+    new_brightness=0
+elif [ $new_brightness -gt 100 ]; then
+    new_brightness=100
+fi
+
+label="盛 $new_brightness"
+polybar-msg action brightness send "$label"
+
+brillo -S "$new_brightness"
+
+# If window is fullscreen, show notification because Polybar is not visible
+fullscreen=$(xprop -id "$(xdo id)" _NET_WM_STATE | grep _NET_WM_STATE_FULLSCREEN)
+
+if [ -n "$fullscreen" ]; then
+    notify-send -t 700 \
+                --hint=string:x-dunst-stack-tag:brightness \
+                "$label"
+fi
+
+# Write brightness value to a file to workaround wrong value on boot
+echo "$new_brightness" > ~/.config/polybar/scripts/brightness/last_brightness

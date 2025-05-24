@@ -1,0 +1,7 @@
+#!/bin/bash
+
+read brightness < ~/.config/polybar/scripts/brightness/last_brightness
+echo "盛 $brightness"
+
+# Set brightness just in case it's wrong after boot (bug in my system)
+brillo -S "$brightness"

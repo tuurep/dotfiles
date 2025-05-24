@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Workaround script for polybar click action hooks:
+# Looks like using `polybar-msg` freezes the whole bar when used from scroll-up
+# or scroll-down. Use `echo` instead.
+
+# Change brightness by n (can be negative to decrease)
+n=$1
+
+# Round current brightness percentage to nearest integer
+current_brightness=$(printf "%.0f" "$(brillo -G)")
+
+new_brightness=$((current_brightness + n))
+
+if [ $new_brightness -lt 0 ]; then
+    new_brightness=0
+elif [ $new_brightness -gt 100 ]; then
+    new_brightness=100
+fi
+
+label="盛 $new_brightness"
+echo "$label"
+
+brillo -S "$new_brightness"
+
+# Write brightness value to a file to workaround wrong value on boot
+echo "$new_brightness" > ~/.config/polybar/scripts/brightness/last_brightness
