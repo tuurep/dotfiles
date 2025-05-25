@@ -1,0 +1,116 @@
+#!/bin/sh
+
+# battery-combined-udev with slight modifications
+# https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/battery-combined-udev
+
+battery_print() {
+    PATH_AC="/sys/class/power_supply/AC"
+    PATH_BATTERY_0="/sys/class/power_supply/BAT0"
+    PATH_BATTERY_1="/sys/class/power_supply/BAT1"
+
+    ac=0
+    battery_level_0=0
+    battery_level_1=0
+    battery_max_0=0
+    battery_max_1=0
+
+    if [ -f "$PATH_AC/online" ]; then
+        ac=$(cat "$PATH_AC/online")
+    fi
+
+    if [ -f "$PATH_BATTERY_0/energy_now" ]; then
+        battery_level_0=$(cat "$PATH_BATTERY_0/energy_now")
+    fi
+
+    if [ -f "$PATH_BATTERY_0/energy_full" ]; then
+        battery_max_0=$(cat "$PATH_BATTERY_0/energy_full")
+    fi
+
+    if [ -f "$PATH_BATTERY_1/energy_now" ]; then
+        battery_level_1=$(cat "$PATH_BATTERY_1/energy_now")
+    fi
+
+    if [ -f "$PATH_BATTERY_1/energy_full" ]; then
+        battery_max_1=$(cat "$PATH_BATTERY_1/energy_full")
+    fi
+
+    battery_level=$(("$battery_level_0 + $battery_level_1"))
+    battery_max=$(("$battery_max_0 + $battery_max_1"))
+
+    battery_percent=$(("$battery_level * 100"))
+    battery_percent=$(("$battery_percent / $battery_max"))
+
+    if [ "$ac" -eq 1 ]; then
+        icon=""
+        echo "$icon $battery_percent"
+    else
+        if [ "$battery_percent" -ge 90 ]; then
+            icon="󰁹"
+        elif [ "$battery_percent" -ge 80 ]; then
+            icon="󰂂"
+        elif [ "$battery_percent" -ge 70 ]; then
+            icon="󰂁"
+        elif [ "$battery_percent" -ge 60 ]; then
+            icon="󰂀"
+        elif [ "$battery_percent" -ge 50 ]; then
+            icon="󰁿"
+        elif [ "$battery_percent" -ge 40 ]; then
+            icon="󰁾"
+        elif [ "$battery_percent" -ge 30 ]; then
+            icon="󰁽"
+        elif [ "$battery_percent" -ge 20 ]; then
+            icon="󰁼"
+        elif [ "$battery_percent" -ge 10 ]; then
+            icon="󰁻"
+        elif [ "$battery_percent" -ge 0 ]; then
+            icon="󰁺"
+        fi
+
+        label="$icon $battery_percent"
+
+        if [ "$battery_percent" -le 10 ]; then
+
+            # "goodnight" red, but brighter to look more legible on lighter
+            # Polybar background (vs. terminal background)
+            echo "%{F#f07575}$label%{F-}"
+
+        elif [ "$battery_percent" -le 20 ]; then
+
+            # "goodnight" yellow
+            echo "%{F$yellow}$label%{F-}"
+
+        else
+            echo "$label"
+        fi
+    fi
+}
+
+path_pid="/tmp/polybar-battery-combined-udev.pid"
+
+case "$1" in
+    --update)
+        pid=$(cat $path_pid)
+
+        if [ "$pid" != "" ]; then
+            kill -10 "$pid"
+        fi
+        ;;
+    *)
+        echo $$ > $path_pid
+
+        trap exit INT
+
+        # Changed this from "echo" to "battery_print",
+        # Otherwise on charger plug/unplug, all other modules jitter briefly
+        # while the battery module is empty, which looks terrible.
+        # If there was a good reason it had to be "echo", reconsider.
+        trap "battery_print" USR1
+
+        while true; do
+            battery_print
+
+            sleep 30 &
+            wait
+        done
+        ;;
+esac

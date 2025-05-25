@@ -10,7 +10,7 @@ Requirements for icon changing on plug/unplug event:
 
 ### `acpid` setup
 
-`/etc/acpi/events/headphones`:
+`/etc/acpi/events/headphones`
 
 ```
 event=jack/headphone.*
