@@ -6,9 +6,12 @@
 hsetroot -solid '#000000'
 
 polybar bar1 &
+
+killall pactl-sink-monitor
+~/.config/polybar/scripts/volume/pactl-sink-monitor &
+
 dunst &
 picom -b
-transmission-daemon
 
 # Clipboard management:
 # parcellite for preserving clipboard contents on

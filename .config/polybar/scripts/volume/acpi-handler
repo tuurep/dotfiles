@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Update module when 3.5mm jack headphones are (un)plugged
+
+# Required because /etc/acpi/events/headphones runs as root, but pactl and
+# polybar-msg should be ran as user.
+export XDG_RUNTIME_DIR=/run/user/1000
+
+sink=0
+volume=$(pactl get-sink-volume $sink | grep -Po '\d+(?=%)' | head -1)
+
+icon="墳"
+if pactl list sinks | grep 'Active Port' | grep -q 'headphones'; then
+    icon="󰋋"
+fi
+
+label="$icon $volume"
+
+if [ "$volume" == 0 ]; then
+    polybar-msg action volume send "%{F#808080}$label%{F-}"
+else
+    polybar-msg action volume send "$label"
+fi

@@ -30,7 +30,8 @@ else
 fi
 
 icon="墳"
-if pactl list sinks | grep 'Active Port' | grep -q 'headphones'; then
+if pactl list sinks | grep 'Active Port' | grep -q 'headphones' || \
+   pactl list sinks short | grep -iq 'usb'; then
     icon="󰋋"
 fi
 label="$icon $new_volume"

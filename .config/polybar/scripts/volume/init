@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Todo: seems to always have empty volume value on Openbox login
-#       but works on bar reset
+# Todo: doesn't reliably show on bar launch
 
 sink=0
 volume=$(pactl get-sink-volume $sink | grep -Po '\d+(?=%)' | head -1)
 
 icon="墳"
-if pactl list sinks | grep 'Active Port' | grep -q 'headphones'; then
+if pactl list sinks | grep 'Active Port' | grep -q 'headphones' || \
+   pactl list sinks short | grep -iq 'usb'; then
     icon="󰋋"
 fi
 label="$icon $volume"

@@ -25,10 +25,18 @@ else
 fi
 
 icon="墳"
-if pactl list sinks | grep 'Active Port' | grep -q 'headphones'; then
+if pactl list sinks | grep 'Active Port' | grep -q 'headphones' || \
+   pactl list sinks short | grep -iq 'usb'; then
     icon="󰋋"
 fi
 label="$icon $new_volume"
+
+# Update Polybar module with IPC
+if [ "$new_volume" == 0 ]; then
+    polybar-msg action volume send "%{F#808080}$label%{F-}"
+else
+    polybar-msg action volume send "$label"
+fi
 
 # If window is fullscreen, show notification because Polybar is not visible
 fullscreen=$(xprop -id "$(xdo id)" _NET_WM_STATE | grep _NET_WM_STATE_FULLSCREEN)
@@ -37,11 +45,4 @@ if [ -n "$fullscreen" ]; then
     notify-send -t 700 \
                 --hint=string:x-dunst-stack-tag:volume \
                 "$label"
-fi
-
-# Update Polybar module with IPC
-if [ "$new_volume" == 0 ]; then
-    polybar-msg action volume send "%{F#808080}$label%{F-}"
-else
-    polybar-msg action volume send "$label"
 fi

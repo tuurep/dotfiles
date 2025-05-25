@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Warning: hacky
+
+# Attempt to update the module when sink changes as an effect of USB-C
+# headphones being plugged in.
+
+# I start this in Openbox's autostart script, kind of like a daemon.
+
+# Todo: gets way too many events (irrelevant to the purpose), like every time
+# volume is changed.
+
+pactl subscribe | while read -r line; do
+    if echo "$line" | grep -qE "Event '(new|remove)' on sink"; then
+        # Without the tiniest of delay, we will erroneously get speaker volume
+        # when USB-C headphones are plugged in (although correct icon).
+        sleep 0.02
+
+        sink=0
+        volume=$(pactl get-sink-volume $sink | grep -Po '\d+(?=%)' | head -1)
+
+        icon="墳"
+        if pactl list sinks short | grep -iq 'usb'; then
+            icon="󰋋"
+        fi
+
+        label="$icon $volume"
+
+        if [ "$volume" == 0 ]; then
+            polybar-msg action volume send "%{F#808080}$label%{F-}"
+        else
+            polybar-msg action volume send "$label"
+        fi
+    fi
+done

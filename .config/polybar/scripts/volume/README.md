@@ -1,6 +1,6 @@
 # Polybar volume module with headphones icon
 
-To make the headphones icon update instantly when devices are plugged/unplugged is quite hacky and has some additional dependencies. Here are notes on how I was able to make it work.
+Notes on extra setup required for running a script on jack plug/unplug event.
 
 ## 3.5mm jack headphones
 
@@ -14,12 +14,8 @@ Requirements for icon changing on plug/unplug event:
 
 ```
 event=jack/headphone.*
-action=sudo -u &lt;user&gt; /home/&lt;user&gt;/.config/polybar/scripts/volume/headphones-event-handler
+action=sudo -u username /home/username/.config/polybar/scripts/volume/acpi-handler
 ```
-
-## USB-C headphones
-
-TODO
 
 ## Thanks
 
