@@ -1,0 +1,7 @@
+#!/bin/bash
+
+killall -q polybar
+polybar bar1 -q & disown
+
+killall -q pactl-sink-monitor
+~/.config/polybar/scripts/volume/pactl-sink-monitor &> /dev/null & disown

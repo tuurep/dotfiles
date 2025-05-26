@@ -1,0 +1,4 @@
+#!/bin/bash
+
+killall -q dunst
+notify-send "dunst reset" "Lorem ipsum dolor sit amet consectetur adipiscing elit, class aenean dignissim cum rutrum leo, tristique nostra conubia mi enim posuere."

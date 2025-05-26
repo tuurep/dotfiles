@@ -108,8 +108,6 @@ alias trl="trans" # translate-shell
 alias m="mullvad"
 alias pap="papis"
 
-alias reset-dunst="killall dunst; notify-send monkey monkey"
-alias reset-polybar="killall -q polybar; polybar bar1 -q & disown"
 alias whereami="echo $HOST"
 
 ascii_gnu=$(
