@@ -162,12 +162,12 @@ vim.keymap.set("!", "<M-S-lt>", "<  ><Left><Left>") -- ">" would close the key t
 
 vim.keymap.set("!", "<M-q>", '""<Left>')
 vim.keymap.set("!", "<M-r>", "''<Left>")
-vim.keymap.set("!", "<M-x>", "``<Left>")
+vim.keymap.set("!", "<M-z>", "``<Left>")
 
 vim.keymap.set("!", "<M-Space>", "  <Left>")
 
 vim.keymap.set("!", "<M-Q>", '""""""<left><left><left>')
-vim.keymap.set("!", "<M-X>", "``````<Left><Left><Left>")
+vim.keymap.set("!", "<M-Z>", "``````<Left><Left><Left>")
 
 vim.keymap.set("!", "<M-'>",   "**<Left>")
 vim.keymap.set("!", "<M-S-'>", "****<Left><Left>")
@@ -561,10 +561,10 @@ MiniAi.setup({
 
         -- Quotation aliases
         ["r"] = { "%b''", "^.().*().$" },
-        ["x"] = { "%b``", "^.().*().$" },
+        ["z"] = { "%b``", "^.().*().$" },
         ["q"] = { '%b""', "^.().*().$" },
         ["Q"] = { '"""().-()"""' },
-        ["X"] = { "```().-()```" },
+        ["Z"] = { "```().-()```" },
 
         -- Markdown (experimental)
         ["'"] = MiniAi.gen_spec.pair("*", "*", { type = "greedy" }),
@@ -621,11 +621,11 @@ MiniTpopesurround.setup({
 
         -- Quotation aliases
         ["r"] = { input = { "%b''", "^.().*().$" }, output = { left = "'", right = "'" } },
-        ["x"] = { input = { "%b``", "^.().*().$" }, output = { left = "`", right = "`" } },
+        ["z"] = { input = { "%b``", "^.().*().$" }, output = { left = "`", right = "`" } },
         ["q"] = { input = { '%b""', "^.().*().$" }, output = { left = '"', right = '"' } },
 
         ["Q"] = { input = { '"""().-()"""' }, output = { left = '"""', right = '"""' } },
-        ["X"] = { input = { "```().-()```" }, output = { left = "```", right = "```" } },
+        ["Z"] = { input = { "```().-()```" }, output = { left = "```", right = "```" } },
 
         -- Markdown (experimental)
         ["'"] = { input = { "*().-()*"       }, output = { left = "*",  right = "*"  } },

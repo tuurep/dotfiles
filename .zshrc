@@ -355,12 +355,12 @@ register-surround-bind '< ' ' >' "^[>" "angles-with-spaces"   # Shift + Alt + <
 
 register-surround-bind '\"' '\"' "^[q" "quotes"    # Alt + q
 register-surround-bind \'   \'   "^[r" "ticks"     # Alt + r
-register-surround-bind '\`' '\`' "^[x" "backticks" # Alt + x
+register-surround-bind '\`' '\`' "^[z" "backticks" # Alt + x
 
 register-surround-bind ' ' ' ' "^[ " "spaces" # Alt + Space
 
 register-surround-bind '\"\"\"' '\"\"\"' "^[Q" "triple-quotes"    # Shift + Alt + q
-register-surround-bind '\`\`\`' '\`\`\`' "^[X" "triple-backticks" # Shift + Alt + x
+register-surround-bind '\`\`\`' '\`\`\`' "^[Z" "triple-backticks" # Shift + Alt + x
 
 register-surround-bind '*'  '*'  "^['" "asterisks"        # Alt + '
 register-surround-bind '**' '**' "^[*" "double-asterisks" # Shift + Alt + '

@@ -153,12 +153,12 @@ vim.keymap.set("c", "<M-S-lt>", "<  ><Left><Left>") -- ">" would close the key t
 
 vim.keymap.set("c", "<M-q>", '""<Left>')
 vim.keymap.set("c", "<M-r>", "''<Left>")
-vim.keymap.set("c", "<M-x>", "``<Left>")
+vim.keymap.set("c", "<M-z>", "``<Left>")
 
 vim.keymap.set("c", "<M-Space>", "  <Left>")
 
 vim.keymap.set("c", "<M-Q>", '""""""<left><left><left>')
-vim.keymap.set("c", "<M-X>", "``````<Left><Left><Left>")
+vim.keymap.set("c", "<M-Z>", "``````<Left><Left><Left>")
 
 vim.keymap.set("c", "<M-m>", "**<Left>")
 vim.keymap.set("c", "<M-M>", "****<Left><Left>")
@@ -393,10 +393,10 @@ require("mini.ai").setup({
 
         -- Quotation aliases
         ["r"] = { "%b''", "^.().*().$" },
-        ["x"] = { "%b``", "^.().*().$" },
+        ["z"] = { "%b``", "^.().*().$" },
         ["q"] = { '%b""', "^.().*().$" },
         ["Q"] = { '"""().-()"""' },
-        ["X"] = { "```().-()```" },
+        ["Z"] = { "```().-()```" },
 
         -- Markdown (experimental)
         ["'"] = MiniAi.gen_spec.pair("*", "*", { type = "greedy" }),
