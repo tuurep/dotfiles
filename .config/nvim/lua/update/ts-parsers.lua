@@ -6,7 +6,11 @@ require("nvim-treesitter.configs").setup({
     ignore_install = {
         "comment", -- too complicated comment parsing
         "luadoc",  -- very broken and inconsistent, looks best as just comment
-        "luap"     -- too complicated regex parsing in lua
+        "luap",    -- too complicated regex parsing in lua
+
+        -- With this parser, opening a .tex file takes ~500ms
+        -- Favoring vimtex's highlight groups for that reason alone
+        "latex"
     }
 })
 

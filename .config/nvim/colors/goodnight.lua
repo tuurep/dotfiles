@@ -255,7 +255,7 @@ vim.api.nvim_set_hl(0, "@punctuation.bracket.regex",   { fg = cyan })
 vim.api.nvim_set_hl(0, "@variable.builtin.regex",      { fg = cyan })
 
 -- Link for languages that don't have a treesitter parser
--- To have somewhat sensible defaults (otherwise Vim's default colorscheme will show)
+-- To have somewhat sensible defaults (otherwise nvim's default colorscheme will show)
 vim.api.nvim_set_hl(0, "Character",    { link = "@character"            })
 vim.api.nvim_set_hl(0, "Comment",      { link = "@comment"              })
 vim.api.nvim_set_hl(0, "Conditional",  { link = "@keyword.conditional"  })
@@ -294,6 +294,36 @@ vim.api.nvim_set_hl(0, "zshShortDeref", { fg = cyan     })
 vim.api.nvim_set_hl(0, "zshSubst",      { link = "None" })
 
 -- Fine-tuning and pinpointing issues
+
+-- Using vimtex's highlighting instead of treesitter latex parser
+-- because opening a .tex file with treesitter parser takes ~500ms
+-- See: https://github.com/latex-lsp/tree-sitter-latex/issues/97
+vim.api.nvim_set_hl(0, "texCmd",                { link = "@function.latex"      })
+vim.api.nvim_set_hl(0, "texCmdConditional",     { link = "@keyword.conditional" })
+vim.api.nvim_set_hl(0, "texCmdSize",            { link = "texCmd"               })
+vim.api.nvim_set_hl(0, "texCmdStyle",           { link = "texCmd"               })
+vim.api.nvim_set_hl(0, "texEnvArgName",         { link = "@markup.raw"          })
+vim.api.nvim_set_hl(0, "texMathDelimZone",      { link = "@markup.math"         })
+vim.api.nvim_set_hl(0, "texMathZone",           { link = "@markup.math"         })
+vim.api.nvim_set_hl(0, "texPartArgTitle",       { link = "@markup.heading"      })
+vim.api.nvim_set_hl(0, "texRefArg",             { link = "@markup.link.url"     })
+vim.api.nvim_set_hl(0, "texStyleBold",          { link = "@markup.strong"       })
+vim.api.nvim_set_hl(0, "texStyleBoldItalUnder", { link = "@markup.underline"    })
+vim.api.nvim_set_hl(0, "texStyleBoldUnder",     { link = "@markup.underline"    })
+vim.api.nvim_set_hl(0, "texStyleItal",          { link = "@markup.italic"       })
+vim.api.nvim_set_hl(0, "texStyleItalUnder",     { link = "@markup.underline"    })
+vim.api.nvim_set_hl(0, "texStyleUnder",         { link = "@markup.underline"    })
+vim.api.nvim_set_hl(0, "texTitleArg",           { link = "@markup.heading"      })
+vim.api.nvim_set_hl(0, "texZone",               { link = "@markup.raw"          })
+
+vim.api.nvim_set_hl(0, "texConditionalArg", { fg = fg })
+vim.api.nvim_set_hl(0, "texFileArg",        { fg = fg })
+vim.api.nvim_set_hl(0, "texFilesArg",       { fg = fg })
+vim.api.nvim_set_hl(0, "texLength",         { fg = fg })
+vim.api.nvim_set_hl(0, "texNewEnvArgName",  { fg = fg })
+vim.api.nvim_set_hl(0, "texOptEqual",       { fg = fg })
+
+vim.api.nvim_set_hl(0, "texError", { link = "None" }) -- syntax highlighting != linting
 
 -- Gitcommit
 vim.api.nvim_set_hl(0, "@comment.warning.gitcommit",    { fg = red   }) -- Title exceeds 50 chars warning
@@ -336,6 +366,3 @@ vim.api.nvim_set_hl(0, "@markup.link.vimdoc", { fg = cyan })
 -- :TSModuleInfo
 vim.api.nvim_set_hl(0, "TSModuleInfoGood", { fg = green })
 vim.api.nvim_set_hl(0, "TSModuleInfoBad",  { fg = red   })
-
--- :checkhealth OK
-vim.api.nvim_set_hl(0, "healthSuccess", { fg = bg, bg = green })
