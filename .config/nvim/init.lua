@@ -22,8 +22,8 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     end
 })
 
-vim.opt.shortmess:prepend("Ia")
-vim.opt.fillchars:prepend("eob:󰧟") -- nf-md-circle_small
+vim.opt.shortmess:append("Ia")
+vim.opt.fillchars:append("eob:󰧟") -- nf-md-circle_small
 
 vim.o.clipboard = "unnamedplus"
 vim.o.guicursor = "a:block"
@@ -41,7 +41,7 @@ vim.o.number = true
 
 vim.opt.scrolloff = 6
 
-vim.o.textwidth = 80
+vim.o.textwidth = 90
 vim.o.wrap = false
 
 vim.o.undofile = true
@@ -82,8 +82,6 @@ vim.g.vimtex_matchparen_enabled = 0
 vim.g.vimtex_complete_enabled = 0
 vim.g.vimtex_doc_enabled = 0
 vim.g.vimtex_include_search_enabled = 0
-vim.g.vimtex_indent_enabled = 0
-vim.g.vimtex_indent_bib_enabled = 0
 vim.g.vimtex_motion_enabled = 0
 vim.g.vimtex_text_obj_enabled = 0
 vim.g.vimtex_toc_enabled = 0
