@@ -22,7 +22,7 @@ for _, plugin in ipairs({
     --
 }) do
     local install_path = vim.fn.fnamemodify(
-        "plugins" .. plugin:match("/%S+$"), ":p"
+        "~/.config/nvim/test/plugins" .. plugin:match("/%S+$"), ":p"
     )
     if vim.fn.isdirectory(install_path) == 0 then
         vim.fn.system({
