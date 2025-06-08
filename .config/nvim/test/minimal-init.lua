@@ -15,7 +15,6 @@ vim.opt.runtimepath:prepend("~/.config/nvim/test")
 --
 
 for _, plugin in ipairs({
-    "nvim-treesitter/nvim-treesitter",
     -- "foo-author/bar-plugin",
 
 
@@ -32,12 +31,6 @@ for _, plugin in ipairs({
     end
     vim.opt.runtimepath:append(install_path)
 end
-
--- Opening certain filetypes causes errors on startup, fixed by having a treesitter parser
--- installed (I don't know why and it's unfortunate to add this in the "minimal config")
-require("nvim-treesitter.configs").setup({
-    ensure_installed = { "lua", "vimdoc" }
-})
 
 -- require("bar-plugin").setup()
 
