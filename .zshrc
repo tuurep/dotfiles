@@ -106,6 +106,9 @@ alias yt-dlp="yt-dlp --cookies-from-browser firefox"
 alias trl="trans" # translate-shell
 
 alias m="mullvad"
+
+# Workaround `isbnlib` deprecation warning every time command is ran
+alias papis="PYTHONWARNINGS=ignore papis"
 alias pap="papis"
 
 alias whereami="echo $HOST"
