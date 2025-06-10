@@ -21,9 +21,9 @@ vim.keymap.set({"n", "x"}, "gJ", "<Nop>")          -- gå for spaceless join, le
 -- zh zl
 -- gy gY
 -- gz gZ
--- gä gÄ zä zÄ
+-- ä Ä gä gÄ zä zÄ
 -- gö gÖ zö zÖ
--- gÅ zå zå
+-- gÅ zå zÅ
 
 -- Free (but bad):
 vim.keymap.set({"n", "x", "!"}, "<PageUp>", "<Nop>")
@@ -399,10 +399,8 @@ vim.keymap.set("n", "U", "<C-r>")
 vim.keymap.set("n", "<M-u>", "U")
 
 -- ~ too hard to press for being so useful
-vim.keymap.set({"n", "x"}, "ä", "~")
-vim.keymap.set("n", "gä", "g~")
-vim.keymap.set("n", "gää", "g~~")
-vim.keymap.set("n", "gÄ", "g~$")
+vim.keymap.set("n", "<M-r>", "v~") -- v to prevent moving (moves 1 right by default)
+vim.keymap.set("x", "<M-r>", "~")
 
 -- Treesitter tools
 vim.keymap.set("n", "<leader>e", "<cmd>Inspect<cr>")
