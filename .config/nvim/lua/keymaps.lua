@@ -299,8 +299,8 @@ vim.keymap.set({"n", "x", "o"}, "<C-M-j>", function() scroll(1) end)
 vim.keymap.set({"n", "x", "o"}, "<C-M-k>", function() scroll(-1) end)
 
 -- One-handed save and quit
-vim.keymap.set("n", "<C-s>", "<cmd>w<cr>")
-vim.keymap.set("n", "<C-q>", "<cmd>q<cr>")
+vim.keymap.set({"n", "x"}, "<C-s>", "<cmd>w<cr>")
+vim.keymap.set({"n", "x"}, "<C-q>", "<cmd>q<cr>")
 
 -- Replace builtin J with an equivalent that takes a motion
 -- (meaning I won't find a new mapping for J because it's that much worse)
