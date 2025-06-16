@@ -54,6 +54,7 @@ alias d="clear"
 alias g="grep"
 alias q="exit"
 alias n="nmcli"
+alias t="trans" # translate-shell
 
 # Reset password timeout, space at end: allow using sudo with aliased commands
 alias sudo="sudo -v; sudo "
@@ -101,10 +102,7 @@ alias pipx="USE_EMOJI=0 pipx"
 alias ff="firefox"
 alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
 alias vivaldi="vivaldi-stable"
-
 alias yt-dlp="yt-dlp --cookies-from-browser firefox"
-alias trl="trans" # translate-shell
-
 alias m="mullvad"
 
 # Workaround `isbnlib` deprecation warning every time command is ran
