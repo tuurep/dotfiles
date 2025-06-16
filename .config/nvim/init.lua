@@ -74,7 +74,9 @@ vim.g.undotree_HighlightChangedWithSign = 0
 vim.g.undotree_ShortIndicators = 1
 vim.g.undotree_HelpLine = 0
 
--- Bloat
+-- vimtex
+vim.g.vimtex_quickfix_open_on_warning = 0
+-- Unwanted:
 vim.g.vimtex_syntax_conceal_disable = 1
 vim.g.vimtex_mappings_enabled = 0
 vim.g.vimtex_imaps_enabled = 0
