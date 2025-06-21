@@ -77,7 +77,7 @@ battery_print() {
         elif [ "$battery_percent" -le 20 ]; then
 
             # "goodnight" yellow
-            echo "%{F$yellow}$label%{F-}"
+            echo "%{F#e8c580}$label%{F-}"
 
         else
             echo "$label"
