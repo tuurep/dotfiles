@@ -4,6 +4,9 @@ require("nvim-treesitter.configs").setup({
     ensure_installed = "all",
     sync_install = true,
     ignore_install = {
+        "ipkg",    -- whole thing has been removed, and causes error on install
+                   -- https://github.com/nvim-treesitter/nvim-treesitter/discussions/7942
+
         "comment", -- too complicated comment parsing
         "luadoc",  -- very broken and inconsistent, looks best as just comment
         "luap",    -- too complicated regex parsing in lua
