@@ -101,6 +101,11 @@ button[aria-label="Mute tab"], button[aria-label="Unmute tab"] {
     opacity: 0 !important;
 }
 
+/* Hide the dropdown arrow next to the search icon (looks dumb) */
+#searchmode-switcher-dropmarker {
+    display: none !important;
+}
+
 /*
     Change the color of the 1px borders that separate the UI bars from the page
 
