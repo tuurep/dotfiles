@@ -37,16 +37,29 @@ button[aria-label="Mute tab"], button[aria-label="Unmute tab"] {
     width: 14px !important;
 }
 
-/* Reduce size of window control buttons */
-/* (Also seems to reduce the spacing between them) */
-.titlebar-min > image, .titlebar-max > image, .titlebar-close > image {
-    height: 20px !important;
-    width: 20px !important;
+/* Set window control icons to what they were before Firefox 140.0 */
+/* ~/.mozilla/firefox/w1rfpz3z.default-release/chrome/window-control-icons/ */
+/* Todo: their color is set in the svg tags' "stroke" */
+/* Would be better to be able to set the color in userChrome (i.e. here) */
+.titlebar-min > .toolbarbutton-icon {
+  background-image: url("window-control-icons/minimize.svg") !important;
+}
+.titlebar-max > .toolbarbutton-icon {
+  background-image: url("window-control-icons/maximize.svg") !important;
+}
+.titlebar-restore > .toolbarbutton-icon {
+  background-image: url("window-control-icons/restore.svg") !important;
+}
+.titlebar-close > .toolbarbutton-icon {
+  background-image: url("window-control-icons/close.svg") !important;
 }
 
-/* Make close button same color as other buttons on hover, instead of red */
-.titlebar-close:hover > image {
-    background-color: #383838 !important;
+/* Reduce size of window control buttons */
+/* (Also seems to reduce the spacing between them) */
+.titlebar-min > image, .titlebar-max > image,
+.titlebar-restore > image, .titlebar-close > image {
+    height: 20px !important;
+    width: 20px !important;
 }
 
 /* Hide tab bar spacer on the left corner */
@@ -61,11 +74,11 @@ button[aria-label="Mute tab"], button[aria-label="Unmute tab"] {
 }
 
 /*
-    Increase tabs max width to about half of a half-screen window's width
+    Increase tabs max width to about a third of a half-screen window's width
     Makes tab titles more useful when you can actually read them...
 
     See:
-    https://www.reddit.com/r/FirefoxCSS/comments/j6rbcg/comment/g80b72i/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+    https://www.reddit.com/r/FirefoxCSS/comments/j6rbcg/comment/g80b72i
  */
 .tabbrowser-tab[fadein] {
     max-width: 283px !important;
@@ -86,11 +99,6 @@ button[aria-label="Mute tab"], button[aria-label="Unmute tab"] {
 /* Hide "Search with Google or enter address" */
 #urlbar-input::placeholder {
     opacity: 0 !important;
-}
-
-/* Reduce spacing between text prompt and magnifying glass icon */
-#identity-box[pageproxystate="invalid"] {
-    margin-right: 1px !important;
 }
 
 /*
@@ -168,7 +176,7 @@ button[aria-label="Mute tab"], button[aria-label="Unmute tab"] {
 
 /*
     Link to theme:
-    https://color.firefox.com/?theme=XQAAAAIpAQAAAAAAAABBKYhm849SCia3ftKEGccwS-xMDPsqvGnCXAF6EJDWcx9sS_Bi3JZGE6ZZI2STfI2PTljkR9h-XHM39YpblCWMouVZmYeGLeJSfiVmiQVwIk3UGujkXsu6rNq6j3m1AxNZc-T8yzX8Fabm7i3h9xXjjA1DyVopI9VCZxTaxAJ74aNM9JDnprlmXV_BeRGJ9MzIqY_MRxEpW0f8zOYzMmqI5ZWeLB7SaAM__rccwA
+    https://color.firefox.com/?theme=XQAAAAJSAQAAAAAAAABBKYhm849SCia48_6EGccwS-xMDPsqvGnCXAF6EJDWcx9sS_Bi3JZGE6ZZI2STfI2PTljkR9h-XHM39YpblCWMouVZmYeGLeJSfiVmhADNnjl0x_6-RlTLkJHXj2sBO_mAIE39EJfuSJCXI29JfczZ26NrS7RcJcGSYyXV0LMOy9DGOYdV56iph3jnPb-8a79P-5m7JN5nv2EEsjTz5qppcCMNpoeo1Ji9HDrFKOfO6w9h2jh0RBFuXB7G4UpSSN__zWe94A
 
     Advanced Colors:
 
