@@ -6,6 +6,8 @@ https://addons.mozilla.org
 2. Bump version:
     - `unzip ff-color-L14.xpi`
     - Edit version in `manifest.json`
+    - `zip ff-color-L14.xpi manifest.json`
+    - `rm manifest.json`
 3. Upload new version in AMO at `Manage My Submissions > My Themes`
 
 ## Using the theme
