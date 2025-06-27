@@ -177,21 +177,11 @@ button[aria-label="Mute tab"], button[aria-label="Unmute tab"] {
     display: none !important;
 }
 
-/* SIDEBAR */
-
-/* Workaround unreadable sidebar bug, the splitter is also too dark */
-/* https://bugzilla.mozilla.org/show_bug.cgi?id=1971487 */
-/* May be fixed in the next release */
-#sidebar-splitter {
-    background-color: #f0f0f0 !important;
-    border: 1px solid #cecece !important;
-}
-
 /* FIREFOX COLOR THEME NOTES */
 
 /*
     Link to theme:
-    https://color.firefox.com/?theme=XQAAAAJnAQAAAAAAAABBKYhm849SCia6aSqEGccwS-xMDPsqvGnCXAF6EJDWcx9sS_Bi3JZGE6ZZI2STfI2PTljkR9h-XHM39YpblCWMouVZmYeGLeJSfiVmhADNnjl0x_6-RlTLkJHXj2sBO_mAIE39EJfuSJCXI29EAWK5NgS0sbhcJcGSYyXV0LMOy9DGOYdV56iph3jnPb-8VUzW2-AIRYQu9vUj0x4HIEwz4nh_ZRNDSFEgYSNyyG91XZVnxam9X5grEzWMQckKUw-ct9_ZXkyJ_K7zeg
+    https://color.firefox.com/?theme=XQAAAAJSAQAAAAAAAABBKYhm849SCia48_6EGccwS-xMDPsqvGnCXAF6EJDWcx9sS_Bi3JZGE6ZZI2STfI2PTljkR9h-XHM39YpblCWMouVZmYeGLeJSfiVmhADNnjl0x_6-RlTLkJHXj2sBO_mAIE39EJfuSJCXI29EAWK5NgS0sbhcJcGSYyXV0LMOy9DGOYdV56iph3jnPb-8a79P-5m7JN5nv2EEsjTz5qppcCMNpoeo1Ji9HDrFKOfO6w9h2jh0RBFuXB7G4UpSSN__zWe94A
 
     Advanced Colors:
 
@@ -200,7 +190,4 @@ button[aria-label="Mute tab"], button[aria-label="Unmute tab"] {
 
     Toolbar Field Border Focus - Address bar border when focused
     #0061e0
-
-    Sidebar (Workaround for bug: https://bugzilla.mozilla.org/show_bug.cgi?id=1971487)
-    #f6f6f6
 */
