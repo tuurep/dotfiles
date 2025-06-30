@@ -3,7 +3,7 @@
 WINIT_X11_SCALE_FACTOR = "1"
 
 [window]
-title = "~" # Prevent flashing "Alacritty" before .bashrc changes title
+title = "~" # Prevent flashing "Alacritty" before .zshrc changes title
 padding = { x = 7 }
 
 [font]
@@ -28,9 +28,10 @@ indexed_colors = [
     { index = 20, color = "#909090" },
     { index = 21, color = "#767676" },
     { index = 22, color = "#eaeaea" },
-    { index = 23, color = "#404040" },
-    { index = 24, color = "#7d7d7d" },
-    { index = 25, color = "#656e6e" },
+    { index = 23, color = "#5f6160" },
+    { index = 24, color = "#404040" },
+    { index = 25, color = "#7d7d7d" },
+    { index = 26, color = "#656e6e" },
 ]
 
     [colors.cursor]
@@ -52,8 +53,9 @@ indexed_colors = [
     cyan =    "#88bab0"
     white =   "#d0d0d0"
 
+    # Only bright black is different from normal
     [colors.bright]
-    black =   "#5f6160" # Comment
+    black =   "#767676"
     red =     "#c36060"
     green =   "#a7bd68"
     yellow =  "#e8c580"
@@ -68,7 +70,7 @@ indexed_colors = [
     # Otherwise alacritty calculates a darker version of normal color:
     #   https://alacritty.org/config-alacritty.html#s44
     [colors.dim]
-    black =   "#5f6160"
+    black =   "#767676"
     red =     "#c36060"
     green =   "#a7bd68"
     yellow =  "#e8c580"

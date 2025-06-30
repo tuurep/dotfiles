@@ -33,7 +33,7 @@ precmd() {
 # Symbol shown on 'partial lines'
 # 1. when starting to type faster than prompt draws
 # 2. lines without newline at the end like: `printf foo`
-PROMPT_EOL_MARK=$'%{\e[38;5;243m%}%{\e[0m%}'  # nf-cod-circle_small_filled, gray fg color
+PROMPT_EOL_MARK=$'%{\e[90m%}%{\e[0m%}'  # nf-cod-circle_small_filled
 
 # === Tab completion ===
 
@@ -151,18 +151,14 @@ alias heat="sensors | grep 'fan\|CPU' | tr -d ' ' | cut -d ':' -f 2"
 
 autoload -U zmv # Mass-rename command provided by zsh
 
-grayprint_path() {
-    grayscale_243=$'\e[38;5;243m' # #767676
-    reset=$'\e[0m'
-    echo "${grayscale_243}$1${reset}"
-}
-
 p() {
-    grayprint_path "${PWD/#$HOME/~}"
+    # Print pwd in ANSI "bright black"
+    echo $'\e[90m'"${PWD/#$HOME/~}"$'\e[0m'
 }
 
 pl() {
-    grayprint_path "${OLDPWD/#$HOME/~}"
+    # Print previous pwd in ANSI "bright black"
+    echo $'\e[90m'"${OLDPWD/#$HOME/~}"$'\e[0m'
 }
 
 # ls long listing

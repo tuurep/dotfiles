@@ -14,7 +14,7 @@ local blue =    "#7d9fbd"
 local magenta = "#a684b0"
 local cyan =    "#88bab0"
 
--- "Bright black", chosen with comments in mind
+-- Comments have a dedicated color not used elsewhere
 local comment = "#5f6160"
 
 -- Standout color mainly for numbers (int, float, bool, const)
