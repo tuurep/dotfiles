@@ -12,13 +12,11 @@ else
     require("dynamic-titlestring")
 end
 
--- Disable autowraps and comment continuations,
--- and prevent /usr/share/nvim/runtime/ftplugins overriding them
+-- Disable comment continuations on `o` and `enter`
+-- Prevent /usr/share/nvim/runtime/ftplugins overriding them (hence the autocommand)
 vim.api.nvim_create_autocmd({"FileType"}, {
     callback = function()
-        if vim.bo.filetype  ~= "gitcommit" then
-            vim.opt.formatoptions:remove({"t", "f", "c", "r", "o"})
-        end
+        vim.opt.formatoptions:remove({"r", "o"})
     end
 })
 
