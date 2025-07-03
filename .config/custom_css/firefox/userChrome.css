@@ -141,6 +141,12 @@ button[aria-label="Mute tab"], button[aria-label="Unmute tab"] {
     display: none !important;
 }
 
+/* Hide useless buttons that appear if writing something that's also the name of a search
+   engine */
+.urlbarView-row[type="dynamic"][dynamicType="actions"] {
+  display: none !important;
+}
+
 /* Reduce enormous search suggestions row padding from 6px to 2px */
 .urlbarView-row-inner {
     padding-block: 2px !important;
