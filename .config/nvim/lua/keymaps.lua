@@ -525,6 +525,31 @@ local function ai_indent(ai_type)
     return res
 end
 
+-- mini.extra whole buffer textobject with slight modification
+local function ai_entire_buffer(ai_type)
+    local start_line = 1
+    local end_line = vim.fn.line('$')
+
+    if ai_type == 'i' then
+        -- Skip first and last blank lines for `i` textobject
+        local first_nonblank = vim.fn.nextnonblank(start_line)
+        local last_nonblank = vim.fn.prevnonblank(end_line)
+        -- Do nothing for buffer with all blanks
+        if first_nonblank == 0 or last_nonblank == 0 then
+            return { from = { line = start_line, col = 1 } }
+        end
+        start_line = first_nonblank
+        end_line = last_nonblank
+    end
+
+    local to_col = math.max(vim.fn.getline(end_line):len(), 1)
+    return {
+        from = { line = start_line, col = 1 },
+        to = { line = end_line, col = to_col },
+        vis_mode = "V"
+    }
+end
+
 MiniAi.setup({
     mappings = {
         inside_next = "il",
@@ -545,7 +570,7 @@ MiniAi.setup({
         ["c"] = MiniAi.gen_spec.argument(),
 
         -- Remap builtin '?'
-        ["\t"] = MiniAi.gen_spec.user_prompt(),
+        ["\t"] = MiniAi.gen_spec.user_prompt(), -- Tab
 
         -- Brackets aliases
         ["e"] = { "%b()", "^.().*().$" },
@@ -570,7 +595,8 @@ MiniAi.setup({
         ["_"] = MiniAi.gen_spec.pair("_", "_", { type = "greedy" }),
 
         -- Custom
-        ["i"] = ai_indent
+        ["i"]  = ai_indent,
+        ["\r"] = ai_entire_buffer -- Enter
 
     },
     n_lines = 100,

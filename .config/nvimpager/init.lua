@@ -361,6 +361,30 @@ local function ai_indent(ai_type)
     return res
 end
 
+local function ai_entire_buffer(ai_type)
+    local start_line = 1
+    local end_line = vim.fn.line('$')
+
+    if ai_type == 'i' then
+        -- Skip first and last blank lines for `i` textobject
+        local first_nonblank = vim.fn.nextnonblank(start_line)
+        local last_nonblank = vim.fn.prevnonblank(end_line)
+        -- Do nothing for buffer with all blanks
+        if first_nonblank == 0 or last_nonblank == 0 then
+            return { from = { line = start_line, col = 1 } }
+        end
+        start_line = first_nonblank
+        end_line = last_nonblank
+    end
+
+    local to_col = math.max(vim.fn.getline(end_line):len(), 1)
+    return {
+        from = { line = start_line, col = 1 },
+        to = { line = end_line, col = to_col },
+        vis_mode = "V"
+    }
+end
+
 require("mini.ai").setup({
     mappings = {
         inside_next = "il",
@@ -379,7 +403,7 @@ require("mini.ai").setup({
         ["c"] = MiniAi.gen_spec.argument(),
 
         -- Remap builtin '?'
-        ["\t"] = MiniAi.gen_spec.user_prompt(),
+        ["\t"] = MiniAi.gen_spec.user_prompt(), -- Tab
 
         -- Brackets aliases
         ["e"] = { "%b()", "^.().*().$" },
@@ -404,18 +428,13 @@ require("mini.ai").setup({
         ["_"] = MiniAi.gen_spec.pair("_", "_", { type = "greedy" }),
 
         -- Custom
-        ["i"] = ai_indent
+        ["i"]  = ai_indent,
+        ["\r"] = ai_entire_buffer -- Enter
 
     },
     n_lines = 100,
     silent = true
 })
-vim.keymap.set({"o", "x"}, "i<Tab>",  "i?",  { remap = true })
-vim.keymap.set({"o", "x"}, "il<Tab>", "il?", { remap = true })
-vim.keymap.set({"o", "x"}, "ih<Tab>", "ih?", { remap = true })
-vim.keymap.set({"o", "x"}, "a<Tab>",  "a?",  { remap = true })
-vim.keymap.set({"o", "x"}, "al<Tab>", "al?", { remap = true })
-vim.keymap.set({"o", "x"}, "ah<Tab>", "ah?", { remap = true })
 
 -- vim-sneak
 vim.g["sneak#s_next"] = true
