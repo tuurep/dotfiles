@@ -22,10 +22,6 @@ notes-name =      {{ doc["title"] }}.md
 [settings]
 default-library = papis
 
-# Would be nice to use cache but I keep having to manually clear it
-# Mostly after moving/renaming files outside of the `papis` subcommands?
-use-cache = False
-
 picktool = fzf
 formatter = jinja2
 
