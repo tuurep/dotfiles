@@ -54,6 +54,7 @@ alias d="clear"
 alias g="grep"
 alias q="exit"
 alias n="nmcli"
+alias m="mullvad"
 alias t="trans" # translate-shell
 
 # Reset password timeout, space at end: allow using sudo with aliased commands
@@ -74,6 +75,8 @@ alias ls="ls --color=auto"
 alias grep="grep --color=auto -i" # Case insensitive
 alias rg="rg --smart-case --colors 'path:fg:blue'"
 alias diff="diff --color=auto"
+
+alias lg="ll -A | grep" # See function `ll`
 
 alias drag="blobdrop -p"
 
@@ -103,7 +106,6 @@ alias ff="firefox"
 alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
 alias vivaldi="vivaldi-stable"
 alias yt-dlp="yt-dlp --cookies-from-browser firefox"
-alias m="mullvad"
 
 # Workaround `isbnlib` deprecation warning every time command is ran
 alias papis="PYTHONWARNINGS=ignore papis"
