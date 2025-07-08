@@ -108,7 +108,7 @@ alias vivaldi="vivaldi-stable"
 alias yt-dlp="yt-dlp --cookies-from-browser firefox"
 
 # Workaround `isbnlib` deprecation warning every time command is ran
-alias papis="PYTHONWARNINGS=ignore papis"
+export PYTHONWARNINGS="ignore"
 alias pap="papis"
 
 alias whereami="echo $HOST"
