@@ -92,7 +92,7 @@ vim.keymap.set("i", "<M-l>", function()
     local eol_col = #line + 1
 
     local pair_at_cursor = line:sub(col, col + 1)
-    
+
     -- At the last char of a word, move to the whitespace after it
     if pair_at_cursor:match("%S%s") then
         vim.cmd("normal! l")
@@ -406,6 +406,15 @@ vim.keymap.set("x", "<M-r>", "~")
 vim.keymap.set("n", "<leader>e", "<cmd>Inspect<cr>")
 vim.keymap.set("n", "<leader>E", "<cmd>InspectTree<cr>")
 
+-- Toggle colorcolumn at `textwidth + 1`
+vim.keymap.set({"n", "x"}, "¤", function()
+    if #vim.opt.colorcolumn:get() == 0 then
+        vim.opt.colorcolumn = { "+1" }
+    else
+        vim.opt.colorcolumn = {}
+    end
+end)
+
 -- ===== PLUGINS =====
 
 -- mini.splitjoin
@@ -560,7 +569,7 @@ MiniAi.setup({
         goto_prev_end = "gM"
     },
     custom_textobjects = {
-        
+
         ["b"] = MiniAi.gen_spec.treesitter({ i = "@comment.inner", a = "@comment.outer" }),
 
         -- Remap 'argument' textobject, 'a' for square bracket

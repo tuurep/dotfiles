@@ -21,8 +21,9 @@ local comment = "#5f6160"
 local orange =  "#d17c6b"
 
 -- Borders and floating window backgrounds:
-local l_bg =    "#222525" -- lighter background
-local ll_bg =   "#313438" -- lighter lighter background
+local l_bg=     "#121212" -- lighter background
+local ll_bg=    "#222525" -- lighter lighter background
+local lll_bg =  "#313438" -- lighter lighter lighter background
 
 -- fg variants for more concealed/more emphasized text
 local d_fg =    "#909090" -- darker foreground
@@ -116,8 +117,8 @@ vim.api.nvim_set_hl(0, "Directory",    { fg = blue                 })
 vim.api.nvim_set_hl(0, "ErrorMsg",     { fg = red,     bg = bg     })
 vim.api.nvim_set_hl(0, "Error",        { fg = bg,      bg = red    })
 vim.api.nvim_set_hl(0, "Exception",    { fg = red                  })
-vim.api.nvim_set_hl(0, "FoldColumn",   { fg = cyan,    bg = l_bg   })
-vim.api.nvim_set_hl(0, "Folded",       { fg = comment, bg = l_bg   })
+vim.api.nvim_set_hl(0, "FoldColumn",   { fg = cyan,    bg = ll_bg  })
+vim.api.nvim_set_hl(0, "Folded",       { fg = comment, bg = ll_bg  })
 vim.api.nvim_set_hl(0, "MoreMsg",      { fg = fg                   })
 vim.api.nvim_set_hl(0, "ModeMsg",      { fg = fg                   })
 vim.api.nvim_set_hl(0, "Question",     { fg = fg                   })
@@ -125,24 +126,24 @@ vim.api.nvim_set_hl(0, "SpecialKey",   { fg = comment              })
 vim.api.nvim_set_hl(0, "TooLong",      { fg = red                  })
 vim.api.nvim_set_hl(0, "Visual",       { fg = bg,      bg = fg     })
 vim.api.nvim_set_hl(0, "WarningMsg",   { fg = yellow               })
-vim.api.nvim_set_hl(0, "WildMenu",     { fg = l_bg                 })
+vim.api.nvim_set_hl(0, "WildMenu",     { fg = ll_bg                })
 vim.api.nvim_set_hl(0, "Title",        { fg = blue                 })
 vim.api.nvim_set_hl(0, "NonText",      { fg = dd_fg                })
 vim.api.nvim_set_hl(0, "SignColum",    { fg = comment, bg = bg     })
-vim.api.nvim_set_hl(0, "StatusLine",   { fg = fg,      bg = l_bg   })
-vim.api.nvim_set_hl(0, "StatusLineNC", { fg = stat_fg, bg = l_bg   })
-vim.api.nvim_set_hl(0, "WinSeparator", { fg = l_bg,    bg = l_bg   })
+vim.api.nvim_set_hl(0, "StatusLine",   { fg = fg,      bg = ll_bg  })
+vim.api.nvim_set_hl(0, "StatusLineNC", { fg = stat_fg, bg = ll_bg  })
+vim.api.nvim_set_hl(0, "WinSeparator", { fg = l_bg,    bg = ll_bg  })
 vim.api.nvim_set_hl(0, "SignColumn",   {               bg = bg     })
 vim.api.nvim_set_hl(0, "ColorColumn",  {               bg = l_bg   })
-vim.api.nvim_set_hl(0, "CursorColumn", {               bg = l_bg   })
+vim.api.nvim_set_hl(0, "CursorColumn", {               bg = ll_bg  })
 vim.api.nvim_set_hl(0, "QuickFixLine", { fg = bg,      bg = search })
 vim.api.nvim_set_hl(0, "QfLineNr",     { fg = fg,                  })
 vim.api.nvim_set_hl(0, "qfSeparator",  { fg = fg,                  })
-vim.api.nvim_set_hl(0, "PMenu",        { fg = fg,      bg = l_bg   })
+vim.api.nvim_set_hl(0, "PMenu",        { fg = fg,      bg = ll_bg  })
 vim.api.nvim_set_hl(0, "PMenuSel",     { fg = l_bg,    bg = fg     })
-vim.api.nvim_set_hl(0, "TabLine",      { fg = comment, bg = l_bg   })
-vim.api.nvim_set_hl(0, "TabLineFill",  { fg = comment, bg = l_bg   })
-vim.api.nvim_set_hl(0, "TabLineSel",   { fg = green,   bg = l_bg   })
+vim.api.nvim_set_hl(0, "TabLine",      { fg = comment, bg = ll_bg  })
+vim.api.nvim_set_hl(0, "TabLineFill",  { fg = comment, bg = ll_bg  })
+vim.api.nvim_set_hl(0, "TabLineSel",   { fg = green,   bg = ll_bg  })
 
 -- Diff highlighting
 vim.api.nvim_set_hl(0, "DiffAdd",       { fg = bg,      bg = green })

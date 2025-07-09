@@ -23,15 +23,16 @@ size = 10.5
 indexed_colors = [
     { index = 16, color = "#d17c6b" },
     { index = 17, color = "#a3685a" },
-    { index = 18, color = "#222525" },
-    { index = 19, color = "#313438" },
-    { index = 20, color = "#909090" },
-    { index = 21, color = "#767676" },
-    { index = 22, color = "#eaeaea" },
-    { index = 23, color = "#5f6160" },
-    { index = 24, color = "#404040" },
-    { index = 25, color = "#7d7d7d" },
-    { index = 26, color = "#656e6e" },
+    { index = 18, color = "#121212" },
+    { index = 19, color = "#222525" },
+    { index = 20, color = "#313438" },
+    { index = 21, color = "#909090" },
+    { index = 22, color = "#767676" },
+    { index = 23, color = "#eaeaea" },
+    { index = 24, color = "#5f6160" },
+    { index = 25, color = "#404040" },
+    { index = 26, color = "#7d7d7d" },
+    { index = 27, color = "#656e6e" },
 ]
 
     [colors.cursor]
