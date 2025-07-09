@@ -406,9 +406,6 @@ vim.keymap.set("x", "<M-r>", "~")
 vim.keymap.set("n", "<leader>e", "<cmd>Inspect<cr>")
 vim.keymap.set("n", "<leader>E", "<cmd>InspectTree<cr>")
 
--- Bigger lua functions
-vim.keymap.set({"n", "x"}, "¤", require("trailingwhite-toggle"))
-
 -- ===== PLUGINS =====
 
 -- mini.splitjoin

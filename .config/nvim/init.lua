@@ -20,8 +20,22 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     end
 })
 
+-- Don't show trailing whitespace in insert mode
+vim.api.nvim_create_autocmd({"InsertEnter"}, {
+    callback = function()
+        vim.o.list = false
+    end
+})
+vim.api.nvim_create_autocmd({"InsertLeave"}, {
+    callback = function()
+        vim.o.list = true
+    end
+})
+vim.o.list = true
+vim.opt.listchars:append("trail:󰧟") -- nf-md-circle_small
+vim.opt.fillchars:append("eob:󰧟")   -- nf-md-circle_small
+
 vim.opt.shortmess:append("Ia")
-vim.opt.fillchars:append("eob:󰧟") -- nf-md-circle_small
 
 vim.o.clipboard = "unnamedplus"
 vim.o.guicursor = "a:block"
