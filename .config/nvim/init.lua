@@ -32,8 +32,9 @@ vim.api.nvim_create_autocmd({"InsertLeave"}, {
     end
 })
 vim.o.list = true
-vim.opt.listchars:append("trail:󰧟") -- nf-md-circle_small
-vim.opt.fillchars:append("eob:󰧟")   -- nf-md-circle_small
+vim.opt.listchars = "tab:  ,nbsp: "  -- override defaults "> " and "+" with spaces
+vim.opt.listchars:append("trail:󰧟,") -- nf-md-circle_small
+vim.opt.fillchars:append("eob:󰧟")    -- nf-md-circle_small
 
 vim.opt.shortmess:append("Ia")
 
