@@ -381,6 +381,7 @@ setopt HIST_IGNORE_ALL_DUPS
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+fpath=(~/.zsh $fpath) # Has _git completions
 
 # === Settings for tools ===
 source ~/.ls_colors                 # Sets and exports LS_COLORS env variable
