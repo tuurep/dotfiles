@@ -205,9 +205,14 @@ vim.keymap.set({"n", "x", "o"}, "<leader><leader>", "M")
 vim.keymap.set({"n", "x", "o"}, "<leader>j", "L")
 vim.keymap.set({"n", "x"}, "?", "K")
 
--- Shift+g slightly too annoying to press
+-- Shift+g slightly too annoying to press.
+-- Enter and Backspace are pressed easily by accident on normal mode, so use Alt, but
+-- allow dropping alt in operator-pending.
+-- Goes nicely with mini.ai "entire buffer" textobject on Enter.
 vim.keymap.set({"n", "x", "o"}, "<M-Enter>", "G")
 vim.keymap.set({"n", "x", "o"}, "<M-Backspace>", "gg")
+vim.keymap.set("o", "<Enter>", "G")
+vim.keymap.set("o", "<Backspace>", "gg")
 
 -- Spammable buffer navigation
 vim.keymap.set("n", "<C-h>", "<cmd>bp<cr>")
