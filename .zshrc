@@ -46,6 +46,10 @@ setopt LIST_PACKED # Makes completion list a little more compact - definitely ni
 autoload -U compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # Smartcase tab completion
 
+# Add felipec's git completions (default zsh git completion is very slow)
+# https://github.com/felipec/git-completion
+fpath=(~/.local/share/git-completion/zsh $fpath)
+
 # === Aliases ===
 
 alias l="ls --color=always --group-directories-first"
@@ -381,7 +385,6 @@ setopt HIST_IGNORE_ALL_DUPS
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-fpath=(~/.zsh $fpath) # Has _git completions
 
 # === Settings for tools ===
 source ~/.ls_colors                 # Sets and exports LS_COLORS env variable
