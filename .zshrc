@@ -52,7 +52,7 @@ fpath=(~/.local/share/git-completion/zsh $fpath)
 
 # === Aliases ===
 
-alias l="ls --color=always --group-directories-first"
+alias l="ls --color=auto --group-directories-first"
 alias e="nvim"
 alias d="clear"
 alias g="grep"
