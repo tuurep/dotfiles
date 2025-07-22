@@ -248,6 +248,9 @@ vim.api.nvim_set_hl(0, "@markup.link.label",            { fg = red     })
 vim.api.nvim_set_hl(0, "@markup.link.url",              { fg = cyan    })
 vim.api.nvim_set_hl(0, "@markup.strikethrough",         { fg = red     })
 
+-- HTML
+vim.api.nvim_set_hl(0, "@markup.link.label.html", { fg = cyan })
+
 -- Regex
 vim.api.nvim_set_hl(0, "@constant.regex",              { fg = cyan })
 vim.api.nvim_set_hl(0, "@operator.regex",              { fg = cyan })
