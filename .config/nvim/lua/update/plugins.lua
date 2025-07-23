@@ -18,10 +18,11 @@ local paq = require("paq") {
     "echasnovski/mini.splitjoin",
     "tuurep/vim-lion",            -- tommcdo/vim-lion fork
     "echasnovski/mini.move",
-    "justinmk/vim-sneak",
+    -- "justinmk/vim-sneak",
     "haya14busa/vim-edgemotion",
 
     -- Textobjects stuff
+    -- "tuurep/mini.ai",      -- echasnovski/mini.ai fork
     "chaoren/vim-wordmotion", -- rework word delimiters for w b e ge iw aw
     "nvim-treesitter/nvim-treesitter-textobjects",
 
@@ -29,12 +30,12 @@ local paq = require("paq") {
     "tuurep/undotree", -- mbbill/undotree fork
 
     -- Edit registers (especially macros) with :R[egisterEdit] <register>
-    "tuurep/registereditor",
+    -- "tuurep/registereditor",
 
     -- Filetypes:
     "jannis-baum/vivify.vim", -- markdown preview
     "lervag/vimtex",
-    "justinmk/vim-dirvish"    -- netrw replacement
+    "justinmk/vim-dirvish",   -- netrw replacement
 }
 
 vim.api.nvim_create_autocmd("User", {

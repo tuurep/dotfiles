@@ -16,7 +16,8 @@ vim.loader.enable()
 -- Leech plugins from nvim (paq)
 vim.opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/vim-sneak")
 vim.opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/vim-edgemotion")
-vim.opt.runtimepath:append("~/projects/mini.ai")
+vim.opt.runtimepath:append("~/projects/mini.ai")   -- todo: rework motions
+vim.opt.runtimepath:append("~/projects/vim-sneak") -- todo: silent cmdline
 
 vim.g.loaded_netrwPlugin = 0 -- When unloading netrw, `nvimpager <dir>` shows a blank buffer in pager mode
 
@@ -140,7 +141,7 @@ vim.keymap.set("c", "<M-u>", "<C-u>") -- Todo: <C-u>
 vim.keymap.set("c", "<M-H>", "<Home>")
 vim.keymap.set("c", "<M-L>", "<End>")
 
--- Autopair-like mappings with the same aliases as mini.surround and mini.ai
+-- Autopair-like mappings with the same aliases as mini.tpopesurround and mini.ai
 vim.keymap.set("c", "<M-e>", "()<Left>")
 vim.keymap.set("c", "<M-d>", "{}<Left>")
 vim.keymap.set("c", "<M-a>", "[]<Left>")
@@ -398,7 +399,7 @@ require("mini.ai").setup({
         goto_prev_end = "gM"
     },
     custom_textobjects = {
-        
+
         -- Remap 'argument' textobject, 'a' for square bracket
         ["c"] = MiniAi.gen_spec.argument(),
 
@@ -439,12 +440,13 @@ require("mini.ai").setup({
 -- vim-sneak
 vim.g["sneak#s_next"] = true
 vim.g["sneak#use_ic_scs"] = true
+vim.g["sneak#prompt"] = ""
+vim.keymap.set({"n", "x", "o"}, "q", "<Plug>Sneak_s")
+vim.keymap.set({"n", "x", "o"}, "Q", "<Plug>Sneak_S")
 vim.keymap.set({"n", "x", "o"}, "f", "<Plug>Sneak_f")
 vim.keymap.set({"n", "x", "o"}, "F", "<Plug>Sneak_F")
 vim.keymap.set({"n", "x", "o"}, "t", "<Plug>Sneak_t")
 vim.keymap.set({"n", "x", "o"}, "T", "<Plug>Sneak_T")
-vim.keymap.set({"x", "o"}, "s", "<Plug>Sneak_s")
-vim.keymap.set({"x", "o"}, "S", "<Plug>Sneak_S")
 
 -- vim-edgemotion
 vim.keymap.set({"n", "x", "o"}, "J", "<Plug>(edgemotion-j)")

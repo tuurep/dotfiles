@@ -30,7 +30,7 @@ vim.keymap.set({"n", "x", "!"}, "<PageUp>", "<Nop>")
 vim.keymap.set({"n", "x", "!"}, "<PageDown>", "<Nop>")
 vim.keymap.set({"n", "i"}, "<F1>", "<Nop>")
 
--- Give macro keys to mini.tpopesurround
+-- Allow vim-sneak to be mapped to q
 vim.keymap.set({"n", "x"}, "<Del>", "q")
 vim.keymap.set({"n", "x"}, "<S-Del>", "Q")
 vim.keymap.set({"n", "x"}, "<M-Del>", "@")
@@ -146,7 +146,7 @@ vim.keymap.set("!", "<M-u>", "<C-u>") -- Todo: <C-u>
 vim.keymap.set("!", "<M-H>", "<Home>")
 vim.keymap.set("!", "<M-L>", "<End>")
 
--- Autopair-like mappings with the same aliases as mini.surround and mini.ai
+-- Autopair-like mappings with the same aliases as mini.tpopesurround and mini.ai
 -- Todo: Won't cleanly undo when these mappings are used
 -- Todo: Visual block mode various strange behaviors (unusable really)
 -- Todo: Turn into a plugin to better control when to indent and when not to
@@ -620,17 +620,17 @@ local MiniTpopesurround = require("mini.tpopesurround")
 
 MiniTpopesurround.setup({
     mappings = {
-        add = "q",
-        delete = "qd",
-        replace = "qr",
+        add = "s",
+        delete = "ds",
+        replace = "cs",
 
-        add_visual = "q",
+        add_visual = "s",
 
-        add_and_indent = "<M-q>",
-        replace_and_indent = "<M-q>r",
+        add_and_indent = "<M-s>",
+        replace_and_indent = "c<M-s>", -- awful but I never use this
 
-        add_line = "qq",
-        add_line_and_indent = "<M-q><M-q>",
+        add_line = "ss",
+        add_line_and_indent = "<M-s><M-s>",
 
         suffix_next = "l",
         suffix_last = "h",
@@ -675,8 +675,8 @@ MiniTpopesurround.setup({
     },
     silent = true
 })
-vim.keymap.set("n", "Q", "q$", { remap = true })
-vim.keymap.set("n", "<M-Q>", "<M-q>$", { remap = true })
+vim.keymap.set("n", "S", "s$", { remap = true })
+vim.keymap.set("n", "<M-S>", "<M-s>$", { remap = true })
 
 -- mini.move
 require("mini.move").setup({
@@ -728,14 +728,12 @@ vim.keymap.set("n", "gC", "gc$", { remap = true })
 -- end)
 
 -- vim-sneak
+vim.keymap.set({"n", "x", "o"}, "q", "<Plug>Sneak_s")
+vim.keymap.set({"n", "x", "o"}, "Q", "<Plug>Sneak_S")
 vim.keymap.set({"n", "x", "o"}, "f", "<Plug>Sneak_f")
 vim.keymap.set({"n", "x", "o"}, "F", "<Plug>Sneak_F")
 vim.keymap.set({"n", "x", "o"}, "t", "<Plug>Sneak_t")
 vim.keymap.set({"n", "x", "o"}, "T", "<Plug>Sneak_T")
-
--- allow sneak to use s in all cases, because surround is mapped to q
-vim.keymap.set({"x", "o"}, "s", "<Plug>Sneak_s")
-vim.keymap.set({"x", "o"}, "S", "<Plug>Sneak_S")
 
 -- vim-edgemotion
 vim.keymap.set({"n", "x", "o"}, "J", "<Plug>(edgemotion-j)")
