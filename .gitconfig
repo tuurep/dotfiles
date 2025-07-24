@@ -20,5 +20,5 @@
 [pull]
     ff = only
 
-[diff "color"]
-    commit = blue
+[advice]
+    defaultBranchName = false
