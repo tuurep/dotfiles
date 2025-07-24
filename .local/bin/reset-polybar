@@ -1,6 +1,6 @@
 #!/bin/bash
 
-killall -q polybar
+killall -9 polybar
 polybar bar1 -q & disown
 
 killall -q pactl-sink-monitor
