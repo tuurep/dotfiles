@@ -448,6 +448,14 @@ vim.keymap.set({"n", "x", "o"}, "F", "<Plug>Sneak_F")
 vim.keymap.set({"n", "x", "o"}, "t", "<Plug>Sneak_t")
 vim.keymap.set({"n", "x", "o"}, "T", "<Plug>Sneak_T")
 
+-- Wretched ftplugin wants to steal my q map
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "man",
+    callback = function()
+        vim.keymap.set("n", "q", "<Plug>Sneak_s", { buffer = true })
+    end,
+})
+
 -- vim-edgemotion
 vim.keymap.set({"n", "x", "o"}, "J", "<Plug>(edgemotion-j)")
 vim.keymap.set({"n", "x", "o"}, "K", "<Plug>(edgemotion-k)")
