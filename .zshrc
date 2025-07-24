@@ -80,7 +80,8 @@ alias grep="grep --color=auto -i" # Case insensitive
 alias rg="rg --smart-case --colors 'path:fg:blue'"
 alias diff="diff --color=auto"
 
-alias lg="ll -A | grep" # See function `ll`
+alias lg="l -A | grep"
+alias llg="ll -A | grep" # See function `ll`
 
 alias drag="blobdrop -p"
 
