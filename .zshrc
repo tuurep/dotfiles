@@ -52,7 +52,7 @@ fpath=(~/.local/share/git-completion/zsh $fpath)
 
 # === Aliases ===
 
-alias l="ls --color=auto --group-directories-first"
+alias l="ls --group-directories-first"
 alias e="nvim"
 alias d="clear"
 alias g="grep"
@@ -168,9 +168,17 @@ pl() {
 }
 
 # ls long listing
-#   - sed removes first line (example: "total 4.0K")
+# sed removes first line (example: "total 4.0K")
 ll() {
-    l -oh --time-style=long-iso "$@" \
+    local color
+    if [[ -t 1 ]]; then
+        # stdout is a terminal - keep color
+        color="always"
+    else
+        # stdout is being piped — disable color
+        color="never"
+    fi
+    l --color="$color" -oh --time-style=long-iso "$@" \
         | sed -r '/^total [0-9]+\.?[0-9]*[BKMGT]?$/d'
 }
 
@@ -228,6 +236,11 @@ clone() {
 
 # tree with the box-drawing characters and end report turned into a dimmed fg color
 tree() {
+    if [[ ! -t 1 ]]; then
+        # if stdout is being piped, no color
+        /usr/bin/tree "$@"
+        return
+    fi
     grayscale_237=$'\e[38;5;237m' # #3a3a3a
     grayscale_240=$'\e[38;5;240m' # #585858
     reset=$'\e[0m'
