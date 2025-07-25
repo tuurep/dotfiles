@@ -73,6 +73,11 @@ vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
 vim.o.expandtab = true
 
+-- Avoid useless timeout error on `gx` when firefox isn't already open (it opens anyway)
+vim.ui.open = function(url)
+    vim.fn.jobstart({ "xdg-open", url }, { detach = true })
+end
+
 -- Globals for plugins
 vim.g.lion_prompt = "Pattern: "
 vim.g.lion_squeeze_spaces = 1

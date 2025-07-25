@@ -47,6 +47,11 @@ vim.o.smartcase = true
 vim.o.splitright = true
 vim.o.splitbelow = true
 
+-- Avoid useless timeout error on `gx` when firefox isn't already open (it opens anyway)
+vim.ui.open = function(url)
+    vim.fn.jobstart({ "xdg-open", url }, { detach = true })
+end
+
 -- KEYMAPS
 
 -- Disable nvimpager default keymaps
