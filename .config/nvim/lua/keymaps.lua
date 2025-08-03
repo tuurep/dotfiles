@@ -386,13 +386,17 @@ vim.keymap.set("n", "<M-o>", "o<Esc>")
 vim.keymap.set("n", "<M-O>", "O<Esc>")
 
 -- Without shift = forward, with shift = backward
-vim.keymap.set({"n", "x"}, "<", ">")
-vim.keymap.set({"n", "x"}, ">", "<")
+vim.keymap.set("n", "<", ">")
+vim.keymap.set("n", ">", "<")
 vim.keymap.set("n", "<<", ">>")
 vim.keymap.set("n", ">>", "<<")
 
--- regular , and ; are surpassed by 'clever' f/t/s with option g:sneak#s_next
--- remap to jump between last edit positions (:h changelist)
+-- Re-enter visual mode for spammability
+vim.keymap.set("x", "<", ">gv")
+vim.keymap.set("x", ">", "<gv")
+
+-- Regular , and ; are surpassed by 'clever' f/t/s with option g:sneak#s_next
+-- Remap to jump between last edit positions (:h changelist)
 vim.keymap.set("n", ",", "g;")
 vim.keymap.set("n", ";", "g,")
 vim.keymap.set({"x", "o"}, ",", "<Nop>")
