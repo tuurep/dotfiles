@@ -290,106 +290,7 @@ vim.keymap.set("n", "<leader>E", "<cmd>InspectTree<cr>")
 
 -- mini.ai
 local MiniAi = require("mini.ai")
-
-local function get_line_indent(line)
-    local prev_nonblank = vim.fn.prevnonblank(line)
-    local res = vim.fn.indent(prev_nonblank)
-
-    -- Compute indent of blank line
-    if line ~= prev_nonblank then
-        local next_indent = vim.fn.indent(vim.fn.nextnonblank(line))
-        res = math.max(res, next_indent)
-    end
-
-    return res
-end
-
-local function ai_indent(ai_type)
-    local res = {}
-
-    local target_indent = math.max(
-        get_line_indent(vim.fn.line(".")),
-        1 -- If cursor is at an unindented part, target all top-level indents
-    )
-
-    local from_line, to_line
-    local scoping = false
-    local eob = vim.fn.line("$")
-
-    for i = 1, eob, 1 do
-
-        -- Find region end
-        if scoping then
-            local line = vim.fn.getline(i)
-
-            if not line:match("^%s*$") and vim.fn.indent(i) < target_indent then
-
-                to_line = i
-
-                if ai_type == "a" then
-                    from_line = math.max(from_line - 1, 1)
-                else
-                    to_line = to_line - 1
-                end
-
-                local region = {
-                    from = { line = from_line, col = 1 },
-                    to = { line = to_line, col = vim.fn.col({ to_line, "$" }) },
-                    vis_mode = "V"
-                }
-                table.insert(res, region)
-                scoping = false
-            end
-
-        -- Find region start
-        else
-            if get_line_indent(i) >= target_indent then
-                from_line = i 
-                scoping = true
-            end
-        end
-
-        -- Last buffer line edge case
-        if i == eob and scoping then
-            if ai_type == "a" then
-                from_line = math.max(from_line - 1, 1)
-            end
-            local region = {
-                from = { line = from_line, col = 1 },
-                to = { line = eob, col = vim.fn.col({ eob, "$" }) },
-                vis_mode = "V"
-            }
-            table.insert(res, region)
-        end
-
-    end
-
-    return res
-end
-
-local function ai_entire_buffer(ai_type)
-    local start_line = 1
-    local end_line = vim.fn.line('$')
-
-    if ai_type == 'i' then
-        -- Skip first and last blank lines for `i` textobject
-        local first_nonblank = vim.fn.nextnonblank(start_line)
-        local last_nonblank = vim.fn.prevnonblank(end_line)
-        -- Do nothing for buffer with all blanks
-        if first_nonblank == 0 or last_nonblank == 0 then
-            return { from = { line = start_line, col = 1 } }
-        end
-        start_line = first_nonblank
-        end_line = last_nonblank
-    end
-
-    local to_col = math.max(vim.fn.getline(end_line):len(), 1)
-    return {
-        from = { line = start_line, col = 1 },
-        to = { line = end_line, col = to_col },
-        vis_mode = "V"
-    }
-end
+local custom = require("mini-ai-textobjects")
 
 require("mini.ai").setup({
     mappings = {
@@ -426,7 +327,6 @@ require("mini.ai").setup({
         ["z"] = { "%b``", "^.().*().$" },
         ["q"] = { '%b""', "^.().*().$" },
         ["Q"] = { '"""().-()"""' },
-        ["Z"] = { "```().-()```" },
 
         -- Markdown (experimental)
         ["'"] = MiniAi.gen_spec.pair("*", "*", { type = "greedy" }),
@@ -434,8 +334,9 @@ require("mini.ai").setup({
         ["_"] = MiniAi.gen_spec.pair("_", "_", { type = "greedy" }),
 
         -- Custom
-        ["i"]  = ai_indent,
-        ["\r"] = ai_entire_buffer -- Enter
+        ["Z"]  = custom.md_codeblock,
+        ["i"]  = custom.indent,
+        ["\r"] = custom.entire_buffer -- Enter
 
     },
     n_lines = 100,
