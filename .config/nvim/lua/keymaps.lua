@@ -563,8 +563,9 @@ MiniTpopesurround.setup({
         ["z"] = { input = { "%b``", "^.().*().$" }, output = { left = "`", right = "`" } },
         ["q"] = { input = { '%b""', "^.().*().$" }, output = { left = '"', right = '"' } },
 
-        ["Q"] = { input = { '"""().-()"""' }, output = { left = '"""', right = '"""' } },
-        ["Z"] = { input = { "```().-()```" }, output = { left = "```", right = "```" } },
+
+        ["Z"] = { input = { "```%s*%w*().-()```" }, output = { left = "```", right = "```" } },
+        ["Q"] = { input = { '"""().-()"""' },       output = { left = '"""', right = '"""' } },
 
         -- Markdown (experimental)
         ["'"] = { input = { "*().-()*"       }, output = { left = "*",  right = "*"  } },
