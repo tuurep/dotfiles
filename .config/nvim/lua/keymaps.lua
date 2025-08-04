@@ -3,6 +3,8 @@ vim.keymap.set({"n", "x", "o"}, "<Space>", "<Nop>")
 vim.g.mapleader = " "
 
 -- Free keys:
+vim.keymap.set({"n", "x"}, "q", "<Nop>")
+vim.keymap.set({"n", "x"}, "Q", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<Up>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<Down>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<Left>", "<Nop>")
@@ -17,26 +19,18 @@ vim.keymap.set({"n", "x"}, "<Backspace>", "<Nop>")
 vim.keymap.set({"n", "x"}, "<Enter>", "<Nop>")
 vim.keymap.set({"n", "x"}, "gJ", "<Nop>")          -- gå for spaceless join, leave gJ and gK
                                                    -- as ideas for vertical movement mappings
--- ½
--- zh zl
--- gy gY
--- gz gZ
--- ä Ä gä gÄ zä zÄ
--- gö gÖ zö zÖ
--- gÅ zå zÅ
-
 -- Free (but bad):
 vim.keymap.set({"n", "x", "!"}, "<PageUp>", "<Nop>")
 vim.keymap.set({"n", "x", "!"}, "<PageDown>", "<Nop>")
 vim.keymap.set({"n", "i"}, "<F1>", "<Nop>")
 
--- Allow vim-sneak to be mapped to q
+-- q key is free for future idea
 vim.keymap.set({"n", "x"}, "<Del>", "q")
 vim.keymap.set({"n", "x"}, "<S-Del>", "Q")
 vim.keymap.set({"n", "x"}, "<M-Del>", "@")
 vim.keymap.set({"n", "x"}, "<M-Del><M-Del>", "@@")
 
--- Move the mark key to the edge of the keyboard to use m for mini.ai textobject motions
+-- Move the mark key to the edge of the keyboard to use m for sneak
 vim.keymap.set("n", "<Ins>", "m")
 
 -- Tab to search
@@ -395,12 +389,9 @@ vim.keymap.set("n", ">>", "<<")
 vim.keymap.set("x", "<", ">gv")
 vim.keymap.set("x", ">", "<gv")
 
--- Regular , and ; are surpassed by 'clever' f/t/s with option g:sneak#s_next
--- Remap to jump between last edit positions (:h changelist)
-vim.keymap.set("n", ",", "g;")
-vim.keymap.set("n", ";", "g,")
-vim.keymap.set({"x", "o"}, ",", "<Nop>")
-vim.keymap.set({"x", "o"}, ";", "<Nop>")
+-- Spammable changelist jump + free g; and g, for mini.ai motions
+vim.keymap.set("n", "<M-i>", "g;")
+vim.keymap.set("n", "<M-S-i>", "g,")
 
 -- Undo follows the same idea as above
 -- Map <M-u> to WeirdUndo so it's still available when you want to use it (never)
@@ -472,10 +463,11 @@ MiniAi.setup({
         inside_last = "ih",
         around_last = "ah",
 
-        goto_next_end = "m",
-        goto_next_start = "gm",
-        goto_prev_start = "M",
-        goto_prev_end = "gM"
+        -- Builtin , and ; are surpassed by "clever" f/t/sneak
+        goto_next_end = ",",
+        goto_next_start = "g,",
+        goto_prev_start = ";",
+        goto_prev_end = "g;"
     },
     custom_textobjects = {
 
@@ -633,8 +625,8 @@ vim.keymap.set("n", "gC", "gc$", { remap = true })
 -- end)
 
 -- vim-sneak
-vim.keymap.set({"n", "x", "o"}, "q", "<Plug>Sneak_s")
-vim.keymap.set({"n", "x", "o"}, "Q", "<Plug>Sneak_S")
+vim.keymap.set({"n", "x", "o"}, "m", "<Plug>Sneak_s")
+vim.keymap.set({"n", "x", "o"}, "M", "<Plug>Sneak_S")
 vim.keymap.set({"n", "x", "o"}, "f", "<Plug>Sneak_f")
 vim.keymap.set({"n", "x", "o"}, "F", "<Plug>Sneak_F")
 vim.keymap.set({"n", "x", "o"}, "t", "<Plug>Sneak_t")

@@ -61,13 +61,14 @@ vim.keymap.set({"n", "x", "o"}, "<Space>", "<Nop>")
 vim.g.mapleader = " "
 
 -- Free keys:
+vim.keymap.set({"n", "x"}, "q", "<Nop>")
+vim.keymap.set({"n", "x"}, "Q", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<Up>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<Down>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<Left>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<Right>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "+", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<C-u>", "<Nop>")
-vim.keymap.set({"n", "x", "o"}, "<C-d>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "/", "<Nop>")
 vim.keymap.set("n", "<C-r>", "<Nop>")
 vim.keymap.set("n", "<C-o>", "<Nop>")
@@ -85,15 +86,13 @@ vim.keymap.set("n", "<F1>", "<Nop>")
 vim.keymap.set({"n", "x"}, "§", "<cmd>set number!<cr>")
 vim.keymap.set({"n", "x"}, "<leader>§", "<cmd>set wrap!<cr>")
 
--- Remap macros
-vim.keymap.set({"n", "x"}, "q", "<Nop>")
-vim.keymap.set({"n", "x"}, "Q", "<Nop>")
+-- q key is free for future idea
 vim.keymap.set({"n", "x"}, "<Del>", "q")
 vim.keymap.set({"n", "x"}, "<S-Del>", "Q")
 vim.keymap.set({"n", "x"}, "<M-Del>", "@")
 vim.keymap.set({"n", "x"}, "<M-Del><M-Del>", "@@")
 
--- Give mark key to `mini.ai` textobject motions
+-- Give mark key to sneak
 vim.keymap.set("n", "<Ins>", "m")
 
 -- Tab to search
@@ -299,10 +298,11 @@ require("mini.ai").setup({
         inside_last = "ih",
         around_last = "ah",
 
-        goto_next_end = "m",
-        goto_next_start = "gm",
-        goto_prev_start = "M",
-        goto_prev_end = "gM"
+        -- Builtin , and ; are surpassed by "clever" f/t/sneak
+        goto_next_end = ",",
+        goto_next_start = "g,",
+        goto_prev_start = ";",
+        goto_prev_end = "g;"
     },
     custom_textobjects = {
 
@@ -347,8 +347,8 @@ require("mini.ai").setup({
 vim.g["sneak#s_next"] = true
 vim.g["sneak#use_ic_scs"] = true
 vim.g["sneak#prompt"] = ""
-vim.keymap.set({"n", "x", "o"}, "q", "<Plug>Sneak_s")
-vim.keymap.set({"n", "x", "o"}, "Q", "<Plug>Sneak_S")
+vim.keymap.set({"n", "x", "o"}, "m", "<Plug>Sneak_s")
+vim.keymap.set({"n", "x", "o"}, "M", "<Plug>Sneak_S")
 vim.keymap.set({"n", "x", "o"}, "f", "<Plug>Sneak_f")
 vim.keymap.set({"n", "x", "o"}, "F", "<Plug>Sneak_F")
 vim.keymap.set({"n", "x", "o"}, "t", "<Plug>Sneak_t")
