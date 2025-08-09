@@ -3,15 +3,15 @@
 
 /* Hide chat textfield buttons other than emoji */
 
-button[aria-label="Send a gift"] {
+div[aria-label="Send a gift"] {
     display: none;
 }
 
-button[aria-label="Open GIF picker"] {
+div[aria-label="Open GIF picker"] {
     display: none;
 }
 
-button[aria-label="Open sticker picker"] {
+div[aria-label="Open sticker picker"] {
     display: none;
 }
 
