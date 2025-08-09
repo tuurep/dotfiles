@@ -321,8 +321,12 @@ vim.api.nvim_set_hl(0, "texTitleArg",           { link = "@markup.heading"      
 vim.api.nvim_set_hl(0, "texZone",               { link = "@markup.raw"          })
 
 vim.api.nvim_set_hl(0, "texConditionalArg", { fg = fg })
+vim.api.nvim_set_hl(0, "texEnvOpt",         { fg = fg })
 vim.api.nvim_set_hl(0, "texFileArg",        { fg = fg })
+vim.api.nvim_set_hl(0, "texFileOpt",        { fg = fg })
 vim.api.nvim_set_hl(0, "texFilesArg",       { fg = fg })
+vim.api.nvim_set_hl(0, "texFilesOpt",       { fg = fg })
+vim.api.nvim_set_hl(0, "texItemLabel",      { fg = fg })
 vim.api.nvim_set_hl(0, "texLength",         { fg = fg })
 vim.api.nvim_set_hl(0, "texNewEnvArgName",  { fg = fg })
 vim.api.nvim_set_hl(0, "texOptEqual",       { fg = fg })
