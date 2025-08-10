@@ -101,14 +101,10 @@ button[aria-label="Mute tab"], button[aria-label="Unmute tab"] {
     opacity: 0 !important;
 }
 
-/* Always use the generic search icon instead of search engine logo */
-#searchmode-switcher-icon {
-    list-style-image: url("chrome://global/skin/icons/search-glass.svg") !important
-}
-
-/* Hide the dropdown arrow next to the search icon (looks dumb) */
-#searchmode-switcher-dropmarker {
-    display: none !important;
+/* Reduce spacing between text prompt and magnifying glass icon */
+/* (icon only shows when browser.urlbar.scotchBonnet.enableOverride is false) */
+#identity-box[pageproxystate="invalid"] {
+    margin-right: 0.7px !important;
 }
 
 /*
