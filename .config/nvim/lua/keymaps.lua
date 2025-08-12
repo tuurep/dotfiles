@@ -314,6 +314,37 @@ vim.keymap.set({"n", "x"}, "å", "<cmd>set opfunc=v:lua.J_motion<cr>g@")
 vim.keymap.set({"n", "x"}, "gå", "<cmd>set opfunc=v:lua.gJ_motion<cr>g@")
 vim.keymap.set({"n", "x"}, "åå", "åj", { remap = true }) -- Todo: handle [count]åå
 
+-- Squeeze spaces operator
+-- Reduces all consecutive whitespace sections to 1 space
+-- Ignoring leading whitespace (indent) and stripping trailing whitespaces
+vim.keymap.set({"n", "x"}, "Z", function()
+    local count = vim.v.count1
+    local mode = vim.api.nvim_get_mode().mode
+    local start_line, end_line
+
+    if mode == "n" then
+        start_line = vim.api.nvim_win_get_cursor(0)[1] - 1
+        end_line = start_line + count
+    elseif mode == "v" or mode == "V" or mode == "\22" then
+        local cursor_line = vim.fn.getpos(".")[2]
+        local other_line = vim.fn.getpos("v")[2]
+
+        start_line = math.min(cursor_line, other_line) - 1
+        end_line = math.max(cursor_line, other_line)
+    end
+
+    local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line, false)
+    for i, line in ipairs(lines) do
+        lines[i] = line:gsub("(%S)%s+", "%1 "):gsub("%s+$", "")
+    end
+    vim.api.nvim_buf_set_lines(0, start_line, end_line, false, lines)
+
+    if mode == "v" or mode == "V" or mode == "\22" then
+        local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
+        vim.api.nvim_feedkeys(esc, "n", false)
+    end
+end)
+
 -- Like yy dd cc but no newline at end (Todo: handle counts)
 vim.keymap.set("n", "<C-y>", function()
     vim.fn.setreg(vim.v.register, vim.api.nvim_get_current_line())
@@ -323,9 +354,7 @@ vim.keymap.set("n", "<C-d>", '<C-y>0"_D', { remap = true }) -- blackhole the del
 vim.keymap.set("n", "<C-c>", '<C-y>0"_C', { remap = true }) -- if another reg was chosen
 
 -- Append register to current line as a oneliner
--- Sanitizes whitespace:
---      Trim leading/trailing whitespace
---      Tabs/indents in the middle get reduced to 1 space
+-- Squeezes all spaces, including leading indents, and strips final trailing whitespace
 vim.keymap.set("n", "<C-p>", function()
     local line = vim.api.nvim_get_current_line()
     local reg = vim.fn.getreg(vim.v.register)
