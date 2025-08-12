@@ -349,7 +349,10 @@ vim.keymap.set({"n", "x"}, "Z", function()
     end
 end)
 
--- Like yy dd cc but no newline at end (Todo: handle counts)
+-- Like yy dd cc but no newline at end
+-- Todo: handle visual mode and count similarly as Z from above, for all operators
+--       <C-y> could join and squeeze lines similarly to <C-p>
+--       by extension <C-d> and <C-c> would do that too
 vim.keymap.set("n", "<C-y>", function()
     vim.fn.setreg(vim.v.register, vim.api.nvim_get_current_line())
 end)
@@ -382,7 +385,7 @@ vim.keymap.set("x", "<C-d>", function()
 end)
 vim.keymap.set("x", "<C-c>", "<Nop>")
 vim.keymap.set("x", "<C-y>", "<Nop>")
-vim.keymap.set("x", "<C-p>", "<Nop>") -- todo: this could make sense in visual block mode
+vim.keymap.set("x", "<C-p>", "<Nop>")
 
 -- Fix x and X (from being terrible)
 -- To be fixed: would like consecutive xxxxxxx to be treated as a single undo item
