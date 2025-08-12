@@ -310,9 +310,13 @@ end
 function gJ_motion(type)
     vim.cmd("'[,']join!")
 end
-vim.keymap.set({"n", "x"}, "å", "<cmd>set opfunc=v:lua.J_motion<cr>g@")
-vim.keymap.set({"n", "x"}, "gå", "<cmd>set opfunc=v:lua.gJ_motion<cr>g@")
-vim.keymap.set({"n", "x"}, "åå", "åj", { remap = true }) -- Todo: handle [count]åå
+vim.keymap.set("n", "å", "<cmd>set opfunc=v:lua.J_motion<cr>g@")
+vim.keymap.set("n", "gå", "<cmd>set opfunc=v:lua.gJ_motion<cr>g@")
+vim.keymap.set("n", "åå", function()
+    vim.api.nvim_feedkeys("å" .. vim.v.count1 .. "j", "m", true)
+end)
+vim.keymap.set("x", "å", "J")
+vim.keymap.set("x", "gå", "gJ")
 
 -- Squeeze spaces operator
 -- Reduces all consecutive whitespace sections to 1 space
