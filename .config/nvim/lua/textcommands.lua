@@ -126,9 +126,6 @@ function M.delete_last_char()
 
     vim.api.nvim_buf_set_lines(0, start_line, end_line, false, lines)
 
-    vim.fn.cursor(end_line, 0)
-    vim.cmd("normal! $")
-
     if is_visual_mode(mode) then
         esc()
     end
