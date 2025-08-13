@@ -318,76 +318,21 @@ end)
 vim.keymap.set("x", "å", "J")
 vim.keymap.set("x", "gå", "gJ")
 
--- Squeeze spaces operator
--- Reduces all consecutive whitespace sections to 1 space
--- Ignoring leading whitespace (indent) and stripping trailing whitespaces
-vim.keymap.set({"n", "x"}, "Z", function()
-    local count = vim.v.count1
-    local mode = vim.api.nvim_get_mode().mode
-    local start_line, end_line
+local textcommands = require("textcommands")
+vim.keymap.set({"n", "x"}, "Z", function() textcommands.squeeze_spaces() end)
+vim.keymap.set({"n", "x"}, "X", function() textcommands.delete_last_char() end)
+vim.keymap.set({"n", "x"}, "<C-d>", function() textcommands.wipe_line() end)
 
-    if mode == "n" then
-        start_line = vim.api.nvim_win_get_cursor(0)[1] - 1
-        end_line = start_line + count
-    elseif mode == "v" or mode == "V" or mode == "\22" then
-        local cursor_line = vim.fn.getpos(".")[2]
-        local other_line = vim.fn.getpos("v")[2]
-
-        start_line = math.min(cursor_line, other_line) - 1
-        end_line = math.max(cursor_line, other_line)
-    end
-
-    local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line, false)
-    for i, line in ipairs(lines) do
-        lines[i] = line:gsub("(%S)%s+", "%1 "):gsub("%s+$", "")
-    end
-    vim.api.nvim_buf_set_lines(0, start_line, end_line, false, lines)
-
-    if mode == "v" or mode == "V" or mode == "\22" then
-        local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
-        vim.api.nvim_feedkeys(esc, "n", false)
-    end
+vim.keymap.set({"n", "x"}, "<C-p>", function()
+    local join_by_space = true
+    textcommands.append_paste(join_by_space)
+end)
+vim.keymap.set({"n", "x"}, "g<C-p>", function()
+    local join_by_space = false
+    textcommands.append_paste(join_by_space)
 end)
 
--- Like yy dd cc but no newline at end
--- Todo: handle visual mode and count similarly as Z from above, for all operators
---       <C-y> could join and squeeze lines similarly to <C-p>
---       by extension <C-d> and <C-c> would do that too
-vim.keymap.set("n", "<C-y>", function()
-    vim.fn.setreg(vim.v.register, vim.api.nvim_get_current_line())
-end)
-
-vim.keymap.set("n", "<C-d>", '<C-y>0"_D', { remap = true }) -- blackhole the deletion to not set unnamed reg
-vim.keymap.set("n", "<C-c>", '<C-y>0"_C', { remap = true }) -- if another reg was chosen
-
--- Append register to current line as a oneliner
--- Squeezes all spaces, including leading indents, and strips final trailing whitespace
-vim.keymap.set("n", "<C-p>", function()
-    local line = vim.api.nvim_get_current_line()
-    local reg = vim.fn.getreg(vim.v.register)
-
-    if reg ~= "" then
-        local joined = reg:gsub("\n$", ""):gsub("^%s*", ""):gsub("%s*$", ""):gsub("%s+", " ")
-        if line ~= "" then
-            line = line .. " "
-        end
-        vim.api.nvim_set_current_line(line .. joined)
-    end
-    vim.cmd("normal! $")
-end)
-
--- Visual mode variants
-vim.keymap.set("x", "<C-d>", function()
-    -- Only in visual line selection, delete and leave one empty line
-    if vim.fn.mode() == "V" then
-        vim.cmd("normal! c") -- (does not stay in insert mode)
-    end
-end)
-vim.keymap.set("x", "<C-c>", "<Nop>")
-vim.keymap.set("x", "<C-y>", "<Nop>")
-vim.keymap.set("x", "<C-p>", "<Nop>")
-
--- Fix x and X (from being terrible)
+-- Fix x (from being terrible)
 -- To be fixed: would like consecutive xxxxxxx to be treated as a single undo item
 -- (not simple)
 local function blackhole(count, key)
@@ -398,18 +343,7 @@ local function blackhole(count, key)
         vim.cmd('normal! "_' .. key)
     end
 end
-
 vim.keymap.set("n", "x", function() blackhole(vim.v.count1, "x") end)
-
--- Delete the last character of the line (haven't found builtin X useful)
-vim.keymap.set("n", "X", function()
-    local count = vim.v.count1
-    vim.cmd("normal! $")
-    if count > 1 then
-        vim.cmd("normal! " .. count - 1 .. "h")
-    end
-    blackhole(count, "x")
-end)
 
 -- o O normal mode companion
 vim.keymap.set("n", "<M-o>", "o<Esc>")
