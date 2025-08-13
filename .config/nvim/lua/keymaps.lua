@@ -335,15 +335,15 @@ end)
 -- Fix x (from being terrible)
 -- To be fixed: would like consecutive xxxxxxx to be treated as a single undo item
 -- (not simple)
-local function blackhole(count, key)
+vim.keymap.set("n", "x", function()
+    local count = vim.v.count1
     if count > 1 then
         -- If count is given, you probably do want it in the register
-        vim.cmd('normal! ' .. count .. key)
+        vim.cmd('normal! ' .. count .. "x")
     else
-        vim.cmd('normal! "_' .. key)
+        vim.cmd('normal! "_' .. "x")
     end
-end
-vim.keymap.set("n", "x", function() blackhole(vim.v.count1, "x") end)
+end)
 
 -- o O normal mode companion
 vim.keymap.set("n", "<M-o>", "o<Esc>")
