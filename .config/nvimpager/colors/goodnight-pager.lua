@@ -68,6 +68,8 @@ vim.api.nvim_set_hl(0, "DiffFile",      { fg = dd_fg, bg = bg    })
 vim.api.nvim_set_hl(0, "DiffIndexLine", { fg = dd_fg, bg = bg    })
 vim.api.nvim_set_hl(0, "DiffOldFile",   { fg = dd_fg, bg = bg    })
 vim.api.nvim_set_hl(0, "DiffNewFile",   { fg = dd_fg, bg = bg    })
+vim.api.nvim_set_hl(0, "DiffBDiffer",   { fg = dd_fg, bg = bg    })
+vim.api.nvim_set_hl(0, "DiffMetaData",  { fg = dd_fg, bg = bg    })
 
 -- Manpage buffer
 vim.api.nvim_set_hl(0, "manUnderline",      { fg = green    })
