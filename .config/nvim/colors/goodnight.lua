@@ -91,7 +91,7 @@ vim.api.nvim_create_autocmd({"VimEnter"}, {
 
 -- For inactive windows:
 --      * Don't highlight current linenumber
---      * Don't higlight search/substitute matches
+--      * Don't highlight search/substitute matches
 
 -- ACTIVE WINDOW
 vim.api.nvim_create_autocmd({"WinEnter", "BufWinEnter"}, {
@@ -292,7 +292,9 @@ vim.api.nvim_set_hl(0, "Typedef",      { link = "@type.definition"      })
 vim.api.nvim_set_hl(0, "zshCommands",   { fg = magenta  })
 vim.api.nvim_set_hl(0, "zshException",  { fg = magenta  })
 vim.api.nvim_set_hl(0, "zshTypes",      { fg = magenta  })
+vim.api.nvim_set_hl(0, "zshPrecommand", { fg = magenta  })
 vim.api.nvim_set_hl(0, "zshFunction",   { fg = blue     })
+vim.api.nvim_set_hl(0, "zshCommands",   { fg = blue     })
 vim.api.nvim_set_hl(0, "zshDeref",      { fg = cyan     })
 vim.api.nvim_set_hl(0, "zshShortDeref", { fg = cyan     })
 vim.api.nvim_set_hl(0, "zshSubst",      { link = "None" })
