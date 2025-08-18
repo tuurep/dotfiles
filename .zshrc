@@ -37,18 +37,19 @@ PROMPT_EOL_MARK=$'%{\e[90m%}%{\e[0m%}'  # nf-cod-circle_small_filled
 
 # === Tab completion ===
 
+# Path for custom completion scipts
+# felipec/git-completion is here (default zsh git completions are very slow)
+fpath=(~/.config/zsh/completions $fpath)
+
+autoload -U compinit && compinit
+
 # Make completion as close as possible to bash's "show-all-if-unmodified"
 setopt NO_AUTO_MENU             # Don't start cycling anything
 setopt NO_ALWAYS_LAST_PROMPT    # "Print" the completion list and redraw prompt
 
 setopt LIST_PACKED # Makes completion list a little more compact - definitely nice
 
-autoload -U compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # Smartcase tab completion
-
-# Add felipec's git completions (default zsh git completion is very slow)
-# https://github.com/felipec/git-completion
-fpath=(~/.local/share/git-completion/zsh $fpath)
 
 # === Aliases ===
 
