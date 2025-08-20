@@ -5,6 +5,6 @@ overflow_fg_color = "#e8c580"
 
 [window_nicknames]
 "TelegramDesktop"           = "telegram"
+"discord-stable"            = "discord"
 "firefox-developer-edition" = "firefox-dev"
-"ardour-8.6.0"              = "ardour"
-"gimp-2.10"                 = "gimp"
+"ardour-8.12.0"             = "ardour"
