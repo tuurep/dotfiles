@@ -313,6 +313,7 @@ vim.api.nvim_set_hl(0, "texMathDelimZone",      { link = "@markup.math"         
 vim.api.nvim_set_hl(0, "texMathZone",           { link = "@markup.math"         })
 vim.api.nvim_set_hl(0, "texPartArgTitle",       { link = "@markup.heading"      })
 vim.api.nvim_set_hl(0, "texRefArg",             { link = "@markup.link.url"     })
+vim.api.nvim_set_hl(0, "texHrefArgLink",        { link = "@markup.link.url"     })
 vim.api.nvim_set_hl(0, "texStyleBold",          { link = "@markup.strong"       })
 vim.api.nvim_set_hl(0, "texStyleBoldItalUnder", { link = "@markup.underline"    })
 vim.api.nvim_set_hl(0, "texStyleBoldUnder",     { link = "@markup.underline"    })
@@ -322,6 +323,7 @@ vim.api.nvim_set_hl(0, "texStyleUnder",         { link = "@markup.underline"    
 vim.api.nvim_set_hl(0, "texTitleArg",           { link = "@markup.heading"      })
 vim.api.nvim_set_hl(0, "texZone",               { link = "@markup.raw"          })
 
+vim.api.nvim_set_hl(0, "texEnvOpt",        { fg = fg })
 vim.api.nvim_set_hl(0, "texFileArg",       { fg = fg })
 vim.api.nvim_set_hl(0, "texFileOpt",       { fg = fg })
 vim.api.nvim_set_hl(0, "texFilesArg",      { fg = fg })
@@ -330,6 +332,7 @@ vim.api.nvim_set_hl(0, "texItemLabel",     { fg = fg })
 vim.api.nvim_set_hl(0, "texLength",        { fg = fg })
 vim.api.nvim_set_hl(0, "texNewEnvArgName", { fg = fg })
 vim.api.nvim_set_hl(0, "texOptEqual",      { fg = fg })
+vim.api.nvim_set_hl(0, "texHrefArgText",   { fg = fg })
 
 vim.api.nvim_set_hl(0, "texError", { link = "None" }) -- syntax highlighting != linting
 
