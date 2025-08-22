@@ -71,8 +71,8 @@ button[aria-label="Mute tab"], button[aria-label="Unmute tab"] {
 }
 
 .titlebar-buttonbox {
-    --titlebar-button-size: 12px !important;
-    --titlebar-button-spacing: 4.5px !important;
+    --titlebar-button-size: 14px !important;
+    --titlebar-button-spacing: 5px !important;
     --titlebar-button-end-spacing: 7.5px !important;
 }
 
@@ -95,7 +95,7 @@ button[aria-label="Mute tab"], button[aria-label="Unmute tab"] {
     https://www.reddit.com/r/FirefoxCSS/comments/j6rbcg/comment/g80b72i
  */
 .tabbrowser-tab[fadein] {
-    max-width: 283px !important;
+    max-width: 284px !important;
 }
 
 /* Hide "All Tabs" dropdown list button */
