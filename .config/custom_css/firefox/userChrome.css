@@ -42,24 +42,38 @@ button[aria-label="Mute tab"], button[aria-label="Unmute tab"] {
 /* Todo: their color is set in the svg tags' "stroke" */
 /* Would be better to be able to set the color in userChrome (i.e. here) */
 .titlebar-min > .toolbarbutton-icon {
-  background-image: url("window-control-icons/minimize.svg") !important;
+    background-image: url("window-control-icons/minimize.svg") !important;
+    background-color: transparent !important;
 }
 .titlebar-max > .toolbarbutton-icon {
-  background-image: url("window-control-icons/maximize.svg") !important;
+    background-image: url("window-control-icons/maximize.svg") !important;
+    background-color: transparent !important;
 }
 .titlebar-restore > .toolbarbutton-icon {
-  background-image: url("window-control-icons/restore.svg") !important;
+    background-image: url("window-control-icons/restore.svg") !important;
+    background-color: transparent !important;
 }
 .titlebar-close > .toolbarbutton-icon {
-  background-image: url("window-control-icons/close.svg") !important;
+    background-image: url("window-control-icons/close.svg") !important;
+    background-color: transparent !important;
+}
+.titlebar-min:hover > .toolbarbutton-icon {
+    background-color: #474646 !important;
+}
+.titlebar-max:hover > .toolbarbutton-icon {
+    background-color: #474646 !important;
+}
+.titlebar-restore:hover > .toolbarbutton-icon {
+    background-color: #474646 !important;
+}
+.titlebar-close:hover > .toolbarbutton-icon {
+    background-color: #474646 !important;
 }
 
-/* Reduce size of window control buttons */
-/* (Also seems to reduce the spacing between them) */
-.titlebar-min > image, .titlebar-max > image,
-.titlebar-restore > image, .titlebar-close > image {
-    height: 20px !important;
-    width: 20px !important;
+.titlebar-buttonbox {
+    --titlebar-button-size: 12px !important;
+    --titlebar-button-spacing: 4.5px !important;
+    --titlebar-button-end-spacing: 7.5px !important;
 }
 
 /* Hide tab bar spacer on the left corner */
