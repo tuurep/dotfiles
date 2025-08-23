@@ -5,7 +5,7 @@
 [alias]
     s = status
     a = add
-    aa = add --all
+    aa = add --update
     c = commit
     ca = commit --amend
     p = push
