@@ -167,6 +167,7 @@ vim.api.nvim_set_hl(0, "DiagnosticHint",  { fg = comment })
 -- Undotree highlighting
 vim.api.nvim_set_hl(0, "UndoTreeNodeCurrent", { fg = fg                  })
 vim.api.nvim_set_hl(0, "UndoTreeCurrent",     { fg = fg                  })
+vim.api.nvim_set_hl(0, "UndoTreeNext",        { fg = fg                  })
 vim.api.nvim_set_hl(0, "UndoTreeHead",        { fg = green               })
 vim.api.nvim_set_hl(0, "UndotreeSavedSmall",  { fg = green               })
 vim.api.nvim_set_hl(0, "UndoTreeSavedBig",    { fg = bg,      bg = green })
