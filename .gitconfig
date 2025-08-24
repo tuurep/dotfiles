@@ -20,5 +20,10 @@
 [pull]
     ff = only
 
+[color.diff]
+    meta = brightblack
+    frag = brightblack
+    func = brightblack
+
 [advice]
     defaultBranchName = false
