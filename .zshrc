@@ -326,6 +326,7 @@ bindkey "^K"  up-line   # Ctrl + k
 bindkey "^J"  down-line # Ctrl + j
 
 bindkey "^[h" emacs-backward-word # Alt + h
+bindkey "^[ " emacs-forward-word  # Alt + Space
 bindkey "^[l" emacs-forward-word  # Alt + l
 
 bindkey "^[H" beginning-of-line # Shift + Alt + h
@@ -374,8 +375,6 @@ register-surround-bind '< ' ' >' "^[>" "angles-with-spaces"   # Shift + Alt + <
 register-surround-bind '\"' '\"' "^[q" "quotes"    # Alt + q
 register-surround-bind \'   \'   "^[r" "ticks"     # Alt + r
 register-surround-bind '\`' '\`' "^[z" "backticks" # Alt + x
-
-register-surround-bind ' ' ' ' "^[ " "spaces" # Alt + Space
 
 register-surround-bind '\"\"\"' '\"\"\"' "^[Q" "triple-quotes"    # Shift + Alt + q
 register-surround-bind '\`\`\`' '\`\`\`' "^[Z" "triple-backticks" # Shift + Alt + x

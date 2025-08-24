@@ -127,8 +127,9 @@ vim.keymap.set("n", "<Esc>", "<cmd>echo ''<cr>") -- clear cmdline text
 -- })
 
 -- Mappings like in zsh line editing
-vim.keymap.set("c", "<C-h>", "<Left>")
-vim.keymap.set("c", "<C-l>", "<Right>")
+vim.keymap.set("c", "<M-l>", "<C-Right>")
+vim.keymap.set("c", "<M-Space>", "<C-Right>")
+vim.keymap.set("c", "<M-h>", "<C-Left>")
 
 -- Todo: nothing like 'emacs-*-word' in insert mode
 vim.keymap.set("c", "<M-h>", "<C-Left>")
@@ -159,8 +160,6 @@ vim.keymap.set("c", "<M-S-lt>", "<  ><Left><Left>") -- ">" would close the key t
 vim.keymap.set("c", "<M-q>", '""<Left>')
 vim.keymap.set("c", "<M-r>", "''<Left>")
 vim.keymap.set("c", "<M-z>", "``<Left>")
-
-vim.keymap.set("c", "<M-Space>", "  <Left>")
 
 vim.keymap.set("c", "<M-Q>", '""""""<left><left><left>')
 vim.keymap.set("c", "<M-Z>", "``````<Left><Left><Left>")

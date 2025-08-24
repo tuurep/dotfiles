@@ -80,7 +80,7 @@ vim.keymap.set("!", "<M-j>", "<Down>")
 
 -- Similar to zsh 'emacs-forward-word':
 -- Go to the next word end (on the whitespace), or if EOL comes first, go to EOL
-vim.keymap.set("i", "<M-l>", function()
+local function emacs_forward_word()
     local line = vim.fn.getline(".")
     local col = vim.fn.col(".")
     local eol_col = #line + 1
@@ -116,11 +116,11 @@ vim.keymap.set("i", "<M-l>", function()
     else
         vim.api.nvim_win_set_cursor(0, { vim.fn.line('.'), eol_col })
     end
-end)
+end
 
 -- Basically a simple `B` is sufficient as a backwards variant,
 -- but needs to skip empty lines
-vim.keymap.set("i", "<M-h>", function()
+local function emacs_backward_word()
     vim.cmd("normal! B")
 
     -- Skip empty lines
@@ -128,11 +128,16 @@ vim.keymap.set("i", "<M-h>", function()
         if vim.fn.line(".") == 1 then break end
         vim.cmd("normal! B")
     end
-end)
+end
+
+vim.keymap.set("i", "<M-l>", function() emacs_forward_word() end)
+vim.keymap.set("i", "<M-Space>", function() emacs_forward_word() end)
+vim.keymap.set("i", "<M-h>", function() emacs_backward_word() end)
 
 -- Same idea in command mode (has differences with word delimiters)
-vim.keymap.set("c", "<M-h>", "<C-Left>")
 vim.keymap.set("c", "<M-l>", "<C-Right>")
+vim.keymap.set("c", "<M-Space>", "<C-Right>")
+vim.keymap.set("c", "<M-h>", "<C-Left>")
 
 vim.keymap.set("!", "<M-w>", "<C-w>") -- Todo: <C-w>
 vim.keymap.set("!", "<M-u>", "<C-u>") -- Todo: <C-u>
@@ -157,8 +162,6 @@ vim.keymap.set("!", "<M-S-lt>", "<  ><Left><Left>") -- ">" would close the key t
 vim.keymap.set("!", "<M-q>", '""<Left>')
 vim.keymap.set("!", "<M-r>", "''<Left>")
 vim.keymap.set("!", "<M-z>", "``<Left>")
-
-vim.keymap.set("!", "<M-Space>", "  <Left>")
 
 vim.keymap.set("!", "<M-Q>", '""""""<left><left><left>')
 vim.keymap.set("!", "<M-Z>", "``````<Left><Left><Left>")
