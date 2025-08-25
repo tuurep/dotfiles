@@ -22,8 +22,8 @@
 
 [color.diff]
     meta = brightblack
-    frag = brightblack
     func = brightblack
+    frag = blue
 
 [advice]
     defaultBranchName = false
