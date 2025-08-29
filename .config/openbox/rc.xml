@@ -44,57 +44,57 @@
             </action>
         </keybind>
         <!-- Volume and brightness control -->
-        <keybind key="W-Left">
+        <keybind key="F1">
             <action name="Execute">
                 <command>~/.config/polybar/scripts/volume/change-volume -5</command>
             </action>
         </keybind>
-        <keybind key="W-A-Left">
+        <keybind key="W-F1">
             <action name="Execute">
                 <command>~/.config/polybar/scripts/volume/change-volume -1</command>
             </action>
         </keybind>
-        <keybind key="W-S-Left">
+        <keybind key="A-F1">
             <action name="Execute">
                 <command>~/.config/polybar/scripts/volume/change-volume 0</command>
             </action>
         </keybind>
-        <keybind key="W-Right">
+        <keybind key="F2">
             <action name="Execute">
                 <command>~/.config/polybar/scripts/volume/change-volume +5</command>
             </action>
         </keybind>
-        <keybind key="W-A-Right">
+        <keybind key="W-F2">
             <action name="Execute">
                 <command>~/.config/polybar/scripts/volume/change-volume +1</command>
             </action>
         </keybind>
-        <keybind key="W-Down">
+        <keybind key="F3">
             <action name="Execute">
                 <command>~/.config/polybar/scripts/brightness/change-brightness -5</command>
             </action>
         </keybind>
-        <keybind key="W-Up">
+        <keybind key="F4">
             <action name="Execute">
                 <command>~/.config/polybar/scripts/brightness/change-brightness +5</command>
             </action>
         </keybind>
-        <keybind key="W-A-Down">
+        <keybind key="W-F3">
             <action name="Execute">
                 <command>~/.config/polybar/scripts/brightness/change-brightness -1</command>
             </action>
         </keybind>
-        <keybind key="W-A-Up">
+        <keybind key="W-F4">
             <action name="Execute">
                 <command>~/.config/polybar/scripts/brightness/change-brightness +1</command>
             </action>
         </keybind>
-        <keybind key="W-S-Down">
+        <keybind key="A-F3">
             <action name="Execute">
                 <command>~/.config/polybar/scripts/brightness/change-brightness -100</command>
             </action>
         </keybind>
-        <keybind key="W-S-Up">
+        <keybind key="A-F4">
             <action name="Execute">
                 <command>~/.config/polybar/scripts/brightness/change-brightness +100</command>
             </action>
