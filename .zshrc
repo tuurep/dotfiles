@@ -398,7 +398,6 @@ setopt HIST_IGNORE_ALL_DUPS
 # === PATH ===
 
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
 
 # === Settings for tools ===
 source ~/.ls_colors                 # Sets and exports LS_COLORS env variable
