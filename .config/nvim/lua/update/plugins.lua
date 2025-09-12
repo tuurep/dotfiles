@@ -12,17 +12,17 @@ local paq = require("paq") {
     "Darazaki/indent-o-matic",  -- change tab width when working on other peoples' files
 
     -- Operators:
-    "tuurep/mini.operators",      -- echasnovski/mini.operators fork
-    "tuurep/mini.tpopesurround",  -- echasnovski/mini.surround fork
+    "tuurep/mini.operators",      -- nvim-mini/mini.operators fork
+    "tuurep/mini.tpopesurround",  -- nvim-mini/mini.surround fork
     "numtostr/Comment.nvim",
-    "echasnovski/mini.splitjoin",
+    "nvim-mini/mini.splitjoin",
     "tuurep/vim-lion",            -- tommcdo/vim-lion fork
-    "echasnovski/mini.move",
+    "nvim-mini/mini.move",
     -- "justinmk/vim-sneak",
     "haya14busa/vim-edgemotion",
 
     -- Textobjects stuff
-    -- "tuurep/mini.ai",      -- echasnovski/mini.ai fork
+    -- "tuurep/mini.ai",      -- nvim-mini/mini.ai fork
     "chaoren/vim-wordmotion", -- rework word delimiters for w b e ge iw aw
     "nvim-treesitter/nvim-treesitter-textobjects",
 
