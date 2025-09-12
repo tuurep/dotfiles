@@ -49,6 +49,12 @@ setopt NO_ALWAYS_LAST_PROMPT    # "Print" the completion list and redraw prompt
 
 setopt LIST_PACKED # Makes completion list a little more compact - definitely nice
 
+# Complete in the middle for example: prefix-|.mp4 Unfortunately moves the cursor to the
+# end of the whole word after, which especially sucks for paths.
+# Still better than nothing.
+# Todo: any way to move cursor to the end of the completed part only?
+setopt COMPLETE_IN_WORD
+
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # Smartcase tab completion
 
 # === Aliases ===
