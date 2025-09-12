@@ -66,11 +66,13 @@ alias g="grep"
 alias q="exit"
 alias n="nmcli"
 alias m="mullvad"
-alias t="trans" # translate-shell
+
+# Google translate CLI
+# With no flags, can give word definitions too
+alias t="trans"
 
 # Reset password timeout, space at end: allow using sudo with aliased commands
-alias sudo="sudo -v; sudo "
-alias s="sudo -v; sudo "
+alias s="sudo "
 
 alias ..="c .."
 alias -- -="c -" # -- required to alias dash
@@ -92,7 +94,7 @@ alias llg="ll -A | grep" # See function `ll`
 
 alias drag="blobdrop -p"
 
-alias cf='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias cf='command git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias todo='nvim ~/projects/todo.txt'
 alias eclean="nvim --clean -nu ~/.config/nvim/test/minimal-init.lua"
 alias paqsync="nvim -l ~/.config/nvim/lua/update/plugins.lua"
@@ -165,6 +167,12 @@ alias heat="sensors | grep 'fan\|CPU' | tr -d ' ' | cut -d ':' -f 2"
 
 autoload -U zmv # Mass-rename command provided by zsh
 
+# Refresh sudo timeout every time sudo is used
+sudo() {
+    command sudo -v
+    command sudo "$@"
+}
+
 p() {
     # Print pwd in ANSI "bright black"
     echo $'\e[90m'"${PWD/#$HOME/~}"$'\e[0m'
@@ -216,7 +224,7 @@ zi() {
 
     list=$(zoxide query -l | sed "s|^$HOME|~|")
     for subword in "$@"; do
-        list=$(/usr/bin/grep -i "$subword" <<< "$list")
+        list=$(command grep -i "$subword" <<< "$list")
     done
 
     if [[ -z $list ]]; then
@@ -246,13 +254,13 @@ clone() {
 tree() {
     if [[ ! -t 1 ]]; then
         # if stdout is being piped, no color
-        /usr/bin/tree "$@"
+        command tree "$@"
         return
     fi
     grayscale_237=$'\e[38;5;237m' # #3a3a3a
     grayscale_240=$'\e[38;5;240m' # #585858
     reset=$'\e[0m'
-    /usr/bin/tree -C "$@" \
+    command tree -C "$@" \
         | sed -r -e "s/[├└│─]/${grayscale_237}&${reset}/g" \
                  -e "s/[0-9]+ director(y|ies), [0-9]+ files?/${grayscale_240}&${reset}/g"
 }
