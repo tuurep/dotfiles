@@ -173,9 +173,13 @@ sudo() {
     command sudo "$@"
 }
 
+# pwd but in ANSI "bright black" and home as tilde
+# If on a git repo, print the branch on another line
 p() {
-    # Print pwd in ANSI "bright black"
-    echo $'\e[90m'"${PWD/#$HOME/~}"$'\e[0m'
+    local cwd="${PWD/#$HOME/~}"
+    local branch="$(git branch --show-current 2>/dev/null)"
+    echo $'\e[90m'"$cwd"$'\e[0m'
+    [[ -n $branch ]] && echo $'\e[90m'"󰘬 $branch"$'\e[0m'
 }
 
 pl() {
