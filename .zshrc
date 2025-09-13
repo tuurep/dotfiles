@@ -173,18 +173,27 @@ sudo() {
     command sudo "$@"
 }
 
-# pwd but in ANSI "bright black" and home as tilde
-# If on a git repo, print the branch on another line
+# pwd but home as tilde
 p() {
     local cwd="${PWD/#$HOME/~}"
-    local branch="$(git branch --show-current 2>/dev/null)"
-    echo $'\e[90m'"$cwd"$'\e[0m'
-    [[ -n $branch ]] && echo $'\e[90m'"󰘬 $branch"$'\e[0m'
+    echo "$cwd"
 }
 
+# Echo previous working dir
 pl() {
-    # Print previous pwd in ANSI "bright black"
-    echo $'\e[90m'"${OLDPWD/#$HOME/~}"$'\e[0m'
+    echo "${OLDPWD/#$HOME/~}"
+}
+
+# Echo git current branch
+b() {
+    local branch="$(git branch --show-current 2>/dev/null)"
+    [[ -n $branch ]] && echo "󰘬 $branch"
+}
+
+# Do `p` and `b` but in ANSI bright black
+# This is called by commands that change directory, mainly `c` and `z`
+echo_cwd_and_branch() {
+    echo $'\e[90m'"$(p && b)"$'\e[0m'
 }
 
 # ls long listing
@@ -204,7 +213,7 @@ ll() {
 
 c() {
     builtin cd "$@" > /dev/null \
-        && p \
+        && echo_cwd_and_branch \
         && l
 }
 
@@ -215,7 +224,7 @@ mc() {
 eval "$(zoxide init zsh --no-cmd)" # https://github.com/ajeetdsouza/zoxide
 z() {
     __zoxide_z "$@" \
-        && p \
+        && echo_cwd_and_branch \
         && l
 }
 zi() {
