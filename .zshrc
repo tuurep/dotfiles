@@ -187,7 +187,16 @@ pl() {
 # Echo git current branch
 b() {
     local branch="$(git branch --show-current 2>/dev/null)"
-    [[ -n $branch ]] && echo "󰘬 $branch"
+    if [[ -n $branch ]]; then
+        echo "󰘬 $branch"
+        return
+    fi
+
+    local detached_branch="$(git name-rev --name-only HEAD 2>/dev/null)"
+    if [[ -n $detached_branch ]]; then
+        echo "󰘬 detached at ${detached_branch#remotes/}"
+        return
+    fi
 }
 
 # Do `p` and `b` but in ANSI bright black
