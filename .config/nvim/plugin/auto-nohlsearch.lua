@@ -2,17 +2,21 @@
 -- (next keypress after any search command /?nN*#)
 
 -- No thought given to:
---    - operator-pending mode
---        - (turns hlsearch on)
---        - maybe ok
 --    - `gn` `gN`
 --        - (turns hlsearch off)
 --        - hlsearch could be useful here...
 
--- Todo:
+-- Problems:
 --    - after completing a substitute, shows searchhl
 --      on every instance of the substituted string
 --    - example: `:s/key/foo`
+--
+--    - operator-pending mode
+--        - `dn` turns on hlsearch
+--        - `dsxy` (sneak) doesn't turn on hl
+--        - would prefer `dn` to act the same way
+--          but may be not worth bothering about
+--          (because I couldn't find out how)
 
 local searchkeys = { "n", "N", "*", "#" }
 
