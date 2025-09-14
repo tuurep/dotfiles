@@ -1,5 +1,6 @@
 {
     "pageTitle": "components.slice(-1)",
     "styles": "styles.css",
-    "scripts": "scripts/*"
+    "scripts": "scripts/*",
+    "renderHTML": true
 }
