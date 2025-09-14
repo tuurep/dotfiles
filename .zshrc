@@ -76,8 +76,7 @@ alias s="sudo "
 
 alias ..="c .."
 alias -- -="c -" # -- required to alias dash
-alias r='c $(git rev-parse --show-toplevel)' # Go to root of current git repo,
-                                             # if any. Else goes to ~.
+
 alias mk="mkdir"
 
 alias cp="cp -i"
@@ -224,6 +223,14 @@ c() {
     builtin cd "$@" > /dev/null \
         && echo_cwd_and_branch \
         && l
+}
+
+# Go to the root of current git repository
+# Do nothing if not in a repo
+r() {
+    local git_root
+    git_root="$(git rev-parse --show-toplevel 2>/dev/null)" || return
+    c "$git_root"
 }
 
 mc() {
