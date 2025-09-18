@@ -19,6 +19,10 @@
 
 [pull]
     ff = only
+    prune = true
+
+[fetch]
+    prune = true
 
 [color.diff]
     meta = brightblack
