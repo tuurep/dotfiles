@@ -1,5 +1,5 @@
 configuration {
-    modi: "window,drun";
+    modes: "window,drun";
 
     font: "Alt Hack Nerd Font 12.5";
     terminal: "alacritty";
