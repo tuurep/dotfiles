@@ -33,7 +33,7 @@ vim.o.mouse = ""
 vim.opt.jumpoptions:append("view")
 
 vim.o.laststatus = 1
-vim.o.statusline = "%t %r%m"
+vim.o.statusline = "%{expand('%t')} %r%m"
 
 vim.o.cursorline = true -- Only for the LineNr highlight
 

@@ -43,7 +43,7 @@ vim.o.mouse = ""
 vim.opt.jumpoptions:append("view")
 
 vim.o.laststatus = 1
-vim.o.statusline = "%t %r%m"
+vim.o.statusline = "%{expand('%t')} %r%m"
 
 vim.o.timeout = false
 vim.o.showcmd = false
