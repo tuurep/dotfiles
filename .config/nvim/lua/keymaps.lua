@@ -348,9 +348,11 @@ vim.keymap.set("n", "x", function()
     end
 end)
 
--- o O normal mode companion
+-- o O without changing mode
 vim.keymap.set("n", "<M-o>", "o<Esc>")
 vim.keymap.set("n", "<M-O>", "O<Esc>")
+vim.keymap.set("i", "<M-o>", "<Esc>o")
+vim.keymap.set("i", "<M-O>", "<Esc>O")
 
 -- Without shift = forward, with shift = backward
 vim.keymap.set("n", "<", ">")
@@ -549,7 +551,9 @@ vim.keymap.set("n", "S", "s$", { remap = true })
 vim.keymap.set("n", "<M-S>", "<M-s>$", { remap = true })
 
 -- mini.move
-require("mini.move").setup({
+local MiniMove = require("mini.move")
+
+MiniMove.setup({
     mappings = {
         down =  "<C-S-j>",
         up =    "<C-S-k>",
@@ -562,6 +566,11 @@ require("mini.move").setup({
         line_right = "<C-S-l>"
     }
 })
+
+vim.keymap.set("i", "<C-S-j>", function() MiniMove.move_line("down")  end)
+vim.keymap.set("i", "<C-S-k>", function() MiniMove.move_line("up")    end)
+vim.keymap.set("i", "<C-S-h>", function() MiniMove.move_line("left")  end)
+vim.keymap.set("i", "<C-S-l>", function() MiniMove.move_line("right") end)
 
 -- Comment.nvim
 require("Comment").setup({
