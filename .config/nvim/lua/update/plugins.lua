@@ -26,6 +26,10 @@ local paq = require("paq") {
     "chaoren/vim-wordmotion", -- rework word delimiters for w b e ge iw aw
     "nvim-treesitter/nvim-treesitter-textobjects",
 
+    -- Visual block insert preview workaround until it's added in core
+    -- https://github.com/neovim/neovim/issues/20329
+    "phanen/vbi.nvim",
+
     -- Nonlinear undo history access
     "tuurep/undotree", -- mbbill/undotree fork
 
