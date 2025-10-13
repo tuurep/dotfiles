@@ -317,7 +317,7 @@
         </keybind>
         <keybind key="W-S-q">
             <action name="Execute">
-                <command>~/scripts/ob/close-all-inactive-sameclass.sh</command>
+                <command>~/scripts/ob/close-all-inactive-sameclass</command>
             </action>
         </keybind>
         <keybind key="A-section"> <!-- section = § -->
@@ -409,7 +409,13 @@
         </keybind>
         <keybind key="W-v">
             <action name="Execute">
-                <command>~/scripts/ob/notify-current-date.sh</command>
+                <command>~/scripts/ob/notify-current-date</command>
+            </action>
+        </keybind>
+        <!-- Switch VPN on or off -->
+        <keybind key="W-b">
+            <action name="Execute">
+                <command>~/.local/bin/mullvad-toggle</command>
             </action>
         </keybind>
     </keyboard>
