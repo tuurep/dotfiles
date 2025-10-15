@@ -30,7 +30,6 @@ button[aria-label="Mute tab"], button[aria-label="Unmute tab"] {
     padding-top: var(--tab-content-offset-top) !important;
 }
 
-#tabs-newtab-button > image, #new-tab-button > image,
 #scrollbutton-up > image, #scrollbutton-down > image {
     margin-top: 3px !important; /* Looks better slightly higher for some reason */
     height: 14px !important;
