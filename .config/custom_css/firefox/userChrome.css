@@ -56,16 +56,16 @@ button[aria-label="Mute tab"], button[aria-label="Unmute tab"] {
     background-image: url("window-control-icons/close.svg") !important;
     background-color: transparent !important;
 }
-.titlebar-min:hover > .toolbarbutton-icon {
+.titlebar-min:hover {
     background-color: #474646 !important;
 }
-.titlebar-max:hover > .toolbarbutton-icon {
+.titlebar-max:hover {
     background-color: #474646 !important;
 }
-.titlebar-restore:hover > .toolbarbutton-icon {
+.titlebar-restore:hover {
     background-color: #474646 !important;
 }
-.titlebar-close:hover > .toolbarbutton-icon {
+.titlebar-close:hover {
     background-color: #474646 !important;
 }
 
