@@ -16,4 +16,12 @@ if [ -z "$existing_id" ]; then
     exit 0
 fi
 
+active_window=$(xdotool getactivewindow)
+active_class=$(xdotool getwindowclassname "$active_window")
+
+if [ "$active_class" = "$wmclass" ]; then
+    "$app"
+    exit 0
+fi
+
 xdotool windowactivate "$existing_id"

@@ -358,12 +358,7 @@
         <!-- Keybindings for running applications -->
         <keybind key="W-Return">
             <action name="Execute">
-                <command>~/scripts/ob/launch-or-focus alacritty</command>
-            </action>
-        </keybind>
-        <keybind key="W-S-Return">
-            <action name="Execute">
-                <command>alacritty</command>
+                <command>~/scripts/ob/launch-or-focus alacritty Alacritty</command>
             </action>
         </keybind>
         <keybind key="W-space">
