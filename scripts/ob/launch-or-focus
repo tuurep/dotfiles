@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Same appname and wmclass:
+#     launch-or-focus <app>
+
+# Different appname and wmclass:
+#     launch-or-focus <app> <wmclass>
+
+app="$1"
+wmclass="${2:-$app}"
+
+existing_id=$(xdotool search --class "$wmclass" | head -n 1)
+
+if [ -z "$existing_id" ]; then
+    "$app"
+    exit 0
+fi
+
+xdotool windowactivate "$existing_id"
