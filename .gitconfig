@@ -31,3 +31,4 @@
 
 [advice]
     defaultBranchName = false
+    detachedHead = false
