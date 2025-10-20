@@ -180,7 +180,7 @@ int main(int argc, char* argv[]) {
         }
 
         char* w_class = get_window_class(d, w);
-        
+
         if (!strcmp(w_class, active_w_class)) {
             if (!past_active_w && next == 0) {
                 // Remember this window in case wrap is necessary
