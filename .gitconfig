@@ -26,7 +26,7 @@
 
 [color.diff]
     meta = brightblack
-    func = brightblack
+    func = blue
     frag = blue
 
 [advice]
