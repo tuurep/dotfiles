@@ -361,6 +361,11 @@
                 <command>~/scripts/ob/launch-or-focus alacritty Alacritty</command>
             </action>
         </keybind>
+        <keybind key="W-BackSpace">
+            <action name="Execute">
+                <command>~/scripts/ob/launch-or-focus firefox</command>
+            </action>
+        </keybind>
         <keybind key="W-space">
             <action name="Execute">
                 <command>rofi -show drun -theme-str 'window {width: 22%;}'</command>

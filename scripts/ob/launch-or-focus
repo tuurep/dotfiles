@@ -9,7 +9,7 @@
 app="$1"
 wmclass="${2:-$app}"
 
-existing_id=$(xdotool search --class "$wmclass" | head -n 1)
+existing_id=$(xdotool search --onlyvisible --class "$wmclass" | tail -n 1)
 
 if [ -z "$existing_id" ]; then
     "$app"
