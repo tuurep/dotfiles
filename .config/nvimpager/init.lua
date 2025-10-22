@@ -75,6 +75,7 @@ vim.keymap.set("n", "<C-o>", "<Nop>")
 vim.keymap.set({"n", "x"}, "<C-e>", "<Nop>")
 vim.keymap.set({"n", "x"}, "<Backspace>", "<Nop>")
 vim.keymap.set({"n", "x"}, "<Enter>", "<Nop>")
+vim.keymap.set({"n", "x"}, ":", "<Nop>")
 vim.keymap.set({"n", "x"}, "gJ", "<Nop>")
 
 -- Free (but bad):
@@ -95,9 +96,10 @@ vim.keymap.set({"n", "x"}, "<M-Del><M-Del>", "@@")
 -- Give mark key to sneak
 vim.keymap.set("n", "<Ins>", "m")
 
--- Tab to search
+-- Tab to search, enter to command
 vim.keymap.set({"n", "x", "o"}, "<Tab>", "/")
 vim.keymap.set({"n", "x", "o"}, "<S-Tab>", "?")
+vim.keymap.set({"n", "x"}, "<Enter>", ":")
 
 -- Remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
 vim.keymap.set("n", "<M-n>", "<C-o>")

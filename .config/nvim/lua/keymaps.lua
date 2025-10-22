@@ -15,7 +15,7 @@ vim.keymap.set({"n", "x", "o"}, "/", "<Nop>")      -- Tab/S-Tab as search, ? is 
 vim.keymap.set("n", "<C-r>", "<Nop>")              -- U as redo
 vim.keymap.set({"n", "x"}, "<C-e>", "<Nop>")       -- <M-s> and <M-d> are remapped as <C-e> and <C-y>
 vim.keymap.set({"n", "x"}, "<Backspace>", "<Nop>")
-vim.keymap.set({"n", "x"}, "<Enter>", "<Nop>")
+vim.keymap.set({"n", "x"}, ":", "<Nop>")           -- <Enter> as :
 vim.keymap.set({"n", "x"}, "gJ", "<Nop>")          -- gå for spaceless join, leave gJ and gK
                                                    -- as ideas for vertical movement mappings
 -- Free (but bad):
@@ -32,9 +32,10 @@ vim.keymap.set({"n", "x"}, "<M-Del><M-Del>", "@@")
 -- Move the mark key to the edge of the keyboard to use m for sneak
 vim.keymap.set("n", "<Ins>", "m")
 
--- Tab to search
+-- Tab to search, enter to command
 vim.keymap.set({"n", "x", "o"}, "<Tab>", "/")
 vim.keymap.set({"n", "x", "o"}, "<S-Tab>", "?")
+vim.keymap.set({"n", "x"}, "<Enter>", ":")
 
 -- Remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
 vim.keymap.set("n", "<M-n>", "<C-o>")
