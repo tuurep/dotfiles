@@ -437,10 +437,10 @@ local custom = require("mini-ai-textobjects")
 
 MiniAi.setup({
     mappings = {
-        inside_next = "ij",
-        around_next = "aj",
-        inside_last = "ik",
-        around_last = "ak",
+        inside_next = "il",
+        around_next = "al",
+        inside_last = "ij",
+        around_last = "aj",
 
         -- Builtin , and ; are surpassed by "clever" f/t/sneak
         goto_next_end = ",",
@@ -480,7 +480,7 @@ MiniAi.setup({
         ["_"] = MiniAi.gen_spec.pair("_", "_", { type = "greedy" }),
 
         -- Custom
-        ["Z"] =  custom.md_codeblock,
+        ["Z"]  = custom.md_codeblock,
         ["i"]  = custom.indent,
         ["\r"] = custom.entire_buffer -- Enter
 
@@ -507,8 +507,8 @@ MiniTpopesurround.setup({
         add_line = "ss",
         add_line_and_indent = "<M-s><M-s>",
 
-        suffix_next = "j",
-        suffix_last = "k",
+        suffix_next = "l",
+        suffix_last = "j",
 
         -- Disable
         find = "",
