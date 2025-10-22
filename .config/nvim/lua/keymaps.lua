@@ -13,7 +13,6 @@ vim.keymap.set({"n", "x", "o"}, "+", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<C-u>", "<Nop>")  -- <C-d> is remapped, and <C-j> <C-k> preferred for scrolling
 vim.keymap.set({"n", "x", "o"}, "/", "<Nop>")      -- Tab/S-Tab as search, ? is now :help
 vim.keymap.set("n", "<C-r>", "<Nop>")              -- U as redo
-vim.keymap.set("n", "<C-o>", "<Nop>")              -- <C-i> is compromised so use <M-o> and <M-i>
 vim.keymap.set({"n", "x"}, "<C-e>", "<Nop>")       -- <M-s> and <M-d> are remapped as <C-e> and <C-y>
 vim.keymap.set({"n", "x"}, "<Backspace>", "<Nop>")
 vim.keymap.set({"n", "x"}, "<Enter>", "<Nop>")
@@ -353,6 +352,10 @@ vim.keymap.set("n", "<M-o>", "o<Esc>")
 vim.keymap.set("n", "<M-O>", "O<Esc>")
 vim.keymap.set("i", "<M-o>", "<Esc>o")
 vim.keymap.set("i", "<M-O>", "<Esc>O")
+
+-- Surround line with blank newlines
+-- with builtin commands [<Space> and ]<Space>
+vim.keymap.set({"n", "i"}, "<C-o>", function() vim.cmd("normal [ ] ") end)
 
 -- Without shift = forward, with shift = backward
 vim.keymap.set("n", "<", ">")
