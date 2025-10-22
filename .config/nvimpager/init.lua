@@ -16,8 +16,8 @@ vim.loader.enable()
 -- Leech plugins from nvim (paq)
 vim.opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/vim-sneak")
 vim.opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/vim-edgemotion")
+vim.opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/vim-sneak")
 vim.opt.runtimepath:append("~/projects/mini.ai")   -- todo: rework motions
-vim.opt.runtimepath:append("~/projects/vim-sneak") -- todo: silent cmdline
 
 vim.g.loaded_netrwPlugin = 0 -- When unloading netrw, `nvimpager <dir>` shows a blank buffer in pager mode
 
@@ -346,6 +346,8 @@ require("mini.ai").setup({
 vim.g["sneak#s_next"] = true
 vim.g["sneak#use_ic_scs"] = true
 vim.g["sneak#prompt"] = ""
+vim.g["sneak#label"] = true
+vim.g["sneak#target_labels"] = "qwefnu1234,vbt-567890"
 vim.keymap.set({"n", "x", "o"}, "m", "<Plug>Sneak_s")
 vim.keymap.set({"n", "x", "o"}, "M", "<Plug>Sneak_S")
 vim.keymap.set({"n", "x", "o"}, "f", "<Plug>Sneak_f")

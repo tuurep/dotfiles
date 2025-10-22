@@ -18,8 +18,8 @@ local paq = require("paq") {
     "nvim-mini/mini.splitjoin",
     "tuurep/vim-lion",            -- tommcdo/vim-lion fork
     "nvim-mini/mini.move",
-    -- "justinmk/vim-sneak",
     "haya14busa/vim-edgemotion",
+    { "tuurep/vim-sneak", branch = "dev" }, -- justinmk/vim-sneak fork
 
     -- Textobjects stuff
     -- "tuurep/mini.ai",      -- nvim-mini/mini.ai fork
@@ -33,7 +33,7 @@ local paq = require("paq") {
     -- Nonlinear undo history access
     "tuurep/undotree", -- mbbill/undotree fork
 
-    -- Edit registers (especially macros) with :R[egisterEdit] <register>
+    -- Edit/view register contents in a buffer
     -- "tuurep/registereditor",
 
     -- Filetypes:
