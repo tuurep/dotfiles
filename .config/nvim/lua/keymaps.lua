@@ -359,9 +359,24 @@ vim.keymap.set("n", "<M-O>", "O<Esc>")
 vim.keymap.set("i", "<M-o>", "<Esc>o")
 vim.keymap.set("i", "<M-O>", "<Esc>O")
 
--- Surround line with blank newlines
+-- ===== TODO =====
+--
+-- Half baked:
+-- - dot repeat
+-- - visual block mode
+--
+-- Maybe turn into a module or add to textcommands.lua?
+
+-- Surround line (or selected lines) with blank newlines
 -- with builtin commands [<Space> and ]<Space>
 vim.keymap.set({"n", "i"}, "<C-o>", function() vim.cmd("normal [ ] ") end)
+vim.keymap.set("x", "<C-o>", "<Esc>`>]<Space><Esc>`<[<Space><Esc>", { remap = true })
+
+-- Surround cursor (or selection) with spaces
+vim.keymap.set("!", "<C-Space>", "  <Left>")
+vim.keymap.set("n", "<C-Space>", "i <Esc>la <Esc>h")
+vim.keymap.set("x", "<C-Space>", "<Esc>`>a <Esc>`<i <Esc>l")
+-- ================
 
 -- Without shift = forward, with shift = backward
 vim.keymap.set("n", "<", ">")

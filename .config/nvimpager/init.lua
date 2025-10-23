@@ -169,6 +169,8 @@ vim.keymap.set("c", "<M-Z>", "``````<Left><Left><Left>")
 vim.keymap.set("c", "<M-m>", "**<Left>")
 vim.keymap.set("c", "<M-M>", "****<Left><Left>")
 
+vim.keymap.set("c", "<C-Space>", "  <Left>")
+
 -- Weird experimental mappings to enter some of the most annoying-to-type chars
 vim.keymap.set("c", "<M-1>", "~/")
 vim.keymap.set("c", "<M-2>", "&")
@@ -272,11 +274,6 @@ vim.keymap.set({"n", "x", "o"}, "<C-M-k>", function() scroll(-1) end)
 
 -- One-handed quit
 vim.keymap.set({"n", "x"}, "<C-q>", "<cmd>q<cr>")
-
--- Like yy but no newline at end
-vim.keymap.set("n", "<C-y>", function()
-    vim.fn.setreg(vim.v.register, vim.api.nvim_get_current_line())
-end)
 
 -- Sensible undo
 vim.keymap.set("n", "U", "<C-r>")

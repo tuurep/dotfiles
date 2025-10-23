@@ -6,6 +6,8 @@
 --     In visual mode, operate on selected lines
 --         (regardless of visual mode type)
 
+-- Todo:
+-- Dot repeat doesn't work (what would that require?)
 
 -- Helpers
 
