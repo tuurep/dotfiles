@@ -424,6 +424,8 @@ register-surround-bind '\`\`\`' '\`\`\`' "^[Z" "triple-backticks" # Shift + Alt 
 register-surround-bind '*'  '*'  "^['" "asterisks"        # Alt + '
 register-surround-bind '**' '**' "^[*" "double-asterisks" # Shift + Alt + '
 
+register-surround-bind ' ' ' ' "^@" "spaces" # Shift + Alt + '
+
 # Non-surrounding inserts of frequent, hard-to-type chars
 register-surround-bind '~/' '' "^[1" "tilde-path"
 register-surround-bind '&'  '' "^[2" "ampersand"
