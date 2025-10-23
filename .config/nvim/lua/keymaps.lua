@@ -15,7 +15,6 @@ vim.keymap.set("n", "<C-r>", "<Nop>")              -- U as redo
 vim.keymap.set({"n", "x"}, "<C-e>", "<Nop>")       -- <M-s> and <M-d> are remapped as <C-e> and <C-y>
 vim.keymap.set({"n", "x"}, "<Backspace>", "<Nop>")
 vim.keymap.set({"n", "x"}, ":", "<Nop>")           -- <Enter> as :
-vim.keymap.set({"n", "x"}, ".", "<Nop>")           -- q as .
 vim.keymap.set({"n", "x"}, "0", "<Nop>")           -- <M-Esc> as 0
 vim.keymap.set({"n", "x"}, "gJ", "<Nop>")          -- gå for spaceless join, leave gJ and gK
                                                    -- as ideas for vertical movement mappings
@@ -39,7 +38,8 @@ vim.keymap.set({"n", "x", "o"}, "<S-Tab>", "?")
 vim.keymap.set({"n", "x"}, "<Enter>", ":")
 
 -- Dot-repeat on q
-vim.keymap.set({"n", "x"}, "q", ".")
+-- vim-repeat requires that it's a recursive map
+vim.keymap.set({"n", "x"}, "q", ".", { remap = true })
 
 -- Remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
 vim.keymap.set("n", "<M-n>", "<C-o>")
