@@ -3,7 +3,6 @@ vim.keymap.set({"n", "x", "o"}, "<Space>", "<Nop>")
 vim.g.mapleader = " "
 
 -- Free keys:
-vim.keymap.set({"n", "x"}, "q", "<Nop>")
 vim.keymap.set({"n", "x"}, "Q", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<Up>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<Down>", "<Nop>")
@@ -17,6 +16,7 @@ vim.keymap.set({"n", "x"}, "<C-e>", "<Nop>")       -- <M-s> and <M-d> are remapp
 vim.keymap.set({"n", "x"}, "<Backspace>", "<Nop>")
 vim.keymap.set({"n", "x"}, ":", "<Nop>")           -- <Enter> as :
 vim.keymap.set({"n", "x"}, ".", "<Nop>")           -- q as .
+vim.keymap.set({"n", "x"}, "0", "<Nop>")           -- <M-Esc> as 0
 vim.keymap.set({"n", "x"}, "gJ", "<Nop>")          -- gå for spaceless join, leave gJ and gK
                                                    -- as ideas for vertical movement mappings
 -- Free (but bad):
@@ -40,7 +40,6 @@ vim.keymap.set({"n", "x"}, "<Enter>", ":")
 
 -- Dot-repeat on q
 vim.keymap.set({"n", "x"}, "q", ".")
-
 
 -- Remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
 vim.keymap.set("n", "<M-n>", "<C-o>")
@@ -215,6 +214,10 @@ vim.keymap.set({"n", "x"}, "<M-Enter>", "G")
 vim.keymap.set({"n", "x"}, "<M-Backspace>", "gg")
 vim.keymap.set("o", "<Enter>", "G")
 vim.keymap.set("o", "<Backspace>", "gg")
+
+-- Experimental
+vim.keymap.set({"n", "x", "o"}, "<M-Esc>", "0")
+vim.keymap.set("i", "<M-Esc>", "<Esc>0")
 
 -- Spammable buffer navigation
 vim.keymap.set("n", "<C-h>", "<cmd>bp<cr>")

@@ -74,8 +74,9 @@ vim.keymap.set("n", "<C-r>", "<Nop>")
 vim.keymap.set("n", "<C-o>", "<Nop>")
 vim.keymap.set({"n", "x"}, "<C-e>", "<Nop>")
 vim.keymap.set({"n", "x"}, "<Backspace>", "<Nop>")
-vim.keymap.set({"n", "x"}, "<Enter>", "<Nop>")
 vim.keymap.set({"n", "x"}, ":", "<Nop>")
+vim.keymap.set({"n", "x"}, ".", "<Nop>")
+vim.keymap.set({"n", "x"}, "0", "<Nop>")
 vim.keymap.set({"n", "x"}, "gJ", "<Nop>")
 
 -- Free (but bad):
@@ -200,6 +201,9 @@ vim.keymap.set({"n", "x"}, "?", "K")
 -- Shift+g slightly too annoying to press
 vim.keymap.set({"n", "x", "o"}, "<M-Enter>", "G")
 vim.keymap.set({"n", "x", "o"}, "<M-Backspace>", "gg")
+
+-- Experimental
+vim.keymap.set({"n", "x"}, "<M-Esc>", "0")
 
 -- (Todo: pager can't handle multiple files as arguments atm)
 -- Spammable buffer navigation
