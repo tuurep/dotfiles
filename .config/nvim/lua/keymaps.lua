@@ -61,7 +61,13 @@ end)                                            -- $HOME as ~
 vim.keymap.set("n", "<leader><Backspace>",
     "<cmd>echo fnamemodify(getcwd(), ':p:~')<cr>") -- pwd but with tilde
 
-vim.keymap.set("n", "<Esc>", "<cmd>echo ''<cr>") -- clear cmdline text
+-- Esc to clear cmdline text
+-- Workaround for sneak: my mapping wouldn't allow sneak to quit with <Esc> when it's
+-- clever-sneaking
+vim.keymap.set("n", "<Esc>", function()
+    vim.cmd("call sneak#cancel()")
+    vim.cmd("echo ''")
+end)
 
 -- Command mode <C-f> special buffer fixes
 -- (currently not needed because I don't have an <Enter> mapping)
