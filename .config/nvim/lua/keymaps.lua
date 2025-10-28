@@ -70,13 +70,11 @@ vim.keymap.set("n", "<Esc>", function()
 end)
 
 -- Command mode <C-f> special buffer fixes
--- (currently not needed because I don't have an <Enter> mapping)
--- 
--- vim.api.nvim_create_autocmd({"CmdWinEnter"}, {
---     callback = function()
---         vim.keymap.set("n", "<Enter>", "<Enter>", b)
---     end
--- })
+vim.api.nvim_create_autocmd({"CmdWinEnter"}, {
+    callback = function()
+        vim.keymap.set("n", "<Enter>", "<Enter>", b)
+    end
+})
 
 -- Mappings like in zsh line editing
 -- Todo: not quite consistent with zsh emacs-mode in all cases
@@ -668,7 +666,6 @@ vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { remap = true })
 
 -- undotree buffer default overwrites
 vim.g.Undotree_CustomMap = function()
-    vim.keymap.set("n", "q", "<Plug>Sneak_s", { buffer = 0 })                    -- undotree would map q to quit
     vim.keymap.set("n", "<C-q>", "<Plug>UndotreeClose", { buffer = 0 })
     vim.keymap.set("n", "U", "<Plug>UndotreeRedo", { buffer = 0 })
     vim.keymap.set("n", "J", "<Plug>UndotreePreviousSavedState", { buffer = 0 }) -- Note: PreviousSaved and NextSaved
