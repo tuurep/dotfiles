@@ -4,9 +4,8 @@
 " Would be nice if opfunc could be set to a lua anonymous func, follow:
 " https://github.com/neovim/neovim/issues/14157
 
-" Todo: might add count to linewise:
-"       replace each line with last inserted
-"       (what happens if multiline insertion?)
+" Todo:
+"     - count on dqq
 
 function! s:repeat_insert(type)
     if a:type ==# "line"
@@ -16,6 +15,6 @@ function! s:repeat_insert(type)
     endif
 endfun
 
-nnoremap <silent> c.  :set<Space>opfunc=<SID>repeat_insert<CR>g@
-nnoremap <silent> c.. :set<Space>opfunc=<SID>repeat_insert<CR>g@_
-nmap c: c.$
+nnoremap <silent> dq  :set<Space>opfunc=<SID>repeat_insert<CR>g@
+nnoremap <silent> dqq :set<Space>opfunc=<SID>repeat_insert<CR>g@_
+nmap dQ dq$
