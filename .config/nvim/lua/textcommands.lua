@@ -60,6 +60,10 @@ function M.append_paste(join_by_space)
                               :gsub("%s*$", ""):gsub("%s+", " ")
 
         for i, line in ipairs(lines) do
+            -- First trim any existing trailing whitespace
+            -- Having one space there fresh out of insert mode is surprisingly common
+            line = line:gsub("%s*$", "")
+
             local space
             if join_by_space and line ~= "" then
                 space = " "
