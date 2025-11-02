@@ -337,6 +337,7 @@ local textcommands = require("textcommands")
 vim.keymap.set({"n", "x"}, "Z", function() textcommands.squeeze_spaces() end)
 vim.keymap.set({"n", "x"}, "X", function() textcommands.delete_last_char() end)
 vim.keymap.set({"n", "x"}, "<C-d>", function() textcommands.wipe_line() end)
+vim.keymap.set({"n", "x", "i"}, "<C-o>", function() textcommands.surround_with_blanklines() end)
 
 vim.keymap.set({"n", "x"}, "<C-p>", function()
     local join_by_space = true
@@ -366,24 +367,14 @@ vim.keymap.set("n", "<M-O>", "O<Esc>")
 vim.keymap.set("i", "<M-o>", "<Esc>o")
 vim.keymap.set("i", "<M-O>", "<Esc>O")
 
--- ===== TODO =====
---
--- Half baked:
+-- Surround cursor (or selection) with spaces
+-- Todo: Half baked:
 -- - dot repeat
 -- - visual block mode
---
--- Maybe turn into a module or add to textcommands.lua?
-
--- Surround line (or selected lines) with blank newlines
--- with builtin commands [<Space> and ]<Space>
-vim.keymap.set({"n", "i"}, "<C-o>", function() vim.cmd("normal [ ] ") end)
-vim.keymap.set("x", "<C-o>", "<Esc>`>]<Space><Esc>`<[<Space><Esc>", { remap = true })
-
--- Surround cursor (or selection) with spaces
+-- Maybe turn into a module similarly to textcommands.lua?
 vim.keymap.set("!", "<C-Space>", "  <Left>")
 vim.keymap.set("n", "<C-Space>", "i <Esc>la <Esc>h")
 vim.keymap.set("x", "<C-Space>", "<Esc>`>a <Esc>`<i <Esc>l")
--- ================
 
 -- Without shift = forward, with shift = backward
 vim.keymap.set("n", "<", ">")

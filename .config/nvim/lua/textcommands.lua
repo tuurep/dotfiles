@@ -148,4 +148,23 @@ function M.delete_last_char()
     end
 end
 
+-- Add a blank newline above and below current line or selection
+-- With count, adds more blanklines
+function M.surround_with_blanklines()
+    local mode = vim.api.nvim_get_mode().mode
+    local start_line, end_line = get_line_range(mode, false)
+
+    local blanklines = {}
+    for _ = 1, vim.v.count1 do
+        table.insert(blanklines, "")
+    end
+
+    vim.api.nvim_buf_set_lines(0, end_line, end_line, false, blanklines)
+    vim.api.nvim_buf_set_lines(0, start_line, start_line, false, blanklines)
+
+    if is_visual_mode(mode) then
+        esc()
+    end
+end
+
 return M
