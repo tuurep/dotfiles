@@ -4,6 +4,7 @@ vim.loader.enable()
 
 vim.opt.rtp:append("~/projects/mini.ai")        -- todo: rework motions
 vim.opt.rtp:append("~/projects/registereditor") -- todo: PR reviews
+vim.opt.rtp:append("~/projects/vim-sneak")      -- todo: experimentation
 
 vim.cmd.colorscheme("goodnight")
 require("keymaps")
@@ -83,7 +84,6 @@ vim.g.lion_squeeze_spaces = 1
 
 vim.g["sneak#s_next"] = true     -- f/t/s repeat same key to go forward
 vim.g["sneak#use_ic_scs"] = true -- f/t/s ignorecase and smartcase
-vim.g["sneak#prompt"] = ""
 vim.g["sneak#label"] = true
 vim.g["sneak#target_labels"] = "wefnuz123,vbt4567890"
 
