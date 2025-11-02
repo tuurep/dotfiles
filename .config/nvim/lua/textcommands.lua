@@ -7,7 +7,11 @@
 --         (regardless of visual mode type)
 
 -- Todo:
--- Dot repeat doesn't work (what would that require?)
+--     - Dot repeat doesn't work (what would that require?)
+--     - Rethink count for:
+--         - X:     delete last [count] characters in line(s)
+--         - <C-p>: paste [count] times on line(s)
+--         - (keep the others like they currently are)
 
 -- Helpers
 
@@ -125,8 +129,9 @@ function M.delete_last_char()
     local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line, false)
 
     for i, line in ipairs(lines) do
-        if #line > 0 then
-            lines[i] = line:sub(1, -2)
+        local char_count = vim.fn.strchars(line) -- account for multibyte chars
+        if char_count > 0 then
+            lines[i] = vim.fn.strcharpart(line, 0, char_count - 1)
         end
     end
 
