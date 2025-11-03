@@ -346,9 +346,8 @@ vim.api.nvim_set_hl(0, "@string.special.url.gitcommit", { fg = fg    })
 vim.api.nvim_set_hl(0, "@markup.link.gitcommit",        { fg = green })
 
 -- Stuff that insists on being annoying
-vim.api.nvim_set_hl(0, "MatchParen", { link = "None" })
-vim.api.nvim_set_hl(0, "Conceal",    { link = "None" })
-vim.api.nvim_set_hl(0, "Todo",   { link = "@comment" })
+vim.api.nvim_set_hl(0, "Conceal", { link = "None"     })
+vim.api.nvim_set_hl(0, "Todo",    { link = "@comment" })
 
 -- XML
 vim.api.nvim_set_hl(0, "xmlTagName",         { link = "@tag"           })

@@ -144,9 +144,8 @@ vim.api.nvim_set_hl(0, "Type",         { link = "None" })
 vim.api.nvim_set_hl(0, "Typedef",      { link = "None" })
 
 -- Stuff that insists on being annoying
-vim.api.nvim_set_hl(0, "MatchParen", { link = "None" })
-vim.api.nvim_set_hl(0, "Conceal",    { link = "None" })
-vim.api.nvim_set_hl(0, "Todo",       { link = "None" })
+vim.api.nvim_set_hl(0, "Conceal", { link = "None" })
+vim.api.nvim_set_hl(0, "Todo",    { link = "None" })
 
 -- Anything else that comes up
 vim.api.nvim_set_hl(0, "Underlined", { link = "None" })

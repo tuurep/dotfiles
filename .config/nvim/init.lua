@@ -121,8 +121,7 @@ vim.treesitter.language.register("bash", "PKGBUILD")
 
 -- Disable builtin plugins
 vim.g.loaded_netrwPlugin = 0
--- g.loaded_matchparen = 0 -- Disabling matchparen breaks vim-sneak highlight, see:
-                           -- https://github.com/justinmk/vim-sneak/issues/305
+vim.g.loaded_matchparen = 0
 
 -- Where plugins?
 -- See ./lua/update/plugins.lua

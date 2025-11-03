@@ -19,6 +19,7 @@ vim.opt.runtimepath:append("~/projects/mini.ai")   -- todo: rework motions
 vim.opt.runtimepath:append("~/projects/vim-sneak") -- todo: experimentation
 
 vim.g.loaded_netrwPlugin = 0 -- When unloading netrw, `nvimpager <dir>` shows a blank buffer in pager mode
+vim.g.loaded_matchparen = 0
 
 vim.cmd.colorscheme("goodnight-pager")
 
