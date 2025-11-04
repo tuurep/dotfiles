@@ -508,7 +508,6 @@ MiniAi.setup({
 })
 
 -- mini.tpopesurround
--- todo: vim-wordmotion can make message noise on dot repeat
 local MiniTpopesurround = require("mini.tpopesurround")
 
 MiniTpopesurround.setup({

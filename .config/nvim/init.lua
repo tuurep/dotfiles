@@ -2,9 +2,10 @@
 -- https://github.com/neovim/neovim/commit/2257ade3dc2daab5ee12d27807c0b3bcf103cd29
 vim.loader.enable()
 
-vim.opt.rtp:append("~/projects/mini.ai")        -- todo: rework motions
 vim.opt.rtp:append("~/projects/registereditor") -- todo: PR reviews
+vim.opt.rtp:append("~/projects/mini.ai")        -- todo: rework motions
 vim.opt.rtp:append("~/projects/vim-sneak")      -- todo: experimentation
+vim.opt.rtp:append("~/projects/vim-wordmotion") -- done some fixes
 
 vim.cmd.colorscheme("goodnight")
 require("keymaps")
@@ -72,6 +73,9 @@ vim.o.splitbelow = true
 vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
 vim.o.expandtab = true
+
+-- With _ in cpoptions, cw acts like ce which doesn't make sense
+vim.opt.cpoptions:remove("_")
 
 -- Avoid useless timeout error on `gx` when firefox isn't already open (it opens anyway)
 vim.ui.open = function(url)

@@ -15,8 +15,9 @@ vim.loader.enable()
 
 -- Leech plugins from nvim (paq)
 vim.opt.runtimepath:append("~/.local/share/nvim/site/pack/paqs/start/vim-edgemotion")
-vim.opt.runtimepath:append("~/projects/mini.ai")   -- todo: rework motions
-vim.opt.runtimepath:append("~/projects/vim-sneak") -- todo: experimentation
+vim.opt.runtimepath:append("~/projects/mini.ai")        -- todo: rework motions
+vim.opt.runtimepath:append("~/projects/vim-sneak")      -- todo: experimentation
+vim.opt.runtimepath:append("~/projects/vim-wordmotion") -- done some fixes
 
 vim.g.loaded_netrwPlugin = 0 -- When unloading netrw, `nvimpager <dir>` shows a blank buffer in pager mode
 vim.g.loaded_matchparen = 0
