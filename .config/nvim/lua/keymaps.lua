@@ -15,7 +15,7 @@ vim.keymap.set("n", "<C-r>", "<Nop>")              -- U as redo
 vim.keymap.set({"n", "x"}, "<C-e>", "<Nop>")       -- <M-s> and <M-d> are remapped as <C-e> and <C-y>
 vim.keymap.set({"n", "x"}, "<Backspace>", "<Nop>")
 vim.keymap.set({"n", "x"}, ":", "<Nop>")           -- <Enter> as :
-vim.keymap.set({"n", "x"}, "0", "<Nop>")           -- <M-Esc> as 0
+vim.keymap.set({"n", "x"}, "0", "<Nop>")           -- <leader>h as 0
 vim.keymap.set({"n", "x"}, "gJ", "<Nop>")          -- gå for spaceless join, leave gJ and gK
                                                    -- as ideas for vertical movement mappings
 -- Free (but bad):
@@ -23,23 +23,22 @@ vim.keymap.set({"n", "x", "!"}, "<PageUp>", "<Nop>")
 vim.keymap.set({"n", "x", "!"}, "<PageDown>", "<Nop>")
 vim.keymap.set({"n", "i"}, "<F1>", "<Nop>")
 
--- q key is free for future idea
+-- I almost never use macros, so move the key to the edge of the keyboard
+-- Dot-repeat gets q
 vim.keymap.set({"n", "x"}, "<Del>", "q")
 vim.keymap.set({"n", "x"}, "<S-Del>", "Q")
 vim.keymap.set({"n", "x"}, "<M-Del>", "@")
 vim.keymap.set({"n", "x"}, "<M-Del><M-Del>", "@@")
+vim.keymap.set({"n", "x"}, "q", ".", { remap = true }) -- vim-repeat requires that it's a recursive map
 
--- Move the mark key to the edge of the keyboard to use m for sneak
+-- I literally never use marks, so move the key to the edge of the keyboard
+-- Sneak gets m
 vim.keymap.set("n", "<Ins>", "m")
 
 -- Tab to search, enter to command
 vim.keymap.set({"n", "x", "o"}, "<Tab>", "/")
 vim.keymap.set({"n", "x", "o"}, "<S-Tab>", "?")
 vim.keymap.set({"n", "x"}, "<Enter>", ":")
-
--- Dot-repeat on q
--- vim-repeat requires that it's a recursive map
-vim.keymap.set({"n", "x"}, "q", ".", { remap = true })
 
 -- Remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
 vim.keymap.set("n", "<M-n>", "<C-o>")
@@ -220,8 +219,8 @@ vim.keymap.set("o", "<Enter>", "G")
 vim.keymap.set("o", "<Backspace>", "gg")
 
 -- Experimental
-vim.keymap.set({"n", "x", "o"}, "<M-Esc>", "0")
-vim.keymap.set("i", "<M-Esc>", "<Esc>0")
+-- 0 requires too much of a reach for how frequently I use it
+vim.keymap.set({"n", "x", "o"}, "<leader>h", "0")
 
 -- Spammable buffer navigation
 vim.keymap.set("n", "<C-h>", "<cmd>bp<cr>")

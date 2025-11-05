@@ -88,13 +88,18 @@ vim.keymap.set("n", "<F1>", "<Nop>")
 vim.keymap.set({"n", "x"}, "§", "<cmd>set number!<cr>")
 vim.keymap.set({"n", "x"}, "<leader>§", "<cmd>set wrap!<cr>")
 
--- q key is free for future idea
+-- I almost never use macros, so move the key to the edge of the keyboard
 vim.keymap.set({"n", "x"}, "<Del>", "q")
 vim.keymap.set({"n", "x"}, "<S-Del>", "Q")
 vim.keymap.set({"n", "x"}, "<M-Del>", "@")
 vim.keymap.set({"n", "x"}, "<M-Del><M-Del>", "@@")
 
--- Give mark key to sneak
+-- Todo: q key is free as it's mapped to dot-repeat
+-- but could be put back as exit for readonly buffers
+vim.keymap.set({"n", "x"}, "q", "<Nop>")
+
+-- I literally never use marks, so move the key to the edge of the keyboard
+-- Sneak gets m
 vim.keymap.set("n", "<Ins>", "m")
 
 -- Tab to search, enter to command
@@ -209,7 +214,8 @@ vim.keymap.set({"n", "x", "o"}, "<M-Enter>", "G")
 vim.keymap.set({"n", "x", "o"}, "<M-Backspace>", "gg")
 
 -- Experimental
-vim.keymap.set({"n", "x"}, "<M-Esc>", "0")
+-- 0 requires too much of a reach for how frequently I use it
+vim.keymap.set({"n", "x"}, "<leader>h", "0")
 
 -- (Todo: pager can't handle multiple files as arguments atm)
 -- Spammable buffer navigation
