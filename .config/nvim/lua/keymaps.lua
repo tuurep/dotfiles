@@ -364,6 +364,32 @@ vim.keymap.set("n", "<M-O>", "O<Esc>")
 vim.keymap.set("i", "<M-o>", "<Esc>o")
 vim.keymap.set("i", "<M-O>", "<Esc>O")
 
+local function insert_and_jump_back(insert_cmd)
+    local pos = vim.api.nvim_win_get_cursor(0)
+    local line, col = pos[1] - 1, pos[2]
+
+    local mark_ns = vim.api.nvim_create_namespace("insert_and_jump_back")
+    local mark_id = vim.api.nvim_buf_set_extmark(0, mark_ns, line, col, {})
+
+    vim.api.nvim_create_autocmd("InsertLeave", {
+        once = true,
+        callback = function()
+            local mark = vim.api.nvim_buf_get_extmark_by_id(0, mark_ns, mark_id, {})
+            vim.api.nvim_win_set_cursor(0, { mark[1] + 1 , mark[2] })
+            vim.api.nvim_buf_del_extmark(0, mark_ns, mark_id)
+        end,
+    })
+
+    -- Enter insert mode
+    -- insert_cmd: "A" or "I", but even something like "ci)" would be possible
+    vim.api.nvim_feedkeys(insert_cmd, "n", false)
+end
+
+-- Like A and I but return to the location before A/I
+-- Todo: jump back part doesn't work with dot repeat
+vim.keymap.set("n", "<M-a>", function() insert_and_jump_back("A") end)
+vim.keymap.set("n", "<M-i>", function() insert_and_jump_back("I") end)
+
 -- Surround cursor (or selection) with spaces
 -- Todo: Half baked:
 -- - dot repeat
