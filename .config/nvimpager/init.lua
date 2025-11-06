@@ -75,9 +75,10 @@ vim.keymap.set("n", "<C-r>", "<Nop>")
 vim.keymap.set("n", "<C-o>", "<Nop>")
 vim.keymap.set({"n", "x"}, "<C-e>", "<Nop>")
 vim.keymap.set({"n", "x"}, "<Backspace>", "<Nop>")
-vim.keymap.set({"n", "x"}, ":", "<Nop>")
 vim.keymap.set({"n", "x"}, "0", "<Nop>")
 vim.keymap.set({"n", "x"}, "gJ", "<Nop>")
+vim.keymap.set("n", ":", "<Nop>")
+vim.keymap.set("n", ".", "<Nop>")
 
 -- Free (but bad):
 vim.keymap.set({"n", "x", "c"}, "<PageUp>", "<Nop>")

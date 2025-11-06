@@ -14,7 +14,6 @@ vim.keymap.set({"n", "x", "o"}, "/", "<Nop>")      -- Tab/S-Tab as search, ? is 
 vim.keymap.set("n", "<C-r>", "<Nop>")              -- U as redo
 vim.keymap.set({"n", "x"}, "<C-e>", "<Nop>")       -- <M-s> and <M-d> are remapped as <C-e> and <C-y>
 vim.keymap.set({"n", "x"}, "<Backspace>", "<Nop>")
-vim.keymap.set({"n", "x"}, ":", "<Nop>")           -- <Enter> as :
 vim.keymap.set({"n", "x"}, "0", "<Nop>")           -- <leader>h as 0
 vim.keymap.set({"n", "x"}, "gJ", "<Nop>")          -- gå for spaceless join, leave gJ and gK
                                                    -- as ideas for vertical movement mappings
@@ -29,7 +28,6 @@ vim.keymap.set({"n", "x"}, "<Del>", "q")
 vim.keymap.set({"n", "x"}, "<S-Del>", "Q")
 vim.keymap.set({"n", "x"}, "<M-Del>", "@")
 vim.keymap.set({"n", "x"}, "<M-Del><M-Del>", "@@")
-vim.keymap.set({"n", "x"}, "q", ".", { remap = true }) -- vim-repeat requires that it's a recursive map
 
 -- I literally never use marks, so move the key to the edge of the keyboard
 -- Sneak gets m
@@ -386,13 +384,8 @@ vim.keymap.set("x", "<", ">gv")
 vim.keymap.set("x", ">", "<gv")
 
 -- Spammable changelist jump + free g; and g, for mini.ai motions
-vim.keymap.set("n", "<M-i>", "g;")
-vim.keymap.set("n", "<M-S-i>", "g,")
-
--- Undo follows the same idea as above
--- Map <M-u> to WeirdUndo so it's still available when you want to use it (never)
-vim.keymap.set("n", "U", "<C-r>")
-vim.keymap.set("n", "<M-u>", "U")
+vim.keymap.set("n", ".", "g;")
+vim.keymap.set("n", ":", "g,")
 
 -- ~ too hard to press for being so useful
 vim.keymap.set("n", "<M-r>", "v~") -- v to prevent moving (moves 1 right by default)
@@ -412,6 +405,16 @@ vim.keymap.set({"n", "x"}, "¤", function()
 end)
 
 -- ===== PLUGINS =====
+
+-- vim-repeat stupid workarounds
+vim.keymap.set("n", "<Plug>(RepeatDot)", ".")
+vim.keymap.set("n", "<Plug>(RepeatUndo)", "u")
+vim.keymap.set("n", "<Plug>(RepeatUndoLine)", "U")
+vim.keymap.set("n", "<Plug>(RepeatRedo)", "<C-r>")
+vim.keymap.set("n", "q", "<Plug>(RepeatDot)", { remap = true })
+vim.keymap.set("n", "u", "<Plug>(RepeatUndo)", { remap = true })
+vim.keymap.set("n", "U", "<Plug>(RepeatRedo)", { remap = true })
+vim.keymap.set("n", "<M-u>", "<Plug>(RepeatUndoLine)", { remap = true })
 
 -- mini.splitjoin
 local MiniSplitjoin = require("mini.splitjoin")
