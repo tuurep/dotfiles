@@ -19,11 +19,12 @@ local paq = require("paq") {
     "tuurep/vim-lion",            -- tommcdo/vim-lion fork
     "nvim-mini/mini.move",
     "haya14busa/vim-edgemotion",
+    -- { "tuurep/vim-sneak", branch = "dev" }, -- justinmk/vim-sneak fork
 
     -- Textobjects stuff
-    -- "tuurep/mini.ai",      -- nvim-mini/mini.ai fork
-    "chaoren/vim-wordmotion", -- rework word delimiters for w b e ge iw aw
     "nvim-treesitter/nvim-treesitter-textobjects",
+    -- "chaoren/vim-wordmotion", -- rework word delimiters for w b e ge iw aw
+    -- "tuurep/mini.ai",         -- nvim-mini/mini.ai fork
 
     -- Visual block insert preview workaround until it's added in core
     -- https://github.com/neovim/neovim/issues/20329
