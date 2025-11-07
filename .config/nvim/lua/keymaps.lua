@@ -330,20 +330,19 @@ end)
 vim.keymap.set("x", "å", "J")
 vim.keymap.set("x", "gå", "gJ")
 
-local textcommands = require("textcommands")
-vim.keymap.set({"n", "x"}, "Z", function() textcommands.squeeze_spaces() end)
-vim.keymap.set({"n", "x"}, "X", function() textcommands.delete_last_char() end)
-vim.keymap.set({"n", "x"}, "<C-d>", function() textcommands.wipe_line() end)
-vim.keymap.set({"n", "x", "i"}, "<C-o>", function() textcommands.surround_with_blanklines() end)
+-- The most refined ideas,
+-- gone into a module that properly handles counts, modes and dot repeats*
+-- * not insert_and_jump_back
+local textcmds = require("textcmds")
 
-vim.keymap.set({"n", "x"}, "<C-p>", function()
-    local join_by_space = true
-    textcommands.append_paste(join_by_space)
-end)
-vim.keymap.set({"n", "x"}, "g<C-p>", function()
-    local join_by_space = false
-    textcommands.append_paste(join_by_space)
-end)
+vim.keymap.set({"n", "x"}, "Z", function() return textcmds.squeeze_spaces() end, { expr = true })
+vim.keymap.set({"n", "x"}, "X", function() return textcmds.delete_last_char() end, { expr = true })
+vim.keymap.set({"n", "x"}, "<C-d>", function() return textcmds.wipe_line() end, { expr = true })
+vim.keymap.set({"n", "x", "i"}, "<C-o>", function() return textcmds.surround_with_blanklines() end, { expr = true })
+vim.keymap.set({"n", "x"}, "<C-p>", function() return textcmds.append_paste(true) end, { expr = true })
+vim.keymap.set({"n", "x"}, "g<C-p>", function() return textcmds.append_paste(false) end, { expr = true })
+vim.keymap.set("n", "<M-a>", function() return textcmds.insert_and_jump_back("A") end, { expr = true })
+vim.keymap.set("n", "<M-i>", function() return textcmds.insert_and_jump_back("I") end, { expr = true })
 
 -- Fix x (from being terrible)
 -- To be fixed: would like consecutive xxxxxxx to be treated as a single undo item
@@ -364,37 +363,12 @@ vim.keymap.set("n", "<M-O>", "O<Esc>")
 vim.keymap.set("i", "<M-o>", "<Esc>o")
 vim.keymap.set("i", "<M-O>", "<Esc>O")
 
-local function insert_and_jump_back(insert_cmd)
-    local pos = vim.api.nvim_win_get_cursor(0)
-    local line, col = pos[1] - 1, pos[2]
-
-    local mark_ns = vim.api.nvim_create_namespace("insert_and_jump_back")
-    local mark_id = vim.api.nvim_buf_set_extmark(0, mark_ns, line, col, {})
-
-    vim.api.nvim_create_autocmd("InsertLeave", {
-        once = true,
-        callback = function()
-            local mark = vim.api.nvim_buf_get_extmark_by_id(0, mark_ns, mark_id, {})
-            vim.api.nvim_win_set_cursor(0, { mark[1] + 1 , mark[2] })
-            vim.api.nvim_buf_del_extmark(0, mark_ns, mark_id)
-        end,
-    })
-
-    -- Enter insert mode
-    -- insert_cmd: "A" or "I", but even something like "ci)" would be possible
-    vim.api.nvim_feedkeys(insert_cmd, "n", false)
-end
-
--- Like A and I but return to the location before A/I
--- Todo: jump back part doesn't work with dot repeat
-vim.keymap.set("n", "<M-a>", function() insert_and_jump_back("A") end)
-vim.keymap.set("n", "<M-i>", function() insert_and_jump_back("I") end)
 
 -- Surround cursor (or selection) with spaces
 -- Todo: Half baked:
 -- - dot repeat
 -- - visual block mode
--- Maybe turn into a module similarly to textcommands.lua?
+-- Maybe turn into a module or move to textcmds.lua?
 vim.keymap.set("!", "<C-Space>", "  <Left>")
 vim.keymap.set("n", "<C-Space>", "i <Esc>la <Esc>h")
 vim.keymap.set("x", "<C-Space>", "<Esc>`>a <Esc>`<i <Esc>l")

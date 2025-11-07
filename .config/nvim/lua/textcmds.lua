@@ -1,15 +1,36 @@
--- Collection of text-editing commands similar to builtin J:
+-- Textcmds
+-- ========
 --
---     In normal mode, operate on current line
---         (or [count] lines, where makes sense)
---
---     In visual mode, operate on selected lines
---         (regardless of visual mode type)
-
--- Todo:
---     - Dot repeat doesn't work (what would that require?)
+-- Text editing commands that started out as simple keymaps but made sense to extend with
+-- support for counts, mode-specific behaviors and dot-repeatability (todo)
 
 -- Helpers
+-- =======
+
+-- Dot-repeatability
+-- Todo: I don't know what the hell I'm doing
+-- Others work, but didn't find a way to make "insert_and_jump_back" jump to an extmark at
+-- the end on dot-repeat
+
+local cache = {
+    fn = nil,
+    arg = nil
+}
+
+_G.opfunc = function()
+    cache.fn(cache.arg)
+end
+
+local function make_dot_repeatable(fn)
+    return function(arg)
+        cache.fn = fn
+        cache.arg = arg
+        vim.go.operatorfunc = "v:lua.opfunc"
+        return "g@l"
+    end
+end
+
+-- General
 
 local function is_visual_mode(mode)
     -- Accept any type of visual mode
@@ -38,11 +59,11 @@ end
 
 local function esc()
     local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
-    vim.api.nvim_feedkeys(esc, "n", false)
+    vim.api.nvim_feedkeys(esc, "n", true)
 end
 
-
 -- Commands
+-- ========
 
 local M = {}
 
@@ -167,4 +188,29 @@ function M.surround_with_blanklines()
     end
 end
 
+-- A or I but return cursor to the location before A/I
+-- Could also use any command that enters insert mode like ci)
+function M.insert_and_jump_back(insert_cmd)
+    local pos = vim.api.nvim_win_get_cursor(0)
+    local line, col = pos[1] - 1, pos[2]
+
+    local mark_ns = vim.api.nvim_create_namespace("insert_and_jump_back")
+    local mark_id = vim.api.nvim_buf_set_extmark(0, mark_ns, line, col, {})
+
+    vim.api.nvim_create_autocmd("InsertLeave", {
+        once = true,
+        callback = function()
+            local mark = vim.api.nvim_buf_get_extmark_by_id(0, mark_ns, mark_id, {})
+            vim.api.nvim_win_set_cursor(0, { mark[1] + 1 , mark[2] })
+            vim.api.nvim_buf_del_extmark(0, mark_ns, mark_id)
+        end,
+    })
+
+    -- Enter insert mode
+    vim.api.nvim_feedkeys(insert_cmd, "m", false)
+end
+
+for fn_name, fn in pairs(M) do
+    M[fn_name] = make_dot_repeatable(fn)
+end
 return M
