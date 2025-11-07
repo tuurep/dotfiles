@@ -188,28 +188,6 @@ function M.surround_with_blanklines()
     end
 end
 
--- A or I but return cursor to the location before A/I
--- Could also use any command that enters insert mode like ci)
-function M.insert_and_jump_back(insert_cmd)
-    local pos = vim.api.nvim_win_get_cursor(0)
-    local line, col = pos[1] - 1, pos[2]
-
-    local mark_ns = vim.api.nvim_create_namespace("insert_and_jump_back")
-    local mark_id = vim.api.nvim_buf_set_extmark(0, mark_ns, line, col, {})
-
-    vim.api.nvim_create_autocmd("InsertLeave", {
-        once = true,
-        callback = function()
-            local mark = vim.api.nvim_buf_get_extmark_by_id(0, mark_ns, mark_id, {})
-            vim.api.nvim_win_set_cursor(0, { mark[1] + 1 , mark[2] })
-            vim.api.nvim_buf_del_extmark(0, mark_ns, mark_id)
-        end,
-    })
-
-    -- Enter insert mode
-    vim.api.nvim_feedkeys(insert_cmd, "m", false)
-end
-
 for fn_name, fn in pairs(M) do
     M[fn_name] = make_dot_repeatable(fn)
 end

@@ -331,18 +331,19 @@ vim.keymap.set("x", "å", "J")
 vim.keymap.set("x", "gå", "gJ")
 
 -- The most refined ideas,
--- gone into a module that properly handles counts, modes and dot repeats*
--- * not insert_and_jump_back
+-- gone into a module that properly handles counts, modes and dot repeats (hopefully?)
 local textcmds = require("textcmds")
-
 vim.keymap.set({"n", "x"}, "Z", function() return textcmds.squeeze_spaces() end, { expr = true })
 vim.keymap.set({"n", "x"}, "X", function() return textcmds.delete_last_char() end, { expr = true })
 vim.keymap.set({"n", "x"}, "<C-d>", function() return textcmds.wipe_line() end, { expr = true })
 vim.keymap.set({"n", "x", "i"}, "<C-o>", function() return textcmds.surround_with_blanklines() end, { expr = true })
 vim.keymap.set({"n", "x"}, "<C-p>", function() return textcmds.append_paste(true) end, { expr = true })
 vim.keymap.set({"n", "x"}, "g<C-p>", function() return textcmds.append_paste(false) end, { expr = true })
-vim.keymap.set("n", "<M-a>", function() return textcmds.insert_and_jump_back("A") end, { expr = true })
-vim.keymap.set("n", "<M-i>", function() return textcmds.insert_and_jump_back("I") end, { expr = true })
+
+-- More hacky but great ideas (trust me bro)
+local experimental = require("experimental")
+vim.keymap.set("n", "<M-a>", function() experimental.insert_and_jump_back("A") end)
+vim.keymap.set("n", "<M-i>", function() experimental.insert_and_jump_back("I") end)
 
 -- Fix x (from being terrible)
 -- To be fixed: would like consecutive xxxxxxx to be treated as a single undo item
