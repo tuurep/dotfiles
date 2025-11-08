@@ -330,15 +330,15 @@ end)
 vim.keymap.set("x", "å", "J")
 vim.keymap.set("x", "gå", "gJ")
 
--- The most refined ideas,
--- gone into a module that properly handles counts, modes and dot repeats (hopefully?)
+-- Text editing commands that properly handle counts, mode-specific behaviors
+-- and dot repeats (todo, last attempt broke visual mode)
 local textcmds = require("textcmds")
-vim.keymap.set({"n", "x"}, "Z", function() return textcmds.squeeze_spaces() end, { expr = true })
-vim.keymap.set({"n", "x"}, "X", function() return textcmds.delete_last_char() end, { expr = true })
-vim.keymap.set({"n", "x"}, "<C-d>", function() return textcmds.wipe_line() end, { expr = true })
-vim.keymap.set({"n", "x", "i"}, "<C-o>", function() return textcmds.surround_with_blanklines() end, { expr = true })
-vim.keymap.set({"n", "x"}, "<C-p>", function() return textcmds.append_paste(true) end, { expr = true })
-vim.keymap.set({"n", "x"}, "g<C-p>", function() return textcmds.append_paste(false) end, { expr = true })
+vim.keymap.set({"n", "x"}, "Z", function() return textcmds.squeeze_spaces() end)
+vim.keymap.set({"n", "x"}, "X", function() return textcmds.delete_last_char() end)
+vim.keymap.set({"n", "x"}, "<C-d>", function() return textcmds.wipe_line() end)
+vim.keymap.set({"n", "x", "i"}, "<C-o>", function() return textcmds.surround_with_blanklines() end)
+vim.keymap.set({"n", "x"}, "<C-p>", function() return textcmds.append_paste(true) end)
+vim.keymap.set({"n", "x"}, "g<C-p>", function() return textcmds.append_paste(false) end)
 
 -- More hacky but great ideas (trust me bro)
 local experimental = require("experimental")

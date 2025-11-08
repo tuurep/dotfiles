@@ -7,31 +7,6 @@
 -- Helpers
 -- =======
 
--- Dot-repeatability
--- Todo: I don't know what the hell I'm doing
--- Others work, but didn't find a way to make "insert_and_jump_back" jump to an extmark at
--- the end on dot-repeat
-
-local cache = {
-    fn = nil,
-    arg = nil
-}
-
-_G.opfunc = function()
-    cache.fn(cache.arg)
-end
-
-local function make_dot_repeatable(fn)
-    return function(arg)
-        cache.fn = fn
-        cache.arg = arg
-        vim.go.operatorfunc = "v:lua.opfunc"
-        return "g@l"
-    end
-end
-
--- General
-
 local function is_visual_mode(mode)
     -- Accept any type of visual mode
     return mode == "v" or mode == "V" or mode == "\22"
@@ -188,7 +163,4 @@ function M.surround_with_blanklines()
     end
 end
 
-for fn_name, fn in pairs(M) do
-    M[fn_name] = make_dot_repeatable(fn)
-end
 return M
