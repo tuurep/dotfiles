@@ -103,10 +103,12 @@ vim.keymap.set({"n", "x"}, "q", "<Nop>")
 -- Sneak gets m
 vim.keymap.set("n", "<Ins>", "m")
 
--- Tab to search, enter to command
+-- Tab to search
 vim.keymap.set({"n", "x", "o"}, "<Tab>", "/")
 vim.keymap.set({"n", "x", "o"}, "<S-Tab>", "?")
-vim.keymap.set({"n", "x"}, "<Enter>", ":")
+
+-- : map where hand doesn't move much
+vim.keymap.set({"n", "x"}, "<leader>i", ":")
 
 -- Remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
 vim.keymap.set("n", "<M-n>", "<C-o>")
@@ -133,8 +135,6 @@ vim.keymap.set("n", "<Esc>", function()
 end)
 
 -- Command mode <C-f> special buffer fixes
--- (currently not needed because I don't have an <Enter> mapping)
---
 -- vim.api.nvim_create_autocmd({"CmdWinEnter"}, {
 --     callback = function()
 --         vim.keymap.set("n", "<Enter>", "<Enter>", b)

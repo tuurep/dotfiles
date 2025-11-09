@@ -33,10 +33,12 @@ vim.keymap.set({"n", "x"}, "<M-Del><M-Del>", "@@")
 -- Sneak gets m
 vim.keymap.set("n", "<Ins>", "m")
 
--- Tab to search, enter to command
+-- Tab to search
 vim.keymap.set({"n", "x", "o"}, "<Tab>", "/")
 vim.keymap.set({"n", "x", "o"}, "<S-Tab>", "?")
-vim.keymap.set({"n", "x"}, "<Enter>", ":")
+
+-- : map where hand doesn't move much
+vim.keymap.set({"n", "x"}, "<leader>i", ":")
 
 -- Remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
 vim.keymap.set("n", "<M-n>", "<C-o>")
@@ -66,12 +68,12 @@ vim.keymap.set("n", "<Esc>", function()
     vim.cmd("echo ''")
 end)
 
--- Command mode <C-f> special buffer fixes
-vim.api.nvim_create_autocmd({"CmdWinEnter"}, {
-    callback = function()
-        vim.keymap.set("n", "<Enter>", "<Enter>", b)
-    end
-})
+-- -- Command mode <C-f> special buffer fixes
+-- vim.api.nvim_create_autocmd({"CmdWinEnter"}, {
+--     callback = function()
+--         vim.keymap.set("n", "<Enter>", "<Enter>", b)
+--     end
+-- })
 
 -- Mappings like in zsh line editing
 -- Todo: not quite consistent with zsh emacs-mode in all cases
