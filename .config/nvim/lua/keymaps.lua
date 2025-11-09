@@ -332,15 +332,16 @@ end)
 vim.keymap.set("x", "å", "J")
 vim.keymap.set("x", "gå", "gJ")
 
--- Text editing commands that properly handle counts, mode-specific behaviors
--- and dot repeats (todo, last attempt broke visual mode)
-local textcmds = require("textcmds")
-vim.keymap.set({"n", "x"}, "Z", function() return textcmds.squeeze_spaces() end)
-vim.keymap.set({"n", "x"}, "X", function() return textcmds.delete_last_char() end)
-vim.keymap.set({"n", "x"}, "<C-d>", function() return textcmds.wipe_line() end)
-vim.keymap.set({"n", "x", "i"}, "<C-o>", function() return textcmds.surround_with_blanklines() end)
-vim.keymap.set({"n", "x"}, "<C-p>", function() return textcmds.append_paste(true) end)
-vim.keymap.set({"n", "x"}, "g<C-p>", function() return textcmds.append_paste(false) end)
+-- Line operators (lops)
+-- Text editing commands that properly handle counts, visual selections
+-- and dot repeats
+local lops = require("lops")
+vim.keymap.set({"n", "x"}, "Z", function() return lops.squeeze_spaces() end, { expr = true })
+vim.keymap.set({"n", "x"}, "X", function() return lops.delete_last_char() end, { expr = true })
+vim.keymap.set({"n", "x"}, "<C-d>", function() return lops.wipe_line() end, { expr = true })
+vim.keymap.set({"n", "x"}, "<C-o>", function() return lops.surround_with_blanklines() end, { expr = true })
+vim.keymap.set({"n", "x"}, "<C-p>", function() return lops.append_paste({ join_by_space = true }) end, { expr = true })
+vim.keymap.set({"n", "x"}, "g<C-p>", function() return lops.append_paste({ join_by_space = false }) end, { expr = true })
 
 -- More hacky but great ideas (trust me bro)
 local experimental = require("experimental")

@@ -26,7 +26,7 @@ end
 
 local function set_dot_repeat()
     -- Abuse vim-repeat to make insert_and_jump_back dot-repeat in a way that *feels*
-    -- natural expected
+    -- natural and expected
     vim.fn["repeat#set"](vim.api.nvim_replace_termcodes("<Plug>dot_repeat_and_jump_back", true, true, true))
 end
 
