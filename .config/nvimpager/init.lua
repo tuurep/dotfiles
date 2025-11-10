@@ -108,7 +108,7 @@ vim.keymap.set({"n", "x", "o"}, "<Tab>", "/")
 vim.keymap.set({"n", "x", "o"}, "<S-Tab>", "?")
 
 -- : map where hand doesn't move much
-vim.keymap.set({"n", "x"}, "<leader>i", ":")
+vim.keymap.set({"n", "x"}, "<leader>l", ":")
 
 -- Remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
 vim.keymap.set("n", "<M-n>", "<C-o>")
@@ -362,7 +362,7 @@ require("mini.ai").setup({
 vim.g["sneak#s_next"] = true
 vim.g["sneak#use_ic_scs"] = true
 vim.g["sneak#label"] = true
-vim.g["sneak#target_labels"] = "wefnuz123,vbt4567890"
+vim.g["sneak#target_labels"] = "wefnuz123,vbt.4567890"
 vim.keymap.set({"n", "x", "o"}, "m", "<Plug>Sneak_s")
 vim.keymap.set({"n", "x", "o"}, "M", "<Plug>Sneak_S")
 vim.keymap.set({"n", "x", "o"}, "f", "<Plug>Sneak_f")

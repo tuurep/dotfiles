@@ -38,7 +38,7 @@ vim.keymap.set({"n", "x", "o"}, "<Tab>", "/")
 vim.keymap.set({"n", "x", "o"}, "<S-Tab>", "?")
 
 -- : map where hand doesn't move much
-vim.keymap.set({"n", "x"}, "<leader>i", ":")
+vim.keymap.set({"n", "x"}, "<leader>l", ":")
 
 -- Remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
 vim.keymap.set("n", "<M-n>", "<C-o>")
@@ -344,6 +344,7 @@ vim.keymap.set({"n", "x"}, "g<C-p>", function() return lops.append_paste({ join_
 
 -- Stupidity
 vim.keymap.set("i", "<C-o>", function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc><C-o>i", true, false, true), "m", true) end)
+vim.keymap.set("i", "<M-Esc>", "<C-o>")
 
 -- More hacky but great ideas (trust me bro)
 local experimental = require("experimental")
