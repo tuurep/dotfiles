@@ -333,8 +333,7 @@ vim.keymap.set("x", "å", "J")
 vim.keymap.set("x", "gå", "gJ")
 
 -- Line operators (lops)
--- Text editing commands that properly handle counts, visual selections
--- and dot repeats
+-- Text editing commands that properly handle counts, visual selections and dot repeats
 local lops = require("lops")
 vim.keymap.set({"n", "x"}, "Z", function() return lops.squeeze_spaces() end, { expr = true })
 vim.keymap.set({"n", "x"}, "X", function() return lops.delete_last_char() end, { expr = true })
@@ -342,6 +341,9 @@ vim.keymap.set({"n", "x"}, "<C-d>", function() return lops.wipe_line() end, { ex
 vim.keymap.set({"n", "x"}, "<C-o>", function() return lops.surround_with_blanklines() end, { expr = true })
 vim.keymap.set({"n", "x"}, "<C-p>", function() return lops.append_paste({ join_by_space = true }) end, { expr = true })
 vim.keymap.set({"n", "x"}, "g<C-p>", function() return lops.append_paste({ join_by_space = false }) end, { expr = true })
+
+-- Stupidity
+vim.keymap.set("i", "<C-o>", function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc><C-o>i", true, false, true), "m", true) end)
 
 -- More hacky but great ideas (trust me bro)
 local experimental = require("experimental")

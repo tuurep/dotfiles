@@ -10,7 +10,7 @@
 -- Helpers
 -- =======
 
--- Todo: most likely can be simplified a ton
+-- Todo: most likely can be simplified a lot
 local function get_line_range(vis_mode, n_count_extend)
     -- Prefer operator marks if set (for operatorfunc / visual)
     local from = vim.api.nvim_buf_get_mark(0, '[')
@@ -187,6 +187,11 @@ function M.surround_with_blanklines(mode)
     local blanklines = {}
     for _ = 1, vim.v.count1 do
         table.insert(blanklines, "")
+    end
+
+    -- An edge case when current line is blank
+    if #vim.fn.getline(".") == 0 then
+        end_line = end_line + 1
     end
 
     vim.api.nvim_buf_set_lines(0, end_line, end_line, false, blanklines)
