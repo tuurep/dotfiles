@@ -139,8 +139,9 @@ function M.append_paste(arg)
         vim.api.nvim_buf_set_lines(0, start_line, end_line, false, lines)
     end
 
-    vim.fn.cursor(end_line, 0)
-    vim.cmd("normal! $")
+    -- Normal `p` places cursor to the end of the pasted text (if charwise)
+    -- Mimic this here (note: not on $ but on the last column)
+    vim.fn.cursor(end_line, #vim.fn.getline(end_line))
 
     return ""
 end
