@@ -211,8 +211,8 @@ vim.keymap.set({"n", "x", "o"}, "gj", "L")
 vim.keymap.set({"n", "x"}, "?", "K")
 
 -- Treat wrapped lines the same
-vim.keymap.set({"n", "x", "o"}, "j", "gj")
-vim.keymap.set({"n", "x", "o"}, "k", "gk")
+vim.keymap.set({"n", "x"}, "j", "gj")
+vim.keymap.set({"n", "x"}, "k", "gk")
 
 -- Shift+g slightly too annoying to press
 vim.keymap.set({"n", "x", "o"}, "<leader>j", "G")
