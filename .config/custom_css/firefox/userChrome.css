@@ -1,10 +1,14 @@
-/* TAB BAR */
-/* Extremely compact title bar and tabs */
-
 :root {
     --tab-min-height: 0 !important;
     --tab-content-offset-top: 4px;
+    --toolbarbutton-border-radius: 3px !important;
+    --tab-border-radius: 3px !important;
+    --arrowpanel-border-radius: 3px !important;
+    --arrowpanel-menuitem-border-radius: 3px !important;
 }
+
+/* TAB BAR */
+/* Extremely compact title bar and tabs */
 
 #TabsToolbar {
     max-height: 26px !important; /* Same as Openbox titlebar height */
@@ -141,6 +145,16 @@ button[aria-label="Mute tab"], button[aria-label="Unmute tab"] {
 #reader-mode-button {
     display: none !important;
 }
+
+/* URL BAR */
+/* Todo: it would be nice if the whole Nav-Bar was just a bit shorter height */
+/* Seems like a PITA to customize */
+
+/* This is a start but needs more to have the icons scale down and not look like the
+ * address bar is floating outside of the Nav-Bar */
+/* #nav-bar { */
+/*   max-height: 32px !important; */
+/* } */
 
 /* MEGABAR */
 
