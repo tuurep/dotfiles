@@ -31,6 +31,8 @@ notes-name =      {{ doc["title"] }}.md
 [settings]
 default-library = papis
 
+use-cache = false
+
 picktool = fzf
 formatter = jinja2
 
