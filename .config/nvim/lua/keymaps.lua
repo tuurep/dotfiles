@@ -33,12 +33,14 @@ vim.keymap.set({"n", "x"}, "<M-Del><M-Del>", "@@")
 -- Sneak gets m
 vim.keymap.set("n", "<Ins>", "m")
 
--- Tab to search
+-- Search and commandline remaps
 vim.keymap.set({"n", "x", "o"}, "<Tab>", "/")
 vim.keymap.set({"n", "x", "o"}, "<S-Tab>", "?")
+vim.keymap.set({"n", "x"}, ".", ":")
 
--- : map where hand doesn't move much
-vim.keymap.set({"n", "x"}, "<leader>l", ":")
+-- Repeat last command
+-- Todo: go further in history if it's an exit command
+vim.keymap.set({"n", "x"}, ":", ":<Up><cr>", { silent = true })
 
 -- Remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
 vim.keymap.set("n", "<M-n>", "<C-o>")
@@ -75,15 +77,20 @@ end)
 --     end
 -- })
 
--- Mappings like in zsh line editing
+-- Mappings like in zsh line editing {{{
 -- Todo: not quite consistent with zsh emacs-mode in all cases
+
 vim.keymap.set("!", "<C-h>", "<Left>")
 vim.keymap.set("!", "<C-l>", "<Right>")
 
-vim.keymap.set("!", "<C-k>", "<Up>")
-vim.keymap.set("!", "<C-j>", "<Down>")
-vim.keymap.set("!", "<M-k>", "<Up>")
-vim.keymap.set("!", "<M-j>", "<Down>")
+-- Todo: be like gj/gk
+-- Problem: if mapped to <C-o>gj/gk, loses the curswant thing on a blank line
+-- which is weird because gj/gk in normal mode don't.
+vim.keymap.set("i", "<C-k>", "<Up>")
+vim.keymap.set("i", "<C-j>", "<Down>")
+
+vim.keymap.set("c", "<M-k>", "<Up>")
+vim.keymap.set("c", "<M-j>", "<Down>")
 
 -- Similar to zsh 'emacs-forward-word':
 -- Go to the next word end (on the whitespace), or if EOL comes first, go to EOL
@@ -184,43 +191,34 @@ vim.keymap.set("i", "<M-S-Enter>", "<M-Enter>", { remap = true })
 vim.keymap.set("!", "<M-1>", "~/")
 vim.keymap.set("!", "<M-2>", "&")
 
- -- Todo: turn this into 'repeat last substitute exactly as it was'
- --       meaning: including range or `%s`, and same flags
--- vim.keymap.set("n", "<M-2>", "g&")
-vim.keymap.set({"n", "x"}, "<M-.>", "@:") -- Repeat last command
+-- }}}
 
 -- Essential keys for both movement and operator pending
 -- (with the worst defaults known to man)
-vim.keymap.set({"n", "x"}, "-", "}")
-vim.keymap.set({"n", "x"}, "_", "{")
-vim.keymap.set({"n", "x", "o"}, "H", "^")
-vim.keymap.set({"n", "x", "o"}, "L", "$")
-vim.keymap.set({"n", "x", "o"}, "gH", "g^")
-vim.keymap.set({"n", "x", "o"}, "gL", "g$")
+vim.keymap.set({"n", "x", "o"}, "H", "g^")
+vim.keymap.set({"n", "x", "o"}, "L", "g$")
+vim.keymap.set({"n", "x", "o"}, "<leader>h", "0")
 
--- Force operator-pending paragraph motion linewise (otherwise almost useless)
-vim.keymap.set("o", "-", "V}")
-vim.keymap.set("o", "_", "V{")
-
--- Remap what the above has overriden
+-- Remap what the above has overridden
 vim.keymap.set("!", "<C-z>", "<C-k>")
-vim.keymap.set({"n", "x", "o"}, "<leader>k", "H")
-vim.keymap.set({"n", "x", "o"}, "<leader><leader>", "M")
-vim.keymap.set({"n", "x", "o"}, "<leader>j", "L")
+vim.keymap.set({"n", "x", "o"}, "gk", "H")
+vim.keymap.set({"n", "x", "o"}, "gg", function()
+    if vim.v.count1 == 1 then
+        vim.cmd("normal! M")
+    else
+        vim.cmd("normal! " .. vim.v.count1 .. "gg")
+    end
+end)
+vim.keymap.set({"n", "x", "o"}, "gj", "L")
 vim.keymap.set({"n", "x"}, "?", "K")
 
--- Shift+g slightly too annoying to press.
--- Enter and Backspace are pressed easily by accident on normal mode, so use Alt, but
--- allow dropping alt in operator-pending.
--- Goes nicely with mini.ai "entire buffer" textobject on Enter.
-vim.keymap.set({"n", "x"}, "<M-Enter>", "G")
-vim.keymap.set({"n", "x"}, "<M-Backspace>", "gg")
-vim.keymap.set("o", "<Enter>", "G")
-vim.keymap.set("o", "<Backspace>", "gg")
+-- Treat wrapped lines the same
+vim.keymap.set({"n", "x", "o"}, "j", "gj")
+vim.keymap.set({"n", "x", "o"}, "k", "gk")
 
--- Experimental
--- 0 requires too much of a reach for how frequently I use it
-vim.keymap.set({"n", "x", "o"}, "<leader>h", "0")
+-- Shift+g slightly too annoying to press
+vim.keymap.set({"n", "x", "o"}, "<leader>j", "G")
+vim.keymap.set({"n", "x", "o"}, "<leader>k", "gg")
 
 -- Spammable buffer navigation
 vim.keymap.set("n", "<C-h>", "<cmd>bp<cr>")
@@ -238,7 +236,7 @@ vim.keymap.set({"n", "x"}, "<M-S-l>", "zl")
 vim.keymap.set({"n", "x"}, "zj", "zt")
 vim.keymap.set({"n", "x"}, "zk", "zb")
 
--- (Never used folds but) swap what was overriden above
+-- (Never used folds but) swap what was overridden above
 vim.keymap.set({"n", "x"}, "zt", "zk")
 vim.keymap.set({"n", "x"}, "zb", "zj")
 
@@ -391,8 +389,8 @@ vim.keymap.set("x", "<", ">gv")
 vim.keymap.set("x", ">", "<gv")
 
 -- Spammable changelist jump + free g; and g, for mini.ai motions
-vim.keymap.set("n", ".", "g;")
-vim.keymap.set("n", ":", "g,")
+vim.keymap.set("n", "-", "g;")
+vim.keymap.set("n", "_", "g,")
 
 -- ~ too hard to press for being so useful
 vim.keymap.set("n", "<M-r>", "v~") -- v to prevent moving (moves 1 right by default)

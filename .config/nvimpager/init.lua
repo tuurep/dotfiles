@@ -103,12 +103,14 @@ vim.keymap.set({"n", "x"}, "q", "<Nop>")
 -- Sneak gets m
 vim.keymap.set("n", "<Ins>", "m")
 
--- Tab to search
+-- Search and commandline remaps
 vim.keymap.set({"n", "x", "o"}, "<Tab>", "/")
 vim.keymap.set({"n", "x", "o"}, "<S-Tab>", "?")
+vim.keymap.set({"n", "x"}, ".", ":")
 
--- : map where hand doesn't move much
-vim.keymap.set({"n", "x"}, "<leader>l", ":")
+-- Repeat last command
+-- Todo: go further in history if it's an exit command
+vim.keymap.set({"n", "x"}, ":", ":<Up><cr>", { silent = true })
 
 -- Remap jumplist maps: <C-i> and <Tab> are the same due to terminal weirdness
 vim.keymap.set("n", "<M-n>", "<C-o>")
@@ -141,17 +143,17 @@ end)
 --     end
 -- })
 
--- Mappings like in zsh line editing
+-- Mappings like in zsh line editing {{{
+vim.keymap.set("c", "<C-h>", "<Left>")
+vim.keymap.set("c", "<C-l>", "<Right>")
+
+vim.keymap.set("c", "<M-h>", "<C-Left>")
+vim.keymap.set("c", "<M-l>", "<C-Right>")
+
 vim.keymap.set("c", "<M-l>", "<C-Right>")
 vim.keymap.set("c", "<M-Space>", "<C-Right>")
 vim.keymap.set("c", "<M-h>", "<C-Left>")
 
--- Todo: nothing like 'emacs-*-word' in insert mode
-vim.keymap.set("c", "<M-h>", "<C-Left>")
-vim.keymap.set("c", "<M-l>", "<C-Right>")
-
-vim.keymap.set("c", "<C-k>", "<Up>")
-vim.keymap.set("c", "<C-j>", "<Down>")
 vim.keymap.set("c", "<M-k>", "<Up>")
 vim.keymap.set("c", "<M-j>", "<Down>")
 
@@ -187,36 +189,34 @@ vim.keymap.set("c", "<C-Space>", "  <Left>")
 -- Weird experimental mappings to enter some of the most annoying-to-type chars
 vim.keymap.set("c", "<M-1>", "~/")
 vim.keymap.set("c", "<M-2>", "&")
-
-vim.keymap.set({"n", "x"}, "<M-.>", "@:") -- Repeat last command
+-- }}}
 
 -- Essential keys for both movement and operator pending
 -- (with the worst defaults known to man)
-vim.keymap.set({"n", "x"}, "-", "}")
-vim.keymap.set({"n", "x"}, "_", "{")
-vim.keymap.set({"n", "x", "o"}, "H", "^")
-vim.keymap.set({"n", "x", "o"}, "L", "$")
-vim.keymap.set({"n", "x", "o"}, "gH", "g^")
-vim.keymap.set({"n", "x", "o"}, "gL", "g$")
+vim.keymap.set({"n", "x", "o"}, "H", "g^")
+vim.keymap.set({"n", "x", "o"}, "L", "g$")
+vim.keymap.set({"n", "x", "o"}, "<leader>h", "0")
 
--- Force operator-pending paragraph motion linewise (otherwise almost useless)
-vim.keymap.set("o", "-", "V}")
-vim.keymap.set("o", "_", "V{")
-
--- Remap what the above has overriden
-vim.keymap.set({"n", "x", "o"}, "<leader>k", "H")
-vim.keymap.set({"n", "x", "o"}, "<leader><leader>", "M")
-vim.keymap.set({"n", "x", "o"}, "<leader>j", "L")
+-- Remap what the above has overridden
+vim.keymap.set("!", "<C-z>", "<C-k>")
+vim.keymap.set({"n", "x", "o"}, "gk", "H")
+vim.keymap.set({"n", "x", "o"}, "gg", function()
+    if vim.v.count1 == 1 then
+        vim.cmd("normal! M")
+    else
+        vim.cmd("normal! " .. vim.v.count1 .. "gg")
+    end
+end)
+vim.keymap.set({"n", "x", "o"}, "gj", "L")
 vim.keymap.set({"n", "x"}, "?", "K")
 
--- (Experimental)
--- Shift+g slightly too annoying to press
-vim.keymap.set({"n", "x", "o"}, "<M-Enter>", "G")
-vim.keymap.set({"n", "x", "o"}, "<M-Backspace>", "gg")
+-- Treat wrapped lines the same
+vim.keymap.set({"n", "x", "o"}, "j", "gj")
+vim.keymap.set({"n", "x", "o"}, "k", "gk")
 
--- Experimental
--- 0 requires too much of a reach for how frequently I use it
-vim.keymap.set({"n", "x"}, "<leader>h", "0")
+-- Shift+g slightly too annoying to press
+vim.keymap.set({"n", "x", "o"}, "<leader>j", "G")
+vim.keymap.set({"n", "x", "o"}, "<leader>k", "gg")
 
 -- (Todo: pager can't handle multiple files as arguments atm)
 -- Spammable buffer navigation
@@ -235,7 +235,7 @@ vim.keymap.set({"n", "x"}, "<M-S-l>", "zl")
 vim.keymap.set({"n", "x"}, "zj", "zt")
 vim.keymap.set({"n", "x"}, "zk", "zb")
 
--- Swap what was overriden above
+-- Swap what was overridden above
 vim.keymap.set({"n", "x"}, "zt", "zk")
 vim.keymap.set({"n", "x"}, "zb", "zj")
 
