@@ -391,6 +391,11 @@
                 <command>flameshot full -p ~/files/pics/screenshots</command>
             </action>
         </keybind>
+        <keybind key="W-plus">
+            <action name="Execute">
+                <command>boomer</command>
+            </action>
+        </keybind>
         <!-- Dunst keybinds (control popup notifications) -->
         <keybind key="W-n">
             <action name="Execute">
