@@ -1,7 +1,9 @@
 sort_by = "position"
 separator_string = "󰧟"  # nf-md-circle_small
 
-overflow_fg_color = "#e8c580"
+inactive_window_fg_color = "#888888"
+separator_fg_color       = "#888888"
+overflow_fg_color        = "#e8c580"
 
 [window_nicknames]
 "TelegramDesktop"           = "telegram"

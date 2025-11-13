@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Must be same as polybar config's foreground-alt
-foreground_alt=#808080
+foreground_alt=#888888
 vpn_off="%{F$foreground_alt} vpn%{F-}"
 
 # Make the module appear immediately

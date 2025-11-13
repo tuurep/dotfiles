@@ -13,7 +13,7 @@ fi
 label="$icon $volume"
 
 if [ "$volume" == 0 ]; then
-    echo "%{F#808080}$label%{F-}"
+    echo "%{F#888888}$label%{F-}"
 else
     echo "$label"
 fi

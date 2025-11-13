@@ -33,7 +33,7 @@ label="$icon $new_volume"
 
 # Update Polybar module with IPC
 if [ "$new_volume" == 0 ]; then
-    polybar-msg action volume send "%{F#808080}$label%{F-}"
+    polybar-msg action volume send "%{F#888888}$label%{F-}"
 else
     polybar-msg action volume send "$label"
 fi
