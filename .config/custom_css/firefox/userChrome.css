@@ -25,19 +25,22 @@
     margin-left: -2px !important;
 }
 
-.tab-close-button, .tab-icon-image, .tab-icon-overlay, .tab-throbber,
+.tab-text, .tab-close-button, .tab-icon-image, .tab-icon-overlay, .tab-throbber,
 button[aria-label="Mute tab"], button[aria-label="Unmute tab"] {
     margin-top: var(--tab-content-offset-top) !important;
 }
 
-.tab-text {
-    padding-top: var(--tab-content-offset-top) !important;
+/* Aligning tab overflow scroll buttons and new-tab-button better */
+/* Use translateY instead of margin because otherwise it messes up on narrow windows */
+#tabs-newtab-button, #new-tab-button {
+    transform: translateY(1px) !important;
 }
-
-#scrollbutton-up > image, #scrollbutton-down > image {
-    margin-top: 3px !important; /* Looks better slightly higher for some reason */
-    height: 14px !important;
-    width: 14px !important;
+#scrollbutton-up > image {
+    transform: translateY(2px) !important;
+}
+#scrollbutton-down > image {
+    /* Adding a transform will flip the arrow, have to flip it back */
+    transform: scaleX(-1) translateY(2px) !important;
 }
 
 /* Set window control icons to what they were before Firefox 140.0 */
