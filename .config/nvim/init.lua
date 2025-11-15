@@ -19,6 +19,11 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     end
 })
 
+-- Copied from Kickstart, which says this makes startup faster
+vim.schedule(function()
+    vim.o.clipboard = "unnamedplus"
+end)
+
 -- Don't show trailing whitespace in insert mode
 vim.api.nvim_create_autocmd({"InsertEnter"}, {
     callback = function()
@@ -37,7 +42,6 @@ vim.opt.fillchars:append("eob:󰧟")    -- nerdicon: nf-md-circle_small
 
 vim.opt.shortmess:append("Ia")
 
-vim.o.clipboard = "unnamedplus"
 vim.o.guicursor = "a:block"
 vim.o.mouse = ""
 
