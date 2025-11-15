@@ -1,10 +1,7 @@
 :root {
     --tab-min-height: 0 !important;
     --tab-content-offset-top: 4px;
-    --toolbarbutton-border-radius: 3px !important;
-    --tab-border-radius: 3px !important;
-    --arrowpanel-border-radius: 3px !important;
-    --arrowpanel-menuitem-border-radius: 3px !important;
+    --border-radius-medium: 3px !important;
 }
 
 /* TAB BAR */
