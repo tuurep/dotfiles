@@ -198,6 +198,7 @@ vim.keymap.set("!", "<M-2>", "&")
 vim.keymap.set({"n", "x", "o"}, "H", "g^")
 vim.keymap.set({"n", "x", "o"}, "L", "g$")
 vim.keymap.set({"n", "x", "o"}, "<leader>h", "0")
+vim.keymap.set({"n", "x", "o"}, "<leader>l", "$")
 
 -- Remap what the above has overridden
 vim.keymap.set("!", "<C-z>", "<C-k>")
