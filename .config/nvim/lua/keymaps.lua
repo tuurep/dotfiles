@@ -13,8 +13,10 @@ vim.keymap.set({"n", "x", "o"}, "<C-u>", "<Nop>")  -- <C-d> is remapped, and <C-
 vim.keymap.set({"n", "x", "o"}, "/", "<Nop>")      -- Tab/S-Tab as search, ? is now :help
 vim.keymap.set("n", "<C-r>", "<Nop>")              -- U as redo
 vim.keymap.set({"n", "x"}, "<C-e>", "<Nop>")       -- <M-s> and <M-d> are remapped as <C-e> and <C-y>
-vim.keymap.set({"n", "x"}, "<Backspace>", "<Nop>")
-vim.keymap.set({"n", "x"}, "0", "<Nop>")           -- <leader>h as 0
+vim.keymap.set({"n", "x", "o"}, "<BS>", "<Nop>")
+vim.keymap.set({"n", "x", "o"}, "0", "<Nop>")      -- <leader>h as 0
+vim.keymap.set({"n", "x", "o"}, "G", "<Nop>")      -- <leader>j as G
+vim.keymap.set({"n", "x"}, "=", "<Nop>")           -- 0 as = (and = for 0$ would not be very useful)
 vim.keymap.set({"n", "x"}, "gJ", "<Nop>")          -- gå for spaceless join, leave gJ and gK
                                                    -- as ideas for vertical movement mappings
 -- Free (but bad):
@@ -212,6 +214,10 @@ vim.keymap.set({"n", "x", "o"}, "gg", function()
 end)
 vim.keymap.set({"n", "x", "o"}, "gj", "L")
 vim.keymap.set({"n", "x"}, "?", "K")
+
+-- Since 0 is free, why not: useful operator with modifier dropped
+vim.keymap.set({"n", "x"}, "0", "=")
+vim.keymap.set({"n", "x"}, "00", "==")
 
 -- Treat wrapped lines the same
 vim.keymap.set({"n", "x"}, "j", "gj")
