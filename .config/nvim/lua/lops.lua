@@ -10,30 +10,16 @@
 -- Helpers
 -- =======
 
--- Todo: most likely can be simplified a lot
-local function get_line_range(vis_mode, n_count_extend)
-    -- Prefer operator marks if set (for operatorfunc / visual)
+local function get_line_range()
     local from = vim.api.nvim_buf_get_mark(0, '[')
     local to = vim.api.nvim_buf_get_mark(0, ']')
 
-    if from and to and from[1] ~= 0 and to[1] ~= 0 then
-        local start_line = from[1] - 1
-        local end_line = to[1]
-        return start_line, end_line
-    end
+    local start_line = from[1] - 1
+    local end_line = to[1]
 
-    -- Otherwise, fallback to what I had before adding dot repeat
-    -- Todo: which of this is necessary and which isn't?
-    local end_line = vim.fn.getpos(".")[2]
-    local start_line = end_line - 1
-
-    if vis_mode then
-        local cursor_line = vim.fn.getpos(".")[2]
-        local other_line = vim.fn.getpos("v")[2]
-        start_line = math.min(cursor_line, other_line) - 1
-        end_line = math.max(cursor_line, other_line)
-    elseif n_count_extend then
-        end_line = start_line + vim.v.count1 - 1
+    -- Edge case: operator used on a blank line
+    if start_line == end_line then
+        end_line = end_line + 1
     end
 
     return start_line, end_line
@@ -43,8 +29,8 @@ end
 -- Store function arguments and read them back in opfuncs
 local opts = {}
 
--- Commands
--- ========
+-- Operators
+-- =========
 
 local M = {}
 
@@ -56,8 +42,7 @@ function M.squeeze_spaces(mode)
         return "g@_"
     end
 
-    local vis_mode = vim.fn.visualmode()
-    local start_line, end_line = get_line_range(vis_mode, false)
+    local start_line, end_line = get_line_range()
     local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line, false)
 
     for i, line in ipairs(lines) do
@@ -76,9 +61,7 @@ function M.wipe_line(mode)
         return "g@_"
     end
 
-    local vis_mode = vim.fn.visualmode()
-    local start_line, end_line = get_line_range(vis_mode, true)
-
+    local start_line, end_line = get_line_range()
     local deleted_lines = vim.api.nvim_buf_get_lines(0, start_line, end_line, false)
     vim.fn.setreg(vim.v.register, deleted_lines)
 
@@ -108,8 +91,7 @@ function M.append_paste(arg)
         return "g@l"
     end
 
-    local vis_mode = vim.fn.visualmode()
-    local start_line, end_line = get_line_range(vis_mode, false)
+    local start_line, end_line = get_line_range()
     local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line, false)
 
     local reg = vim.fn.getreg(vim.v.register)
@@ -154,8 +136,7 @@ function M.delete_last_char(mode)
         return "g@l"
     end
 
-    local vis_mode = vim.fn.visualmode()
-    local start_line, end_line = get_line_range(vis_mode, false)
+    local start_line, end_line = get_line_range()
     local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line, false)
 
     for i = 1, #lines do
@@ -182,17 +163,11 @@ function M.surround_with_blanklines(mode)
         return "g@l"
     end
 
-    local vis_mode = vim.fn.visualmode()
-    local start_line, end_line = get_line_range(vis_mode, false)
+    local start_line, end_line = get_line_range()
 
     local blanklines = {}
     for _ = 1, vim.v.count1 do
         table.insert(blanklines, "")
-    end
-
-    -- An edge case when current line is blank
-    if #vim.fn.getline(".") == 0 then
-        end_line = end_line + 1
     end
 
     vim.api.nvim_buf_set_lines(0, end_line, end_line, false, blanklines)
