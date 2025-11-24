@@ -103,12 +103,12 @@ function M.append_paste(arg)
         for i = 1, #lines do
             local line = lines[i]
             for _ = 1, vim.v.count1 do
-                -- First trim any existing trailing whitespace
-                -- Having one space there fresh out of insert mode is surprisingly common
-                line = line:gsub("%s*$", "")
 
                 local space
-                if opts.join_by_space and line ~= "" then
+                if opts.join_by_space and not line:match("^%s*$") then
+                    -- Trim any existing trailing whitespace: having one space there fresh
+                    -- out of insert mode is surprisingly common
+                    line = line:gsub("%s*$", "")
                     space = " "
                 else
                     space = ""
