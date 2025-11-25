@@ -13,7 +13,7 @@ vim.keymap.set("!", "<M-f>", "function()end<Left><Left><Left>")
 vim.b.minisurround_config = {
     custom_surroundings = {
         ["F"] = {
-            input = { "function%(%)%s*().-()%s*end" },
+            input = { "function%(.-%)%s*().-()%s*end" },
 
             -- Todo: spaces are terrible in linewise surround
             -- But it's a larger problem, and why we have distinct `)` and `(`,
@@ -25,7 +25,7 @@ vim.b.minisurround_config = {
 
 vim.b.miniai_config = {
     custom_textobjects = {
-        ["F"] = { "function%(%)%s*().-()%s*end" }
+        ["F"] = { "function%(.-%)%s*().-()%s*end" }
     }
 }
 

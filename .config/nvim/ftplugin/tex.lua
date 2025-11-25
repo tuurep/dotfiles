@@ -34,7 +34,7 @@ vim.keymap.set("!", "<M-f>", "\\begin{}\\end{}<Left><Left><Left><Left><Left><Lef
 vim.b.minisurround_config = {
     custom_surroundings = {
         ["f"] = {
-            input = { "\\begin{%a*}%s*().-()%s*\\end{%a*}" },
+            input = { "\\begin{.-}%s*().-()%s*\\end{.-}" },
             output = { left = "\\begin{}", right = "\\end{}" }
         }
     }
@@ -59,6 +59,6 @@ vim.b.minisurround_config = {
 
 vim.b.miniai_config = {
     custom_textobjects = {
-        ["f"] = { "\\begin{%a*}%s*().-()%s*\\end{%a*}" }
+        ["f"] = { "\\begin{.-}%s*().-()%s*\\end{.-}" }
     }
 }
