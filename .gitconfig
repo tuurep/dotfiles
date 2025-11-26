@@ -12,14 +12,19 @@
     d = diff
     ds = diff --staged
     rs = restore --staged
+    l = log
+    f = fetch
     r = remote
     b = branch
     co = checkout
-    l = log
+    rb = rebase
 
 [pull]
     ff = only
     prune = true
+
+[push]
+    autoSetupRemote = true
 
 [fetch]
     prune = true
