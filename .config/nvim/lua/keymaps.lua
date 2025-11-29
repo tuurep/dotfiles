@@ -322,20 +322,37 @@ vim.keymap.set({"n", "x"}, "<C-q>", "<cmd>q<cr>")
 
 -- Replace builtin J with an equivalent that takes a motion
 -- (meaning I won't find a new mapping for J because it's that much worse)
--- (note: these functions are global)
-function J_motion(type)
+_G.J_motion = function(type)
     vim.cmd("'[,']join")
 end
-function gJ_motion(type)
+_G.gJ_motion = function(type)
     vim.cmd("'[,']join!")
 end
 vim.keymap.set("n", "å", "<cmd>set opfunc=v:lua.J_motion<cr>g@")
 vim.keymap.set("n", "gå", "<cmd>set opfunc=v:lua.gJ_motion<cr>g@")
-vim.keymap.set("n", "åå", function()
-    vim.api.nvim_feedkeys("å" .. vim.v.count1 .. "j", "m", true)
-end)
 vim.keymap.set("x", "å", "J")
 vim.keymap.set("x", "gå", "gJ")
+vim.cmd([[
+    " Lua version got too confusing
+    nnoremap <expr> åå "<cmd>set opfunc=v:lua.J_motion<cr>" .. v:count1 .. "g@j"
+    nnoremap <expr> gåå "<cmd>set opfunc=v:lua.gJ_motion<cr>" .. v:count1 .. "g@j"
+]])
+
+-- This is https://github.com/tommcdo/vim-nowchangethat
+-- Had trouble converting it to lua: it would insert the literal text "<C-a><Esc>
+vim.cmd([[
+    function! s:repeat_insert(mode)
+        if a:mode ==# "line"
+            execute "normal! '[V']c\<C-a>\<Esc>"
+        else
+            execute "normal! `[v`]c\<C-a>\<Esc>"
+        endif
+    endfunction
+
+    nnoremap dq <cmd>set opfunc=<sid>repeat_insert<cr>g@
+    nnoremap dQ <cmd>set opfunc=<sid>repeat_insert<cr>g@$
+    nnoremap <expr> dqq "<cmd>set opfunc=<sid>repeat_insert<cr>" .. v:count1 .. "g@_"
+]])
 
 -- Line operators (lops)
 -- Text editing commands that properly handle counts, visual selections and dot repeats

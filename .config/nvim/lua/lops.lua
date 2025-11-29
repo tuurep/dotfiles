@@ -36,8 +36,8 @@ local M = {}
 
 -- Reduce all consecutive whitespace sections to 1 space
 -- Ignoring leading whitespace (indent) and stripping trailing whitespaces
-function M.squeeze_spaces(mode)
-    if mode == nil then
+function M.squeeze_spaces(type)
+    if type == nil then
         vim.o.operatorfunc = "v:lua.require'lops'.squeeze_spaces"
         return "g@_"
     end
@@ -55,8 +55,8 @@ end
 
 -- Like dd but leave a blank line
 -- For visual selection, delete lines and leave one blank line
-function M.wipe_line(mode)
-    if mode == nil then
+function M.wipe_line(type)
+    if type == nil then
         vim.o.operatorfunc = "v:lua.require'lops'.wipe_line"
         return "g@_"
     end
@@ -76,7 +76,7 @@ end
 -- Count to duplicate the append (per line in visual selection)
 --
 -- The argument handling is weird
--- When called as (?) the opfunc, what we actually get is the "mode" arg, which is one of:
+-- When called as (?) the opfunc, what we actually get is the "type" arg, which is one of:
 --     - "line"
 --     - "char"
 --     - "block"
@@ -130,8 +130,8 @@ end
 
 -- Delete last character in line (or all selected lines)
 -- With count, deletes [count] last characters in line(s)
-function M.delete_last_char(mode)
-    if mode == nil then
+function M.delete_last_char(type)
+    if type == nil then
         vim.o.operatorfunc = "v:lua.require'lops'.delete_last_char"
         return "g@l"
     end
@@ -157,8 +157,8 @@ end
 
 -- Add a blank newline above and below current line or selection
 -- With count, adds more blanklines
-function M.surround_with_blanklines(mode)
-    if mode == nil then
+function M.surround_with_blanklines(type)
+    if type == nil then
         vim.o.operatorfunc = "v:lua.require'lops'.surround_with_blanklines"
         return "g@l"
     end
