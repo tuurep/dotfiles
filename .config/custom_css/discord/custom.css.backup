@@ -33,6 +33,6 @@ a[data-list-item-id$="___shop"] {
 
 /* Hide donation reminder with weeaboo content */
 
-.vc-settings-donate {
+.vc-special-card:has(.vc-donate-button) {
     display: none !important;
 }
