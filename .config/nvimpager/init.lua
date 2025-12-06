@@ -20,7 +20,8 @@ vim.opt.runtimepath:append("~/projects/vim-sneak")      -- todo: experimentation
 vim.opt.runtimepath:append("~/projects/vim-wordmotion") -- done some fixes
 
 vim.g.loaded_netrwPlugin = 0 -- When unloading netrw, `nvimpager <dir>` shows a blank buffer in pager mode
-vim.g.loaded_matchparen = 0
+-- vim.g.loaded_matchparen = 0
+vim.api.nvim_set_hl(0, "MatchParen", { link = "None" }) -- Workaround for Sneak problems
 
 vim.cmd.colorscheme("goodnight-pager")
 

@@ -129,7 +129,12 @@ vim.treesitter.language.register("bash", "PKGBUILD")
 
 -- Disable builtin plugins
 vim.g.loaded_netrwPlugin = 0
-vim.g.loaded_matchparen = 0
+
+-- Hate matchparen: it looks like noise
+-- For some reason, disabling it causes issues with Sneak
+-- As a workaround, leave enabled but make highlights look like nothing
+-- vim.g.loaded_matchparen = 0
+vim.api.nvim_set_hl(0, "MatchParen", { link = "None" })
 
 -- Where plugins?
 -- See ./lua/update/plugins.lua
