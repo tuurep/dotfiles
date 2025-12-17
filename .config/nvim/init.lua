@@ -2,9 +2,8 @@
 -- https://github.com/neovim/neovim/commit/2257ade3dc2daab5ee12d27807c0b3bcf103cd29
 vim.loader.enable()
 
-vim.opt.rtp:append("~/projects/registereditor") -- todo: PR reviews
+vim.opt.rtp:append("~/projects/registereditor") -- todo: PR
 vim.opt.rtp:append("~/projects/mini.ai")        -- todo: rework motions
-vim.opt.rtp:append("~/projects/vim-sneak")      -- todo: experimentation
 vim.opt.rtp:append("~/projects/vim-wordmotion") -- done some fixes
 
 vim.cmd.colorscheme("goodnight")

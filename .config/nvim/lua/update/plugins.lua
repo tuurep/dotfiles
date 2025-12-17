@@ -19,7 +19,7 @@ local paq = require("paq") {
     "tuurep/vim-lion",            -- tommcdo/vim-lion fork
     "nvim-mini/mini.move",
     "haya14busa/vim-edgemotion",
-    -- { "tuurep/vim-sneak", branch = "dev" }, -- justinmk/vim-sneak fork
+    { "tuurep/vim-sneak", branch = "dev" }, -- justinmk/vim-sneak fork
 
     -- Textobjects stuff
     "nvim-treesitter/nvim-treesitter-textobjects",
