@@ -8,7 +8,6 @@ vim.keymap.set({"n", "x", "o"}, "<Up>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<Down>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<Left>", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<Right>", "<Nop>")
-vim.keymap.set({"n", "x", "o"}, "+", "<Nop>")
 vim.keymap.set({"n", "x", "o"}, "<C-u>", "<Nop>")  -- <C-d> is remapped, and <C-j> <C-k> preferred for scrolling
 vim.keymap.set({"n", "x", "o"}, "/", "<Nop>")      -- Tab/S-Tab as search, ? is now :help
 vim.keymap.set("n", "<C-r>", "<Nop>")              -- U as redo
@@ -433,6 +432,46 @@ vim.keymap.set({"n", "x"}, "¤", function()
     end
 end)
 
+-- ===== LSP =====
+
+-- Considered 'grd' for consistency but it's a fairly awkward sequence to press.
+-- I find builtin 'gd' not very useful tbh...? Don't really care about overriding it.
+-- Question:
+-- How do <C-]> and vim.lsp.buf.definition compare?
+vim.keymap.set({"n", "x"}, "gd", "<C-]>")
+
+vim.keymap.set({"n", "x"}, "+", vim.lsp.buf.hover)
+
+vim.keymap.set("i", "<M-j>", function()
+    if vim.o.omnifunc == "" then
+        return "<C-n>"
+    elseif vim.fn.pumvisible() ~= 0 then
+        return "<C-n>"
+    else
+        return "<C-x><C-o>"
+    end
+end, { expr = true })
+
+vim.keymap.set("i", "<M-k>", function()
+    if vim.fn.pumvisible() ~= 0 then
+        return "<C-p>"
+    end
+end, { expr = true })
+
+-- Accept (explicitly)
+vim.keymap.set("i", "<cr>", function()
+    return vim.fn.pumvisible() ~= 0 and "<C-y>" or "<CR>"
+end, { expr = true})
+
+-- Cancel
+vim.keymap.set("i", "<Esc>", function()
+    local info = vim.fn.complete_info()
+    if info.pum_visible ~= 0 and info.selected > -1 then
+        return "<C-e>"
+    end
+    return "<Esc>"
+end, { expr = true })
+
 -- ===== PLUGINS =====
 
 -- vim-repeat stupid workarounds
@@ -459,7 +498,6 @@ MiniSplitjoin.setup({
 })
 
 -- mini.operators
-
 require("mini.operators").setup({
     replace  = { prefix = "dp", selection = "p" },
     exchange = { prefix = "cx", selection = "x", cancel = "<Esc>" },

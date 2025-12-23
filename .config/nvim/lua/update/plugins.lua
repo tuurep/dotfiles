@@ -3,8 +3,8 @@
 local paq = require("paq") {
     "savq/paq-nvim", -- Updates self
 
-    -- Syntax highlighting
     "nvim-treesitter/nvim-treesitter",
+    "neovim/nvim-lspconfig",
 
     -- Essential:
     "tpope/vim-repeat",
