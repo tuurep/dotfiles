@@ -23,14 +23,28 @@ configuration {
     drun-match-fields: "name";
     window-match-fields: "class,title";
 
-    // Set these keybinds to free Ctrl+j and Ctrl+k from defaults
-    kb-remove-to-eol: "Control+p";
-    kb-accept-entry: "Return";
-
-    // Custom keybindings
+    // Keybinds
     kb-delete-entry: "Shift+Delete,Control+q";
     kb-row-down: "Down,Control+j,Alt+j";
     kb-row-up: "Up,Control+k,Alt+k";
+
+    // Imitate ZLE keybinds
+    kb-remove-word-back: "Alt+w";
+    kb-remove-word-forward: "Control+w";
+    kb-remove-to-sol: "Alt+u";
+    kb-remove-to-eol: "Control+u";
+    kb-clear-line: "Alt+U";
+    kb-move-word-back: "Alt+h";
+    kb-move-word-forward: "Alt+l";
+    kb-move-front: "Control+a,Alt+H";
+    kb-move-end: "Control+e,Alt+L";
+    kb-move-char-back: "Left,Control+h";
+    kb-move-char-forward: "Right,Control+l";
+
+    // Fix conflicting defaults
+    kb-accept-entry: "Return";        // Conflict: Ctrl+j
+    kb-remove-char-back: "BackSpace"; // Conflict: Ctrl+h
+    kb-mode-complete: "";             // Conflict: Ctrl+l
 }
 
 @theme "goodnight"
