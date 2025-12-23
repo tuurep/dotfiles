@@ -120,6 +120,8 @@ alias vivaldi-stable="vivaldi-stable --class=Vivaldi"
 alias vivaldi="vivaldi-stable"
 alias yt-dlp="yt-dlp --cookies-from-browser firefox"
 
+alias ncu="nmcli connection up 11t" # n c u 11t
+
 # Workaround `isbnlib` deprecation warning every time command is ran
 export PYTHONWARNINGS="ignore"
 alias pap="papis"
