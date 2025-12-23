@@ -265,6 +265,11 @@ vim.keymap.set({"n", "x"}, "zb", "zj")
 --            passing through eventually. Would be nice to ignore folded lines
 --            completely.
 --            See `:h foldclosed`
+--      Really seems quite bad performance-wise:
+--          - Especially noticeable when binding mousescroll to scroll(1).
+--          - And on top of that, cursor makes some noisy jumps.
+--          - This calls for a rework of the whole thing, eventually.
+--      Take a look at https://github.com/Saghen/filler-begone.nvim (quite related)
 
 local function scroll(distance)
     local top = vim.fn.line("w0")
@@ -314,6 +319,34 @@ vim.keymap.set({"n", "x", "o"}, "<C-j>", function() scroll(12) end)
 vim.keymap.set({"n", "x", "o"}, "<C-k>", function() scroll(-12) end)
 vim.keymap.set({"n", "x", "o"}, "<C-M-j>", function() scroll(1) end)
 vim.keymap.set({"n", "x", "o"}, "<C-M-k>", function() scroll(-1) end)
+
+-- Mouse: Enable basic scrolling, disable most of everything else
+-- Todo: can't seem to disable cmdline mode scroll mappings
+-- Todo: you can see the cursor flying to erratic places briefly when spamming scroll(1)
+-- Todo: clearly I should find a way to first disable every default mouse mapping
+--       and then map what I want
+vim.keymap.set({"n", "x", "o" }, "<ScrollWheelDown>", function() scroll(1) end)
+vim.keymap.set({"n", "x", "o" }, "<ScrollWheelUp>", function() scroll(-1) end)
+vim.keymap.set({"n", "x", "o" }, "<C-ScrollWheelDown>", function() scroll(6) end)
+vim.keymap.set({"n", "x", "o" }, "<C-ScrollWheelUp>", function() scroll(-6) end)
+vim.keymap.set("i", "<ScrollWheelUp>", "<Nop>") -- Todo: would be okay/useful if it didn't move the cursor
+vim.keymap.set("i", "<ScrollWheelDown>", "<Nop>")
+vim.keymap.set({"n", "x", "o", "i" }, "<ScrollWheelRight>", "<Nop>")
+vim.keymap.set({"n", "x", "o", "i" }, "<ScrollWheelLeft>", "<Nop>")
+vim.keymap.set({"n", "x", "o", "i" }, "<C-ScrollWheelRight>", "<Nop>")
+vim.keymap.set({"n", "x", "o", "i" }, "<C-ScrollWheelLeft>", "<Nop>")
+vim.keymap.set({"n", "x", "o", "i" }, "<LeftMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o", "i" }, "<2-LeftMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o", "i" }, "<3-LeftMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o", "i" }, "<4-LeftMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o", "i" }, "<RightMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o", "i" }, "<2-RightMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o", "i" }, "<3-RightMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o", "i" }, "<4-RightMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o", "i" }, "<MiddleMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o", "i" }, "<2-MiddleMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o", "i" }, "<3-MiddleMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o", "i" }, "<4-MiddleMouse>", "<Nop>")
 
 -- One-handed save and quit
 vim.keymap.set({"n", "x"}, "<C-s>", "<cmd>w<cr>")

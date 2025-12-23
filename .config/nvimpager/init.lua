@@ -34,7 +34,6 @@ vim.opt.shortmess:prepend("Ia")
 vim.opt.fillchars:prepend("eob:󰧟")
 
 vim.o.guicursor = "a:block"
-vim.o.mouse = ""
 
 vim.opt.jumpoptions:append("view")
 
@@ -295,6 +294,28 @@ vim.keymap.set({"n", "x", "o"}, "<C-j>", function() scroll(12) end)
 vim.keymap.set({"n", "x", "o"}, "<C-k>", function() scroll(-12) end)
 vim.keymap.set({"n", "x", "o"}, "<C-M-j>", function() scroll(1) end)
 vim.keymap.set({"n", "x", "o"}, "<C-M-k>", function() scroll(-1) end)
+
+-- Mouse: Enable basic scrolling, disable most of everything else
+vim.keymap.set({"n", "x", "o" }, "<ScrollWheelDown>", function() scroll(1) end) -- Todo: abysmal performance in diff views?
+vim.keymap.set({"n", "x", "o" }, "<ScrollWheelUp>", function() scroll(-1) end)
+vim.keymap.set({"n", "x", "o" }, "<C-ScrollWheelDown>", function() scroll(6) end)
+vim.keymap.set({"n", "x", "o" }, "<C-ScrollWheelUp>", function() scroll(-6) end)
+vim.keymap.set({"n", "x", "o" }, "<ScrollWheelRight>", "<Nop>")
+vim.keymap.set({"n", "x", "o" }, "<ScrollWheelLeft>", "<Nop>")
+vim.keymap.set({"n", "x", "o" }, "<C-ScrollWheelRight>", "<Nop>")
+vim.keymap.set({"n", "x", "o" }, "<C-ScrollWheelLeft>", "<Nop>")
+vim.keymap.set({"n", "x", "o" }, "<LeftMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o" }, "<2-LeftMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o" }, "<3-LeftMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o" }, "<4-LeftMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o" }, "<RightMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o" }, "<2-RightMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o" }, "<3-RightMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o" }, "<4-RightMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o" }, "<MiddleMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o" }, "<2-MiddleMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o" }, "<3-MiddleMouse>", "<Nop>")
+vim.keymap.set({"n", "x", "o" }, "<4-MiddleMouse>", "<Nop>")
 
 -- One-handed quit
 vim.keymap.set({"n", "x"}, "<C-q>", "<cmd>q<cr>")

@@ -42,7 +42,6 @@ vim.opt.fillchars:append("eob:󰧟")    -- nerdicon: nf-md-circle_small
 vim.opt.shortmess:append("Ia")
 
 vim.o.guicursor = "a:block"
-vim.o.mouse = ""
 
 vim.opt.jumpoptions:append("view")
 
