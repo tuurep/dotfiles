@@ -464,6 +464,10 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
     --prompt=" " --pointer="│" --marker="" --wrap-sign="        󱞩 "
     --separator=" " --info=inline-right
     --bind alt-j:down,alt-k:up,§:toggle-wrap
+    --bind alt-w:backward-kill-subword,ctrl-w:kill-subword
+    --bind alt-u:unix-line-discard,ctrl-u:kill-line,alt-U:clear-query
+    --bind alt-h:backward-subword,alt-l:forward-subword,ctrl-h:backward-char,ctrl-l:forward-char
+    --bind alt-H:beginning-of-line,alt-L:end-of-line
 '
 export _ZO_FZF_OPTS=$FZF_DEFAULT_OPTS'
     --height=~40% --no-sort --select-1 --exit-0
