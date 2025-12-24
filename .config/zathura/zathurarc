@@ -36,18 +36,18 @@ unmap [index] <Tab> # Weird behavior: now pressing tab in index mode starts
                     # Todo:
                     # How to enable search in index?
 
-# Todo: wanted to use <A-n> and <S-A-n>, but apparently double modifier is not possible?
-# Compromise: use , and ; as in nvim these are for 'changelist' jumps and zathura doesn't have that concept
-map , jumplist backward
-map ; jumplist forward
+map <A-n> jumplist backward
+map <A-N> jumplist forward
 
-# Default <C-j> and <C-k> keybinds are reduntant IMO:
+# Default <C-j> and <C-k> keybinds are redundant IMO:
 # "Bisect forward and backward between the last two jump points"
-map <C-j> scroll full-down 
+map <C-j> scroll full-down
 map <C-k> scroll full-up
 
-map <A-Return> goto bottom
-map <A-BackSpace> goto top
+# Todo:
+# Is a prefixed mapping like this impossible in Zathura?
+# map <Space>j goto bottom
+# map <Space>k goto top
 
 # goodnight colors:
 
