@@ -391,6 +391,11 @@
                 <command>flameshot full -p ~/files/pics/screenshots</command>
             </action>
         </keybind>
+        <keybind key="W-Print">
+            <action name="Execute">
+                <command>~/scripts/ob/copy-text-from-screenshot</command>
+            </action>
+        </keybind>
         <keybind key="W-plus">
             <action name="Execute">
                 <command>boomer</command>
