@@ -9,7 +9,7 @@ vim.opt_local.linebreak = true
 
 -- Todo:
 --   - dot repeat only repeats the `gw`
---   - if end is at lower indent than start, inserts '> ' in the middle of text
+--   - if end is at lower indent than start, inserts "> " in the middle of text
 --      - (note: this may be an unreasonable use case)
 
 _G.format_into_blockquote = function(type)
@@ -30,6 +30,11 @@ _G.format_into_blockquote = function(type)
     vim.o.textwidth = save_tw - 2
     vim.cmd("normal! '[gw']")
     vim.o.textwidth = save_tw
+
+    -- Alternative idea using GNU fmt:
+    -- vim.cmd("'[,']!fmt -w " .. vim.o.textwidth - 1)
+    -- Could be then piped to sed to prepend "> " to lines, making all of this a oneliner
+    -- Problem: in some subtle ways, it doesn't quite reflow the same way as `gw`
 
     local formatted_text_end = vim.api.nvim_buf_get_extmark_by_id(0, mark_ns, mark_id, {})
     local lines = vim.api.nvim_buf_get_lines(0, motion_start[1] - 1, formatted_text_end[1], false)
