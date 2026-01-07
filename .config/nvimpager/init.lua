@@ -217,9 +217,24 @@ end)
 vim.keymap.set({"n", "x", "o"}, "gj", "L")
 vim.keymap.set({"n", "x"}, "?", "K")
 
--- Treat wrapped lines the same
-vim.keymap.set({"n", "x"}, "j", "gj")
-vim.keymap.set({"n", "x"}, "k", "gk")
+-- j/k traverses soft-wrapped lines
+-- unless in Visual Line mode where that's quite bad
+vim.keymap.set("n", "j", "gj")
+vim.keymap.set("n", "k", "gk")
+vim.keymap.set("x", "j", function()
+    if vim.api.nvim_get_mode().mode == "V" then
+        return "j"
+    else
+        return "gj"
+    end
+end, { expr = true })
+vim.keymap.set("x", "k", function()
+    if vim.api.nvim_get_mode().mode == "V" then
+        return "k"
+    else
+        return "gk"
+    end
+end, { expr = true })
 
 -- Shift+g slightly too annoying to press
 vim.keymap.set({"n", "x", "o"}, "<leader>j", "G")
