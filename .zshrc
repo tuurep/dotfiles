@@ -23,10 +23,12 @@ precmd() {
     title=$(basename "${PWD/#$HOME/~}")
     echo -ne "\033]0;${title}\007" # Set WM window title
 
-    # If python-virtualenv activated, print venv name on a separate line before PS1
+    # Python-venv indicator at the right side of the window
     if [[ -n "$VIRTUAL_ENV" ]]; then
         venv=$(basename "$VIRTUAL_ENV")
-        echo -e "\e[0;32m(${venv})\e[0m"
+        RPROMPT="%F{green}(${venv})%f"
+    else
+        RPROMPT=""
     fi
 }
 
