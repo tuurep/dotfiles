@@ -51,5 +51,8 @@ add-file-name =     {%% if doc["author_list"] %%}{{ doc["author_list"][0]["famil
 notes-name =        {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"] }}{%% else %%}{{ doc["publisher"] }}{%% endif %%}{{ doc["year"] }}.md
 ref-format =        {%% if doc["author_list"] %%}{{ doc["author_list"][0]["family"].lower() }}{%% else %%}{{ doc["publisher"].lower() }}{%% endif %%}{{ doc["year"] }}
 
+completion-help-format = {{ doc["title"] }}
+prefix-only-completions = true
+
 ref-word-separator = -
 notes-template = ~/.config/papis/notes-template.md
