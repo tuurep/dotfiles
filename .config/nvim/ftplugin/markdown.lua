@@ -12,6 +12,14 @@ vim.opt_local.linebreak = true
 --   - if end is at lower indent than start, inserts "> " in the middle of text
 --      - (note: this may be an unreasonable use case)
 
+-- Alternative idea using GNU fmt:
+-- vim.cmd("'[,']!fmt -w " .. vim.o.textwidth - 1)
+-- Could be then piped to sed to prepend "> " to lines, making all of this a oneliner
+-- Problem: in some subtle ways, it doesn't quite reflow the same way as `gw`
+
+-- Maybe could be worth writing the text reflow by hand in Lua?
+-- Would this fix dot repeat too?
+
 _G.format_into_blockquote = function(type)
     if type == nil then
         vim.o.operatorfunc = "v:lua.format_into_blockquote"
@@ -26,15 +34,12 @@ _G.format_into_blockquote = function(type)
     local mark_id = vim.api.nvim_buf_set_extmark(0, mark_ns, motion_end[1], -1, {})
 
     -- Reduce tw for format so that we don't have to format *again* after inserting "> "
+    -- Q: Why not just do the `gw` last? (Wouldn't need to use the extmark either)
+    -- A: For a paragraph in a list, it fails to reinsert the "> " on each split line.
     local save_tw = vim.o.textwidth
     vim.o.textwidth = save_tw - 2
     vim.cmd("normal! '[gw']")
     vim.o.textwidth = save_tw
-
-    -- Alternative idea using GNU fmt:
-    -- vim.cmd("'[,']!fmt -w " .. vim.o.textwidth - 1)
-    -- Could be then piped to sed to prepend "> " to lines, making all of this a oneliner
-    -- Problem: in some subtle ways, it doesn't quite reflow the same way as `gw`
 
     local formatted_text_end = vim.api.nvim_buf_get_extmark_by_id(0, mark_ns, mark_id, {})
     local lines = vim.api.nvim_buf_get_lines(0, motion_start[1] - 1, formatted_text_end[1], false)
