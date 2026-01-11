@@ -111,10 +111,10 @@ alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias sauce="source ~/.zshrc"
 alias page="nvimpager"
 
-alias py="python"
 alias jl="julia"
 alias sc="shellcheck"
 alias vg="valgrind"
+alias py="python"
 alias pipx="USE_EMOJI=0 pipx"
 
 alias ff="firefox"
@@ -281,6 +281,23 @@ clone() {
             echo "Usage: clone <author>/<reponame> [<directory>]"
             ;;
     esac
+}
+
+# Activate python venv
+activate() {
+    if [ -n "$1" ]; then
+        . "$1/bin/activate"
+        return
+    elif [ -f venv/bin/activate ]; then
+        . "venv/bin/activate"
+        return
+    elif [ -f .venv/bin/activate ]; then
+        . ".venv/bin/activate"
+        return
+    else
+        echo "Not found: venv or .venv"
+        return 1
+    fi
 }
 
 # tree with the box-drawing characters and end report turned into a dimmed fg color
