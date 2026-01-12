@@ -1,7 +1,18 @@
-#!/bin/sh
+#!/bin/bash
 
-# battery-combined-udev with slight modifications
+# A modification on battery-combined-udev:
 # https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/battery-combined-udev
+#
+# With a flag that can turn on "caffeinate" mode
+# (screen not allowed to turn off on inactivity)
+
+# "goodnight" red, but brighter to look more legible on lighter Polybar background
+# (vs. terminal background)
+red="#f07575"
+yellow="#e8c580"
+
+path_pid="/tmp/polybar-battery.pid"
+caffeinate_status="$HOME/.config/polybar/scripts/battery/caffeinate_status"
 
 battery_print() {
     PATH_AC="/sys/class/power_supply/AC"
@@ -40,9 +51,16 @@ battery_print() {
     battery_percent=$(("$battery_level * 100"))
     battery_percent=$(("$battery_percent / $battery_max"))
 
-    if [ "$ac" -eq 1 ]; then
-        icon=""
-        echo "$icon $battery_percent"
+    if [ -f "$caffeinate_status" ] && [ "$(cat "$caffeinate_status")" -eq 1 ]; then
+        label="󰅶 $battery_percent"
+        if [ "$battery_percent" -le 10 ]; then
+            echo "%{F$red}$label%{F-}"
+        else
+            echo "%{F$yellow}$label%{F-}"
+        fi
+    elif [ "$ac" -eq 1 ]; then
+        label=" $battery_percent"
+        echo "$label"
     else
         if [ "$battery_percent" -ge 90 ]; then
             icon="󰁹"
@@ -69,27 +87,32 @@ battery_print() {
         label="$icon $battery_percent"
 
         if [ "$battery_percent" -le 10 ]; then
-
-            # "goodnight" red, but brighter to look more legible on lighter
-            # Polybar background (vs. terminal background)
-            echo "%{F#f07575}$label%{F-}"
-
+            echo "%{F$red}$label%{F-}"
         elif [ "$battery_percent" -le 20 ]; then
-
-            # "goodnight" yellow
-            echo "%{F#e8c580}$label%{F-}"
-
+            echo "%{F$yellow}$label%{F-}"
         else
             echo "$label"
         fi
     fi
 }
 
-path_pid="/tmp/polybar-battery-combined-udev.pid"
-
+# Entry point
 case "$1" in
+    --toggle-caffeinate)
+        if [ ! -f "$caffeinate_status" ] || [ "$(cat "$caffeinate_status")" -eq 0 ]; then
+            # See: https://bbs.archlinux.org/viewtopic.php?id=267560
+            xset s off -dpms
+            echo 1 > "$caffeinate_status"
+        else
+            xset s on dpms
+            echo 0 > "$caffeinate_status"
+        fi
+
+        "$0" --update
+        exit 0
+        ;;
     --update)
-        pid=$(cat $path_pid)
+        pid="$(cat "$path_pid")"
 
         if [ "$pid" != "" ]; then
             kill -10 "$pid"
@@ -106,6 +129,9 @@ case "$1" in
         # If there was a good reason it had to be "echo", reconsider.
         trap "battery_print" USR1
 
+        # Todo: could this be an IPC module instead?
+        # Need: "polybar-msg something something" every time battery goes down/up
+        # Look into udev rules: https://wiki.archlinux.org/title/Laptop#udev
         while true; do
             battery_print
 
