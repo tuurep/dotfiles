@@ -52,17 +52,30 @@ vim.keymap.set("n", "<M-S-n>", "<C-i>")
 vim.keymap.set("n", "<leader><Tab>", ":%s/")
 vim.keymap.set("x", "<leader><Tab>", ":s/")
 
-vim.keymap.set("n", "<leader><Enter>", function()
-    local path = vim.fn.expand("%")
-    local tildepath = vim.fn.fnamemodify(path, ":p:~")
-    if vim.fn.bufname() == "" then
-        tildepath = tildepath .. "[No Name]"
-    end
-    vim.api.nvim_echo({{tildepath}}, false, {}) -- current buffer full path
-end)                                            -- $HOME as ~
+-- Echo paths:
+--     1. directory the file being edited is in
+--     2. the whole path for the file being edited
+-- 
+-- (dirvish will traverse to the directory with <C-PageUp>)
 
-vim.keymap.set("n", "<leader><Backspace>",
-    "<cmd>echo fnamemodify(getcwd(), ':p:~')<cr>") -- pwd but with tilde
+vim.keymap.set("n", "<PageUp>", function()
+    if vim.fn.bufname() == "" then
+        local path = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:~")
+        vim.api.nvim_echo({{path}}, false, {})
+        return
+    end
+    local path = vim.fn.expand("%:p:~:h") .. "/"
+    vim.api.nvim_echo({{path}}, false, {})
+end)
+vim.keymap.set("n", "<PageDown>", function()
+    if vim.fn.bufname() == "" then
+        local path = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:~")
+        vim.api.nvim_echo({{path .. "[No Name]"}}, false, {})
+        return
+    end
+    local path = vim.fn.expand("%:p:~")
+    vim.api.nvim_echo({{path}}, false, {})
+end)
 
 -- Esc to clear cmdline text
 -- Workaround for sneak: my mapping wouldn't allow sneak to quit with <Esc> when it's
