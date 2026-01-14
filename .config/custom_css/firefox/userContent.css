@@ -25,6 +25,8 @@
 /* Firefox's PDF viewer */
 @-moz-document regexp(".+\\.pdf$") {
     .textLayer .highlight {
+        /* Search highlight colors (yellow and orange) */
+        /* More saturated/extreme than normal because it requires transparency in PDF viewer */
         --highlight-bg-color:          rgb(255, 255, 0,  0.5) !important;
         --highlight-selected-bg-color: rgb(255, 150, 50, 0.5) !important;
     }

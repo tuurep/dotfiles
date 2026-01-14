@@ -90,7 +90,6 @@ set index-bg                "#0d0d0d"
 set index-active-fg         "#0d0d0d"
 set index-active-bg         "#d0d0d0"
 
-# Search highlight colors same as in Vivaldi:
-
-set highlight-color        "rgba(242, 242, 0,  0.5)"
-set highlight-active-color "rgba(242, 142, 47, 0.5)"
+# Search highlight colors
+set highlight-color        "rgba(255, 255, 0,  0.5)" # Yellow
+set highlight-active-color "rgba(255, 150, 50, 0.5)" # Orange
