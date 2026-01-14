@@ -422,7 +422,7 @@
                 <command>dunstctl action</command>
             </action>
         </keybind>
-        <keybind key="W-v">
+        <keybind key="W-adiaeresis">
             <action name="Execute">
                 <command>~/scripts/ob/notify-current-date</command>
             </action>
