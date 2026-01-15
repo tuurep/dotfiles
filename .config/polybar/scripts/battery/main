@@ -3,8 +3,10 @@
 # A modification on battery-combined-udev:
 # https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/battery-combined-udev
 #
-# With a flag that can turn on "caffeinate" mode
+# With an indicator if "caffeinate" mode is on
 # (screen not allowed to turn off on inactivity)
+#
+# See ./toggle-caffeinate, it can be bound to a polybar click action, and/or WM keybind
 
 # "goodnight" red, but brighter to look more legible on lighter Polybar background
 # (vs. terminal background)
@@ -98,19 +100,6 @@ battery_print() {
 
 # Entry point
 case "$1" in
-    --toggle-caffeinate)
-        if [ ! -f "$caffeinate_status" ] || [ "$(cat "$caffeinate_status")" -eq 0 ]; then
-            # See: https://bbs.archlinux.org/viewtopic.php?id=267560
-            xset s off -dpms
-            echo 1 > "$caffeinate_status"
-        else
-            xset s on dpms
-            echo 0 > "$caffeinate_status"
-        fi
-
-        "$0" --update
-        exit 0
-        ;;
     --update)
         pid="$(cat "$path_pid")"
 

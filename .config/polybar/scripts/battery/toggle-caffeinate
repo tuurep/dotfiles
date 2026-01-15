@@ -1,0 +1,28 @@
+#!/bin/bash
+
+caffeinate_status="$HOME/.config/polybar/scripts/battery/caffeinate_status"
+
+# If window is fullscreen, show notification because Polybar is not visible
+fullscreen=$(xprop -id "$(xdo id)" _NET_WM_STATE | grep _NET_WM_STATE_FULLSCREEN)
+
+if [ ! -f "$caffeinate_status" ] || [ "$(cat "$caffeinate_status")" -eq 0 ]; then
+    # See: https://bbs.archlinux.org/viewtopic.php?id=267560
+    xset s off -dpms
+    echo 1 > "$caffeinate_status"
+    if [ -n "$fullscreen" ]; then
+        notify-send -t 700 \
+                    --hint=string:fgcolor:#e8c580 \
+                    --hint=string:x-dunst-stack-tag:caffeinate \
+                    "󰅶 on"
+    fi
+else
+    xset s on dpms
+    echo 0 > "$caffeinate_status"
+    if [ -n "$fullscreen" ]; then
+        notify-send -t 700 \
+                    --hint=string:x-dunst-stack-tag:caffeinate \
+                    "󰅶 off"
+    fi
+fi
+
+~/.config/polybar/scripts/battery/main --update

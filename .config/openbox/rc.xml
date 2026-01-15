@@ -43,7 +43,7 @@
                 <command>openbox --restart</command>
             </action>
         </keybind>
-        <!-- Volume and brightness control -->
+        <!-- Polybar modules related -->
         <keybind key="F1">
             <action name="Execute">
                 <command>~/.config/polybar/scripts/volume/change-volume -5</command>
@@ -97,6 +97,11 @@
         <keybind key="A-F4">
             <action name="Execute">
                 <command>~/.config/polybar/scripts/brightness/change-brightness +100</command>
+            </action>
+        </keybind>
+        <keybind key="F12">
+            <action name="Execute">
+                <command>~/.config/polybar/scripts/battery/toggle-caffeinate</command>
             </action>
         </keybind>
         <!-- Screenlock -->
