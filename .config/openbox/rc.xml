@@ -99,9 +99,19 @@
                 <command>~/.config/polybar/scripts/brightness/change-brightness +100</command>
             </action>
         </keybind>
-        <keybind key="F12">
+        <keybind key="F11">
             <action name="Execute">
                 <command>~/.config/polybar/scripts/battery/toggle-caffeinate</command>
+            </action>
+        </keybind>
+        <keybind key="F5">
+            <action name="Execute">
+                <command>~/scripts/ob/notify-current-date</command>
+            </action>
+        </keybind>
+        <keybind key="F12">
+            <action name="Execute">
+                <command>~/.local/bin/mullvad-toggle</command>
             </action>
         </keybind>
         <!-- Screenlock -->
@@ -425,17 +435,6 @@
         <keybind key="W-m">
             <action name="Execute">
                 <command>dunstctl action</command>
-            </action>
-        </keybind>
-        <keybind key="W-adiaeresis">
-            <action name="Execute">
-                <command>~/scripts/ob/notify-current-date</command>
-            </action>
-        </keybind>
-        <!-- Switch VPN on or off -->
-        <keybind key="W-b">
-            <action name="Execute">
-                <command>~/.local/bin/mullvad-toggle</command>
             </action>
         </keybind>
     </keyboard>

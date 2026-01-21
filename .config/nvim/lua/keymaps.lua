@@ -209,7 +209,7 @@ vim.keymap.set("!", "<M-2>", "&")
 -- }}}
 
 -- Insert current date
-vim.keymap.set("!", "<M-ä>", os.date("%-d.%-m.%Y"))
+vim.keymap.set("!", "<F53>", os.date("%-d.%-m.%Y")) -- Alt + F5
 
 -- Essential keys for both movement and operator pending
 -- (with the worst defaults known to man)
