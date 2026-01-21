@@ -36,6 +36,10 @@ unmap [index] <Tab> # Weird behavior: now pressing tab in index mode starts
                     # Todo:
                     # How to enable search in index?
 
+# Bind these to prevent accidentally closing index doing <C-j> after <C-Tab>
+map [index] <C-j> feedkeys "j"
+map [index] <C-k> feedkeys "k"
+
 map <A-n> jumplist backward
 map <A-N> jumplist forward
 
