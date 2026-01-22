@@ -223,6 +223,14 @@ ll() {
         | sed -r '/^total [0-9]+\.?[0-9]*[BKMGT]?$/d'
 }
 
+ex() {
+    nvim "$1" && chmod +x "$1"
+}
+
+touchx() {
+    touch "$1" && chmod +x "$1"
+}
+
 c() {
     builtin cd "$@" > /dev/null \
         && echo_cwd_and_branch \
