@@ -233,7 +233,7 @@ vim.keymap.set({"n", "x"}, "?", "K")
 
 -- Since 0 is free, why not: useful operator with modifier dropped
 vim.keymap.set({"n", "x"}, "0", "=")
-vim.keymap.set({"n", "x"}, "00", "==")
+vim.keymap.set("n", "00", "==")
 
 -- j/k traverses soft-wrapped lines
 -- unless in Visual Line mode where that's quite bad
