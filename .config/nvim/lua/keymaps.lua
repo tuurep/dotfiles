@@ -211,14 +211,14 @@ vim.keymap.set("!", "<M-2>", "&")
 -- Insert current date
 vim.keymap.set("!", "<F53>", os.date("%-d.%-m.%Y")) -- Alt + F5
 
--- Essential keys for both movement and operator pending
--- (with the worst defaults known to man)
-vim.keymap.set({"n", "x", "o"}, "H", "g^")
-vim.keymap.set({"n", "x", "o"}, "L", "g$")
-vim.keymap.set({"n", "x", "o"}, "<leader>h", "0")
-vim.keymap.set({"n", "x", "o"}, "<leader>l", "$")
+-- hjkl-based edge movements
+-- (perpetually experimental)
+-- Todo: What about g0? Is that ever useful?
+vim.keymap.set({"n", "x", "o"}, "H", "0")
+vim.keymap.set({"n", "x", "o"}, "L", "$")
+vim.keymap.set({"n", "x", "o"}, "<leader>h", "g^")
+vim.keymap.set({"n", "x", "o"}, "<leader>l", "g$")
 
--- Remap what the above has overridden
 vim.keymap.set("!", "<C-z>", "<C-k>")
 vim.keymap.set({"n", "x", "o"}, "gk", "H")
 vim.keymap.set({"n", "x", "o"}, "gg", function()
