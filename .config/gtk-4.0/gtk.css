@@ -1,0 +1,6 @@
+/* Remove rounded corners in GTK-4 windows */
+/* Added because of squared shadows still being drawn */
+/* This is one way to solve that, would consider fixing the shadows too if I find out how. */
+window {
+    border-radius: 0;
+}
