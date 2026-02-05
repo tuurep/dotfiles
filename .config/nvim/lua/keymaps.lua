@@ -20,8 +20,8 @@ vim.keymap.set({"n", "x"}, "=", "<Nop>")           -- 0 as = (and = for 0$ would
 vim.keymap.set({"n", "x"}, "gJ", "<Nop>")          -- gå for spaceless join, leave gJ and gK
                                                    -- as ideas for vertical movement mappings
 -- Free (but bad):
-vim.keymap.set({"n", "x", "!"}, "<PageUp>", "<Nop>")
-vim.keymap.set({"n", "x", "!"}, "<PageDown>", "<Nop>")
+vim.keymap.set({"x", "!"}, "<PageUp>", "<Nop>")
+vim.keymap.set({"x", "!"}, "<PageDown>", "<Nop>")
 vim.keymap.set({"n", "i"}, "<F1>", "<Nop>")
 
 -- I almost never use macros, so move the key to the edge of the keyboard
@@ -38,7 +38,15 @@ vim.keymap.set("n", "<Ins>", "m")
 -- Search and commandline remaps
 vim.keymap.set({"n", "x", "o"}, "<Tab>", "/")
 vim.keymap.set({"n", "x", "o"}, "<S-Tab>", "?")
+vim.keymap.set({"n", "o"}, "<leader>n", "*")
+vim.keymap.set({"n", "o"}, "<leader>N", "#")
+vim.keymap.set({"n", "o"}, "g<leader>n", "g*")
+vim.keymap.set({"n", "o"}, "g<leader>N", "g#")
 vim.keymap.set({"n", "x"}, ".", ":")
+
+-- Todo: if I ever want to remap * or # these will break
+vim.keymap.set("x", "<leader>n", "*", { remap = true }) -- See :h v_star-default
+vim.keymap.set("x", "<leader>N", "#", { remap = true }) -- See :h v_#-default
 
 -- Repeat last command
 -- Todo: go further in history if it's an exit command
@@ -168,9 +176,9 @@ vim.keymap.set("c", "<M-l>", "<C-Right>")
 vim.keymap.set("c", "<M-Space>", "<C-Right>")
 vim.keymap.set("c", "<M-h>", "<C-Left>")
 
-vim.keymap.set("!", "<M-w>", "<C-w>") -- Todo: <C-w>
-vim.keymap.set("!", "<M-u>", "<C-u>") -- Todo: <C-u>
-                                      -- Todo: <M-U>
+vim.keymap.set("!", "<M-w>", "<C-w>") -- Todo: <C-w> for forward variant
+vim.keymap.set("!", "<M-u>", "<C-u>") -- Todo: <C-u> for forward variant
+
 vim.keymap.set("!", "<M-H>", "<Home>")
 vim.keymap.set("!", "<M-L>", "<End>")
 
@@ -198,7 +206,6 @@ vim.keymap.set("!", "<M-Z>", "``````<Left><Left><Left>")
 vim.keymap.set("!", "<M-'>",   "**<Left>")
 vim.keymap.set("!", "<M-S-'>", "****<Left><Left>")
 
--- Todo: syntax highlight flashes uncomfortably. Reimplement with nvim API stuff.
 vim.keymap.set("i", "<M-Enter>", "<Enter><Esc>O")
 vim.keymap.set("i", "<M-S-Enter>", "<M-Enter>", { remap = true })
 
@@ -465,7 +472,6 @@ vim.keymap.set("i", "<M-O>", "<Esc>O")
 -- Todo: Half baked:
 -- - dot repeat
 -- - visual block mode
--- Maybe turn into a module or move to textcmds.lua?
 vim.keymap.set("!", "<C-Space>", "  <Left>")
 vim.keymap.set("n", "<C-Space>", "i <Esc>la <Esc>h")
 vim.keymap.set("x", "<C-Space>", "<Esc>`>a <Esc>`<i <Esc>l")

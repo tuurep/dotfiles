@@ -87,8 +87,8 @@ vim.keymap.set("n", ":", "<Nop>")
 vim.keymap.set("n", ".", "<Nop>")
 
 -- Free (but bad):
-vim.keymap.set({"n", "x", "c"}, "<PageUp>", "<Nop>")
-vim.keymap.set({"n", "x", "c"}, "<PageDown>", "<Nop>")
+vim.keymap.set({"x", "c"}, "<PageUp>", "<Nop>")
+vim.keymap.set({"x", "c"}, "<PageDown>", "<Nop>")
 vim.keymap.set("n", "<F1>", "<Nop>")
 
 -- Pager specifics:
@@ -170,9 +170,9 @@ vim.keymap.set("c", "<M-h>", "<C-Left>")
 vim.keymap.set("c", "<M-k>", "<Up>")
 vim.keymap.set("c", "<M-j>", "<Down>")
 
-vim.keymap.set("c", "<M-w>", "<C-w>") -- Todo: <C-w>
-vim.keymap.set("c", "<M-u>", "<C-u>") -- Todo: <C-u>
-                                      -- Todo: <M-U>
+vim.keymap.set("c", "<M-w>", "<C-w>") -- Todo: <C-w> for forward variant
+vim.keymap.set("c", "<M-u>", "<C-u>") -- Todo: <C-u> for forward variant
+
 vim.keymap.set("c", "<M-H>", "<Home>")
 vim.keymap.set("c", "<M-L>", "<End>")
 
