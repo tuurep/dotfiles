@@ -20,6 +20,8 @@ set statusbar-home-tilde "true"
 # Hide statusbar (bottom row) by default: toggle with <C-n>
 set guioptions ""
 
+set incremental-search "true"
+
 # Keymaps:
 
 map <C-Tab> toggle_index
