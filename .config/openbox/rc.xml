@@ -417,17 +417,17 @@
             </action>
         </keybind>
         <!-- Dunst keybinds (control popup notifications) -->
-        <keybind key="W-n">
+        <keybind key="W-S-n">
             <action name="Execute">
                 <command>dunstctl history-pop</command>
             </action>
         </keybind>
-        <keybind key="W-S-n">
+        <keybind key="W-n">
             <action name="Execute">
                 <command>dunstctl close</command>
             </action>
         </keybind>
-        <keybind key="W-C-S-n">
+        <keybind key="W-C-n">
             <action name="Execute">
                 <command>dunstctl close-all</command>
             </action>
