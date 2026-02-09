@@ -351,6 +351,11 @@ say() {
     gtts-cli -t us "$@" | mpv --really-quiet -
 }
 
+sand() {
+    command sand "$@"
+    ~/.config/polybar/scripts/sand &> /dev/null & disown
+}
+
 # === Function completions ===
 
 compdef _ls ll
