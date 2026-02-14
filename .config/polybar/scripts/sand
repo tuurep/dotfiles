@@ -10,24 +10,51 @@ if [ -f "$path_pid" ]; then
 fi
 echo $$ > "$path_pid"
 
+polybar-msg action sand module_show
+
 # Show timers (running, paused and elapsed) on the bar until none exist
-# Todo: multiple timers
-# Todo: click to pause/resume, right click to cancel
 while true; do
     sand_ls=$(sand ls)
-    if echo "$sand_ls" | grep -q "There are currently no timers."; then
+    if grep -q "There are currently no timers." <<< "$sand_ls"; then
         break
     fi
 
-    polybar-msg action sand module_show
+    # Timers are added by parsing the output of 'sand ls'
+    # Remove header line (first line)
+    # Remove empty line, which separates running timers from paused/elapsed ones
+    # Sort by timer id so timers don't move on the bar when pausing/elapsing
+    timers=$(
+        echo "$sand_ls" | \
+        tail -n +2 | \
+        grep -v '^[[:space:]]*$' | \
+        sort -k2 -t'#' -n
+    )
 
-    second_line=$(echo "$sand_ls" | sed -n '2p')
-    if echo "$second_line" | grep -q "Elapsed"; then
-        label="%{F#e8c580} 00:00%{F-}"
-    else
+    echo "$timers"
+
+    labels=""
+
+    while read -r line; do
+        # Add separator for multiple timers
+        if [[ -n "$labels" ]]; then
+            labels+="%{F#888888} 󰧟 %{F-}"
+        fi
+
+        read -r icon id full_time message <<< "$line"
+
+        # Strip the '#' so id is usable as an argument to sand commands
+        id=${id#\#}
+
+        if [[ "$full_time" == "Elapsed" ]]; then
+            # Todo: click to remove elapsed timer
+            # Problem: 'sand cancel' doesn't work on an elapsed timer
+            # It can only be removed by closing the notification
+            labels+="%{F#e8c580} 00:00%{F-}"
+            continue
+        fi
+
         # Show time in mm:ss, unless there are hours, hh:mm:ss
-        # Todo: 3 or more digits hours are technically allowed
-        hours_minutes_seconds=$(echo "$second_line" | sed -n 's/.*\([0-9]\{2\}:[0-9]\{2\}:[0-9]\{2\}\).*/\1/p')
+        hours_minutes_seconds=${full_time%.*}
         hours=${hours_minutes_seconds%%:*}
         rest=${hours_minutes_seconds#*:}
         time_left=$rest
@@ -35,16 +62,20 @@ while true; do
             time_left="$hours:$rest"
         fi
 
-        if echo "$second_line" | grep -q "⏸"; then
-            label="%{F#888888} $time_left%{F-}"
+        if grep -q "⏸" <<< "$line"; then
+            left_click="%{A1:sand resume $id; ~/.config/polybar/scripts/sand:}" # Awkward: rerunning the script to instantly see the change on the module
+            right_click="%{A3:sand cancel $id; ~/.config/polybar/scripts/sand:}"
+            labels+="$left_click$right_click%{F#888888} $time_left%{F-}%{A}%{A}"
         elif [ "$time_left" = "00:00" ]; then
-            label="%{F#e8c580} 00:00%{F-}"
+            labels+="%{F#e8c580} 00:00%{F-}"
         else
-            label=" $time_left"
+            left_click="%{A1:sand pause $id; ~/.config/polybar/scripts/sand:}"
+            right_click="%{A3:sand cancel $id; ~/.config/polybar/scripts/sand:}"
+            labels+="$left_click$right_click $time_left%{A}%{A}"
         fi
-    fi
+    done <<< "$timers"
 
-    polybar-msg action sand send "$label"
+    polybar-msg action sand send "$labels"
     sleep 1
 done
 
